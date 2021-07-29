@@ -10,14 +10,32 @@
     "jsx-no-multiline-js": false,
     "jsx-wrap-multiline": false,
     "jsx-no-lambda": false,
-    "ban-types": [true, "Number", "Boolean", "String", "Object"],
+    "ban-types": [
+      true,
+      "Number",
+      "Boolean",
+      "String",
+      "Object"
+    ],
     "prettier": [
       true,
-      { "printWidth": 80, "singleQuote": true, "semi": false }
+      {
+        "printWidth": 80,
+        "singleQuote": true,
+        "semi": false
+      }
     ],
-    "quotemark": [true, "single", "jsx-double"]
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ]
   },
   "linterOptions": {
-    "exclude": ["src/contracts/*.ts", "node_modules/**/*.ts", "./**/*.js"]
+    "exclude": [
+      "src/contracts/*.ts",
+      "node_modules/**/*.ts",
+      "./**/*.js"
+    ]
   }
 }
