@@ -29,11 +29,10 @@
     "known_origin": "KnownOrigin"
   },
   "navigation": {
-    "collectibles": "Collectibles",
-    "partners": "Partners",
-    "my_assets": "My Assets",
-    "my_bids": "My Bids",
-    "activity": "Activity"
+    "collectibles": "Eggs",
+    "kryptomons": "Kryptomons",
+    "items": "Items",
+    "my_assets": "My Assets"
   },
   "menu": {
     "all": "All Assets",
@@ -78,9 +77,9 @@
     "cheapest": "Cheapest"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
+    "title": "Kryptomon Marketplace",
     "subtitle": "Welcome to the virtual world’s one-stop-shop for the very best digital assets.",
-    "get_started": "Start Browsing",
+    "get_started": "Browse",
     "learn_more": "Learn More",
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
@@ -331,7 +330,7 @@
   },
   "wallet": {
     "sign_in_required": "You need to {sign_in} to access this page.",
-    "sign_in": "Sign In"
+    "sign_in": "Connect"
   },
   "slideshow": {
     "view_all": "View All"
@@ -363,6 +362,16 @@
     "meta_transaction_failure": {
       "title": "Meta transaction",
       "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
+    }
+  },
+  "@dapps": {
+    "navbar": {
+      "account": {
+        "signIn": "Connect"
+      },
+      "menu": {
+        "marketplace": "Market"
+      }
     }
   }
 }
