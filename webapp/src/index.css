@@ -1,10 +1,21 @@
 :root {
-  --page-header-height: 420px;
+  --background: #232123;
+
+  --button-border-radius: 30px;
+  --button-height: 48px;
+  --button-width: 150px;
+
+  --font-monospace: 'PT Mono';
+  --font-family: 'Poppins';
+  --font-size-medium: 18px;
+
+  --primary: #D7319E;
+  --page-header-height: 490px;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: var(--font-monospace), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

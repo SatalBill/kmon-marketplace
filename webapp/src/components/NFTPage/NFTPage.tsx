@@ -11,8 +11,10 @@ import './NFTPage.css'
 const NFTPage = () => {
   return (
     <>
-      <Navbar isFullscreen />
-      <Navigation isFullscreen />
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation isFullscreen />
+      </div>
       <Page className="NFTPage" isFullscreen>
         <NFTProviderPage>{nft => <NFTDetail nft={nft} />}</NFTProviderPage>
       </Page>

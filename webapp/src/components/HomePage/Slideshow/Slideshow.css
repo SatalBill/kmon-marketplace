@@ -1,6 +1,23 @@
 .Slideshow {
   margin-bottom: 70px;
+  position: relative;
   width: 100%;
+}
+
+/* shadow */
+.Slideshow:after {
+  background: linear-gradient(to left,
+      rgba(35, 33, 35, 1) 10%,
+      rgba(35, 33, 35, .9) 30%,
+      rgba(35, 33, 35, .3) 80%,
+      rgba(35, 33, 35, 0));
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 220px;
 }
 
 .Slideshow .nfts {
@@ -14,9 +31,9 @@
 .Slideshow .nfts .NFTCard,
 .Slideshow .nfts .ui.card.NFTCard:first-child {
   flex: 0 0 auto;
-  width: 220px;
+  width: 190px;
   margin-right: 20px;
-  height: 300px;
+  height: 280px;
   margin-top: 12px;
 }
 
@@ -38,4 +55,13 @@
 .Slideshow .ui.button.basic {
   display: flex;
   align-items: center;
+}
+
+.Slideshow .ui.button.basic,
+.Slideshow .ui.button.basic:hover {
+  color: var(--text) !important;
+}
+
+.Slideshow .header-menu-right {
+  z-index: 1;
 }

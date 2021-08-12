@@ -72,3 +72,6 @@ indexer/src/entities
 indexer/src/data/addresses.ts
 indexer/subgraph.yaml
 
+# IDE
+
+.idea/
