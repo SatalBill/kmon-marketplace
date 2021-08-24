@@ -33,7 +33,6 @@ export class NFTService
         account = this.toAccount(address)
       }
       account.nftIds.push(result.nft.id)
-      result.nft.image = 'https://media.istockphoto.com/vectors/flat-icon-check-vector-id496603666?k=6&m=496603666&s=170667a&w=0&h=CdaZL0kvQieOEjq0Vt8gLzlZvVQDKtiqZEx32WDDEYs='
       nfts.push({ ...result.nft, vendor: VendorName.DECENTRALAND })
       if (result.order) {
         orders.push(result.order)

@@ -1,4 +1,4 @@
-import { Network, NFT as BaseNFT, Rarity, WearableCategory } from '@dcl/schemas'
+import { Network, Rarity, WearableCategory } from '@dcl/schemas'
 import { WearableGender } from '../../../nft/wearable/types'
 import { NFT } from '../../../nft/types'
 import { Order } from '../../../order/types'
