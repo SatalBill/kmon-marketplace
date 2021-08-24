@@ -33,6 +33,7 @@ export class NFTService
         account = this.toAccount(address)
       }
       account.nftIds.push(result.nft.id)
+      result.nft.image = 'https://media.istockphoto.com/vectors/flat-icon-check-vector-id496603666?k=6&m=496603666&s=170667a&w=0&h=CdaZL0kvQieOEjq0Vt8gLzlZvVQDKtiqZEx32WDDEYs='
       nfts.push({ ...result.nft, vendor: VendorName.DECENTRALAND })
       if (result.order) {
         orders.push(result.order)
@@ -67,16 +68,16 @@ export class NFTService
     const contract: ContractData =
       nft.network !== Network.ETHEREUM
         ? {
-            ...getContract(ContractName.ERC721CollectionV2, nft.chainId),
-            address: nft.contractAddress
-          }
+          ...getContract(ContractName.ERC721CollectionV2, nft.chainId),
+          address: nft.contractAddress
+        }
         : {
-            name: 'ERC721',
-            abi: ERC721Abi as any,
-            address: nft.contractAddress,
-            chainId: nft.chainId,
-            version: '1'
-          }
+          name: 'ERC721',
+          abi: ERC721Abi as any,
+          address: nft.contractAddress,
+          chainId: nft.chainId,
+          version: '1'
+        }
 
     const transferFrom = erc721.methods.transferFrom(from, to, nft.tokenId)
     return sendTransaction(transferFrom, contract, from)

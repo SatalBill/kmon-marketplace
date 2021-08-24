@@ -15,15 +15,20 @@ import { buildCountFromOrder } from '../modules/count'
 import * as status from '../modules/order/status'
 
 export function handleOrderCreated(event: OrderCreated): void {
+  log.warning('handleOrderCreated', []);
+  log.warning('nftAddress: ' + event.params.nftAddress.toHexString(), [])
   let category = getCategory(event.params.nftAddress.toHexString())
+  log.warning('Category: ' + category, []);
   let nftId = getNFTId(
     category,
     event.params.nftAddress.toHexString(),
     event.params.assetId.toString()
   )
 
+  log.warning('nftId: ' + nftId, []);
   let nft = NFT.load(nftId)
   if (nft != null) {
+    log.warning('nft found', []);
     let orderId = event.params.id.toHex()
 
     let order = new Order(orderId)
@@ -50,6 +55,9 @@ export function handleOrderCreated(event: OrderCreated): void {
 
     let count = buildCountFromOrder(order)
     count.save()
+  }
+  else {
+    log.warning('NFT not found', []);
   }
 }
 

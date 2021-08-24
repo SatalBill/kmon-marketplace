@@ -3,6 +3,7 @@ import { NFT, Order, Bid } from '../../entities/schema'
 import { ERC721, Transfer } from '../../entities/templates/ERC721/ERC721'
 import * as status from '../order/status'
 import * as addresses from '../../data/addresses'
+import { Birth } from '../../entities/KMONFT/KMONFT'
 
 export function isMint(event: Transfer): boolean {
   return event.params.from.toHexString() == addresses.Null
