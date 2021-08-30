@@ -41,7 +41,11 @@
 a.ui.card.link:hover .meta {
   color: var(--secondary-text);
 }
-
+.ui.cards > .ui.card,
+.ui.card {
+  background-color: white !important;
+  border: none !important;
+}
 .NFTCard .tags {
   margin-top: 12px;
 }
@@ -82,4 +86,114 @@ a.ui.card.link:hover .meta {
   .ui.cards > .NFTCard.card > .content {
     display: block;
   }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #323132;
+  box-shadow: none;
+}
+
+.card-footer {
+  background-color: #e7e3d7;
+}
+
+.card-image-container {
+  width: 100%;
+  height: 230px;
+  position: relative;
+}
+
+.card-image {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-image-text {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 13px 16px;
+}
+
+.product-type-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  background-color: #33d669;
+  display: flex;
+  align-self: flex-end;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.product-info-value {
+  font-size: 10px;
+  margin: 0;
+}
+.product-info-number {
+  font-size: 17px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.product-verified {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #39c876;
+  margin-left: 8px;
+}
+
+.product-title {
+  color: black;
+}
+
+.product-description {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding: 11px 16px;
+}
+
+.product-description-left {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.product-description-left-item {
+  color: #000000;
+  font-size: 10px;
+  margin: 0;
+}
+
+.product-description-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: #000000;
+  font-size: 8px;
 }

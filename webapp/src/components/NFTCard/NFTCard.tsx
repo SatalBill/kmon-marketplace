@@ -20,6 +20,7 @@ const NFTCard = (props: Props) => {
 
   const title = getNFTName(nft)
   const { parcel, estate, wearable, ens } = nft.data
+  console.log({ nft, order })
 
   return (
     <Card
@@ -28,22 +29,43 @@ const NFTCard = (props: Props) => {
       as={Link}
       to={locations.nft(nft.contractAddress, nft.tokenId)}
     >
-      <NFTImage nft={nft} showMonospace />
-      <Card.Content>
-        <Card.Header>
-          <div className="title">{title}</div>{' '}
-          {order ? (
+      <div className="card-image-container">
+        <div className="card-image">
+          <NFTImage nft={nft} showMonospace />
+        </div>
+        <div className="card-image-text">
+          <div className="product-type-icon" />
+          <div className="product-info">
+            <p className="product-info-value">
+              INDEX VALUE {order?.price && formatMANA(order.price)} BNB
+            </p>
+            <p className="product-info-number">
+              {title} <div className="product-verified" />
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* <Card.Content> */}
+      {/* <Card.Header> */}
+      <div className="product-description">
+        <div className="product-description-left">
+          <p className="product-description-left-item">GEN: 001</p>
+          <p className="product-description-left-item">ELEMENT: AIR</p>
+        </div>
+        <div className="product-description-right">ERC-721</div>
+      </div>
+      {/* {order ? (
             <Mana network={nft.network} inline>
               {formatMANA(order.price)}
             </Mana>
-          ) : null}
-        </Card.Header>
-        <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
+          ) : null} */}
+      {/* </Card.Header> */}
+      {/* <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
         {parcel ? <ParcelTags className="tags" nft={nft} /> : null}
         {estate ? <EstateTags nft={nft} /> : null}
         {wearable ? <WearableTags nft={nft} /> : null}
-        {ens ? <ENSTags nft={nft} /> : null}
-      </Card.Content>
+        {ens ? <ENSTags nft={nft} /> : null} */}
+      {/* </Card.Content> */}
     </Card>
   )
 }
