@@ -8,8 +8,8 @@ import {
   Radio,
   Responsive,
   Modal
-} from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+} from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { SortBy } from '../../../../modules/routing/types'
 import { MAX_QUERY_SIZE } from '../../../../modules/vendor/super_rare/api'
@@ -58,15 +58,15 @@ const NFTFilters = (props: Props) => {
     count === undefined
       ? t('global.loading') + '...'
       : t('nft_filters.search', {
-          suffix:
-            count < MAX_QUERY_SIZE
-              ? t('nft_filters.results', {
-                  count: count.toLocaleString()
-                })
-              : t('nft_filters.more_than_results', {
-                  count: count.toLocaleString()
-                })
-        })
+        suffix:
+          count < MAX_QUERY_SIZE
+            ? t('nft_filters.results', {
+              count: count.toLocaleString()
+            })
+            : t('nft_filters.more_than_results', {
+              count: count.toLocaleString()
+            })
+      })
 
   return (
     <div className="NFTFilters">

@@ -1,4 +1,4 @@
-import { Wallet } from 'decentraland-dapps/dist/modules//wallet/types'
+import { Wallet } from '@kmon/dapps/dist/modules//wallet/types'
 import { NFT } from '../../../modules/nft/types'
 import { Order } from '../../../modules/order/types'
 import { Bid } from '../../../modules/bid/types'

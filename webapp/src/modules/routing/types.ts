@@ -1,8 +1,7 @@
-import { Network, Rarity } from '@dcl/schemas'
+import { Network, Rarity } from '@kmon/schemas'
 import { VendorName } from '../vendor/types'
 import { Section } from '../vendor/routing/types'
 import { View } from '../ui/types'
-import { WearableGender } from '../nft/wearable/types'
 
 export { Section } from '../vendor/routing/types'
 
@@ -28,7 +27,6 @@ export type SearchOptions = {
   isMap?: boolean
   isFullscreen?: boolean
   wearableRarities?: Rarity[]
-  wearableGenders?: WearableGender[]
   search?: string
   contracts?: string[]
   address?: string

@@ -1,4 +1,4 @@
-import { NFTCategory } from '@dcl/schemas'
+import { NFTCategory } from '@kmon/schemas'
 import { getSearchCategory, getSearchWearableCategory } from '../routing/search'
 import { SearchOptions } from '../routing/types'
 import { Section } from './routing/types'
@@ -22,13 +22,12 @@ export function getFilters(
 
       const category = getSearchCategory(section!)
       const wearableCategory =
-        !isWearableAccessory && category === NFTCategory.WEARABLE
+        !isWearableAccessory && category === 'wearable'
           ? getSearchWearableCategory(section!)
           : undefined
 
       const {
         wearableRarities,
-        wearableGenders,
         contracts,
         network
       } = searchOptions
@@ -39,7 +38,6 @@ export function getFilters(
         isWearableAccessory,
         wearableCategory,
         wearableRarities,
-        wearableGenders,
         contracts,
         network
       } as NFTsFetchFilters<VendorName.DECENTRALAND>

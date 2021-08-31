@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { locations } from '../../../modules/routing/locations'
 import { VendorMenu } from '../../Vendor/VendorMenu'

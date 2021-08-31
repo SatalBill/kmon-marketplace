@@ -1,5 +1,4 @@
-import { Network, Rarity, WearableCategory } from '@dcl/schemas'
-import { WearableGender } from '../../../nft/wearable/types'
+import { Network, Rarity, WearableCategory, NFT as BaseNFT } from '@kmon/schemas'
 import { NFT } from '../../../nft/types'
 import { Order } from '../../../order/types'
 import { VendorName } from '../../types'
@@ -10,7 +9,6 @@ export type NFTsFetchFilters = {
   isWearableAccessory?: boolean
   wearableCategory?: WearableCategory
   wearableRarities?: Rarity[]
-  wearableGenders?: WearableGender[]
   contracts?: string[]
   network?: Network
 }
@@ -23,6 +21,12 @@ export type NFTResult = {
 export type NFTResponse = {
   data: NFTResult[]
   total: number
+}
+
+export type KryptomonMetadataResponse = {
+  description: string
+  image: string
+  name: string
 }
 
 export type NFTData = BaseNFT['data']

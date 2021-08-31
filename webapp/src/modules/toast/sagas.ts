@@ -1,10 +1,10 @@
 import { all, takeEvery, put } from 'redux-saga/effects'
-import { toastSaga as baseToastSaga } from 'decentraland-dapps/dist/modules/toast/sagas'
-import { showToast } from 'decentraland-dapps/dist/modules/toast/actions'
-import { getChainConfiguration } from 'decentraland-dapps/dist/lib/chainConfiguration'
+import { toastSaga as baseToastSaga } from '@kmon/dapps/dist/modules/toast/sagas'
+import { showToast } from '@kmon/dapps/dist/modules/toast/actions'
+import { getChainConfiguration } from '@kmon/dapps/dist/lib/chainConfiguration'
 import { getMetaTransactionFailureToast } from './toasts'
 import { TransferNFTFailureAction, TRANSFER_NFT_FAILURE } from '../nft/actions'
-import { Network } from '@dcl/schemas'
+import { Network } from '@kmon/schemas'
 import {
   CancelOrderFailureAction,
   CANCEL_ORDER_FAILURE,
@@ -18,7 +18,7 @@ import {
   GRANT_TOKEN_FAILURE,
   RevokeTokenFailureAction,
   REVOKE_TOKEN_FAILURE
-} from 'decentraland-dapps/dist/modules/authorization/actions'
+} from '@kmon/dapps/dist/modules/authorization/actions'
 
 export function* toastSaga() {
   yield all([baseToastSaga(), customToastSaga()])

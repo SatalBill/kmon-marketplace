@@ -1,5 +1,5 @@
-import { ChainId, Network } from '@dcl/schemas'
-import { getContract, ContractName as CN } from 'decentraland-transactions'
+import { ChainId, Network } from '@kmon/schemas'
+import { getContract, ContractName as CN } from '@kmon/transactions'
 import {
   Contract,
   ContractService as ContractServiceInterface
@@ -73,6 +73,48 @@ const contracts = ({
       address: getContract(CN.Marketplace, ChainId.ETHEREUM_MAINNET).address,
       vendor: 'decentraland',
       category: null,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_MAINNET
+    },
+    {
+      name: ContractName.BIDS,
+      address: getContract(CN.Bid, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_ROPSTEN
+    },
+    {
+      name: ContractName.MANA,
+      address: getContract(CN.MANAToken, ChainId.MATIC_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.MATIC,
+      chainId: ChainId.MATIC_MAINNET
+    },
+    {
+      name: ContractName.MARKETPLACE,
+      address: getContract(CN.Marketplace, ChainId.MATIC_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.MATIC,
+      chainId: ChainId.MATIC_MAINNET
+    }
+  ],
+  [AppNetwork.RINKEBY]: [
+    {
+      name: ContractName.MANA,
+      address: getContract(CN.MANAToken, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_MAINNET
+    },
+    {
+      name: ContractName.MARKETPLACE,
+      address: getContract(CN.Marketplace, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_MAINNET
     },
@@ -98,6 +140,48 @@ const contracts = ({
       vendor: 'decentraland',
       category: null,
       network: Network.MATIC,
+      chainId: ChainId.MATIC_MAINNET
+    }
+  ],
+  [AppNetwork.BSC]: [
+    {
+      name: ContractName.MANA,
+      address: getContract(CN.MANAToken, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_MAINNET
+    },
+    {
+      name: ContractName.MARKETPLACE,
+      address: getContract(CN.Marketplace, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_MAINNET
+    },
+    {
+      name: ContractName.BIDS,
+      address: getContract(CN.Bid, ChainId.ETHEREUM_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_ROPSTEN
+    },
+    {
+      name: ContractName.MANA,
+      address: getContract(CN.MANAToken, ChainId.MATIC_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.MATIC_MAINNET
+    },
+    {
+      name: ContractName.MARKETPLACE,
+      address: getContract(CN.Marketplace, ChainId.MATIC_MAINNET).address,
+      vendor: 'decentraland',
+      category: null,
+      network: Network.BSC,
       chainId: ChainId.MATIC_MAINNET
     }
   ]

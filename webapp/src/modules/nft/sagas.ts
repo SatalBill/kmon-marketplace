@@ -60,6 +60,7 @@ function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
       )
     )
   } catch (error) {
+    // @ts-ignore
     yield put(fetchNFTsFailure(options, error.message, timestamp))
   }
 }
@@ -83,6 +84,7 @@ function* handleFetchNFTRequest(action: FetchNFTRequestAction) {
 
     yield put(fetchNFTSuccess(nft as NFT, order))
   } catch (error) {
+    // @ts-ignore
     yield put(fetchNFTFailure(contractAddress, tokenId, error.message))
   }
 }
@@ -99,6 +101,7 @@ function* handleTransferNFTRequest(action: TransferNFTRequestAction) {
     yield put(transferNFTSuccess(nft, address, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
+    // @ts-ignore
     yield put(transferNFTFailure(nft, address, error.message))
   }
 }

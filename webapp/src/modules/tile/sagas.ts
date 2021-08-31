@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
-import { Atlas, AtlasTile } from 'decentraland-ui'
+import { Atlas, AtlasTile } from '@kmon/ui'
 import { ATLAS_SERVER_URL } from '../../modules/vendor/decentraland'
 import {
   FETCH_TILES_REQUEST,
@@ -10,7 +10,7 @@ import {
 import {
   ConnectWalletSuccessAction,
   CONNECT_WALLET_SUCCESS
-} from 'decentraland-dapps/dist/modules/wallet/actions'
+} from '@kmon/dapps/dist/modules/wallet/actions'
 import { fetchNFTsRequest } from '../nft/actions'
 import { VendorName } from '../vendor'
 import { View } from '../ui/types'
@@ -27,6 +27,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
     )
     yield put(fetchTilesSuccess(tiles))
   } catch (error) {
+    // @ts-ignore
     yield put(fetchTilesFailure(error.message))
   }
 }

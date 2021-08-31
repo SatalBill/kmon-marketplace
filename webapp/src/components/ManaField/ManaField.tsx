@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, Mana } from 'decentraland-ui'
+import { Field, Mana } from '@kmon/ui'
 import { Props } from './ManaField.types'
 import './ManaField.css'
 

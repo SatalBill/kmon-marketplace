@@ -1,7 +1,7 @@
 import React from 'react'
-import { Header } from 'decentraland-ui'
+import { Header } from '@kmon/ui'
 import { Link } from 'react-router-dom'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { locations } from '../../../../modules/routing/locations'
 import { Row } from '../../../Layout/Row'

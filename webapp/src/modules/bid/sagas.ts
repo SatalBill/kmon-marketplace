@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router'
-import { ChainId } from '@dcl/schemas'
-import { getChainId } from 'decentraland-dapps/dist/modules/wallet/selectors'
+import { ChainId } from '@kmon/schemas'
+import { getChainId } from '@kmon/dapps/dist/modules/wallet/selectors'
 import { takeEvery, put, select, call } from 'redux-saga/effects'
 import {
   PLACE_BID_REQUEST,
@@ -65,6 +65,7 @@ function* handlePlaceBidRequest(action: PlaceBidRequestAction) {
     )
     yield put(push(locations.activity()))
   } catch (error) {
+    // @ts-ignore
     yield put(placeBidFailure(nft, price, expiresAt, error, fingerprint))
   }
 }
@@ -87,6 +88,7 @@ function* handleAcceptBidRequest(action: AcceptBidRequestAction) {
     yield put(acceptBidSuccess(bid, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
+    // @ts-ignore
     yield put(acceptBidFailure(bid, error.message))
   }
 }
@@ -109,6 +111,7 @@ function* handleCancelBidRequest(action: CancelBidRequestAction) {
     yield put(cancelBidSuccess(bid, chainId, txHash))
     yield put(push(locations.activity()))
   } catch (error) {
+    // @ts-ignore
     yield put(cancelBidFailure(bid, error.message))
   }
 }
@@ -139,6 +142,7 @@ function* handleFetchBidsByAddressRequest(
 
     yield put(fetchBidsByAddressSuccess(address, sellerBids, bidderBids))
   } catch (error) {
+    // @ts-ignore
     yield put(fetchBidsByAddressFailure(address, error.message))
   }
 }
@@ -152,6 +156,7 @@ function* handleFetchBidsByNFTRequest(action: FetchBidsByNFTRequestAction) {
 
     yield put(fetchBidsByNFTSuccess(nft, bids))
   } catch (error) {
+    // @ts-ignore
     yield put(fetchBidsByNFTFailure(nft, error.message))
   }
 }

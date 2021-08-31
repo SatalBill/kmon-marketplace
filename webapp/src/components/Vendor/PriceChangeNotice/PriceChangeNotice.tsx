@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Card, Icon } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Card, Icon } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { View } from '../../../modules/ui/types'
 import { Props } from './PriceChangeNotice.types'

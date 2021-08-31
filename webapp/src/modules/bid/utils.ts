@@ -1,7 +1,7 @@
 import { Address } from 'web3x-es/address'
 import { Eth } from 'web3x-es/eth'
-import { getConnectedProvider } from 'decentraland-dapps/dist/lib/eth'
-import { Network } from '@dcl/schemas'
+import { getConnectedProvider } from '@kmon/dapps/dist/lib/eth'
+import { Network } from '@kmon/schemas'
 import { MANA } from '../../contracts/MANA'
 import { Bid } from './types'
 import { getContractNames } from '../vendor'
@@ -30,6 +30,7 @@ export async function isInsufficientMANA(bid: Bid) {
 
     return +balance < +bid.price
   } catch (error) {
+    // @ts-ignore
     console.warn(error.message)
   }
   return false

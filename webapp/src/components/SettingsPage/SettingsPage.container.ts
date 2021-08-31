@@ -4,11 +4,11 @@ import {
   getData as getAuthorizations,
   getLoading,
   getError
-} from 'decentraland-dapps/dist/modules/authorization/selectors'
-import { FETCH_AUTHORIZATIONS_REQUEST } from 'decentraland-dapps/dist/modules/authorization/actions'
+} from '@kmon/dapps/dist/modules/authorization/selectors'
+import { FETCH_AUTHORIZATIONS_REQUEST } from '@kmon/dapps/dist/modules/authorization/actions'
 
 import { RootState } from '../../modules/reducer'
-import { isLoadingType } from 'decentraland-dapps/dist/modules/loading/selectors'
+import { isLoadingType } from '@kmon/dapps/dist/modules/loading/selectors'
 import { getWallet, isConnecting } from '../../modules/wallet/selectors'
 import {
   MapStateProps,

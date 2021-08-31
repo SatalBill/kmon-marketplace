@@ -12,6 +12,7 @@ export const editionFragment = () => gql`
       name
       image
       description
+      tokenURI
     }
   }
 `
@@ -27,5 +28,6 @@ export type EditionFragment = {
     name: string
     image: string
     description: string
+    tokenURI: string
   }
 }

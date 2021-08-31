@@ -22,6 +22,7 @@ function* handleFetchProximityRequest(_action: FetchProximityRequestAction) {
     })
     yield put(fetchProximitySuccess(proximity))
   } catch (error) {
+    // @ts-ignore
     yield put(fetchProximityFailure(error.message))
   }
 }

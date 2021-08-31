@@ -13,6 +13,7 @@ export const tokenFragment = () => gql`
       name
       image
       description
+      tokenURI
     }
   }
 `
@@ -29,5 +30,6 @@ export type TokenFragment = {
     name: string
     image: string
     description: string
+    tokenURI: string
   }
 }

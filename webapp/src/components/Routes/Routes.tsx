@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Intercom from 'decentraland-dapps/dist/components/Intercom'
+import Intercom from '@kmon/dapps/dist/components/Intercom'
 
 import { locations } from '../../modules/routing/locations'
 import { BrowsePage } from '../BrowsePage'

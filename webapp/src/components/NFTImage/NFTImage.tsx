@@ -1,13 +1,10 @@
-import React, { useMemo } from 'react'
-import { NFTCategory, Rarity } from '@dcl/schemas'
-import { Loader } from 'decentraland-ui'
+import React, { useEffect, useMemo, useState } from 'react'
+import { NFTCategory, Rarity } from '@kmon/schemas'
+import { Loader } from '@kmon/ui'
 import { LazyImage } from 'react-lazy-images'
-
-import { getSelection, getCenter } from '../../modules/nft/estate/utils'
 import { NFT } from '../../modules/nft/types'
 import { VendorName } from '../../modules/vendor/types'
 import { getNFTName } from '../../modules/nft/utils'
-import { Atlas } from '../Atlas'
 import { Props } from './NFTImage.types'
 import './NFTImage.css'
 
@@ -21,86 +18,17 @@ const NFTImage = (props: Props) => {
     isDraggable,
     withNavigation,
     hasPopup,
-    zoom,
-    isSmall,
-    showMonospace
+    zoom
   } = props
-  const { parcel, estate, wearable, ens } = (nft as NFT<
+  const { kryptomon } = (nft as NFT<
     VendorName.DECENTRALAND
   >).data
 
-  const estateSelection = useMemo(() => (estate ? getSelection(estate) : []), [
-    estate
-  ])
-
   switch (nft.category) {
-    case NFTCategory.PARCEL: {
-      const x = +parcel!.x
-      const y = +parcel!.y
-      const selection = [{ x, y }]
-      return (
-        <Atlas
-          x={x}
-          y={y}
-          isDraggable={isDraggable}
-          withPopup={hasPopup}
-          withNavigation={withNavigation}
-          selection={selection}
-          zoom={zoom}
-        />
-      )
-    }
-
-    case NFTCategory.ESTATE: {
-      const [x, y] = getCenter(estateSelection)
-      return (
-        <Atlas
-          x={x}
-          y={y}
-          isDraggable={isDraggable}
-          withPopup={hasPopup}
-          withNavigation={withNavigation}
-          selection={estateSelection}
-          zoom={zoom}
-          isEstate
-        />
-      )
-    }
-
-    case NFTCategory.WEARABLE: {
-      const [light, dark] = Rarity.getGradient(wearable!.rarity)
-      const backgroundImage = `radial-gradient(${light}, ${dark})`
-      return (
-        <div
-          className="rarity-background"
-          style={{
-            backgroundImage
-          }}
-        >
-          <img alt={getNFTName(nft)} className="image" src={nft.image} />
-        </div>
-      )
-    }
-
-    case NFTCategory.ENS: {
-      let name = ens!.subdomain
-      let classes = ['ens-subdomain']
-      if (isSmall) {
-        name = name.slice(0, 2)
-        classes.push('small')
-      }
-      return (
-        <div className={classes.join(' ')}>
-          <div className="name">{name}</div>
-          {showMonospace ? <div className="monospace">{name}</div> : null}
-        </div>
-      )
-    }
-
     default: {
       return (
         <LazyImage
-          src={nft.image}
+          src={nft.metadata.image}
           alt={getNFTName(nft)}
           debounceDurationMs={1000}
           placeholder={({ ref }) => (

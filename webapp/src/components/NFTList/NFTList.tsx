@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { Card, Button, Loader } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { getAnalytics } from 'decentraland-dapps/dist/modules/analytics/utils'
+import { Card, Button, Loader } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { getAnalytics } from '@kmon/dapps/dist/modules/analytics/utils'
 
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'
@@ -28,8 +28,8 @@ const NFTList = (props: Props) => {
       <Card.Group>
         {nfts.length > 0
           ? nfts.map((nft, index) => (
-              <NFTCard key={nft.id + '-' + index} nft={nft} />
-            ))
+            <NFTCard key={nft.id + '-' + index} nft={nft} />
+          ))
           : null}
 
         {isLoading ? (

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { NFTCategory } from '@dcl/schemas'
+import { NFTCategory } from '@kmon/schemas'
 import {
   Atlas as AtlasComponent,
   AtlasTile,
   Color,
   Layer
-} from 'decentraland-ui'
+} from '@kmon/ui'
 import { locations } from '../../modules/routing/locations'
 import { nftAPI } from '../../modules/vendor/decentraland/nft/api'
 import { Props, Tile } from './Atlas.types'
@@ -48,31 +48,8 @@ const Atlas: React.FC<Props> = (props: Props) => {
 
   const userTiles = useMemo(
     () =>
-      nfts.reduce((lands, nft) => {
-        if (nft.vendor === VendorName.DECENTRALAND) {
-          switch (nft.category) {
-            case NFTCategory.PARCEL: {
-              const parcel = (nft as NFT<VendorName.DECENTRALAND>).data.parcel!
-              lands.set(getCoords(parcel.x, parcel.y), {
-                color: Color.SUMMER_RED
-              })
-              break
-            }
-            case NFTCategory.ESTATE: {
-              const estateId = nft.tokenId
-              if (estateId in tilesByEstateId) {
-                for (const tile of tilesByEstateId[estateId]) {
-                  lands.set(getCoords(tile.x, tile.y), {
-                    color: Color.SUMMER_RED,
-                    top: !!tile.top,
-                    left: !!tile.left,
-                    topLeft: !!tile.topLeft
-                  })
-                }
-              }
-            }
-          }
-        }
+      nfts.reduce((lands) => {
+
         return lands
       }, new Map<string, ReturnType<Layer>>()),
     [nfts, tilesByEstateId]
@@ -147,24 +124,7 @@ const Atlas: React.FC<Props> = (props: Props) => {
       if (!tile) {
         return
       }
-      if (tile.estate_id) {
-        const estates = getContract({
-          category: NFTCategory.ESTATE
-        })
-        onNavigate(locations.nft(estates.address, tile.estate_id))
-      } else {
-        try {
-          const land = getContract({
-            category: NFTCategory.PARCEL
-          })
-          const tokenId = await nftAPI.fetchTokenId(tile.x, tile.y)
-          onNavigate(locations.nft(land.address, tokenId))
-        } catch (error) {
-          console.warn(
-            `Couldn't fetch parcel ${tile.x},${tile.y}: ${error.message}`
-          )
-        }
-      }
+      return;
     },
     [withNavigation, onNavigate, tiles]
   )

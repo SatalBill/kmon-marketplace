@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 import { push, getLocation } from 'connected-react-router'
-import { NFTCategory } from '@dcl/schemas'
+import { NFTCategory } from '@kmon/schemas'
 import { VendorName } from '../vendor/types'
 import { View } from '../ui/types'
 import { getView } from '../ui/nft/browse/selectors'
@@ -25,7 +25,6 @@ import {
   getOnlyOnSale,
   getIsMap,
   getWearableRarities,
-  getWearableGenders,
   getContracts,
   getSearch
 } from './selectors'
@@ -119,7 +118,6 @@ function* getNewSearchOptions(current: SearchOptions) {
     isMap: yield select(getIsMap),
     isFullscreen: yield select(getIsFullscreen),
     wearableRarities: yield select(getWearableRarities),
-    wearableGenders: yield select(getWearableGenders),
     contracts: yield select(getContracts),
     network: yield select(getNetwork)
   }
@@ -172,14 +170,13 @@ function* deriveCurrentOptions(
   const nextCategory = getSearchCategory(current.section!)
 
   switch (nextCategory) {
-    case NFTCategory.WEARABLE: {
+    case 'wearable': {
       const prevCategory = getSearchCategory(previous.section!)
 
       // Category specific logic to keep filters if the category doesn't change
       if (prevCategory && prevCategory === nextCategory) {
         newOptions = {
           wearableRarities: yield select(getWearableRarities),
-          wearableGenders: yield select(getWearableGenders),
           contracts: yield select(getContracts),
           search: yield select(getSearch),
           network: yield select(getNetwork),
