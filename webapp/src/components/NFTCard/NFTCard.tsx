@@ -40,7 +40,7 @@ const NFTCard = (props: Props) => {
               INDEX VALUE {order?.price && formatMANA(order.price)} BNB
             </p>
             <p className="product-info-number">
-              {title} <div className="product-verified" />
+              {'No. 2533'} <div className="product-verified" />
             </p>
           </div>
         </div>

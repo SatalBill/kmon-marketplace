@@ -46,6 +46,9 @@ a.ui.card.link:hover .meta {
   background-color: white !important;
   border: none !important;
 }
+.ui.card:hover {
+  border: none !important;
+}
 .NFTCard .tags {
   margin-top: 12px;
 }
@@ -133,7 +136,7 @@ a.ui.card.link:hover .meta {
   width: 32px;
   height: 32px;
   border-radius: 5px;
-  background-color: #33d669;
+  background-image: url(../../images/egg/elem-fire.svg);
   display: flex;
   align-self: flex-end;
 }
@@ -156,14 +159,14 @@ a.ui.card.link:hover .meta {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .product-verified {
   width: 16px;
   height: 16px;
-  border-radius: 4px;
-  background-color: #39c876;
-  margin-left: 8px;
+  background-image: url(../../images/egg/certified-badge.svg);
+  margin: 8px;
 }
 
 .product-title {
