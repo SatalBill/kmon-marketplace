@@ -73,7 +73,7 @@ const contracts = ({
       address: getContract(CN.Marketplace, ChainId.ETHEREUM_MAINNET).address,
       vendor: 'decentraland',
       category: null,
-      network: Network.BSC,
+      network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_MAINNET
     },
     {
