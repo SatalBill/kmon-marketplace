@@ -1,12 +1,5 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Link } from 'react-router-dom'
-import { Card } from 'decentraland-ui'
-
-import { formatMANA } from '../../../lib/mana'
-import { locations } from '../../../modules/routing/locations'
 import { getNFTName } from '../../../modules/nft/utils'
-import { NFTImage } from '../../NFTImage'
 import { Props } from './Elements.types'
 import './Elements.css'
 

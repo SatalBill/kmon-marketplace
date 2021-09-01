@@ -37,6 +37,10 @@
   margin-bottom: 4px;
 }
 
+.ui.cards > .ui.card.link,
+.ui.card.link {
+  height: 280px;
+}
 .ui.cards > .ui.card.NFTCard.link:hover .meta,
 a.ui.card.link:hover .meta {
   color: var(--secondary-text);
