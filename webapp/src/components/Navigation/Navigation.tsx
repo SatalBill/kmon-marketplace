@@ -15,7 +15,7 @@ const Navigation = (props: Props) => {
             {t('navigation.collectibles')}
           </Tabs.Tab>
         </Link>
-        <Link to={locations.kryptomons()}>
+        {/* <Link to={locations.kryptomons()}>
           <Tabs.Tab
             active={
               activeTab === NavigationTab.KRYPTOMONS
@@ -28,7 +28,7 @@ const Navigation = (props: Props) => {
           <Tabs.Tab active={activeTab === NavigationTab.ITEMS}>
             {t('navigation.items')}
           </Tabs.Tab>
-        </Link>
+        </Link> */}
         <Link to={locations.currentAccount()}>
           <Tabs.Tab active={activeTab === NavigationTab.MY_ASSETS}>
             {t('navigation.my_assets')}

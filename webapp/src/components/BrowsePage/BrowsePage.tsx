@@ -20,7 +20,7 @@ const BrowsePage = (props: Props) => {
 
   return (
     <>
-      <div className="header NFTBrowse">
+      <div className="PageCustomHeader">
         <Navbar isFullscreen />
         <Navigation activeTab={activeTab} isFullscreen={isFullscreen} />
       </div>

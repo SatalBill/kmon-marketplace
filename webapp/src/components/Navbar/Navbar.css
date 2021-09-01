@@ -1,3 +1,11 @@
+.dcl.navbar .ui.menu .item.item {
+    font-size: 20px;
+}
+
+.dcl.navbar-logo.navbar-logo {
+    margin-top: 4px;
+}
+
 .dcl.navbar .ui.menu .item .bell {
     color: var(--text);
 }

@@ -15,7 +15,7 @@
 }
 
 .NFTBrowse > .ui.container {
-  margin-top: 96px;
+  margin-top: 100px;
 }
 
 .NFTBrowse .overlay {
@@ -100,7 +100,7 @@
 }
 
 .NFTBrowse.fullscreen .NFTFilters .topbar {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;

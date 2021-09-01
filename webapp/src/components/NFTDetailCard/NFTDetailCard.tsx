@@ -7,15 +7,10 @@ import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
 import { getNFTName } from '../../modules/nft/utils'
 import { NFTImage } from '../NFTImage'
-import { Mana } from '../Mana'
-import { ParcelTags } from './ParcelTags'
-import { EstateTags } from './EstateTags'
-import { WearableTags } from './WearableTags'
-import { ENSTags } from './ENSTags'
-import { Props } from './NFTCard.types'
-import './NFTCard.css'
+import { Props } from './NFTDetailCard.types'
+import './NFTDetailCard.css'
 
-const NFTCard = (props: Props) => {
+const NFTDetailCard = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
@@ -23,12 +18,13 @@ const NFTCard = (props: Props) => {
   console.log({ nft, order })
 
   return (
-    <Card
-      className="NFTCard"
-      link
-      as={Link}
-      to={locations.nft(nft.contractAddress, nft.tokenId)}
-    >
+    // <Card
+    //   className="NFTCard"
+    //   link
+    //   as={Link}
+    //   to={locations.nft(nft.contractAddress, nft.tokenId)}
+    // >
+    <div className="card">
       <div className="card-image-container">
         <div className="card-image">
           <NFTImage nft={nft} showMonospace />
@@ -36,12 +32,12 @@ const NFTCard = (props: Props) => {
         <div className="card-image-text">
           <div className="product-type-icon" />
           <div className="product-info">
-            <p className="product-info-value">
+            {/* <p className="product-info-value">
               INDEX VALUE {order?.price && formatMANA(order.price)} BNB
-            </p>
-            <p className="product-info-number">
+            </p> */}
+            {/* <p className="product-info-number">
               {'No. 2533'} <div className="product-verified" />
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -49,6 +45,9 @@ const NFTCard = (props: Props) => {
       {/* <Card.Header> */}
       <div className="product-description">
         <div className="product-description-left">
+          <p className="product-info-number">
+            {'No. 2533'} <div className="product-verified" />
+          </p>
           <p className="product-description-left-item">GEN: 001</p>
           <p className="product-description-left-item">ELEMENT: AIR</p>
         </div>
@@ -66,8 +65,9 @@ const NFTCard = (props: Props) => {
         {wearable ? <WearableTags nft={nft} /> : null}
         {ens ? <ENSTags nft={nft} /> : null} */}
       {/* </Card.Content> */}
-    </Card>
+    </div>
+    // </Card>
   )
 }
 
-export default React.memo(NFTCard)
+export default React.memo(NFTDetailCard)
