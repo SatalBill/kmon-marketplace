@@ -1,5 +1,5 @@
-import { Network } from '@dcl/schemas'
-import { FieldProps } from 'decentraland-ui'
+import { Network } from '@kmon/schemas'
+import { FieldProps } from '@kmon/ui'
 
 export type Props = FieldProps & {
   network: Network

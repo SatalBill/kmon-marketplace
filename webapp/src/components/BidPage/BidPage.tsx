@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page } from 'decentraland-ui'
+import { Page } from '@kmon/ui'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet } from '../Wallet'

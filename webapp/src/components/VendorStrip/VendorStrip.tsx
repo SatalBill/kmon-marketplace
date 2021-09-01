@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Responsive } from 'decentraland-ui'
+import { Responsive } from '@kmon/ui'
 
 import { getPartners } from '../../modules/vendor/utils'
 import { VendorName } from '../../modules/vendor/types'

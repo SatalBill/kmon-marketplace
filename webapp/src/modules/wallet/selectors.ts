@@ -2,11 +2,11 @@ import { createSelector } from 'reselect'
 import {
   getData,
   getAddress as baseGetAddress
-} from 'decentraland-dapps/dist/modules/wallet/selectors'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+} from '@kmon/dapps/dist/modules/wallet/selectors'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { RootState } from '../reducer'
 
-export * from 'decentraland-dapps/dist/modules/wallet/selectors'
+export * from '@kmon/dapps/dist/modules/wallet/selectors'
 
 export const getWallet = createSelector<
   RootState,

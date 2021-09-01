@@ -2,13 +2,16 @@ import { spawn, SpawnOptions } from 'child_process'
 
 enum Network {
   MAINNET = 'mainnet',
-  ROPSTEN = 'ropsten'
+  ROPSTEN = 'ropsten',
+  RINKEBY = 'rinkeby'
 }
 
 const graphByNetwork: Record<Network, string> = {
-  [Network.MAINNET]: process.env.GRAPH_NAME || 'decentraland/marketplace',
+  [Network.MAINNET]: process.env.GRAPH_NAME || 'kryptomon/marketplace',
   [Network.ROPSTEN]:
-    process.env.GRAPH_NAME || 'decentraland/marketplace-ropsten'
+    process.env.GRAPH_NAME || 'kryptomon/marketplace-ropsten',
+  [Network.RINKEBY]:
+    process.env.GRAPH_NAME || 'kryptomon-marketplace-rinkeby'
 }
 
 // TODO: Handle ctrl+C
@@ -19,11 +22,8 @@ async function deploy() {
     [
       'graph',
       'deploy',
-      graphByNetwork[network],
-      '--ipfs',
-      'https://api.thegraph.com/ipfs/',
-      '--node',
-      'https://api.thegraph.com/deploy/'
+      '--studio',
+      graphByNetwork[network]
     ],
     {
       stdio: 'inherit'

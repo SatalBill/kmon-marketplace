@@ -1,6 +1,6 @@
 import React from 'react'
-import { Loader } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Loader } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { NFTProvider } from '../NFTProvider'
 import { Props } from './NFTProviderPage.types'
 

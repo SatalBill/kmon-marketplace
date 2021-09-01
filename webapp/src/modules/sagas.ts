@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects'
-import { createAuthorizationSaga } from 'decentraland-dapps/dist/modules/authorization/sagas'
-import { createAnalyticsSaga } from 'decentraland-dapps/dist/modules/analytics/sagas'
-import { createProfileSaga } from 'decentraland-dapps/dist/modules/profile/sagas'
-import { transactionSaga } from 'decentraland-dapps/dist/modules/transaction/sagas'
+import { createAuthorizationSaga } from '@kmon/dapps/dist/modules/authorization/sagas'
+import { createAnalyticsSaga } from '@kmon/dapps/dist/modules/analytics/sagas'
+import { createProfileSaga } from '@kmon/dapps/dist/modules/profile/sagas'
+import { transactionSaga } from '@kmon/dapps/dist/modules/transaction/sagas'
 
 import { bidSaga } from './bid/sagas'
 import { nftSaga } from './nft/sagas'

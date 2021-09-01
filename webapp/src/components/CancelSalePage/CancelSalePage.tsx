@@ -1,6 +1,6 @@
 import React from 'react'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Page, Header, Button } from 'decentraland-ui'
+import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
+import { Page, Header, Button } from '@kmon/ui'
 
 import { locations } from '../../modules/routing/locations'
 import { getNFTName } from '../../modules/nft/utils'

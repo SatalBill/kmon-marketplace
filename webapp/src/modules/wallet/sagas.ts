@@ -1,6 +1,6 @@
 import { takeEvery, all, put } from 'redux-saga/effects'
-import { Network, NFTCategory } from '@dcl/schemas'
-import { createWalletSaga } from 'decentraland-dapps/dist/modules/wallet/sagas'
+import { Network, NFTCategory } from '@kmon/schemas'
+import { createWalletSaga } from '@kmon/dapps/dist/modules/wallet/sagas'
 import {
   ConnectWalletSuccessAction,
   CONNECT_WALLET_SUCCESS,
@@ -8,17 +8,17 @@ import {
   ChangeNetworkAction,
   CHANGE_ACCOUNT,
   CHANGE_NETWORK
-} from 'decentraland-dapps/dist/modules/wallet/actions'
-import { fetchAuthorizationsRequest } from 'decentraland-dapps/dist/modules/authorization/actions'
+} from '@kmon/dapps/dist/modules/wallet/actions'
+import { fetchAuthorizationsRequest } from '@kmon/dapps/dist/modules/authorization/actions'
 import {
   Authorization,
   AuthorizationType
-} from 'decentraland-dapps/dist/modules/authorization/types'
+} from '@kmon/dapps/dist/modules/authorization/types'
 
 import { getContractNames } from '../vendor'
 import { contracts, getContract } from '../contract/utils'
 import { isPartner } from '../vendor/utils'
-import { ContractName } from 'decentraland-transactions'
+import { ContractName } from '@kmon/transactions'
 
 const baseWalletSaga = createWalletSaga({
   CHAIN_ID: +(process.env.REACT_APP_CHAIN_ID || 1),
@@ -127,8 +127,8 @@ function* handleWallet(
       authorizedAddress: marketplace.address,
       contractAddress: contract.address,
       contractName:
-        contract.category === NFTCategory.WEARABLE &&
-        contract.network === Network.MATIC
+        contract.category === 'wearable' &&
+          contract.network === Network.MATIC
           ? ContractName.ERC721CollectionV2
           : ContractName.ERC721,
       chainId: contract.chainId,

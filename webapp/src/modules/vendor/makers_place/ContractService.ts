@@ -1,4 +1,4 @@
-import { ChainId, Network } from '@dcl/schemas'
+import { ChainId, Network } from '@kmon/schemas'
 import {
   Contract,
   ContractService as ContractServiceInterface
@@ -41,13 +41,15 @@ const contracts = ({
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_MAINNET
     }
-  ]
+  ],
+  [AppNetwork.RINKEBY]: [],
+  [AppNetwork.BSC]: []
 } as Record<AppNetwork, Contract[]>)[network]
 
 export class ContractService implements ContractServiceInterface {
   contracts = contracts
 
-  async build() {}
+  async build() { }
 
   getContracts() {
     return this.contracts

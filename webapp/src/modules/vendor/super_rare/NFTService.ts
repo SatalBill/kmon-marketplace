@@ -1,8 +1,8 @@
 import BN from 'bn.js'
 import { Address } from 'web3x-es/address'
 import { toBN, toWei } from 'web3x-es/utils'
-import { Network } from '@dcl/schemas'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Network } from '@kmon/schemas'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT, NFTsFetchParams, NFTsCountParams } from '../../nft/types'
@@ -154,7 +154,9 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       owner: asset.owner.address,
       name: asset.name,
       image: asset.image,
+      metadata: { name: "", image: "", description: "" },
       url: asset.url,
+      tokenURI: '',
       data: {
         description: asset.description
       },

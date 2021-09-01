@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-import { Button, Column, Header, Popup } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Button, Column, Header, Popup } from '@kmon/ui'
+import { T, t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Props, State } from './IntroPopup.types'
 import './IntroPopup.css'
 

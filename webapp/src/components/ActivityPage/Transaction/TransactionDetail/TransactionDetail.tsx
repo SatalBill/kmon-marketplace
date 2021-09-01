@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Loader, Icon } from 'decentraland-ui'
-import { Network } from '@dcl/schemas'
-import { getChainConfiguration } from 'decentraland-dapps/dist/lib/chainConfiguration'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Loader, Icon } from '@kmon/ui'
+import { Network } from '@kmon/schemas'
+import { getChainConfiguration } from '@kmon/dapps/dist/lib/chainConfiguration'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import {
   isPending,
   getTransactionHref
-} from 'decentraland-dapps/dist/modules/transaction/utils'
+} from '@kmon/dapps/dist/modules/transaction/utils'
 import {
   TransactionStatus,
   Transaction
-} from 'decentraland-dapps/dist/modules/transaction/types'
+} from '@kmon/dapps/dist/modules/transaction/types'
 import { formatDistanceToNow } from '../../../../lib/date'
 import { locations } from '../../../../modules/routing/locations'
 import { NFTImage } from '../../../NFTImage'
@@ -41,13 +41,14 @@ const TransactionDetail = (props: Props) => {
               <NFTImage nft={nft} isSmall />
             </Link>
           ) : (
-            <Mana
-              network={
-                tx.chainId
-                  ? getChainConfiguration(tx.chainId).network
-                  : Network.ETHEREUM
-              }
-            />
+            // <Mana
+            //   network={
+            //     tx.chainId
+            //       ? getChainConfiguration(tx.chainId).network
+            //       : Network.ETHEREUM
+            //   }
+            // />
+            <></>
           )}
         </div>
         <div className="text">
@@ -72,7 +73,7 @@ const TransactionDetail = (props: Props) => {
             <Icon name="warning sign" />
           ) : null}
           {tx.status === TransactionStatus.CONFIRMED ||
-          tx.status === TransactionStatus.REPLACED ? (
+            tx.status === TransactionStatus.REPLACED ? (
             <Icon name="check" />
           ) : null}
         </a>

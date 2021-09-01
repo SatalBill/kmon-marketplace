@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Network, NFTCategory } from '@dcl/schemas'
+import { Network, NFTCategory } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
 import dateFnsFormat from 'date-fns/format'
 import {
   Authorization,
   AuthorizationType
-} from 'decentraland-dapps/dist/modules/authorization/types'
-import { hasAuthorization } from 'decentraland-dapps/dist/modules/authorization/utils'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Header, Form, Field, Button, Modal } from 'decentraland-ui'
-import { ContractName } from 'decentraland-transactions'
+} from '@kmon/dapps/dist/modules/authorization/types'
+import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
+import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
+import { Header, Form, Field, Button, Modal } from '@kmon/ui'
+import { ContractName } from '@kmon/transactions'
 import { toMANA, fromMANA } from '../../../lib/mana'
 import {
   INPUT_FORMAT,
@@ -75,7 +75,7 @@ const SellModal = (props: Props) => {
     authorizedAddress: marketplace.address,
     contractAddress: nft.contractAddress,
     contractName:
-      nft.category === NFTCategory.WEARABLE && nft.network === Network.MATIC
+      nft.category === NFTCategory.KRYPTOMON && nft.network === Network.MATIC
         ? ContractName.ERC721CollectionV2
         : ContractName.ERC721,
     chainId: nft.chainId,

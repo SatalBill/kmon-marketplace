@@ -1,6 +1,6 @@
 import { Address } from 'web3x-es/address'
 import { ABICoder } from 'web3x-es/contract/abi-coder'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { MarketplaceAdapter } from '../../../contracts/MarketplaceAdapter'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT } from '../../nft/types'

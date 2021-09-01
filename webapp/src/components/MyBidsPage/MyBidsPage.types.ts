@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { Bid } from '../../modules/bid/types'
 import {
   fetchBidsByAddressRequest,

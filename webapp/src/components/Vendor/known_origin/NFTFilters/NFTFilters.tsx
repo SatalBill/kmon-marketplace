@@ -6,8 +6,8 @@ import {
   DropdownProps,
   Responsive,
   Modal
-} from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+} from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { Section } from '../../../../modules/vendor/known_origin/routing/types'
 import { SortBy } from '../../../../modules/routing/types'
@@ -22,12 +22,12 @@ const NFTFilters = (props: Props) => {
   const dropdownOptions =
     section === Section.ALL || section === Section.EDITIONS
       ? [
-          { value: SortBy.RECENTLY_LISTED, text: t('filters.recently_listed') },
-          { value: SortBy.CHEAPEST, text: t('filters.cheapest') }
-        ]
+        { value: SortBy.RECENTLY_LISTED, text: t('filters.recently_listed') },
+        { value: SortBy.CHEAPEST, text: t('filters.cheapest') }
+      ]
       : section === Section.TOKENS
-      ? [{ value: SortBy.NEWEST, text: t('filters.newest') }]
-      : []
+        ? [{ value: SortBy.NEWEST, text: t('filters.newest') }]
+        : []
 
   const sortBy = dropdownOptions.find(option => option.value === props.sortBy)
     ? props.sortBy

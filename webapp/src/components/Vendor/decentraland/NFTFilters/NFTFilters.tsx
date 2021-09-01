@@ -8,12 +8,11 @@ import {
   DropdownProps,
   Responsive,
   Modal
-} from 'decentraland-ui'
-import { Network, NFTCategory, Rarity } from '@dcl/schemas'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+} from '@kmon/ui'
+import { Network, NFTCategory, Rarity } from '@kmon/schemas'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { SortBy } from '../../../../modules/routing/types'
-import { WearableGender } from '../../../../modules/nft/wearable/types'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { getSearchCategory } from '../../../../modules/routing/search'
 import { MAX_QUERY_SIZE } from '../../../../modules/vendor/api'
@@ -31,7 +30,6 @@ const NFTFilters = (props: Props) => {
     onlyOnSale,
     isMap,
     wearableRarities,
-    wearableGenders,
     contracts,
     network,
     onBrowse
@@ -65,9 +63,6 @@ const NFTFilters = (props: Props) => {
   if (wearableRarities.length > 0) {
     appliedFilters.push(t('nft_filters.rarity'))
   }
-  if (wearableGenders.length > 0) {
-    appliedFilters.push(t('nft_filters.gender'))
-  }
   if (contracts.length > 0) {
     appliedFilters.push(t('nft_filters.collection'))
   }
@@ -96,13 +91,6 @@ const NFTFilters = (props: Props) => {
   const handleRaritiesChange = useCallback(
     (options: string[]) => {
       onBrowse({ wearableRarities: options as Rarity[] })
-    },
-    [onBrowse]
-  )
-
-  const handleGendersChange = useCallback(
-    (options: string[]) => {
-      onBrowse({ wearableGenders: options as WearableGender[] })
     },
     [onBrowse]
   )
@@ -142,16 +130,16 @@ const NFTFilters = (props: Props) => {
   const searchPlaceholder = isMap
     ? t('nft_filters.search_land')
     : count === undefined
-    ? t('global.loading') + '...'
-    : t('nft_filters.search', {
+      ? t('global.loading') + '...'
+      : t('nft_filters.search', {
         suffix:
           count < MAX_QUERY_SIZE
             ? t('nft_filters.results', {
-                count: count.toLocaleString()
-              })
+              count: count.toLocaleString()
+            })
             : t('nft_filters.more_than_results', {
-                count: count.toLocaleString()
-              })
+              count: count.toLocaleString()
+            })
       })
 
   return (
@@ -208,16 +196,15 @@ const NFTFilters = (props: Props) => {
           </>
         )}
 
-        {category === NFTCategory.WEARABLE ? (
+        {category === 'wearable' ? (
           <Responsive
             minWidth={Responsive.onlyTablet.minWidth}
             className="open-filters-wrapper topbar-filter"
             onClick={handleToggleFilterMenu}
           >
             <div
-              className={`open-filters ${
-                showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
-              }`}
+              className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
+                }`}
             />
           </Responsive>
         ) : null}
@@ -229,16 +216,15 @@ const NFTFilters = (props: Props) => {
           >
             <div className="label">{t('nft_filters.filter')}</div>
             <div
-              className={`open-filters ${
-                showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
-              }`}
+              className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
+                }`}
             />
           </div>
         </Responsive>
 
         {section === Section.LAND ||
-        section === Section.PARCELS ||
-        section === Section.ESTATES ? (
+          section === Section.PARCELS ||
+          section === Section.ESTATES ? (
           <div className="topbar-filter">
             <div className="toggle-map">
               <Chip
@@ -267,9 +253,7 @@ const NFTFilters = (props: Props) => {
             selectedNetwork={network}
             selectedCollection={contracts[0]}
             selectedRarities={wearableRarities}
-            selectedGenders={wearableGenders}
             onCollectionsChange={handleCollectionsChange}
-            onGendersChange={handleGendersChange}
             onRaritiesChange={handleRaritiesChange}
             onNetworkChange={handleNetworkChange}
           />
@@ -283,14 +267,12 @@ const NFTFilters = (props: Props) => {
       >
         <Modal.Header>{t('nft_filters.filter')}</Modal.Header>
         <Modal.Content>
-          {category === NFTCategory.WEARABLE ? (
+          {category === 'wearable' ? (
             <FiltersMenu
               selectedNetwork={network}
               selectedCollection={contracts[0]}
               selectedRarities={wearableRarities}
-              selectedGenders={wearableGenders}
               onCollectionsChange={handleCollectionsChange}
-              onGendersChange={handleGendersChange}
               onRaritiesChange={handleRaritiesChange}
               onNetworkChange={handleNetworkChange}
             />

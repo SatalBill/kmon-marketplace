@@ -1,4 +1,4 @@
-import { ChainId, Network } from '@dcl/schemas'
+import { ChainId, Network } from '@kmon/schemas'
 import { Network as AppNetwork } from '../../contract/types'
 import { getContract } from '../../contract/utils'
 import {
@@ -69,13 +69,33 @@ const contracts = ({
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_MAINNET
     }
+  ],
+  [AppNetwork.RINKEBY]: [
+    {
+      name: ContractName.MARKETPLACE_ADAPTER,
+      address: '0xd1e4e2880ff56cd0d5c68da9bed58bfbf0150948',
+      vendor: 'super_rare',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_ROPSTEN
+    }
+  ],
+  [AppNetwork.BSC]: [
+    {
+      name: ContractName.MARKETPLACE_ADAPTER,
+      address: '0xd1e4e2880ff56cd0d5c68da9bed58bfbf0150948',
+      vendor: 'super_rare',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_ROPSTEN
+    }
   ]
 } as Record<AppNetwork, Contract[]>)[network]
 
 export class ContractService implements ContractServiceInterface {
   contracts = contracts
 
-  async build() {}
+  async build() { }
 
   getContracts() {
     return this.contracts

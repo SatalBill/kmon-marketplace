@@ -1,6 +1,6 @@
 import { toWei } from 'web3x-es/utils'
 import { Address } from 'web3x-es/address'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { Bids } from '../../../contracts/Bids'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'

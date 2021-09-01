@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Page, Loader } from 'decentraland-ui'
-import { NFTCategory } from '@dcl/schemas'
+import { Page, Loader } from '@kmon/ui'
+import { NFTCategory } from '@kmon/schemas'
 
 import { locations } from '../../modules/routing/locations'
 import { VendorFactory } from '../../modules/vendor/VendorFactory'
@@ -19,8 +19,8 @@ const LegacyNFTPage = (props: Props) => {
   useEffect(() => {
     const { estateId, x, y } = params
 
-    const land = getContract({ category: NFTCategory.PARCEL })
-    const estates = getContract({ category: NFTCategory.ESTATE })
+    const land = getContract({ category: NFTCategory.KRYPTOMON })
+    const estates = getContract({ category: NFTCategory.KRYPTOMON })
 
     if (estateId) {
       history.replace(locations.nft(estates.address, estateId))

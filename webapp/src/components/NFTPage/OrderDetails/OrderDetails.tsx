@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stats } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Stats } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { Mana } from '../../Mana'
 import { formatMANA } from '../../../lib/mana'

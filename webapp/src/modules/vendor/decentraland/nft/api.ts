@@ -101,11 +101,6 @@ class NFTAPI {
           queryParams.append('wearableRarity', wearableRarity)
         }
       }
-      if (filters.wearableGenders) {
-        for (const wearableGender of filters.wearableGenders) {
-          queryParams.append('wearableGender', wearableGender)
-        }
-      }
       if (filters.contracts) {
         for (const address of filters.contracts) {
           if (contracts.some(contract => contract.address === address)) {

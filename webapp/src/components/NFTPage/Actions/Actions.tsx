@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Network } from '@dcl/schemas'
-import { Modal, Button } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Network } from '@kmon/schemas'
+import { Modal, Button } from '@kmon/ui'
+import { T, t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { isOwnedBy } from '../../../modules/nft/utils'
 import { locations } from '../../../modules/routing/locations'

@@ -8,7 +8,6 @@ import {
   getOnlyOnSale,
   getIsMap,
   getWearableRarities,
-  getWearableGenders,
   getSearch,
   getContracts,
   getNetwork
@@ -24,7 +23,6 @@ const mapState = (state: RootState): MapStateProps => ({
   onlyOnSale: getOnlyOnSale(state),
   isMap: getIsMap(state),
   wearableRarities: getWearableRarities(state),
-  wearableGenders: getWearableGenders(state),
   contracts: getContracts(state),
   network: getNetwork(state)
 })

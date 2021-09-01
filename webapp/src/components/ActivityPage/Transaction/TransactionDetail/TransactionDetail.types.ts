@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+import { Transaction } from '@kmon/dapps/dist/modules/transaction/types'
 import { NFT } from '../../../../modules/nft/types'
 
 export type Props = {

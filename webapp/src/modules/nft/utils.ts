@@ -1,6 +1,6 @@
-import { NFTCategory } from '@dcl/schemas'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
+import { NFTCategory } from '@kmon/schemas'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { VendorName } from '../vendor/types'
 import { SortDirection, SortBy } from '../routing/types'
 import { addressEquals } from '../wallet/utils'
@@ -18,19 +18,16 @@ export function getNFTName(
   }
 
   switch (nft.category) {
-    case NFTCategory.PARCEL:
-      return t(
-        'global.parcel_with_coords',
-        (nft as NFT<VendorName.DECENTRALAND>).data.parcel
-      )
+    case NFTCategory.KRYPTOMON:
+      return t('global.kryptomon')
 
-    case NFTCategory.ESTATE:
+    case 'estate':
       return t('global.estate')
 
-    case NFTCategory.WEARABLE:
+    case 'wearable':
       return t('global.wearable')
 
-    case NFTCategory.ENS:
+    case 'ens':
       return t('global.ens')
 
     case 'art':

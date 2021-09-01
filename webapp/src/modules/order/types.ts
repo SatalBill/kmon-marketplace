@@ -1,4 +1,4 @@
-import { ChainId, Network } from '@dcl/schemas'
+import { ChainId, Network } from '@kmon/schemas'
 
 export enum OrderStatus {
   OPEN = 'open',
