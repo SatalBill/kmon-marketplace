@@ -20,7 +20,6 @@ const NFTCard = (props: Props) => {
 
   const title = getNFTName(nft)
   const { parcel, estate, wearable, ens } = nft.data
-  console.log({ nft, order })
 
   return (
     <Card

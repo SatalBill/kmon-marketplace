@@ -27,6 +27,7 @@ import { NFTDetailCard } from '../../NFTDetailCard'
 import { Elements } from '../Elements'
 import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
+import { Details } from '../Details'
 
 const WearableDetail = (props: Props) => {
   const { nft, onNavigate } = props
@@ -73,7 +74,10 @@ const WearableDetail = (props: Props) => {
   return (
     <div className="WearableDetail">
       <Container>
-        <NFTDetailCard nft={nft} />
+        <Row>
+          <NFTDetailCard nft={nft} />
+          <Details nft={nft} />
+        </Row>
         <TitleBlock title="Elements">
           <Elements nft={nft} />
         </TitleBlock>

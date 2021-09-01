@@ -57,14 +57,12 @@ const data = [
 const max = data.reduce((prev, current) => {
   return prev.value > current.value ? prev : current
 })
-console.log({ max })
 
 const Elements = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
   const { parcel, estate, wearable, ens } = nft.data
-  console.log({ nft, order })
 
   return (
     <div className="container">
