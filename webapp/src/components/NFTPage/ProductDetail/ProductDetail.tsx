@@ -25,6 +25,8 @@ import './ProductDetail.css'
 import { BodyShape, Rarity } from '@dcl/schemas'
 import { NFTDetailCard } from '../../NFTDetailCard'
 import { Elements } from '../Elements'
+import { TitleBlock } from '../TitleBlock'
+import { DescriptionBlock } from '../DescriptionBlock'
 
 const WearableDetail = (props: Props) => {
   const { nft, onNavigate } = props
@@ -72,7 +74,12 @@ const WearableDetail = (props: Props) => {
     <div className="WearableDetail">
       <Container>
         <NFTDetailCard nft={nft} />
-        <Elements nft={nft} />
+        <TitleBlock title="Elements">
+          <Elements nft={nft} />
+        </TitleBlock>
+        <TitleBlock title="Description">
+          <DescriptionBlock text="This is a Ghost Kryptomon specialized in defense moves. It has a great constitution, injuries are few and far in between for this Kryptomon and even then only after the harshest of battles, while Albert Einstein could have learnt a thing or two from this genius of a Kryptomon." />
+        </TitleBlock>
       </Container>
       {/* <PageHeader>
         <NFTImage nft={nft} />
