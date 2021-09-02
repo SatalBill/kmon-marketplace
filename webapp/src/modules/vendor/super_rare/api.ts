@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
-import { BaseAPI } from 'decentraland-dapps/dist/lib/api'
+import { BaseAPI } from '@kmon/dapps/dist/lib/api'
 import { NFTsFetchParams, NFTSortBy } from '../../nft/types'
 import {
   SuperRareOrder,

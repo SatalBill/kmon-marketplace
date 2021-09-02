@@ -5,41 +5,41 @@ import * as path from 'path'
 
 enum Network {
   MAINNET = 'mainnet',
-  ROPSTEN = 'ropsten'
+  ROPSTEN = 'ropsten',
+  RINKEBY = 'rinkeby'
 }
 enum ContractName {
-  MANAToken = 'MANAToken',
+  KMONToken = 'KMONToken',
   ERC721Bid = 'ERC721Bid',
-  LANDProxy = 'LANDProxy',
-  EstateProxy = 'EstateProxy',
-  MarketplaceProxy = 'MarketplaceProxy',
-  DCLRegistrar = 'DCLRegistrar'
+  KMONFT = 'KMONFT',
+  MarketplaceProxy = 'MarketplaceProxy'
 }
 type ContractsResponse = Record<Network, Record<ContractName, string>>
 
 const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
   [Network.MAINNET]: {
-    MANAToken: 4162050,
+    KMONToken: 4162050,
+    KMONFT: 2482847,
     ERC721Bid: 7270906,
-    LANDProxy: 4944642,
-    EstateProxy: 6236547,
     MarketplaceProxy: 6496012,
-    DCLRegistrar: 9412979
   },
   [Network.ROPSTEN]: {
-    MANAToken: 1891200,
+    KMONToken: 1891200,
     ERC721Bid: 5058246,
-    LANDProxy: 2482847,
-    EstateProxy: 3890399,
-    MarketplaceProxy: 4202120,
-    DCLRegistrar: 7170497
+    KMONFT: 2482847,
+    MarketplaceProxy: 4202120
+  },
+  [Network.RINKEBY]: {
+    KMONToken: 8676161,
+    KMONFT: 8841814,
+    ERC721Bid: 9115216,
+    MarketplaceProxy: 9095240
   }
 }
 
 const contractNameToProxy: Record<string, ContractName> = {
-  MANAToken: ContractName.MANAToken,
-  LANDRegistry: ContractName.LANDProxy,
-  EstateRegistry: ContractName.EstateProxy,
+  KMONToken: ContractName.KMONToken,
+  KMONFT: ContractName.KMONFT,
   Marketplace: ContractName.MarketplaceProxy
 }
 
@@ -66,7 +66,7 @@ async function build() {
 // Parser -----------------------------------------------------------
 
 class TemplateFile {
-  constructor(public ethereum: Ethereum) {}
+  constructor(public ethereum: Ethereum) { }
 
   async write(src: string, destination: string) {
     const contents = await readFile(src)
@@ -94,8 +94,9 @@ class Ethereum {
   }
 
   async fetchContracts() {
+    console.log(this.contractAddresses);
     const contractsByNetwork: ContractsResponse = await fetch(
-      'https://contracts.decentraland.org/addresses.json'
+      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7KNPVDOQ3Q3UZTREKLBD2XHY'
     )
     this.contractAddresses = contractsByNetwork[this.network]
   }
@@ -128,7 +129,7 @@ class Ethereum {
 }
 
 class Parser {
-  constructor(public text: string, public ethereum: Ethereum) {}
+  constructor(public text: string, public ethereum: Ethereum) { }
 
   parse() {
     let newText = this.replaceNetworks(this.text)
@@ -187,8 +188,8 @@ async function fetch(uri: string, method = 'GET'): Promise<any> {
     port: 443,
     path
   }
-  return new Promise(function(resolve, reject) {
-    const req = https.request(options, function(res) {
+  return new Promise(function (resolve, reject) {
+    const req = https.request(options, function (res) {
       if (res.statusCode < 200 || res.statusCode >= 300) {
         return reject(new Error(`Invalid request: ${res.statusCode}`))
       }

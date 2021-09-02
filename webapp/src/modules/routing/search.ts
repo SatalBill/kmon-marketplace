@@ -1,4 +1,4 @@
-import { Network, NFTCategory, WearableCategory } from '@dcl/schemas'
+import { Network, NFTCategory, WearableCategory } from '@kmon/schemas'
 import { View } from '../ui/types'
 import { VendorName } from '../vendor/types'
 import { Section } from '../vendor/routing/types'
@@ -48,12 +48,6 @@ export function getSearchParams(options?: SearchOptions) {
         options.wearableRarities.join(SEARCH_ARRAY_PARAM_SEPARATOR)
       )
     }
-    if (options.wearableGenders && options.wearableGenders.length > 0) {
-      params.set(
-        'genders',
-        options.wearableGenders.join(SEARCH_ARRAY_PARAM_SEPARATOR)
-      )
-    }
 
     if (options.contracts && options.contracts.length > 0) {
       params.set(
@@ -78,9 +72,9 @@ export function getSearchCategory(section: Section) {
   const DclSection = Section[VendorName.DECENTRALAND]
   switch (section) {
     case DclSection.PARCELS:
-      return NFTCategory.PARCEL
+      return 'parcel'
     case DclSection.ESTATES:
-      return NFTCategory.ESTATE
+      return 'estate'
     case DclSection.WEARABLES:
     case DclSection.WEARABLES_HEAD:
     case DclSection.WEARABLES_EYEBROWS:
@@ -99,9 +93,11 @@ export function getSearchCategory(section: Section) {
     case DclSection.WEARABLES_MASK:
     case DclSection.WEARABLES_TIARA:
     case DclSection.WEARABLES_TOP_HEAD:
-      return NFTCategory.WEARABLE
+      return 'wearable'
     case DclSection.ENS:
-      return NFTCategory.ENS
+      return 'ens'
+    default:
+      return NFTCategory.KRYPTOMON
   }
 }
 
@@ -160,8 +156,8 @@ export function getURLParamArray<T extends string>(
   return param === null
     ? []
     : (param
-        .split(SEARCH_ARRAY_PARAM_SEPARATOR)
-        .filter(item => validValues.includes(item as T)) as T[])
+      .split(SEARCH_ARRAY_PARAM_SEPARATOR)
+      .filter(item => validValues.includes(item as T)) as T[])
 }
 
 export function getURLParam<T extends string>(

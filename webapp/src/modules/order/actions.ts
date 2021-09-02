@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { buildTransactionPayload } from 'decentraland-dapps/dist/modules/transaction/utils'
+import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/utils'
 
 import { NFT } from '../nft/types'
 import { Order } from './types'

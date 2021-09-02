@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { LoadingState } from 'decentraland-dapps/dist/modules/loading/reducer'
+import { LoadingState } from '@kmon/dapps/dist/modules/loading/reducer'
 
 import { NFTState } from '../../../nft/reducer'
 import { FETCH_NFTS_REQUEST } from '../../../nft/actions'
@@ -21,6 +21,7 @@ export const getHomepage = createSelector<
   Record<HomepageView, NFT[]>
 >(getState, getNFTData, (homepage, nftsById) => {
   const result: Record<string, NFT[]> = {}
+  console.log({ homepageLOL: homepage, nftsById })
 
   let view: HomepageView
   for (view in homepage) {

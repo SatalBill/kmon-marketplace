@@ -6,6 +6,7 @@
     "load_more": "Load more",
     "not_found": "Not found",
     "parcel": "Parcel",
+    "kryptomon": "Kryptomon",
     "parcel_with_coords": "Parcel {x},{y}",
     "estate": "Estate",
     "wearable": "Wearable",
@@ -83,7 +84,8 @@
     "learn_more": "Learn More",
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
-    "home_ens": "Names"
+    "home_ens": "Names",
+    "kryptomons": "Kryptomons"
   },
   "partners_page": {
     "partners": "Partners",
@@ -348,7 +350,8 @@
   },
   "networks": {
     "ethereum": "Ethereum",
-    "matic": "Polygon"
+    "matic": "Polygon",
+    "bsc": "Binance Smart Chain"
   },
   "intro_popup": {
     "title": "Introducing Polygon MANA",

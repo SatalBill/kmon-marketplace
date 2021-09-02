@@ -7,7 +7,7 @@ export function createAccount(id: Address): void {
   if (account == null) {
     account = new Account(id.toHex())
     account.address = id
-    account.mana = BigInt.fromI32(0)
+    account.kmon = BigInt.fromI32(0)
   }
 
   account.save()

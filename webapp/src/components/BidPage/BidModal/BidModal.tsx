@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
-import { Network } from '@dcl/schemas'
-import { Header, Form, Field, Button } from 'decentraland-ui'
-import { ContractName } from 'decentraland-transactions'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Network } from '@kmon/schemas'
+import { Header, Form, Field, Button } from '@kmon/ui'
+import { ContractName } from '@kmon/transactions'
+import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import {
   Authorization,
   AuthorizationType
-} from 'decentraland-dapps/dist/modules/authorization/types'
-import { hasAuthorization } from 'decentraland-dapps/dist/modules/authorization/utils'
+} from '@kmon/dapps/dist/modules/authorization/types'
+import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { toMANA, fromMANA } from '../../../lib/mana'
 import { NFTAction } from '../../NFTAction'
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'

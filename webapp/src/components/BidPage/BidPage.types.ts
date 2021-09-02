@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
-import { Authorization } from 'decentraland-dapps/dist/modules/authorization/types'
+import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
 import {
   placeBidRequest,
   PlaceBidRequestAction

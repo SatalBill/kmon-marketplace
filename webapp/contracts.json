@@ -13,7 +13,7 @@
     },
     "MarketplaceAdapter": {
       "source": "etherscan",
-      "net": "ropsten",
+      "net": "mainnet",
       "address": "0xd1e4e2880ff56cd0d5c68da9bed58bfbf0150948"
     },
     "Converter": {

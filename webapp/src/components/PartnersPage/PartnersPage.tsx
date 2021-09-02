@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-import { Page, Responsive } from 'decentraland-ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { Page, Responsive } from '@kmon/ui'
 
 import { locations } from '../../modules/routing/locations'
 import { View } from '../../modules/ui/types'

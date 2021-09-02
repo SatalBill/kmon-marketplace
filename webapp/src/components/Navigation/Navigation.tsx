@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Tabs, Responsive } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Tabs, Responsive } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { locations } from '../../modules/routing/locations'
 import { Props, NavigationTab } from './Navigation.types'
 

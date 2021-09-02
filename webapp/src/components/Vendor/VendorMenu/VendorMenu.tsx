@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useMemo, useEffect } from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { getMaxQuerySize } from '../../../modules/vendor/api'
 import { VendorFactory } from '../../../modules/vendor/VendorFactory'
@@ -48,14 +48,14 @@ const VendorMenu = (props: Props) => {
     currentCount === undefined
       ? '...'
       : currentCount === 0
-      ? t('vendor_menu.no_assets')
-      : currentCount < getMaxQuerySize(vendor)
-      ? t('vendor_menu.assets_count', {
-          count: currentCount.toLocaleString()
-        })
-      : t('vendor_menu.more_than_assets_count', {
-          count: currentCount.toLocaleString()
-        })
+        ? t('vendor_menu.no_assets')
+        : currentCount < getMaxQuerySize(vendor)
+          ? t('vendor_menu.assets_count', {
+            count: currentCount.toLocaleString()
+          })
+          : t('vendor_menu.more_than_assets_count', {
+            count: currentCount.toLocaleString()
+          })
 
   const className = ['VendorMenu']
   if (isCurrentVendor) {

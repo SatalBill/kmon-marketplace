@@ -1,9 +1,9 @@
-import { NFT as BaseNFT, NFTCategory } from '@dcl/schemas'
+import { NFT as BaseNFT, NFTCategory } from '@kmon/schemas'
 import { View } from '../ui/types'
 import { NFTsFetchFilters } from '../vendor/nft/types'
 import { VendorName } from '../vendor/types'
 import { SortDirection } from '../routing/types'
-import { NFTData as DecentralandData } from '../vendor/decentraland/nft/types'
+import { KryptomonMetadataResponse, NFTData as DecentralandData } from '../vendor/decentraland/nft/types'
 import { NFTData as SuperRareData } from '../vendor/super_rare/nft/types'
 import { NFTData as MakersPlaceData } from '../vendor/makers_place/nft/types'
 import { NFTData as KnownOriginData } from '../vendor/known_origin/nft/types'
@@ -31,8 +31,9 @@ export type NFT<V extends VendorName = VendorName.DECENTRALAND> = Omit<
   BaseNFT,
   'category' | 'data'
 > & {
-  category: NFTCategory | 'art'
+  category: NFTCategory | 'art' | 'wearable' | 'estate' | 'parcel' | 'ens'
   vendor: VendorName
+  metadata: KryptomonMetadataResponse
   data: Data<V>
 }
 
@@ -41,7 +42,7 @@ export type NFTsFetchParams = {
   skip: number
   orderBy?: NFTSortBy
   orderDirection?: SortDirection
-  category?: NFTCategory
+  category?: NFTCategory | 'art' | 'wearable' | 'estate' | 'parcel' | 'ens'
   address?: string
   onlyOnSale?: boolean
   search?: string

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Dropdown } from 'decentraland-ui'
+import { Header, Dropdown } from '@kmon/ui'
 
 import { Props } from './SelectFilter.types'
 import './SelectFilter.css'

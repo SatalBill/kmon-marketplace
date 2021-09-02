@@ -2,6 +2,7 @@ export const View = {
   MARKET: 'market',
   ACCOUNT: 'account',
   HOME_WEARABLES: 'home_wearables',
+  KRYPTOMONS: 'kryptomons',
   HOME_LAND: 'home_land',
   HOME_ENS: 'home_ens',
   PARTNERS_SUPER_RARE: 'super_rare',

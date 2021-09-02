@@ -1,7 +1,7 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Link } from 'react-router-dom'
-import { Card } from 'decentraland-ui'
+import { Card } from '@kmon/ui'
 
 import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
@@ -13,8 +13,8 @@ import './NFTDetailCard.css'
 const NFTDetailCard = (props: Props) => {
   const { nft, order } = props
 
-  const title = getNFTName(nft)
-  const { parcel, estate, wearable, ens } = nft.data
+  // const title = getNFTName(nft)
+  // const { parcel, estate, wearable, ens } = nft.data
 
   return (
     // <Card

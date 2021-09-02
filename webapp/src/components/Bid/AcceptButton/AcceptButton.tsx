@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Popup } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Button, Popup } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {

@@ -1,15 +1,15 @@
 import { TxSend } from 'web3x-es/contract'
 import { Address } from 'web3x-es/address'
-import { Network } from '@dcl/schemas'
-import { getChainConfiguration } from 'decentraland-dapps/dist/lib/chainConfiguration'
+import { Network } from '@kmon/schemas'
+import { getChainConfiguration } from '@kmon/dapps/dist/lib/chainConfiguration'
 import {
   ContractData,
   sendMetaTransaction as baseSendMetaTransaction
-} from 'decentraland-transactions'
+} from '@kmon/transactions'
 import {
   getConnectedProvider,
   getNetworkProvider
-} from 'decentraland-dapps/dist/lib/eth'
+} from '@kmon/dapps/dist/lib/eth'
 
 export const TRANSACTIONS_API_URL = process.env.REACT_APP_TRANSACTIONS_API_URL
 

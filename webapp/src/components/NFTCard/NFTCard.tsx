@@ -1,25 +1,22 @@
 import React from 'react'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Link } from 'react-router-dom'
-import { Card } from 'decentraland-ui'
+import { Card } from '@kmon/ui'
 
 import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
 import { getNFTName } from '../../modules/nft/utils'
 import { NFTImage } from '../NFTImage'
 import { Mana } from '../Mana'
-import { ParcelTags } from './ParcelTags'
-import { EstateTags } from './EstateTags'
-import { WearableTags } from './WearableTags'
-import { ENSTags } from './ENSTags'
 import { Props } from './NFTCard.types'
 import './NFTCard.css'
+import { KryptomonTags } from './KryptomonTags'
 
 const NFTCard = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
-  const { parcel, estate, wearable, ens } = nft.data
+  const { kryptomon } = nft.data
 
   return (
     <Card
@@ -65,6 +62,12 @@ const NFTCard = (props: Props) => {
         {wearable ? <WearableTags nft={nft} /> : null}
         {ens ? <ENSTags nft={nft} /> : null} */}
       {/* </Card.Content> */}
+
+      {/* ) : null}
+        </Card.Header>
+        <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
+        {kryptomon ? <KryptomonTags nft={nft} /> : null}
+      </Card.Content> */}
     </Card>
   )
 }

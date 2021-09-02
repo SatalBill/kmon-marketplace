@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Page, Header, Form, Field, Button } from 'decentraland-ui'
-import { t, T } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Page, Header, Form, Field, Button } from '@kmon/ui'
+import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet } from '../Wallet'

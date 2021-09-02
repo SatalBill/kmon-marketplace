@@ -1,6 +1,6 @@
 import React from 'react'
-import { Header } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Header } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Props } from './Description.types'
 import './Description.css'
 

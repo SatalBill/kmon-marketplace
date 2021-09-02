@@ -1,8 +1,8 @@
 import BN from 'bn.js'
 import { Address } from 'web3x-es/address'
 import { toBN, toWei } from 'web3x-es/utils'
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
-import { Network } from '@dcl/schemas'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+import { Network } from '@kmon/schemas'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT, NFTsFetchParams, NFTsCountParams } from '../../nft/types'
@@ -126,7 +126,7 @@ export class NFTService
 
   toNFT(fragment: Fragment): NFT<VendorName.KNOWN_ORIGIN> {
     const tokenId = fragment.id
-    const { name, description, image } = fragment.metadata
+    const { name, description, image, tokenURI } = fragment.metadata
 
     const contractNames = getContractNames()
 
@@ -140,8 +140,10 @@ export class NFTService
       contractAddress,
       activeOrderId: '',
       owner: this.getOwner(fragment),
+      metadata: { name: "", image: "", description: "" },
       name,
       image,
+      tokenURI,
       url: this.getDefaultURL(fragment),
       data: {
         description,

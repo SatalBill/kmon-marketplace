@@ -2,11 +2,11 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import createSagasMiddleware from 'redux-saga'
 import { routerMiddleware } from 'connected-react-router'
 import { createLogger } from 'redux-logger'
-import { createStorageMiddleware } from 'decentraland-dapps/dist/modules/storage/middleware'
-import { storageReducerWrapper } from 'decentraland-dapps/dist/modules/storage/reducer'
-import { createTransactionMiddleware } from 'decentraland-dapps/dist/modules/transaction/middleware'
-import { createAnalyticsMiddleware } from 'decentraland-dapps/dist/modules/analytics/middleware'
-import { CLEAR_TRANSACTIONS } from 'decentraland-dapps/dist/modules/transaction/actions'
+import { createStorageMiddleware } from '@kmon/dapps/dist/modules/storage/middleware'
+import { storageReducerWrapper } from '@kmon/dapps/dist/modules/storage/reducer'
+import { createTransactionMiddleware } from '@kmon/dapps/dist/modules/transaction/middleware'
+import { createAnalyticsMiddleware } from '@kmon/dapps/dist/modules/analytics/middleware'
+import { CLEAR_TRANSACTIONS } from '@kmon/dapps/dist/modules/transaction/actions'
 
 import { createRootReducer, RootState } from './reducer'
 import { rootSaga } from './sagas'
@@ -22,11 +22,11 @@ export function initStore() {
   const composeEnhancers =
     isDevelopment && anyWindow.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? anyWindow.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-          stateSanitizer: (state: RootState) => {
-            const { tile, proximity, ...sanitized } = { ...state }
-            return sanitized
-          }
-        })
+        stateSanitizer: (state: RootState) => {
+          const { tile, proximity, ...sanitized } = { ...state }
+          return sanitized
+        }
+      })
       : compose
 
   const rootReducer = storageReducerWrapper(createRootReducer(history))

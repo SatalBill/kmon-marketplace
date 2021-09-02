@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { ToastType } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { ToastType } from '@kmon/ui'
+import { T, t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const DISCORD_URL = process.env.REACT_APP_DISCORD_URL
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import { HeaderMenu, Header, Button, Loader } from 'decentraland-ui'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { HeaderMenu, Header, Button, Loader } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { NFTCard } from '../../NFTCard'
 import { Props } from './Slideshow.types'
 import './Slideshow.css'

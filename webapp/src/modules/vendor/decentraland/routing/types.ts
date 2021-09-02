@@ -5,7 +5,7 @@ export enum Section {
   PARCELS = 'parcels',
   ESTATES = 'estates',
   WEARABLES = 'wearables',
-
+  KRYPTOMONS = 'kryptomons',
   WEARABLES_HEAD = 'wearables_head',
   WEARABLES_EYEBROWS = 'wearables_eyebrows',
   WEARABLES_EYES = 'wearables_eyes',

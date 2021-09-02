@@ -8,12 +8,14 @@ export type HomepageUIState = {
   [View.HOME_WEARABLES]: string[]
   [View.HOME_LAND]: string[]
   [View.HOME_ENS]: string[]
+  [View.KRYPTOMONS]: string[]
 }
 
 const INITIAL_STATE: HomepageUIState = {
   [View.HOME_WEARABLES]: [],
   [View.HOME_LAND]: [],
-  [View.HOME_ENS]: []
+  [View.HOME_ENS]: [],
+  [View.KRYPTOMONS]: []
 }
 
 type UIReducerAction = FetchNFTsSuccessAction

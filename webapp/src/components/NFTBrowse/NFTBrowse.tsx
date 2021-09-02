@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Container, Page, Responsive } from 'decentraland-ui'
+import { Container, Page, Responsive } from '@kmon/ui'
 
 import { View } from '../../modules/ui/types'
 import { Atlas } from '../Atlas'

@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
-import { Header, Button } from 'decentraland-ui'
-import { T, t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Header, Button } from '@kmon/ui'
+import { T, t } from '@kmon/dapps/dist/modules/translation/utils'
 import {
   Authorization,
   AuthorizationType
-} from 'decentraland-dapps/dist/modules/authorization/types'
-import { hasAuthorization } from 'decentraland-dapps/dist/modules/authorization/utils'
-import { Network, NFTCategory } from '@dcl/schemas'
-import { ContractName } from 'decentraland-transactions'
+} from '@kmon/dapps/dist/modules/authorization/types'
+import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
+import { Network, NFTCategory } from '@kmon/schemas'
+import { ContractName } from '@kmon/transactions'
 import { formatMANA } from '../../../lib/mana'
 import { locations } from '../../../modules/routing/locations'
 import { isPartner } from '../../../modules/vendor/utils'
@@ -92,7 +92,7 @@ const BuyPage = (props: Props) => {
     !order ||
     isOwner ||
     hasInsufficientMANA ||
-    (!fingerprint && nft.category === NFTCategory.ESTATE)
+    (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
 
   const name = <Name nft={nft} />
 
@@ -101,7 +101,7 @@ const BuyPage = (props: Props) => {
     subtitle = <T id={'buy_page.not_for_sale'} values={{ name }} />
   } else if (
     !fingerprint &&
-    nft.category === NFTCategory.ESTATE &&
+    nft.category === NFTCategory.KRYPTOMON &&
     !isFingerprintLoading
   ) {
     subtitle = <T id={'buy_page.no_fingerprint'} />
@@ -178,8 +178,8 @@ const BuyPage = (props: Props) => {
         </Button>
 
         {isDisabled ||
-        !isAboveMaxPercentage ||
-        (isAboveMaxPercentage && wantsToProceed) ? (
+          !isAboveMaxPercentage ||
+          (isAboveMaxPercentage && wantsToProceed) ? (
           <Button
             primary
             disabled={isDisabled || isLoading}

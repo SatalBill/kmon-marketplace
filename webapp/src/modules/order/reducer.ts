@@ -1,7 +1,7 @@
 import {
   LoadingState,
   loadingReducer
-} from 'decentraland-dapps/dist/modules/loading/reducer'
+} from '@kmon/dapps/dist/modules/loading/reducer'
 import { Order } from './types'
 import {
   FetchNFTsRequestAction,

@@ -2,15 +2,15 @@ import React from 'react'
 import { getNFTName } from '../../../modules/nft/utils'
 import { Props, ItemProps } from './Details.types'
 import './Details.css'
-import { Profile } from 'decentraland-dapps/dist/containers'
+import { Profile } from '@kmon/dapps/dist/containers'
 import { Actions } from '../Actions'
 import { Row } from '../../Layout/Row'
 
 const Details = (props: Props) => {
   const { nft, order } = props
 
-  const title = getNFTName(nft)
-  const { parcel, estate, wearable, ens } = nft.data
+  // const title = getNFTName(nft)
+  // const { parcel, estate, wearable, ens } = nft.data
   console.log({ nft, order })
 
   return (

@@ -1,4 +1,4 @@
-import { ChainId, Network } from '@dcl/schemas'
+import { ChainId, Network } from '@kmon/schemas'
 import { OrderStatus } from '../order/types'
 
 export type Bid = {

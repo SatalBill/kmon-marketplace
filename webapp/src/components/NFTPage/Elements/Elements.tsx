@@ -62,7 +62,7 @@ const Elements = (props: Props) => {
   const { nft, order } = props
 
   const title = getNFTName(nft)
-  const { parcel, estate, wearable, ens } = nft.data
+  // const { parcel, estate, wearable, ens } = nft.data
 
   return (
     <div className="container">

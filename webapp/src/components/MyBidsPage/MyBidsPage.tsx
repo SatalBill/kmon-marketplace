@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Page, Loader, HeaderMenu, Header, Button } from 'decentraland-ui'
+import { Page, Loader, HeaderMenu, Header, Button } from '@kmon/ui'
 
 import { locations } from '../../modules/routing/locations'
 import { Navbar } from '../Navbar'
@@ -9,7 +9,7 @@ import { Bid } from '../Bid'
 import { NavigationTab } from '../Navigation/Navigation.types'
 import { Props } from './MyBidsPage.types'
 import './MyBidsPage.css'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const MyBidsPage = (props: Props) => {
   const {
@@ -71,11 +71,11 @@ const MyBidsPage = (props: Props) => {
                   <Button basic onClick={handleToggleSeller}>
                     {showArchived
                       ? t('my_bids_page.show_received', {
-                          amount: unarchived.length
-                        })
+                        amount: unarchived.length
+                      })
                       : t('my_bids_page.show_archived', {
-                          amount: archived.length
-                        })}
+                        amount: archived.length
+                      })}
                   </Button>
                 ) : null}
               </HeaderMenu.Right>

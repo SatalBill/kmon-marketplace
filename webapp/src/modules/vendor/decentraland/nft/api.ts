@@ -67,18 +67,18 @@ class NFTAPI {
     const queryParams = new URLSearchParams()
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
-    if (params.orderBy) {
-      queryParams.append('sortBy', getSortBy(params.orderBy))
-    }
+    // if (params.orderBy) {
+    //   queryParams.append('sortBy', getSortBy(params.orderBy))
+    // }
     if (params.category) {
       queryParams.append('category', params.category)
     }
     if (params.address) {
       queryParams.append('owner', params.address)
     }
-    if (params.onlyOnSale) {
-      queryParams.append('isOnSale', 'true')
-    }
+    // if (params.onlyOnSale) {
+    //   queryParams.append('isOnSale', 'true')
+    // }
 
     if (params.search) {
       queryParams.set('search', params.search)
@@ -99,11 +99,6 @@ class NFTAPI {
       if (filters.wearableRarities) {
         for (const wearableRarity of filters.wearableRarities) {
           queryParams.append('wearableRarity', wearableRarity)
-        }
-      }
-      if (filters.wearableGenders) {
-        for (const wearableGender of filters.wearableGenders) {
-          queryParams.append('wearableGender', wearableGender)
         }
       }
       if (filters.contracts) {

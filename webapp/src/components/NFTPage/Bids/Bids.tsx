@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Header } from 'decentraland-ui'
+import { Header } from '@kmon/ui'
 import { Props } from './Bids.types'
 import { Bid } from '../../Bid'
 import './Bids.css'

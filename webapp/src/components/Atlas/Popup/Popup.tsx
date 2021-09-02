@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Address } from 'web3x-es/address'
-import { Row, Section, Header } from 'decentraland-ui'
-import { Profile } from 'decentraland-dapps/dist/containers'
-import { t } from 'decentraland-dapps/dist/modules/translation/utils'
+import { Row, Section, Header } from '@kmon/ui'
+import { Profile } from '@kmon/dapps/dist/containers'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Coordinate } from '../../Coordinate'
 import { Mana } from '../../Mana'
 import { Props } from './Popup.types'
@@ -14,9 +14,8 @@ export default class Popup extends React.PureComponent<Props> {
     const isEstate = !!tile.estate_id
     return (
       <div
-        className={`AtlasPopup ${position} ${
-          tile.owner ? 'has-owner' : 'no-owner'
-        }`}
+        className={`AtlasPopup ${position} ${tile.owner ? 'has-owner' : 'no-owner'
+          }`}
         style={{ top: y, left: x, opacity: visible ? 1 : 0 }}
       >
         <Section className="land-name">

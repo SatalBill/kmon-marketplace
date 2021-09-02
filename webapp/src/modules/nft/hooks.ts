@@ -1,4 +1,4 @@
-import { NFTCategory } from '@dcl/schemas'
+import { NFTCategory } from '@kmon/schemas'
 import { useEffect, useState } from 'react'
 import { TokenConverter } from '../vendor/TokenConverter'
 import { MarketplacePrice } from '../vendor/MarketplacePrice'
@@ -14,7 +14,7 @@ export const useFingerprint = (nft: NFT | null) => {
   useEffect(() => {
     if (nft) {
       switch (nft.category) {
-        case NFTCategory.ESTATE: {
+        case 'estate': {
           setIsLoading(true)
           getFingerprint(nft.tokenId)
             .then(result => setFingerprint(result))

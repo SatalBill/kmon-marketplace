@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header } from 'decentraland-ui'
+import { Header } from '@kmon/ui'
 
 import { Props } from './ArrayFilter.types'
 import './ArrayFilter.css'

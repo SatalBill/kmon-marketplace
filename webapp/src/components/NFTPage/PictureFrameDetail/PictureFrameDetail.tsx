@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Header } from 'decentraland-ui'
+import { Container, Header } from '@kmon/ui'
 
 import { getNFTName } from '../../../modules/nft/utils'
 import { PageHeader } from '../../PageHeader'

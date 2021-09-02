@@ -1,8 +1,8 @@
 import {
   GrantTokenRequestAction,
   RevokeTokenRequestAction
-} from 'decentraland-dapps/dist/modules/authorization/actions'
-import { Transaction } from 'decentraland-dapps/dist/modules/transaction/types'
+} from '@kmon/dapps/dist/modules/authorization/actions'
+import { Transaction } from '@kmon/dapps/dist/modules/transaction/types'
 
 export function hasTransactionPending(
   transactions: Transaction[],
@@ -15,9 +15,9 @@ export function hasTransactionPending(
       | RevokeTokenRequestAction['payload']
     return (
       authorization.authorizedAddress.toLowerCase() ===
-        authorizedAddress.toLowerCase() &&
+      authorizedAddress.toLowerCase() &&
       authorization.contractAddress.toLowerCase() ===
-        contractAddress.toLowerCase()
+      contractAddress.toLowerCase()
     )
   })
 }

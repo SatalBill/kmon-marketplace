@@ -1,5 +1,5 @@
-import { Wallet } from 'decentraland-dapps/dist/modules/wallet/types'
-import { Authorization } from 'decentraland-dapps/dist/modules/authorization/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
 import { NFT } from '../../../modules/nft/types'
 import { Order } from '../../../modules/order/types'
 import { executeOrderRequest } from '../../../modules/order/actions'
