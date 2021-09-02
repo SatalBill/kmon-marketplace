@@ -4,6 +4,7 @@ import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Profile } from 'decentraland-dapps/dist/containers'
 import { Actions } from '../Actions'
+import { Row } from '../../Layout/Row'
 
 const Details = (props: Props) => {
   const { nft, order } = props
@@ -14,18 +15,20 @@ const Details = (props: Props) => {
 
   return (
     <div className="details-container">
-      <Profile
-        size={'huge'}
-        address={nft.owner}
-        imageOnly
-        hasPopup
-        inline={false}
-      />
-      <DetailItem title="Owner">
-        <p className="detail-medium-text">{nft.name}</p>
-      </DetailItem>
+      <div className="profile-container">
+        <Profile
+          size={'huge'}
+          address={nft.owner}
+          imageOnly
+          hasPopup
+          inline={false}
+        />
+        <DetailItem title="Owner">
+          <p className="detail-medium-text">{nft.name}</p>
+        </DetailItem>
+      </div>
       <DetailItem title="Network">
-        <p className="detail-medium-text">{nft.name}</p>
+        <p className="detail-medium-text">{nft.network}</p>
       </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
