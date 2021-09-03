@@ -48,7 +48,6 @@ function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
       // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
       nftService.fetch(params, filters as any)
     )
-    console.log({ LOL: nfts })
     yield put(
       fetchNFTsSuccess(
         options,

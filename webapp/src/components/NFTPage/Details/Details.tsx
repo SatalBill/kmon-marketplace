@@ -11,7 +11,6 @@ const Details = (props: Props) => {
 
   // const title = getNFTName(nft)
   // const { parcel, estate, wearable, ens } = nft.data
-  console.log({ nft, order })
 
   return (
     <div className="details-container">
@@ -24,7 +23,7 @@ const Details = (props: Props) => {
           inline={false}
         />
         <DetailItem title="Owner">
-          <p className="detail-medium-text">{nft.name}</p>
+          <p className="detail-medium-text">{nft.owner}</p>
         </DetailItem>
       </div>
       <DetailItem title="Network">
@@ -33,7 +32,7 @@ const Details = (props: Props) => {
       <DetailItem title="Price">
         <p className="detail-big-text">
           {/* {order?.price && formatMANA(order.price)} BNB */}
-          1400 KMON
+          0000 KMON
         </p>
       </DetailItem>
       <Actions nft={nft} />

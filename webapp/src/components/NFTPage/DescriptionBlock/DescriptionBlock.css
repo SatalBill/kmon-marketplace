@@ -5,7 +5,7 @@
   align-items: flex-start;
 }
 
-.text {
+.show-text {
   font-size: 12px;
   color: #676370;
   font-weight: 400;
@@ -13,11 +13,7 @@
 }
 
 .hidden-text {
-  font-size: 12px;
-  color: #676370;
-  font-weight: 400;
-  font-family: var(--font-monospace);
-  max-height: 275px;
+  max-height: 185px;
   overflow: hidden;
   position: relative;
 }

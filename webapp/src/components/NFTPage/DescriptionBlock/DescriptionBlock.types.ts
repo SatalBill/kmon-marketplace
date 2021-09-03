@@ -1,3 +1,5 @@
+import { NFT } from '../../../modules/nft/types'
+
 export type Props = {
-  text: string
+  nft: NFT
 }

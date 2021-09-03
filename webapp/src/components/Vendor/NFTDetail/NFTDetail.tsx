@@ -12,7 +12,6 @@ import { Props } from './NFTDetail.types'
 
 const NFTDetail = (props: Props) => {
   const { nft } = props
-  console.log('______ ', { nft })
 
   const { kryptomon, parcel, estate, wearable, ens } = nft.data as any
 

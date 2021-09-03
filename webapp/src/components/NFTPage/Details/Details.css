@@ -32,6 +32,8 @@
   font-size: 12px;
   font-weight: 700;
   color: #e7e3d7;
+  max-width: 100px;
+  overflow: hidden;
 }
 
 .detail-big-text {

@@ -1,156 +1,99 @@
-import React, { useCallback } from 'react'
-import { Container, Header, Popup } from '@kmon/ui' // @kmon/ui
-// import { t } from 'decentraland-dapps/dist/modules/translation/utils'
-// import { WearableGender } from '../../../modules/nft/wearable/types'
-// import { getNFTName } from '../../../modules/nft/utils'
-// import { isUnisex, isGender } from '../../../modules/nft/wearable/utils'
-// import { locations } from '../../../modules/routing/locations'
-// import { getSearchWearableSection } from '../../../modules/routing/search'
-// import { Section } from '../../../modules/vendor/decentraland/routing/types'
-// import { PageHeader } from '../../PageHeader'
-// import { NFTImage } from '../../NFTImage'
+import React from 'react'
+import { Container } from '@kmon/ui'
 import { Row } from '../../Layout/Row'
-// import { Column } from '../../Layout/Column'
-// import { Title } from '../Title'
-// import { Owner } from '../Owner'
-// import { Description } from '../Description'
-// import { OrderDetails } from '../OrderDetails'
-// import { Actions } from '../Actions'
-// import { Highlight } from '../Highlight'
-// import { Highlights } from '../Highlights'
-// import { Bids } from '../Bids'
-// import { TransactionHistory } from '../TransactionHistory'
 import { Props } from './ProductDetail.types'
 import './ProductDetail.css'
-// import { BodyShape, Rarity } from '@dcl/schemas'
 import { NFTDetailCard } from '../../NFTDetailCard'
 import { Elements } from '../Elements'
 import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
+import Ice from '../../../images/egg/elem-ice.svg'
+import Air from '../../../images/egg/elem-air.svg'
+import Electro from '../../../images/egg/elem-electro.svg'
+import Ghost from '../../../images/egg/elem-ghost.svg'
+import Grass from '../../../images/egg/elem-grass.svg'
+import Ground from '../../../images/egg/elem-ground.svg'
+import Water from '../../../images/egg/elem-water.svg'
+import Fire from '../../../images/egg/elem-fire.svg'
 
 const WearableDetail = (props: Props) => {
   const { nft, onNavigate } = props
-  // const wearable = nft.data.wearable!
+  const genes = nft.data.kryptomon?.genes
 
-  // const handleCategoryClick = useCallback(() => {
-  //   const category = wearable.category
-  //   const section = getSearchWearableSection(category)
-  //   if (!section) {
-  //     throw new Error(`Invalid wearable category ${category}`)
-  //   }
-  //   onNavigate(locations.browse({ section }))
-  // }, [wearable, onNavigate])
+  const elementTypes = [
+    {
+      title: 'Water',
+      value: genes?.water,
+      icon: Water
+    },
+    {
+      title: 'Grass',
+      value: genes?.grass,
+      icon: Grass
+    },
+    {
+      title: 'Fire',
+      value: genes?.fireGenes,
+      icon: Fire
+    },
+    {
+      title: 'Electro',
+      value: genes?.electro,
+      icon: Electro
+    },
+    {
+      title: 'Ground',
+      value: genes?.ground,
+      icon: Ground
+    },
+    {
+      title: 'Ghost',
+      value: genes?.ghost,
+      icon: Ghost
+    },
+    {
+      title: 'Ice',
+      value: genes?.ice,
+      icon: Ice
+    },
+    {
+      title: 'Air',
+      value: genes?.air,
+      icon: Air
+    }
+  ]
 
-  // const handleGenderClick = useCallback(() => {
-  //   onNavigate(
-  //     locations.browse({
-  //       section: Section.WEARABLES,
-  //       wearableGenders: isGender(wearable, BodyShape.MALE)
-  //         ? [WearableGender.MALE]
-  //         : [WearableGender.FEMALE]
-  //     })
-  //   )
-  // }, [wearable, onNavigate])
-
-  // const handleRarityClick = useCallback(() => {
-  //   onNavigate(
-  //     locations.browse({
-  //       section: Section.WEARABLES,
-  //       wearableRarities: [wearable.rarity]
-  //     })
-  //   )
-  // }, [wearable, onNavigate])
-
-  // const handleUnisexClick = useCallback(() => {
-  //   onNavigate(
-  //     locations.browse({
-  //       section: Section.WEARABLES,
-  //       wearableGenders: [WearableGender.MALE, WearableGender.FEMALE]
-  //     })
-  //   )
-  // }, [onNavigate])
+  const maxElementType = elementTypes.reduce((prev, current) => {
+    return ((prev &&
+      typeof prev.value === 'string' &&
+      Number.parseInt(prev.value)) ||
+      0) >
+      ((current &&
+        typeof current.value === 'string' &&
+        Number.parseInt(current.value)) ||
+        0)
+      ? prev
+      : current
+  })
 
   return (
-    <div className="WearableDetail">
-      <Container>
-        <Row>
-          <NFTDetailCard nft={nft} />
-          <Details nft={nft} />
-        </Row>
-        <TitleBlock title="Elements">
-          <Elements nft={nft} />
-        </TitleBlock>
-        <TitleBlock title="Description">
-          <DescriptionBlock text="This is a Ghost Kryptomon specialized in defense moves. It has a great constitution, injuries are few and far in between for this Kryptomon and even then only after the harshest of battles, while Albert Einstein could have learnt a thing or two from this genius of a Kryptomon." />
-        </TitleBlock>
-      </Container>
-      {/* <PageHeader>
-        <NFTImage nft={nft} />
-      </PageHeader>
-      <Container>
-        <Title
-          left={
-            <Header size="large">
-              <div className="text">
-                {getNFTName(nft)}
-                <Popup
-                  position="top center"
-                  content={t(`wearable.rarity_tooltip.${wearable.rarity}`)}
-                  trigger={
-                    <div
-                      className="rarity"
-                      style={{
-                        backgroundColor: Rarity.getColor(wearable.rarity)
-                      }}
-                      onClick={handleRarityClick}
-                    >
-                      {t(`wearable.rarity.${wearable.rarity}`)}
-                    </div>
-                  }
-                />
-              </div>
-            </Header>
-          }
-          right={<Owner nft={nft} />}
+    <Container className="product-container">
+      <Row>
+        <NFTDetailCard maxElementType={maxElementType} nft={nft} />
+        <Details nft={nft} />
+      </Row>
+      <TitleBlock title="Elements">
+        <Elements
+          elementTypes={elementTypes}
+          maxElementType={maxElementType}
+          nft={nft}
         />
-        <Description text={wearable.description} />
-        <Row>
-          <Column align="left" grow={true}>
-            <OrderDetails nft={nft} />
-          </Column>
-          <Column align="right">
-            <Actions nft={nft} />
-          </Column>
-        </Row>
-        <Highlights>
-          <Highlight
-            icon={<div className={wearable.category} />}
-            name={t(`wearable.category.${wearable.category}`)}
-            onClick={handleCategoryClick}
-          />
-          {isUnisex(wearable) ? (
-            <Highlight
-              icon={<div className="Unisex" />}
-              name={t('wearable.body_shape.unisex')}
-              onClick={handleUnisexClick}
-            />
-          ) : (
-            <Highlight
-              icon={<div className={wearable.bodyShapes[0]} />}
-              name={
-                isGender(wearable, BodyShape.MALE)
-                  ? t('wearable.body_shape.male')
-                  : t('wearable.body_shape.female')
-              }
-              onClick={handleGenderClick}
-            />
-          )}
-        </Highlights>
-        <Bids nft={nft} />
-        <TransactionHistory nft={nft} />
-      </Container> */}
-    </div>
+      </TitleBlock>
+      <TitleBlock title="Description">
+        <DescriptionBlock nft={nft} />
+      </TitleBlock>
+    </Container>
   )
 }
 

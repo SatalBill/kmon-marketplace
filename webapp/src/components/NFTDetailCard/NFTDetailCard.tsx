@@ -9,13 +9,10 @@ import { getNFTName } from '../../modules/nft/utils'
 import { NFTImage } from '../NFTImage'
 import { Props } from './NFTDetailCard.types'
 import './NFTDetailCard.css'
-
+import { Row } from '../Layout/Row'
+//webapp/src/modules/nft/utils.ts
 const NFTDetailCard = (props: Props) => {
-  const { nft, order } = props
-
-  // const title = getNFTName(nft)
-  // const { parcel, estate, wearable, ens } = nft.data
-
+  const { nft, maxElementType, order } = props
   return (
     // <Card
     //   className="NFTCard"
@@ -29,7 +26,11 @@ const NFTDetailCard = (props: Props) => {
           <NFTImage nft={nft} showMonospace />
         </div>
         <div className="card-image-text">
-          <div className="product-type-icon" />
+          <img
+            className="product-type-icon"
+            src={maxElementType.icon}
+            alt="icon"
+          />
           <div className="product-info">
             {/* <p className="product-info-value">
               INDEX VALUE {order?.price && formatMANA(order.price)} BNB
@@ -44,11 +45,16 @@ const NFTDetailCard = (props: Props) => {
       {/* <Card.Header> */}
       <div className="product-description">
         <div className="product-description-left">
-          <p className="product-info-number">
-            {'No. 2533'} <div className="product-verified" />
+          <Row>
+            <p className="product-info-number">No. {nft.name}</p>
+            <div className="product-verified" />
+          </Row>
+          <p className="product-description-left-item">
+            Gen: {nft.data.kryptomon?.genes.generation}
           </p>
-          <p className="product-description-left-item">GEN: 001</p>
-          <p className="product-description-left-item">ELEMENT: AIR</p>
+          <p className="product-description-left-item">
+            Element: {maxElementType.title}
+          </p>
         </div>
         <div className="product-description-right">ERC-721</div>
       </div>

@@ -47,7 +47,7 @@ a.ui.card.link:hover .meta {
 }
 .ui.cards > .ui.card,
 .ui.card {
-  background-color: white !important;
+  background-color: #323132 !important;
   border: none !important;
 }
 .ui.card:hover {
@@ -156,7 +156,8 @@ a.ui.card.link:hover .meta {
   font-size: 10px;
   margin: 0;
 }
-.product-info-number {
+.product-info-number-card {
+  margin: 0;
   font-size: 17px;
   font-family: var(--font-family);
   font-weight: 700;

@@ -52,7 +52,6 @@ const HomePage = (props: Props) => {
   }, [onFetchNFTsFromRoute])
 
   const views = Object.keys(homepage) as HomepageView[]
-  console.log({ homepage })
 
   return (
     <>
@@ -72,7 +71,6 @@ const HomePage = (props: Props) => {
       <Page className="HomePage">
         {views.map(view => (
           <>
-            {console.log({ homepage, view })}
             <Slideshow
               key={view}
               title={t(`home_page.${view}`)}

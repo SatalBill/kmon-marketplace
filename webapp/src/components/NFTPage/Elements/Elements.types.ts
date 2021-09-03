@@ -3,6 +3,8 @@ import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
   nft: NFT
+  elementTypes: any
+  maxElementType: any
   order?: Order
 }
 

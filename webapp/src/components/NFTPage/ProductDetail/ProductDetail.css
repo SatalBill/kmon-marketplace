@@ -104,3 +104,7 @@
   background-image: url(../../../images//wearables/UnisexIcon.svg);
   background-size: 24px 24px;
 }
+
+.product-container {
+  margin-top: 133px;
+}

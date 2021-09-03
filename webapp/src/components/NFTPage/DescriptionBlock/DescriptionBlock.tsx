@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Props } from './DescriptionBlock.types'
+import classNames from 'classnames'
 import './DescriptionBlock.css'
 
 const DescriptionBlock = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { text } = props
+  const { nft } = props
 
   const onOpen = () => {
     setIsOpen(true)
@@ -12,8 +13,9 @@ const DescriptionBlock = (props: Props) => {
 
   return (
     <div className="container">
-      <div className="hidden-text">
-        {text} {!isOpen && <div className="hidden-text-blur" />}
+      <div className={classNames('show-text', !isOpen && 'hidden-text')}>
+        {nft.metadata.description}{' '}
+        {!isOpen && <div className="hidden-text-blur" />}
       </div>
       {!isOpen && (
         <button onClick={onOpen} className="more-button">
