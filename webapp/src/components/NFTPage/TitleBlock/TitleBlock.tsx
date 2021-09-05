@@ -6,7 +6,7 @@ const TitleBlock = (props: Props) => {
   const { title, children } = props
 
   return (
-    <div className="container">
+    <div className="title-container">
       <h6 className="title">{title}</h6>
       <div>{children}</div>
     </div>

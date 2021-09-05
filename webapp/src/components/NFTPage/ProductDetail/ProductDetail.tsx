@@ -8,6 +8,7 @@ import { Elements } from '../Elements'
 import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
+import { DNAChart } from '../DNAChart'
 import Ice from '../../../images/egg/elem-ice.svg'
 import Air from '../../../images/egg/elem-air.svg'
 import Electro from '../../../images/egg/elem-electro.svg'
@@ -16,6 +17,7 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
+import { Column } from '../../Layout/Column'
 
 const WearableDetail = (props: Props) => {
   const { nft, onNavigate } = props
@@ -81,7 +83,12 @@ const WearableDetail = (props: Props) => {
     <Container className="product-container">
       <Row>
         <NFTDetailCard maxElementType={maxElementType} nft={nft} />
-        <Details nft={nft} />
+        <Column>
+          <Details nft={nft} />
+          <TitleBlock title="DNA chart">
+            <DNAChart nft={nft} />
+          </TitleBlock>
+        </Column>
       </Row>
       <TitleBlock title="Elements">
         <Elements
