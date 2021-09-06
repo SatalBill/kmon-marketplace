@@ -3,6 +3,7 @@
   position: relative;
   flex-flow: row nowrap;
   width: 100%;
+  justify-content: space-between;
 }
 
 .Row > .Column.grow {
