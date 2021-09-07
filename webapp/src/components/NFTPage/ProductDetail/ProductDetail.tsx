@@ -9,6 +9,7 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
+import { PriceChart } from '../PriceChart'
 import Ice from '../../../images/egg/elem-ice.svg'
 import Air from '../../../images/egg/elem-air.svg'
 import Electro from '../../../images/egg/elem-electro.svg'
@@ -90,13 +91,18 @@ const WearableDetail = (props: Props) => {
           </TitleBlock>
         </Column>
       </Row>
-      <TitleBlock title="Elements">
-        <Elements
-          elementTypes={elementTypes}
-          maxElementType={maxElementType}
-          nft={nft}
-        />
-      </TitleBlock>
+      <Row>
+        <TitleBlock title="Elements">
+          <Elements
+            elementTypes={elementTypes}
+            maxElementType={maxElementType}
+            nft={nft}
+          />
+        </TitleBlock>
+        <TitleBlock title="Price chart">
+          <PriceChart nft={nft} />
+        </TitleBlock>
+      </Row>
       <TitleBlock title="Description">
         <DescriptionBlock nft={nft} />
       </TitleBlock>
