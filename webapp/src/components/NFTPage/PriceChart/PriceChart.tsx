@@ -4,31 +4,16 @@ import './PriceChart.css'
 import { Line } from 'react-chartjs-2'
 
 const PriceChart = (props: Props) => {
-  const { nft } = props
+  const { nft, values, labels } = props
 
-  const dataCanvas = (canvas: any) => {
+  const data = (canvas: HTMLCanvasElement) => {
     const ctx = canvas.getContext('2d')
-    const gradient = ctx.createLinearGradient(0, 0, 0, 180)
-    gradient.addColorStop(0, 'rgba(242,49,175,0.3)')
-    gradient.addColorStop(1, 'rgba(242,49,175,0)')
+    const gradient = ctx?.createLinearGradient(0, 0, 0, 210)
+    gradient?.addColorStop(0, 'rgba(242,49,175,0.4)')
+    gradient?.addColorStop(1, 'rgba(242,49,175,0)')
 
     return {
-      labels: [
-        '02:00',
-        '04:00',
-        '06:00',
-        '08:00',
-        '10:00',
-        '12:00',
-        '14:00',
-        '16:00',
-        '18:00',
-        '20:00',
-        '22:00',
-        '00:00',
-        'asd',
-        'asd'
-      ],
+      labels: labels,
       datasets: [
         {
           pointBorderColor: 'rgba(0, 0, 0, 0)',
@@ -41,35 +26,19 @@ const PriceChart = (props: Props) => {
           borderColor: '#F231AF',
           borderWidth: 2,
           pointColor: '#fff',
-          data: [
-            25.0,
-            32.4,
-            22.2,
-            39.4,
-            34.2,
-            22.0,
-            23.2,
-            24.1,
-            20.0,
-            18.4,
-            19.1,
-            17.4
-          ]
+          data: values
         }
       ]
     }
   }
 
-  const optionsCanvas = {
-    tooltips: {
-      enabled: false,
-      mode: 'x',
-      intersect: false
-    },
+  const options = {
     elements: {
       point: {
         pointStyle: 'circle',
-        hoverRadius: 7
+        hoverRadius: 8,
+        borderWidth: 2,
+        hoverBorderWidth: 2
       }
     },
     plugins: {
@@ -78,11 +47,15 @@ const PriceChart = (props: Props) => {
       },
       tooltip: {
         enabled: false,
-        caretPadding: 100,
-        caretSize: 105,
-        external: function(context: any) {
+        external: (context: any) => {
           let tooltipEl = document.getElementById('chartjs-tooltip')
-
+          let lineEl = document.getElementById('chartjs-line')
+          if (!lineEl) {
+            lineEl = document.createElement('div')
+            lineEl.id = 'chartjs-line'
+            lineEl.innerHTML = '<table></table>'
+            document.body.appendChild(lineEl)
+          }
           if (!tooltipEl) {
             tooltipEl = document.createElement('div')
             tooltipEl.id = 'chartjs-tooltip'
@@ -93,6 +66,7 @@ const PriceChart = (props: Props) => {
           let tooltipModel = context.tooltip
           if (tooltipModel.opacity === 0) {
             tooltipEl.style.opacity = '0'
+            lineEl.style.opacity = '0'
             return
           }
 
@@ -113,20 +87,11 @@ const PriceChart = (props: Props) => {
 
             let innerHtml = '<thead>'
 
-            titleLines.forEach(function(title: any) {
-              innerHtml += '<tr><th>' + title + '</th></tr>'
+            bodyLines.forEach(function(title: string[]) {
+              innerHtml +=
+                '<tr><th>' + title[0].replace(',', '') + ' KMON' + '</th></tr>'
             })
-            innerHtml += '</thead><tbody>'
-
-            bodyLines.forEach(function(body: any, i: any) {
-              console.log(body)
-
-              const colors = tooltipModel.labelColors[i]
-              let style = 'background:' + colors.backgroundColor
-              style += '; border-color:' + colors.borderColor
-              style += '; border-width: 2px'
-            })
-            innerHtml += '</tbody>'
+            innerHtml += '</thead>'
 
             const tableRoot = tooltipEl.querySelector('table')
             if (tableRoot) {
@@ -135,11 +100,27 @@ const PriceChart = (props: Props) => {
           }
 
           const position = context.chart.canvas.getBoundingClientRect()
+
           tooltipEl.style.opacity = '1'
+
           tooltipEl.style.left =
-            position.left + window.pageXOffset + tooltipModel.caretX - 34 + 'px'
+            position.left +
+            window.pageXOffset +
+            (tooltipModel.caretX - 54) +
+            'px'
           tooltipEl.style.top =
-            position.top + window.pageYOffset + tooltipModel.caretY - 45 + 'px'
+            position.top +
+            window.pageYOffset +
+            (tooltipModel.caretY - 44) +
+            'px'
+
+          lineEl.style.opacity = '1'
+
+          lineEl.style.left =
+            position.left + window.pageXOffset + tooltipModel.caretX + 'px'
+          lineEl.style.top =
+            position.top + window.pageYOffset + tooltipModel.caretY + 'px'
+          lineEl.style.height = 211 - tooltipModel.caretY + 'px'
         }
       }
     },
@@ -152,9 +133,9 @@ const PriceChart = (props: Props) => {
         ticks: {
           autoSkip: true,
           color: '#676370',
-          align: 'start',
+          align: 'center',
           font: {
-            size: 16,
+            size: 12,
             family: 'PT-Mono'
           }
         },
@@ -164,23 +145,22 @@ const PriceChart = (props: Props) => {
       },
       y: {
         grid: {
-          display: false,
-          drawBorder: false
+          drawBorder: false,
+          borderDash: [4],
+          color: '#46444C'
         },
         ticks: {
           autoSkip: true,
           beginAtZero: true,
-          min: 0,
-          max: 100,
           precision: 0,
-          stepSize: 25,
-          callback: (value: number) => {
-            return value + '%'
-          },
+          stepSize: 1000,
           color: '#676370',
           font: {
-            size: 11,
+            size: 10,
             family: 'PT-Mono'
+          },
+          callback: (value: number) => {
+            return `${value}`.replace(',', '')
           }
         }
       }
@@ -188,12 +168,7 @@ const PriceChart = (props: Props) => {
   }
   return (
     <div className="dna-container">
-      <Line
-        width={678}
-        height={210}
-        data={dataCanvas}
-        options={optionsCanvas}
-      />
+      <Line width={678} height={240} data={data} options={options} />
     </div>
   )
 }

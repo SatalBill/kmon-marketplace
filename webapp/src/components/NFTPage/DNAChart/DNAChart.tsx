@@ -49,6 +49,9 @@ const DNAChart = (props: Props) => {
     plugins: {
       legend: {
         display: false
+      },
+      tooltip: {
+        enabled: false
       }
     },
     scales: {
@@ -91,7 +94,7 @@ const DNAChart = (props: Props) => {
           },
           color: '#676370',
           font: {
-            size: 11,
+            size: 10,
             family: 'PT-Mono'
           }
         }

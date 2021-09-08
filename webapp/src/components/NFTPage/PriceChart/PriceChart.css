@@ -42,7 +42,7 @@
 }
 
 #chartjs-tooltip::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100%; /* At the bottom of the tooltip */
   left: 50%;
@@ -50,4 +50,12 @@
   border-width: 6px;
   border-style: solid;
   border-color: #39c876 transparent transparent transparent;
+}
+
+#chartjs-line {
+  position: absolute;
+  background-image: linear-gradient(#f231af 33%, rgba(255, 255, 255, 0) 0%);
+  background-position: left;
+  background-size: 1px 10px;
+  background-repeat: repeat-y;
 }

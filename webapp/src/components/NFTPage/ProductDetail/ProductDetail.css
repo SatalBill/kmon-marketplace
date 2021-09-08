@@ -108,3 +108,28 @@
 .product-container {
   margin-top: 133px;
 }
+
+.price-dropdown {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.price-dropdown > .text {
+  color: #676370 !important;
+  font-size: 12px !important;
+  font-family: Poppins;
+  text-transform: none !important;
+  height: 20px;
+  display: flex !important;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.price-dropdown > .dropdown.icon {
+  color: #676370 !important;
+}
+
+.price-dropdown > .text::before {
+  content: url(../../../images/egg/calendar.svg);
+  margin-right: 7px;
+}

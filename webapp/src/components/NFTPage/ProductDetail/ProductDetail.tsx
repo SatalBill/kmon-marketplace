@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, SyntheticEvent } from 'react'
 import { Container } from '@kmon/ui'
+import { Dropdown } from 'semantic-ui-react'
 import { Row } from '../../Layout/Row'
+import { Column } from '../../Layout/Column'
 import { Props } from './ProductDetail.types'
 import './ProductDetail.css'
 import { NFTDetailCard } from '../../NFTDetailCard'
@@ -18,12 +20,46 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
-import { Column } from '../../Layout/Column'
 
 const WearableDetail = (props: Props) => {
   const { nft, onNavigate } = props
-  const genes = nft.data.kryptomon?.genes
+  const PRICE_DROPDOWN_VALUES = {
+    DAY: 'Day',
+    WEEK: 'Week',
+    MONTH: 'Month'
+  }
+  const [currentPriceFilter, setCurrentPriceFilter] = useState(
+    PRICE_DROPDOWN_VALUES.MONTH
+  )
 
+  const onChangeCurrentPriceFilter = (event: SyntheticEvent, data: any) => {
+    console.log(event)
+    setCurrentPriceFilter(data.text)
+  }
+
+  const PRICE_CHART = {
+    [PRICE_DROPDOWN_VALUES.DAY]: {
+      labels: [
+        '02.09.2021',
+        '03.09.2021',
+        '04.09.2021',
+        '05.09.2021',
+        '06.09.2021',
+        'Today',
+        '08.09.2021'
+      ],
+      values: [1125, 2000, 2102, 3212, 1020, 3709]
+    },
+    [PRICE_DROPDOWN_VALUES.WEEK]: {
+      labels: ['1st', '2nd', '3rd', '4th'],
+      values: [1332, 5682, 1239, 4682]
+    },
+    [PRICE_DROPDOWN_VALUES.MONTH]: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Today', 'July', 'Aug'],
+      values: [1625, 1332, 2322, 1239, 2223, 2578]
+    }
+  }
+  const genes = nft.data.kryptomon?.genes
   const elementTypes = [
     {
       title: 'Water',
@@ -99,8 +135,35 @@ const WearableDetail = (props: Props) => {
             nft={nft}
           />
         </TitleBlock>
-        <TitleBlock title="Price chart">
-          <PriceChart nft={nft} />
+        <TitleBlock
+          title="Price chart"
+          right={
+            <Dropdown
+              text={currentPriceFilter}
+              className="ui dropdown price-dropdown"
+            >
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.MONTH}
+                />
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.WEEK}
+                />
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.DAY}
+                />
+              </Dropdown.Menu>
+            </Dropdown>
+          }
+        >
+          <PriceChart
+            nft={nft}
+            values={PRICE_CHART[currentPriceFilter].values}
+            labels={PRICE_CHART[currentPriceFilter].labels}
+          />
         </TitleBlock>
       </Row>
       <TitleBlock title="Description">
