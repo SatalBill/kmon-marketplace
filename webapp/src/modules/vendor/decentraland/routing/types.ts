@@ -1,5 +1,18 @@
 export enum Section {
   ALL = 'all',
+  POPULAR = 'popular',
+  NEWEST = 'newest',
+  GENERATIONS = 'generations',
+  GENERATIONS_0 = 'gen_0',
+  GENERATIONS_1 = 'gen_1',
+  GENERATIONS_2 = 'gen_2',
+  GENERATIONS_3 = 'gen_3',
+  GENERATIONS_4 = 'gen_4',
+  GENERATIONS_5 = 'gen_5',
+  GENERATIONS_6 = 'gen_6',
+  GENERATIONS_7 = 'gen_7',
+  GENERATIONS_8 = 'gen_8',
+  GENERATIONS_9 = 'gen_9',
 
   LAND = 'land',
   PARCELS = 'parcels',

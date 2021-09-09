@@ -6,6 +6,16 @@ import { Row } from '../Layout/Row'
 
 const NFTDetailCard = (props: Props) => {
   const { nft, maxElementType, order } = props
+  const date = nft.metadata.attributes?.find(
+    elem => elem.trait_type === 'Birthday'
+  )?.value
+  const dateArr = date ? date.toString().split('-') : []
+  const formattedDate = new Date(+dateArr[2], +dateArr[1], +dateArr[0])
+  const month = formattedDate.toLocaleString('default', { month: 'short' })
+  const day = dateArr[0]
+  const year = dateArr[2]
+  const laid = `${month} ${day} ${year}`
+
   return (
     <div className="card">
       <div className="card-image-container">
@@ -18,14 +28,6 @@ const NFTDetailCard = (props: Props) => {
             src={maxElementType.icon}
             alt="icon"
           />
-          <div className="product-info">
-            {/* <p className="product-info-value">
-              INDEX VALUE {order?.price && formatMANA(order.price)} BNB
-            </p> */}
-            {/* <p className="product-info-number">
-              {'No. 2533'} <div className="product-verified" />
-            </p> */}
-          </div>
         </div>
       </div>
       <div className="product-description">
@@ -37,9 +39,7 @@ const NFTDetailCard = (props: Props) => {
           <p className="product-description-left-item">
             Gen: {nft.data.kryptomon?.genes.generation}
           </p>
-          <p className="product-description-left-item">
-            Element: {maxElementType.title}
-          </p>
+          <p className="product-description-left-item">Laid: {laid}</p>
         </div>
         <div className="product-description-right">ERC-721</div>
       </div>

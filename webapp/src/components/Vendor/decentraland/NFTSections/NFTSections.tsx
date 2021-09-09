@@ -8,10 +8,11 @@ import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
   const { section, onSectionClick } = props
+  console.log('SECTION--- ', section)
 
   return (
     <Menu className="NFTSections">
-      {[Section.ALL, Section.LAND].map(menuSection => (
+      {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
         <MenuItem
           key={menuSection}
           value={menuSection}
