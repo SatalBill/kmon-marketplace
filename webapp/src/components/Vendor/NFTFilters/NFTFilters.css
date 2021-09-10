@@ -81,8 +81,9 @@
 }
 
 .NFTFilters .ui.toggle.checkbox input.hidden + label:before {
-  width: 28px;
+  width: 26px;
   height: 12px;
+  background-color: black !important;
 }
 
 .NFTFilters .ui.toggle.checkbox input.hidden + label:after {
@@ -94,6 +95,7 @@
 .NFTFilters .ui.toggle.checkbox label,
 .NFTFilters .ui.dropdown > .text {
   text-transform: uppercase;
+  font-family: var(--font-family);
 }
 
 .NFTFilters .filters .ui.dropdown .visible.menu {
