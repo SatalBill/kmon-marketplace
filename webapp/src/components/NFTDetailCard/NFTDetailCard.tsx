@@ -5,7 +5,7 @@ import './NFTDetailCard.css'
 import { Row } from '../Layout/Row'
 
 const NFTDetailCard = (props: Props) => {
-  const { nft, maxElementType, order } = props
+  const { nft, maxElementType } = props
   const date = nft.metadata.attributes?.find(
     elem => elem.trait_type === 'Birthday'
   )?.value

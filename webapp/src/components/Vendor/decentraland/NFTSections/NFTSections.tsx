@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
-import { DropdownMenu } from '../../../Menu/DropdownMenu'
 import { MenuItem } from '../../../Menu/MenuItem'
 import { Props } from './NFTSections.types'
 
@@ -34,42 +33,35 @@ const NFTSections = (props: Props) => {
         : null}
 
       <MenuItem
-        value={Section.WEARABLES}
+        value={Section.GENERATIONS}
         currentValue={section}
         onClick={onSectionClick}
       />
       {[
-        Section.WEARABLES,
-        Section.WEARABLES_HEAD,
-        Section.WEARABLES_FACIAL_HAIR,
-        Section.WEARABLES_HAIR,
-        Section.WEARABLES_UPPER_BODY,
-        Section.WEARABLES_LOWER_BODY,
-        Section.WEARABLES_FEET,
-        Section.WEARABLES_ACCESORIES,
-        Section.WEARABLES_EARRING,
-        Section.WEARABLES_EYEWEAR,
-        Section.WEARABLES_HAT,
-        Section.WEARABLES_HELMET,
-        Section.WEARABLES_MASK,
-        Section.WEARABLES_TIARA,
-        Section.WEARABLES_TOP_HEAD
+        Section.GENERATIONS,
+        Section.GENERATIONS_0,
+        Section.GENERATIONS_1,
+        Section.GENERATIONS_2,
+        Section.GENERATIONS_3,
+        Section.GENERATIONS_4,
+        Section.GENERATIONS_5,
+        Section.GENERATIONS_6,
+        Section.GENERATIONS_7,
+        Section.GENERATIONS_8,
+        Section.GENERATIONS_9
       ].includes(section!) ? (
         <>
-          <DropdownMenu
-            values={[
-              Section.WEARABLES_HEAD,
-              Section.WEARABLES_FACIAL_HAIR,
-              Section.WEARABLES_HAIR
-            ]}
-            currentValue={section}
-            onMenuItemClick={onSectionClick}
-          />
-
           {[
-            Section.WEARABLES_UPPER_BODY,
-            Section.WEARABLES_LOWER_BODY,
-            Section.WEARABLES_FEET
+            Section.GENERATIONS_0,
+            Section.GENERATIONS_1,
+            Section.GENERATIONS_2,
+            Section.GENERATIONS_3,
+            Section.GENERATIONS_4,
+            Section.GENERATIONS_5,
+            Section.GENERATIONS_6,
+            Section.GENERATIONS_7,
+            Section.GENERATIONS_8,
+            Section.GENERATIONS_9
           ].map(menuSection => (
             <MenuItem
               key={menuSection}
@@ -79,29 +71,8 @@ const NFTSections = (props: Props) => {
               nestedLevel={1}
             />
           ))}
-
-          <DropdownMenu
-            values={[
-              Section.WEARABLES_ACCESORIES,
-              Section.WEARABLES_EARRING,
-              Section.WEARABLES_EYEWEAR,
-              Section.WEARABLES_HAT,
-              Section.WEARABLES_HELMET,
-              Section.WEARABLES_MASK,
-              Section.WEARABLES_TIARA,
-              Section.WEARABLES_TOP_HEAD
-            ]}
-            currentValue={section}
-            onMenuItemClick={onSectionClick}
-          />
         </>
       ) : null}
-
-      <MenuItem
-        value={Section.ENS}
-        currentValue={section}
-        onClick={onSectionClick}
-      />
     </Menu>
   )
 }

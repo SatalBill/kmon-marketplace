@@ -1,72 +1,175 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { NFTCategory } from '@kmon/schemas'
-import { Container, Header } from '@kmon/ui'
-import { T } from '@kmon/dapps/dist/modules/translation/utils'
-
-import { getNFTName } from '../../../modules/nft/utils'
-import { locations } from '../../../modules/routing/locations'
-import { PageHeader } from '../../PageHeader'
-import { NFTImage } from '../../NFTImage'
+import React, { useState, SyntheticEvent } from 'react'
+import { Container } from '@kmon/ui'
+import { Dropdown } from 'semantic-ui-react'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
-import { Coordinate } from '../../Coordinate'
-import { Title } from '../Title'
-import { Owner } from '../Owner'
-import { Description } from '../Description'
-import { OrderDetails } from '../OrderDetails'
-import { Actions } from '../Actions'
-import { ProximityHighlights } from '../ProximityHighlights'
-import { TransactionHistory } from '../TransactionHistory'
-import { Bids } from '../Bids'
-import { JumpIn } from '../JumpIn'
 import { Props } from './KryptomonDetail.types'
 import './KryptomonDetail.css'
-import { KryptomonMetadataResponse } from '../../../modules/vendor/decentraland'
+import { NFTDetailCard } from '../../NFTDetailCard'
+import { Elements } from '../Elements'
+import { TitleBlock } from '../TitleBlock'
+import { DescriptionBlock } from '../DescriptionBlock'
+import { Details } from '../Details'
+import { DNAChart } from '../DNAChart'
+import { PriceChart } from '../PriceChart'
+import Ice from '../../../images/egg/elem-ice.svg'
+import Air from '../../../images/egg/elem-air.svg'
+import Electro from '../../../images/egg/elem-electro.svg'
+import Ghost from '../../../images/egg/elem-ghost.svg'
+import Grass from '../../../images/egg/elem-grass.svg'
+import Ground from '../../../images/egg/elem-ground.svg'
+import Water from '../../../images/egg/elem-water.svg'
+import Fire from '../../../images/egg/elem-fire.svg'
 
 const KryptomonDetail = (props: Props) => {
-  const { nft } = props
-  const kryptomon = nft.data.kryptomon!
+  const { nft, onNavigate } = props
+  const PRICE_DROPDOWN_VALUES = {
+    DAY: 'Day',
+    WEEK: 'Week',
+    MONTH: 'Month'
+  }
+  const [currentPriceFilter, setCurrentPriceFilter] = useState(
+    PRICE_DROPDOWN_VALUES.MONTH
+  )
+
+  const onChangeCurrentPriceFilter = (event: SyntheticEvent, data: any) => {
+    console.log(event)
+    setCurrentPriceFilter(data.text)
+  }
+
+  const PRICE_CHART = {
+    [PRICE_DROPDOWN_VALUES.DAY]: {
+      labels: [
+        '02.09.2021',
+        '03.09.2021',
+        '04.09.2021',
+        '05.09.2021',
+        '06.09.2021',
+        'Today',
+        '08.09.2021'
+      ],
+      values: [1125, 2000, 2102, 3212, 1020, 3709]
+    },
+    [PRICE_DROPDOWN_VALUES.WEEK]: {
+      labels: ['1st', '2nd', '3rd', '4th'],
+      values: [1332, 5682, 1239, 4682]
+    },
+    [PRICE_DROPDOWN_VALUES.MONTH]: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Today', 'July', 'Aug'],
+      values: [1625, 1332, 2322, 1239, 2223, 2578]
+    }
+  }
+  const genes = nft.data.kryptomon?.genes
+  const elementTypes = [
+    {
+      title: 'Water',
+      value: genes?.water,
+      icon: Water
+    },
+    {
+      title: 'Grass',
+      value: genes?.grass,
+      icon: Grass
+    },
+    {
+      title: 'Fire',
+      value: genes?.fireGenes,
+      icon: Fire
+    },
+    {
+      title: 'Electro',
+      value: genes?.electro,
+      icon: Electro
+    },
+    {
+      title: 'Ground',
+      value: genes?.ground,
+      icon: Ground
+    },
+    {
+      title: 'Ghost',
+      value: genes?.ghost,
+      icon: Ghost
+    },
+    {
+      title: 'Ice',
+      value: genes?.ice,
+      icon: Ice
+    },
+    {
+      title: 'Air',
+      value: genes?.air,
+      icon: Air
+    }
+  ]
+
+  const maxElementType = elementTypes.reduce((prev, current) => {
+    return ((prev &&
+      typeof prev.value === 'string' &&
+      Number.parseInt(prev.value)) ||
+      0) >
+      ((current &&
+        typeof current.value === 'string' &&
+        Number.parseInt(current.value)) ||
+        0)
+      ? prev
+      : current
+  })
 
   return (
-    <>
-      <PageHeader>
-        <NFTImage
-          nft={nft}
-          isDraggable={true}
-          withNavigation={true}
-          hasPopup={true}
-        />
-      </PageHeader>
-      <Container className="ParcelDetail">
-        <Title
-          leftClassName="left-title"
-          left={
-            <>
-              <Header className="parcel-title-name" size="large">
-                {getNFTName(nft)}
-              </Header>
-            </>
-          }
-          rightClassName="right-title"
+    <Container className="product-container">
+      <Row>
+        <NFTDetailCard maxElementType={maxElementType} nft={nft} />
+        <Column>
+          <Details nft={nft} />
+          <TitleBlock title="DNA chart">
+            <DNAChart nft={nft} />
+          </TitleBlock>
+        </Column>
+      </Row>
+      <Row>
+        <TitleBlock title="Elements">
+          <Elements
+            elementTypes={elementTypes}
+            maxElementType={maxElementType}
+            nft={nft}
+          />
+        </TitleBlock>
+        <TitleBlock
+          title="Price chart"
           right={
-            <Owner nft={nft} />
+            <Dropdown
+              text={currentPriceFilter}
+              className="ui dropdown price-dropdown"
+            >
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.MONTH}
+                />
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.WEEK}
+                />
+                <Dropdown.Item
+                  onClick={onChangeCurrentPriceFilter}
+                  text={PRICE_DROPDOWN_VALUES.DAY}
+                />
+              </Dropdown.Menu>
+            </Dropdown>
           }
-        />
-        <Description text={kryptomon.description} />
-        <Row>
-          <Column align="left" grow={true}>
-            <OrderDetails nft={nft} />
-          </Column>
-          <Column align="right">
-            <Actions nft={nft} />
-          </Column>
-        </Row>
-        <ProximityHighlights nft={nft} />
-        <Bids nft={nft} />
-        <TransactionHistory nft={nft} />
-      </Container>
-    </>
+        >
+          <PriceChart
+            nft={nft}
+            values={PRICE_CHART[currentPriceFilter].values}
+            labels={PRICE_CHART[currentPriceFilter].labels}
+          />
+        </TitleBlock>
+      </Row>
+      <TitleBlock title="Description">
+        <DescriptionBlock nft={nft} />
+      </TitleBlock>
+    </Container>
   )
 }
 
