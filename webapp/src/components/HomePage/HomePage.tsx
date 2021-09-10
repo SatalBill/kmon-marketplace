@@ -69,10 +69,11 @@ const HomePage = (props: Props) => {
         </Hero.Actions>
       </Hero>
       <Page className="HomePage">
-        {views.map(view => (
+        {console.log({ homepage, views })}
+        {views.map((view, index) => (
           <>
             <Slideshow
-              key={view}
+              key={`${view}-${index}`}
               title={t(`home_page.${view}`)}
               nfts={homepage[view]}
               isLoading={homepageLoading[view]}

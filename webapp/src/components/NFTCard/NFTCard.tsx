@@ -22,7 +22,7 @@ import Fire from '../../images/egg/elem-fire.svg'
 import { Row } from '../Layout/Row'
 
 const NFTCard = (props: Props) => {
-  const { nft, order } = props
+  const { nft, order, status } = props
   const genes = nft.data.kryptomon?.genes
   // const elementType = nft.metadata.attributes?.find(
   //   elem => elem.trait_type === 'Element Type'
@@ -96,11 +96,17 @@ const NFTCard = (props: Props) => {
           <NFTImage nft={nft} showMonospace />
         </div>
         <div className="card-image-text">
-          <img
-            className="product-type-icon"
-            src={maxElementType.icon}
-            alt="icon"
-          />
+          {status ? (
+            <div className="product-type-price-container">
+              <div className="product-type-price">{status.title}</div>
+            </div>
+          ) : (
+            <img
+              className="product-type-icon"
+              src={maxElementType.icon}
+              alt="icon"
+            />
+          )}
           <div className="product-info">
             <p className="product-info-value">
               INDEX VALUE {(order?.price && formatMANA(order.price)) || '0000'}{' '}

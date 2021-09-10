@@ -9,7 +9,13 @@ const Slideshow = (props: Props) => {
   const { title, nfts, isSubHeader, isLoading, onViewAll } = props
 
   const renderNfts = () =>
-    nfts.map((nft, index) => <NFTCard key={index} nft={nft} />)
+    nfts.map((nft, index) => (
+      <NFTCard
+        key={index}
+        nft={nft}
+        status={{ title: '0000 KMON', color: 'red' }}
+      />
+    ))
 
   return (
     <div className="Slideshow">
