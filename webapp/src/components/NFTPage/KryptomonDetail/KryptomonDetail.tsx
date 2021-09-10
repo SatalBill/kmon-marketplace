@@ -118,7 +118,7 @@ const KryptomonDetail = (props: Props) => {
 
   return (
     <Container className="product-container">
-      <Row>
+      <Row className="Row-space-between">
         <NFTDetailCard maxElementType={maxElementType} nft={nft} />
         <Column>
           <Details nft={nft} />
@@ -127,7 +127,7 @@ const KryptomonDetail = (props: Props) => {
           </TitleBlock>
         </Column>
       </Row>
-      <Row>
+      <Row className="Row-space-between">
         <TitleBlock title="Elements">
           <Elements
             elementTypes={elementTypes}
