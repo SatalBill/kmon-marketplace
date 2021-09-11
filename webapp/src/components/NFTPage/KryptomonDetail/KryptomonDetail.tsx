@@ -22,7 +22,7 @@ import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
 
 const KryptomonDetail = (props: Props) => {
-  const { nft, onNavigate } = props
+  const { nft } = props
   const PRICE_DROPDOWN_VALUES = {
     DAY: 'Day',
     WEEK: 'Week',
@@ -32,8 +32,7 @@ const KryptomonDetail = (props: Props) => {
     PRICE_DROPDOWN_VALUES.MONTH
   )
 
-  const onChangeCurrentPriceFilter = (event: SyntheticEvent, data: any) => {
-    console.log(event)
+  const onChangeCurrentPriceFilter = (_event: SyntheticEvent, data: any) => {
     setCurrentPriceFilter(data.text)
   }
 

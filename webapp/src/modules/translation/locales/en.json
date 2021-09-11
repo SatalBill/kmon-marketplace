@@ -33,7 +33,8 @@
     "collectibles": "Eggs",
     "kryptomons": "Kryptomons",
     "items": "Items",
-    "my_assets": "My Assets"
+    "my_assets": "My Assets",
+    "activity": "Activity"
   },
   "menu": {
     "all": "All Assets",

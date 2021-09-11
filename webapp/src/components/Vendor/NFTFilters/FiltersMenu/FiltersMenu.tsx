@@ -4,7 +4,7 @@ import { Row } from '@kmon/ui'
 import { ArrayFilter } from '../ArrayFilter'
 import { SelectFilter } from '../SelectFilter'
 import { Props } from './FiltersMenu.types'
-import { Network, NFTCategory, Rarity } from '@kmon/schemas'
+import { Network, Rarity } from '@kmon/schemas'
 import { contracts } from '../../../../modules/contract/utils'
 
 export const ALL_FILTER_OPTION = 'ALL'

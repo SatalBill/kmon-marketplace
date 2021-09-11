@@ -1,4 +1,3 @@
-import { NFTCategory } from '@kmon/schemas'
 import { getSearchCategory, getSearchWearableCategory } from '../routing/search'
 import { SearchOptions } from '../routing/types'
 import { Section } from './routing/types'
@@ -26,11 +25,7 @@ export function getFilters(
           ? getSearchWearableCategory(section!)
           : undefined
 
-      const {
-        wearableRarities,
-        contracts,
-        network
-      } = searchOptions
+      const { wearableRarities, contracts, network } = searchOptions
 
       return {
         isLand,

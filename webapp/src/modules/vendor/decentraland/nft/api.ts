@@ -1,6 +1,5 @@
 import { NFTsFetchParams } from '../../../nft/types'
 import { NFTsFetchFilters, NFTResponse } from './types'
-import { getSortBy } from '../../../nft/utils'
 import { ATLAS_SERVER_URL } from '../land'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'

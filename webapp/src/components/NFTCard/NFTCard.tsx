@@ -1,16 +1,12 @@
 import React from 'react'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 
 import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
-import { getNFTName } from '../../modules/nft/utils'
 import { NFTImage } from '../NFTImage'
-import { Mana } from '../Mana'
 import { Props } from './NFTCard.types'
 import './NFTCard.css'
-import { KryptomonTags } from './KryptomonTags'
 import Ice from '../../images/egg/elem-ice.svg'
 import Air from '../../images/egg/elem-air.svg'
 import Electro from '../../images/egg/elem-electro.svg'
@@ -24,10 +20,7 @@ import { Row } from '../Layout/Row'
 const NFTCard = (props: Props) => {
   const { nft, order, status } = props
   const genes = nft.data.kryptomon?.genes
-  // const elementType = nft.metadata.attributes?.find(
-  //   elem => elem.trait_type === 'Element Type'
-  // )
-  const title = getNFTName(nft)
+
   const elementTypes = [
     {
       title: 'Water',

@@ -1,7 +1,6 @@
 import { NFTCategory } from '@kmon/schemas'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
-import { VendorName } from '../vendor/types'
 import { SortDirection, SortBy } from '../routing/types'
 import { addressEquals } from '../wallet/utils'
 import { NFT, NFTSortBy } from './types'

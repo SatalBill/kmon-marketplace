@@ -7,7 +7,6 @@ import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
   const { section, onSectionClick } = props
-  console.log('SECTION--- ', section)
 
   return (
     <Menu className="NFTSections">

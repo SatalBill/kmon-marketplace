@@ -1,9 +1,7 @@
 import { Eth } from 'web3x-es/eth'
 import { Address } from 'web3x-es/address'
-import { NFTCategory } from '@kmon/schemas'
 import { getConnectedProvider } from '@kmon/dapps/dist/lib/eth'
 import { EstateRegistry } from '../../../contracts/EstateRegistry'
-import { NFT } from '../types'
 import { getContract } from '../../contract/utils'
 
 export const getCenter = (selection: { x: number; y: number }[]) => {

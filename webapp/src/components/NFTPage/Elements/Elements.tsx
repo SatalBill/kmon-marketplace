@@ -1,10 +1,9 @@
 import React from 'react'
-import { getNFTName } from '../../../modules/nft/utils'
 import { Props } from './Elements.types'
 import './Elements.css'
 
 const Elements = (props: Props) => {
-  const { nft, elementTypes, maxElementType, order } = props
+  const { elementTypes, maxElementType } = props
 
   return (
     <div className="container">

@@ -3,8 +3,6 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 import { Page, Hero, Button } from '@kmon/ui'
 import { locations } from '../../modules/routing/locations'
-import { VendorName } from '../../modules/vendor/types'
-import { SortBy } from '../../modules/routing/types'
 import { View } from '../../modules/ui/types'
 import { HomepageView } from '../../modules/ui/nft/homepage/types'
 import { Section } from '../../modules/vendor/decentraland/routing/types'
@@ -33,11 +31,10 @@ const HomePage = (props: Props) => {
     [onNavigate]
   )
 
-  const vendor = VendorName.DECENTRALAND
-
   useEffect(() => {
     let view: HomepageView
     for (view in homepage) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const section = sections[view]
       onFetchNFTsFromRoute({
         // vendor,
@@ -69,7 +66,6 @@ const HomePage = (props: Props) => {
         </Hero.Actions>
       </Hero>
       <Page className="HomePage">
-        {console.log({ homepage, views })}
         {views.map((view, index) => (
           <>
             <Slideshow

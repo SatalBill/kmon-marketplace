@@ -4,7 +4,7 @@ import './PriceChart.css'
 import { Line } from 'react-chartjs-2'
 
 const PriceChart = (props: Props) => {
-  const { nft, values, labels } = props
+  const { values, labels } = props
 
   const data = (canvas: HTMLCanvasElement) => {
     const ctx = canvas.getContext('2d')
@@ -82,14 +82,13 @@ const PriceChart = (props: Props) => {
           }
 
           if (tooltipModel.body) {
-            const titleLines = tooltipModel.title || []
             const bodyLines = tooltipModel.body.map(getBody)
 
             let innerHtml = '<thead>'
 
             bodyLines.forEach(function(title: string[]) {
               innerHtml +=
-                '<tr><th>' + title[0].replace(',', '') + ' KMON' + '</th></tr>'
+                '<tr><th>' + title[0].replace(',', '') + ' KMON</th></tr>'
             })
             innerHtml += '</thead>'
 
