@@ -40,7 +40,8 @@ const DNAChart = (props: Props) => {
         borderRadius: 5,
         width: 678,
         barPercentage: 0.65,
-        categoryPercentage: 0.65
+        categoryPercentage: 0.65,
+        fill: 10
       }
     ]
   }
@@ -62,10 +63,10 @@ const DNAChart = (props: Props) => {
         },
         ticks: {
           autoSkip: true,
-          maxRotation: 90,
-          minRotation: 90,
-          padding: -90,
-          labelOffset: -42,
+          maxRotation: -90,
+          minRotation: -90,
+          padding: -10,
+          labelOffset: 43,
           color: '#676370',
           align: 'start',
           font: {
