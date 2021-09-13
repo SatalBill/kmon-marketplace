@@ -12,6 +12,7 @@ import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
 import { PriceChart } from '../PriceChart'
+import { TradeHistory } from '../TradeHistory'
 import Ice from '../../../images/egg/elem-ice.svg'
 import Air from '../../../images/egg/elem-air.svg'
 import Electro from '../../../images/egg/elem-electro.svg'
@@ -165,9 +166,14 @@ const KryptomonDetail = (props: Props) => {
           />
         </TitleBlock>
       </Row>
-      <TitleBlock title="Description">
-        <DescriptionBlock nft={nft} />
-      </TitleBlock>
+      <Row className="Row-space-between">
+        <TitleBlock title="Description">
+          <DescriptionBlock nft={nft} />
+        </TitleBlock>
+        <TitleBlock title="Trade history">
+          <TradeHistory nft={nft} />
+        </TitleBlock>
+      </Row>
     </Container>
   )
 }
