@@ -101,6 +101,7 @@
     "home_ens": "Names",
     "kryptomons": "Latest Listing"
   },
+  "details_page": {},
   "partners_page": {
     "partners": "Partners",
     "latest_from": "Latest from {vendor}"
@@ -153,7 +154,49 @@
     "leaving_decentraland": "Leaving Decentraland",
     "leaving_decentraland_description": "You can't publish or update {vendor} assets to the Decentraland Marketplace yet. Do you want to proceed to {vendor_link} to publish it there?",
     "leaving_decentraland_disclaimer": "Your NFTs will still be listed in the Decentraland Marketplace",
-    "part_of_estate": "Part of {estate_name}"
+    "part_of_estate": "Part of {estate_name}",
+    "elements": {
+      "title": "Elements",
+      "water": "Water",
+      "grass": "Grass",
+      "fire": "Fire",
+      "electro": "Electro",
+      "ground": "Ground",
+      "ghost": "Ghost",
+      "ice": "Ice",
+      "air": "Air"
+    },
+    "price_chart": {
+      "title": "Price chart",
+      "day": "Day",
+      "week": "Week",
+      "month": "Month"
+    },
+    "dna_chart": {
+      "title": "DNA chart",
+      "constitution": "Constitution",
+      "affection": "Affection",
+      "craziness": "Craziness",
+      "instinct": "Instinct",
+      "hunger": "Hunger",
+      "laziness": "Laziness",
+      "braveness": "Braveness",
+      "smart": "Smart"
+    },
+    "description_block": {
+      "title": "Description"
+    },
+    "trade_history": {
+      "title": "Trade history",
+      "sale": "Sale",
+      "transfer": "Transfer",
+      "minted": "Minted",
+      "event": "Event",
+      "price": "Price",
+      "from": "From",
+      "to": "To",
+      "date": "Date"
+    }
   },
   "proximity": {
     "adjacent": "Adjacent",

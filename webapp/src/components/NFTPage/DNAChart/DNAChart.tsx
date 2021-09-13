@@ -1,9 +1,10 @@
 import React from 'react'
+import { Bar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
-import { Bar } from 'react-chartjs-2'
-import Star from '../../../images/egg/star.svg'
 import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
+
+import Star from '../../../images/egg/star.svg'
 
 const DNAChart = (props: Props) => {
   const { nft } = props

@@ -1,10 +1,11 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Props } from './TradeHistory.types'
 import './TradeHistory.css'
+
 import DateLink from '../../../images/egg/dateLink.svg'
 import KMON from '../../../images/egg/kmon.svg'
-
 import Transfer from '../../../images/egg/transfer.svg'
 import Sale from '../../../images/egg/sale.svg'
 import Minted from '../../../images/egg/minted.svg'
@@ -77,11 +78,19 @@ const TradeHistory = (props: Props) => {
     <div className="history-container">
       <Table className="history-table" celled padded>
         <Table.Row>
-          <Table.HeaderCell className="event-type">Event</Table.HeaderCell>
-          <Table.HeaderCell>Price</Table.HeaderCell>
-          <Table.HeaderCell>From</Table.HeaderCell>
-          <Table.HeaderCell>To</Table.HeaderCell>
-          <Table.HeaderCell>Date</Table.HeaderCell>
+          <Table.HeaderCell className="event-type">
+            {t('nft_page.trade_history.event')}
+          </Table.HeaderCell>
+          <Table.HeaderCell>
+            {t('nft_page.trade_history.price')}
+          </Table.HeaderCell>
+          <Table.HeaderCell>
+            {t('nft_page.trade_history.from')}
+          </Table.HeaderCell>
+          <Table.HeaderCell>{t('nft_page.trade_history.to')}</Table.HeaderCell>
+          <Table.HeaderCell>
+            {t('nft_page.trade_history.date')}
+          </Table.HeaderCell>
         </Table.Row>
         {events.map((event, index) => {
           const eventIcon = getIconByEventType(event.type)
@@ -89,7 +98,7 @@ const TradeHistory = (props: Props) => {
             <Table.Row key={index}>
               <Table.Cell className="event-type">
                 <img className="event-icon" src={eventIcon} alt="event-icon" />
-                {event.type}
+                {t(`nft_page.trade_history.${event.type}`)}
               </Table.Cell>
               <Table.Cell singleLine>
                 {event.price && (

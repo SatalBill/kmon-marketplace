@@ -1,6 +1,7 @@
 import React, { useState, SyntheticEvent } from 'react'
 import { Container } from '@kmon/ui'
 import { Dropdown } from 'semantic-ui-react'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
 import { Props } from './KryptomonDetail.types'
@@ -25,9 +26,9 @@ import Fire from '../../../images/egg/elem-fire.svg'
 const KryptomonDetail = (props: Props) => {
   const { nft } = props
   const PRICE_DROPDOWN_VALUES = {
-    DAY: 'Day',
-    WEEK: 'Week',
-    MONTH: 'Month'
+    DAY: t('nft_page.price_chart.day'),
+    WEEK: t('nft_page.price_chart.week'),
+    MONTH: t('nft_page.price_chart.month')
   }
   const [currentPriceFilter, setCurrentPriceFilter] = useState(
     PRICE_DROPDOWN_VALUES.MONTH
@@ -60,44 +61,45 @@ const KryptomonDetail = (props: Props) => {
     }
   }
   const genes = nft.data.kryptomon?.genes
+
   const elementTypes = [
     {
-      title: 'Water',
+      title: t('nft_page.elements.water'),
       value: genes?.water,
       icon: Water
     },
     {
-      title: 'Grass',
+      title: t('nft_page.elements.grass'),
       value: genes?.grass,
       icon: Grass
     },
     {
-      title: 'Fire',
+      title: t('nft_page.elements.fire'),
       value: genes?.fireGenes,
       icon: Fire
     },
     {
-      title: 'Electro',
+      title: t('nft_page.elements.electro'),
       value: genes?.electro,
       icon: Electro
     },
     {
-      title: 'Ground',
+      title: t('nft_page.elements.ground'),
       value: genes?.ground,
       icon: Ground
     },
     {
-      title: 'Ghost',
+      title: t('nft_page.elements.ghost'),
       value: genes?.ghost,
       icon: Ghost
     },
     {
-      title: 'Ice',
+      title: t('nft_page.elements.ice'),
       value: genes?.ice,
       icon: Ice
     },
     {
-      title: 'Air',
+      title: t('nft_page.elements.air'),
       value: genes?.air,
       icon: Air
     }
@@ -122,13 +124,13 @@ const KryptomonDetail = (props: Props) => {
         <NFTDetailCard maxElementType={maxElementType} nft={nft} />
         <Column>
           <Details nft={nft} />
-          <TitleBlock title="DNA chart">
+          <TitleBlock title={t('nft_page.dna_chart.title')}>
             <DNAChart nft={nft} />
           </TitleBlock>
         </Column>
       </Row>
       <Row className="Row-space-between">
-        <TitleBlock title="Elements">
+        <TitleBlock title={t('nft_page.elements.title')}>
           <Elements
             elementTypes={elementTypes}
             maxElementType={maxElementType}
@@ -136,7 +138,7 @@ const KryptomonDetail = (props: Props) => {
           />
         </TitleBlock>
         <TitleBlock
-          title="Price chart"
+          title={t('nft_page.price_chart.title')}
           right={
             <Dropdown
               text={currentPriceFilter}
@@ -167,10 +169,10 @@ const KryptomonDetail = (props: Props) => {
         </TitleBlock>
       </Row>
       <Row className="Row-space-between">
-        <TitleBlock title="Description">
+        <TitleBlock title={t('nft_page.description_block.title')}>
           <DescriptionBlock nft={nft} />
         </TitleBlock>
-        <TitleBlock title="Trade history">
+        <TitleBlock title={t('nft_page.trade_history.title')}>
           <TradeHistory nft={nft} />
         </TitleBlock>
       </Row>
