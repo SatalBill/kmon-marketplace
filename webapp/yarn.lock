@@ -2396,17 +2396,17 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.3.tgz#c1aecab8e7720d2d4f5a605e10bf32a88aed988c"
-  integrity sha512-RqdcJs6WubzT9uVd9YfP2kAz0NzvOGa6abK7sEvV8K3vnAE3WrLe37jPmKI3OGNsiaAU03wetSRQeiJAb5SwQg==
+"@kmon/dapps@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.6.tgz#18de5614f1707d38fd07f49798569cd83457e9dc"
+  integrity sha512-p9h2zIdiJKY6GTr/2tt5WVx9lJwtVQYpforFUV64K7pBKCPLQiS3pOXV52+i5l0cLrpKg0vJ9KsMbhcrYaIAkg==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
     "@kmon/connect" "^0.0.0"
-    "@kmon/schemas" "^0.0.2"
+    "@kmon/schemas" "^0.0.3"
     "@kmon/transactions" "^0.0.18"
-    "@kmon/ui" "^0.0.2"
+    "@kmon/ui" "^0.0.6"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.28"
     "@types/uuid" "^3.4.3"
@@ -2447,10 +2447,10 @@
     "@kmon/schemas" "^0.0.3"
     tslint "^6.1.3"
 
-"@kmon/ui@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.2.tgz#a4649a46263dc6ffc0e31e2d0d79faef9fb623dc"
-  integrity sha512-q8W9CutQoGoluRMN+QJTlJ28W2K9TuKuZYu9tPt2A/VlSiKwUPDRdVPCD6PqpNFemqczAV6clJxqk77K6utw0w==
+"@kmon/ui@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.6.tgz#d75500cdc615e8fd08fbb777ce8b222907cc7966"
+  integrity sha512-nBFHuNsO4DMJ/MYgQqaqRUodhoQQEchyRND6w7Qfwg90TIGY5sij9riaKbdgAAUYQKBFho9nigLMHt/aYgrSyw==
   dependencies:
     "@kmon/schemas" "^0.0.3"
     balloon-css "^0.5.0"

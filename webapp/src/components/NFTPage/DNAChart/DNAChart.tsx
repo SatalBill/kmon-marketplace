@@ -24,12 +24,8 @@ const DNAChart = (props: Props) => {
     return elem?.value
   })
 
-  const DNAGeneration = nft.metadata.attributes?.find(
-    elem => elem.trait_type === 'Generation'
-  )?.value
-  const isDNAUnfreezable =
-    nft.metadata.attributes?.find(elem => elem.trait_type === 'Unfreezable')
-      ?.value === 'Yes'
+  const DNAGeneration = nft.data.kryptomon?.genes.generation;
+  const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable;
 
   const data = {
     labels: DNALabels,
