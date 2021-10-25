@@ -30,14 +30,27 @@
     "known_origin": "KnownOrigin"
   },
   "navigation": {
-    "collectibles": "Collectibles",
-    "partners": "Partners",
+    "collectibles": "Eggs",
+    "kryptomons": "Kryptomons",
+    "items": "Items",
     "my_assets": "My Assets",
-    "my_bids": "My Bids",
     "activity": "Activity"
   },
   "menu": {
     "all": "All Assets",
+    "popular": "Popular",
+    "newest": "Newest",
+    "generations": "Generations",
+    "gen_0": "Gen 0",
+    "gen_1": "Gen 1",
+    "gen_2": "Gen 2",
+    "gen_3": "Gen 3",
+    "gen_4": "Gen 4",
+    "gen_5": "Gen 5",
+    "gen_6": "Gen 6",
+    "gen_7": "Gen 7",
+    "gen_8": "Gen 8",
+    "gen_9": "Gen 9",
     "land": "Land",
     "parcels": "Parcels",
     "estates": "Estates",
@@ -79,14 +92,16 @@
     "cheapest": "Cheapest"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
+    "title": "Kryptomon Marketplace",
     "subtitle": "Welcome to the virtual world’s one-stop-shop for the very best digital assets.",
-    "get_started": "Start Browsing",
+    "get_started": "Browse",
     "learn_more": "Learn More",
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
-    "home_ens": "Names"
+    "home_ens": "Names",
+    "kryptomons": "Latest Listing"
   },
+  "details_page": {},
   "partners_page": {
     "partners": "Partners",
     "latest_from": "Latest from {vendor}"
@@ -139,7 +154,49 @@
     "leaving_decentraland": "Leaving Decentraland",
     "leaving_decentraland_description": "You can't publish or update {vendor} assets to the Decentraland Marketplace yet. Do you want to proceed to {vendor_link} to publish it there?",
     "leaving_decentraland_disclaimer": "Your NFTs will still be listed in the Decentraland Marketplace",
-    "part_of_estate": "Part of {estate_name}"
+    "part_of_estate": "Part of {estate_name}",
+    "elements": {
+      "title": "Elements",
+      "water": "Water",
+      "grass": "Grass",
+      "fire": "Fire",
+      "electro": "Electro",
+      "ground": "Ground",
+      "ghost": "Ghost",
+      "ice": "Ice",
+      "air": "Air"
+    },
+    "price_chart": {
+      "title": "Price chart",
+      "day": "Day",
+      "week": "Week",
+      "month": "Month"
+    },
+    "dna_chart": {
+      "title": "DNA chart",
+      "constitution": "Constitution",
+      "affection": "Affection",
+      "craziness": "Craziness",
+      "instinct": "Instinct",
+      "hunger": "Hunger",
+      "laziness": "Laziness",
+      "braveness": "Braveness",
+      "smart": "Smart"
+    },
+    "description_block": {
+      "title": "Description"
+    },
+    "trade_history": {
+      "title": "Trade history",
+      "sale": "Sale",
+      "transfer": "Transfer",
+      "minted": "Minted",
+      "event": "Event",
+      "price": "Price",
+      "from": "From",
+      "to": "To",
+      "date": "Date"
+    }
   },
   "proximity": {
     "adjacent": "Adjacent",
@@ -332,7 +389,7 @@
   },
   "wallet": {
     "sign_in_required": "You need to {sign_in} to access this page.",
-    "sign_in": "Sign In"
+    "sign_in": "Connect"
   },
   "slideshow": {
     "view_all": "View All"
@@ -365,6 +422,16 @@
     "meta_transaction_failure": {
       "title": "Meta transaction",
       "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
+    }
+  },
+  "@dapps": {
+    "navbar": {
+      "account": {
+        "signIn": "Connect"
+      },
+      "menu": {
+        "marketplace": "Market"
+      }
     }
   }
 }

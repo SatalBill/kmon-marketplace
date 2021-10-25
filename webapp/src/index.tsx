@@ -10,7 +10,7 @@ import TranslationProvider from '@kmon/dapps/dist/providers/TranslationProvider'
 
 import './setup'
 import './modules/analytics/track'
-import "./modules/analytics/rollbar"
+import './modules/analytics/rollbar'
 
 import * as locales from './modules/translation/locales'
 import { initStore, history } from './modules/store'

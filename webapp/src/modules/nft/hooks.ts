@@ -1,4 +1,3 @@
-import { NFTCategory } from '@kmon/schemas'
 import { useEffect, useState } from 'react'
 import { TokenConverter } from '../vendor/TokenConverter'
 import { MarketplacePrice } from '../vendor/MarketplacePrice'

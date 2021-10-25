@@ -1,6 +1,5 @@
 import { NFTsFetchParams } from '../../../nft/types'
 import { NFTsFetchFilters, NFTResponse } from './types'
-import { getSortBy } from '../../../nft/utils'
 import { ATLAS_SERVER_URL } from '../land'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
@@ -67,18 +66,18 @@ class NFTAPI {
     const queryParams = new URLSearchParams()
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
-    if (params.orderBy) {
-      queryParams.append('sortBy', getSortBy(params.orderBy))
-    }
+    // if (params.orderBy) {
+    //   queryParams.append('sortBy', getSortBy(params.orderBy))
+    // }
     if (params.category) {
       queryParams.append('category', params.category)
     }
     if (params.address) {
       queryParams.append('owner', params.address)
     }
-    if (params.onlyOnSale) {
-      queryParams.append('isOnSale', 'true')
-    }
+    // if (params.onlyOnSale) {
+    //   queryParams.append('isOnSale', 'true')
+    // }
 
     if (params.search) {
       queryParams.set('search', params.search)

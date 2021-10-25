@@ -49,7 +49,7 @@ export default class IntroPopup extends PureComponent<Props, State> {
                     ),
                     account_link: (
                       <a
-                        href="https://account.decentraland.org"
+                        href="https://account.kryptomon.org"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

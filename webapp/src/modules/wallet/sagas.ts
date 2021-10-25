@@ -1,5 +1,5 @@
 import { takeEvery, all, put } from 'redux-saga/effects'
-import { Network, NFTCategory } from '@kmon/schemas'
+import { Network } from '@kmon/schemas'
 import { createWalletSaga } from '@kmon/dapps/dist/modules/wallet/sagas'
 import {
   ConnectWalletSuccessAction,
@@ -127,8 +127,7 @@ function* handleWallet(
       authorizedAddress: marketplace.address,
       contractAddress: contract.address,
       contractName:
-        contract.category === 'wearable' &&
-          contract.network === Network.MATIC
+        contract.category === 'wearable' && contract.network === Network.MATIC
           ? ContractName.ERC721CollectionV2
           : ContractName.ERC721,
       chainId: contract.chainId,

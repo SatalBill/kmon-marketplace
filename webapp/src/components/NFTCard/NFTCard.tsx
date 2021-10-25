@@ -1,22 +1,81 @@
 import React from 'react'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 
 import { formatMANA } from '../../lib/mana'
 import { locations } from '../../modules/routing/locations'
-import { getNFTName } from '../../modules/nft/utils'
 import { NFTImage } from '../NFTImage'
-import { Mana } from '../Mana'
 import { Props } from './NFTCard.types'
 import './NFTCard.css'
-import { KryptomonTags } from './KryptomonTags'
+import Ice from '../../images/egg/elem-ice.svg'
+import Air from '../../images/egg/elem-air.svg'
+import Electro from '../../images/egg/elem-electro.svg'
+import Ghost from '../../images/egg/elem-ghost.svg'
+import Grass from '../../images/egg/elem-grass.svg'
+import Ground from '../../images/egg/elem-ground.svg'
+import Water from '../../images/egg/elem-water.svg'
+import Fire from '../../images/egg/elem-fire.svg'
+import { Row } from '../Layout/Row'
 
 const NFTCard = (props: Props) => {
-  const { nft, order } = props
+  const { nft, order, status } = props
+  const genes = nft.data.kryptomon?.genes
 
-  const title = getNFTName(nft)
-  const { kryptomon } = nft.data
+  const elementTypes = [
+    {
+      title: 'Water',
+      value: genes?.water,
+      icon: Water
+    },
+    {
+      title: 'Grass',
+      value: genes?.grass,
+      icon: Grass
+    },
+    {
+      title: 'Fire',
+      value: genes?.fireGenes,
+      icon: Fire
+    },
+    {
+      title: 'Electro',
+      value: genes?.electro,
+      icon: Electro
+    },
+    {
+      title: 'Ground',
+      value: genes?.ground,
+      icon: Ground
+    },
+    {
+      title: 'Ghost',
+      value: genes?.ghost,
+      icon: Ghost
+    },
+    {
+      title: 'Ice',
+      value: genes?.ice,
+      icon: Ice
+    },
+    {
+      title: 'Air',
+      value: genes?.air,
+      icon: Air
+    }
+  ]
+
+  const maxElementType = elementTypes.reduce((prev, current) => {
+    return ((prev &&
+      typeof prev.value === 'string' &&
+      Number.parseInt(prev.value)) ||
+      0) >
+      ((current &&
+        typeof current.value === 'string' &&
+        Number.parseInt(current.value)) ||
+        0)
+      ? prev
+      : current
+  })
 
   return (
     <Card
@@ -25,19 +84,65 @@ const NFTCard = (props: Props) => {
       as={Link}
       to={locations.nft(nft.contractAddress, nft.tokenId)}
     >
-      <NFTImage nft={nft} showMonospace />
-      <Card.Content>
-        <Card.Header>
-          <div className="title">{title}</div>{' '}
-          {order ? (
+      <div className="card-image-container">
+        <div className="card-image">
+          <NFTImage nft={nft} showMonospace />
+        </div>
+        <div className="card-image-text">
+          {status ? (
+            <div className="product-type-price-container">
+              <div className="product-type-price">{status.title}</div>
+            </div>
+          ) : (
+            <img
+              className="product-type-icon"
+              src={maxElementType.icon}
+              alt="icon"
+            />
+          )}
+          <div className="product-info">
+            <p className="product-info-value">
+              INDEX VALUE {(order?.price && formatMANA(order.price)) || '0000'}{' '}
+              BNB
+            </p>
+            <Row>
+              <p className="product-info-number-card">No. {nft.name}</p>
+              <div className="product-verified" />
+            </Row>
+          </div>
+        </div>
+      </div>
+      {/* <Card.Content> */}
+      {/* <Card.Header> */}
+      <div className="product-description">
+        <div className="product-description-left">
+          <p className="product-description-left-item">
+            Gen: {nft.data.kryptomon?.genes.generation}
+          </p>
+          <p className="product-description-left-item">
+            Element: {maxElementType.title}
+          </p>
+        </div>
+        <div className="product-description-right">ERC-721</div>
+      </div>
+      {/* {order ? (
             <Mana network={nft.network} inline>
               {formatMANA(order.price)}
             </Mana>
-          ) : null}
+          ) : null} */}
+      {/* </Card.Header> */}
+      {/* <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
+        {parcel ? <ParcelTags className="tags" nft={nft} /> : null}
+        {estate ? <EstateTags nft={nft} /> : null}
+        {wearable ? <WearableTags nft={nft} /> : null}
+        {ens ? <ENSTags nft={nft} /> : null} */}
+      {/* </Card.Content> */}
+
+      {/* ) : null}
         </Card.Header>
         <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
         {kryptomon ? <KryptomonTags nft={nft} /> : null}
-      </Card.Content>
+      </Card.Content> */}
     </Card>
   )
 }

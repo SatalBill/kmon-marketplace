@@ -1,7 +1,17 @@
-import { Network, Rarity, WearableCategory, NFT as BaseNFT } from '@kmon/schemas'
+import {
+  Network,
+  Rarity,
+  WearableCategory,
+  NFT as BaseNFT
+} from '@kmon/schemas'
 import { NFT } from '../../../nft/types'
 import { Order } from '../../../order/types'
 import { VendorName } from '../../types'
+export type MetaAttribute = {
+  trait_type: string
+  value: string | number
+  display_type: string | undefined
+}
 
 export type NFTsFetchFilters = {
   isLand?: boolean
@@ -27,6 +37,7 @@ export type KryptomonMetadataResponse = {
   description: string
   image: string
   name: string
+  attributes?: MetaAttribute[]
 }
 
 export type NFTData = BaseNFT['data']

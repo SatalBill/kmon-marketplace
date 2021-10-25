@@ -3,8 +3,6 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 import { Page, Hero, Button } from '@kmon/ui'
 import { locations } from '../../modules/routing/locations'
-import { VendorName } from '../../modules/vendor/types'
-import { SortBy } from '../../modules/routing/types'
 import { View } from '../../modules/ui/types'
 import { HomepageView } from '../../modules/ui/nft/homepage/types'
 import { Section } from '../../modules/vendor/decentraland/routing/types'
@@ -20,7 +18,8 @@ const HomePage = (props: Props) => {
   const sections = {
     [View.HOME_WEARABLES]: Section.WEARABLES,
     [View.HOME_LAND]: Section.LAND,
-    [View.HOME_ENS]: Section.ENS
+    [View.HOME_ENS]: Section.ENS,
+    [View.KRYPTOMONS]: Section.KRYPTOMONS
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
@@ -32,19 +31,18 @@ const HomePage = (props: Props) => {
     [onNavigate]
   )
 
-  const vendor = VendorName.DECENTRALAND
-
   useEffect(() => {
     let view: HomepageView
     for (view in homepage) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const section = sections[view]
       onFetchNFTsFromRoute({
-        vendor,
-        section,
-        view,
-        sortBy: SortBy.RECENTLY_LISTED,
-        page: 1,
-        onlyOnSale: true
+        // vendor,
+        // section,
+        // view,
+        // sortBy: SortBy.RECENTLY_LISTED,
+        // page: 1,
+        // onlyOnSale: true
       })
     }
     // eslint-disable-next-line
@@ -68,14 +66,16 @@ const HomePage = (props: Props) => {
         </Hero.Actions>
       </Hero>
       <Page className="HomePage">
-        {views.map(view => (
-          <Slideshow
-            key={view}
-            title={t(`home_page.${view}`)}
-            nfts={homepage[view]}
-            isLoading={homepageLoading[view]}
-            onViewAll={() => handleViewAll(sections[view])}
-          />
+        {views.map((view, index) => (
+          <>
+            <Slideshow
+              key={`${view}-${index}`}
+              title={t(`home_page.${view}`)}
+              nfts={homepage[view]}
+              isLoading={homepageLoading[view]}
+              onViewAll={() => handleViewAll(sections[view])}
+            />
+          </>
         ))}
       </Page>
       <Footer />

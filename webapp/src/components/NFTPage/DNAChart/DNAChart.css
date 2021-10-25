@@ -1,0 +1,32 @@
+.dna-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 45px 20px 15px;
+  background-color: #323132;
+  border-radius: 8px;
+  position: relative;
+}
+
+.dna-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.dna-info-generation {
+  padding: 0.5px 10px;
+  background-color: #39c876;
+  border-radius: 10px;
+  font-size: 10px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  color: #232123;
+}
+
+.dna-info-start {
+  margin-left: 9px;
+}

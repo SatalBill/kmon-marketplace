@@ -17,6 +17,7 @@ import { NavigationTab } from '../Navigation/Navigation.types'
 import { locations } from '../../modules/routing/locations'
 import { Props } from './AccountPage.types'
 import { Column } from '../Layout/Column'
+import { AccountProfile } from '../AccountProfile'
 import './AccountPage.css'
 
 const AccountPage = (props: Props) => {
@@ -42,11 +43,14 @@ const AccountPage = (props: Props) => {
 
   return (
     <div className="AccountPage">
-      <Navbar isFullscreen />
-      <Navigation
-        isFullscreen={!isCurrentAccount || isFullscreen}
-        activeTab={isCurrentAccount ? NavigationTab.MY_ASSETS : undefined}
-      />
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation
+          activeTab={isCurrentAccount ? NavigationTab.MY_ASSETS : undefined}
+          isFullscreen={isFullscreen}
+        />
+      </div>
+      <AccountProfile wallet={wallet} />
       {isCurrentAccount ? (
         isConnecting || !wallet ? (
           <Page>
@@ -56,7 +60,7 @@ const AccountPage = (props: Props) => {
           <NFTBrowse
             vendor={vendor}
             address={wallet.address}
-            view={View.ACCOUNT}
+            view={View.MARKET}
           />
         )
       ) : address !== undefined ? (

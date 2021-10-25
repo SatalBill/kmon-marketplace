@@ -41,6 +41,7 @@
 }
 
 .NFTSections .MenuItem {
+  font-family: var(--font-family);
   border-radius: 8px;
 }
 
