@@ -63,6 +63,8 @@ function* handleBrowse(action: BrowseNFTsAction) {
 // Utility functions, not handlers
 
 function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
+  console.log({ searchOptions })
+
   const view = searchOptions.view!
   const vendor = searchOptions.vendor!
   const page = searchOptions.page!
@@ -96,7 +98,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           onlyOnSale,
           address,
           category,
-          search
+          search,
+          section
         },
         filters: getFilters(vendor, searchOptions)
       })

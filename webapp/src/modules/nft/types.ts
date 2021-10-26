@@ -3,7 +3,10 @@ import { View } from '../ui/types'
 import { NFTsFetchFilters } from '../vendor/nft/types'
 import { VendorName } from '../vendor/types'
 import { SortDirection } from '../routing/types'
-import { KryptomonMetadataResponse, NFTData as DecentralandData } from '../vendor/decentraland/nft/types'
+import {
+  KryptomonMetadataResponse,
+  NFTData as DecentralandData
+} from '../vendor/decentraland/nft/types'
 import { NFTData as SuperRareData } from '../vendor/super_rare/nft/types'
 import { NFTData as MakersPlaceData } from '../vendor/makers_place/nft/types'
 import { NFTData as KnownOriginData } from '../vendor/known_origin/nft/types'
@@ -46,6 +49,7 @@ export type NFTsFetchParams = {
   address?: string
   onlyOnSale?: boolean
   search?: string
+  section?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

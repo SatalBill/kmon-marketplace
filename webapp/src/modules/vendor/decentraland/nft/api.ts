@@ -64,6 +64,8 @@ class NFTAPI {
     filters?: NFTsFetchFilters
   ): string {
     const queryParams = new URLSearchParams()
+    console.log({ params, filters })
+
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
     // if (params.orderBy) {
@@ -75,12 +77,14 @@ class NFTAPI {
     if (params.address) {
       queryParams.append('owner', params.address)
     }
-    // if (params.onlyOnSale) {
-    //   queryParams.append('isOnSale', 'true')
-    // }
-
+    if (params.onlyOnSale) {
+      queryParams.append('isOnSale', `${params.onlyOnSale}`)
+    }
     if (params.search) {
       queryParams.set('search', params.search)
+    }
+    if (params.section) {
+      queryParams.set('section', params.section)
     }
     if (filters) {
       if (filters.isLand) {
