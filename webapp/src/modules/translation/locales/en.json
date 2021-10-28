@@ -34,7 +34,8 @@
     "kryptomons": "Kryptomons",
     "items": "Items",
     "my_assets": "My Assets",
-    "activity": "Activity"
+    "activity": "Activity",
+    "lootboxes": "Lootboxes"
   },
   "menu": {
     "all": "All Assets",
