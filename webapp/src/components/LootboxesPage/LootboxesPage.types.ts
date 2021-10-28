@@ -1,10 +1,25 @@
+import { Dispatch } from 'redux'
+import { CallHistoryMethodAction } from 'connected-react-router'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+
 import { VendorName } from '../../modules/vendor/types'
 
-export type Props = {
-  vendor: VendorName
-  isFullscreen?: boolean
+export type Params = {
+  address?: string
 }
 
-export type MapStateProps = Pick<Props, 'vendor' | 'isFullscreen'>
-export type MapDispatchProps = {}
-export type MapDispatch = {}
+export type Props = {
+  address?: string
+  vendor: VendorName
+  wallet: Wallet | null
+  isConnecting: boolean
+  isFullscreen?: boolean
+  onRedirect: (path: string) => void
+}
+
+export type MapStateProps = Pick<
+  Props,
+  'address' | 'vendor' | 'wallet' | 'isConnecting' | 'isFullscreen'
+>
+export type MapDispatchProps = Pick<Props, 'onRedirect'>
+export type MapDispatch = Dispatch<CallHistoryMethodAction>
