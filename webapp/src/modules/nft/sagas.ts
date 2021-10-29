@@ -31,13 +31,11 @@ export function* nftSaga() {
 function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
   const { options, timestamp } = action.payload
   const { vendor, filters } = options
-  console.log('MOOMOM--- ', action.payload)
 
   const params = {
     ...DEFAULT_BASE_NFT_PARAMS,
     ...action.payload.options.params
   }
-  console.log('ONON-- ', params)
 
   try {
     const { nftService } = VendorFactory.build(vendor)

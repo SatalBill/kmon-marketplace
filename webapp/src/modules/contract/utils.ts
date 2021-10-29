@@ -9,7 +9,6 @@ export async function buildContracts() {
 
   for (const vendor of vendors) {
     const { contractService } = vendor
-    console.log(vendor);
 
     await contractService.build()
 

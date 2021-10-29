@@ -4,6 +4,7 @@ import { ATLAS_SERVER_URL } from '../land'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
 import { VendorName } from '../../types'
+import { GENERATION_TO_REQ } from './utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -64,7 +65,6 @@ class NFTAPI {
     filters?: NFTsFetchFilters
   ): string {
     const queryParams = new URLSearchParams()
-    console.log({ params, filters })
 
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
@@ -84,6 +84,9 @@ class NFTAPI {
       queryParams.set('search', params.search)
     }
     if (params.section) {
+      if (GENERATION_TO_REQ[params.section]) {
+        queryParams.set('generation', GENERATION_TO_REQ[params.section])
+      }
       queryParams.set('section', params.section)
     }
     if (filters) {
