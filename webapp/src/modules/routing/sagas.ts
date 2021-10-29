@@ -96,7 +96,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           onlyOnSale,
           address,
           category,
-          search
+          search,
+          section
         },
         filters: getFilters(vendor, searchOptions)
       })
