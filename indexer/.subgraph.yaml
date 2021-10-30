@@ -27,6 +27,8 @@ dataSources:
       eventHandlers:
         - event: Birth(address,uint256,uint256,uint256,uint256,uint256[],uint256,uint256[])
           handler: handleBirth
+        - event: EggHatched(indexed uint256)
+          handler: handleHatching
 
   # ---------------------------------------------------------
   # ORDERS --------------------------------------------------

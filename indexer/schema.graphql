@@ -154,6 +154,8 @@ type NFT @entity {
   searchText: String
 
   searchIsConsumable: Boolean
+  searchKryptomonGenesGeneration: BigInt
+  searchKryptomonStatus: BigInt
 }
 
 # ---------------------------------------------------------

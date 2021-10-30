@@ -3,7 +3,7 @@ import { BigInt, log } from "@graphprotocol/graph-ts"
 import { getNFTId } from "../modules/nft"
 import * as categories from '../modules/category/categories'
 import * as addresses from '../data/addresses'
-import { Birth } from "../entities/KMONFT/KMONFT"
+import { Birth, EggHatched } from "../entities/KMONFT/KMONFT"
 import { Kryptomon, KryptomonExtraData, KryptomonGenes, NFT } from "../entities/schema"
 import { createAccount } from "../modules/wallet"
 import { getKryptomonTokenURI } from "../modules/kryptomon"
@@ -109,12 +109,28 @@ export function handleBirth(event: Birth): void {
   nft.searchText = ''
   nft.createdAt = event.block.timestamp
   nft.updatedAt = event.block.timestamp
+  nft.searchKryptomonGenesGeneration = genes.generation
+  nft.searchKryptomonStatus = kryptomon.status
   nft.save()
 
   log.warning('nft saved', [])
 
   createAccount(event.params.owner)
   log.warning('createAccount saved', [])
+}
+
+export function handleHatching(event: EggHatched): void {
+  let kryptomonId = event.params.kryptomonId.toString()
+  let status: BigInt = new BigInt(1);
+
+  let id = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonId)
+  let nft = NFT.load(id);
+  nft.searchKryptomonStatus = status;
+  nft.save();
+
+  let kryptomon = Kryptomon.load(id);
+  kryptomon.status = status;
+  kryptomon.save();
 }
 
 //export function handleTransfer(event: Transfer): void {}
