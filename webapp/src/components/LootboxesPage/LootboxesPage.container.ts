@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router'
 import { RootState } from '../../modules/reducer'
 import { getIsFullscreen, getVendor } from '../../modules/routing/selectors'
 import { getWallet, isConnecting } from '../../modules/wallet/selectors'
+import { getBasicPrice, getMediumPrice, getPremiumPrice } from '../../modules/lootbox/selectors'
 import {
   Params,
   MapStateProps,
@@ -12,6 +13,7 @@ import {
   MapDispatchProps
 } from './LootboxesPage.types'
 import LootboxesPage from './LootboxesPage'
+import { buyLootboxRequest, fetchLootboxPricesRequest } from '../../modules/lootbox/actions'
 
 const mapState = (
   state: RootState,
@@ -24,12 +26,17 @@ const mapState = (
     vendor: getVendor(state),
     wallet: getWallet(state),
     isConnecting: isConnecting(state),
-    isFullscreen: getIsFullscreen(state)
+    isFullscreen: getIsFullscreen(state),
+    basicPrice: getBasicPrice(state),
+    mediumPrice: getMediumPrice(state),
+    premiumPrice: getPremiumPrice(state)
   })
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
-  onRedirect: path => dispatch(replace(path))
+  onRedirect: path => dispatch(replace(path)),
+  onFetchLootboxPrices: boxType => dispatch(fetchLootboxPricesRequest(boxType)),
+  onBuyLootbox: params => dispatch(buyLootboxRequest(params))
 })
 
 export default connect(mapState, mapDispatch)(LootboxesPage)

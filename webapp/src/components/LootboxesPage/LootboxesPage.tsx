@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { Page, Loader } from '@kmon/ui'
 
-import { isVendor } from '../../modules/vendor/utils'
-import { VendorName } from '../../modules/vendor/types'
 import { View } from '../../modules/ui/types'
 import { NavigationTab } from '../Navigation/Navigation.types'
 import { locations } from '../../modules/routing/locations'
@@ -12,6 +10,7 @@ import { Navigation } from '../Navigation'
 import { NFTBrowse } from '../NFTBrowse'
 import { Props } from './LootboxesPage.types'
 import { BuyLootboxes } from '../BuyLootboxes'
+import { LootboxType } from '../../modules/lootbox/types'
 
 const LootboxesPage = (props: Props) => {
   const {
@@ -20,7 +19,12 @@ const LootboxesPage = (props: Props) => {
     wallet,
     isConnecting,
     isFullscreen,
-    onRedirect
+    basicPrice,
+    mediumPrice,
+    premiumPrice,
+    onRedirect,
+    onFetchLootboxPrices,
+    onBuyLootbox
   } = props
 
   const isCurrentAccount =
@@ -30,6 +34,10 @@ const LootboxesPage = (props: Props) => {
   useEffect(() => {
     if (isCurrentAccount && !isConnecting && !wallet) {
       onRedirect(locations.signIn())
+    } else {
+      onFetchLootboxPrices(LootboxType.Basic)
+      onFetchLootboxPrices(LootboxType.Medium)
+      onFetchLootboxPrices(LootboxType.Premium)
     }
   }, [isCurrentAccount, isConnecting, wallet, onRedirect])
 
@@ -42,7 +50,12 @@ const LootboxesPage = (props: Props) => {
           isFullscreen={isFullscreen}
         />
       </div>
-      <BuyLootboxes />
+      <BuyLootboxes
+        basicPrice={basicPrice}
+        mediumPrice={mediumPrice}
+        premiumPrice={premiumPrice}
+        onBuyLootbox={onBuyLootbox}
+      />
       {isCurrentAccount ? (
         isConnecting || !wallet ? (
           <Page>

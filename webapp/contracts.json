@@ -38,6 +38,16 @@
     "ERC721": {
       "source": "files",
       "abiFile": "./src/contracts/ERC721.json"
+    },
+    "KmonToken": {
+      "source": "etherscan",
+      "net": "ropsten",
+      "address": "0xd0828EC705f6BD30C870305D4DaB380ce6717E23"
+    },
+    "Lootbox": {
+      "source": "etherscan",
+      "net": "ropsten",
+      "address": "0x1B4411Eec6A6b07C3eE7B1e3bC110dcCeAD8ccE7"
     }
   }
 }
