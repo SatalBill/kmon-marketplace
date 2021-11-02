@@ -6,7 +6,8 @@ import {
   FETCH_LOOTBOX_PRICES_REQUEST,
   BUY_LOOTBOX_REQUEST,
   BuyLootboxRequestAction,
-  buyLootboxSuccess
+  buyLootboxSuccess,
+  buyLootboxFailure
 } from './actions'
 import { LootboxServices } from './services'
 import { getWallet } from '../wallet/selectors'
@@ -40,6 +41,6 @@ function* handleBuyLootboxRequest(action: BuyLootboxRequestAction) {
     yield put(buyLootboxSuccess(params.boxType, txHash))
   } catch (error) {
     // @ts-ignore
-    yield put(fetchLootboxPricesFailure(boxType, error.message))
+    yield put(buyLootboxFailure(params.boxType, error.message))
   }
 }

@@ -2,6 +2,7 @@ import { Address } from 'web3x-es/address'
 import { getContract, ContractName as CN } from '@kmon/transactions'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { getConnectedProviderChainId } from '@kmon/dapps/dist/lib/eth'
+import { toBN } from 'web3x-es/utils'
 import { BuyLootboxParams, LootboxType } from './types'
 import { ContractFactory } from '../contract/ContractFactory'
 import { Lootbox } from '../../contracts/Lootbox'
@@ -38,7 +39,7 @@ implements LootboxServiceInterface {
     const from = Address.fromString(wallet.address)
     const { to, boxType, boxPrice } = params
 
-    const approve = kmonToken.methods.approve(Address.fromString(lootboxData.address), boxPrice)
+    const approve = kmonToken.methods.approve(Address.fromString(lootboxData.address), toBN(boxPrice))
     await sendTransaction(approve, kmonTokenData, from)
     
     const buyLootbox = lootbox.methods.buyLootbox(to, boxType)

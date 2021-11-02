@@ -40,7 +40,7 @@ export const buyLootboxSuccess = (
 export const buyLootboxFailure = (
   boxType: LootboxType,
   error: string
-) => action(FETCH_LOOTBOX_PRICES_FAILURE, {
+) => action(BUY_LOOTBOX_FAILURE, {
   boxType,
   error
 })
