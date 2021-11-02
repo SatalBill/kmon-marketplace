@@ -41,13 +41,13 @@
     },
     "KmonToken": {
       "source": "etherscan",
-      "net": "ropsten",
-      "address": "0xd0828EC705f6BD30C870305D4DaB380ce6717E23"
+      "net": "rinkeby",
+      "address": "0x1E524e5556A467fB676F13B38D421CF1e767fc42"
     },
     "Lootbox": {
       "source": "etherscan",
-      "net": "ropsten",
-      "address": "0x1B4411Eec6A6b07C3eE7B1e3bC110dcCeAD8ccE7"
+      "net": "rinkeby",
+      "address": "0x4415e06FfBAFc154202D03Dcd7A12791aE7d8d53"
     }
   }
 }
