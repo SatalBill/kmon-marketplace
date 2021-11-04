@@ -1,11 +1,20 @@
 import { connect } from 'react-redux'
 import { replace } from 'connected-react-router'
 import { RouteComponentProps } from 'react-router'
+import {
+  getData as getTransactionData,
+  getLoading as getTransactionLoading
+} from '@kmon/dapps/dist/modules/transaction/selectors'
 
 import { RootState } from '../../modules/reducer'
 import { getIsFullscreen, getVendor } from '../../modules/routing/selectors'
 import { getWallet, isConnecting } from '../../modules/wallet/selectors'
-import { getBasicPrice, getMediumPrice, getPremiumPrice } from '../../modules/lootbox/selectors'
+import {
+  getBasicPrice,
+  getMediumPrice,
+  getPremiumPrice,
+  getTxHash
+} from '../../modules/lootbox/selectors'
 import {
   Params,
   MapStateProps,
@@ -29,7 +38,10 @@ const mapState = (
     isFullscreen: getIsFullscreen(state),
     basicPrice: getBasicPrice(state),
     mediumPrice: getMediumPrice(state),
-    premiumPrice: getPremiumPrice(state)
+    premiumPrice: getPremiumPrice(state),
+    txHash: getTxHash(state),
+    txData: getTransactionData(state),
+    txLoadingData: getTransactionLoading(state)
   })
 }
 

@@ -1,4 +1,7 @@
 import { action } from 'typesafe-actions'
+import { ChainId } from '@kmon/schemas'
+import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/utils'
+
 import { BuyLootboxParams, LootboxType } from './types'
 
 export const FETCH_LOOTBOX_PRICES_REQUEST = '[Request] Get Lootbox Prices'
@@ -32,10 +35,14 @@ export const buyLootboxRequest = (params: BuyLootboxParams) =>
   action(BUY_LOOTBOX_REQUEST, { params })
 export const buyLootboxSuccess = (
   boxType: LootboxType,
-  txHash: string
+  txHash: string,
+  chainId: ChainId
 ) => action(BUY_LOOTBOX_SUCCESS, {
   boxType,
-  txHash
+  txHash,
+  ...buildTransactionPayload(chainId, txHash, {
+    boxType
+  })
 })
 export const buyLootboxFailure = (
   boxType: LootboxType,

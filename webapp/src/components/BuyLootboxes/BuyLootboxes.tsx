@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button } from '@kmon/ui'
+import React, { useState } from 'react'
+import { Button, Loader } from '@kmon/ui'
 
 import { Address } from 'web3x-es/address'
 import { BuyLootboxParams, LootboxType } from '../../modules/lootbox/types'
@@ -8,7 +8,20 @@ import { Props } from './BuyLootboxes.types'
 import './BuyLootboxes.css'
 
 const BuyLootboxes = (props: Props) => {
-  const { basicPrice, mediumPrice, premiumPrice, onBuyLootbox } = props
+  const {
+    basicPrice,
+    mediumPrice,
+    premiumPrice,
+    isTxPending,
+    txStatus,
+    onBuyLootbox
+  } = props
+
+  const [activeLootboxType, setActiveLootboxType] = useState(LootboxType.Basic)
+
+  const isBasicPending = activeLootboxType === LootboxType.Basic && isTxPending
+  const isMediumPending = activeLootboxType === LootboxType.Medium && isTxPending
+  const isPremiumPending = activeLootboxType === LootboxType.Premium && isTxPending
 
   const handleClickBasic = () => {
     const params: BuyLootboxParams = {
@@ -17,6 +30,7 @@ const BuyLootboxes = (props: Props) => {
       boxPrice: basicPrice
     }
     onBuyLootbox(params)
+    setActiveLootboxType(LootboxType.Basic)
   }
 
   const handleClickMedium = () => {
@@ -26,6 +40,7 @@ const BuyLootboxes = (props: Props) => {
       boxPrice: mediumPrice
     }
     onBuyLootbox(params)
+    setActiveLootboxType(LootboxType.Medium)
   }
 
   const handleClickPremium = () => {
@@ -35,13 +50,16 @@ const BuyLootboxes = (props: Props) => {
       boxPrice: premiumPrice
     }
     onBuyLootbox(params)
+    setActiveLootboxType(LootboxType.Premium)
   }
 
   return (
     <div className="BuyLootboxes">
-      <Button primary onClick={handleClickBasic}>Basic</Button>
-      <Button primary onClick={handleClickMedium}>Medium</Button>
-      <Button primary onClick={handleClickPremium}>Premium</Button>
+      <Button primary onClick={handleClickBasic} disabled={isBasicPending}>Basic</Button>
+      <Button primary onClick={handleClickMedium} disabled={isMediumPending}>Medium</Button>
+      <Button primary onClick={handleClickPremium} disabled={isPremiumPending}>Premium</Button>
+
+      <Loader active={isTxPending} size="massive" />
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+import { Transaction } from '@kmon/dapps/dist/modules/transaction/types'
+import { LoadingState } from '@kmon/dapps/dist/modules/loading/reducer'
 
 import { VendorName } from '../../modules/vendor/types'
 import {
@@ -23,6 +25,9 @@ export type Props = {
   basicPrice: number,
   mediumPrice: number,
   premiumPrice: number,
+  txHash: string | null,
+  txData: Transaction[],
+  txLoadingData: LoadingState,
   onRedirect: (path: string) => void
   onFetchLootboxPrices: typeof fetchLootboxPricesRequest
   onBuyLootbox: typeof buyLootboxRequest
@@ -30,7 +35,7 @@ export type Props = {
 
 export type MapStateProps = Pick<
   Props,
-  'address' | 'vendor' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'basicPrice' | 'mediumPrice' | 'premiumPrice'
+  'address' | 'vendor' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'basicPrice' | 'mediumPrice' | 'premiumPrice' | 'txHash' | 'txData' | 'txLoadingData'
 >
 export type MapDispatchProps = Pick<
   Props,

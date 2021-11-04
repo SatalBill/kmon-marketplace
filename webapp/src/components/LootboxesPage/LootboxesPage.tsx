@@ -22,6 +22,9 @@ const LootboxesPage = (props: Props) => {
     basicPrice,
     mediumPrice,
     premiumPrice,
+    txHash,
+    txData,
+    txLoadingData,
     onRedirect,
     onFetchLootboxPrices,
     onBuyLootbox
@@ -29,6 +32,10 @@ const LootboxesPage = (props: Props) => {
 
   const isCurrentAccount =
     address === undefined || (wallet && wallet.address === address)
+
+  const isTxPending = txHash !== null && txLoadingData.find(action => action.payload.hash === txHash) !== undefined
+  const tx = txData.find(tx => tx.hash === txHash)
+  const txStatus = tx === undefined ? null : tx.status
 
   // Redirect to signIn if trying to access current account without a wallet
   useEffect(() => {
@@ -54,6 +61,8 @@ const LootboxesPage = (props: Props) => {
         basicPrice={basicPrice}
         mediumPrice={mediumPrice}
         premiumPrice={premiumPrice}
+        isTxPending={isTxPending}
+        txStatus={txStatus}
         onBuyLootbox={onBuyLootbox}
       />
       {isCurrentAccount ? (

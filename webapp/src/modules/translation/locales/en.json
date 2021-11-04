@@ -423,6 +423,10 @@
     "meta_transaction_failure": {
       "title": "Meta transaction",
       "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
+    },
+    "send_transaction_confirmed": {
+      "title": "Transaction confirmed!",
+      "body": "You purchased {box_type} lootbox. View {etherscan_link}."
     }
   },
   "@dapps": {
