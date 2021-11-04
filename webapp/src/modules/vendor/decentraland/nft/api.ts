@@ -10,6 +10,8 @@ export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
+    console.log({ lolo: params })
+
     const queryParams = this.buildQueryString(params, filters)
 
     const response: NFTResponse = await fetch(
@@ -88,6 +90,9 @@ class NFTAPI {
         queryParams.set('generation', GENERATION_TO_REQ[params.section])
       }
       queryParams.set('section', params.section)
+    }
+    if (params.kryptomonStatus) {
+      queryParams.set('kryptomonStatus', params.kryptomonStatus)
     }
     if (filters) {
       if (filters.isLand) {

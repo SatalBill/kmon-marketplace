@@ -15,6 +15,8 @@ export function getDefaultOptionsByView(view?: View): SearchOptions {
 
 export function getSearchParams(options?: SearchOptions) {
   let params: URLSearchParams | undefined
+  console.log('PARAMS ---- ', params)
+
   if (options) {
     params = new URLSearchParams()
 
@@ -62,6 +64,9 @@ export function getSearchParams(options?: SearchOptions) {
 
     if (options.network && Object.values(Network).includes(options.network)) {
       params.set('network', options.network)
+    }
+    if (options.kryptomonStatus) {
+      params.set('kryptomonStatus', options.kryptomonStatus.toString())
     }
   }
   return params
@@ -156,8 +161,8 @@ export function getURLParamArray<T extends string>(
   return param === null
     ? []
     : (param
-      .split(SEARCH_ARRAY_PARAM_SEPARATOR)
-      .filter(item => validValues.includes(item as T)) as T[])
+        .split(SEARCH_ARRAY_PARAM_SEPARATOR)
+        .filter(item => validValues.includes(item as T)) as T[])
 }
 
 export function getURLParam<T extends string>(

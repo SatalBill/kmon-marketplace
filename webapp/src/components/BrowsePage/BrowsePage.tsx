@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { isVendor, isPartner } from '../../modules/vendor/utils'
 import { VendorName } from '../../modules/vendor/types'
@@ -12,12 +13,20 @@ import { Props } from './BrowsePage.types'
 
 const BrowsePage = (props: Props) => {
   const { isFullscreen } = props
+  const history = useHistory()
+  console.log({ history })
+  const path = history.location.pathname
+  const isBrowseEggs = path === '/browse'
   const vendor = isVendor(props.vendor) ? props.vendor : VendorName.DECENTRALAND
 
   const activeTab = isPartner(vendor)
     ? NavigationTab.PARTNER
-    : NavigationTab.BROWSE
-
+    : isBrowseEggs
+    ? NavigationTab.BROWSE
+    : NavigationTab.KRYPTOMONS
+  useEffect(() => {
+    console.log('CHANGE')
+  }, [path])
   return (
     <>
       <div className="PageCustomHeader">

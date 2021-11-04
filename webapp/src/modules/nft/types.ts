@@ -50,6 +50,7 @@ export type NFTsFetchParams = {
   onlyOnSale?: boolean
   search?: string
   section?: string
+  kryptomonStatus?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

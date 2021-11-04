@@ -15,16 +15,12 @@ const Navigation = (props: Props) => {
             {t('navigation.collectibles')}
           </Tabs.Tab>
         </Link>
-        {/* <Link to={locations.kryptomons()}>
-          <Tabs.Tab
-            active={
-              activeTab === NavigationTab.KRYPTOMONS
-            }
-          >
+        <Link to={locations.kryptomons()}>
+          <Tabs.Tab active={activeTab === NavigationTab.KRYPTOMONS}>
             {t('navigation.kryptomons')}
           </Tabs.Tab>
         </Link>
-        <Link to={locations.items()}>
+        {/* <Link to={locations.items()}>
           <Tabs.Tab active={activeTab === NavigationTab.ITEMS}>
             {t('navigation.items')}
           </Tabs.Tab>

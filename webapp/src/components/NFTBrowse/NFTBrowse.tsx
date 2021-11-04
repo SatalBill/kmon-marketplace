@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Container, Page, Responsive } from '@kmon/ui'
 
 import { View } from '../../modules/ui/types'
@@ -26,12 +27,27 @@ const NFTBrowse = (props: Props) => {
     onlyOnSale,
     viewInState
   } = props
+  const history = useHistory()
+  const path = history.location.pathname
 
   // Kick things off
   useEffect(() => {
     onSetView(view)
   }, [onSetView, view])
 
+  useEffect(() => {
+    if (viewInState === view) {
+      console.log('KOKOKOOKKOKOKO')
+
+      onFetchNFTsFromRoute({
+        vendor,
+        view,
+        address,
+        onlyOnSale,
+        kryptomonStatus: '0'
+      })
+    }
+  }, [view, vendor, address, onlyOnSale, viewInState, onFetchNFTsFromRoute])
   useEffect(() => {
     if (viewInState === view) {
       onFetchNFTsFromRoute({
@@ -41,8 +57,7 @@ const NFTBrowse = (props: Props) => {
         onlyOnSale
       })
     }
-  }, [view, vendor, address, onlyOnSale, viewInState, onFetchNFTsFromRoute])
-
+  }, [path])
   // handlers
   const handleSetFullscreen = useCallback(
     () => onBrowse({ isMap: true, isFullscreen: true }),
