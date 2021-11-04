@@ -9,5 +9,5 @@ export enum LootboxType {
 export type BuyLootboxParams = {
   to: Address
   boxType: LootboxType
-  boxPrice: number
+  boxPrice: string
 }

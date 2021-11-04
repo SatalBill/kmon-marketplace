@@ -17,6 +17,7 @@ import { FetchTransactionSuccessAction, FETCH_TRANSACTION_SUCCESS } from '@kmon/
 import { showToast } from '@kmon/dapps/dist/modules/toast/actions'
 import { getSendTransactionConfirmedToast } from '../toast/toasts'
 import { LootboxType } from './types'
+import { toStringLootboxType } from './utils'
 
 export function* lootboxSaga() {
   yield takeEvery(FETCH_LOOTBOX_PRICES_REQUEST, handleFetchLootboxPricesRequest)
@@ -30,7 +31,7 @@ function* handleFetchLootboxPricesRequest(action: FetchLootboxPricesRequestActio
     const lootboxService = new LootboxServices()
 
     const price: string = yield call(lootboxService.getLootboxPrices, boxType)
-    yield put(fetchLootboxPricesSuccess(boxType, Number(price)))
+    yield put(fetchLootboxPricesSuccess(boxType, price))
   } catch (error) {
     // @ts-ignore
     yield put(fetchLootboxPricesFailure(boxType, error.message))
@@ -56,19 +57,6 @@ function* handleBuyLootboxRequest(action: BuyLootboxRequestAction) {
 function* handleFetchTransaction(action: FetchTransactionSuccessAction) {
   const { transaction } = action.payload
   const { boxType } = transaction.payload
-  let boxTypeStr: string = ''
-  switch (boxType) {
-    case LootboxType.Basic:
-      boxTypeStr = 'basic'
-      break
-    case LootboxType.Medium:
-      boxTypeStr = 'medium'
-      break
-    case LootboxType.Premium:
-      boxTypeStr = 'premium'
-      break
-    default:
-      break
-  }
+  const boxTypeStr = toStringLootboxType(boxType)
   yield put(showToast(getSendTransactionConfirmedToast(transaction.chainId, transaction.hash, boxTypeStr)))
 }

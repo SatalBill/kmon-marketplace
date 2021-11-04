@@ -22,9 +22,9 @@ export type Props = {
   wallet: Wallet | null
   isConnecting: boolean
   isFullscreen?: boolean,
-  basicPrice: number,
-  mediumPrice: number,
-  premiumPrice: number,
+  basicPrice: string,
+  mediumPrice: string,
+  premiumPrice: string,
   txHash: string | null,
   txData: Transaction[],
   txLoadingData: LoadingState,

@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-import { Page, Loader } from '@kmon/ui'
+import { Card, Page } from '@kmon/ui'
+import { fromWei } from 'web3x-es/utils'
 
-import { View } from '../../modules/ui/types'
 import { NavigationTab } from '../Navigation/Navigation.types'
 import { locations } from '../../modules/routing/locations'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
-import { NFTBrowse } from '../NFTBrowse'
 import { Props } from './LootboxesPage.types'
 import { BuyLootboxes } from '../BuyLootboxes'
 import { LootboxType } from '../../modules/lootbox/types'
+
+import { LootboxCard } from '../LootboxCard'
 
 const LootboxesPage = (props: Props) => {
   const {
@@ -65,19 +66,25 @@ const LootboxesPage = (props: Props) => {
         txStatus={txStatus}
         onBuyLootbox={onBuyLootbox}
       />
-      {isCurrentAccount ? (
-        isConnecting || !wallet ? (
-          <Page>
-            <Loader size="massive" active />
-          </Page>
-        ) : (
-          <NFTBrowse
-            vendor={vendor}
-            address={wallet.address}
-            view={View.MARKET}
+      <Page className="NFTBrowse">
+        <Card.Group>
+          <LootboxCard
+            boxType={LootboxType.Basic}
+            image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
+            price={fromWei(basicPrice, 'ether')}
           />
-        )
-      ) : null}
+          <LootboxCard
+            boxType={LootboxType.Medium}
+            image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
+            price={fromWei(mediumPrice, 'ether')}
+          />
+          <LootboxCard
+            boxType={LootboxType.Premium}
+            image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
+            price={fromWei(premiumPrice, 'ether')}
+          />
+        </Card.Group>
+      </Page>
       <Footer isFullscreen={isFullscreen} />
     </>
   )

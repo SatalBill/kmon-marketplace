@@ -39,7 +39,7 @@ implements LootboxServiceInterface {
     const from = Address.fromString(wallet.address)
     const { to, boxType, boxPrice } = params
 
-    const approve = kmonToken.methods.approve(Address.fromString(lootboxData.address), toBN(boxPrice))
+    const approve = kmonToken.methods.approve(Address.fromString(lootboxData.address), boxPrice.toString())
     await sendTransaction(approve, kmonTokenData, from)
     
     const buyLootbox = lootbox.methods.buyLootbox(to, boxType)

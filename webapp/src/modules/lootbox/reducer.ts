@@ -21,7 +21,7 @@ import { LootboxType } from './types'
 export type LootboxState = {
   loading: LoadingState
   prices: {
-    [x in LootboxType]: number
+    [x in LootboxType]: string
   }
   transaction: {
     boxType: LootboxType
@@ -33,9 +33,9 @@ export type LootboxState = {
 const INITIAL_STATE = {
   loading: [],
   prices: {
-    [LootboxType.Basic]: 0,
-    [LootboxType.Medium]: 0,
-    [LootboxType.Premium]: 0
+    [LootboxType.Basic]: '',
+    [LootboxType.Medium]: '',
+    [LootboxType.Premium]: ''
   },
   transaction: {
     boxType: 0,

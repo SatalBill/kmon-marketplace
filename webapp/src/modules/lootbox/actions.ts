@@ -10,7 +10,7 @@ export const FETCH_LOOTBOX_PRICES_FAILURE = '[Failure] Get Lootbox Prices'
 
 export const fetchLootboxPricesRequest = (boxType: LootboxType) =>
   action(FETCH_LOOTBOX_PRICES_REQUEST, { boxType })
-export const fetchLootboxPricesSuccess = (boxType: LootboxType, price: number) =>
+export const fetchLootboxPricesSuccess = (boxType: LootboxType, price: string) =>
   action(FETCH_LOOTBOX_PRICES_SUCCESS, {
     boxType,
     price

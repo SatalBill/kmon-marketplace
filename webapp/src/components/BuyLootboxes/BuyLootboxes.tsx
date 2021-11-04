@@ -59,7 +59,12 @@ const BuyLootboxes = (props: Props) => {
       <Button primary onClick={handleClickMedium} disabled={isMediumPending}>Medium</Button>
       <Button primary onClick={handleClickPremium} disabled={isPremiumPending}>Premium</Button>
 
-      <Loader active={isTxPending} size="massive" />
+      {isTxPending && (
+        <>
+          <div className="overlay" />
+          <Loader active size="massive" />
+        </>
+      )}
     </div>
   )
 }
