@@ -53,17 +53,7 @@ const NFTBrowse = (props: Props) => {
     onFetchNFTsFromRoute,
     pathname
   ])
-  // useEffect(() => {
-  //   if (viewInState === view) {
-  //     onFetchNFTsFromRoute({
-  //       vendor,
-  //       view,
-  //       address,
-  //       onlyOnSale
-  //     })
-  //   }
-  // }, [path])
-  // handlers
+
   const handleSetFullscreen = useCallback(
     () => onBrowse({ isMap: true, isFullscreen: true }),
     [onBrowse]
