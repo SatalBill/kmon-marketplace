@@ -1,5 +1,8 @@
 import { createSelector } from 'reselect'
-import { getSearch as getRouterSearch } from 'connected-react-router'
+import {
+  getSearch as getRouterSearch,
+  getLocation
+} from 'connected-react-router'
 import { Network, Rarity } from '@kmon/schemas'
 import { getView } from '../ui/nft/browse/selectors'
 import { View } from '../ui/types'
@@ -141,3 +144,11 @@ export const getKryptomonStatus = createSelector<RootState, string, string>(
   getRouterSearch,
   search => getURLParam(search, 'kryptomonStatus') || ''
 )
+
+export const getPathname = createSelector<
+  RootState,
+  ReturnType<typeof getLocation>,
+  string
+>(getLocation, location => {
+  return location.pathname
+})

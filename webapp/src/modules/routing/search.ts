@@ -15,7 +15,6 @@ export function getDefaultOptionsByView(view?: View): SearchOptions {
 
 export function getSearchParams(options?: SearchOptions) {
   let params: URLSearchParams | undefined
-  console.log('PARAMS ---- ', params)
 
   if (options) {
     params = new URLSearchParams()

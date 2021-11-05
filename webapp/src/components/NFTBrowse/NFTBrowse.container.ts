@@ -9,7 +9,8 @@ import { getLoading } from '../../modules/nft/selectors'
 import {
   getIsFullscreen,
   getIsMap,
-  getOnlyOnSale
+  getOnlyOnSale,
+  getPathname
 } from '../../modules/routing/selectors'
 import { MapDispatch, MapDispatchProps, MapStateProps } from './NFTBrowse.types'
 import NFTBrowse from './NFTBrowse'
@@ -20,7 +21,8 @@ const mapState = (state: RootState): MapStateProps => ({
   isFullscreen: getIsFullscreen(state),
   onlyOnSale: getOnlyOnSale(state),
   isLoading: isLoadingType(getLoading(state), FETCH_NFTS_REQUEST),
-  viewInState: getView(state)
+  viewInState: getView(state),
+  pathname: getPathname(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

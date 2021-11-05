@@ -43,11 +43,9 @@ export function* routingSaga() {
 }
 
 function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
-  console.log('action.payload.searchOptions ', action.payload.searchOptions)
   const newSearchOptions: SearchOptions = yield getNewSearchOptions(
     action.payload.searchOptions
   )
-  console.log('newSearchOptions ', newSearchOptions)
   yield fetchNFTsFromRoute(newSearchOptions)
 }
 

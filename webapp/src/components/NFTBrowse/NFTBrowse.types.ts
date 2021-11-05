@@ -22,11 +22,17 @@ export type Props = {
   onFetchNFTsFromRoute: typeof fetchNFTsFromRoute
   onBrowse: typeof browseNFTs
   onlyOnSale?: boolean
+  pathname: string
 }
 
 export type MapStateProps = Pick<
   Props,
-  'isMap' | 'isLoading' | 'onlyOnSale' | 'isFullscreen' | 'viewInState'
+  | 'isMap'
+  | 'isLoading'
+  | 'onlyOnSale'
+  | 'isFullscreen'
+  | 'viewInState'
+  | 'pathname'
 >
 export type MapDispatchProps = Pick<
   Props,

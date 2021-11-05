@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { Container, Page, Responsive } from '@kmon/ui'
 
 import { View } from '../../modules/ui/types'
@@ -25,10 +24,9 @@ const NFTBrowse = (props: Props) => {
     onFetchNFTsFromRoute,
     onBrowse,
     onlyOnSale,
-    viewInState
+    viewInState,
+    pathname
   } = props
-  const history = useHistory()
-  const path = history.location.pathname
 
   // Kick things off
   useEffect(() => {
@@ -37,27 +35,34 @@ const NFTBrowse = (props: Props) => {
 
   useEffect(() => {
     if (viewInState === view) {
-      console.log('KOKOKOOKKOKOKO')
-
+      const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
       onFetchNFTsFromRoute({
         vendor,
         view,
         address,
         onlyOnSale,
-        kryptomonStatus: '0'
+        kryptomonStatus
       })
     }
-  }, [view, vendor, address, onlyOnSale, viewInState, onFetchNFTsFromRoute])
-  useEffect(() => {
-    if (viewInState === view) {
-      onFetchNFTsFromRoute({
-        vendor,
-        view,
-        address,
-        onlyOnSale
-      })
-    }
-  }, [path])
+  }, [
+    view,
+    vendor,
+    address,
+    onlyOnSale,
+    viewInState,
+    onFetchNFTsFromRoute,
+    pathname
+  ])
+  // useEffect(() => {
+  //   if (viewInState === view) {
+  //     onFetchNFTsFromRoute({
+  //       vendor,
+  //       view,
+  //       address,
+  //       onlyOnSale
+  //     })
+  //   }
+  // }, [path])
   // handlers
   const handleSetFullscreen = useCallback(
     () => onBrowse({ isMap: true, isFullscreen: true }),
