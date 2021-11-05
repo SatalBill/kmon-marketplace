@@ -69,7 +69,6 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
-  // const kryptomonStatus = searchOptions.kryptomonStatus!
   const { search, onlyOnSale, isMap, address, kryptomonStatus } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
