@@ -2,10 +2,10 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-import { locations } from '../../modules/routing/locations'
-import { toStringLootboxType } from '../../modules/lootbox/utils'
+import { locations } from '../../../modules/routing/locations'
+import { toStringLootboxType } from '../../../modules/lootbox/utils'
 import { Props } from './LootboxCard.types'
-import { Image } from '../Image'
+import { Image } from '../../Image'
 import './LootboxCard.css'
 
 const ImageCard = (props: Props) => {
@@ -16,7 +16,7 @@ const ImageCard = (props: Props) => {
       className="ImageCard"
       link
       as={Link}
-      to={locations.lootbox(boxType)}
+      to={locations.lootbox(boxType.toString())}
     >
       <div className="card-image-container">
         <div className="card-image">

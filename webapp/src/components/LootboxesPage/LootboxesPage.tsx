@@ -8,10 +8,10 @@ import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
 import { Props } from './LootboxesPage.types'
-import { BuyLootboxes } from '../BuyLootboxes'
+import { BuyLootboxes } from './BuyLootboxes'
 import { LootboxType } from '../../modules/lootbox/types'
 
-import { LootboxCard } from '../LootboxCard'
+import { LootboxCard } from './LootboxCard'
 
 const LootboxesPage = (props: Props) => {
   const {
@@ -71,17 +71,17 @@ const LootboxesPage = (props: Props) => {
           <LootboxCard
             boxType={LootboxType.Basic}
             image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
-            price={fromWei(basicPrice, 'ether')}
+            price={basicPrice === undefined ? '' : fromWei(basicPrice, 'ether')}
           />
           <LootboxCard
             boxType={LootboxType.Medium}
             image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
-            price={fromWei(mediumPrice, 'ether')}
+            price={mediumPrice === undefined ? '' : fromWei(mediumPrice, 'ether')}
           />
           <LootboxCard
             boxType={LootboxType.Premium}
             image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
-            price={fromWei(premiumPrice, 'ether')}
+            price={premiumPrice === undefined ? '' : fromWei(premiumPrice, 'ether')}
           />
         </Card.Group>
       </Page>

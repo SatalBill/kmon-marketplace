@@ -1,4 +1,4 @@
-import { LootboxType } from '../../modules/lootbox/types'
+import { LootboxType } from '../../../modules/lootbox/types'
 
 export type Props = {
   boxType: LootboxType

@@ -3,6 +3,7 @@ import { LootboxType } from './types'
 
 export const getState = (state: RootState) => state.lootbox
 export const getPrices = (state: RootState) => getState(state).prices
+export const getPrice = (state: RootState, boxType: LootboxType) => getPrices(state)[boxType]
 export const getLoading = (state: RootState) => getState(state).loading
 export const getError = (state: RootState) => getState(state).error
 export const getBasicPrice = (state: RootState) => getPrices(state)[LootboxType.Basic]

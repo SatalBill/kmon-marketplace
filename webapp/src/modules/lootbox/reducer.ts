@@ -16,13 +16,11 @@ import {
   BuyLootboxSuccessAction,
   BuyLootboxFailureAction
 } from './actions'
-import { LootboxType } from './types'
+import { LootboxPrices, LootboxType } from './types'
 
 export type LootboxState = {
   loading: LoadingState
-  prices: {
-    [x in LootboxType]: string
-  }
+  prices: LootboxPrices
   transaction: {
     boxType: LootboxType
     hash: string | null

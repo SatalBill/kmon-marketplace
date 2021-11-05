@@ -19,6 +19,7 @@ import { HomePage } from '../HomePage'
 import { MyBidsPage } from '../MyBidsPage'
 import { LegacyNFTPage } from '../LegacyNFTPage'
 import { LootboxesPage } from '../LootboxesPage'
+import { LootboxDetail } from '../LootboxesPage/LootboxDetail'
 
 const Routes = () => {
   const APP_ID = process.env.REACT_APP_INTERCOM_APP_ID
@@ -48,6 +49,7 @@ const Routes = () => {
         <Route exact path={locations.parcel()} component={LegacyNFTPage} />
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
         <Route exact path={locations.lootboxes()} component={LootboxesPage} />
+        <Route exact path={locations.lootbox()} component={LootboxDetail} />
         <Redirect
           from="/browse"
           to={locations.browse() + window.location.search}

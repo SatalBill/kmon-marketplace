@@ -1,10 +1,13 @@
 import { Dispatch } from 'redux'
-import { buyLootboxRequest, BuyLootboxRequestAction } from '../../modules/lootbox/actions'
+import {
+  buyLootboxRequest,
+  BuyLootboxRequestAction
+} from '../../../modules/lootbox/actions'
 
 export type Props = {
-  basicPrice: string,
-  mediumPrice: string,
-  premiumPrice: string,
+  basicPrice?: string,
+  mediumPrice?: string,
+  premiumPrice?: string,
   isTxPending: boolean,
   txStatus: string | null
   onBuyLootbox: typeof buyLootboxRequest

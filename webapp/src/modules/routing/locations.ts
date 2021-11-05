@@ -1,4 +1,3 @@
-import { LootboxType } from '../lootbox/types'
 import { getSearchParams } from './search'
 import { SearchOptions } from './types'
 
@@ -52,5 +51,5 @@ export const locations = {
   ) => `/contracts/${contractAddress}/tokens/${tokenId}/bid`,
   activity: () => `/activity`,
   lootboxes: () => `/lootboxes`,
-  lootbox: (boxType: LootboxType) => `/lootboxes/${boxType}`
+  lootbox: (boxType: string = ':boxType') => `/lootboxes/${boxType}`
 }

@@ -6,6 +6,10 @@ export enum LootboxType {
   Premium
 }
 
+export type LootboxPrices = {
+  [x in LootboxType]: string | undefined
+}
+
 export type BuyLootboxParams = {
   to: Address
   boxType: LootboxType

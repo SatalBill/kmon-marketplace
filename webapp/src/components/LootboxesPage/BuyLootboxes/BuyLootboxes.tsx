@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Button, Loader } from '@kmon/ui'
 
 import { Address } from 'web3x-es/address'
-import { BuyLootboxParams, LootboxType } from '../../modules/lootbox/types'
+import {
+  BuyLootboxParams,
+  LootboxType
+} from '../../../modules/lootbox/types'
 import { Props } from './BuyLootboxes.types'
 
 import './BuyLootboxes.css'
@@ -24,6 +27,10 @@ const BuyLootboxes = (props: Props) => {
   const isPremiumPending = activeLootboxType === LootboxType.Premium && isTxPending
 
   const handleClickBasic = () => {
+    if (basicPrice === undefined) {
+      console.error('Invaild basic price')
+      return
+    }
     const params: BuyLootboxParams = {
       to: Address.ZERO,
       boxType: LootboxType.Basic,
@@ -34,6 +41,10 @@ const BuyLootboxes = (props: Props) => {
   }
 
   const handleClickMedium = () => {
+    if (mediumPrice === undefined) {
+      console.error('Invaild medium price')
+      return
+    }
     const params: BuyLootboxParams = {
       to: Address.ZERO,
       boxType: LootboxType.Medium,
@@ -44,6 +55,10 @@ const BuyLootboxes = (props: Props) => {
   }
 
   const handleClickPremium = () => {
+    if (premiumPrice === undefined) {
+      console.error('Invaild premium price')
+      return
+    }
     const params: BuyLootboxParams = {
       to: Address.ZERO,
       boxType: LootboxType.Premium,
