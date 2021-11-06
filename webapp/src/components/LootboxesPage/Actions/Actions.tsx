@@ -1,11 +1,14 @@
 import React from 'react'
 import { Button } from '@kmon/ui'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
-const Actions = () => {
+import { Props } from './Actions.types'
+
+const Actions = (props: Props) => {
+  const { isTxPending, onBuy } = props
+
   return (
     <>
-      <Button onClick={() => ({})} primary>
+      <Button disabled={isTxPending} onClick={onBuy} primary>
         Buy
       </Button>
     </>

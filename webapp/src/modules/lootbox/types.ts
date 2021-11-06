@@ -10,8 +10,7 @@ export type LootboxPrices = {
   [x in LootboxType]: string | undefined
 }
 
-export type BuyLootboxParams = {
-  to: Address
-  boxType: LootboxType
-  boxPrice: string
+export enum TransactionType {
+  Approve = 'approve',
+  Transfer = 'transfer'
 }

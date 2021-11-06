@@ -1,19 +1,19 @@
 import { connect } from 'react-redux'
 import { replace } from 'connected-react-router'
 import { RouteComponentProps } from 'react-router'
-import {
-  getData as getTransactionData,
-  getLoading as getTransactionLoading
-} from '@kmon/dapps/dist/modules/transaction/selectors'
+import { Address } from 'web3x-es/address'
 
 import { RootState } from '../../modules/reducer'
-import { getIsFullscreen, getVendor } from '../../modules/routing/selectors'
-import { getWallet, isConnecting } from '../../modules/wallet/selectors'
+import { getIsFullscreen } from '../../modules/routing/selectors'
+import {
+  getWallet,
+  isConnecting
+} from '../../modules/wallet/selectors'
 import {
   getBasicPrice,
   getMediumPrice,
-  getPremiumPrice,
-  getTxHash
+  getPendingTransaction,
+  getPremiumPrice
 } from '../../modules/lootbox/selectors'
 import {
   Params,
@@ -22,7 +22,7 @@ import {
   MapDispatchProps
 } from './LootboxesPage.types'
 import LootboxesPage from './LootboxesPage'
-import { buyLootboxRequest, fetchLootboxPricesRequest } from '../../modules/lootbox/actions'
+import { fetchLootboxPricesRequest } from '../../modules/lootbox/actions'
 
 const mapState = (
   state: RootState,
@@ -32,23 +32,19 @@ const mapState = (
 
   return ({
     address: address?.toLowerCase(),
-    vendor: getVendor(state),
     wallet: getWallet(state),
     isConnecting: isConnecting(state),
     isFullscreen: getIsFullscreen(state),
     basicPrice: getBasicPrice(state),
     mediumPrice: getMediumPrice(state),
     premiumPrice: getPremiumPrice(state),
-    txHash: getTxHash(state),
-    txData: getTransactionData(state),
-    txLoadingData: getTransactionLoading(state)
+    pendingTransaction: getPendingTransaction(state)
   })
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onRedirect: path => dispatch(replace(path)),
-  onFetchLootboxPrices: boxType => dispatch(fetchLootboxPricesRequest(boxType)),
-  onBuyLootbox: params => dispatch(buyLootboxRequest(params))
+  onFetchLootboxPrices: boxType => dispatch(fetchLootboxPricesRequest(boxType))
 })
 
 export default connect(mapState, mapDispatch)(LootboxesPage)

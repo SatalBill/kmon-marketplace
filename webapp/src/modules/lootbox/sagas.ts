@@ -5,23 +5,34 @@ import {
   fetchLootboxPricesSuccess,
   FetchLootboxPricesRequestAction,
   FETCH_LOOTBOX_PRICES_REQUEST,
-  BUY_LOOTBOX_REQUEST,
-  BuyLootboxRequestAction,
-  buyLootboxSuccess,
-  buyLootboxFailure
+  BUY_LOOTBOX_SEND_APPROVE_REQUEST,
+  BuyLootboxSendApproveRequestAction,
+  buyLootboxSendApproveSuccess,
+  buyLootboxSendApproveFailure,
+  BuyLootboxSendTransferRequestAction,
+  buyLootboxSendTransferSuccess,
+  BUY_LOOTBOX_SEND_TRANSFER_REQUEST,
+  buyLootboxSendTransferRequest
 } from './actions'
 import { LootboxServices } from './services'
 import { getWallet } from '../wallet/selectors'
 import { ChainId } from '@kmon/schemas'
-import { FetchTransactionSuccessAction, FETCH_TRANSACTION_SUCCESS } from '@kmon/dapps/dist/modules/transaction/actions'
+import {
+  FetchTransactionSuccessAction,
+  FETCH_TRANSACTION_SUCCESS
+} from '@kmon/dapps/dist/modules/transaction/actions'
 import { showToast } from '@kmon/dapps/dist/modules/toast/actions'
-import { getSendTransactionConfirmedToast } from '../toast/toasts'
-import { LootboxType } from './types'
+import {
+  getBuyLootboxApprovalToast,
+  getBuyLootboxTransferToast
+} from '../toast/toasts'
 import { toStringLootboxType } from './utils'
+import { TransactionType } from './types'
 
 export function* lootboxSaga() {
   yield takeEvery(FETCH_LOOTBOX_PRICES_REQUEST, handleFetchLootboxPricesRequest)
-  yield takeEvery(BUY_LOOTBOX_REQUEST, handleBuyLootboxRequest)
+  yield takeEvery(BUY_LOOTBOX_SEND_APPROVE_REQUEST, handleBuyLootboxSendApproveRequest)
+  yield takeEvery(BUY_LOOTBOX_SEND_TRANSFER_REQUEST, handleBuyLootboxSendTransferRequest)
   yield takeEvery(FETCH_TRANSACTION_SUCCESS, handleFetchTransaction)
 }
 
@@ -38,25 +49,46 @@ function* handleFetchLootboxPricesRequest(action: FetchLootboxPricesRequestActio
   }
 }
 
-function* handleBuyLootboxRequest(action: BuyLootboxRequestAction) {
-  const { params } = action.payload
+function* handleBuyLootboxSendApproveRequest(action: BuyLootboxSendApproveRequestAction) {
+  const { boxType, boxPrice, to } = action.payload
   try {
     const lootboxService = new LootboxServices()
 
     const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
     const chainId: ChainId = yield select(getChainId)
 
-    const txHash: string = yield call(lootboxService.buyLootbox, wallet, params)
-    yield put(buyLootboxSuccess(params.boxType, txHash, chainId))
+    const txHash: string = yield call(lootboxService.buyLootboxApprove, wallet, boxPrice)
+    yield put(buyLootboxSendApproveSuccess(chainId, txHash, boxType, boxPrice, to, TransactionType.Approve))
   } catch (error) {
     // @ts-ignore
-    yield put(buyLootboxFailure(params.boxType, error.message))
+    yield put(buyLootboxSendApproveFailure(boxType, error.message))
+  }
+}
+
+function* handleBuyLootboxSendTransferRequest(action: BuyLootboxSendTransferRequestAction) {
+  const { boxType, boxPrice, to } = action.payload
+  try {
+    const lootboxService = new LootboxServices()
+
+    const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
+    const chainId: ChainId = yield select(getChainId)
+
+    const txHash: string = yield call(lootboxService.buyLootboxTransfer, wallet, to, boxType)
+    yield put(buyLootboxSendTransferSuccess(chainId, txHash, boxType, boxPrice, to, TransactionType.Transfer))
+  } catch (error) {
+    // @ts-ignore
+    yield put(buyLootboxSendTransferFailure(boxType, error.message))
   }
 }
 
 function* handleFetchTransaction(action: FetchTransactionSuccessAction) {
   const { transaction } = action.payload
-  const { boxType } = transaction.payload
-  const boxTypeStr = toStringLootboxType(boxType)
-  yield put(showToast(getSendTransactionConfirmedToast(transaction.chainId, transaction.hash, boxTypeStr)))
+  const { boxType, txType, boxPrice, to } = transaction.payload
+  if (txType === TransactionType.Approve) {
+    yield put(showToast(getBuyLootboxApprovalToast(transaction.chainId, transaction.hash)))
+    yield put(buyLootboxSendTransferRequest(boxType, boxPrice, to))
+  }
+  if (txType === TransactionType.Transfer) {
+    yield put(showToast(getBuyLootboxTransferToast(transaction.chainId, transaction.hash, toStringLootboxType(boxType))))
+  }
 }

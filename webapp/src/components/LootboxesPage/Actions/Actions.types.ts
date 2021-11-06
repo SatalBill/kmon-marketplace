@@ -1,6 +1,4 @@
 export type Props = {
+  isTxPending: boolean
+  onBuy: () => void
 }
-
-export type MapStateProps = {}
-export type MapDispatchProps = {}
-export type MapDispatch = {}

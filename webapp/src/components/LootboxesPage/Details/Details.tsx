@@ -5,7 +5,7 @@ import { Actions } from '../Actions'
 import { toStringLootboxType } from '../../../modules/lootbox/utils'
 
 const Details = (props: Props) => {
-  const { boxType } = props
+  const { boxType, boxPrice, isTxPending, onBuy } = props
   const boxTypeStr = toStringLootboxType(boxType)
 
   return (
@@ -18,10 +18,10 @@ const Details = (props: Props) => {
       </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
-          10 KMON
+          {boxPrice} KMON
         </p>
       </DetailItem>
-      <Actions />
+      <Actions isTxPending={isTxPending} onBuy={onBuy} />
     </div>
   )
 }

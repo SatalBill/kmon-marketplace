@@ -27,13 +27,34 @@ export function getMetaTransactionFailureToast() {
   }
 }
 
-export function getSendTransactionConfirmedToast(chainId: ChainId, txHash: string, boxType: string) {
+export function getBuyLootboxApprovalToast(chainId: ChainId, txHash: string) {
   return {
     type: ToastType.INFO,
-    title: t('toast.send_transaction_confirmed.title'),
+    title: t('toast.buy_lootbox_approval_confirmation.title'),
     body: (
       <T
-        id="toast.send_transaction_confirmed.body"
+        id="toast.buy_lootbox_approval_confirmation.body"
+        values={{
+          etherscan_link: (
+            <a href={`${getTransactionOrigin(chainId)}/tx/${txHash}`} target="_blank" rel="noopener noreferrer">
+              etherscan
+            </a>
+          )
+        }}
+      />
+    ),
+    timeout: 6000,
+    closable: true
+  }
+}
+
+export function getBuyLootboxTransferToast(chainId: ChainId, txHash: string, boxType: string) {
+  return {
+    type: ToastType.INFO,
+    title: t('toast.buy_lootbox_transfer_confirmation.title'),
+    body: (
+      <T
+        id="toast.buy_lootbox_transfer_confirmation.body"
         values={{
           box_type: boxType,
           etherscan_link: (

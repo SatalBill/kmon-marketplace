@@ -360,9 +360,13 @@
       "title": "Meta transacción",
       "body": "Ocurrió un error publicando la meta transacción.{br}Intentelo de nuevo o ingrese a nuestro {discord_link} para obtener más información."
     },
-    "send_transaction_confirmed": {
-      "title": "¡Transacción confirmada!",
-      "body": "Compraste {box_type} caja botín. Ver {etherscan_link}."
+    "buy_lootbox_approval_confirmation": {
+      "title": "Confirmación de aprobación",
+      "body": "Permitiste gastar tu KMON. View {etherscan_link}"
+    },
+    "buy_lootbox_transfer_confirmation": {
+      "title": "Confirmación de transferencia",
+      "body": "Compraste {box_type} caja botín. Ver {etherscan_link}"
     }
   }
 }

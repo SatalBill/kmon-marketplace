@@ -8,7 +8,6 @@ import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
 import { Props } from './LootboxesPage.types'
-import { BuyLootboxes } from './BuyLootboxes'
 import { LootboxType } from '../../modules/lootbox/types'
 
 import { LootboxCard } from './LootboxCard'
@@ -16,27 +15,22 @@ import { LootboxCard } from './LootboxCard'
 const LootboxesPage = (props: Props) => {
   const {
     address,
-    vendor,
     wallet,
     isConnecting,
     isFullscreen,
     basicPrice,
     mediumPrice,
     premiumPrice,
-    txHash,
-    txData,
-    txLoadingData,
+    pendingTransaction,
     onRedirect,
-    onFetchLootboxPrices,
-    onBuyLootbox
+    onFetchLootboxPrices
   } = props
 
   const isCurrentAccount =
     address === undefined || (wallet && wallet.address === address)
 
-  const isTxPending = txHash !== null && txLoadingData.find(action => action.payload.hash === txHash) !== undefined
-  const tx = txData.find(tx => tx.hash === txHash)
-  const txStatus = tx === undefined ? null : tx.status
+  const isTxPending = pendingTransaction !== undefined && pendingTransaction.status !== 'confirmed'
+  const txStatus = pendingTransaction !== undefined ? pendingTransaction.status : null
 
   // Redirect to signIn if trying to access current account without a wallet
   useEffect(() => {
@@ -58,14 +52,6 @@ const LootboxesPage = (props: Props) => {
           isFullscreen={isFullscreen}
         />
       </div>
-      <BuyLootboxes
-        basicPrice={basicPrice}
-        mediumPrice={mediumPrice}
-        premiumPrice={premiumPrice}
-        isTxPending={isTxPending}
-        txStatus={txStatus}
-        onBuyLootbox={onBuyLootbox}
-      />
       <Page className="NFTBrowse">
         <Card.Group>
           <LootboxCard

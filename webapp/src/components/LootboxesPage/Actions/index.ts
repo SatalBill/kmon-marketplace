@@ -1,2 +1,2 @@
-import Actions from './Actions.container'
+import Actions from './Actions'
 export { Actions }
