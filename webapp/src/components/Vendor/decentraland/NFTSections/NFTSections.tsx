@@ -3,6 +3,7 @@ import React from 'react'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
 import { MenuItem } from '../../../Menu/MenuItem'
+import { MultiRangeSlider } from '../../../Menu/MultiRangeSlider'
 import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
@@ -72,6 +73,11 @@ const NFTSections = (props: Props) => {
           ))}
         </>
       ) : null}
+      <MultiRangeSlider
+        min={0}
+        max={100}
+        onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+      />
     </Menu>
   )
 }
