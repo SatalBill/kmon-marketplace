@@ -1,0 +1,45 @@
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  flex: 50%;
+  margin: 4px 0;
+}
+
+.icon {
+  visibility: visible;
+}
+
+.hidden-icon {
+  visibility: hidden;
+}
+
+.checkbox-passive {
+  transition: 900ms ease;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: 1px solid #f231af;
+  border-radius: 3px;
+  transition: all 150ms;
+  padding: 2px;
+  margin-right: 8px;
+}
+
+.checkbox-passive:hover {
+  box-shadow: 0 0 1px 1px #f231af;
+}
+
+.checkbox-active {
+  background: #f231af;
+}
+
+.label {
+  color: var(--secondary-text);
+  font-weight: 600;
+}

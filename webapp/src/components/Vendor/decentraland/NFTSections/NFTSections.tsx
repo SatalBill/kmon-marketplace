@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
 import { MenuItem } from '../../../Menu/MenuItem'
 import { MultiRangeSlider } from '../../../Menu/MultiRangeSlider'
-import { Props } from './NFTSections.types'
+import { Dropdown } from '../../../Menu/Dropdown'
+import { Checkbox, CheckboxContainer } from '../../../Checkbox'
+import { ELEM_TYPE } from './NFTSection.data'
+import { Props, CheckboxFilter } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
   const { section, onSectionClick } = props
-
+  const [elemTypeFilters, setElemTypeFilters] = useState<CheckboxFilter[]>(
+    ELEM_TYPE
+  )
   return (
     <Menu className="NFTSections">
       {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
@@ -36,6 +41,7 @@ const NFTSections = (props: Props) => {
         value={Section.GENERATIONS}
         currentValue={section}
         onClick={onSectionClick}
+        withCaret={true}
       />
       {[
         Section.GENERATIONS,
@@ -78,6 +84,25 @@ const NFTSections = (props: Props) => {
         max={100}
         onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
       />
+      <Dropdown value={Section.ELEMENT_TYPE}>
+        <CheckboxContainer>
+          {elemTypeFilters.map((elem, index) => (
+            <Checkbox
+              key={index}
+              checked={elem.checked}
+              label={elem.label}
+              onChange={(item: CheckboxFilter) => {
+                const index = elemTypeFilters.findIndex(
+                  obj => obj.label === item.label
+                )
+                const copiedElements = [...elemTypeFilters]
+                copiedElements[index].checked = item.checked
+                setElemTypeFilters(copiedElements)
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
     </Menu>
   )
 }
