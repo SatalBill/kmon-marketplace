@@ -11,13 +11,15 @@ import { NFTBrowse } from '../NFTBrowse'
 import { Props } from './BrowsePage.types'
 
 const BrowsePage = (props: Props) => {
-  const { isFullscreen } = props
+  const { isFullscreen, pathname } = props
+  const isBrowseEggs = pathname === '/browse'
   const vendor = isVendor(props.vendor) ? props.vendor : VendorName.DECENTRALAND
 
   const activeTab = isPartner(vendor)
     ? NavigationTab.PARTNER
-    : NavigationTab.BROWSE
-
+    : isBrowseEggs
+    ? NavigationTab.BROWSE
+    : NavigationTab.KRYPTOMONS
   return (
     <>
       <div className="PageCustomHeader">

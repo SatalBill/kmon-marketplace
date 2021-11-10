@@ -89,6 +89,9 @@ class NFTAPI {
       }
       queryParams.set('section', params.section)
     }
+    if (params.kryptomonStatus) {
+      queryParams.set('kryptomonStatus', params.kryptomonStatus)
+    }
     if (filters) {
       if (filters.isLand) {
         queryParams.append('isLand', 'true')

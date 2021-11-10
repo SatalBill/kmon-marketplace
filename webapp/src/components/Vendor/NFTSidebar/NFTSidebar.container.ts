@@ -2,7 +2,11 @@ import { connect } from 'react-redux'
 
 import { RootState } from '../../../modules/reducer'
 import { browseNFTs } from '../../../modules/routing/actions'
-import { getVendor, getSection } from '../../../modules/routing/selectors'
+import {
+  getVendor,
+  getSection,
+  getPathname
+} from '../../../modules/routing/selectors'
 import {
   MapStateProps,
   MapDispatch,
@@ -12,7 +16,8 @@ import NFTSidebar from './NFTSidebar'
 
 const mapState = (state: RootState): MapStateProps => ({
   vendor: getVendor(state),
-  section: getSection(state)
+  section: getSection(state),
+  pathname: getPathname(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
