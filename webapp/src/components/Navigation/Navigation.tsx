@@ -34,6 +34,11 @@ const Navigation = (props: Props) => {
             {t('navigation.my_assets')}
           </Tabs.Tab>
         </Link>
+        <Link to={locations.lootboxes()}>
+          <Tabs.Tab active={activeTab === NavigationTab.LOOTBOXES}>
+            {t('navigation.lootboxes')}
+          </Tabs.Tab>
+        </Link>
         <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
           <Link to={locations.activity()}>
             <Tabs.Tab active={activeTab === NavigationTab.ACTIVITY}>

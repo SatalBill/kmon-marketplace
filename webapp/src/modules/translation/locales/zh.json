@@ -33,7 +33,8 @@
     "partners": "伙伴",
     "my_assets": "我的资产",
     "my_bids": "我的出价",
-    "activity": "活动"
+    "activity": "活动",
+    "lootboxes": "战利品箱"
   },
   "menu": {
     "all": "所有资产",
@@ -359,6 +360,14 @@
     "meta_transaction_failure": {
       "title": "元交易",
       "body": "发送元交易时出错。{br}请重试或加入我们的{discord_link}以获取支持。"
+    },
+    "buy_lootbox_approval_confirmation": {
+      "title": "批准确认",
+      "body": "您允许使用您的 KMON。 View {etherscan_link}"
+    },
+    "buy_lootbox_transfer_confirmation": {
+      "title": "转账确认",
+      "body": "您购买了 {box_type} 个战利品箱。 查看 {etherscan_link}"
     }
   }
 }
