@@ -1,7 +1,23 @@
 import { ContractAbi} from 'web3x-es/contract';
 export default new ContractAbi([
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_symbol",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amountToMint",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },

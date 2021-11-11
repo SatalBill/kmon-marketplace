@@ -6,7 +6,7 @@ import { LootboxType } from './types'
 import { ContractFactory } from '../contract/ContractFactory'
 import { Lootbox } from '../../contracts/Lootbox'
 import { sendTransaction } from '../wallet/utils'
-import { KmonToken } from '../../contracts/KmonToken'
+import { TestERC20 } from '../../contracts/TestERC20'
 
 export interface LootboxServiceInterface {
   getLootboxPrices(boxType: LootboxType): Promise<string>
@@ -25,8 +25,8 @@ implements LootboxServiceInterface {
 
   async buyLootboxApprove(wallet: Wallet | null, boxPrice: string) {
     const lootboxData = getContract(CN.Lootbox, Number(getConnectedProviderChainId()))
-    const kmonTokenData = getContract(CN.KmonToken, Number(getConnectedProviderChainId()))
-    const kmonToken = await ContractFactory.build(KmonToken, kmonTokenData.address)
+    const testERC20Data = getContract(CN.TestERC20, Number(getConnectedProviderChainId()))
+    const testERC20 = await ContractFactory.build(TestERC20, testERC20Data.address)
 
     if (!wallet) {
       throw new Error('Invalid address. Wallet must be connected.')
@@ -34,8 +34,8 @@ implements LootboxServiceInterface {
 
     const from = Address.fromString(wallet.address)
 
-    const approve = kmonToken.methods.approve(Address.fromString(lootboxData.address), boxPrice.toString())
-    return sendTransaction(approve, kmonTokenData, from)
+    const approve = testERC20.methods.approve(Address.fromString(lootboxData.address), boxPrice.toString())
+    return sendTransaction(approve, testERC20Data, from)
   }
 
   async buyLootboxTransfer(wallet: Wallet | null, to: Address, boxType: LootboxType) {
