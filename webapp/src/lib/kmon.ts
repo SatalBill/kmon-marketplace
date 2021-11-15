@@ -1,15 +1,15 @@
 import { fromWei } from 'web3x-es/utils'
 
-export function formatMANA(value: string) {
+export function formatKMON(value: string) {
   return Number(fromWei(value, 'ether')).toLocaleString()
 }
 
-export function toMANA(num: number) {
+export function toKMON(num: number) {
   return num > 0 ? num.toString() : ''
 }
 
-export function fromMANA(mana: string) {
-  const num = mana.split(/[,|.]/).join('')
+export function fromKMON(kmon: string) {
+  const num = kmon.split(/[,|.]/).join('')
 
   const result = parseInt(num, 10)
 

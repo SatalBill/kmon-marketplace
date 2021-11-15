@@ -323,7 +323,7 @@
       "cancel_bid": "您取消了对{name}的{price}出价。"
     }
   },
-  "mana": {
+  "kmon": {
     "running_on": "这是{network}网络中运行的MANA"
   },
   "wallet": {

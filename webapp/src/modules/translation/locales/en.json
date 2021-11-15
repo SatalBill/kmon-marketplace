@@ -385,7 +385,7 @@
       "cancel_bid": "You cancelled a bid of {price} on {name}."
     }
   },
-  "mana": {
+  "kmon": {
     "running_on": "This is MANA running in the {network} Network"
   },
   "wallet": {

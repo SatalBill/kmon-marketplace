@@ -4,7 +4,7 @@ import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/ut
 import { NFT } from '../nft/types'
 import { Order } from './types'
 import { getNFTName } from '../nft/utils'
-import { formatMANA } from '../../lib/mana'
+import { formatKMON } from '../../lib/kmon'
 
 // Create Order (aka Sell)
 
@@ -66,7 +66,7 @@ export const executeOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
       contractAddress: nft.contractAddress,
       network: nft.network,
       name: getNFTName(nft),
-      price: formatMANA(order.price)
+      price: formatKMON(order.price)
     })
   })
 export const executeOrderFailure = (order: Order, nft: NFT, error: string) =>
@@ -93,7 +93,7 @@ export const cancelOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
       contractAddress: nft.contractAddress,
       network: nft.network,
       name: getNFTName(nft),
-      price: formatMANA(order.price)
+      price: formatKMON(order.price)
     })
   })
 export const cancelOrderFailure = (order: Order, nft: NFT, error: string) =>

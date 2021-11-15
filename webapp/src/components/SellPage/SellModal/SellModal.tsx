@@ -10,7 +10,7 @@ import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import { Header, Form, Field, Button, Modal } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
-import { toMANA, fromMANA } from '../../../lib/mana'
+import { toKMON, fromKMON } from '../../../lib/kmon'
 import {
   INPUT_FORMAT,
   getDefaultExpirationDate
@@ -20,7 +20,7 @@ import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor/VendorFactory'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { NFTAction } from '../../NFTAction'
-import { Mana } from '../../Mana'
+import { Kmon } from '../../Kmon'
 import { ManaField } from '../../ManaField'
 import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
@@ -40,7 +40,7 @@ const SellModal = (props: Props) => {
 
   const isUpdate = order !== null
   const [price, setPrice] = useState(
-    isUpdate ? toMANA(+fromWei(order!.price, 'ether')) : ''
+    isUpdate ? toKMON(+fromWei(order!.price, 'ether')) : ''
   )
   const [expiresAt, setExpiresAt] = useState(
     isUpdate && order!.expiresAt
@@ -83,7 +83,7 @@ const SellModal = (props: Props) => {
   }
 
   const handleCreateOrder = () =>
-    onCreateOrder(nft, fromMANA(price), new Date(expiresAt).getTime())
+    onCreateOrder(nft, fromKMON(price), new Date(expiresAt).getTime())
 
   const handleSubmit = () => {
     if (hasAuthorization(authorizations, authorization)) {
@@ -102,7 +102,7 @@ const SellModal = (props: Props) => {
   const isDisabled =
     !orderService.canSell() ||
     !isOwnedBy(nft, wallet) ||
-    fromMANA(price) <= 0 ||
+    fromKMON(price) <= 0 ||
     isInvalidDate
 
   return (
@@ -124,13 +124,13 @@ const SellModal = (props: Props) => {
           <ManaField
             label={t('sell_page.price')}
             type="text"
-            placeholder={toMANA(1000)}
+            placeholder={toKMON(1000)}
             network={nft.network}
             value={price}
             focus={true}
             onChange={(_event, props) => {
-              const newPrice = fromMANA(props.value)
-              setPrice(toMANA(newPrice))
+              const newPrice = fromKMON(props.value)
+              setPrice(toKMON(newPrice))
             }}
           />
           <Field
@@ -173,9 +173,9 @@ const SellModal = (props: Props) => {
               values={{
                 name: <b>{getNFTName(nft)}</b>,
                 amount: (
-                  <Mana network={nft.network} inline>
-                    {fromMANA(price).toLocaleString()}
-                  </Mana>
+                  <Kmon network={nft.network} inline>
+                    {fromKMON(price).toLocaleString()}
+                  </Kmon>
                 )
               }}
             />
@@ -188,8 +188,8 @@ const SellModal = (props: Props) => {
               placeholder={price}
               value={confirmPrice}
               onChange={(_event, props) => {
-                const newPrice = fromMANA(props.value)
-                setConfirmPrice(toMANA(newPrice))
+                const newPrice = fromKMON(props.value)
+                setConfirmPrice(toKMON(newPrice))
               }}
             />
           </Modal.Content>
@@ -207,7 +207,7 @@ const SellModal = (props: Props) => {
               type="submit"
               primary
               disabled={
-                isCreatingOrder || fromMANA(price) !== fromMANA(confirmPrice)
+                isCreatingOrder || fromKMON(price) !== fromKMON(confirmPrice)
               }
               loading={isCreatingOrder}
             >

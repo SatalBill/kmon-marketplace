@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, Mana } from '@kmon/ui'
+import { Field, Kmon } from '@kmon/ui'
 import { Props } from './ManaField.types'
 import './ManaField.css'
 
@@ -14,7 +14,7 @@ export default class ManaField extends React.PureComponent<Props> {
       <Field
         {...rest}
         className={classes}
-        icon={<Mana network={network} />}
+        icon={<Kmon network={network} />}
         iconPosition="left"
       />
     )

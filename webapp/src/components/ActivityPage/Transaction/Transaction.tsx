@@ -23,7 +23,7 @@ import {
 import { locations } from '../../../modules/routing/locations'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTProvider } from '../../NFTProvider'
-import { Mana } from '../../Mana'
+import { Kmon } from '../../Kmon'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
 
@@ -123,9 +123,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Mana network={network} inline>
+                      <Kmon network={network} inline>
                         {price.toLocaleString()}
-                      </Mana>
+                      </Kmon>
                     )
                   }}
                 />
@@ -153,9 +153,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Mana network={network} inline>
+                      <Kmon network={network} inline>
                         {price.toLocaleString()}
-                      </Mana>
+                      </Kmon>
                     )
                   }}
                 />
@@ -183,9 +183,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Mana network={network} inline>
+                      <Kmon network={network} inline>
                         {price.toLocaleString()}
-                      </Mana>
+                      </Kmon>
                     )
                   }}
                 />
@@ -243,7 +243,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Mana inline>{price.toLocaleString()}</Mana>
+                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
                   }}
                 />
               }
@@ -269,7 +269,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Mana inline>{price.toLocaleString()}</Mana>
+                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
                   }}
                 />
               }
@@ -295,7 +295,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Mana inline>{price.toLocaleString()}</Mana>
+                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
                   }}
                 />
               }

@@ -4,11 +4,11 @@ import { Page, Header, Button } from '@kmon/ui'
 
 import { locations } from '../../modules/routing/locations'
 import { getNFTName } from '../../modules/nft/utils'
-import { formatMANA } from '../../lib/mana'
+import { formatKMON } from '../../lib/kmon'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet } from '../Wallet'
-import { Mana } from '../Mana'
+import { Kmon } from '../Kmon'
 import { NFTProviderPage } from '../NFTProviderPage'
 import NFTAction from '../NFTAction/NFTAction'
 import { Props } from './CancelSalePage.types'
@@ -51,9 +51,9 @@ const CancelSalePage = (props: Props) => {
                       values={{
                         name: <b>{name}</b>,
                         amount: (
-                          <Mana network={nft.network} inline>
-                            {formatMANA(order.price)}
-                          </Mana>
+                          <Kmon network={nft.network} inline>
+                            {formatKMON(order.price)}
+                          </Kmon>
                         )
                       }}
                     />

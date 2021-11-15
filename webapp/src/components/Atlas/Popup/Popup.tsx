@@ -4,7 +4,7 @@ import { Row, Section, Header } from '@kmon/ui'
 import { Profile } from '@kmon/dapps/dist/containers'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Coordinate } from '../../Coordinate'
-import { Mana } from '../../Mana'
+import { Kmon } from '../../Kmon'
 import { Props } from './Popup.types'
 import './Popup.css'
 
@@ -39,7 +39,7 @@ export default class Popup extends React.PureComponent<Props> {
         {tile.price ? (
           <Section className="price">
             <Header sub>{t('nft_page.price')}</Header>
-            <Mana>{tile.price.toLocaleString()}</Mana>
+            <Kmon>{tile.price.toLocaleString()}</Kmon>
           </Section>
         ) : null}
       </div>

@@ -8,7 +8,7 @@ import {
   AuthorizationType
 } from '@kmon/dapps/dist/modules/authorization/types'
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
-import { toMANA, fromMANA } from '../../../lib/mana'
+import { toKMON, fromKMON } from '../../../lib/kmon'
 import { NFTAction } from '../../NFTAction'
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'
 import { getDefaultExpirationDate } from '../../../modules/order/utils'
@@ -39,7 +39,7 @@ const BidModal = (props: Props) => {
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
   const handlePlaceBid = useCallback(
-    () => onPlaceBid(nft, fromMANA(price), +new Date(expiresAt), fingerprint),
+    () => onPlaceBid(nft, fromKMON(price), +new Date(expiresAt), fingerprint),
     [nft, price, expiresAt, fingerprint, onPlaceBid]
   )
 
@@ -82,7 +82,7 @@ const BidModal = (props: Props) => {
   const hasInsufficientMANA =
     !!price &&
     !!wallet &&
-    fromMANA(price) > wallet.networks[Network.ETHEREUM].mana
+    fromKMON(price) > wallet.networks[Network.ETHEREUM].kmon
 
   return (
     <NFTAction nft={nft}>
@@ -100,11 +100,11 @@ const BidModal = (props: Props) => {
           <ManaField
             network={Network.ETHEREUM}
             label={t('bid_page.price')}
-            placeholder={toMANA(1000)}
+            placeholder={toKMON(1000)}
             value={price}
             onChange={(_event, props) => {
-              const newPrice = fromMANA(props.value)
-              setPrice(toMANA(newPrice))
+              const newPrice = fromKMON(props.value)
+              setPrice(toKMON(newPrice))
             }}
             error={hasInsufficientMANA}
             message={
@@ -138,7 +138,7 @@ const BidModal = (props: Props) => {
             loading={isPlacingBid}
             disabled={
               isOwnedBy(nft, wallet) ||
-              fromMANA(price) <= 0 ||
+              fromKMON(price) <= 0 ||
               isInvalidDate ||
               hasInsufficientMANA ||
               isLoading ||
