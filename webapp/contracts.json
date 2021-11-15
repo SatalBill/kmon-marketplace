@@ -39,15 +39,15 @@
       "source": "files",
       "abiFile": "./src/contracts/ERC721.json"
     },
-    "TestERC20": {
+    "KMONToken": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0xB701985528aDA4aAB39B3fdFB17819a72d04aFCd"
+      "address": "0x20317089818D87df0DE077F02df226bCB4611640"
     },
     "Lootbox": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x202B46e76635a102f885Ca33e97162c21162BC95"
+      "address": "0xAc9cffe24513112B2847F5Ef3f0AD28ab766A640"
     }
   }
 }
