@@ -51,6 +51,21 @@ export type NFTsFetchParams = {
   search?: string
   section?: string
   kryptomonStatus?: string
+  // Checkboxes:
+  elemTypes?: string
+  specialties?: string
+  supers?: string
+  unfreezable?: string
+  // Ranges:
+  affection?: string
+  braveness?: string
+  constitution?: string
+  craziness?: string
+  hunger?: string
+  instinct?: string
+  smart?: string
+  elementStartingTalent?: string
+  laziness?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

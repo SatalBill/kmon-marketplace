@@ -41,5 +41,16 @@ export enum Section {
 
   ENS = 'ens',
 
-  ELEMENT_TYPE = 'element_type'
+  ELEMENT_TYPE = 'element_type',
+  SPECIALTY = 'specialty',
+  SUPER = 'super',
+  AFFECTION = 'affection',
+  CRAZINESS = 'craziness',
+  INSTINCT = 'instinct',
+  HUNGER = 'hunger',
+  LAZINESS = 'braveness',
+  SMART = 'smart',
+  ELEMENT_STARTING_TALENT = 'element_starting_talent',
+  CONSTITUTION = 'constitution',
+  BRAVENESS = 'braveness'
 }

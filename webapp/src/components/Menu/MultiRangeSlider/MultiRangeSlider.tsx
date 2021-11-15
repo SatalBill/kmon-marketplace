@@ -10,9 +10,22 @@ import classnames from 'classnames'
 import { Props } from './MultiRangeSlider.types'
 import './MultiRangeSlider.css'
 
-const MultiRangeSlider: FC<Props> = ({ min, max, onChange }) => {
-  const [minVal, setMinVal] = useState(min)
-  const [maxVal, setMaxVal] = useState(max)
+const MultiRangeSlider: FC<Props> = ({
+  min,
+  max,
+  minValue,
+  maxValue,
+  onChange
+}) => {
+  console.log({
+    min,
+    max,
+    minValue,
+    maxValue
+  })
+
+  const [minVal, setMinVal] = useState(minValue ? minValue : min)
+  const [maxVal, setMaxVal] = useState(maxValue ? maxValue : max)
   const minValRef = useRef<HTMLInputElement>(null)
   const maxValRef = useRef<HTMLInputElement>(null)
   const range = useRef<HTMLDivElement>(null)

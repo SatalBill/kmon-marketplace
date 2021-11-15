@@ -10,6 +10,8 @@ export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
+    console.log('NFTAPI---fetch', params)
+
     const queryParams = this.buildQueryString(params, filters)
 
     const response: NFTResponse = await fetch(
@@ -65,6 +67,7 @@ class NFTAPI {
     filters?: NFTsFetchFilters
   ): string {
     const queryParams = new URLSearchParams()
+    console.log({ params })
 
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
@@ -91,6 +94,44 @@ class NFTAPI {
     }
     if (params.kryptomonStatus) {
       queryParams.set('kryptomonStatus', params.kryptomonStatus)
+    }
+    // Checkboxes:
+    if (params.elemTypes) {
+      queryParams.set('elemTypes', params.elemTypes)
+    }
+    if (params.specialties) {
+      queryParams.set('specialties', params.specialties)
+    }
+    if (params.supers) {
+      queryParams.set('supers', params.supers)
+    }
+    // Ranges:
+    if (params.affection) {
+      queryParams.set('affection', params.affection)
+    }
+    if (params.braveness) {
+      queryParams.set('affection', params.braveness)
+    }
+    if (params.constitution) {
+      queryParams.set('constitution', params.constitution)
+    }
+    if (params.craziness) {
+      queryParams.set('craziness', params.craziness)
+    }
+    if (params.hunger) {
+      queryParams.set('hunger', params.hunger)
+    }
+    if (params.instinct) {
+      queryParams.set('instinct', params.instinct)
+    }
+    if (params.smart) {
+      queryParams.set('smart', params.smart)
+    }
+    if (params.elementStartingTalent) {
+      queryParams.set('elementStartingTalent', params.elementStartingTalent)
+    }
+    if (params.laziness) {
+      queryParams.set('laziness', params.laziness)
     }
     if (filters) {
       if (filters.isLand) {

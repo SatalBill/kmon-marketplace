@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
@@ -6,14 +6,46 @@ import { MenuItem } from '../../../Menu/MenuItem'
 import { MultiRangeSlider } from '../../../Menu/MultiRangeSlider'
 import { Dropdown } from '../../../Menu/Dropdown'
 import { Checkbox, CheckboxContainer } from '../../../Checkbox'
-import { ELEM_TYPE } from './NFTSection.data'
-import { Props, CheckboxFilter } from './NFTSections.types'
+import { ELEM_TYPE, SPECIALTIES, SUPERS } from './NFTSection.data'
+import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
-  const { section, onSectionClick } = props
-  const [elemTypeFilters, setElemTypeFilters] = useState<CheckboxFilter[]>(
-    ELEM_TYPE
-  )
+  const {
+    section,
+    onSectionClick,
+    onMultiItemClick,
+    elemTypes = [],
+    specialties = [],
+    supers = [],
+    affection = [],
+    braveness = [],
+    constitution = [],
+    craziness = [],
+    hunger = [],
+    instinct = [],
+    smart = [],
+    elementStartingTalent = [],
+    laziness = []
+  } = props
+  const [state, setState] = useState({
+    elemTypes,
+    affection,
+    specialties,
+    supers,
+    braveness,
+    constitution,
+    craziness,
+    hunger,
+    instinct,
+    smart,
+    elementStartingTalent,
+    laziness
+  })
+
+  useEffect(() => {
+    onMultiItemClick(state)
+  }, [state])
+
   return (
     <Menu className="NFTSections">
       {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
@@ -79,29 +111,176 @@ const NFTSections = (props: Props) => {
           ))}
         </>
       ) : null}
-      <MultiRangeSlider
-        min={0}
-        max={100}
-        onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-      />
-      <Dropdown value={Section.ELEMENT_TYPE}>
+      <Dropdown value={Section.ELEMENT_TYPE} open={state.elemTypes.length > 0}>
         <CheckboxContainer>
-          {elemTypeFilters.map((elem, index) => (
+          {ELEM_TYPE.map(elem => (
             <Checkbox
-              key={index}
-              checked={elem.checked}
-              label={elem.label}
-              onChange={(item: CheckboxFilter) => {
-                const index = elemTypeFilters.findIndex(
-                  obj => obj.label === item.label
-                )
-                const copiedElements = [...elemTypeFilters]
-                copiedElements[index].checked = item.checked
-                setElemTypeFilters(copiedElements)
+              key={elem}
+              checked={state.elemTypes.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.elemTypes.indexOf(elem) > -1) {
+                  const newArr = [...state.elemTypes]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, elemTypes: newArr })
+                } else {
+                  const newArr = [...state.elemTypes, elem]
+                  setState({ ...state, elemTypes: newArr })
+                }
               }}
             />
           ))}
         </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SPECIALTY} open={state.specialties.length > 0}>
+        <CheckboxContainer>
+          {SPECIALTIES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.specialties.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.specialties.indexOf(elem) > -1) {
+                  const newArr = [...state.specialties]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, specialties: newArr })
+                } else {
+                  const newArr = [...state.specialties, elem]
+                  setState({ ...state, specialties: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
+        <CheckboxContainer>
+          {SUPERS.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.supers.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.supers.indexOf(elem) > -1) {
+                  const newArr = [...state.supers]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, supers: newArr })
+                } else {
+                  const newArr = [...state.supers, elem]
+                  setState({ ...state, supers: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.AFFECTION} open={state.affection.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.affection[0] || 0}
+          maxValue={+state.affection[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, affection: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.BRAVENESS} open={state.braveness.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.braveness[0] || 0}
+          maxValue={+state.braveness[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, braveness: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.CONSTITUTION}
+        open={state.constitution.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.constitution[0] || 0}
+          maxValue={+state.constitution[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, braveness: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.CRAZINESS} open={state.craziness.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.craziness[0] || 0}
+          maxValue={+state.craziness[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, craziness: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.HUNGER} open={state.hunger.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.hunger[0] || 0}
+          maxValue={+state.hunger[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, hunger: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.INSTINCT} open={state.instinct.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.instinct[0] || 0}
+          maxValue={+state.instinct[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, instinct: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.SMART} open={state.smart.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.smart[0] || 0}
+          maxValue={+state.smart[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, smart: [min.toString(), max.toString()] })
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.ELEMENT_STARTING_TALENT}
+        open={state.elementStartingTalent.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.elementStartingTalent[0] || 0}
+          maxValue={+state.elementStartingTalent[1] || 100}
+          onChange={({ min, max }) => {
+            setState({
+              ...state,
+              elementStartingTalent: [min.toString(), max.toString()]
+            })
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.LAZINESS} open={state.laziness.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.laziness[0] || 0}
+          maxValue={+state.laziness[1] || 100}
+          onChange={({ min, max }) => {
+            setState({ ...state, laziness: [min.toString(), max.toString()] })
+          }}
+        />
       </Dropdown>
     </Menu>
   )

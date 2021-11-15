@@ -79,7 +79,18 @@
     "super_rare": "SuperRare",
     "known_origin": "KnownOrigin",
     "makers_place": "MakersPlace",
-    "element_type": "Element Type"
+    "element_type": "Element Type",
+    "specialty": "Specialty",
+    "super": "Super",
+    "affection": "Affection",
+    "craziness": "Craziness",
+    "instinct": "Instinct",
+    "hunger": "Hunger",
+    "laziness": "Laziness",
+    "braveness": "Braveness",
+    "smart": "Smart",
+    "element_starting_talent": "Element Starting Talent",
+    "constitution": "Constitution"
   },
   "vendor_menu": {
     "no_assets": "No assets",
