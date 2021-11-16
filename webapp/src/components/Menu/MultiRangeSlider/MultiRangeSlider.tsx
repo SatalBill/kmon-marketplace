@@ -17,13 +17,6 @@ const MultiRangeSlider: FC<Props> = ({
   maxValue,
   onChange
 }) => {
-  console.log({
-    min,
-    max,
-    minValue,
-    maxValue
-  })
-
   const [minVal, setMinVal] = useState(minValue ? minValue : min)
   const [maxVal, setMaxVal] = useState(maxValue ? maxValue : max)
   const minValRef = useRef<HTMLInputElement>(null)

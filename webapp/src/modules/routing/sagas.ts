@@ -67,13 +67,10 @@ function* handleFetchNFTsFromRoute(action: FetchNFTsFromRouteAction) {
 }
 
 function* handleBrowse(action: BrowseNFTsAction) {
-  console.log('BROWSE --- ', action.payload.searchOptions)
-
   const newSearchOptions: SearchOptions = yield getNewSearchOptions(
     action.payload.searchOptions
   )
   yield fetchNFTsFromRoute(newSearchOptions)
-  console.log('newSearchOptions--- ', newSearchOptions)
 
   const { pathname }: ReturnType<typeof getLocation> = yield select(getLocation)
   const params = getSearchParams(newSearchOptions)

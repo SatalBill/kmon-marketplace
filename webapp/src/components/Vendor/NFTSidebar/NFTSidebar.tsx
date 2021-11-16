@@ -52,9 +52,6 @@ const NFTSidebar = (props: Props) => {
 
   const handleOnBrowseMultiple = useCallback(
     (data: MultipleFilters) => {
-      console.log(123123, { elemTypes, affection, data })
-      console.log({ data })
-
       onBrowse({
         // elemTypes,
         // affection,

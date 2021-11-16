@@ -10,8 +10,6 @@ export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
-    console.log('NFTAPI---fetch', params)
-
     const queryParams = this.buildQueryString(params, filters)
 
     const response: NFTResponse = await fetch(
@@ -67,7 +65,6 @@ class NFTAPI {
     filters?: NFTsFetchFilters
   ): string {
     const queryParams = new URLSearchParams()
-    console.log({ params })
 
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
@@ -110,7 +107,7 @@ class NFTAPI {
       queryParams.set('affection', params.affection)
     }
     if (params.braveness) {
-      queryParams.set('affection', params.braveness)
+      queryParams.set('braveness', params.braveness)
     }
     if (params.constitution) {
       queryParams.set('constitution', params.constitution)

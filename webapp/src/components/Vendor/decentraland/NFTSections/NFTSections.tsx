@@ -46,6 +46,25 @@ const NFTSections = (props: Props) => {
     onMultiItemClick(state)
   }, [state])
 
+  const handleStateChange = (
+    min: number,
+    max: number,
+    field: string,
+    maxAllow = 100
+  ) => {
+    if (min === 0 && max === maxAllow) {
+      setState({
+        ...state,
+        [field]: []
+      })
+    } else {
+      setState({
+        ...state,
+        [field]: [min.toString(), max.toString()]
+      })
+    }
+  }
+
   return (
     <Menu className="NFTSections">
       {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
@@ -181,7 +200,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.affection[0] || 0}
           maxValue={+state.affection[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, affection: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'affection')
           }}
         />
       </Dropdown>
@@ -192,7 +211,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.braveness[0] || 0}
           maxValue={+state.braveness[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, braveness: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'braveness')
           }}
         />
       </Dropdown>
@@ -206,7 +225,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.constitution[0] || 0}
           maxValue={+state.constitution[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, braveness: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'constitution')
           }}
         />
       </Dropdown>
@@ -217,7 +236,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.craziness[0] || 0}
           maxValue={+state.craziness[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, craziness: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'craziness')
           }}
         />
       </Dropdown>
@@ -228,7 +247,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.hunger[0] || 0}
           maxValue={+state.hunger[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, hunger: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'hunger')
           }}
         />
       </Dropdown>
@@ -239,7 +258,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.instinct[0] || 0}
           maxValue={+state.instinct[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, instinct: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'instinct')
           }}
         />
       </Dropdown>
@@ -250,7 +269,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.smart[0] || 0}
           maxValue={+state.smart[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, smart: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'smart')
           }}
         />
       </Dropdown>
@@ -260,14 +279,11 @@ const NFTSections = (props: Props) => {
       >
         <MultiRangeSlider
           min={0}
-          max={100}
+          max={1000}
           minValue={+state.elementStartingTalent[0] || 0}
-          maxValue={+state.elementStartingTalent[1] || 100}
+          maxValue={+state.elementStartingTalent[1] || 1000}
           onChange={({ min, max }) => {
-            setState({
-              ...state,
-              elementStartingTalent: [min.toString(), max.toString()]
-            })
+            handleStateChange(min, max, 'elementStartingTalent', 1000)
           }}
         />
       </Dropdown>
@@ -278,7 +294,7 @@ const NFTSections = (props: Props) => {
           minValue={+state.laziness[0] || 0}
           maxValue={+state.laziness[1] || 100}
           onChange={({ min, max }) => {
-            setState({ ...state, laziness: [min.toString(), max.toString()] })
+            handleStateChange(min, max, 'laziness')
           }}
         />
       </Dropdown>

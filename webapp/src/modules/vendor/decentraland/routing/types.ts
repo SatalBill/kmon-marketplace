@@ -48,7 +48,7 @@ export enum Section {
   CRAZINESS = 'craziness',
   INSTINCT = 'instinct',
   HUNGER = 'hunger',
-  LAZINESS = 'braveness',
+  LAZINESS = 'laziness',
   SMART = 'smart',
   ELEMENT_STARTING_TALENT = 'element_starting_talent',
   CONSTITUTION = 'constitution',

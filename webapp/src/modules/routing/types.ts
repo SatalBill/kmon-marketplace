@@ -32,12 +32,12 @@ export type SearchOptions = {
   address?: string
   network?: Network
   kryptomonStatus?: string
-  // checkboxes:
+
   elemTypes?: string[]
   specialties?: string[]
   supers?: string[]
   unfreezable?: string[]
-  // ranges:
+
   affection?: string[]
   braveness?: string[]
   constitution?: string[]
