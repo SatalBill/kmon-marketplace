@@ -7,6 +7,7 @@ import { KryptomonMetadataResponse, NFTData as DecentralandData } from '../vendo
 import { NFTData as SuperRareData } from '../vendor/super_rare/nft/types'
 import { NFTData as MakersPlaceData } from '../vendor/makers_place/nft/types'
 import { NFTData as KnownOriginData } from '../vendor/known_origin/nft/types'
+import { NFTData as KryptomonData } from '../vendor/kryptomon/nft/types'
 
 export enum NFTSortBy {
   NAME = 'name',
@@ -23,8 +24,10 @@ export type Data<V extends VendorName> = V extends VendorName.DECENTRALAND
   ? MakersPlaceData
   : V extends VendorName.KNOWN_ORIGIN
   ? KnownOriginData
+  : V extends VendorName.KRYPTOMON
+  ? KryptomonData
   : V extends void
-  ? DecentralandData | SuperRareData | MakersPlaceData | KnownOriginData
+  ? DecentralandData | SuperRareData | MakersPlaceData | KnownOriginData | KryptomonData
   : never
 
 export type NFT<V extends VendorName = VendorName.DECENTRALAND> = Omit<

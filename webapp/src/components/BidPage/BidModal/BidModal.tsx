@@ -49,8 +49,8 @@ const BidModal = (props: Props) => {
 
   const contractNames = getContractNames()
 
-  const mana = getContract({
-    name: contractNames.MANA,
+  const kmon = getContract({
+    name: contractNames.KMONToken,
     network: nft.network
   })
 
@@ -62,9 +62,9 @@ const BidModal = (props: Props) => {
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: bids.address,
-    contractAddress: mana.address,
-    contractName: ContractName.MANAToken,
-    chainId: mana.chainId,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
     type: AuthorizationType.ALLOWANCE
   }
 
