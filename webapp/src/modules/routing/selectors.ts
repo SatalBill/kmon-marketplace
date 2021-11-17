@@ -23,7 +23,7 @@ export const getVendor = createSelector<RootState, string, VendorName>(
     if (vendor && isVendor(vendor)) {
       return vendor
     }
-    return VendorName.DECENTRALAND
+    return VendorName.KRYPTOMON
   }
 )
 

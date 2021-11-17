@@ -16,16 +16,16 @@ const AccountSidebar = (props: Props) => {
     [address, onBrowse]
   )
 
-  const decentraland = VendorName.DECENTRALAND
+  const kryptomon = VendorName.KRYPTOMON
 
   return (
     <div className="NFTSidebar">
       <VendorMenu
-        key={decentraland}
+        key={kryptomon}
         address={address}
-        vendor={decentraland}
+        vendor={kryptomon}
         section={section}
-        onClick={section => handleOnBrowse(decentraland, section)}
+        onClick={section => handleOnBrowse(kryptomon, section)}
       />
       {getPartners().map(partner => (
         <VendorMenu

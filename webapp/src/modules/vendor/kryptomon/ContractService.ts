@@ -12,8 +12,8 @@ const network = process.env.REACT_APP_NETWORK! as AppNetwork
 
 export enum ContractName {
   KMONToken = 'KMON',
-  MARKETPLACE = 'Marketplace',
-  BIDS = 'Bids'
+  MarketplaceProxy = 'MarketplaceProxy',
+  ERC721Bid = 'ERC721Bid'
 }
 
 const contracts = ({
@@ -22,7 +22,15 @@ const contracts = ({
       name: ContractName.KMONToken,
       address: getContract(CN.KMONToken, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
-      category: null,
+      category: 'kryptomon',
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_RINKEBY
+    },
+    {
+      name: ContractName.ERC721Bid,
+      address: getContract(CN.ERC721Bid, ChainId.ETHEREUM_RINKEBY).address,
+      vendor: 'kryptomon',
+      category: 'kryptomon',
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
     }

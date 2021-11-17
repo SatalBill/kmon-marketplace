@@ -48,6 +48,11 @@
       "source": "etherscan",
       "net": "rinkeby",
       "address": "0xAc9cffe24513112B2847F5Ef3f0AD28ab766A640"
+    },
+    "ERC721Bid": {
+      "source": "etherscan",
+      "net": "rinkeby",
+      "address": "0xAa122dCc62D195C508A63408908a0e5408aEB8De"
     }
   }
 }

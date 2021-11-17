@@ -14,7 +14,7 @@ import { bidAPI } from './bid/api'
 import { getContract } from '../../contract/utils'
 
 export class BidService
-  implements BidServiceInterface<VendorName.DECENTRALAND> {
+  implements BidServiceInterface<VendorName.KRYPTOMON> {
   async fetchBySeller(seller: string) {
     const bids = await bidAPI.fetchBySeller(seller)
     return bids
@@ -82,7 +82,7 @@ export class BidService
       throw new Error('Invalid address. Wallet must be connected.')
     }
     const from = Address.fromString(wallet.address)
-    const bids = getContract({ name: ContractName.BIDS })
+    const bids = getContract({ name: ContractName.ERC721Bid })
     const to = Address.fromString(bids.address)
 
     return erc721.methods
@@ -106,7 +106,7 @@ export class BidService
   }
 
   private getBidContract() {
-    const bids = getContract({ name: ContractName.BIDS })
+    const bids = getContract({ name: ContractName.ERC721Bid })
     return ContractFactory.build(Bids, bids.address)
   }
 }

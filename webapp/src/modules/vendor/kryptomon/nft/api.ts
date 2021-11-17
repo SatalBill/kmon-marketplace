@@ -9,7 +9,7 @@ export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
     const queryParams = this.buildQueryString(params, filters)
-
+console.log('NFTAPI fetch =====', params, filters)
     const response: NFTResponse = await fetch(
       `${NFT_SERVER_URL}/v1/nfts?${queryParams}`
     ).then(resp => resp.json())

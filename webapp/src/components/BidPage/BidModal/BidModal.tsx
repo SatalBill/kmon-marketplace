@@ -54,14 +54,14 @@ const BidModal = (props: Props) => {
     network: nft.network
   })
 
-  const bids = getContract({
-    name: contractNames.BIDS,
+  const erc721Bid = getContract({
+    name: contractNames.ERC721Bid,
     network: nft.network
   })
 
   const authorization: Authorization = {
     address: wallet.address,
-    authorizedAddress: bids.address,
+    authorizedAddress: erc721Bid.address,
     contractAddress: kmon.address,
     contractName: ContractName.KMONToken,
     chainId: kmon.chainId,

@@ -12,7 +12,7 @@ import { OrderService as OrderServiceInterface } from '../services'
 import { sendTransaction } from '../../wallet/utils'
 
 export class OrderService
-  implements OrderServiceInterface<VendorName.DECENTRALAND> {
+  implements OrderServiceInterface<VendorName.KRYPTOMON> {
   async fetchByNFT(nft: NFT, status?: OrderStatus) {
     const orders = await orderAPI.fetchByNFT(
       nft.contractAddress,

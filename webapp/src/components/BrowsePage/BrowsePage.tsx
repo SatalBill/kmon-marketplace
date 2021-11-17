@@ -12,7 +12,7 @@ import { Props } from './BrowsePage.types'
 
 const BrowsePage = (props: Props) => {
   const { isFullscreen } = props
-  const vendor = isVendor(props.vendor) ? props.vendor : VendorName.DECENTRALAND
+  const vendor = isVendor(props.vendor) ? props.vendor : VendorName.KRYPTOMON
 
   const activeTab = isPartner(vendor)
     ? NavigationTab.PARTNER

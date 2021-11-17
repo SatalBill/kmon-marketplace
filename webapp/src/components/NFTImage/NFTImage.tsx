@@ -21,7 +21,7 @@ const NFTImage = (props: Props) => {
     zoom
   } = props
   const { kryptomon } = (nft as NFT<
-    VendorName.DECENTRALAND
+    VendorName.KRYPTOMON
   >).data
 
   switch (nft.category) {
