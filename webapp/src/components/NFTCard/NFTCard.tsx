@@ -34,7 +34,7 @@ const NFTCard = (props: Props) => {
     },
     {
       title: 'Fire',
-      value: genes?.fireGenes,
+      value: genes?.fire,
       icon: Fire
     },
     {
