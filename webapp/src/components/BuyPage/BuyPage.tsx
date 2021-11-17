@@ -22,7 +22,7 @@ const BuyPage = (props: Props) => {
     isExecutingOrder
   } = props
 
-  const isInsufficientMANA = (wallet: Wallet, nft: NFT, order: Order | null) =>
+  const isInsufficientKMON = (wallet: Wallet, nft: NFT, order: Order | null) =>
     !!order &&
     wallet.networks[nft.network].kmon < +fromWei(order.price, 'ether')
 
@@ -43,7 +43,7 @@ const BuyPage = (props: Props) => {
                   onNavigate={onNavigate}
                   onExecuteOrder={onExecuteOrder}
                   isOwner={isOwnedBy(nft, wallet)}
-                  hasInsufficientMANA={isInsufficientMANA(wallet, nft, order)}
+                  hasInsufficientKMON={isInsufficientKMON(wallet, nft, order)}
                 />
               )}
             </NFTProviderPage>

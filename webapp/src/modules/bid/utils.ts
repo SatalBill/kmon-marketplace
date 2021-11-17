@@ -2,12 +2,12 @@ import { Address } from 'web3x-es/address'
 import { Eth } from 'web3x-es/eth'
 import { getConnectedProvider } from '@kmon/dapps/dist/lib/eth'
 import { Network } from '@kmon/schemas'
-import { MANA } from '../../contracts/MANA'
+import { KMONToken } from '../../contracts/KMONToken'
 import { Bid } from './types'
 import { getContractNames } from '../vendor'
 import { getContract } from '../contract/utils'
 
-export async function isInsufficientMANA(bid: Bid) {
+export async function isInsufficientKMON(bid: Bid) {
   try {
     const provider = await getConnectedProvider()
     if (!provider) {
@@ -18,13 +18,13 @@ export async function isInsufficientMANA(bid: Bid) {
     const contractNames = getContractNames()
 
     const { address } = getContract({
-      name: contractNames.MANA,
+      name: contractNames.KMONToken,
       network: Network.ETHEREUM
     })
 
-    const mana = new MANA(eth, Address.fromString(address))
+    const kmon = new KMONToken(eth, Address.fromString(address))
 
-    const balance = await mana.methods
+    const balance = await kmon.methods
       .balanceOf(Address.fromString(bid.bidder))
       .call()
 

@@ -79,7 +79,7 @@ const BidModal = (props: Props) => {
   const handleClose = () => setShowAuthorizationModal(false)
 
   const isInvalidDate = +new Date(expiresAt) < Date.now()
-  const hasInsufficientMANA =
+  const hasInsufficientKMON =
     !!price &&
     !!wallet &&
     fromKMON(price) > wallet.networks[Network.ETHEREUM].kmon
@@ -106,9 +106,9 @@ const BidModal = (props: Props) => {
               const newPrice = fromKMON(props.value)
               setPrice(toKMON(newPrice))
             }}
-            error={hasInsufficientMANA}
+            error={hasInsufficientKMON}
             message={
-              hasInsufficientMANA ? t('bid_page.not_enougn_mana') : undefined
+              hasInsufficientKMON ? t('bid_page.not_enougn_mana') : undefined
             }
           />
           <Field
@@ -140,7 +140,7 @@ const BidModal = (props: Props) => {
               isOwnedBy(nft, wallet) ||
               fromKMON(price) <= 0 ||
               isInvalidDate ||
-              hasInsufficientMANA ||
+              hasInsufficientKMON ||
               isLoading ||
               isPlacingBid
             }
