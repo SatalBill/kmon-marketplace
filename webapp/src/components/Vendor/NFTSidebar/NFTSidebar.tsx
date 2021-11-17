@@ -8,11 +8,11 @@ import { PartnerSidebar } from '../PartnerSidebar'
 import { Props } from './NFTSidebar.types'
 
 const NFTSidebar = (props: Props) => {
-  const { vendor, section, onBrowse } = props
-
+  const { vendor, section, onBrowse, pathname } = props
+  const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
   const handleOnBrowse = useCallback(
     (section: Section) => {
-      onBrowse({ section })
+      onBrowse({ section, kryptomonStatus })
     },
     [onBrowse]
   )

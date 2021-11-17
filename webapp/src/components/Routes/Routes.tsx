@@ -28,6 +28,7 @@ const Routes = () => {
     <>
       <Switch>
         <Route exact path={locations.browse()} component={BrowsePage} />
+        <Route exact path={locations.kryptomons()} component={BrowsePage} />
         <Route
           exact
           path={locations.currentAccount()}
@@ -53,6 +54,11 @@ const Routes = () => {
         <Redirect
           from="/browse"
           to={locations.browse() + window.location.search}
+          push
+        />
+        <Redirect
+          from="/kryptomons"
+          to={locations.kryptomons() + window.location.search}
           push
         />
         <Redirect to={locations.root()} />

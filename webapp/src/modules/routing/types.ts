@@ -31,4 +31,5 @@ export type SearchOptions = {
   contracts?: string[]
   address?: string
   network?: Network
+  kryptomonStatus?: string
 }

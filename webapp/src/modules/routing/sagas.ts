@@ -25,7 +25,8 @@ import {
   getIsMap,
   getWearableRarities,
   getContracts,
-  getSearch
+  getSearch,
+  getKryptomonStatus
 } from './selectors'
 import {
   BROWSE_NFTS,
@@ -68,7 +69,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
-  const { search, onlyOnSale, isMap, address } = searchOptions
+  const { search, onlyOnSale, isMap, address, kryptomonStatus } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
 
@@ -96,7 +97,9 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           onlyOnSale,
           address,
           category,
-          search
+          search,
+          section,
+          kryptomonStatus
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -118,7 +121,8 @@ function* getNewSearchOptions(current: SearchOptions) {
     isFullscreen: yield select(getIsFullscreen),
     wearableRarities: yield select(getWearableRarities),
     contracts: yield select(getContracts),
-    network: yield select(getNetwork)
+    network: yield select(getNetwork),
+    kryptomonStatus: yield select(getKryptomonStatus)
   }
   current = yield deriveCurrentOptions(previous, current)
 

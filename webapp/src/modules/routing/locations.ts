@@ -6,12 +6,16 @@ export const locations = {
   signIn: () => '/sign-in',
   settings: () => '/settings',
   partners: () => '/partners',
-  kryptomons: () => '/kryptomons',
+  // kryptomons: () => '/kryptomons',
   items: () => '/items',
   bids: () => '/bids',
   browse: (options?: SearchOptions) => {
     const params = getSearchParams(options)
     return params ? `/browse?${params.toString()}` : '/browse'
+  },
+  kryptomons: (options?: SearchOptions) => {
+    const params = getSearchParams(options)
+    return params ? `/kryptomons?${params.toString()}` : '/kryptomons'
   },
   currentAccount: (options?: SearchOptions) => {
     const params = getSearchParams(options)

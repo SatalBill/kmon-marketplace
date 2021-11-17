@@ -24,7 +24,8 @@ const NFTBrowse = (props: Props) => {
     onFetchNFTsFromRoute,
     onBrowse,
     onlyOnSale,
-    viewInState
+    viewInState,
+    pathname
   } = props
 
   // Kick things off
@@ -34,16 +35,25 @@ const NFTBrowse = (props: Props) => {
 
   useEffect(() => {
     if (viewInState === view) {
+      const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
       onFetchNFTsFromRoute({
         vendor,
         view,
         address,
-        onlyOnSale
+        onlyOnSale,
+        kryptomonStatus
       })
     }
-  }, [view, vendor, address, onlyOnSale, viewInState, onFetchNFTsFromRoute])
+  }, [
+    view,
+    vendor,
+    address,
+    onlyOnSale,
+    viewInState,
+    onFetchNFTsFromRoute,
+    pathname
+  ])
 
-  // handlers
   const handleSetFullscreen = useCallback(
     () => onBrowse({ isMap: true, isFullscreen: true }),
     [onBrowse]
