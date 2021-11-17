@@ -74,7 +74,7 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: t('nft_page.elements.fire'),
-      value: genes?.fireGenes,
+      value: genes?.fire,
       icon: Fire
     },
     {
