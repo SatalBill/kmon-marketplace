@@ -64,18 +64,9 @@ const NFTCard = (props: Props) => {
     }
   ]
 
-  const maxElementType = elementTypes.reduce((prev, current) => {
-    return ((prev &&
-      typeof prev.value === 'string' &&
-      Number.parseInt(prev.value)) ||
-      0) >
-      ((current &&
-        typeof current.value === 'string' &&
-        Number.parseInt(current.value)) ||
-        0)
-      ? prev
-      : current
-  })
+  const elementType = elementTypes.find(
+    element => element.title === nft.data.kryptomon?.elementType
+  )
 
   return (
     <Card
@@ -96,7 +87,7 @@ const NFTCard = (props: Props) => {
           ) : (
             <img
               className="product-type-icon"
-              src={maxElementType.icon}
+              src={elementType?.icon}
               alt="icon"
             />
           )}
@@ -112,37 +103,17 @@ const NFTCard = (props: Props) => {
           </div>
         </div>
       </div>
-      {/* <Card.Content> */}
-      {/* <Card.Header> */}
       <div className="product-description">
         <div className="product-description-left">
           <p className="product-description-left-item">
             Gen: {nft.data.kryptomon?.genes.generation}
           </p>
           <p className="product-description-left-item">
-            Element: {maxElementType.title}
+            Element: {elementType?.title}
           </p>
         </div>
         <div className="product-description-right">ERC-721</div>
       </div>
-      {/* {order ? (
-            <Mana network={nft.network} inline>
-              {formatMANA(order.price)}
-            </Mana>
-          ) : null} */}
-      {/* </Card.Header> */}
-      {/* <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
-        {parcel ? <ParcelTags className="tags" nft={nft} /> : null}
-        {estate ? <EstateTags nft={nft} /> : null}
-        {wearable ? <WearableTags nft={nft} /> : null}
-        {ens ? <ENSTags nft={nft} /> : null} */}
-      {/* </Card.Content> */}
-
-      {/* ) : null}
-        </Card.Header>
-        <Card.Meta>{t(`networks.${nft.network.toLowerCase()}`)}</Card.Meta>
-        {kryptomon ? <KryptomonTags nft={nft} /> : null}
-      </Card.Content> */}
     </Card>
   )
 }
