@@ -51,12 +51,10 @@ export type NFTsFetchParams = {
   search?: string
   section?: string
   kryptomonStatus?: string
-  // Checkboxes:
   elemTypes?: string
   specialties?: string
   supers?: string
   unfreezable?: string
-  // Ranges:
   affection?: string
   braveness?: string
   constitution?: string

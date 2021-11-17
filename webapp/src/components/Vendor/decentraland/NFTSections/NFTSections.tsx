@@ -172,7 +172,7 @@ const NFTSections = (props: Props) => {
           ))}
         </CheckboxContainer>
       </Dropdown>
-      <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
+      {/* <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
         <CheckboxContainer>
           {SUPERS.map(elem => (
             <Checkbox
@@ -192,7 +192,7 @@ const NFTSections = (props: Props) => {
             />
           ))}
         </CheckboxContainer>
-      </Dropdown>
+      </Dropdown> */}
       <Dropdown value={Section.AFFECTION} open={state.affection.length > 0}>
         <MultiRangeSlider
           min={0}

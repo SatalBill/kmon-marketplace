@@ -92,7 +92,6 @@ class NFTAPI {
     if (params.kryptomonStatus) {
       queryParams.set('kryptomonStatus', params.kryptomonStatus)
     }
-    // Checkboxes:
     if (params.elemTypes) {
       queryParams.set('elemTypes', params.elemTypes)
     }
@@ -102,7 +101,6 @@ class NFTAPI {
     if (params.supers) {
       queryParams.set('supers', params.supers)
     }
-    // Ranges:
     if (params.affection) {
       queryParams.set('affection', params.affection)
     }
