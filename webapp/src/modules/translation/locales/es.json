@@ -322,7 +322,7 @@
       "cancel_bid": "Cancelaste una oferta de {price} por {name}."
     }
   },
-  "mana": {
+  "kmon": {
     "running_on": "MANA en la red {network}"
   },
   "wallet": {

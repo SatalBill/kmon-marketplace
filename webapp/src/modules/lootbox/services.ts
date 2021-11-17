@@ -6,7 +6,7 @@ import { LootboxType } from './types'
 import { ContractFactory } from '../contract/ContractFactory'
 import { Lootbox } from '../../contracts/Lootbox'
 import { sendTransaction } from '../wallet/utils'
-import { KmonToken } from '../../contracts/KmonToken'
+import { KMONToken } from '../../contracts/KMONToken'
 
 export interface LootboxServiceInterface {
   getLootboxPrices(boxType: LootboxType): Promise<string>
@@ -25,8 +25,8 @@ implements LootboxServiceInterface {
 
   async buyLootboxApprove(wallet: Wallet | null, boxPrice: string) {
     const lootboxData = getContract(CN.Lootbox, Number(getConnectedProviderChainId()))
-    const kmonTokenData = getContract(CN.KmonToken, Number(getConnectedProviderChainId()))
-    const kmonToken = await ContractFactory.build(KmonToken, kmonTokenData.address)
+    const kmonTokenData = getContract(CN.KMONToken, Number(getConnectedProviderChainId()))
+    const kmonToken = await ContractFactory.build(KMONToken, kmonTokenData.address)
 
     if (!wallet) {
       throw new Error('Invalid address. Wallet must be connected.')

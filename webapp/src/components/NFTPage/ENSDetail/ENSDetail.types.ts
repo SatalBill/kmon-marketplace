@@ -4,7 +4,7 @@ import { NFT } from '../../../modules/nft/types'
 import { VendorName } from '../../../modules/vendor/types'
 
 export type Props = {
-  nft: NFT<VendorName.DECENTRALAND>
+  nft: NFT<VendorName.KRYPTOMON>
   onNavigate: (path: string) => void
 }
 

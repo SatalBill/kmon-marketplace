@@ -13,7 +13,7 @@ const NFTDetail = (props: Props) => {
   return (
     <>
       {kryptomon ? <KryptomonDetail nft={nft} /> : null}
-      {nft.vendor !== VendorName.DECENTRALAND ? (
+      {nft.vendor !== VendorName.KRYPTOMON ? (
         <PictureFrameDetail nft={nft} />
       ) : null}
     </>

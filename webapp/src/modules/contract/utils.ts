@@ -24,6 +24,7 @@ export function getContract(query: Partial<Contract>): Contract {
         contract[key as keyof Contract]?.toString().toLowerCase()
     )
   )
+
   if (!found) {
     throw new Error(`Contract not found, query=${JSON.stringify(query)}`)
   }
