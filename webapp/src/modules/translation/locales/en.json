@@ -34,7 +34,8 @@
     "kryptomons": "Kryptomons",
     "items": "Items",
     "my_assets": "My Assets",
-    "activity": "Activity"
+    "activity": "Activity",
+    "lootboxes": "Lootboxes"
   },
   "menu": {
     "all": "All Assets",
@@ -396,7 +397,7 @@
       "cancel_bid": "You cancelled a bid of {price} on {name}."
     }
   },
-  "mana": {
+  "kmon": {
     "running_on": "This is MANA running in the {network} Network"
   },
   "wallet": {
@@ -434,6 +435,14 @@
     "meta_transaction_failure": {
       "title": "Meta transaction",
       "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
+    },
+    "buy_lootbox_approval_confirmation": {
+      "title": "Approval confirmation!",
+      "body": "You allowed to spend your KMON. View {etherscan_link}"
+    },
+    "buy_lootbox_transfer_confirmation": {
+      "title": "Transfer confirmation!",
+      "body": "You purchased {box_type} lootbox. View {etherscan_link}"
     }
   },
   "@dapps": {

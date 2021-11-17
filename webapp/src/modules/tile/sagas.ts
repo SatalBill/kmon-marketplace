@@ -35,7 +35,7 @@ function* handleFetchTilesRequest(_action: FetchTilesRequestAction) {
 function* handleConnectWalletSuccess(action: ConnectWalletSuccessAction) {
   yield put(
     fetchNFTsRequest({
-      vendor: VendorName.DECENTRALAND,
+      vendor: VendorName.KRYPTOMON,
       view: View.ATLAS,
       params: {
         first: 1000,

@@ -16,6 +16,7 @@ import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
 
 import { TRANSACTIONS_API_URL } from './wallet/utils'
+import { lootboxSaga } from './lootbox/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
 const profileSaga = createProfileSaga({
@@ -40,6 +41,7 @@ export function* rootSaga() {
     transactionSaga(),
     translationSaga(),
     uiSaga(),
-    walletSaga()
+    walletSaga(),
+    lootboxSaga()
   ])
 }

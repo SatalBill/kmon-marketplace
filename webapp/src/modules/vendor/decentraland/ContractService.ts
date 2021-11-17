@@ -197,10 +197,10 @@ export class ContractService implements ContractServiceInterface {
       return
     }
 
-    const contracts = await nftAPI.fetchContracts()
-    for (const contract of contracts) {
-      this.contracts.push(contract)
-    }
+    // const contracts = await nftAPI.fetchContracts()
+    // for (const contract of contracts) {
+    //   this.contracts.push(contract)
+    // }
 
     this.hasFetched = true
   }

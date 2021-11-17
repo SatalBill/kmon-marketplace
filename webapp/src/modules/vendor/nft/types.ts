@@ -4,6 +4,7 @@ import * as decentraland from '../decentraland'
 import * as superRare from '../super_rare'
 import * as makersPlace from '../makers_place'
 import * as knownOrigin from '../known_origin'
+import * as kryptomon from '../kryptomon'
 
 export type NFTsFetchFilters<
   V extends VendorName | unknown = unknown
@@ -15,6 +16,8 @@ export type NFTsFetchFilters<
   ? makersPlace.NFTsFetchFilters
   : V extends VendorName.KNOWN_ORIGIN
   ? knownOrigin.NFTsFetchFilters
+  : V extends VendorName.KRYPTOMON
+  ? kryptomon.NFTsFetchFilters
   : V extends unknown
   ?
       | decentraland.NFTsFetchFilters

@@ -5,13 +5,13 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Profile } from '@kmon/dapps/dist/containers'
 import dateFnsFormat from 'date-fns/format'
 
-import { Mana } from '../../Mana'
+import { Kmon } from '../../Kmon'
 import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor'
 import { Bid } from '../../../modules/bid/types'
 import { Order, OrderStatus } from '../../../modules/order/types'
 import { formatDistanceToNow } from '../../../lib/date'
-import { formatMANA } from '../../../lib/mana'
+import { formatKMON } from '../../../lib/kmon'
 import { Props, HistoryEvent, UnionOrderBid } from './TransactionHistory.types'
 import './TransactionHistory.css'
 
@@ -114,9 +114,9 @@ const TransactionHistory = (props: Props) => {
                       {formatEventDate(event.updatedAt)}
                     </Table.Cell>
                     <Table.Cell>
-                      <Mana network={network} inline>
-                        {formatMANA(event.price)}
-                      </Mana>
+                      <Kmon network={network} inline>
+                        {formatKMON(event.price)}
+                      </Kmon>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -128,9 +128,9 @@ const TransactionHistory = (props: Props) => {
               {events.map((event, index) => (
                 <div className="mobile-tx-history-row" key={index}>
                   <div className="price">
-                    <Mana network={network} inline>
-                      {formatMANA(event.price)}
-                    </Mana>
+                    <Kmon network={network} inline>
+                      {formatKMON(event.price)}
+                    </Kmon>
                   </div>
                   <div className="when">{formatEventDate(event.updatedAt)}</div>
                 </div>

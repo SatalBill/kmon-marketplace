@@ -1,4 +1,4 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, call } from 'redux-saga/effects'
 import { push, getLocation } from 'connected-react-router'
 import { VendorName } from '../vendor/types'
 import { View } from '../ui/types'
@@ -263,7 +263,7 @@ function deriveView(previous: SearchOptions, current: SearchOptions) {
 }
 
 function deriveVendor(previous: SearchOptions, current: SearchOptions) {
-  return current.vendor || previous.vendor || VendorName.DECENTRALAND
+  return current.vendor || previous.vendor || VendorName.KRYPTOMON
 }
 
 function shouldResetOptions(previous: SearchOptions, current: SearchOptions) {

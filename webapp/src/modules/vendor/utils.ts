@@ -72,7 +72,7 @@ export function isVendor(vendor: string) {
 }
 
 export function isPartner(vendor: string) {
-  return isVendor(vendor) && vendor !== VendorName.DECENTRALAND
+  return isVendor(vendor) && vendor !== VendorName.KRYPTOMON
 }
 
 export function getPartners(): VendorName[] {

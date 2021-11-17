@@ -12,7 +12,7 @@ import './ProximityHighlights.css'
 const ProximityHighlights = (props: Props) => {
   const { nft, proximities } = props
   const proximity = useProximity(
-    nft as NFT<VendorName.DECENTRALAND>,
+    nft as NFT<VendorName.KRYPTOMON>,
     proximities
   )
 

@@ -8,7 +8,7 @@ import {
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { Network, NFTCategory } from '@kmon/schemas'
 import { ContractName } from '@kmon/transactions'
-import { formatMANA } from '../../../lib/mana'
+import { formatKMON } from '../../../lib/kmon'
 import { locations } from '../../../modules/routing/locations'
 import { isPartner } from '../../../modules/vendor/utils'
 import { getNFTName } from '../../../modules/nft/utils'
@@ -17,7 +17,7 @@ import { NFT } from '../../../modules/nft/types'
 import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTAction } from '../../NFTAction'
-import { Mana } from '../../Mana'
+import { Kmon } from '../../Kmon'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { Props } from './BuyModal.types'
 
@@ -211,9 +211,9 @@ const BuyPage = (props: Props) => {
 const Name = (props: { nft: NFT }) => <b>{getNFTName(props.nft)}</b>
 
 const Price = (props: { network?: Network; price: string }) => (
-  <Mana network={props.network} inline withTooltip>
-    {formatMANA(props.price)}
-  </Mana>
+  <Kmon network={props.network} inline withTooltip>
+    {formatKMON(props.price)}
+  </Kmon>
 )
 
 export default React.memo(BuyPage)

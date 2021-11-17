@@ -14,5 +14,7 @@ export function getMaxQuerySize(vendor: VendorName) {
       return MAX_QUERY_SIZE
     case VendorName.KNOWN_ORIGIN:
       return MAX_QUERY_SIZE
+    case VendorName.KRYPTOMON:
+      return MAX_QUERY_SIZE
   }
 }

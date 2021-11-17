@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 
-import { formatMANA } from '../../lib/mana'
+import { formatKMON } from '../../lib/kmon'
 import { locations } from '../../modules/routing/locations'
 import { NFTImage } from '../NFTImage'
 import { Props } from './NFTCard.types'
@@ -93,7 +93,7 @@ const NFTCard = (props: Props) => {
           )}
           <div className="product-info">
             <p className="product-info-value">
-              INDEX VALUE {(order?.price && formatMANA(order.price)) || '0000'}{' '}
+              INDEX VALUE {(order?.price && formatKMON(order.price)) || '0000'}{' '}
               BNB
             </p>
             <Row>
