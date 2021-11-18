@@ -5,7 +5,7 @@ import './NFTDetailCard.css'
 import { Row } from '../Layout/Row'
 
 const NFTDetailCard = (props: Props) => {
-  const { nft, maxElementType } = props
+  const { nft, elementType } = props
   const date = nft.metadata.attributes?.find(
     elem => elem.trait_type === 'Birthday'
   )?.value
@@ -25,7 +25,7 @@ const NFTDetailCard = (props: Props) => {
         <div className="card-image-text">
           <img
             className="product-type-icon"
-            src={maxElementType.icon}
+            src={elementType.icon}
             alt="icon"
           />
         </div>

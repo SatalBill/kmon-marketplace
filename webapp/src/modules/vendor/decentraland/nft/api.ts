@@ -77,6 +77,7 @@ class NFTAPI {
     if (params.address) {
       queryParams.append('owner', params.address)
     }
+
     if (params.onlyOnSale) {
       queryParams.append('isOnSale', `${params.onlyOnSale}`)
     }
@@ -91,6 +92,42 @@ class NFTAPI {
     }
     if (params.kryptomonStatus) {
       queryParams.set('kryptomonStatus', params.kryptomonStatus)
+    }
+    if (params.elemTypes) {
+      queryParams.set('elemTypes', params.elemTypes)
+    }
+    if (params.specialties) {
+      queryParams.set('specialties', params.specialties)
+    }
+    if (params.supers) {
+      queryParams.set('supers', params.supers)
+    }
+    if (params.affection) {
+      queryParams.set('affection', params.affection)
+    }
+    if (params.braveness) {
+      queryParams.set('braveness', params.braveness)
+    }
+    if (params.constitution) {
+      queryParams.set('constitution', params.constitution)
+    }
+    if (params.craziness) {
+      queryParams.set('craziness', params.craziness)
+    }
+    if (params.hunger) {
+      queryParams.set('hunger', params.hunger)
+    }
+    if (params.instinct) {
+      queryParams.set('instinct', params.instinct)
+    }
+    if (params.smart) {
+      queryParams.set('smart', params.smart)
+    }
+    if (params.elementStartingTalent) {
+      queryParams.set('elementStartingTalent', params.elementStartingTalent)
+    }
+    if (params.laziness) {
+      queryParams.set('laziness', params.laziness)
     }
     if (filters) {
       if (filters.isLand) {

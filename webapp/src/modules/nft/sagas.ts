@@ -45,10 +45,10 @@ function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
       accounts,
       orders,
       count
-    ]: AwaitFn<typeof nftService.fetch> = yield call(() =>
+    ]: AwaitFn<typeof nftService.fetch> = yield call(() => {
       // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
-      nftService.fetch(params, filters as any)
-    )
+      return nftService.fetch(params, filters as any)
+    })
     yield put(
       fetchNFTsSuccess(
         options,

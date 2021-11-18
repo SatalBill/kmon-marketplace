@@ -3,7 +3,23 @@ import { push, getLocation } from 'connected-react-router'
 import { VendorName } from '../vendor/types'
 import { View } from '../ui/types'
 import { getView } from '../ui/nft/browse/selectors'
-import { getIsFullscreen, getNetwork, getVendor } from '../routing/selectors'
+import {
+  getIsFullscreen,
+  getNetwork,
+  getVendor,
+  getElemTypes,
+  getSuper,
+  getSpecialties,
+  getAffection,
+  getBraveness,
+  getLaziness,
+  getConstitution,
+  getCraziness,
+  getElementStartingTalent,
+  getHunger,
+  getInstinct,
+  getSmart
+} from '../routing/selectors'
 import { getAddress as getWalletAddress } from '../wallet/selectors'
 import { getAddress as getAccountAddress } from '../account/selectors'
 import { fetchNFTsRequest } from '../nft/actions'
@@ -15,7 +31,8 @@ import { locations } from './locations'
 import {
   getSearchParams,
   getSearchCategory,
-  getDefaultOptionsByView
+  getDefaultOptionsByView,
+  SEARCH_ARRAY_PARAM_SEPARATOR
 } from './search'
 import {
   getPage,
@@ -53,10 +70,12 @@ function* handleBrowse(action: BrowseNFTsAction) {
   const newSearchOptions: SearchOptions = yield getNewSearchOptions(
     action.payload.searchOptions
   )
+
   yield fetchNFTsFromRoute(newSearchOptions)
 
   const { pathname }: ReturnType<typeof getLocation> = yield select(getLocation)
   const params = getSearchParams(newSearchOptions)
+
   yield put(push(params ? `${pathname}?${params.toString()}` : pathname))
 }
 
@@ -69,7 +88,26 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
-  const { search, onlyOnSale, isMap, address, kryptomonStatus } = searchOptions
+
+  const {
+    search,
+    onlyOnSale,
+    isMap,
+    address,
+    kryptomonStatus,
+    elemTypes,
+    specialties,
+    supers,
+    affection,
+    braveness,
+    constitution,
+    craziness,
+    hunger,
+    instinct,
+    smart,
+    elementStartingTalent,
+    laziness
+  } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
 
@@ -81,7 +119,12 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const category = getSearchCategory(section)
 
   yield put(setIsLoadMore(isLoadMore))
-
+  const arrayToString = (arr: string[] | undefined) => {
+    if (!arr) {
+      return ''
+    }
+    return arr.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+  }
   if (isMap) {
     yield put(setView(view))
   } else {
@@ -99,7 +142,19 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           category,
           search,
           section,
-          kryptomonStatus
+          kryptomonStatus,
+          elemTypes: arrayToString(elemTypes),
+          specialties: arrayToString(specialties),
+          supers: arrayToString(supers),
+          affection: arrayToString(affection),
+          braveness: arrayToString(braveness),
+          constitution: arrayToString(constitution),
+          craziness: arrayToString(craziness),
+          hunger: arrayToString(hunger),
+          instinct: arrayToString(instinct),
+          smart: arrayToString(smart),
+          elementStartingTalent: arrayToString(elementStartingTalent),
+          laziness: arrayToString(laziness)
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -122,7 +177,19 @@ function* getNewSearchOptions(current: SearchOptions) {
     wearableRarities: yield select(getWearableRarities),
     contracts: yield select(getContracts),
     network: yield select(getNetwork),
-    kryptomonStatus: yield select(getKryptomonStatus)
+    kryptomonStatus: yield select(getKryptomonStatus),
+    elemTypes: yield select(getElemTypes),
+    specialties: yield select(getSpecialties),
+    supers: yield select(getSuper),
+    affection: yield select(getAffection),
+    braveness: yield select(getBraveness),
+    constitution: yield select(getConstitution),
+    craziness: yield select(getCraziness),
+    hunger: yield select(getHunger),
+    instinct: yield select(getInstinct),
+    smart: yield select(getSmart),
+    elementStartingTalent: yield select(getElementStartingTalent),
+    laziness: yield select(getLaziness)
   }
   current = yield deriveCurrentOptions(previous, current)
 

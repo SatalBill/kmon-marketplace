@@ -3,13 +3,13 @@ import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
 import { VendorName } from '../../types'
+import { GENERATION_TO_REQ } from '../../decentraland/nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
     const queryParams = this.buildQueryString(params, filters)
-console.log('NFTAPI fetch =====', params, filters)
     const response: NFTResponse = await fetch(
       `${NFT_SERVER_URL}/v1/nfts?${queryParams}`
     ).then(resp => resp.json())
@@ -52,6 +52,7 @@ console.log('NFTAPI fetch =====', params, filters)
     filters?: NFTsFetchFilters
   ): string {
     const queryParams = new URLSearchParams()
+
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
     // if (params.orderBy) {
@@ -63,12 +64,57 @@ console.log('NFTAPI fetch =====', params, filters)
     if (params.address) {
       queryParams.append('owner', params.address)
     }
-    // if (params.onlyOnSale) {
-    //   queryParams.append('isOnSale', 'true')
-    // }
 
+    if (params.onlyOnSale) {
+      queryParams.append('isOnSale', `${params.onlyOnSale}`)
+    }
     if (params.search) {
       queryParams.set('search', params.search)
+    }
+    if (params.section) {
+      if (GENERATION_TO_REQ[params.section]) {
+        queryParams.set('generation', GENERATION_TO_REQ[params.section])
+      }
+      queryParams.set('section', params.section)
+    }
+    if (params.kryptomonStatus) {
+      queryParams.set('kryptomonStatus', params.kryptomonStatus)
+    }
+    if (params.elemTypes) {
+      queryParams.set('elemTypes', params.elemTypes)
+    }
+    if (params.specialties) {
+      queryParams.set('specialties', params.specialties)
+    }
+    if (params.supers) {
+      queryParams.set('supers', params.supers)
+    }
+    if (params.affection) {
+      queryParams.set('affection', params.affection)
+    }
+    if (params.braveness) {
+      queryParams.set('braveness', params.braveness)
+    }
+    if (params.constitution) {
+      queryParams.set('constitution', params.constitution)
+    }
+    if (params.craziness) {
+      queryParams.set('craziness', params.craziness)
+    }
+    if (params.hunger) {
+      queryParams.set('hunger', params.hunger)
+    }
+    if (params.instinct) {
+      queryParams.set('instinct', params.instinct)
+    }
+    if (params.smart) {
+      queryParams.set('smart', params.smart)
+    }
+    if (params.elementStartingTalent) {
+      queryParams.set('elementStartingTalent', params.elementStartingTalent)
+    }
+    if (params.laziness) {
+      queryParams.set('laziness', params.laziness)
     }
     if (filters) {
       if (filters.isLand) {

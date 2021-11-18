@@ -12,7 +12,7 @@ import { MenuItem } from '../../Menu/MenuItem'
 import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
-  const { vendor, address, section, onSectionClick } = props
+  const { vendor, address, section, onSectionClick, onMultiItemClick } = props
 
   // TODO: This should be on a generic path like PartnerSidebar
   switch (vendor) {
@@ -36,12 +36,14 @@ const NFTSections = (props: Props) => {
           onSectionClick={onSectionClick}
         />
       )
+    case VendorName.KRYPTOMON:
     case VendorName.DECENTRALAND:
     default:
       return (
         <DecentralandNFTSections
           section={section as DecentralandSection}
           onSectionClick={onSectionClick}
+          onMultiItemClick={onMultiItemClick}
         />
       )
   }

@@ -42,98 +42,39 @@ function* handleWallet(
 
   const contractNames = getContractNames()
 
-  const marketplaceEthereum = getContract({
+  const marketplace = getContract({
     name: contractNames.MARKETPLACE,
     network: Network.ETHEREUM
   })
 
-  const marketplaceMatic = getContract({
-    name: contractNames.MARKETPLACE,
-    network: Network.MATIC
+  const erc721Bid = getContract({
+    name: contractNames.ERC721Bid
   })
 
-  const marketplaceAdapter = getContract({
-    name: contractNames.MARKETPLACE_ADAPTER
-  })
-
-  const bids = getContract({
-    name: contractNames.BIDS
-  })
-
-  const manaEthereum = getContract({
-    name: contractNames.MANA,
+  const kmon = getContract({
+    name: contractNames.KMONToken,
     network: Network.ETHEREUM
-  })
-
-  const manaMatic = getContract({
-    name: contractNames.MANA,
-    network: Network.MATIC
   })
 
   const authorizations: Authorization[] = []
 
   authorizations.push({
     address,
-    authorizedAddress: marketplaceEthereum.address,
-    contractAddress: manaEthereum.address,
-    contractName: ContractName.MANAToken,
-    chainId: manaEthereum.chainId,
+    authorizedAddress: marketplace.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
     type: AuthorizationType.ALLOWANCE
   })
 
   authorizations.push({
     address,
-    authorizedAddress: marketplaceMatic.address,
-    contractAddress: manaMatic.address,
-    contractName: ContractName.MANAToken,
-    chainId: manaMatic.chainId,
+    authorizedAddress: erc721Bid.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
     type: AuthorizationType.ALLOWANCE
   })
-
-  authorizations.push({
-    address,
-    authorizedAddress: marketplaceAdapter.address,
-    contractAddress: manaEthereum.address,
-    contractName: ContractName.MANAToken,
-    chainId: manaEthereum.chainId,
-    type: AuthorizationType.ALLOWANCE
-  })
-
-  authorizations.push({
-    address,
-    authorizedAddress: bids.address,
-    contractAddress: manaEthereum.address,
-    contractName: ContractName.MANAToken,
-    chainId: manaEthereum.chainId,
-    type: AuthorizationType.ALLOWANCE
-  })
-
-  for (const contract of contracts.filter(c => c.category !== null)) {
-    const marketplace = getContract({
-      name:
-        contract.vendor && isPartner(contract.vendor)
-          ? contractNames.MARKETPLACE_ADAPTER
-          : contractNames.MARKETPLACE,
-      network: contract.network
-    })!
-
-    // Skip SuperRare contract since it's not ERC721 compliant (lacks approveForAll)
-    if (contract.name === contractNames.SUPER_RARE) {
-      continue
-    }
-
-    authorizations.push({
-      address,
-      authorizedAddress: marketplace.address,
-      contractAddress: contract.address,
-      contractName:
-        contract.category === 'wearable' && contract.network === Network.MATIC
-          ? ContractName.ERC721CollectionV2
-          : ContractName.ERC721,
-      chainId: contract.chainId,
-      type: AuthorizationType.APPROVAL
-    })
-  }
 
   yield put(fetchAuthorizationsRequest(authorizations))
 }

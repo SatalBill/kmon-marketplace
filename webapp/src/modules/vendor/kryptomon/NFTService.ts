@@ -1,11 +1,7 @@
 import { Address } from 'web3x-es/address'
 import { Network } from '@kmon/schemas'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
-import {
-  ContractData,
-  ContractName,
-  getContract
-} from '@kmon/transactions'
+import { ContractData, ContractName, getContract } from '@kmon/transactions'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'
 import { NFT, NFTsFetchParams, NFTsCountParams } from '../../nft/types'
@@ -18,11 +14,9 @@ import { VendorName } from '../types'
 import { nftAPI } from './nft/api'
 import { Order } from '../../order/types'
 
-export class NFTService
-  implements NFTServiceInterface<VendorName.KRYPTOMON> {
+export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
   async fetch(params: NFTsFetchParams, filters?: NFTsFetchFilters) {
     const { data: results, total } = await nftAPI.fetch(params, filters)
-
     const accounts: Account[] = []
     const nfts: NFT[] = []
     const orders: Order[] = []
@@ -38,7 +32,7 @@ export class NFTService
       const metadata: KryptomonMetadataResponse = await fetch(
         result.nft.tokenURI
       ).then(resp => resp.json())
-      result.nft.metadata = metadata;
+      result.nft.metadata = metadata
 
       nfts.push({ ...result.nft, vendor: VendorName.KRYPTOMON })
       if (result.order) {
@@ -64,7 +58,7 @@ export class NFTService
     const metadata: KryptomonMetadataResponse = await fetch(
       response.nft.tokenURI
     ).then(resp => resp.json())
-    response.nft.metadata = metadata;
+    response.nft.metadata = metadata
 
     const nft: NFT = { ...response.nft, vendor: VendorName.KRYPTOMON }
     return [nft, response.order || undefined] as const
@@ -81,16 +75,16 @@ export class NFTService
     const contract: ContractData =
       nft.network !== Network.ETHEREUM
         ? {
-          ...getContract(ContractName.ERC721CollectionV2, nft.chainId),
-          address: nft.contractAddress
-        }
+            ...getContract(ContractName.ERC721CollectionV2, nft.chainId),
+            address: nft.contractAddress
+          }
         : {
-          name: 'ERC721',
-          abi: ERC721Abi as any,
-          address: nft.contractAddress,
-          chainId: nft.chainId,
-          version: '1'
-        }
+            name: 'ERC721',
+            abi: ERC721Abi as any,
+            address: nft.contractAddress,
+            chainId: nft.chainId,
+            version: '1'
+          }
 
     const transferFrom = erc721.methods.transferFrom(from, to, nft.tokenId)
     return sendTransaction(transferFrom, contract, from)

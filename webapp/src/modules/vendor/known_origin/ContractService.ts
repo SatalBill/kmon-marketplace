@@ -38,7 +38,7 @@ const contracts = ({
 } as Record<AppNetwork, Contract[]>)[network]
 
 export class ContractService implements ContractServiceInterface {
-  contracts = contracts
+  contracts = []
 
   async build() { }
 

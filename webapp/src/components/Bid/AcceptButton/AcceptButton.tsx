@@ -4,7 +4,7 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {
-  isInsufficientMANA,
+  isInsufficientKMON,
   checkFingerprint
 } from '../../../modules/bid/utils'
 import { Props } from './AcceptButton.types'
@@ -13,11 +13,11 @@ const AcceptButton = (props: Props) => {
   const { nft, bid, onClick } = props
 
   const [fingerprint, isLoadingFingerprint] = useFingerprint(nft)
-  const [hasInsufficientMANA, setHasInsufficientMANA] = useState(false)
+  const [hasInsufficientKMON, setHasInsufficientKMON] = useState(false)
 
   useEffect(() => {
-    isInsufficientMANA(bid)
-      .then(setHasInsufficientMANA)
+    isInsufficientKMON(bid)
+      .then(setHasInsufficientKMON)
       .catch(error =>
         console.error(`Could not get the MANA from bidder ${bid.bidder}`, error)
       )
@@ -29,7 +29,7 @@ const AcceptButton = (props: Props) => {
   const isDisabled =
     !nft ||
     isLoadingFingerprint ||
-    hasInsufficientMANA ||
+    hasInsufficientKMON ||
     !isValidFingerprint ||
     !isValidSeller
 
@@ -39,7 +39,7 @@ const AcceptButton = (props: Props) => {
     </Button>
   )
 
-  if (hasInsufficientMANA) {
+  if (hasInsufficientKMON) {
     button = (
       <Popup
         content={t('bid.not_enough_mana_on_bid_received')}

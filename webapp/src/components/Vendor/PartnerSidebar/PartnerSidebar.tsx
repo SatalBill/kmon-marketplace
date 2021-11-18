@@ -7,7 +7,13 @@ import { Props } from './PartnerSidebar.types'
 import './PartnerSidebar.css'
 
 const PartnerSidebar = (props: Props) => {
-  const { vendor, section, onMenuItemClick, onNavigate } = props
+  const {
+    vendor,
+    section,
+    onMenuItemClick,
+    onMultiItemClick,
+    onNavigate
+  } = props
 
   const handleGoBack = useCallback(() => {
     onNavigate(locations.partners())
@@ -20,7 +26,12 @@ const PartnerSidebar = (props: Props) => {
         {t('nft_sidebar.back')}
       </div>
 
-      <VendorMenu vendor={vendor} section={section} onClick={onMenuItemClick} />
+      <VendorMenu
+        vendor={vendor}
+        section={section}
+        onClick={onMenuItemClick}
+        onMultiItemClick={onMultiItemClick}
+      />
     </div>
   )
 }
