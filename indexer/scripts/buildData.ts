@@ -96,7 +96,7 @@ class Ethereum {
   async fetchContracts() {
     console.log(this.contractAddresses);
     const contractsByNetwork: ContractsResponse = await fetch(
-      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7JWR5HC3IM24QPRIITBRUQQM'
+      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7KT47QKY5JBVC373MTBSZSGY'
     )
     this.contractAddresses = contractsByNetwork[this.network]
   }

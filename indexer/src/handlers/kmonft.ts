@@ -1,12 +1,13 @@
 import { BigInt, log } from "@graphprotocol/graph-ts"
 
-import { getNFTId } from "../modules/nft"
+import { cancelActiveOrder, clearNFTOrderProperties, getNFTId } from "../modules/nft"
 import * as categories from '../modules/category/categories'
 import * as addresses from '../data/addresses'
-import { Birth, EggHatched } from "../entities/KMONFT/KMONFT"
+import { Birth, EggHatched, Transfer } from "../entities/KMONFT/KMONFT"
 import { Kryptomon, KryptomonExtraData, KryptomonGenes, NFT } from "../entities/schema"
 import { createAccount } from "../modules/wallet"
-import { ElementData, getKryptomonTokenURI, typeFormatted } from "../modules/kryptomon"
+import { buildKryptomonFromNFT, ElementData, getKryptomonTokenURI, typeFormatted } from "../modules/kryptomon"
+import { buildCountFromNFT } from "../modules/count"
 
 export function handleBirth(event: Birth): void {
   log.warning('handleBirth', [])
@@ -208,6 +209,61 @@ export function handleHatching(event: EggHatched): void {
   let kryptomon = Kryptomon.load(id);
   kryptomon.status = status;
   kryptomon.save();
+}
+
+export function isMint(event: Transfer): boolean {
+  return event.params.from.toHexString() == addresses.Null
+}
+
+export function handleTransfer(event: Transfer): void {
+  if (event.params.tokenId.toString() == '') {
+    return
+  }
+
+  let contractAddress = event.address.toHexString()
+  let category = categories.KRYPTOMON;
+  let id = getNFTId(
+    category,
+    event.address.toHexString(),
+    event.params.tokenId.toString()
+  )
+
+  let nft = new NFT(id)
+
+  nft.tokenId = event.params.tokenId
+  nft.owner = event.params.to.toHex()
+  nft.contractAddress = event.address
+  nft.category = category
+  nft.updatedAt = event.block.timestamp
+
+  if (isMint(event)) {
+    nft.createdAt = event.block.timestamp
+
+    nft.searchText = ''
+
+    let metric = buildCountFromNFT(nft)
+    metric.save()
+  } else {
+    let oldNFT = NFT.load(id)
+    if (cancelActiveOrder(oldNFT!, event.block.timestamp)) {
+      nft = clearNFTOrderProperties(nft!)
+    }
+  }
+
+  if (category == categories.KRYPTOMON) {
+    if (isMint(event)) {
+
+    } else {
+      let kryptomon: Kryptomon = Kryptomon.load(id)!
+      kryptomon.owner = nft.owner
+      log.info("Transfer: owner-{}, tokenId-{}, speciality-{}", [kryptomon.owner, kryptomon.tokenId.toString(), kryptomon.speciality])
+      kryptomon.save()
+    }
+  }
+
+  createAccount(event.params.to)
+
+  nft.save()
 }
 
 export function indexOfMax(arr: Array<BigInt>): BigInt {
