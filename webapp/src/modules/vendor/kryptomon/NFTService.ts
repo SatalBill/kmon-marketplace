@@ -17,7 +17,6 @@ import { Order } from '../../order/types'
 export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
   async fetch(params: NFTsFetchParams, filters?: NFTsFetchFilters) {
     const { data: results, total } = await nftAPI.fetch(params, filters)
-
     const accounts: Account[] = []
     const nfts: NFT[] = []
     const orders: Order[] = []

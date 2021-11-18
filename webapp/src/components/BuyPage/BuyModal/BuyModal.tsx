@@ -31,7 +31,7 @@ const BuyPage = (props: Props) => {
     onNavigate,
     onExecuteOrder,
     isOwner,
-    hasInsufficientMANA
+    hasInsufficientKMON
   } = props
 
   const [fingerprint, isFingerprintLoading] = useFingerprint(nft)
@@ -53,23 +53,21 @@ const BuyPage = (props: Props) => {
 
   const contractNames = getContractNames()
 
-  const mana = getContract({
-    name: contractNames.MANA,
+  const kmon = getContract({
+    name: contractNames.KMONToken,
     network: nft.network
   })
 
   const marketplace = getContract({
-    name: isPartner(nft.vendor)
-      ? contractNames.MARKETPLACE_ADAPTER
-      : contractNames.MARKETPLACE,
+    name: contractNames.MARKETPLACE,
     network: nft.network
   })
 
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: marketplace.address,
-    contractAddress: mana.address,
-    contractName: ContractName.MANAToken,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
     chainId: nft.chainId,
     type: AuthorizationType.ALLOWANCE
   }
@@ -91,7 +89,7 @@ const BuyPage = (props: Props) => {
   const isDisabled =
     !order ||
     isOwner ||
-    hasInsufficientMANA ||
+    hasInsufficientKMON ||
     (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
 
   const name = <Name nft={nft} />
@@ -107,7 +105,7 @@ const BuyPage = (props: Props) => {
     subtitle = <T id={'buy_page.no_fingerprint'} />
   } else if (isOwner) {
     subtitle = <T id={'buy_page.is_owner'} values={{ name }} />
-  } else if (hasInsufficientMANA) {
+  } else if (hasInsufficientKMON) {
     subtitle = (
       <T
         id={'buy_page.not_enough_mana'}
