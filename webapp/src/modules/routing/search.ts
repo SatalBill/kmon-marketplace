@@ -4,7 +4,7 @@ import { VendorName } from '../vendor/types'
 import { Section } from '../vendor/routing/types'
 import { SearchOptions, SortBy } from './types'
 
-const SEARCH_ARRAY_PARAM_SEPARATOR = '_'
+export const SEARCH_ARRAY_PARAM_SEPARATOR = '_'
 
 export function getDefaultOptionsByView(view?: View): SearchOptions {
   return {
@@ -66,6 +66,73 @@ export function getSearchParams(options?: SearchOptions) {
     }
     if (options.kryptomonStatus) {
       params.set('kryptomonStatus', options.kryptomonStatus.toString())
+    }
+
+    if (options.elemTypes && options.elemTypes.length > 0) {
+      params.set(
+        'elemTypes',
+        options.elemTypes.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.specialties && options.specialties.length > 0) {
+      params.set(
+        'specialties',
+        options.specialties.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.supers && options.supers.length > 0) {
+      params.set('supers', options.supers.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.affection && options.affection.length > 0) {
+      params.set(
+        'affection',
+        options.affection.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.laziness && options.laziness.length > 0) {
+      params.set(
+        'laziness',
+        options.laziness.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.braveness && options.braveness.length > 0) {
+      params.set(
+        'braveness',
+        options.braveness.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.constitution && options.constitution.length > 0) {
+      params.set(
+        'constitution',
+        options.constitution.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.craziness && options.craziness.length > 0) {
+      params.set(
+        'craziness',
+        options.craziness.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.hunger && options.hunger.length > 0) {
+      params.set('hunger', options.hunger.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.instinct && options.instinct.length > 0) {
+      params.set(
+        'instinct',
+        options.instinct.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.smart && options.smart.length > 0) {
+      params.set('smart', options.smart.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (
+      options.elementStartingTalent &&
+      options.elementStartingTalent.length > 0
+    ) {
+      params.set(
+        'elementStartingTalent',
+        options.elementStartingTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
     }
   }
   return params
@@ -157,11 +224,17 @@ export function getURLParamArray<T extends string>(
   validValues: string[] = []
 ) {
   const param = getURLParam<T>(search, paramName)
-  return param === null
-    ? []
-    : (param
-        .split(SEARCH_ARRAY_PARAM_SEPARATOR)
-        .filter(item => validValues.includes(item as T)) as T[])
+  if (param === null) {
+    return []
+  } else if (validValues && validValues.length > 0) {
+    return param
+      .split(SEARCH_ARRAY_PARAM_SEPARATOR)
+      .filter(item => validValues.includes(item as T)) as T[]
+  } else {
+    return param
+      .split(SEARCH_ARRAY_PARAM_SEPARATOR)
+      .filter(item => item as T) as T[]
+  }
 }
 
 export function getURLParam<T extends string>(

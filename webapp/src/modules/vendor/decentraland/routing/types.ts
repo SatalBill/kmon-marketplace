@@ -39,5 +39,18 @@ export enum Section {
   WEARABLES_TIARA = 'wearables_tiara',
   WEARABLES_TOP_HEAD = 'wearables_top_head',
 
-  ENS = 'ens'
+  ENS = 'ens',
+
+  ELEMENT_TYPE = 'element_type',
+  SPECIALTY = 'specialty',
+  SUPER = 'super',
+  AFFECTION = 'affection',
+  CRAZINESS = 'craziness',
+  INSTINCT = 'instinct',
+  HUNGER = 'hunger',
+  LAZINESS = 'laziness',
+  SMART = 'smart',
+  ELEMENT_STARTING_TALENT = 'element_starting_talent',
+  CONSTITUTION = 'constitution',
+  BRAVENESS = 'braveness'
 }
