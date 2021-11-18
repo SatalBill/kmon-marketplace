@@ -10,7 +10,15 @@ import { Props } from './VendorMenu.types'
 import './VendorMenu.css'
 
 const VendorMenu = (props: Props) => {
-  const { count, currentVendor, address, vendor, section, onClick } = props
+  const {
+    count,
+    currentVendor,
+    address,
+    vendor,
+    section,
+    onClick,
+    onMultiItemClick
+  } = props
 
   const [isCurrentVendor, setIsCurrentVendor] = useState(
     currentVendor === vendor
@@ -48,14 +56,14 @@ const VendorMenu = (props: Props) => {
     currentCount === undefined
       ? '...'
       : currentCount === 0
-        ? t('vendor_menu.no_assets')
-        : currentCount < getMaxQuerySize(vendor)
-          ? t('vendor_menu.assets_count', {
-            count: currentCount.toLocaleString()
-          })
-          : t('vendor_menu.more_than_assets_count', {
-            count: currentCount.toLocaleString()
-          })
+      ? t('vendor_menu.no_assets')
+      : currentCount < getMaxQuerySize(vendor)
+      ? t('vendor_menu.assets_count', {
+          count: currentCount.toLocaleString()
+        })
+      : t('vendor_menu.more_than_assets_count', {
+          count: currentCount.toLocaleString()
+        })
 
   const className = ['VendorMenu']
   if (isCurrentVendor) {
@@ -81,6 +89,7 @@ const VendorMenu = (props: Props) => {
             address={address}
             section={isCurrentVendor ? section : undefined}
             onSectionClick={onClick}
+            onMultiItemClick={onMultiItemClick}
           />
         ) : null}
       </Menu>

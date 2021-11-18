@@ -61,7 +61,6 @@ const KryptomonDetail = (props: Props) => {
     }
   }
   const genes = nft.data.kryptomon?.genes
-
   const elementTypes = [
     {
       title: t('nft_page.elements.water'),
@@ -75,7 +74,7 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: t('nft_page.elements.fire'),
-      value: genes?.fireGenes,
+      value: genes?.fire,
       icon: Fire
     },
     {
@@ -105,6 +104,10 @@ const KryptomonDetail = (props: Props) => {
     }
   ]
 
+  const elementType = elementTypes.find(
+    element => element.title === nft.data.kryptomon?.elementType
+  )
+
   const maxElementType = elementTypes.reduce((prev, current) => {
     return ((prev &&
       typeof prev.value === 'string' &&
@@ -121,7 +124,7 @@ const KryptomonDetail = (props: Props) => {
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
-        <NFTDetailCard maxElementType={maxElementType} nft={nft} />
+        <NFTDetailCard elementType={elementType} nft={nft} />
         <Column>
           <Details nft={nft} />
           <TitleBlock title={t('nft_page.dna_chart.title')}>

@@ -16,6 +16,7 @@ import {
   getURLParam
 } from './search'
 import { SortBy, Section } from './types'
+import { ELEM_TYPE } from '../../components/Vendor/decentraland/NFTSections/NFTSection.data'
 
 export const getState = (state: RootState) => state.routing
 
@@ -143,6 +144,69 @@ export const getNetwork = createSelector<
 export const getKryptomonStatus = createSelector<RootState, string, string>(
   getRouterSearch,
   search => getURLParam(search, 'kryptomonStatus') || ''
+)
+
+export const getElemTypes = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'elemTypes', ELEM_TYPE)
+)
+
+export const getSpecialties = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'specialties')
+)
+
+export const getSuper = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'supers')
+)
+
+export const getAffection = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'affection')
+)
+
+export const getBraveness = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'braveness')
+)
+
+export const getConstitution = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'constitution')
+)
+
+export const getCraziness = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'craziness')
+)
+
+export const getHunger = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'hunger')
+)
+
+export const getInstinct = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'instinct')
+)
+
+export const getSmart = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'smart')
+)
+
+export const getElementStartingTalent = createSelector<
+  RootState,
+  string,
+  string[]
+>(getRouterSearch, search =>
+  getURLParamArray<string>(search, 'elementStartingTalent')
+)
+
+export const getLaziness = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'laziness')
 )
 
 export const getPathname = createSelector<
