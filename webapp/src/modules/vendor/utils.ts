@@ -11,6 +11,7 @@ export function getFilters(
   const { section } = searchOptions
 
   switch (vendor) {
+    case VendorName.KRYPTOMON:
     case VendorName.DECENTRALAND: {
       const currentSection = Section[VendorName.DECENTRALAND]
 

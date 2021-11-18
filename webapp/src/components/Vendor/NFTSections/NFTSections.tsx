@@ -36,7 +36,8 @@ const NFTSections = (props: Props) => {
           onSectionClick={onSectionClick}
         />
       )
-    case VendorName.DECENTRALAND || VendorName.KRYPTOMON:
+    case VendorName.KRYPTOMON:
+    case VendorName.DECENTRALAND:
     default:
       return (
         <DecentralandNFTSections

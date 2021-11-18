@@ -20,6 +20,7 @@ const NFTFilters = (props: Props) => {
     case VendorName.KNOWN_ORIGIN:
       return <KnownOriginNFTFilters onBrowse={onBrowse} />
     case VendorName.DECENTRALAND:
+    case VendorName.KRYPTOMON:
     default:
       return <DecentralandNFTFilters onBrowse={onBrowse} />
   }

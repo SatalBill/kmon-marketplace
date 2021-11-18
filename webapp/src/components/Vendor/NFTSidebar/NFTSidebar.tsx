@@ -75,6 +75,7 @@ const NFTSidebar = (props: Props) => {
         />
       )
     case VendorName.DECENTRALAND:
+    case VendorName.KRYPTOMON:
     default:
       return (
         <DecentralandNFTSidebar

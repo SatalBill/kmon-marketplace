@@ -22,7 +22,6 @@ const AccountSidebar = (props: Props) => {
     },
     [address, onBrowse]
   )
-  const decentraland = VendorName.DECENTRALAND
 
   const kryptomon = VendorName.KRYPTOMON
 
@@ -43,7 +42,7 @@ const AccountSidebar = (props: Props) => {
           vendor={partner}
           section={section}
           onClick={section => handleOnBrowse(partner, section)}
-          onMultiItemClick={data => handleOnBrowseMultiple(decentraland, data)}
+          onMultiItemClick={data => handleOnBrowseMultiple(kryptomon, data)}
         />
       ))}
     </div>

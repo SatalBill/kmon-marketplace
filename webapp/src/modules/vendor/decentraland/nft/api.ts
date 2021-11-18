@@ -77,6 +77,7 @@ class NFTAPI {
     if (params.address) {
       queryParams.append('owner', params.address)
     }
+
     if (params.onlyOnSale) {
       queryParams.append('isOnSale', `${params.onlyOnSale}`)
     }

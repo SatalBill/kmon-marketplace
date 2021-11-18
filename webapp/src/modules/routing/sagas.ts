@@ -70,10 +70,12 @@ function* handleBrowse(action: BrowseNFTsAction) {
   const newSearchOptions: SearchOptions = yield getNewSearchOptions(
     action.payload.searchOptions
   )
+
   yield fetchNFTsFromRoute(newSearchOptions)
 
   const { pathname }: ReturnType<typeof getLocation> = yield select(getLocation)
   const params = getSearchParams(newSearchOptions)
+
   yield put(push(params ? `${pathname}?${params.toString()}` : pathname))
 }
 
@@ -86,6 +88,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
+
   const {
     search,
     onlyOnSale,

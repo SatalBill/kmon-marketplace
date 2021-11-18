@@ -67,6 +67,7 @@ export function getSearchParams(options?: SearchOptions) {
     if (options.kryptomonStatus) {
       params.set('kryptomonStatus', options.kryptomonStatus.toString())
     }
+
     if (options.elemTypes && options.elemTypes.length > 0) {
       params.set(
         'elemTypes',
