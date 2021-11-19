@@ -20,6 +20,12 @@ export type MultipleFilters = {
   smart?: string[]
   elementStartingTalent?: string[]
   laziness?: string[]
+  bodySize?: string[]
+  ego?: string[]
+  healthPoints?: string[]
+  speed?: string[]
+  sex?: string[]
+  skinType?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -39,7 +45,13 @@ const NFTSidebar = (props: Props) => {
     instinct,
     smart,
     elementStartingTalent,
-    laziness
+    laziness,
+    bodySize,
+    ego,
+    speed,
+    healthPoints,
+    sex,
+    skinType
   } = props
 
   const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
@@ -53,8 +65,6 @@ const NFTSidebar = (props: Props) => {
   const handleOnBrowseMultiple = useCallback(
     (data: MultipleFilters) => {
       onBrowse({
-        // elemTypes,
-        // affection,
         ...data,
         kryptomonStatus
       })
@@ -94,6 +104,12 @@ const NFTSidebar = (props: Props) => {
           smart={smart}
           elementStartingTalent={elementStartingTalent}
           laziness={laziness}
+          bodySize={bodySize}
+          ego={ego}
+          speed={speed}
+          healthPoints={healthPoints}
+          sex={sex}
+          skinType={skinType}
         />
       )
   }

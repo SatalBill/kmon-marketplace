@@ -134,6 +134,33 @@ export function getSearchParams(options?: SearchOptions) {
         options.elementStartingTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
       )
     }
+    if (options.sex && options.sex.length > 0) {
+      params.set('sex', options.sex.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.skinType && options.skinType.length > 0) {
+      params.set(
+        'skinType',
+        options.skinType.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.bodySize && options.bodySize.length > 0) {
+      params.set(
+        'bodySize',
+        options.bodySize.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.ego && options.ego.length > 0) {
+      params.set('ego', options.ego.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.healthPoints && options.healthPoints.length > 0) {
+      params.set(
+        'healthPoints',
+        options.healthPoints.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.speed && options.speed.length > 0) {
+      params.set('speed', options.speed.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
   }
   return params
 }

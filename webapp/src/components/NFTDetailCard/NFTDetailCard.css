@@ -101,6 +101,7 @@ a.ui.card.link:hover .meta {
   width: 272px;
   border-radius: 8px;
   overflow: hidden;
+  height: fit-content;
 }
 
 .card-footer {
@@ -120,6 +121,7 @@ a.ui.card.link:hover .meta {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: #2e2d2e;
 }
 
 .card-image-text {

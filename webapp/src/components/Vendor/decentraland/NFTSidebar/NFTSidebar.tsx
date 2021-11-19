@@ -22,7 +22,13 @@ const NFTSidebar = (props: Props) => {
     instinct,
     smart,
     elementStartingTalent,
-    laziness
+    laziness,
+    bodySize,
+    ego,
+    healthPoints,
+    speed,
+    sex,
+    skinType
   } = props
 
   return (
@@ -44,6 +50,12 @@ const NFTSidebar = (props: Props) => {
         smart={smart}
         elementStartingTalent={elementStartingTalent}
         laziness={laziness}
+        bodySize={bodySize}
+        ego={ego}
+        speed={speed}
+        healthPoints={healthPoints}
+        sex={sex}
+        skinType={skinType}
       />
     </div>
   )

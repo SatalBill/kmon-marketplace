@@ -47,4 +47,11 @@ export type SearchOptions = {
   smart?: string[]
   elementStartingTalent?: string[]
   laziness?: string[]
+
+  sex?: string[]
+  skinType?: string[]
+  bodySize?: string[]
+  ego?: string[]
+  healthPoints?: string[]
+  speed?: string[]
 }

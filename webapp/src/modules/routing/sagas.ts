@@ -18,7 +18,13 @@ import {
   getElementStartingTalent,
   getHunger,
   getInstinct,
-  getSmart
+  getSmart,
+  getBodySize,
+  getEgo,
+  getHealthPoints,
+  getSpeed,
+  getSex,
+  getSkinType
 } from '../routing/selectors'
 import { getAddress as getWalletAddress } from '../wallet/selectors'
 import { getAddress as getAccountAddress } from '../account/selectors'
@@ -106,7 +112,13 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     instinct,
     smart,
     elementStartingTalent,
-    laziness
+    laziness,
+    sex,
+    skinType,
+    bodySize,
+    ego,
+    healthPoints,
+    speed
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -154,7 +166,13 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           instinct: arrayToString(instinct),
           smart: arrayToString(smart),
           elementStartingTalent: arrayToString(elementStartingTalent),
-          laziness: arrayToString(laziness)
+          laziness: arrayToString(laziness),
+          sex: arrayToString(sex),
+          skinType: arrayToString(skinType),
+          bodySize: arrayToString(bodySize),
+          ego: arrayToString(ego),
+          healthPoints: arrayToString(healthPoints),
+          speed: arrayToString(speed)
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -189,7 +207,13 @@ function* getNewSearchOptions(current: SearchOptions) {
     instinct: yield select(getInstinct),
     smart: yield select(getSmart),
     elementStartingTalent: yield select(getElementStartingTalent),
-    laziness: yield select(getLaziness)
+    laziness: yield select(getLaziness),
+    sex: yield select(getSex),
+    skinType: yield select(getSkinType),
+    bodySize: yield select(getBodySize),
+    ego: yield select(getEgo),
+    healthPoints: yield select(getHealthPoints),
+    speed: yield select(getSpeed)
   }
   current = yield deriveCurrentOptions(previous, current)
 

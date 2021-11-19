@@ -17,4 +17,10 @@ export type Props = {
   smart?: string[]
   elementStartingTalent?: string[]
   laziness?: string[]
+  bodySize?: string[]
+  ego?: string[]
+  healthPoints?: string[]
+  speed?: string[]
+  sex?: string[]
+  skinType?: string[]
 }

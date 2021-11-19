@@ -17,7 +17,13 @@ import {
   getHunger,
   getInstinct,
   getLaziness,
-  getSmart
+  getSmart,
+  getBodySize,
+  getEgo,
+  getHealthPoints,
+  getSpeed,
+  getSex,
+  getSkinType
 } from '../../../modules/routing/selectors'
 import {
   MapStateProps,
@@ -41,7 +47,13 @@ const mapState = (state: RootState): MapStateProps => ({
   instinct: getInstinct(state),
   smart: getSmart(state),
   elementStartingTalent: getElementStartingTalent(state),
-  laziness: getLaziness(state)
+  laziness: getLaziness(state),
+  bodySize: getBodySize(state),
+  ego: getEgo(state),
+  healthPoints: getHealthPoints(state),
+  speed: getSpeed(state),
+  sex: getSex(state),
+  skinType: getSkinType(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

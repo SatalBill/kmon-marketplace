@@ -116,6 +116,24 @@ class NFTAPI {
     if (params.laziness) {
       queryParams.set('laziness', params.laziness)
     }
+    if (params.sex) {
+      queryParams.set('sex', params.sex)
+    }
+    if (params.skinType) {
+      queryParams.set('skinType', params.skinType)
+    }
+    if (params.bodySize) {
+      queryParams.set('bodySize', params.bodySize)
+    }
+    if (params.ego) {
+      queryParams.set('ego', params.ego)
+    }
+    if (params.healthPoints) {
+      queryParams.set('healthPoints', params.healthPoints)
+    }
+    if (params.speed) {
+      queryParams.set('speed', params.speed)
+    }
     if (filters) {
       if (filters.isLand) {
         queryParams.append('isLand', 'true')

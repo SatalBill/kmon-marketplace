@@ -91,7 +91,13 @@
     "braveness": "Braveness",
     "smart": "Smart",
     "element_starting_talent": "Element Starting Talent",
-    "constitution": "Constitution"
+    "constitution": "Constitution",
+    "sex": "Sex",
+    "skin_type": "Skin type",
+    "body_size": "Body size",
+    "ego": "Ego",
+    "health_points": "Health points",
+    "speed": "Speed"
   },
   "vendor_menu": {
     "no_assets": "No assets",
