@@ -28,9 +28,9 @@ const AcceptButton = (props: Props) => {
 
   const isDisabled =
     !nft ||
-    isLoadingFingerprint ||
+    // isLoadingFingerprint ||
     hasInsufficientKMON ||
-    !isValidFingerprint ||
+    // !isValidFingerprint ||
     !isValidSeller
 
   let button = (
@@ -47,15 +47,17 @@ const AcceptButton = (props: Props) => {
         trigger={<div className="popup-button">{button}</div>}
       />
     )
-  } else if (!isValidFingerprint) {
-    button = (
-      <Popup
-        content={t('bid.invalid_fingerprint_on_bid_received')}
-        position="top center"
-        trigger={<div className="popup-button">{button}</div>}
-      />
-    )
-  } else if (!isValidSeller) {
+  }
+  // else if (!isValidFingerprint) {
+  //   button = (
+  //     <Popup
+  //       content={t('bid.invalid_fingerprint_on_bid_received')}
+  //       position="top center"
+  //       trigger={<div className="popup-button">{button}</div>}
+  //     />
+  //   )
+  // }
+  else if (!isValidSeller) {
     button = (
       <Popup
         content={t('bid.invalid_seller')}

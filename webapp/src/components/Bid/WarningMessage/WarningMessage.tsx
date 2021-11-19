@@ -31,13 +31,14 @@ const WarningMessage = (props: Props) => {
         {t('bid.not_enough_mana_on_bid_placed')}
       </div>
     )
-  } else if (!isValidFingerprint) {
-    return (
-      <div className="WarningMessage">
-        {t('bid.invalid_fingerprint_on_bid_placed')}
-      </div>
-    )
   }
+  // else if (!isValidFingerprint) {
+  //   return (
+  //     <div className="WarningMessage">
+  //       {t('bid.invalid_fingerprint_on_bid_placed')}
+  //     </div>
+  //   )
+  // }
 
   return null
 }
