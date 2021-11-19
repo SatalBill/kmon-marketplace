@@ -52,7 +52,7 @@
     "Marketplace": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x3103046cEd8B3e25c4E812C5Bb6BDF3b2147972D"
+      "address": "0xB2c6573872200d67a8fE9Aeb149c5201Ef73Fbdd"
     }
   }
 }
