@@ -52,5 +52,11 @@ export enum Section {
   SMART = 'smart',
   ELEMENT_STARTING_TALENT = 'element_starting_talent',
   CONSTITUTION = 'constitution',
-  BRAVENESS = 'braveness'
+  BRAVENESS = 'braveness',
+  SEX = 'sex',
+  SKIN_TYPE = 'skin_type',
+  BODY_SIZE = 'body_size',
+  EGO = 'ego',
+  HEALTH_POINTS = 'health_points',
+  SPEED = 'speed'
 }

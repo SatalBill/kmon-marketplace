@@ -20,6 +20,12 @@ export type Props = {
   smart?: string[]
   elementStartingTalent?: string[]
   laziness?: string[]
+  bodySize?: string[]
+  ego?: string[]
+  healthPoints?: string[]
+  speed?: string[]
+  sex?: string[]
+  skinType?: string[]
 }
 
 export type MapStateProps = Pick<
@@ -39,6 +45,12 @@ export type MapStateProps = Pick<
   | 'smart'
   | 'elementStartingTalent'
   | 'laziness'
+  | 'bodySize'
+  | 'ego'
+  | 'healthPoints'
+  | 'speed'
+  | 'sex'
+  | 'skinType'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

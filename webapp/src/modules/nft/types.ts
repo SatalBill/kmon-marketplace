@@ -30,7 +30,12 @@ export type Data<V extends VendorName> = V extends VendorName.DECENTRALAND
   : V extends VendorName.KRYPTOMON
   ? KryptomonData
   : V extends void
-  ? DecentralandData | SuperRareData | MakersPlaceData | KnownOriginData | KryptomonData
+  ?
+      | DecentralandData
+      | SuperRareData
+      | MakersPlaceData
+      | KnownOriginData
+      | KryptomonData
   : never
 
 export type NFT<V extends VendorName = VendorName.DECENTRALAND> = Omit<
@@ -67,6 +72,12 @@ export type NFTsFetchParams = {
   smart?: string
   elementStartingTalent?: string
   laziness?: string
+  sex?: string
+  skinType?: string
+  bodySize?: string
+  ego?: string
+  healthPoints?: string
+  speed?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

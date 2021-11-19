@@ -209,6 +209,36 @@ export const getLaziness = createSelector<RootState, string, string[]>(
   search => getURLParamArray<string>(search, 'laziness')
 )
 
+export const getBodySize = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'bodySize')
+)
+
+export const getEgo = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'ego')
+)
+
+export const getHealthPoints = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'healthPoints')
+)
+
+export const getSpeed = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'speed')
+)
+
+export const getSex = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'sex')
+)
+
+export const getSkinType = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'skinType')
+)
+
 export const getPathname = createSelector<
   RootState,
   ReturnType<typeof getLocation>,

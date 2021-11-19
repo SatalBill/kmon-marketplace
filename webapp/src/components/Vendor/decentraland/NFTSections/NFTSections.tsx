@@ -25,7 +25,13 @@ const NFTSections = (props: Props) => {
     instinct = [],
     smart = [],
     elementStartingTalent = [],
-    laziness = []
+    laziness = [],
+    bodySize = [],
+    ego = [],
+    healthPoints = [],
+    speed = [],
+    sex = [],
+    skinType = []
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -39,7 +45,13 @@ const NFTSections = (props: Props) => {
     instinct,
     smart,
     elementStartingTalent,
-    laziness
+    laziness,
+    bodySize,
+    ego,
+    healthPoints,
+    speed,
+    sex,
+    skinType
   })
 
   useEffect(() => {
@@ -295,6 +307,53 @@ const NFTSections = (props: Props) => {
           maxValue={+state.laziness[1] || 100}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'laziness')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.BODY_SIZE} open={state.bodySize.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.bodySize[0] || 0}
+          maxValue={+state.bodySize[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'bodySize')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.EGO} open={state.ego.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.ego[0] || 0}
+          maxValue={+state.ego[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'ego')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.HEALTH_POINTS}
+        open={state.healthPoints.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.healthPoints[0] || 0}
+          maxValue={+state.healthPoints[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'healthPoints')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.SPEED} open={state.speed.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.speed[0] || 0}
+          maxValue={+state.speed[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'speed')
           }}
         />
       </Dropdown>
