@@ -10,6 +10,6 @@ export type MapStateProps = Pick<
 >
 export type MapDispatchProps = Pick<
   Props,
-  'onClickActivity' | 'onClickSettings'
+  'onClickAccount' | 'onClickActivity' | 'onClickSettings'
 >
 export type MapDispatch = Dispatch<CallHistoryMethodAction>
