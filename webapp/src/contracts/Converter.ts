@@ -1,7 +1,7 @@
 import BN from "bn.js";
 import { Address } from "web3x-es/address";
-import { TransactionReceipt } from "web3x-es/formatters";
-import { Contract, ContractOptions, TxCall, TxSend } from "web3x-es/contract";
+import { EventLog, TransactionReceipt } from "web3x-es/formatters";
+import { Contract, ContractOptions, TxCall, TxSend, EventSubscriptionFactory } from "web3x-es/contract";
 import { Eth } from "web3x-es/eth";
 import abi from "./ConverterAbi";
 interface ConverterEvents {

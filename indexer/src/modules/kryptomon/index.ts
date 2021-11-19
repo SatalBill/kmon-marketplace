@@ -1,4 +1,5 @@
 import { NFT, Kryptomon } from '../../entities/schema'
+import { BigInt } from "@graphprotocol/graph-ts"
 
 export function buildKryptomonFromNFT(nft: NFT): Kryptomon {
   let kryptomon = new Kryptomon(nft.id)
@@ -22,4 +23,21 @@ export function getKryptomonTokenURI(kryptomon: Kryptomon): string {
     'https://api.kryptomon.co/json/kryptomon/meta/' +
     kryptomon.tokenId.toString()
   )
+}
+
+export const typeFormatted: string[] = [
+  "Fire",
+  "Water",
+  "Ice",
+  "Ground",
+  "Air",
+  "Electro",
+  "Ghost",
+  "Grass",
+]
+
+export class ElementData {
+  typeName: string
+  valueName: BigInt
+  percentage: BigInt
 }
