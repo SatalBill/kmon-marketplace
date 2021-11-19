@@ -2396,16 +2396,16 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.12.tgz#01361ef581cd5f9f051aa6e1fc81d179f00fd69c"
-  integrity sha512-uxCtxLbtbeTMj99l3PREmF4NYD3pOKrbPKleo0Wj1GNzs55v8/ytzsjF7yDxqRrSEIiwdjZ+1iVSlFdOL8nSIg==
+"@kmon/dapps@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.13.tgz#2a25ff89dfef16c3be2354a70813a0d28a0a4444"
+  integrity sha512-Gdi/rGwzuQ7dLFLJQXFB5Y+J9TQo3tC7ilickyzbjcKCA7L9iMGKCkTQ1wOQI2Br5ufk9APp0avJk327WDg1Ug==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
     "@kmon/connect" "^0.0.2"
     "@kmon/schemas" "^0.0.6"
-    "@kmon/transactions" "^0.0.23"
+    "@kmon/transactions" "^0.0.24"
     "@kmon/ui" "^0.0.9"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.28"
@@ -2432,10 +2432,10 @@
   dependencies:
     ajv "^7.1.0"
 
-"@kmon/transactions@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.23.tgz#af7fd0241cb70f2a30e99e786be569a46037dfac"
-  integrity sha512-ovtZ6n9xTqGrBCCBtbMHvF9z++TvLLDQETcfhq3UOVk0m7/0TEOlfDqOMXiQaVNj7W1M/ryKS7wRpAc+clsgQw==
+"@kmon/transactions@^0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.24.tgz#17e0ec77365007d6841c044716008b411bb80555"
+  integrity sha512-ZNht23RNTRGC6uq/BveUAbqntvhv57qcBrvnU57Q/9877sCKJmyMlyDImfB8gZyw/pW2hZtM3J8TVkMH6+mdwQ==
   dependencies:
     "@kmon/schemas" "^0.0.6"
     tslint "^6.1.3"
