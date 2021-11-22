@@ -6,7 +6,13 @@ import { MenuItem } from '../../../Menu/MenuItem'
 import { MultiRangeSlider } from '../../../Menu/MultiRangeSlider'
 import { Dropdown } from '../../../Menu/Dropdown'
 import { Checkbox, CheckboxContainer } from '../../../Checkbox'
-import { ELEM_TYPE, SPECIALTIES, SUPERS } from './NFTSection.data'
+import {
+  ELEM_TYPE,
+  SPECIALTIES,
+  SUPERS,
+  SKIN_TYPES,
+  SEXES
+} from './NFTSection.data'
 import { Props } from './NFTSections.types'
 
 const NFTSections = (props: Props) => {
@@ -99,26 +105,7 @@ const NFTSections = (props: Props) => {
             />
           ))
         : null}
-
-      <MenuItem
-        value={Section.GENERATIONS}
-        currentValue={section}
-        onClick={onSectionClick}
-        withCaret={true}
-      />
-      {[
-        Section.GENERATIONS,
-        Section.GENERATIONS_0,
-        Section.GENERATIONS_1,
-        Section.GENERATIONS_2,
-        Section.GENERATIONS_3,
-        Section.GENERATIONS_4,
-        Section.GENERATIONS_5,
-        Section.GENERATIONS_6,
-        Section.GENERATIONS_7,
-        Section.GENERATIONS_8,
-        Section.GENERATIONS_9
-      ].includes(section!) ? (
+      <Dropdown value={Section.GENERATIONS}>
         <>
           {[
             Section.GENERATIONS_0,
@@ -141,7 +128,7 @@ const NFTSections = (props: Props) => {
             />
           ))}
         </>
-      ) : null}
+      </Dropdown>
       <Dropdown value={Section.ELEMENT_TYPE} open={state.elemTypes.length > 0}>
         <CheckboxContainer>
           {ELEM_TYPE.map(elem => (
@@ -178,6 +165,48 @@ const NFTSections = (props: Props) => {
                 } else {
                   const newArr = [...state.specialties, elem]
                   setState({ ...state, specialties: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SKIN_TYPE} open={state.skinType.length > 0}>
+        <CheckboxContainer>
+          {SKIN_TYPES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.skinType.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.skinType.indexOf(elem) > -1) {
+                  const newArr = [...state.skinType]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, skinType: newArr })
+                } else {
+                  const newArr = [...state.skinType, elem]
+                  setState({ ...state, skinType: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SEX} open={state.sex.length > 0}>
+        <CheckboxContainer>
+          {SEXES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.sex.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.sex.indexOf(elem) > -1) {
+                  const newArr = [...state.sex]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, sex: newArr })
+                } else {
+                  const newArr = [...state.sex, elem]
+                  setState({ ...state, sex: newArr })
                 }
               }}
             />

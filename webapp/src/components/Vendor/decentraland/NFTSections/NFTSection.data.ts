@@ -14,3 +14,13 @@ export const ELEM_TYPE = [
 export const SPECIALTIES = ['Defence', 'Attack', 'Balance']
 
 export const SUPERS = ['Super', 'Normal']
+
+export const SKIN_TYPES = [
+  'Feather',
+  'Skin',
+  'Scale',
+  'Short hairs',
+  'Long hairs'
+]
+
+export const SEXES = ['Male', 'Female']

@@ -14,6 +14,7 @@ import './HomePage.css'
 
 const HomePage = (props: Props) => {
   const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
+  console.log('HOMEPAGE ', homepage)
 
   const sections = {
     [View.HOME_WEARABLES]: Section.WEARABLES,
@@ -68,6 +69,7 @@ const HomePage = (props: Props) => {
       <Page className="HomePage">
         {views.map((view, index) => (
           <>
+            {console.log({ view, index })}
             <Slideshow
               key={`${view}-${index}`}
               title={t(`home_page.${view}`)}

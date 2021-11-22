@@ -10,3 +10,16 @@ export const GENERATION_TO_REQ: Record<string, string> = {
   gen_8: '8',
   gen_9: '9'
 }
+
+export const SKIN_TYPE_TO_REQ: Record<string, string> = {
+  Feather: '0',
+  Skin: '1',
+  Scale: '2',
+  'Short hairs': '3',
+  'Long hairs': '4'
+}
+
+export const SEX_TO_REQ: Record<string, string> = {
+  Female: '5',
+  Male: '6'
+}

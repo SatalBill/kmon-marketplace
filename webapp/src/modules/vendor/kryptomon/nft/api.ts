@@ -3,7 +3,11 @@ import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
 import { VendorName } from '../../types'
-import { GENERATION_TO_REQ } from '../../decentraland/nft/utils'
+import {
+  GENERATION_TO_REQ,
+  SEX_TO_REQ,
+  SKIN_TYPE_TO_REQ
+} from '../../decentraland/nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -133,6 +137,18 @@ class NFTAPI {
     }
     if (params.speed) {
       queryParams.set('speed', params.speed)
+    }
+
+    if (params.skinType) {
+      const formatedSkinTypes = params.skinType
+        .split('_')
+        .map(elem => SKIN_TYPE_TO_REQ[elem])
+      queryParams.set('skinType', formatedSkinTypes.join('_'))
+    }
+    if (params.sex) {
+      if (SEX_TO_REQ[params.sex]) {
+        queryParams.set('sex', SEX_TO_REQ[params.sex])
+      }
     }
     if (filters) {
       if (filters.isLand) {
