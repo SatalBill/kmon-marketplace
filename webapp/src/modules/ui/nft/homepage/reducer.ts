@@ -25,8 +25,6 @@ export function homepageReducer(
   switch (action.type) {
     case FETCH_NFTS_SUCCESS: {
       const nftIds = action.payload.nfts.map(nft => nft.id)
-      console.log({ nftIds })
-
       switch (action.payload.options.view) {
         case View.KRYPTOMONS: {
           return {

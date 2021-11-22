@@ -6,7 +6,6 @@ class OrderAPI {
     const response: { data: Order[]; total: number } = await fetch(
       `${NFT_SERVER_URL}/v1/orders`
     ).then(resp => resp.json())
-    console.log('RESPONSE ', response)
     return response.data
   }
   async fetchByNFT(
