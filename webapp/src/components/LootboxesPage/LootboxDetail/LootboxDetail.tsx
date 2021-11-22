@@ -18,6 +18,7 @@ import { LootboxType } from '../../../modules/lootbox/types'
 import basicLootbox from '../../../images/lootbox/basic.png'
 import mediumLootbox from '../../../images/lootbox/medium.png'
 import premiumLootbox from '../../../images/lootbox/premium.png'
+import './LootboxDetail.css'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -53,8 +54,8 @@ const LootboxDetail = (props: Props) => {
 
   const LootboxDetail = () => {
     return (
-      <Container className="product-container">
-        <Row className="Row-space-between">
+      <Container className="lootbox-detail product-container">
+        <Row className="Row">
           <LootboxDetailCard
             boxType={boxType}
             image={lootboxImage}
@@ -67,11 +68,6 @@ const LootboxDetail = (props: Props) => {
               isTxPending={isTxPending}
               onBuy={handleClickBuy}
             />
-            <TitleBlock title="Transaction History">
-              <div className="dna-container">
-                <canvas height="210" width="678" data-testid="canvas" role="img"></canvas>
-              </div>
-            </TitleBlock>
             {isTxPending && (
               <>
                 <div className="overlay" />
