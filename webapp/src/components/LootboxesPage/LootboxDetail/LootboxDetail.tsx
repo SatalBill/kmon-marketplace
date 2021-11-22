@@ -3,6 +3,7 @@ import { Container, Page } from '@kmon/ui'
 import { Loader } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { fromWei } from 'web3x-es/utils'
+import { Address } from 'web3x-es/address'
 
 import { Props } from './LootboxDetail.types'
 import { Row } from '../../Layout/Row'
@@ -13,7 +14,10 @@ import { Navigation } from '../../Navigation'
 import { Footer } from '../../Footer'
 import { Details } from '../Details'
 import { LootboxDetailCard } from '../LootboxDetailCard'
-import { Address } from 'web3x-es/address'
+import { LootboxType } from '../../../modules/lootbox/types'
+import basicLootbox from '../../../images/lootbox/basic.png'
+import mediumLootbox from '../../../images/lootbox/medium.png'
+import premiumLootbox from '../../../images/lootbox/premium.png'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -30,6 +34,14 @@ const LootboxDetail = (props: Props) => {
     pendingTransaction !== undefined ? pendingTransaction.status : null
   const boxPriceStr = boxPrice !== undefined ? fromWei(boxPrice, 'ether') : ''
 
+  const lootboxImage = boxType === LootboxType.Basic
+    ? basicLootbox
+    : boxType === LootboxType.Medium
+    ? mediumLootbox
+    : boxType === LootboxType.Premium
+    ? premiumLootbox
+    : ''
+
   useEffect(() => {
     onFetchLootboxPrices(boxType)
   }, [])
@@ -45,7 +57,7 @@ const LootboxDetail = (props: Props) => {
         <Row className="Row-space-between">
           <LootboxDetailCard
             boxType={boxType}
-            image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
+            image={lootboxImage}
             price={boxPriceStr}
           />
           <Column>
