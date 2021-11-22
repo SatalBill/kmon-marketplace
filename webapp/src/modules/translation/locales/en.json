@@ -118,7 +118,9 @@
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
     "home_ens": "Names",
-    "kryptomons": "Latest Listing"
+    "kryptomons": "Latest Listing",
+    "all_assets": "All assets",
+    "latest_sold": "Latest sold"
   },
   "details_page": {},
   "partners_page": {

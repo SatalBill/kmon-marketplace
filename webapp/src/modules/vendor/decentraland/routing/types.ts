@@ -2,6 +2,7 @@ export enum Section {
   ALL = 'all',
   POPULAR = 'popular',
   NEWEST = 'newest',
+  LATEST_SOLD = 'latest_sold',
   GENERATIONS = 'generations',
   GENERATIONS_0 = 'gen_0',
   GENERATIONS_1 = 'gen_1',

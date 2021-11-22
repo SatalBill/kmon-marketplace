@@ -8,6 +8,7 @@ import {
   SEX_TO_REQ,
   SKIN_TYPE_TO_REQ
 } from '../../decentraland/nft/utils'
+import { orderAPI } from '../order'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -17,7 +18,6 @@ class NFTAPI {
     const response: NFTResponse = await fetch(
       `${NFT_SERVER_URL}/v1/nfts?${queryParams}`
     ).then(resp => resp.json())
-
     return response
   }
 
@@ -138,7 +138,6 @@ class NFTAPI {
     if (params.speed) {
       queryParams.set('speed', params.speed)
     }
-
     if (params.skinType) {
       const formatedSkinTypes = params.skinType
         .split('_')
@@ -149,6 +148,9 @@ class NFTAPI {
       if (SEX_TO_REQ[params.sex]) {
         queryParams.set('sex', SEX_TO_REQ[params.sex])
       }
+    }
+    if (params.orderStatus) {
+      queryParams.set('orderStatus', params.orderStatus)
     }
     if (filters) {
       if (filters.isLand) {

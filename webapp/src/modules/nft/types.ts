@@ -78,6 +78,7 @@ export type NFTsFetchParams = {
   ego?: string
   healthPoints?: string
   speed?: string
+  orderStatus?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

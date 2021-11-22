@@ -94,7 +94,6 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
-
   const {
     search,
     onlyOnSale,
@@ -118,7 +117,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     bodySize,
     ego,
     healthPoints,
-    speed
+    speed,
+    orderStatus
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -172,7 +172,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           bodySize: arrayToString(bodySize),
           ego: arrayToString(ego),
           healthPoints: arrayToString(healthPoints),
-          speed: arrayToString(speed)
+          speed: arrayToString(speed),
+          orderStatus
         },
         filters: getFilters(vendor, searchOptions)
       })

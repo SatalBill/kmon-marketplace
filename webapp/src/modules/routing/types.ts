@@ -54,4 +54,6 @@ export type SearchOptions = {
   ego?: string[]
   healthPoints?: string[]
   speed?: string[]
+
+  orderStatus?: string
 }

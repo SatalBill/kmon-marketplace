@@ -6,10 +6,14 @@ import { View } from '../../types'
 
 export type HomepageUIState = {
   [View.KRYPTOMONS]: string[]
+  [View.LATEST_SOLD]: string[]
+  [View.ALL_ASSETS]: string[]
 }
 
 const INITIAL_STATE: HomepageUIState = {
-  [View.KRYPTOMONS]: []
+  [View.KRYPTOMONS]: [],
+  [View.LATEST_SOLD]: [],
+  [View.ALL_ASSETS]: []
 }
 
 type UIReducerAction = FetchNFTsSuccessAction
@@ -21,10 +25,32 @@ export function homepageReducer(
   switch (action.type) {
     case FETCH_NFTS_SUCCESS: {
       const nftIds = action.payload.nfts.map(nft => nft.id)
+      console.log({ nftIds })
 
-      return {
-        ...state,
-        [View.KRYPTOMONS]: nftIds
+      switch (action.payload.options.view) {
+        case View.KRYPTOMONS: {
+          return {
+            ...state,
+            [View.KRYPTOMONS]: nftIds
+          }
+        }
+        case View.ALL_ASSETS: {
+          return {
+            ...state,
+            [View.ALL_ASSETS]: nftIds
+          }
+        }
+        case View.LATEST_SOLD: {
+          return {
+            ...state,
+            [View.LATEST_SOLD]: nftIds
+          }
+        }
+        default: {
+          return {
+            ...state
+          }
+        }
       }
     }
     default:
