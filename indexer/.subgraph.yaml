@@ -54,9 +54,9 @@ dataSources:
         - name: Marketplace
           file: ./abis/Marketplace.json
       eventHandlers:
-        - event: OrderCreated(bytes32,indexed uint256,indexed address,address,uint256,uint256)
+        - event: OrderCreated(bytes32,indexed uint256,indexed address,address,uint256,address,uint256)
           handler: handleOrderCreated
-        - event: OrderSuccessful(bytes32,indexed uint256,indexed address,address,uint256,indexed address)
+        - event: OrderSuccessful(bytes32,indexed uint256,indexed address,address,uint256,address,indexed address)
           handler: handleOrderSuccessful
         - event: OrderCancelled(bytes32,indexed uint256,indexed address,address)
           handler: handleOrderCancelled
