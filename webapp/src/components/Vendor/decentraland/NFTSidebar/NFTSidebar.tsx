@@ -28,7 +28,30 @@ const NFTSidebar = (props: Props) => {
     healthPoints,
     speed,
     sex,
-    skinType
+    skinType,
+    water,
+    waterTalent,
+    fire,
+    fireTalent,
+    ground,
+    groundTalent,
+    ice,
+    iceTalent,
+    grass,
+    grassTalent,
+    electro,
+    electroTalent,
+    ghost,
+    ghostTalent,
+    air,
+    airTalent,
+    color,
+    attack,
+    defence,
+    generalTalent,
+    growthTalentFactor,
+    elementPercentage,
+    special
   } = props
 
   return (
@@ -56,6 +79,29 @@ const NFTSidebar = (props: Props) => {
         healthPoints={healthPoints}
         sex={sex}
         skinType={skinType}
+        water={water}
+        waterTalent={waterTalent}
+        fire={fire}
+        fireTalent={fireTalent}
+        ground={ground}
+        groundTalent={groundTalent}
+        ice={ice}
+        iceTalent={iceTalent}
+        grass={grass}
+        grassTalent={grassTalent}
+        electro={electro}
+        electroTalent={electroTalent}
+        ghost={ghost}
+        ghostTalent={ghostTalent}
+        air={air}
+        airTalent={airTalent}
+        color={color}
+        attack={attack}
+        defence={defence}
+        generalTalent={generalTalent}
+        growthTalentFactor={growthTalentFactor}
+        elementPercentage={elementPercentage}
+        special={special}
       />
     </div>
   )

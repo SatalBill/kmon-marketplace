@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect'
 import {
   getSearch as getRouterSearch,
-  getLocation
+  getLocation,
+  RouterRootState
 } from 'connected-react-router'
 import { Network, Rarity } from '@kmon/schemas'
 import { getView } from '../ui/nft/browse/selectors'
@@ -238,6 +239,17 @@ export const getSkinType = createSelector<RootState, string, string[]>(
   getRouterSearch,
   search => getURLParamArray<string>(search, 'skinType')
 )
+
+export const getWater = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'water')
+)
+
+export const getArrayByType = (type: string) => {
+  return createSelector<RootState, string, string[]>(getRouterSearch, search =>
+    getURLParamArray<string>(search, type)
+  )
+}
 
 export const getPathname = createSelector<
   RootState,
