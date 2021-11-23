@@ -3,66 +3,55 @@ import {
   loadingReducer
 } from '@kmon/dapps/dist/modules/loading/reducer'
 import {
-  FetchLootboxPricesRequestAction,
-  FetchLootboxPricesSuccessAction,
-  FetchLootboxPricesFailureAction,
-  FETCH_LOOTBOX_PRICES_REQUEST,
-  FETCH_LOOTBOX_PRICES_SUCCESS,
-  FETCH_LOOTBOX_PRICES_FAILURE
+  BuyLootboxFailureAction,
+  BuyLootboxRequestAction,
+  BuyLootboxSuccessAction,
+  BUY_LOOTBOX_FAILURE,
+  BUY_LOOTBOX_REQUEST,
+  BUY_LOOTBOX_SUCCESS
 } from './actions'
-import { LootboxPrices, LootboxType } from './types'
+import { Lootbox, LootboxType } from './types'
 
 export type LootboxState = {
   loading: LoadingState
-  prices: LootboxPrices
+  data: Record<string, Lootbox>
   error: string | null
 }
 
 const INITIAL_STATE = {
   loading: [],
-  prices: {
-    [LootboxType.Basic]: '',
-    [LootboxType.Medium]: '',
-    [LootboxType.Premium]: ''
-  },
+  data: {},
   error: null
 }
 
 type LootboxReducerAction =
-  | FetchLootboxPricesRequestAction
-  | FetchLootboxPricesSuccessAction
-  | FetchLootboxPricesFailureAction
+  | BuyLootboxRequestAction
+  | BuyLootboxSuccessAction
+  | BuyLootboxFailureAction
 
-  export function lootboxReducer(
-    state: LootboxState = INITIAL_STATE,
-    action: LootboxReducerAction
-  ): LootboxState {
-    switch (action.type) {
-      case FETCH_LOOTBOX_PRICES_REQUEST: {
-        return {
-          ...state,
-          loading: loadingReducer(state.loading, action)
-        }
+export function lootboxReducer(
+  state: LootboxState = INITIAL_STATE,
+  action: LootboxReducerAction
+): LootboxState {
+  switch (action.type) {
+    case BUY_LOOTBOX_REQUEST:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action)
       }
-      case FETCH_LOOTBOX_PRICES_SUCCESS: {
-        return {
-          ...state,
-          prices: {
-            ...state.prices,
-            [action.payload.boxType]: action.payload.price
-          },
-          loading: loadingReducer(state.loading, action),
-          error: null
-        }
+    case BUY_LOOTBOX_SUCCESS:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        error: null
       }
-      case FETCH_LOOTBOX_PRICES_FAILURE: {
-        return {
-          ...state,
-          loading: loadingReducer(state.loading, action),
-          error: action.payload.error
-        }
+    case BUY_LOOTBOX_FAILURE:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        error: action.payload.error
       }
-      default:
-        return state
-    }
+    default:
+      return state
   }
+}

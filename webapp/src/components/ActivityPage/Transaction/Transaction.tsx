@@ -7,6 +7,7 @@ import {
   GRANT_TOKEN_SUCCESS,
   REVOKE_TOKEN_SUCCESS
 } from '@kmon/dapps/dist/modules/authorization/actions'
+import { fromWei } from 'web3x-es/utils'
 
 import { getNFTName } from '../../../modules/nft/utils'
 import {
@@ -26,6 +27,8 @@ import { NFTProvider } from '../../NFTProvider'
 import { Kmon } from '../../Kmon'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
+import { BUY_LOOTBOX_SUCCESS } from '../../../modules/lootbox/actions'
+import { toStringLootboxType } from '../../../modules/lootbox/utils'
 
 const Transaction = (props: Props) => {
   const { tx } = props
@@ -303,6 +306,25 @@ const Transaction = (props: Props) => {
             />
           )}
         </NFTProvider>
+      )
+    }
+    case BUY_LOOTBOX_SUCCESS: {
+      const { boxType, boxPrice } = tx.payload
+      return (
+        <TransactionDetail
+          text={
+            <T
+              id="transaction.detail.buy_lootbox"
+              values={{
+                name: (
+                  toStringLootboxType(boxType)
+                ),
+                price: <Kmon inline>{fromWei(boxPrice, 'ether').toLocaleString()}</Kmon>
+              }}
+            />
+          }
+          tx={tx}
+        />
       )
     }
     default:

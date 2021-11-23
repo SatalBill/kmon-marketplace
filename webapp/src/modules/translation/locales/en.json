@@ -401,7 +401,8 @@
       "transfer": "You transferred {name} to {address}.",
       "place_bid": "You placed a bid of {price} on {name}.",
       "accept_bid": "You accepted a bid of {price} on {name}.",
-      "cancel_bid": "You cancelled a bid of {price} on {name}."
+      "cancel_bid": "You cancelled a bid of {price} on {name}.",
+      "buy_lootbox": "You purchased {name} lootbox for {price}."
     }
   },
   "kmon": {
@@ -442,14 +443,6 @@
     "meta_transaction_failure": {
       "title": "Meta transaction",
       "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
-    },
-    "buy_lootbox_approval_confirmation": {
-      "title": "Approval confirmation!",
-      "body": "You allowed to spend your KMON. View {etherscan_link}"
-    },
-    "buy_lootbox_transfer_confirmation": {
-      "title": "Transfer confirmation!",
-      "body": "You purchased {box_type} lootbox. View {etherscan_link}"
     }
   },
   "@dapps": {

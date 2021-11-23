@@ -20,28 +20,26 @@ const LootboxesPage = (props: Props) => {
     wallet,
     isConnecting,
     isFullscreen,
-    basicPrice,
-    mediumPrice,
-    premiumPrice,
-    pendingTransaction,
+    lootboxPrices,
     onRedirect,
-    onFetchLootboxPrices
+    onFetchLootboxPrice
   } = props
 
   const isCurrentAccount =
     address === undefined || (wallet && wallet.address === address)
 
-  const isTxPending = pendingTransaction !== undefined && pendingTransaction.status !== 'confirmed'
-  const txStatus = pendingTransaction !== undefined ? pendingTransaction.status : null
+  const basicPrice = lootboxPrices[LootboxType.Basic]
+  const mediumPrice = lootboxPrices[LootboxType.Medium]
+  const premiumPrice = lootboxPrices[LootboxType.Premium]
 
   // Redirect to signIn if trying to access current account without a wallet
   useEffect(() => {
     if (isCurrentAccount && !isConnecting && !wallet) {
       onRedirect(locations.signIn())
     } else {
-      onFetchLootboxPrices(LootboxType.Basic)
-      onFetchLootboxPrices(LootboxType.Medium)
-      onFetchLootboxPrices(LootboxType.Premium)
+      onFetchLootboxPrice(LootboxType.Basic)
+      onFetchLootboxPrice(LootboxType.Medium)
+      onFetchLootboxPrice(LootboxType.Premium)
     }
   }, [isCurrentAccount, isConnecting, wallet, onRedirect])
 
