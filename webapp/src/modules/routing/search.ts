@@ -161,6 +161,109 @@ export function getSearchParams(options?: SearchOptions) {
     if (options.speed && options.speed.length > 0) {
       params.set('speed', options.speed.join(SEARCH_ARRAY_PARAM_SEPARATOR))
     }
+
+    if (options.water && options.water.length > 0) {
+      params.set('water', options.water.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.waterTalent && options.waterTalent.length > 0) {
+      params.set(
+        'waterTalent',
+        options.waterTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.fire && options.fire.length > 0) {
+      params.set('fire', options.fire.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.fireTalent && options.fireTalent.length > 0) {
+      params.set(
+        'fireTalent',
+        options.fireTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.ground && options.ground.length > 0) {
+      params.set('ground', options.ground.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.groundTalent && options.groundTalent.length > 0) {
+      params.set(
+        'groundTalent',
+        options.groundTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.ice && options.ice.length > 0) {
+      params.set('ice', options.ice.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.iceTalent && options.iceTalent.length > 0) {
+      params.set(
+        'iceTalent',
+        options.iceTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.grass && options.grass.length > 0) {
+      params.set('grass', options.grass.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.grassTalent && options.grassTalent.length > 0) {
+      params.set(
+        'grassTalent',
+        options.grassTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.electro && options.electro.length > 0) {
+      params.set('electro', options.electro.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.electroTalent && options.electroTalent.length > 0) {
+      params.set(
+        'electroTalent',
+        options.electroTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.ghost && options.ghost.length > 0) {
+      params.set('ghost', options.ghost.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.ghostTalent && options.ghostTalent.length > 0) {
+      params.set(
+        'ghostTalent',
+        options.ghostTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.air && options.air.length > 0) {
+      params.set('air', options.air.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.airTalent && options.airTalent.length > 0) {
+      params.set(
+        'airTalent',
+        options.airTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.color && options.color.length > 0) {
+      params.set('color', options.color.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.attack && options.attack.length > 0) {
+      params.set('attack', options.attack.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.defence && options.defence.length > 0) {
+      params.set('defence', options.defence.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.generalTalent && options.generalTalent.length > 0) {
+      params.set(
+        'generalTalent',
+        options.generalTalent.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.growthTalentFactor && options.growthTalentFactor.length > 0) {
+      params.set(
+        'growthTalentFactor',
+        options.growthTalentFactor.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.elementPercentage && options.elementPercentage.length > 0) {
+      params.set(
+        'elementPercentage',
+        options.elementPercentage.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+    if (options.special && options.special.length > 0) {
+      params.set('special', options.special.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
   }
   return params
 }

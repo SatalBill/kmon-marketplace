@@ -3,7 +3,12 @@ import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
 import { VendorName } from '../../types'
-import { GENERATION_TO_REQ } from '../../decentraland/nft/utils'
+import {
+  GENERATION_TO_REQ,
+  SEX_TO_REQ,
+  SKIN_TYPE_TO_REQ
+} from '../../decentraland/nft/utils'
+import { orderAPI } from '../order'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -13,7 +18,6 @@ class NFTAPI {
     const response: NFTResponse = await fetch(
       `${NFT_SERVER_URL}/v1/nfts?${queryParams}`
     ).then(resp => resp.json())
-
     return response
   }
 
@@ -133,6 +137,89 @@ class NFTAPI {
     }
     if (params.speed) {
       queryParams.set('speed', params.speed)
+    }
+    if (params.skinType) {
+      const formatedSkinTypes = params.skinType
+        .split('_')
+        .map(elem => SKIN_TYPE_TO_REQ[elem])
+      queryParams.set('skinType', formatedSkinTypes.join('_'))
+    }
+    if (params.sex) {
+      if (SEX_TO_REQ[params.sex]) {
+        queryParams.set('sex', SEX_TO_REQ[params.sex])
+      }
+    }
+    if (params.orderStatus) {
+      queryParams.set('orderStatus', params.orderStatus)
+    }
+    if (params.water) {
+      queryParams.set('water', params.water)
+    }
+    if (params.waterTalent) {
+      queryParams.set('waterTalent', params.waterTalent)
+    }
+    if (params.fire) {
+      queryParams.set('fire', params.fire)
+    }
+    if (params.fireTalent) {
+      queryParams.set('fireTalent', params.fireTalent)
+    }
+    if (params.ground) {
+      queryParams.set('ground', params.ground)
+    }
+    if (params.groundTalent) {
+      queryParams.set('groundTalent', params.groundTalent)
+    }
+    if (params.ice) {
+      queryParams.set('ice', params.ice)
+    }
+    if (params.iceTalent) {
+      queryParams.set('iceTalent', params.iceTalent)
+    }
+    if (params.grass) {
+      queryParams.set('grass', params.grass)
+    }
+    if (params.grassTalent) {
+      queryParams.set('grassTalent', params.grassTalent)
+    }
+    if (params.electro) {
+      queryParams.set('electro', params.electro)
+    }
+    if (params.electroTalent) {
+      queryParams.set('electroTalent', params.electroTalent)
+    }
+    if (params.ghost) {
+      queryParams.set('ghost', params.ghost)
+    }
+    if (params.ghostTalent) {
+      queryParams.set('ghostTalent', params.ghostTalent)
+    }
+    if (params.air) {
+      queryParams.set('air', params.air)
+    }
+    if (params.airTalent) {
+      queryParams.set('airTalent', params.airTalent)
+    }
+    if (params.color) {
+      queryParams.set('color', params.color)
+    }
+    if (params.attack) {
+      queryParams.set('attack', params.attack)
+    }
+    if (params.defence) {
+      queryParams.set('defence', params.defence)
+    }
+    if (params.generalTalent) {
+      queryParams.set('generalTalent', params.generalTalent)
+    }
+    if (params.growthTalentFactor) {
+      queryParams.set('growthTalentFactor', params.growthTalentFactor)
+    }
+    if (params.elementPercentage) {
+      queryParams.set('elementPercentage', params.elementPercentage)
+    }
+    if (params.special) {
+      queryParams.set('special', params.special)
     }
     if (filters) {
       if (filters.isLand) {

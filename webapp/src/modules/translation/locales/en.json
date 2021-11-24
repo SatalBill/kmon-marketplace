@@ -98,7 +98,30 @@
     "body_size": "Body size",
     "ego": "Ego",
     "health_points": "Health points",
-    "speed": "Speed"
+    "speed": "Speed",
+    "color": "Color",
+    "attack": "Attack",
+    "defence": "Defence",
+    "general_talent": "General talent",
+    "growth_talent_factor": "Growth talent factor",
+    "element_percentage": "Element percentage",
+    "special": "Special",
+    "water": "Water",
+    "water_talent": "Water talent",
+    "fire": "Fire",
+    "fire_talent": "Fire talent",
+    "ground": "Ground",
+    "ground_talent": "Ground talent",
+    "ice": "Ice",
+    "ice_talent": "Ice talent",
+    "grass": "Grass",
+    "grass_talent": "Grass talent",
+    "electro": "Electro",
+    "electro_talent": "Electro talent",
+    "ghost": "Ghost",
+    "ghost_talent": "Ghost talent",
+    "air": "Air",
+    "air_talent": "Air talent"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -119,7 +142,9 @@
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
     "home_ens": "Names",
-    "kryptomons": "Latest Listing"
+    "kryptomons": "Latest Listing",
+    "all_assets": "All assets",
+    "latest_sold": "Latest sold"
   },
   "details_page": {},
   "partners_page": {

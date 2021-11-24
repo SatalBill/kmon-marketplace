@@ -11,15 +11,16 @@ import { Footer } from '../Footer'
 import { Slideshow } from './Slideshow'
 import { Props } from './HomePage.types'
 import './HomePage.css'
+import { SearchOptions } from '../../modules/routing/types'
+import { OrderStatus } from '../../modules/order/types'
 
 const HomePage = (props: Props) => {
   const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
 
   const sections = {
-    [View.HOME_WEARABLES]: Section.WEARABLES,
-    [View.HOME_LAND]: Section.LAND,
-    [View.HOME_ENS]: Section.ENS,
-    [View.KRYPTOMONS]: Section.KRYPTOMONS
+    [View.KRYPTOMONS]: Section.KRYPTOMONS,
+    [View.LATEST_SOLD]: Section.LATEST_SOLD,
+    [View.ALL_ASSETS]: Section.ALL
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
@@ -27,23 +28,32 @@ const HomePage = (props: Props) => {
   ])
 
   const handleViewAll = useCallback(
-    (section: Section) => onNavigate(locations.browse({ section })),
+    (section: Section) => {
+      if (section === Section.ALL) {
+        return onNavigate(locations.browse({ section, onlyOnSale: false }))
+      }
+      return onNavigate(locations.browse({ section }))
+    },
     [onNavigate]
   )
 
   useEffect(() => {
     let view: HomepageView
     for (view in homepage) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const section = sections[view]
-      onFetchNFTsFromRoute({
-        // vendor,
-        // section,
-        // view,
-        // sortBy: SortBy.RECENTLY_LISTED,
-        // page: 1,
-        // onlyOnSale: true
-      })
+      const fetchObj: SearchOptions = {
+        section,
+        view,
+        page: 1,
+        onlyOnSale: false
+      }
+      if (view === 'kryptomons') {
+        fetchObj.onlyOnSale = true
+      }
+      if (view === 'latest_sold') {
+        fetchObj.orderStatus = OrderStatus.SOLD
+      }
+      onFetchNFTsFromRoute(fetchObj)
     }
     // eslint-disable-next-line
   }, [onFetchNFTsFromRoute])
@@ -66,17 +76,19 @@ const HomePage = (props: Props) => {
         </Hero.Actions>
       </Hero>
       <Page className="HomePage">
-        {views.map((view, index) => (
-          <>
-            <Slideshow
-              key={`${view}-${index}`}
-              title={t(`home_page.${view}`)}
-              nfts={homepage[view]}
-              isLoading={homepageLoading[view]}
-              onViewAll={() => handleViewAll(sections[view])}
-            />
-          </>
-        ))}
+        {views.map((view, index) => {
+          return (
+            <>
+              <Slideshow
+                key={`${view}-${index}`}
+                title={t(`home_page.${view}`)}
+                nfts={homepage[view]}
+                isLoading={homepageLoading[view]}
+                onViewAll={() => handleViewAll(sections[view])}
+              />
+            </>
+          )
+        })}
       </Page>
       <Footer />
     </>

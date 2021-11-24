@@ -2,31 +2,14 @@ import { Dispatch } from 'redux'
 
 import { Section } from '../../../modules/vendor/routing/types'
 import { browseNFTs, BrowseNFTsAction } from '../../../modules/routing/actions'
+import { MultipleFilters } from './NFTSidebar'
 
 export type Props = {
   vendor?: string
   section: Section
   onBrowse: typeof browseNFTs
   pathname: string
-  elemTypes?: string[]
-  specialties?: string[]
-  supers?: string[]
-  affection?: string[]
-  braveness?: string[]
-  constitution?: string[]
-  craziness?: string[]
-  hunger?: string[]
-  instinct?: string[]
-  smart?: string[]
-  elementStartingTalent?: string[]
-  laziness?: string[]
-  bodySize?: string[]
-  ego?: string[]
-  healthPoints?: string[]
-  speed?: string[]
-  sex?: string[]
-  skinType?: string[]
-}
+} & MultipleFilters
 
 export type MapStateProps = Pick<
   Props,
@@ -51,6 +34,29 @@ export type MapStateProps = Pick<
   | 'speed'
   | 'sex'
   | 'skinType'
+  | 'water'
+  | 'waterTalent'
+  | 'fire'
+  | 'fireTalent'
+  | 'ground'
+  | 'groundTalent'
+  | 'ice'
+  | 'iceTalent'
+  | 'grass'
+  | 'grassTalent'
+  | 'electro'
+  | 'electroTalent'
+  | 'ghost'
+  | 'ghostTalent'
+  | 'air'
+  | 'airTalent'
+  | 'color'
+  | 'attack'
+  | 'defence'
+  | 'generalTalent'
+  | 'growthTalentFactor'
+  | 'elementPercentage'
+  | 'special'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

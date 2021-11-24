@@ -23,7 +23,9 @@ import {
   getHealthPoints,
   getSpeed,
   getSex,
-  getSkinType
+  getSkinType,
+  getWater,
+  getArrayByType
 } from '../../../modules/routing/selectors'
 import {
   MapStateProps,
@@ -31,6 +33,7 @@ import {
   MapDispatchProps
 } from './NFTSidebar.types'
 import NFTSidebar from './NFTSidebar'
+import { MultipleFilters } from './NFTSidebar'
 
 const mapState = (state: RootState): MapStateProps => ({
   vendor: getVendor(state),
@@ -53,11 +56,34 @@ const mapState = (state: RootState): MapStateProps => ({
   healthPoints: getHealthPoints(state),
   speed: getSpeed(state),
   sex: getSex(state),
-  skinType: getSkinType(state)
+  skinType: getSkinType(state),
+  water: getArrayByType('water')(state),
+  waterTalent: getArrayByType('waterTalent')(state),
+  fire: getArrayByType('fire')(state),
+  fireTalent: getArrayByType('fireTalent')(state),
+  ground: getArrayByType('ground')(state),
+  groundTalent: getArrayByType('groundTalent')(state),
+  ice: getArrayByType('ice')(state),
+  iceTalent: getArrayByType('iceTalent')(state),
+  grass: getArrayByType('grass')(state),
+  grassTalent: getArrayByType('grassTalent')(state),
+  electro: getArrayByType('electro')(state),
+  electroTalent: getArrayByType('electroTalent')(state),
+  ghost: getArrayByType('ghost')(state),
+  ghostTalent: getArrayByType('ghostTalent')(state),
+  air: getArrayByType('air')(state),
+  airTalent: getArrayByType('airTalent')(state),
+  color: getArrayByType('color')(state),
+  attack: getArrayByType('attack')(state),
+  defence: getArrayByType('defence')(state),
+  generalTalent: getArrayByType('generalTalent')(state),
+  growthTalentFactor: getArrayByType('growthTalentFactor')(state),
+  elementPercentage: getArrayByType('elementPercentage')(state),
+  special: getArrayByType('special')(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
-  onBrowse: options => {
+  onBrowse: (options: MultipleFilters) => {
     return dispatch(browseNFTs(options))
   }
 })

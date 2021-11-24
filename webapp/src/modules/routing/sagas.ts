@@ -24,7 +24,8 @@ import {
   getHealthPoints,
   getSpeed,
   getSex,
-  getSkinType
+  getSkinType,
+  getArrayByType
 } from '../routing/selectors'
 import { getAddress as getWalletAddress } from '../wallet/selectors'
 import { getAddress as getAccountAddress } from '../account/selectors'
@@ -94,7 +95,6 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
   const page = searchOptions.page!
   const section = searchOptions.section!
   const sortBy = searchOptions.sortBy!
-
   const {
     search,
     onlyOnSale,
@@ -118,7 +118,31 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     bodySize,
     ego,
     healthPoints,
-    speed
+    speed,
+    orderStatus,
+    water,
+    waterTalent,
+    fire,
+    fireTalent,
+    ground,
+    groundTalent,
+    ice,
+    iceTalent,
+    grass,
+    grassTalent,
+    electro,
+    electroTalent,
+    ghost,
+    ghostTalent,
+    air,
+    airTalent,
+    color,
+    attack,
+    defence,
+    generalTalent,
+    growthTalentFactor,
+    elementPercentage,
+    special
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -172,7 +196,31 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           bodySize: arrayToString(bodySize),
           ego: arrayToString(ego),
           healthPoints: arrayToString(healthPoints),
-          speed: arrayToString(speed)
+          speed: arrayToString(speed),
+          orderStatus,
+          water: arrayToString(water),
+          waterTalent: arrayToString(waterTalent),
+          fire: arrayToString(fire),
+          fireTalent: arrayToString(fireTalent),
+          ground: arrayToString(ground),
+          groundTalent: arrayToString(groundTalent),
+          ice: arrayToString(ice),
+          iceTalent: arrayToString(iceTalent),
+          grass: arrayToString(grass),
+          grassTalent: arrayToString(grassTalent),
+          electro: arrayToString(electro),
+          electroTalent: arrayToString(electroTalent),
+          ghost: arrayToString(ghost),
+          ghostTalent: arrayToString(ghostTalent),
+          air: arrayToString(air),
+          airTalent: arrayToString(airTalent),
+          color: arrayToString(color),
+          attack: arrayToString(attack),
+          defence: arrayToString(defence),
+          generalTalent: arrayToString(generalTalent),
+          growthTalentFactor: arrayToString(growthTalentFactor),
+          elementPercentage: arrayToString(elementPercentage),
+          special: arrayToString(special)
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -213,7 +261,30 @@ function* getNewSearchOptions(current: SearchOptions) {
     bodySize: yield select(getBodySize),
     ego: yield select(getEgo),
     healthPoints: yield select(getHealthPoints),
-    speed: yield select(getSpeed)
+    speed: yield select(getSpeed),
+    water: yield select(getArrayByType('water')),
+    waterTalent: yield select(getArrayByType('waterTalent')),
+    fire: yield select(getArrayByType('fire')),
+    fireTalent: yield select(getArrayByType('fireTalent')),
+    ground: yield select(getArrayByType('ground')),
+    groundTalent: yield select(getArrayByType('groundTalent')),
+    ice: yield select(getArrayByType('ice')),
+    iceTalent: yield select(getArrayByType('iceTalent')),
+    grass: yield select(getArrayByType('grass')),
+    grassTalent: yield select(getArrayByType('grassTalent')),
+    electro: yield select(getArrayByType('electro')),
+    electroTalent: yield select(getArrayByType('electroTalent')),
+    ghost: yield select(getArrayByType('ghost')),
+    ghostTalent: yield select(getArrayByType('ghostTalent')),
+    air: yield select(getArrayByType('air')),
+    airTalent: yield select(getArrayByType('airTalent')),
+    color: yield select(getArrayByType('color')),
+    attack: yield select(getArrayByType('attack')),
+    defence: yield select(getArrayByType('defence')),
+    generalTalent: yield select(getArrayByType('generalTalent')),
+    growthTalentFactor: yield select(getArrayByType('growthTalentFactor')),
+    elementPercentage: yield select(getArrayByType('elementPercentage')),
+    special: yield select(getArrayByType('special'))
   }
   current = yield deriveCurrentOptions(previous, current)
 

@@ -78,6 +78,30 @@ export type NFTsFetchParams = {
   ego?: string
   healthPoints?: string
   speed?: string
+  orderStatus?: string
+  water?: string
+  waterTalent?: string
+  fire?: string
+  fireTalent?: string
+  ground?: string
+  groundTalent?: string
+  ice?: string
+  iceTalent?: string
+  grass?: string
+  grassTalent?: string
+  electro?: string
+  electroTalent?: string
+  ghost?: string
+  ghostTalent?: string
+  air?: string
+  airTalent?: string
+  color?: string
+  attack?: string
+  defence?: string
+  generalTalent?: string
+  growthTalentFactor?: string
+  elementPercentage?: string
+  special?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>
