@@ -56,6 +56,11 @@ function* handleWallet(
     network: Network.ETHEREUM
   })
 
+  const lootbox = getContract({
+    name: contractNames.Lootbox,
+    network: Network.ETHEREUM
+  })
+
   const authorizations: Authorization[] = []
 
   authorizations.push({
@@ -70,6 +75,15 @@ function* handleWallet(
   authorizations.push({
     address,
     authorizedAddress: erc721Bid.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
+    type: AuthorizationType.ALLOWANCE
+  })
+
+  authorizations.push({
+    address,
+    authorizedAddress: lootbox.address,
     contractAddress: kmon.address,
     contractName: ContractName.KMONToken,
     chainId: kmon.chainId,

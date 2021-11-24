@@ -13,7 +13,8 @@ const network = process.env.REACT_APP_NETWORK! as AppNetwork
 export enum ContractName {
   KMONToken = 'KMON',
   MARKETPLACE = 'Marketplace',
-  ERC721Bid = 'ERC721Bid'
+  ERC721Bid = 'ERC721Bid',
+  Lootbox = 'Lootbox'
 }
 
 const contracts = ({
@@ -22,7 +23,7 @@ const contracts = ({
       name: ContractName.KMONToken,
       address: getContract(CN.KMONToken, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
-      category: 'kryptomon',
+      category: null,
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
@@ -30,7 +31,7 @@ const contracts = ({
       name: ContractName.ERC721Bid,
       address: getContract(CN.ERC721Bid, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
-      category: 'kryptomon',
+      category: null,
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
@@ -38,7 +39,15 @@ const contracts = ({
       name: ContractName.MARKETPLACE,
       address: getContract(CN.Marketplace, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
-      category: 'kryptomon',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_RINKEBY
+    },
+    {
+      name: ContractName.Lootbox,
+      address: getContract(CN.Lootbox, ChainId.ETHEREUM_RINKEBY).address,
+      vendor: 'kryptomon',
+      category: null,
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
     }

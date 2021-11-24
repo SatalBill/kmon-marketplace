@@ -1,16 +1,16 @@
 import React from 'react'
+import { Row } from '@kmon/ui'
 
 import { toStringLootboxType } from '../../../modules/lootbox/utils'
 import { Props } from './LootboxDetailCard.types'
 import { Image } from '../../Image'
 import './LootboxDetailCard.css'
-import { Row } from '@kmon/ui'
 
 const LootboxDetailCard = (props: Props) => {
   const { boxType, image, price } = props
   const boxTypeStr = toStringLootboxType(boxType)
   return (
-    <div className="card">
+    <div className="lootbox-detail-card card">
       <div className="card-image-container">
         <div className="card-image">
           <Image src={image} />

@@ -70,6 +70,12 @@ const SellModal = (props: Props) => {
     network: nft.network
   })
 
+  const kmon = getContract({
+    name: contractNames.KMONToken,
+    network: nft.network
+  })
+
+
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: marketplace.address,
@@ -83,7 +89,7 @@ const SellModal = (props: Props) => {
   }
 
   const handleCreateOrder = () =>
-    onCreateOrder(nft, fromKMON(price), new Date(expiresAt).getTime())
+    onCreateOrder(nft, fromKMON(price), kmon.address, new Date(expiresAt).getTime())
 
   const handleSubmit = () => {
     if (hasAuthorization(authorizations, authorization)) {

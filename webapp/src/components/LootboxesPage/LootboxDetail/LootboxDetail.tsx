@@ -1,51 +1,113 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Page } from '@kmon/ui'
 import { Loader } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { fromWei } from 'web3x-es/utils'
+import { Address } from 'web3x-es/address'
+import {
+  Authorization,
+  AuthorizationType
+} from '@kmon/dapps/dist/modules/authorization/types'
+import { ContractName } from '@kmon/transactions'
+import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 
+import { getContractNames } from '../../../modules/vendor'
+import { getContract } from '../../../modules/contract/utils'
+import { AuthorizationModal } from '../../AuthorizationModal'
 import { Props } from './LootboxDetail.types'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
-import { TitleBlock } from '../../NFTPage/TitleBlock'
 import { Navbar } from '../../Navbar'
 import { Navigation } from '../../Navigation'
 import { Footer } from '../../Footer'
 import { Details } from '../Details'
 import { LootboxDetailCard } from '../LootboxDetailCard'
-import { Address } from 'web3x-es/address'
+import { LootboxType } from '../../../modules/lootbox/types'
+import basicLootbox from '../../../images/lootbox/basic.png'
+import mediumLootbox from '../../../images/lootbox/medium.png'
+import premiumLootbox from '../../../images/lootbox/premium.png'
+import './LootboxDetail.css'
 
 const LootboxDetail = (props: Props) => {
   const {
+    wallet,
+    authorizations,
     isConnecting,
+    isLoading,
+    isBuyingLootbox,
     boxType,
-    boxPrice,
-    pendingTransaction,
-    onFetchLootboxPrices,
+    lootboxPrices,
+    onFetchLootboxPrice,
     onBuyLootbox
   } = props
-  const isTxPending =
-    pendingTransaction !== undefined && pendingTransaction.status !== 'confirmed'
-  const txStatus =
-    pendingTransaction !== undefined ? pendingTransaction.status : null
+  const isTxPending = isLoading && isBuyingLootbox
+  const boxPrice = boxType === undefined ?
+    undefined :
+    lootboxPrices === undefined ?
+    undefined : lootboxPrices[boxType]
   const boxPriceStr = boxPrice !== undefined ? fromWei(boxPrice, 'ether') : ''
 
-  useEffect(() => {
-    onFetchLootboxPrices(boxType)
-  }, [])
+  const lootboxImage = boxType === LootboxType.Basic
+    ? basicLootbox
+    : boxType === LootboxType.Medium
+    ? mediumLootbox
+    : boxType === LootboxType.Premium
+    ? premiumLootbox
+    : ''
 
-  const handleClickBuy = () => {
-    if (boxPrice === undefined) return
+  useEffect(() => {
+    if (boxType !== undefined) {
+      onFetchLootboxPrice(boxType)
+    }
+  }, [boxType])
+  
+  const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
+
+  const contractNames = getContractNames()
+
+  const kmon = getContract({
+    name: contractNames.KMONToken
+  })
+
+  const lootbox = getContract({
+    name: contractNames.Lootbox,
+  })
+
+  if (!wallet) {
+    return null
+  }
+
+  const authorization: Authorization = {
+    address: wallet.address,
+    authorizedAddress: lootbox.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
+    type: AuthorizationType.ALLOWANCE
+  }
+
+  const handleSubmit = () => {
+    if (hasAuthorization(authorizations, authorization)) {
+      handleBuyLootbox()
+    } else {
+      setShowAuthorizationModal(true)
+    }
+  }
+
+  const handleClose = () => setShowAuthorizationModal(false)
+
+  const handleBuyLootbox = () => {
+    if (boxType === undefined || boxPrice === undefined) return
     onBuyLootbox(boxType, boxPrice, Address.ZERO)
   }
 
   const LootboxDetail = () => {
     return (
-      <Container className="product-container">
-        <Row className="Row-space-between">
+      <Container className="lootbox-detail product-container">
+        <Row className="Row">
           <LootboxDetailCard
             boxType={boxType}
-            image={'https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/gif/kmon_11_gif.gif'}
+            image={lootboxImage}
             price={boxPriceStr}
           />
           <Column>
@@ -53,13 +115,8 @@ const LootboxDetail = (props: Props) => {
               boxType={boxType}
               boxPrice={boxPriceStr}
               isTxPending={isTxPending}
-              onBuy={handleClickBuy}
+              onBuy={handleSubmit}
             />
-            <TitleBlock title="Transaction History">
-              <div className="dna-container">
-                <canvas height="210" width="678" data-testid="canvas" role="img"></canvas>
-              </div>
-            </TitleBlock>
             {isTxPending && (
               <>
                 <div className="overlay" />
@@ -68,6 +125,12 @@ const LootboxDetail = (props: Props) => {
             )}
           </Column>
         </Row>
+        <AuthorizationModal
+          open={showAuthorizationModal}
+          authorization={authorization}
+          onProceed={handleBuyLootbox}
+          onCancel={handleClose}
+        />
       </Container>
     )
   }

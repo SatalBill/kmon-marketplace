@@ -320,7 +320,8 @@
       "transfer": "Transferiste {name} a {address}.",
       "place_bid": "Hiciste una oferta de {price} por {name}.",
       "accept_bid": "Aceptaste una oferta de {price} por {name}.",
-      "cancel_bid": "Cancelaste una oferta de {price} por {name}."
+      "cancel_bid": "Cancelaste una oferta de {price} por {name}.",
+      "buy_lootbox": "Compraste caja botín {name} por {price}."
     }
   },
   "kmon": {
@@ -360,14 +361,6 @@
     "meta_transaction_failure": {
       "title": "Meta transacción",
       "body": "Ocurrió un error publicando la meta transacción.{br}Intentelo de nuevo o ingrese a nuestro {discord_link} para obtener más información."
-    },
-    "buy_lootbox_approval_confirmation": {
-      "title": "Confirmación de aprobación",
-      "body": "Permitiste gastar tu KMON. View {etherscan_link}"
-    },
-    "buy_lootbox_transfer_confirmation": {
-      "title": "Confirmación de transferencia",
-      "body": "Compraste {box_type} caja botín. Ver {etherscan_link}"
     }
   }
 }

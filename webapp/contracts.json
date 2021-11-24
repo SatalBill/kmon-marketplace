@@ -37,12 +37,12 @@
     "KMONToken": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x20317089818D87df0DE077F02df226bCB4611640"
+      "address": "0x2c2bcce26a6f78728d4282aac9609c18206b375b"
     },
     "Lootbox": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0xAc9cffe24513112B2847F5Ef3f0AD28ab766A640"
+      "address": "0xc4513abe108676178a6d504e4b30dcc2d6701dbe"
     },
     "ERC721Bid": {
       "source": "etherscan",
@@ -52,7 +52,7 @@
     "Marketplace": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x3103046cEd8B3e25c4E812C5Bb6BDF3b2147972D"
+      "address": "0xB2c6573872200d67a8fE9Aeb149c5201Ef73Fbdd"
     }
   }
 }

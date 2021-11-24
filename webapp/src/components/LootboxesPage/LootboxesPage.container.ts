@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { replace } from 'connected-react-router'
 import { RouteComponentProps } from 'react-router'
-import { Address } from 'web3x-es/address'
 
 import { RootState } from '../../modules/reducer'
 import { getIsFullscreen } from '../../modules/routing/selectors'
@@ -9,12 +8,7 @@ import {
   getWallet,
   isConnecting
 } from '../../modules/wallet/selectors'
-import {
-  getBasicPrice,
-  getMediumPrice,
-  getPendingTransaction,
-  getPremiumPrice
-} from '../../modules/lootbox/selectors'
+import { getData as getLootboxPrices } from '../../modules/lootbox_price/selectors'
 import {
   Params,
   MapStateProps,
@@ -22,7 +16,7 @@ import {
   MapDispatchProps
 } from './LootboxesPage.types'
 import LootboxesPage from './LootboxesPage'
-import { fetchLootboxPricesRequest } from '../../modules/lootbox/actions'
+import { fetchLootboxPriceRequest } from '../../modules/lootbox_price/actions'
 
 const mapState = (
   state: RootState,
@@ -35,16 +29,13 @@ const mapState = (
     wallet: getWallet(state),
     isConnecting: isConnecting(state),
     isFullscreen: getIsFullscreen(state),
-    basicPrice: getBasicPrice(state),
-    mediumPrice: getMediumPrice(state),
-    premiumPrice: getPremiumPrice(state),
-    pendingTransaction: getPendingTransaction(state)
+    lootboxPrices: getLootboxPrices(state),
   })
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onRedirect: path => dispatch(replace(path)),
-  onFetchLootboxPrices: boxType => dispatch(fetchLootboxPricesRequest(boxType))
+  onFetchLootboxPrice: boxType => dispatch(fetchLootboxPriceRequest(boxType))
 })
 
 export default connect(mapState, mapDispatch)(LootboxesPage)

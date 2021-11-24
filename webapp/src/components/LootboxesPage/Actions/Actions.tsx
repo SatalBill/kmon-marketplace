@@ -8,7 +8,7 @@ const Actions = (props: Props) => {
 
   return (
     <>
-      <Button disabled={isTxPending} onClick={onBuy} primary>
+      <Button disabled={isTxPending} loading={isTxPending} onClick={onBuy} primary>
         Buy
       </Button>
     </>

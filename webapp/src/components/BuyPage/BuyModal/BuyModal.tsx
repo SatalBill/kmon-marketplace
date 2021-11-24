@@ -43,20 +43,20 @@ const BuyPage = (props: Props) => {
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
   const [wantsToProceed, setWantsToProceed] = useState(false)
 
-  const handleExecuteOrder = useCallback(() => {
-    onExecuteOrder(order!, nft, fingerprint)
-  }, [order, nft, fingerprint, onExecuteOrder])
-
-  if (!wallet) {
-    return null
-  }
-
   const contractNames = getContractNames()
 
   const kmon = getContract({
     name: contractNames.KMONToken,
     network: nft.network
   })
+
+  const handleExecuteOrder = useCallback(() => {
+    onExecuteOrder(order!, nft, kmon.address, fingerprint)
+  }, [order, nft, fingerprint, onExecuteOrder])
+
+  if (!wallet) {
+    return null
+  }
 
   const marketplace = getContract({
     name: contractNames.MARKETPLACE,
@@ -89,21 +89,23 @@ const BuyPage = (props: Props) => {
   const isDisabled =
     !order ||
     isOwner ||
-    hasInsufficientKMON ||
-    (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
+    hasInsufficientKMON
+    // || (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
 
   const name = <Name nft={nft} />
 
   let subtitle = null
   if (!order) {
     subtitle = <T id={'buy_page.not_for_sale'} values={{ name }} />
-  } else if (
-    !fingerprint &&
-    nft.category === NFTCategory.KRYPTOMON &&
-    !isFingerprintLoading
-  ) {
-    subtitle = <T id={'buy_page.no_fingerprint'} />
-  } else if (isOwner) {
+  }
+  // else if (
+  //   !fingerprint &&
+  //   nft.category === NFTCategory.KRYPTOMON &&
+  //   !isFingerprintLoading
+  // ) {
+  //   subtitle = <T id={'buy_page.no_fingerprint'} />
+  // }
+  else if (isOwner) {
     subtitle = <T id={'buy_page.is_owner'} values={{ name }} />
   } else if (hasInsufficientKMON) {
     subtitle = (

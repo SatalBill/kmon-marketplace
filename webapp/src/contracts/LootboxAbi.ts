@@ -1,17 +1,6 @@
 import { ContractAbi} from 'web3x-es/contract';
 export default new ContractAbi([
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_paymentToken",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -251,6 +240,19 @@ export default new ContractAbi([
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
@@ -272,7 +274,7 @@ export default new ContractAbi([
     "name": "paymentToken",
     "outputs": [
       {
-        "internalType": "contract IERC20",
+        "internalType": "contract IERC20Upgradeable",
         "name": "",
         "type": "address"
       }

@@ -16,7 +16,6 @@ import { NavigationTab } from '../Navigation/Navigation.types'
 
 const ActivityPage = (props: Props) => {
   const { address, transactions, onClearHistory } = props
-
   const [showConfirmation, setShowConfirmation] = useState(false)
 
   const handleClear = useCallback(() => {
