@@ -131,7 +131,7 @@ const NFTSections = (props: Props) => {
 
   return (
     <Menu className="NFTSections">
-      {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
+      {[Section.ALL].map(menuSection => (
         <MenuItem
           key={menuSection}
           value={menuSection}
