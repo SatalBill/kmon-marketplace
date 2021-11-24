@@ -49,7 +49,7 @@ function* handleNFTMetaTransactionFailure(
 ) {
   const { nft, error } = action.payload
 
-  if (nft.network === Network.MATIC && !isUserDeniedSignature(error)) {
+  if (!isUserDeniedSignature(error)) {
     yield put(showToast(getMetaTransactionFailureToast()))
   }
 }
@@ -60,7 +60,7 @@ function* handleAuthorizationMetaTransactionFailure(
   const { authorization, error } = action.payload
 
   const { network } = getChainConfiguration(authorization.chainId)
-  if (network === Network.MATIC && !isUserDeniedSignature(error)) {
+  if (!isUserDeniedSignature(error)) {
     yield put(showToast(getMetaTransactionFailureToast()))
   }
 }

@@ -51,7 +51,9 @@ const contracts = ({
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
     }
-  ]
+  ],
+  [AppNetwork.BSC_MAINNET]: [],
+  [AppNetwork.BSC_TESTNET]: []
 } as Record<AppNetwork, Contract[]>)[network]
 
 export class ContractService implements ContractServiceInterface {

@@ -36,10 +36,8 @@ export function sendTransaction(
 
   switch (network) {
     case Network.ETHEREUM:
+    case Network.BSC:
       return method.send({ from }).getTxHash()
-    case Network.MATIC: {
-      return sendMetaTransaction(method, contract, from)
-    }
     default:
       throw new Error(`Undefined network ${network}`)
   }

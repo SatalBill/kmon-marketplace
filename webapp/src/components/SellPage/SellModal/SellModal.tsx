@@ -80,10 +80,7 @@ const SellModal = (props: Props) => {
     address: wallet.address,
     authorizedAddress: marketplace.address,
     contractAddress: nft.contractAddress,
-    contractName:
-      nft.category === NFTCategory.KRYPTOMON && nft.network === Network.MATIC
-        ? ContractName.ERC721CollectionV2
-        : ContractName.ERC721,
+    contractName: 'KMONFT' as ContractName,
     chainId: nft.chainId,
     type: AuthorizationType.APPROVAL
   }
