@@ -171,7 +171,7 @@ const NFTFilters = (props: Props) => {
               placeholder={searchPlaceholder}
               onChange={handleSearch}
             />
-            <Responsive
+            {/* <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
               className="topbar-filter"
             >
@@ -181,7 +181,7 @@ const NFTFilters = (props: Props) => {
                 options={dropdownOptions}
                 onChange={handleDropdownChange}
               />
-            </Responsive>
+            </Responsive> */}
             <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
               className="topbar-filter"
