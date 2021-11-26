@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Network, NFTCategory } from '@kmon/schemas'
+import { Coin, Network, NFTCategory } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
 import dateFnsFormat from 'date-fns/format'
 import {
@@ -26,6 +26,7 @@ import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { Props } from './SellModal.types'
 import { CoinSelectField } from '../../CoinSelectField'
+import { Address } from 'web3x-es/address'
 
 const SellModal = (props: Props) => {
   const {
@@ -53,6 +54,7 @@ const SellModal = (props: Props) => {
   const [showConfirm, setShowConfirm] = useState(false)
 
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
+  const [paymentCoin, setPaymentCoin] = useState(Coin.KMON)
 
   // Clear confirm price when closing the confirm modal
   useEffect(() => {
@@ -87,8 +89,13 @@ const SellModal = (props: Props) => {
     type: AuthorizationType.APPROVAL
   }
 
-  const handleCreateOrder = () =>
-    onCreateOrder(nft, fromKMON(price), kmon.address, new Date(expiresAt).getTime())
+  const handleCreateOrder = () => {
+    if (paymentCoin === Coin.KMON) {
+      onCreateOrder(nft, fromKMON(price), kmon.address, new Date(expiresAt).getTime())
+    } else {
+      onCreateOrder(nft, fromKMON(price), Address.ZERO.toString(), new Date(expiresAt).getTime())
+    }
+  }
 
   const handleSubmit = () => {
     if (hasAuthorization(authorizations, authorization)) {
@@ -126,12 +133,12 @@ const SellModal = (props: Props) => {
 
       <Form onSubmit={() => setShowConfirm(true)}>
         <div className="form-fields">
-          <CoinSelectField network={nft.network} coin={coin} onChangeCoin={(v) => console.log(v)} />
+          <CoinSelectField coin={coin} onChangeCoin={(c) => setPaymentCoin(c)} />
           <CoinField
             label={t('sell_page.price')}
             type="text"
             placeholder={toKMON(1000)}
-            coin={coin}
+            coin={paymentCoin}
             value={price}
             focus={true}
             onChange={(_event, props) => {
@@ -179,7 +186,7 @@ const SellModal = (props: Props) => {
               values={{
                 name: <b>{getNFTName(nft)}</b>,
                 amount: (
-                  <CoinPopup network={nft.network} inline>
+                  <CoinPopup network={nft.network} inline coin={paymentCoin}>
                     {fromKMON(price).toLocaleString()}
                   </CoinPopup>
                 )
@@ -190,7 +197,7 @@ const SellModal = (props: Props) => {
             <CoinField
               className="mana-input"
               label={t('sell_page.price')}
-              coin={coin}
+              coin={paymentCoin}
               placeholder={price}
               value={confirmPrice}
               onChange={(_event, props) => {

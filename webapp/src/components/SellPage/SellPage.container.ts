@@ -38,8 +38,8 @@ const mapState = (state: RootState): MapStateProps => {
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onNavigate: path => dispatch(push(path)),
-  onCreateOrder: (nft, price, kmonAddress, expiresAt) =>
-    dispatch(createOrderRequest(nft, price, kmonAddress, expiresAt))
+  onCreateOrder: (nft, price, coinAddress, expiresAt) =>
+    dispatch(createOrderRequest(nft, price, coinAddress, expiresAt))
 })
 
 export default connect(mapState, mapDispatch)(SellPage)
