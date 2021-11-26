@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .details-container {
+    margin: 16px 0;
+    flex-direction: column;
+  }
+}
 .profile-container {
   display: flex;
   flex-direction: row;

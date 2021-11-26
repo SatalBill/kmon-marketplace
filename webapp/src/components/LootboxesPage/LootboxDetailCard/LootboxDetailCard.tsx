@@ -26,9 +26,7 @@ const LootboxDetailCard = (props: Props) => {
           <Row>
             <p className="product-info-number">{boxTypeStr}</p>
           </Row>
-          <p className="product-description-left-item">
-            {price} KMON
-          </p>
+          <p className="product-description-left-item">{price} KMON</p>
         </div>
         <div className="product-description-right">ERC-721</div>
       </div>
