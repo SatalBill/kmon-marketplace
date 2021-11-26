@@ -146,10 +146,10 @@
     "from": "Ofertante",
     "price": "Precio",
     "time_left": "Expiración",
-    "not_enough_mana_on_bid_received": "El usuario no tiene suficiente MANA para pagar esta oferta",
+    "not_enough_mana_on_bid_received": "El usuario no tiene suficiente KMON para pagar esta oferta",
     "invalid_fingerprint_on_bid_received": "Este artículo ha sido modificado desde que se hizo esta oferta y ya no es válida",
     "invalid_seller": "Ya no eres el dueño de este artículo",
-    "not_enough_mana_on_bid_placed": "No tienes suficiente MANA para pagar por esta oferta",
+    "not_enough_mana_on_bid_placed": "No tienes suficiente KMON para pagar por esta oferta",
     "invalid_fingerprint_on_bid_placed": "Este artículo ha sido modificado desde que realizaste esta oferta y ya no es valida, a menos que la actualices"
   },
   "transaction_history": {
@@ -229,7 +229,7 @@
     "proceed_anyways": "Proceder",
     "no_fingerprint": "No se pudo cargar la identificación del Estate.",
     "is_owner": "Ya eres el dueño de {name}.",
-    "not_enough_mana": "No tienes suficiente MANA para comprar {name} por {amount}."
+    "not_enough_mana": "No tienes suficiente KMON para comprar {name} por {amount}."
   },
   "bid_page": {
     "title": "Haz una oferta",
@@ -237,7 +237,7 @@
     "price": "Precio",
     "expiration_date": "Fecha de expiración",
     "invalid_date": "Esta fecha ya pasó",
-    "not_enougn_mana": "No tienes suficiente MANA",
+    "not_enougn_mana": "No tienes suficiente KMON",
     "submit": "Ofertar"
   },
   "my_bids_page": {
@@ -273,7 +273,7 @@
     "authorization_error_contact": "Si el error continua no dudes en contactarnos",
     "for_buying": "Para comprar",
     "for_bidding": "Para ofertar",
-    "authorization_Marketplace_MANAToken": "MANA",
+    "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "Para vender",
     "pending_tx": "Transaccion pendiente, haz click aquí para ir a tu pantalla de actividad y ver más información"
   },
@@ -325,7 +325,7 @@
     }
   },
   "kmon": {
-    "running_on": "MANA en la red {network}"
+    "running_on": "KMON en la red {network}"
   },
   "wallet": {
     "sign_in_required": "Necesitas {sign_in} para acceder a esta página.",
@@ -350,11 +350,11 @@
     "matic": "Polygon"
   },
   "intro_popup": {
-    "title": "Introducimos Polygon MANA",
+    "title": "Introducimos Polygon KMON",
     "blog_link": "blog post",
     "account_link": "dApp de Account",
     "manage_account": "Mi Cuenta",
-    "content": "Polygon MANA te permitirá hacer transacciones mas rápido y barato.{br}Puedes aprender mas sobre Polygon MANA en nuestro {blog_link}.{br}Puedes gestionar tus tokens desde la {account_link}.{br}Haz click en tu avatar, luego en {manage_account} y comienza a conquistar el Metaverso.",
+    "content": "Polygon KMON te permitirá hacer transacciones mas rápido y barato.{br}Puedes aprender mas sobre Polygon KMON en nuestro {blog_link}.{br}Puedes gestionar tus tokens desde la {account_link}.{br}Haz click en tu avatar, luego en {manage_account} y comienza a conquistar el Metaverso.",
     "dismiss": "Entendido!"
   },
   "toast": {

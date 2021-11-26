@@ -20,16 +20,16 @@ const Details = (props: Props) => {
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
         </DetailItem>
+        <DetailItem title="Network">
+          <p className="detail-medium-text">{nft.network}</p>
+        </DetailItem>
       </div>
-      <DetailItem title="Network">
-        <p className="detail-medium-text">{nft.network}</p>
-      </DetailItem>
-      <DetailItem title="Price">
-        <p className="detail-big-text">
-          {/* {order?.price && formatMANA(order.price)} BNB */}
-          0000 KMON
+      {/* <DetailItem title="Price">
+        <p className="detail-big-text"> */}
+      {/* {order?.price && formatMANA(order.price)} BNB */}
+      {/* 0000 KMON
         </p>
-      </DetailItem>
+      </DetailItem> */}
       <Actions nft={nft} />
     </div>
   )
