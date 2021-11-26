@@ -1,4 +1,5 @@
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+import { Coin } from '@kmon/schemas'
 import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
 import { NFT } from '../../../modules/nft/types'
 import { Order } from '../../../modules/order/types'
@@ -9,6 +10,7 @@ export type Props = {
   order: Order | null
   wallet: Wallet | null
   authorizations: Authorization[]
+  coin: Coin
   isLoading: boolean
   isCreatingOrder: boolean
   onNavigate: (path: string) => void

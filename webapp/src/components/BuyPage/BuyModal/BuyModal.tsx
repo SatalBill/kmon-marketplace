@@ -17,7 +17,7 @@ import { NFT } from '../../../modules/nft/types'
 import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTAction } from '../../NFTAction'
-import { Kmon } from '../../Kmon'
+import { CoinPopup } from '../../CoinPopup'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { Props } from './BuyModal.types'
 
@@ -211,9 +211,9 @@ const BuyPage = (props: Props) => {
 const Name = (props: { nft: NFT }) => <b>{getNFTName(props.nft)}</b>
 
 const Price = (props: { network?: Network; price: string }) => (
-  <Kmon network={props.network} inline withTooltip>
+  <CoinPopup network={props.network} inline withTooltip>
     {formatKMON(props.price)}
-  </Kmon>
+  </CoinPopup>
 )
 
 export default React.memo(BuyPage)

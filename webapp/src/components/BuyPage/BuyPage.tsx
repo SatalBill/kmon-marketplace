@@ -24,7 +24,7 @@ const BuyPage = (props: Props) => {
 
   const isInsufficientKMON = (wallet: Wallet, nft: NFT, order: Order | null) =>
     !!order &&
-    wallet.networks[nft.network].kmon < +fromWei(order.price, 'ether')
+    wallet.networks[nft.network].kmonBalance < +fromWei(order.price, 'ether')
 
   return (
     <>

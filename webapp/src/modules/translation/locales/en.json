@@ -405,8 +405,8 @@
       "buy_lootbox": "You purchased {name} lootbox for {price}."
     }
   },
-  "kmon": {
-    "running_on": "This is MANA running in the {network} Network"
+  "coin": {
+    "running_on": "This is {coin} running in the {network} Network"
   },
   "wallet": {
     "sign_in_required": "You need to {sign_in} to access this page.",

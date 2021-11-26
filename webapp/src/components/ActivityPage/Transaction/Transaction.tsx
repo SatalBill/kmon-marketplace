@@ -24,7 +24,7 @@ import {
 import { locations } from '../../../modules/routing/locations'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTProvider } from '../../NFTProvider'
-import { Kmon } from '../../Kmon'
+import { CoinPopup } from '../../CoinPopup'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
 import { BUY_LOOTBOX_SUCCESS } from '../../../modules/lootbox/actions'
@@ -126,9 +126,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Kmon network={network} inline>
+                      <CoinPopup network={network} inline>
                         {price.toLocaleString()}
-                      </Kmon>
+                      </CoinPopup>
                     )
                   }}
                 />
@@ -156,9 +156,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Kmon network={network} inline>
+                      <CoinPopup network={network} inline>
                         {price.toLocaleString()}
-                      </Kmon>
+                      </CoinPopup>
                     )
                   }}
                 />
@@ -186,9 +186,9 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Kmon network={network} inline>
+                      <CoinPopup network={network} inline>
                         {price.toLocaleString()}
-                      </Kmon>
+                      </CoinPopup>
                     )
                   }}
                 />
@@ -246,7 +246,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -272,7 +272,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -298,7 +298,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -319,7 +319,7 @@ const Transaction = (props: Props) => {
                 name: (
                   toStringLootboxType(boxType)
                 ),
-                price: <Kmon inline>{fromWei(boxPrice, 'ether').toLocaleString()}</Kmon>
+                price: <CoinPopup inline>{fromWei(boxPrice, 'ether').toLocaleString()}</CoinPopup>
               }}
             />
           }

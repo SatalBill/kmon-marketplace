@@ -17,7 +17,7 @@ import { useFingerprint } from '../../../modules/nft/hooks'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { getContract } from '../../../modules/contract/utils'
 import { getContractNames } from '../../../modules/vendor'
-import { ManaField } from '../../ManaField'
+import { CoinField } from '../../CoinField'
 import { Props } from './BidModal.types'
 import './BidModal.css'
 
@@ -26,6 +26,8 @@ const BidModal = (props: Props) => {
     nft,
     wallet,
     authorizations,
+    coin,
+    network,
     onNavigate,
     onPlaceBid,
     isPlacingBid
@@ -82,7 +84,7 @@ const BidModal = (props: Props) => {
   const hasInsufficientKMON =
     !!price &&
     !!wallet &&
-    fromKMON(price) > wallet.networks[Network.ETHEREUM].kmon
+    fromKMON(price) > wallet.networks[network].kmonBalance
 
   return (
     <NFTAction nft={nft}>
@@ -97,8 +99,8 @@ const BidModal = (props: Props) => {
       </p>
       <Form onSubmit={handleSubmit}>
         <div className="form-fields">
-          <ManaField
-            network={Network.ETHEREUM}
+          <CoinField
+            coin={coin}
             label={t('bid_page.price')}
             placeholder={toKMON(1000)}
             value={price}

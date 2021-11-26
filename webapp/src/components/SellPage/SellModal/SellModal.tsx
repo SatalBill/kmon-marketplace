@@ -20,17 +20,19 @@ import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor/VendorFactory'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { NFTAction } from '../../NFTAction'
-import { Kmon } from '../../Kmon'
-import { ManaField } from '../../ManaField'
+import { CoinPopup } from '../../CoinPopup'
+import { CoinField } from '../../CoinField'
 import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { Props } from './SellModal.types'
+import { CoinSelectField } from '../../CoinSelectField'
 
 const SellModal = (props: Props) => {
   const {
     nft,
     order,
     wallet,
+    coin,
     authorizations,
     isLoading,
     isCreatingOrder,
@@ -124,11 +126,12 @@ const SellModal = (props: Props) => {
 
       <Form onSubmit={() => setShowConfirm(true)}>
         <div className="form-fields">
-          <ManaField
+          <CoinSelectField network={nft.network} coin={coin} onChangeCoin={(v) => console.log(v)} />
+          <CoinField
             label={t('sell_page.price')}
             type="text"
             placeholder={toKMON(1000)}
-            network={nft.network}
+            coin={coin}
             value={price}
             focus={true}
             onChange={(_event, props) => {
@@ -176,18 +179,18 @@ const SellModal = (props: Props) => {
               values={{
                 name: <b>{getNFTName(nft)}</b>,
                 amount: (
-                  <Kmon network={nft.network} inline>
+                  <CoinPopup network={nft.network} inline>
                     {fromKMON(price).toLocaleString()}
-                  </Kmon>
+                  </CoinPopup>
                 )
               }}
             />
             <br />
             <T id="sell_page.confirm.line_two" />
-            <ManaField
+            <CoinField
               className="mana-input"
               label={t('sell_page.price')}
-              network={nft.network}
+              coin={coin}
               placeholder={price}
               value={confirmPrice}
               onChange={(_event, props) => {
