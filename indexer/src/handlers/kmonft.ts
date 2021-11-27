@@ -199,9 +199,9 @@ export function handleBirth(event: Birth): void {
 
 export function handleHatching(event: EggHatched): void {
   let kryptomonId = event.params.kryptomonId.toString()
-  let status: BigInt = new BigInt(1);
+  let status: BigInt = BigInt.fromI32(1);
+  let id = getNFTId(categories.KRYPTOMON, event.address.toHexString(), kryptomonId)
 
-  let id = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonId)
   let nft = NFT.load(id);
   nft.searchKryptomonStatus = status;
   nft.save();
