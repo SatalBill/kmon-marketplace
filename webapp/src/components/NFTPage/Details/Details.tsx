@@ -5,7 +5,7 @@ import { Profile } from '@kmon/dapps/dist/containers'
 import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Actions } from '../Actions'
-import { formatKMON } from '../../../lib/kmon'
+import { formatCoin } from '../../../lib/kmon'
 
 const Details = (props: Props) => {
   const { nft, order } = props
@@ -29,7 +29,7 @@ const Details = (props: Props) => {
       </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
-          {order?.price && formatKMON(order.price)} {coin}
+          {order?.price && formatCoin(order.price)} {coin}
         </p>
       </DetailItem>
       <Actions nft={nft} />

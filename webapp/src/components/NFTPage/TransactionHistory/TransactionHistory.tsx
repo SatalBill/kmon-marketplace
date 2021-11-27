@@ -11,7 +11,7 @@ import { VendorFactory } from '../../../modules/vendor'
 import { Bid } from '../../../modules/bid/types'
 import { Order, OrderStatus } from '../../../modules/order/types'
 import { formatDistanceToNow } from '../../../lib/date'
-import { formatKMON } from '../../../lib/kmon'
+import { formatCoin } from '../../../lib/kmon'
 import { Props, HistoryEvent, UnionOrderBid } from './TransactionHistory.types'
 import './TransactionHistory.css'
 
@@ -115,7 +115,7 @@ const TransactionHistory = (props: Props) => {
                     </Table.Cell>
                     <Table.Cell>
                       <CoinPopup network={network} inline>
-                        {formatKMON(event.price)}
+                        {formatCoin(event.price)}
                       </CoinPopup>
                     </Table.Cell>
                   </Table.Row>
@@ -129,7 +129,7 @@ const TransactionHistory = (props: Props) => {
                 <div className="mobile-tx-history-row" key={index}>
                   <div className="price">
                     <CoinPopup network={network} inline>
-                      {formatKMON(event.price)}
+                      {formatCoin(event.price)}
                     </CoinPopup>
                   </div>
                   <div className="when">{formatEventDate(event.updatedAt)}</div>

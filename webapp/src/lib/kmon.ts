@@ -1,31 +1,22 @@
+import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
 
-export function formatKMON(value: string) {
+export function formatCoin(value: string) {
   return Number(fromWei(value, 'ether')).toLocaleString()
 }
 
-export function toKMON(num: number) {
+export function toCoin(num: number) {
   return num > 0 ? num.toString() : ''
 }
 
-export function fromKMON(kmon: string) {
-  const num = kmon.split(/[,|.]/).join('')
+export function fromCoin(value: string, coin: Coin) {
+  const num = coin === Coin.KMON ? value.split(/[,|.]/).join('') : value
 
-  const result = parseInt(num, 10)
+  const result = coin === Coin.KMON ? parseInt(num, 10) : parseFloat(num)
 
   if (isNaN(result) || result < 0) {
     return 0
   }
 
   return result
-}
-
-export function fromBNB(bnb: string) {
-  const result = Number(bnb)
-
-  if (isNaN(result) || result < 0) {
-    return 0
-  }
-
-  return bnb
 }
