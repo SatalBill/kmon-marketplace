@@ -23,9 +23,6 @@ const Details = (props: Props) => {
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
         </DetailItem>
-        <DetailItem title="Network">
-          <p className="detail-medium-text">{nft.network}</p>
-        </DetailItem>
       </div>
       <DetailItem title="Network">
         <p className="detail-medium-text">{nft.network}</p>
