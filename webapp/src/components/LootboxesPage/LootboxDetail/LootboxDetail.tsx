@@ -27,6 +27,9 @@ import basicLootbox from '../../../images/lootbox/basic.png'
 import mediumLootbox from '../../../images/lootbox/medium.png'
 import premiumLootbox from '../../../images/lootbox/premium.png'
 import './LootboxDetail.css'
+import { DescriptionBlock } from '../DescriptionBlock'
+import { TitleBlock } from '../../NFTPage/TitleBlock'
+import { toStringLootboxType } from '../../../modules/lootbox/utils'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -124,6 +127,13 @@ const LootboxDetail = (props: Props) => {
               </>
             )}
           </Column>
+        </Row>
+        <Row className="Row-space-between">
+          <TitleBlock title={t('lootbox_page.description_block.title')}>
+            <DescriptionBlock
+              description={t(`lootbox_page.description_block.description.${toStringLootboxType(boxType)}`)}
+            />
+          </TitleBlock>
         </Row>
         <AuthorizationModal
           open={showAuthorizationModal}
