@@ -34,7 +34,7 @@ const Details = (props: Props) => {
         <p className="detail-big-text">
           {order?.price && formatKMON(order.price)} {coin}
         </p>
-      </DetailItem> */}
+      </DetailItem>
       <Actions nft={nft} />
     </div>
   )
