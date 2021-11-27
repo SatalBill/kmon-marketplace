@@ -188,7 +188,8 @@ export class NFTService
       updatedAt: +edition.createdTimestamp,
       expiresAt: Infinity,
       network: Network.ETHEREUM,
-      chainId: Number(process.env.REACT_APP_CHAIN_ID)
+      chainId: Number(process.env.REACT_APP_CHAIN_ID),
+      paymentToken: ''
     }
   }
 

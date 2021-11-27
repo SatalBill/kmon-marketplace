@@ -6,13 +6,13 @@ import { KryptomonDetail } from '../../NFTPage/KryptomonDetail'
 import { Props } from './NFTDetail.types'
 
 const NFTDetail = (props: Props) => {
-  const { nft } = props
+  const { nft, order } = props
 
   const { kryptomon } = nft.data as any
 
   return (
     <>
-      {kryptomon ? <KryptomonDetail nft={nft} /> : null}
+      {kryptomon ? <KryptomonDetail nft={nft} order={order} /> : null}
       {nft.vendor !== VendorName.KRYPTOMON ? (
         <PictureFrameDetail nft={nft} />
       ) : null}

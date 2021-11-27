@@ -8,6 +8,8 @@ import {
   REVOKE_TOKEN_SUCCESS
 } from '@kmon/dapps/dist/modules/authorization/actions'
 import { fromWei } from 'web3x-es/utils'
+import { Address } from 'web3x-es/address'
+import { Coin } from '@kmon/schemas'
 
 import { getNFTName } from '../../../modules/nft/utils'
 import {
@@ -110,37 +112,43 @@ const Transaction = (props: Props) => {
       )
     }
     case CREATE_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
-          {nft => (
-            <TransactionDetail
-              nft={nft}
-              text={
-                <T
-                  id="transaction.detail.create_order"
-                  values={{
-                    name: (
-                      <Link to={locations.nft(contractAddress, tokenId)}>
-                        {name}
-                      </Link>
-                    ),
-                    price: (
-                      <CoinPopup network={network} inline>
-                        {price.toLocaleString()}
-                      </CoinPopup>
-                    )
-                  }}
-                />
-              }
-              tx={tx}
-            />
-          )}
+          {nft => {
+            return (
+              <TransactionDetail
+                nft={nft}
+                text={
+                  <T
+                    id="transaction.detail.create_order"
+                    values={{
+                      name: (
+                        <Link to={locations.nft(contractAddress, tokenId)}>
+                          {name}
+                        </Link>
+                      ),
+                      price: (
+                        <CoinPopup
+                          network={network}
+                          inline
+                          coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                        >
+                          {price.toLocaleString()}
+                        </CoinPopup>
+                      )
+                    }}
+                  />
+                }
+                tx={tx}
+              />
+            )
+          }}
         </NFTProvider>
       )
     }
     case CANCEL_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -156,7 +164,11 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <CoinPopup network={network} inline>
+                      <CoinPopup
+                        network={network}
+                        inline
+                        coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                      >
                         {price.toLocaleString()}
                       </CoinPopup>
                     )
@@ -170,7 +182,7 @@ const Transaction = (props: Props) => {
       )
     }
     case EXECUTE_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -186,7 +198,11 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <CoinPopup network={network} inline>
+                      <CoinPopup
+                        network={network}
+                        inline
+                        coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                      >
                         {price.toLocaleString()}
                       </CoinPopup>
                     )

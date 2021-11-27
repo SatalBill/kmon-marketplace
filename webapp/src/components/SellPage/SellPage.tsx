@@ -13,7 +13,6 @@ const SellPage = (props: Props) => {
     authorizations,
     isLoading,
     isCreatingOrder,
-    coin,
     onNavigate,
     onCreateOrder
   } = props
@@ -29,7 +28,6 @@ const SellPage = (props: Props) => {
                   nft={nft}
                   order={order}
                   wallet={wallet}
-                  coin={coin}
                   authorizations={authorizations}
                   isLoading={isLoading}
                   isCreatingOrder={isCreatingOrder}

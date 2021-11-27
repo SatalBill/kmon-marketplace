@@ -6,7 +6,7 @@ import './CoinSelectField.css'
 
 export default class CoinSelectField extends React.PureComponent<Props> {
   render() {
-    const { className, coin, onChangeCoin, ...rest } = this.props
+    const { className, coin, defaultCoin, onChangeCoin, ...rest } = this.props
     let classes = ''
     if (className) {
       classes += ' ' + className
@@ -20,7 +20,7 @@ export default class CoinSelectField extends React.PureComponent<Props> {
         { key: 2, text: <span><CoinIcon coin={coin} /> {coin}</span>, value: coin },
         ]}
         onChange={(_, a) => onChangeCoin(a.value as Coin)}
-        defaultValue={Coin.KMON}
+        defaultValue={defaultCoin}
       />
     )
   }

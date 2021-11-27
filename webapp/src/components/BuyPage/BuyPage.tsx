@@ -2,13 +2,14 @@ import React from 'react'
 import { fromWei } from 'web3x-es/utils'
 import { Page } from '@kmon/ui'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
+import { Address } from 'web3x-es/address'
+import { Network } from '@kmon/schemas'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet as WalletProvider } from '../Wallet'
 import { NFTProviderPage } from '../NFTProviderPage'
 import { isOwnedBy } from '../../modules/nft/utils'
 import { Order } from '../../modules/order/types'
-import { NFT } from '../../modules/nft/types'
 import { BuyModal } from './BuyModal'
 import { Props } from './BuyPage.types'
 import './BuyPage.css'
@@ -22,9 +23,14 @@ const BuyPage = (props: Props) => {
     isExecutingOrder
   } = props
 
-  const isInsufficientKMON = (wallet: Wallet, nft: NFT, order: Order | null) =>
-    !!order &&
-    wallet.networks[nft.network].kmonBalance < +fromWei(order.price, 'ether')
+  const isInsufficientCoin = (wallet: Wallet, order: Order | null) => {
+    if (order === null) return false
+    if (order.paymentToken === Address.ZERO.toString()) {
+      return wallet.networks[Network.BSC].coinBalance < +fromWei(order.price, 'ether')
+    } else {
+      return wallet.networks[Network.BSC].kmonBalance < +fromWei(order.price, 'ether')
+    }
+  }
 
   return (
     <>
@@ -43,7 +49,7 @@ const BuyPage = (props: Props) => {
                   onNavigate={onNavigate}
                   onExecuteOrder={onExecuteOrder}
                   isOwner={isOwnedBy(nft, wallet)}
-                  hasInsufficientKMON={isInsufficientKMON(wallet, nft, order)}
+                  hasInsufficientCoin={isInsufficientCoin(wallet, order)}
                 />
               )}
             </NFTProviderPage>

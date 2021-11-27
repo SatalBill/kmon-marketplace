@@ -105,7 +105,8 @@ export const cancelOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
       contractAddress: nft.contractAddress,
       network: nft.network,
       name: getNFTName(nft),
-      price: formatKMON(order.price)
+      price: formatKMON(order.price),
+      paymentToken: order.paymentToken
     })
   })
 export const cancelOrderFailure = (order: Order, nft: NFT, error: string) =>

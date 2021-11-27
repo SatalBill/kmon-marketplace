@@ -1,12 +1,15 @@
 import React from 'react'
+import { Address } from 'web3x-es/address'
+import { Coin } from '@kmon/schemas'
+import { Profile } from '@kmon/dapps/dist/containers'
 import { Props, ItemProps } from './Details.types'
 import './Details.css'
-import { Profile } from '@kmon/dapps/dist/containers'
 import { Actions } from '../Actions'
+import { formatKMON } from '../../../lib/kmon'
 
 const Details = (props: Props) => {
-  const { nft } = props
-
+  const { nft, order } = props
+  const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
   return (
     <div className="details-container">
       <div className="profile-container">
@@ -26,8 +29,7 @@ const Details = (props: Props) => {
       </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
-          {/* {order?.price && formatMANA(order.price)} BNB */}
-          0000 KMON
+          {order?.price && formatKMON(order.price)} {coin}
         </p>
       </DetailItem>
       <Actions nft={nft} />

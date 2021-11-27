@@ -21,4 +21,5 @@ export type Order = {
   updatedAt: number
   network: Network
   chainId: ChainId
+  paymentToken: string
 }

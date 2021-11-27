@@ -1,4 +1,4 @@
-import { TxSend } from 'web3x-es/contract'
+import { SendOptions, TxSend } from 'web3x-es/contract'
 import { Address } from 'web3x-es/address'
 import { Network } from '@kmon/schemas'
 import { getChainConfiguration } from '@kmon/dapps/dist/lib/chainConfiguration'
@@ -30,14 +30,19 @@ export function addressEquals(address1?: string, address2?: string) {
 export function sendTransaction(
   method: TxSend<any>,
   contract: ContractData,
-  from: Address
+  from: Address,
+  value?: number
 ): Promise<string> {
   const { network } = getChainConfiguration(contract.chainId)
+  const msg: SendOptions = { from }
+  if (value !== undefined) {
+    msg.value = value
+  }
 
   switch (network) {
     case Network.ETHEREUM:
     case Network.BSC:
-      return method.send({ from }).getTxHash()
+      return method.send(msg).getTxHash()
     default:
       throw new Error(`Undefined network ${network}`)
   }

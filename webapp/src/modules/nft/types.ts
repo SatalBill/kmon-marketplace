@@ -38,7 +38,7 @@ export type Data<V extends VendorName> = V extends VendorName.DECENTRALAND
       | KryptomonData
   : never
 
-export type NFT<V extends VendorName = VendorName.DECENTRALAND> = Omit<
+export type NFT<V extends VendorName = VendorName.KRYPTOMON> = Omit<
   BaseNFT,
   'category' | 'data'
 > & {

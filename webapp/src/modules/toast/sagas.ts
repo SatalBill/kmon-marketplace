@@ -49,9 +49,9 @@ function* handleNFTMetaTransactionFailure(
 ) {
   const { nft, error } = action.payload
 
-  if (!isUserDeniedSignature(error)) {
-    yield put(showToast(getMetaTransactionFailureToast()))
-  }
+  // if (!isUserDeniedSignature(error)) {
+  //   yield put(showToast(getMetaTransactionFailureToast()))
+  // }
 }
 
 function* handleAuthorizationMetaTransactionFailure(

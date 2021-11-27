@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Coin, Network, NFTCategory } from '@kmon/schemas'
+import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
 import dateFnsFormat from 'date-fns/format'
 import {
@@ -10,6 +10,7 @@ import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import { Header, Form, Field, Button, Modal } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
+import { Address } from 'web3x-es/address'
 import { toKMON, fromKMON } from '../../../lib/kmon'
 import {
   INPUT_FORMAT,
@@ -26,14 +27,12 @@ import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { Props } from './SellModal.types'
 import { CoinSelectField } from '../../CoinSelectField'
-import { Address } from 'web3x-es/address'
 
 const SellModal = (props: Props) => {
   const {
     nft,
     order,
     wallet,
-    coin,
     authorizations,
     isLoading,
     isCreatingOrder,
@@ -54,7 +53,9 @@ const SellModal = (props: Props) => {
   const [showConfirm, setShowConfirm] = useState(false)
 
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
-  const [paymentCoin, setPaymentCoin] = useState(Coin.KMON)
+  const [paymentCoin, setPaymentCoin] = useState(
+    isUpdate && order.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
+  )
 
   // Clear confirm price when closing the confirm modal
   useEffect(() => {
@@ -133,7 +134,11 @@ const SellModal = (props: Props) => {
 
       <Form onSubmit={() => setShowConfirm(true)}>
         <div className="form-fields">
-          <CoinSelectField coin={coin} onChangeCoin={(c) => setPaymentCoin(c)} />
+          <CoinSelectField
+            coin={Coin.BNB}
+            onChangeCoin={(c) => setPaymentCoin(c)}
+            defaultCoin={paymentCoin}
+          />
           <CoinField
             label={t('sell_page.price')}
             type="text"
