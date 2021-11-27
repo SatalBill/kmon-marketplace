@@ -6,18 +6,26 @@
 
 /* shadow */
 .Slideshow:after {
-  background: linear-gradient(to left,
-      rgba(35, 33, 35, 1) 10%,
-      rgba(35, 33, 35, .9) 30%,
-      rgba(35, 33, 35, .3) 80%,
-      rgba(35, 33, 35, 0));
-  content: '';
+  background: linear-gradient(
+    to left,
+    rgba(35, 33, 35, 1) 10%,
+    rgba(35, 33, 35, 0.9) 30%,
+    rgba(35, 33, 35, 0.3) 80%,
+    rgba(35, 33, 35, 0)
+  );
+  content: "";
   display: block;
   height: 100%;
   position: absolute;
   top: 0;
   right: -30px;
   width: 220px;
+}
+
+@media (max-width: 768px) {
+  .Slideshow:after {
+    width: auto;
+  }
 }
 
 .Slideshow .nfts {

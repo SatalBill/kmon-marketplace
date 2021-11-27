@@ -109,6 +109,12 @@
   margin-top: 133px;
 }
 
+@media (max-width: 768px) {
+  .product-container {
+    margin-top: 20px;
+  }
+}
+
 .price-dropdown {
   display: flex !important;
   flex-direction: row;

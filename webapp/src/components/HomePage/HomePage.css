@@ -19,3 +19,10 @@
   color: var(--secondary-text);
   max-width: 55%;
 }
+
+@media (max-width: 768px) {
+  .HomePageHero.dcl.hero .ui.header.hero-subtitle {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+}

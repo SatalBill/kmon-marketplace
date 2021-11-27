@@ -274,7 +274,7 @@
     "authorization_error_contact": "如果错误仍然存​​在，请随时与我们联系",
     "for_buying": "购买",
     "for_bidding": "出价",
-    "authorization_Marketplace_MANAToken": "MANA",
+    "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "出售",
     "pending_tx": "待处理的交易，请单击微调器以转到活动详细状态"
   },
@@ -351,7 +351,7 @@
     "matic": "Polygon"
   },
   "intro_popup": {
-    "title": "介绍Polygon MANA",
+    "title": "介绍Polygon KMON",
     "blog_link": "博客文章",
     "account_link": "帐户dApp",
     "manage_account": "管理帐户",

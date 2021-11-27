@@ -26,6 +26,29 @@ export type MultipleFilters = {
   speed?: string[]
   sex?: string[]
   skinType?: string[]
+  water?: string[]
+  waterTalent?: string[]
+  fire?: string[]
+  fireTalent?: string[]
+  ground?: string[]
+  groundTalent?: string[]
+  ice?: string[]
+  iceTalent?: string[]
+  grass?: string[]
+  grassTalent?: string[]
+  electro?: string[]
+  electroTalent?: string[]
+  ghost?: string[]
+  ghostTalent?: string[]
+  air?: string[]
+  airTalent?: string[]
+  color?: string[]
+  attack?: string[]
+  defence?: string[]
+  generalTalent?: string[]
+  growthTalentFactor?: string[]
+  elementPercentage?: string[]
+  special?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -51,7 +74,30 @@ const NFTSidebar = (props: Props) => {
     speed,
     healthPoints,
     sex,
-    skinType
+    skinType,
+    water,
+    waterTalent,
+    fire,
+    fireTalent,
+    ground,
+    groundTalent,
+    ice,
+    iceTalent,
+    grass,
+    grassTalent,
+    electro,
+    electroTalent,
+    ghost,
+    ghostTalent,
+    air,
+    airTalent,
+    color,
+    attack,
+    defence,
+    generalTalent,
+    growthTalentFactor,
+    elementPercentage,
+    special
   } = props
 
   const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
@@ -110,6 +156,29 @@ const NFTSidebar = (props: Props) => {
           healthPoints={healthPoints}
           sex={sex}
           skinType={skinType}
+          water={water}
+          waterTalent={waterTalent}
+          fire={fire}
+          fireTalent={fireTalent}
+          ground={ground}
+          groundTalent={groundTalent}
+          ice={ice}
+          iceTalent={iceTalent}
+          grass={grass}
+          grassTalent={grassTalent}
+          electro={electro}
+          electroTalent={electroTalent}
+          ghost={ghost}
+          ghostTalent={ghostTalent}
+          air={air}
+          airTalent={airTalent}
+          color={color}
+          attack={attack}
+          defence={defence}
+          generalTalent={generalTalent}
+          growthTalentFactor={growthTalentFactor}
+          elementPercentage={elementPercentage}
+          special={special}
         />
       )
   }

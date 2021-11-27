@@ -19,7 +19,7 @@ const AcceptButton = (props: Props) => {
     isInsufficientKMON(bid)
       .then(setHasInsufficientKMON)
       .catch(error =>
-        console.error(`Could not get the MANA from bidder ${bid.bidder}`, error)
+        console.error(`Could not get the KMON from bidder ${bid.bidder}`, error)
       )
   }, [bid])
 

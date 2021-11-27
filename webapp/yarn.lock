@@ -2432,12 +2432,27 @@
   dependencies:
     ajv "^7.1.0"
 
+"@kmon/schemas@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.8.tgz#6f4d8c8f4aae312510639186a6087cbcd40eca84"
+  integrity sha512-+J9ou8U9Hkwbi/GYaPjaiBRuOIOnXLLxl5Hab/k5oe0Pp9mBLdaPXLkPkJLDd+5zyGC5rxVBWqxoXED03Gj95A==
+  dependencies:
+    ajv "^7.1.0"
+
 "@kmon/transactions@^0.0.24":
   version "0.0.24"
   resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.24.tgz#17e0ec77365007d6841c044716008b411bb80555"
   integrity sha512-ZNht23RNTRGC6uq/BveUAbqntvhv57qcBrvnU57Q/9877sCKJmyMlyDImfB8gZyw/pW2hZtM3J8TVkMH6+mdwQ==
   dependencies:
     "@kmon/schemas" "^0.0.6"
+    tslint "^6.1.3"
+
+"@kmon/transactions@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.25.tgz#77de248157659798a42a20206b193e04f147c1bf"
+  integrity sha512-k6P1pPJIXd4A5CYYteR2x38Uejer5ZF+cTy+IkJLLu7CcpkDzUezHebU0kI/POTK22jUCz9oxvYCFwiM2A3dVw==
+  dependencies:
+    "@kmon/schemas" "^0.0.8"
     tslint "^6.1.3"
 
 "@kmon/ui@^0.0.9":

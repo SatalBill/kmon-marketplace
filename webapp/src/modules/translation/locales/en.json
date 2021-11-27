@@ -98,7 +98,30 @@
     "body_size": "Body size",
     "ego": "Ego",
     "health_points": "Health points",
-    "speed": "Speed"
+    "speed": "Speed",
+    "color": "Color",
+    "attack": "Attack",
+    "defence": "Defence",
+    "general_talent": "General talent",
+    "growth_talent_factor": "Growth talent factor",
+    "element_percentage": "Element percentage",
+    "special": "Special",
+    "water": "Water",
+    "water_talent": "Water talent",
+    "fire": "Fire",
+    "fire_talent": "Fire talent",
+    "ground": "Ground",
+    "ground_talent": "Ground talent",
+    "ice": "Ice",
+    "ice_talent": "Ice talent",
+    "grass": "Grass",
+    "grass_talent": "Grass talent",
+    "electro": "Electro",
+    "electro_talent": "Electro talent",
+    "ghost": "Ghost",
+    "ghost_talent": "Ghost talent",
+    "air": "Air",
+    "air_talent": "Air talent"
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -119,7 +142,9 @@
     "home_wearables": "Wearables",
     "home_land": "Parcels and Estates",
     "home_ens": "Names",
-    "kryptomons": "Latest Listing"
+    "kryptomons": "Latest Listing",
+    "all_assets": "All assets",
+    "latest_sold": "Latest sold"
   },
   "details_page": {},
   "partners_page": {
@@ -226,10 +251,10 @@
     "from": "From",
     "price": "Price",
     "time_left": "Time Left",
-    "not_enough_mana_on_bid_received": "The bidder doesn't have enough MANA to pay for this bid",
+    "not_enough_mana_on_bid_received": "The bidder doesn't have enough KMON to pay for this bid",
     "invalid_fingerprint_on_bid_received": "This asset has been modified since this bid was made and it's not valid anymore",
     "invalid_seller": "You don't own this asset anymore",
-    "not_enough_mana_on_bid_placed": "You don't have enough MANA to pay for this bid",
+    "not_enough_mana_on_bid_placed": "You don't have enough KMON to pay for this bid",
     "invalid_fingerprint_on_bid_placed": "This asset has been modified since this bid was made and it's not valid anymore unless you update it"
   },
   "transaction_history": {
@@ -318,7 +343,7 @@
     "price": "Price",
     "expiration_date": "Expiration date",
     "invalid_date": "This date has already passed",
-    "not_enougn_mana": "You don't have enough MANA",
+    "not_enougn_mana": "You don't have enough KMON",
     "submit": "Bid"
   },
   "my_bids_page": {
@@ -354,7 +379,7 @@
     "authorization_error_contact": "If the error persist don't hesitate to contact us",
     "for_buying": "For buying",
     "for_bidding": "For bidding",
-    "authorization_Marketplace_MANAToken": "MANA",
+    "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "For selling",
     "pending_tx": "Transaction pending, click the spinner to go to your activity for a detailed status"
   },
@@ -432,11 +457,11 @@
     "bsc": "Binance Smart Chain"
   },
   "intro_popup": {
-    "title": "Introducing Polygon MANA",
+    "title": "Introducing Polygon KMON",
     "blog_link": "blog post",
     "account_link": "Account dApp",
     "manage_account": "Account",
-    "content": "Polygon MANA will allow you to make transactions much cheaper and faster.{br}You can learn more about Polygon MANA in our {blog_link}, and don't forget you can start managing your coins in our new {account_link}.{br}Click your avatar, select {manage_account} and start conquering the Metaverse.",
+    "content": "Polygon KMON will allow you to make transactions much cheaper and faster.{br}You can learn more about Polygon KMON in our {blog_link}, and don't forget you can start managing your coins in our new {account_link}.{br}Click your avatar, select {manage_account} and start conquering the Metaverse.",
     "dismiss": "Got It!"
   },
   "toast": {

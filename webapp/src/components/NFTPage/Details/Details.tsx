@@ -23,6 +23,9 @@ const Details = (props: Props) => {
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
         </DetailItem>
+        <DetailItem title="Network">
+          <p className="detail-medium-text">{nft.network}</p>
+        </DetailItem>
       </div>
       <DetailItem title="Network">
         <p className="detail-medium-text">{nft.network}</p>
@@ -31,7 +34,7 @@ const Details = (props: Props) => {
         <p className="detail-big-text">
           {order?.price && formatKMON(order.price)} {coin}
         </p>
-      </DetailItem>
+      </DetailItem> */}
       <Actions nft={nft} />
     </div>
   )

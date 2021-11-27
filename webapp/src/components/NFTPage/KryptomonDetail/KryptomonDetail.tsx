@@ -22,6 +22,7 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
+import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order } = props
@@ -120,16 +121,17 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
-
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
         <NFTDetailCard elementType={elementType} nft={nft} />
         <Column>
           <Details nft={nft} order={order} />
-          <TitleBlock title={t('nft_page.dna_chart.title')}>
-            <DNAChart nft={nft} />
-          </TitleBlock>
+          {!isMobile() && (
+            <TitleBlock title={t('nft_page.dna_chart.title')}>
+              <DNAChart nft={nft} />
+            </TitleBlock>
+          )}
         </Column>
       </Row>
       <Row className="Row-space-between">
@@ -140,7 +142,7 @@ const KryptomonDetail = (props: Props) => {
             nft={nft}
           />
         </TitleBlock>
-        <TitleBlock
+        {/* <TitleBlock
           title={t('nft_page.price_chart.title')}
           right={
             <Dropdown
@@ -169,15 +171,15 @@ const KryptomonDetail = (props: Props) => {
             values={PRICE_CHART[currentPriceFilter].values}
             labels={PRICE_CHART[currentPriceFilter].labels}
           />
-        </TitleBlock>
+        </TitleBlock> */}
       </Row>
       <Row className="Row-space-between">
         <TitleBlock title={t('nft_page.description_block.title')}>
           <DescriptionBlock nft={nft} />
         </TitleBlock>
-        <TitleBlock title={t('nft_page.trade_history.title')}>
+        {/* <TitleBlock title={t('nft_page.trade_history.title')}>
           <TradeHistory nft={nft} />
-        </TitleBlock>
+        </TitleBlock> */}
       </Row>
     </Container>
   )

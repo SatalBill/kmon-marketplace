@@ -6,8 +6,15 @@ import { MenuItem } from '../../../Menu/MenuItem'
 import { MultiRangeSlider } from '../../../Menu/MultiRangeSlider'
 import { Dropdown } from '../../../Menu/Dropdown'
 import { Checkbox, CheckboxContainer } from '../../../Checkbox'
-import { ELEM_TYPE, SPECIALTIES, SUPERS } from './NFTSection.data'
+import {
+  ELEM_TYPE,
+  SPECIALTIES,
+  SUPERS,
+  SKIN_TYPES,
+  SEXES
+} from './NFTSection.data'
 import { Props } from './NFTSections.types'
+import './NFTSections.style.css'
 
 const NFTSections = (props: Props) => {
   const {
@@ -31,7 +38,30 @@ const NFTSections = (props: Props) => {
     healthPoints = [],
     speed = [],
     sex = [],
-    skinType = []
+    skinType = [],
+    water = [],
+    waterTalent = [],
+    fire = [],
+    fireTalent = [],
+    ground = [],
+    groundTalent = [],
+    ice = [],
+    iceTalent = [],
+    grass = [],
+    grassTalent = [],
+    electro = [],
+    electroTalent = [],
+    ghost = [],
+    ghostTalent = [],
+    air = [],
+    airTalent = [],
+    color = [],
+    attack = [],
+    defence = [],
+    generalTalent = [],
+    growthTalentFactor = [],
+    elementPercentage = [],
+    special = []
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -51,7 +81,30 @@ const NFTSections = (props: Props) => {
     healthPoints,
     speed,
     sex,
-    skinType
+    skinType,
+    water,
+    waterTalent,
+    fire,
+    fireTalent,
+    ground,
+    groundTalent,
+    ice,
+    iceTalent,
+    grass,
+    grassTalent,
+    electro,
+    electroTalent,
+    ghost,
+    ghostTalent,
+    air,
+    airTalent,
+    color,
+    attack,
+    defence,
+    generalTalent,
+    growthTalentFactor,
+    elementPercentage,
+    special
   })
 
   useEffect(() => {
@@ -79,7 +132,7 @@ const NFTSections = (props: Props) => {
 
   return (
     <Menu className="NFTSections">
-      {[Section.ALL, Section.POPULAR, Section.NEWEST].map(menuSection => (
+      {[Section.ALL].map(menuSection => (
         <MenuItem
           key={menuSection}
           value={menuSection}
@@ -99,26 +152,7 @@ const NFTSections = (props: Props) => {
             />
           ))
         : null}
-
-      <MenuItem
-        value={Section.GENERATIONS}
-        currentValue={section}
-        onClick={onSectionClick}
-        withCaret={true}
-      />
-      {[
-        Section.GENERATIONS,
-        Section.GENERATIONS_0,
-        Section.GENERATIONS_1,
-        Section.GENERATIONS_2,
-        Section.GENERATIONS_3,
-        Section.GENERATIONS_4,
-        Section.GENERATIONS_5,
-        Section.GENERATIONS_6,
-        Section.GENERATIONS_7,
-        Section.GENERATIONS_8,
-        Section.GENERATIONS_9
-      ].includes(section!) ? (
+      <Dropdown value={Section.GENERATIONS}>
         <>
           {[
             Section.GENERATIONS_0,
@@ -141,7 +175,7 @@ const NFTSections = (props: Props) => {
             />
           ))}
         </>
-      ) : null}
+      </Dropdown>
       <Dropdown value={Section.ELEMENT_TYPE} open={state.elemTypes.length > 0}>
         <CheckboxContainer>
           {ELEM_TYPE.map(elem => (
@@ -161,6 +195,208 @@ const NFTSections = (props: Props) => {
               }}
             />
           ))}
+          <div className="elemTypes">
+            <Dropdown value={Section.WATER} open={state.water.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.water[0] || 0}
+                maxValue={+state.water[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'water')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.WATER_TALENT}
+              open={state.waterTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.waterTalent[0] || 0}
+                maxValue={+state.waterTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'waterTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.FIRE} open={state.fire.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.fire[0] || 0}
+                maxValue={+state.fire[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'fire')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.FIRE_TALENT}
+              open={state.fireTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.fireTalent[0] || 0}
+                maxValue={+state.fireTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'fireTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.GROUND} open={state.ground.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.ground[0] || 0}
+                maxValue={+state.ground[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'ground')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.GROUND_TALENT}
+              open={state.groundTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.groundTalent[0] || 0}
+                maxValue={+state.groundTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'groundTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.ICE} open={state.ice.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.ice[0] || 0}
+                maxValue={+state.ice[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'ice')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.ICE_TALENT}
+              open={state.iceTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.iceTalent[0] || 0}
+                maxValue={+state.iceTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'iceTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.GRASS} open={state.grass.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.grass[0] || 0}
+                maxValue={+state.grass[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'grass')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.GRASS_TALENT}
+              open={state.grassTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.grassTalent[0] || 0}
+                maxValue={+state.grassTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'grassTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.ELECTRO} open={state.electro.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.electro[0] || 0}
+                maxValue={+state.electro[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'electro')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.ELECTRO_TALENT}
+              open={state.electroTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.electroTalent[0] || 0}
+                maxValue={+state.electroTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'electroTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.GHOST} open={state.ghost.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.ghost[0] || 0}
+                maxValue={+state.ghost[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'ghost')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.GHOST_TALENT}
+              open={state.ghostTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.ghostTalent[0] || 0}
+                maxValue={+state.ghostTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'ghostTalent')
+                }}
+              />
+            </Dropdown>
+            <Dropdown value={Section.AIR} open={state.air.length > 0}>
+              <MultiRangeSlider
+                min={0}
+                max={100}
+                minValue={+state.air[0] || 0}
+                maxValue={+state.air[1] || 100}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'air')
+                }}
+              />
+            </Dropdown>
+            <Dropdown
+              value={Section.AIR_TALENT}
+              open={state.airTalent.length > 0}
+            >
+              <MultiRangeSlider
+                min={0}
+                max={10}
+                minValue={+state.airTalent[0] || 0}
+                maxValue={+state.airTalent[1] || 10}
+                onChange={({ min, max }) => {
+                  handleStateChange(min, max, 'airTalent')
+                }}
+              />
+            </Dropdown>
+          </div>
         </CheckboxContainer>
       </Dropdown>
       <Dropdown value={Section.SPECIALTY} open={state.specialties.length > 0}>
@@ -178,6 +414,48 @@ const NFTSections = (props: Props) => {
                 } else {
                   const newArr = [...state.specialties, elem]
                   setState({ ...state, specialties: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SKIN_TYPE} open={state.skinType.length > 0}>
+        <CheckboxContainer>
+          {SKIN_TYPES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.skinType.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.skinType.indexOf(elem) > -1) {
+                  const newArr = [...state.skinType]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, skinType: newArr })
+                } else {
+                  const newArr = [...state.skinType, elem]
+                  setState({ ...state, skinType: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.SEX} open={state.sex.length > 0}>
+        <CheckboxContainer>
+          {SEXES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.sex.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.sex.indexOf(elem) > -1) {
+                  const newArr = [...state.sex]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, sex: newArr })
+                } else {
+                  const newArr = [...state.sex, elem]
+                  setState({ ...state, sex: newArr })
                 }
               }}
             />
@@ -354,6 +632,92 @@ const NFTSections = (props: Props) => {
           maxValue={+state.speed[1] || 100}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'speed')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.COLOR} open={state.color.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={10000}
+          minValue={+state.color[0] || 0}
+          maxValue={+state.color[1] || 10000}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'color')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.ATTACK} open={state.attack.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.attack[0] || 0}
+          maxValue={+state.attack[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'attack')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.DEFENCE} open={state.defence.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.defence[0] || 0}
+          maxValue={+state.defence[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'defence')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.GENERAL_TALENT}
+        open={state.generalTalent.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.generalTalent[0] || 0}
+          maxValue={+state.generalTalent[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'generalTalent')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.GROWTH_TALENT_FACTOR}
+        open={state.growthTalentFactor.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.growthTalentFactor[0] || 0}
+          maxValue={+state.growthTalentFactor[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'growthTalentFactor')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.ELEMENT_PERCENTAGE}
+        open={state.elementPercentage.length > 0}
+      >
+        <MultiRangeSlider
+          min={0}
+          max={100}
+          minValue={+state.elementPercentage[0] || 0}
+          maxValue={+state.elementPercentage[1] || 100}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'elementPercentage')
+          }}
+        />
+      </Dropdown>
+      <Dropdown value={Section.SPECIAL} open={state.special.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={10}
+          minValue={+state.special[0] || 0}
+          maxValue={+state.special[1] || 10}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'special')
           }}
         />
       </Dropdown>
