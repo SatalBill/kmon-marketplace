@@ -211,8 +211,13 @@ const SellModal = (props: Props) => {
               placeholder={price}
               value={confirmPrice}
               onChange={(_event, props) => {
-                const newPrice = fromKMON(props.value)
-                setConfirmPrice(toKMON(newPrice))
+                if (paymentCoin === Coin.BNB) {
+                  const newPrice = fromBNB(props.value)
+                  setConfirmPrice(newPrice.toString())
+                } else {
+                  const newPrice = fromKMON(props.value)
+                  setConfirmPrice(toKMON(newPrice))
+                }
               }}
             />
           </Modal.Content>

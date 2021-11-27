@@ -5,8 +5,7 @@ export type Props = {
   nft: NFT
   order?: Order
   status?: {
-    title: string
-    color?: string
+    showPrice: boolean
   }
 }
 
