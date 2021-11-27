@@ -19,3 +19,13 @@ export function fromKMON(kmon: string) {
 
   return result
 }
+
+export function fromBNB(bnb: string) {
+  const result = Number(bnb)
+
+  if (isNaN(result) || result < 0) {
+    return 0
+  }
+
+  return bnb
+}

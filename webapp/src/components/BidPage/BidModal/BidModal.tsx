@@ -8,7 +8,7 @@ import {
   AuthorizationType
 } from '@kmon/dapps/dist/modules/authorization/types'
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
-import { toKMON, fromKMON } from '../../../lib/kmon'
+import { toKMON, fromKMON, fromBNB } from '../../../lib/kmon'
 import { NFTAction } from '../../NFTAction'
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'
 import { getDefaultExpirationDate } from '../../../modules/order/utils'
@@ -113,8 +113,13 @@ const BidModal = (props: Props) => {
             placeholder={toKMON(1000)}
             value={price}
             onChange={(_event, props) => {
-              const newPrice = fromKMON(props.value)
-              setPrice(toKMON(newPrice))
+              if (paymentCoin === Coin.BNB) {
+                const newPrice = fromBNB(props.value)
+                setPrice(newPrice.toString())
+              } else {
+                const newPrice = fromKMON(props.value)
+                setPrice(toKMON(newPrice))
+              }
             }}
             error={hasInsufficientKMON()}
             message={

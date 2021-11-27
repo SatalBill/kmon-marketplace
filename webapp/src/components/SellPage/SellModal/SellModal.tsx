@@ -11,7 +11,7 @@ import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import { Header, Form, Field, Button, Modal } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
 import { Address } from 'web3x-es/address'
-import { toKMON, fromKMON } from '../../../lib/kmon'
+import { toKMON, fromKMON, fromBNB } from '../../../lib/kmon'
 import {
   INPUT_FORMAT,
   getDefaultExpirationDate
@@ -147,8 +147,13 @@ const SellModal = (props: Props) => {
             value={price}
             focus={true}
             onChange={(_event, props) => {
-              const newPrice = fromKMON(props.value)
-              setPrice(toKMON(newPrice))
+              if (paymentCoin === Coin.BNB) {
+                const newPrice = fromBNB(props.value)
+                setPrice(newPrice.toString())
+              } else {
+                const newPrice = fromKMON(props.value)
+                setPrice(toKMON(newPrice))
+              }
             }}
           />
           <Field
