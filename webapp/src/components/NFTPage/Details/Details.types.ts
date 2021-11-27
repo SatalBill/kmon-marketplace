@@ -4,7 +4,7 @@ import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
   nft: NFT
-  order?: Order
+  order: Order | null
 }
 
 export type ItemProps = {

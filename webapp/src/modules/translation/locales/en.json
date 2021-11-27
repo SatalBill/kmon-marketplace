@@ -335,7 +335,7 @@
     "proceed_anyways": "Proceed anyways",
     "no_fingerprint": "Could not load fingerprint.",
     "is_owner": "You are the owner of {name}.",
-    "not_enough_mana": "You don't have enough KMON to buy {name} for {amount}."
+    "not_enough_coin": "You don't have enough {coin} to buy {name} for {amount}."
   },
   "bid_page": {
     "title": "Place a bid",
@@ -430,8 +430,8 @@
       "buy_lootbox": "You purchased {name} lootbox for {price}."
     }
   },
-  "kmon": {
-    "running_on": "This is KMON running in the {network} Network"
+  "coin": {
+    "running_on": "This is {coin} running in the {network} Network"
   },
   "wallet": {
     "sign_in_required": "You need to {sign_in} to access this page.",

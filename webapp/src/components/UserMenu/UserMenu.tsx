@@ -1,5 +1,4 @@
 import { UserMenu as BaseUserMenu } from '@kmon/dapps/dist/containers'
-import { IntroPopup } from '../IntroPopup'
 import { Props } from './UserMenu.types'
 
 const UserMenu = (props: Props) => {
@@ -11,7 +10,6 @@ const UserMenu = (props: Props) => {
         onClickActivity={onClickActivity}
         onClickAccount={onClickAccount}
       />
-      <IntroPopup />
     </>
   )
 }

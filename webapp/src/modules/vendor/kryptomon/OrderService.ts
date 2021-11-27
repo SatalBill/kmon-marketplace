@@ -82,7 +82,8 @@ export class OrderService
         price,
         Address.fromString(paymentToken)
       )
-
+      if (order.paymentToken === Address.ZERO.toString())
+        return sendTransaction(executeOrder, contractData, from, Number(price))
       return sendTransaction(executeOrder, contractData, from)
     }
   }

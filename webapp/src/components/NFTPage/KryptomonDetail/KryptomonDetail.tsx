@@ -25,7 +25,7 @@ import Fire from '../../../images/egg/elem-fire.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const KryptomonDetail = (props: Props) => {
-  const { nft } = props
+  const { nft, order } = props
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
     WEEK: t('nft_page.price_chart.week'),
@@ -126,7 +126,7 @@ const KryptomonDetail = (props: Props) => {
       <Row className="Row-space-between">
         <NFTDetailCard elementType={elementType} nft={nft} />
         <Column>
-          <Details nft={nft} />
+          <Details nft={nft} order={order} />
           {!isMobile() && (
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} />

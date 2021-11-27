@@ -230,7 +230,7 @@
     "proceed_anyways": "仍然继续",
     "no_fingerprint": "无法加载指纹。",
     "is_owner": "您是{name}的所有者。",
-    "not_enough_mana": "您没有足够的MANA来购买{name}。"
+    "not_enough_coin": "您没有足够的{coin}来购买{name}。"
   },
   "bid_page": {
     "title": "出价",

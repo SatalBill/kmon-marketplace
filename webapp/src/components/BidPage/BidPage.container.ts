@@ -8,10 +8,12 @@ import { getLoading } from '../../modules/bid/selectors'
 import { MapStateProps, MapDispatchProps, MapDispatch } from './BidPage.types'
 import BidPage from './BidPage'
 
-const mapState = (state: RootState): MapStateProps => ({
-  authorizations: getAuthorizations(state),
-  isPlacingBid: isLoadingType(getLoading(state), PLACE_BID_REQUEST)
-})
+const mapState = (state: RootState): MapStateProps => {
+  return {
+    authorizations: getAuthorizations(state),
+    isPlacingBid: isLoadingType(getLoading(state), PLACE_BID_REQUEST)
+  }
+}
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onNavigate: path => dispatch(push(path)),

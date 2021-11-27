@@ -12,16 +12,18 @@ import { getLoading as getLoadingOrders } from '../../modules/order/selectors'
 import { MapStateProps, MapDispatchProps, MapDispatch } from './SellPage.types'
 import SellPage from './SellPage'
 
-const mapState = (state: RootState): MapStateProps => ({
-  authorizations: getAuthorizations(state),
-  isLoading: isLoadingType(getLoadingAuthorizations(state), FETCH_AUTHORIZATIONS_REQUEST),
-  isCreatingOrder: isLoadingType(getLoadingOrders(state), CREATE_ORDER_REQUEST)
-})
+const mapState = (state: RootState): MapStateProps => {
+  return {
+    authorizations: getAuthorizations(state),
+    isLoading: isLoadingType(getLoadingAuthorizations(state), FETCH_AUTHORIZATIONS_REQUEST),
+    isCreatingOrder: isLoadingType(getLoadingOrders(state), CREATE_ORDER_REQUEST)
+  }
+}
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onNavigate: path => dispatch(push(path)),
-  onCreateOrder: (nft, price, kmonAddress, expiresAt) =>
-    dispatch(createOrderRequest(nft, price, kmonAddress, expiresAt))
+  onCreateOrder: (nft, price, coinAddress, expiresAt) =>
+    dispatch(createOrderRequest(nft, price, coinAddress, expiresAt))
 })
 
 export default connect(mapState, mapDispatch)(SellPage)

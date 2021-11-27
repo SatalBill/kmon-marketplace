@@ -16,7 +16,7 @@ const NFTPage = () => {
         <Navigation isFullscreen />
       </div>
       <Page className="NFTPage" isFullscreen>
-        <NFTProviderPage>{nft => <NFTDetail nft={nft} />}</NFTProviderPage>
+        <NFTProviderPage>{(nft, order) => <NFTDetail nft={nft} order={order} />}</NFTProviderPage>
       </Page>
       <Footer />
     </>
