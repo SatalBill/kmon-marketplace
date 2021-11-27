@@ -21,6 +21,7 @@ import { Coin } from '@kmon/schemas'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status } = props
+
   const genes = nft.data.kryptomon?.genes
   const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
@@ -83,9 +84,10 @@ const NFTCard = (props: Props) => {
           <NFTImage nft={nft} showMonospace />
         </div>
         <div className="card-image-text">
-          {status ? (
+          {status && status.showPrice ? (
             <div className="product-type-price-container">
-              <div className="product-type-price">{status.title}</div>
+              <div className="product-type-price">{(order?.price && formatKMON(order.price)) || '0000'}{' '}
+              {coin}</div>
             </div>
           ) : (
             <img
