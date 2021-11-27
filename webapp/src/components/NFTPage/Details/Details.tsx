@@ -28,7 +28,7 @@ const Details = (props: Props) => {
         <p className="detail-medium-text">{nft.network}</p>
       </DetailItem>
       <DetailItem title="Price">
-        <p className="detail-big-text">
+        <p className="detail-medium-text">
           {order?.price && formatCoin(order.price)} {coin}
         </p>
       </DetailItem>
