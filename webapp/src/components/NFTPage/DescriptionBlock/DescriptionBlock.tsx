@@ -12,7 +12,7 @@ const DescriptionBlock = (props: Props) => {
   }
 
   return (
-    <div className="container">
+    <div className="description-container">
       <div className={classNames('show-text', !isOpen && 'hidden-text')}>
         {nft.metadata.description}{' '}
         {!isOpen && <div className="hidden-text-blur" />}

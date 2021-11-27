@@ -1,9 +1,15 @@
-.container {
+.elements-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 272px;
+}
+
+@media (max-width: 768px) {
+  .elements-container {
+    width: 100%;
+  }
 }
 
 .top-element {
@@ -46,6 +52,12 @@
   width: 50%;
 }
 
+@media (max-width: 768px) {
+  .bottom-element {
+    justify-content: center;
+  }
+}
+
 .bottom-element-icon {
   width: 32px;
   height: 32px;
@@ -56,4 +68,10 @@
 .bottom-element-text {
   font-size: 10px;
   color: #676370;
+}
+
+@media (max-width: 768px) {
+  .bottom-element-text {
+    width: 44px;
+  }
 }
