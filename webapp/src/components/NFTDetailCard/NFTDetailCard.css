@@ -104,6 +104,12 @@ a.ui.card.link:hover .meta {
   height: fit-content;
 }
 
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
 .card-footer {
   background-color: #e7e3d7;
 }

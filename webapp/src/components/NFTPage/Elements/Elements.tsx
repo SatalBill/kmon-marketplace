@@ -6,7 +6,7 @@ const Elements = (props: Props) => {
   const { elementTypes, maxElementType } = props
 
   return (
-    <div className="container">
+    <div className="elements-container">
       <div className="top-element">
         <img
           className="top-element-icon"

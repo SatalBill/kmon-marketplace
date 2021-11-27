@@ -112,6 +112,7 @@
 @media (max-width: 768px) {
   .product-container {
     margin-top: 20px;
+    padding-left: 0;
   }
 }
 
