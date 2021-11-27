@@ -2383,12 +2383,12 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@kmon/connect@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@kmon/connect/-/connect-0.0.2.tgz#30ed24e167ea9199bd49fbbb4d5cd824b048c006"
-  integrity sha512-0W6HNGV90eDYBlRCMc9qJY9b65n4S965QT5qh0F5dkHlNIB7wyCjedErQk4IafG1khvh6K4a6RBp4hzhUbPO8g==
+"@kmon/connect@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@kmon/connect/-/connect-0.0.3.tgz#4a9e334cbf48b6fb10fa5b6e34ad8a61b5f654a9"
+  integrity sha512-3O2pblmQVDblboaF8mcH+nsqls77sFC5YMOCg+528JPI2H6Stx6NZRZ0XeD82fXIM2PkbrqAx6I9Fr6b35mcNw==
   dependencies:
-    "@kmon/schemas" "^0.0.6"
+    "@kmon/schemas" "^0.0.9"
     "@types/node" "^10.1.2"
     "@web3-react/fortmatic-connector" "^6.1.6"
     "@web3-react/injected-connector" "^6.0.7"
@@ -2396,17 +2396,17 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.13.tgz#2a25ff89dfef16c3be2354a70813a0d28a0a4444"
-  integrity sha512-Gdi/rGwzuQ7dLFLJQXFB5Y+J9TQo3tC7ilickyzbjcKCA7L9iMGKCkTQ1wOQI2Br5ufk9APp0avJk327WDg1Ug==
+"@kmon/dapps@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.14.tgz#2a3e4581d545a24331061c85c5989a6e66dbf1b4"
+  integrity sha512-LiWLs22hOI+PN9c8/v0qQFFZ3v3I8H3numTvet35XuJxMn4St6Jx9cazgqiA2aI6BJrbs785z8R+nGg3H/jbEQ==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
-    "@kmon/connect" "^0.0.2"
-    "@kmon/schemas" "^0.0.6"
-    "@kmon/transactions" "^0.0.24"
-    "@kmon/ui" "^0.0.9"
+    "@kmon/connect" "^0.0.3"
+    "@kmon/schemas" "^0.0.9"
+    "@kmon/transactions" "^0.0.26"
+    "@kmon/ui" "^0.0.10"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.28"
     "@types/uuid" "^3.4.3"
@@ -2425,42 +2425,27 @@
     web3x-codegen "^4.0.6"
     web3x-es "^4.0.6"
 
-"@kmon/schemas@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.6.tgz#ae8e97d995f21a04faf20576c6ed58f0b6197243"
-  integrity sha512-q+fprUjhasXcEpV1tbCBlYXieeJSY94whe86OetdgC1xDoN3f6z4gVw8eDY0CKw8/wvPzvXbInsQ+AWjpKTlag==
-  dependencies:
-    ajv "^7.1.0"
-
-"@kmon/schemas@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.8.tgz#6f4d8c8f4aae312510639186a6087cbcd40eca84"
-  integrity sha512-+J9ou8U9Hkwbi/GYaPjaiBRuOIOnXLLxl5Hab/k5oe0Pp9mBLdaPXLkPkJLDd+5zyGC5rxVBWqxoXED03Gj95A==
-  dependencies:
-    ajv "^7.1.0"
-
-"@kmon/transactions@^0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.24.tgz#17e0ec77365007d6841c044716008b411bb80555"
-  integrity sha512-ZNht23RNTRGC6uq/BveUAbqntvhv57qcBrvnU57Q/9877sCKJmyMlyDImfB8gZyw/pW2hZtM3J8TVkMH6+mdwQ==
-  dependencies:
-    "@kmon/schemas" "^0.0.6"
-    tslint "^6.1.3"
-
-"@kmon/transactions@^0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.25.tgz#77de248157659798a42a20206b193e04f147c1bf"
-  integrity sha512-k6P1pPJIXd4A5CYYteR2x38Uejer5ZF+cTy+IkJLLu7CcpkDzUezHebU0kI/POTK22jUCz9oxvYCFwiM2A3dVw==
-  dependencies:
-    "@kmon/schemas" "^0.0.8"
-    tslint "^6.1.3"
-
-"@kmon/ui@^0.0.9":
+"@kmon/schemas@^0.0.9":
   version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.9.tgz#784aa201df89eafb4a46a10da89b5419c75886da"
-  integrity sha512-Ndm/ahofzDC+tAl/i1kHf5xMcMDS2A1WOmVO+Jrl6JFxp0Tw9X56hmOeaRKYktqbJuThpWYOEMXIXftLWtif1Q==
+  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.9.tgz#88d1c074a1d914d24495e87cbb710dacc39f3b12"
+  integrity sha512-b/TpEr9OvLBLHkAKeG3CJaAcUvPKCVZdhwbSTph3FG46Nyxr+o+PdM41Dlx1KuFzLMFNDq6yA9r1ax28cHviPw==
   dependencies:
-    "@kmon/schemas" "^0.0.6"
+    ajv "^7.1.0"
+
+"@kmon/transactions@^0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.26.tgz#f0779e825786292b0262028b2e8b3f494e69624d"
+  integrity sha512-RLh32D4iMvsiNOb9H4HP7Nil/Jfb/fpfPet6BvZ1PRBb87n8hw/WkWcLtZZvl12YlHE9uC0M5rnSWGGTACIKbQ==
+  dependencies:
+    "@kmon/schemas" "^0.0.9"
+    tslint "^6.1.3"
+
+"@kmon/ui@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.10.tgz#8eaf0a80301c5880c9c8523a00d07d0c42cbf842"
+  integrity sha512-/VsmAFsOsWtU+ZR3OtqVg92ZJhedM9DJQh46ijJ44gViqGhVTfaqFtJAdXrwNbjM4Q2t3dziJ+ci2gx5ctv90g==
+  dependencies:
+    "@kmon/schemas" "^0.0.9"
     balloon-css "^0.5.0"
     ethereum-blockies "^0.1.1"
     parallax-js "^3.1.0"
