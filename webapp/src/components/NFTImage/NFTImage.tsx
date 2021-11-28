@@ -18,17 +18,30 @@ const NFTImage = (props: Props) => {
     isDraggable,
     withNavigation,
     hasPopup,
-    zoom
+    zoom,
+    isSmall
   } = props
   const { kryptomon } = (nft as NFT<
     VendorName.KRYPTOMON
   >).data
 
+  let src;
+
+  if (isSmall) {
+    // very dirty but have not time to do it properly
+    if (nft.metadata.image.indexOf(".gif") > -1)
+      src = "https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/png/kmon_" + nft.tokenId + "_png.png"
+    else
+      src = nft.metadata.image;
+  } else {
+    src = nft.metadata.image;
+  }
+
   switch (nft.category) {
     default: {
       return (
         <LazyImage
-          src={nft.metadata.image}
+          src={src}
           alt={getNFTName(nft)}
           debounceDurationMs={1000}
           placeholder={({ ref }) => (

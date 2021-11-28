@@ -81,13 +81,13 @@ const NFTCard = (props: Props) => {
     >
       <div className="card-image-container">
         <div className="card-image">
-          <NFTImage nft={nft} showMonospace />
+          <NFTImage nft={nft} showMonospace isSmall />
         </div>
         <div className="card-image-text">
           {status && status.showPrice ? (
             <div className="product-type-price-container">
               <div className="product-type-price">{(order?.price && formatCoin(order.price)) || '0000'}{' '}
-              {coin}</div>
+                {coin}</div>
             </div>
           ) : (
             <img
