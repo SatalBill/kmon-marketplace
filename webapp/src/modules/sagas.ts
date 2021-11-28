@@ -33,7 +33,7 @@ export function* rootSaga() {
     //profileSaga(),
     proximitySaga(),
     routingSaga(),
-    tileSaga(),
+    //tileSaga(),
     toastSaga(),
     transactionSaga(),
     translationSaga(),
