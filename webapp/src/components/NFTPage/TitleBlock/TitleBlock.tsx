@@ -11,7 +11,7 @@ const TitleBlock = (props: Props) => {
         <h6 className="title">{title}</h6>
         {right}
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   )
 }

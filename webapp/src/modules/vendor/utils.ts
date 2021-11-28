@@ -15,7 +15,6 @@ export function getFilters(
     case VendorName.DECENTRALAND: {
       const currentSection = Section[VendorName.DECENTRALAND]
 
-      const isLand = section === currentSection.LAND
       const isWearableHead = section === currentSection.WEARABLES_HEAD
       const isWearableAccessory =
         section === currentSection.WEARABLES_ACCESORIES
@@ -29,7 +28,6 @@ export function getFilters(
       const { wearableRarities, contracts, network } = searchOptions
 
       return {
-        isLand,
         isWearableHead,
         isWearableAccessory,
         wearableCategory,

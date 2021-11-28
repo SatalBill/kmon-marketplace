@@ -8,6 +8,12 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .dna-container {
+    width: 100%;
+    padding: 25px 5px 5px 5px;
+  }
+}
 .dna-info {
   display: flex;
   flex-direction: row;
@@ -15,6 +21,13 @@
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+@media (max-width: 768px) {
+  .dna-info {
+    top: 10px;
+    right: 10px;
+  }
 }
 
 .dna-info-generation {

@@ -14,6 +14,7 @@
 
 .icon {
   visibility: visible;
+  line-height: normal;
 }
 
 .hidden-icon {
@@ -46,7 +47,7 @@
   visibility: hidden;
   animation: antCheckboxEffect 300ms ease-in-out;
   animation-fill-mode: backwards;
-  content: "";
+  content: '';
 }
 
 .label {

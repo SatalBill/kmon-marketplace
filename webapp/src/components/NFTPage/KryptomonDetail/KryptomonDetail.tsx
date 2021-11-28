@@ -127,11 +127,11 @@ const KryptomonDetail = (props: Props) => {
         <NFTDetailCard elementType={elementType} nft={nft} />
         <Column>
           <Details nft={nft} />
-          {!isMobile() && (
-            <TitleBlock title={t('nft_page.dna_chart.title')}>
-              <DNAChart nft={nft} />
-            </TitleBlock>
-          )}
+          {/* {!isMobile() && ( */}
+          <TitleBlock title={t('nft_page.dna_chart.title')}>
+            <DNAChart nft={nft} />
+          </TitleBlock>
+          {/* )} */}
         </Column>
       </Row>
       <Row className="Row-space-between">

@@ -101,19 +101,32 @@ const NFTSidebar = (props: Props) => {
   } = props
 
   const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
+
   const handleOnBrowse = useCallback(
     (section: Section) => {
-      onBrowse({ section, kryptomonStatus })
+      if (pathname === '/account') {
+        onBrowse({
+          section
+        })
+      } else {
+        onBrowse({ section, kryptomonStatus })
+      }
     },
     [onBrowse]
   )
 
   const handleOnBrowseMultiple = useCallback(
     (data: MultipleFilters) => {
-      onBrowse({
-        ...data,
-        kryptomonStatus
-      })
+      if (pathname === '/account') {
+        onBrowse({
+          ...data
+        })
+      } else {
+        onBrowse({
+          ...data,
+          kryptomonStatus
+        })
+      }
     },
     [onBrowse]
   )
