@@ -18,9 +18,9 @@ import { lootboxSaga } from './lootbox/sagas'
 import { lootboxPriceSaga } from './lootbox_price/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
-const profileSaga = createProfileSaga({
-  peerUrl: process.env.REACT_APP_PEER_URL!
-})
+// const profileSaga = createProfileSaga({
+//   peerUrl: process.env.REACT_APP_PEER_URL!
+// })
 const authorizationSaga = createAuthorizationSaga()
 
 export function* rootSaga() {
@@ -30,7 +30,7 @@ export function* rootSaga() {
     bidSaga(),
     nftSaga(),
     orderSaga(),
-    profileSaga(),
+    //profileSaga(),
     proximitySaga(),
     routingSaga(),
     tileSaga(),
