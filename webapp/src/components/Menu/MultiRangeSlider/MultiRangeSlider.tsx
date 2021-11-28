@@ -86,7 +86,7 @@ const MultiRangeSlider: FC<Props> = ({
   }
 
   return (
-    <div className="container">
+    <div className="slider-container">
       <input
         type="range"
         min={min}

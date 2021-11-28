@@ -43,7 +43,7 @@ function* handleConnectWalletSuccess(action: ConnectWalletSuccessAction) {
         address: action.payload.wallet.address.toLowerCase()
       },
       filters: {
-        isLand: true
+        // isLand: true
       }
     })
   )

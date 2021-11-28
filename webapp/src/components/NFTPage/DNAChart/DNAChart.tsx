@@ -5,6 +5,7 @@ import './DNAChart.css'
 import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
 
 import Star from '../../../images/egg/star.svg'
+import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const DNAChart = (props: Props) => {
   const { nft } = props
@@ -49,7 +50,7 @@ const DNAChart = (props: Props) => {
         display: false
       },
       tooltip: {
-        enabled: false
+        enabled: true
       }
     },
     scales: {
@@ -67,8 +68,8 @@ const DNAChart = (props: Props) => {
           color: '#676370',
           align: 'start',
           font: {
-            size: 16,
-            family: 'PT-Mono'
+            size: isMobile() ? 0 : 13,
+            family: 'PT Mono'
           }
         },
         legend: {
@@ -108,7 +109,12 @@ const DNAChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <Bar width={678} height={210} data={data} options={options} />
+      <Bar
+        width={678}
+        height={isMobile() ? 400 : 210}
+        data={data}
+        options={options}
+      />
     </div>
   )
 }

@@ -223,7 +223,7 @@ class NFTAPI {
     }
     if (filters) {
       if (filters.isLand) {
-        queryParams.append('isLand', 'true')
+        // queryParams.append('isLand', 'true')
       }
       if (filters.isWearableHead) {
         queryParams.append('isWearableHead', 'true')
