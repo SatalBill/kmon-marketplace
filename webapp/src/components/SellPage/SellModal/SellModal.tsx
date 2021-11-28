@@ -11,7 +11,7 @@ import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
 import { Header, Form, Field, Button, Modal } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
 import { Address } from 'web3x-es/address'
-import { toKMON, fromKMON, fromBNB } from '../../../lib/kmon'
+import { toCoin, fromCoin } from '../../../lib/kmon'
 import {
   INPUT_FORMAT,
   getDefaultExpirationDate
@@ -42,7 +42,7 @@ const SellModal = (props: Props) => {
 
   const isUpdate = order !== null
   const [price, setPrice] = useState(
-    isUpdate ? toKMON(+fromWei(order!.price, 'ether')) : ''
+    isUpdate ? toCoin(+fromWei(order!.price, 'ether')) : ''
   )
   const [expiresAt, setExpiresAt] = useState(
     isUpdate && order!.expiresAt
@@ -92,9 +92,9 @@ const SellModal = (props: Props) => {
 
   const handleCreateOrder = () => {
     if (paymentCoin === Coin.KMON) {
-      onCreateOrder(nft, fromKMON(price), kmon.address, new Date(expiresAt).getTime())
+      onCreateOrder(nft, fromCoin(price, paymentCoin), kmon.address, new Date(expiresAt).getTime())
     } else {
-      onCreateOrder(nft, fromKMON(price), Address.ZERO.toString(), new Date(expiresAt).getTime())
+      onCreateOrder(nft, fromCoin(price, paymentCoin), Address.ZERO.toString(), new Date(expiresAt).getTime())
     }
   }
 
@@ -115,7 +115,7 @@ const SellModal = (props: Props) => {
   const isDisabled =
     !orderService.canSell() ||
     !isOwnedBy(nft, wallet) ||
-    fromKMON(price) <= 0 ||
+    fromCoin(price, paymentCoin) <= 0 ||
     isInvalidDate
 
   return (
@@ -142,17 +142,17 @@ const SellModal = (props: Props) => {
           <CoinField
             label={t('sell_page.price')}
             type="text"
-            placeholder={toKMON(1000)}
+            placeholder={toCoin(1000)}
             coin={paymentCoin}
             value={price}
             focus={true}
             onChange={(_event, props) => {
               if (paymentCoin === Coin.BNB) {
-                const newPrice = fromBNB(props.value)
-                setPrice(newPrice.toString())
+                setPrice(props.value)
               } else {
-                const newPrice = fromKMON(props.value)
-                setPrice(toKMON(newPrice))
+                const newPrice = fromCoin(props.value, paymentCoin)
+                console.log(newPrice)
+                setPrice(toCoin(newPrice))
               }
             }}
           />
@@ -197,7 +197,7 @@ const SellModal = (props: Props) => {
                 name: <b>{getNFTName(nft)}</b>,
                 amount: (
                   <CoinPopup network={nft.network} inline coin={paymentCoin}>
-                    {fromKMON(price).toLocaleString()}
+                    {fromCoin(price, paymentCoin).toLocaleString()}
                   </CoinPopup>
                 )
               }}
@@ -212,11 +212,10 @@ const SellModal = (props: Props) => {
               value={confirmPrice}
               onChange={(_event, props) => {
                 if (paymentCoin === Coin.BNB) {
-                  const newPrice = fromBNB(props.value)
-                  setConfirmPrice(newPrice.toString())
+                  setConfirmPrice(props.value)
                 } else {
-                  const newPrice = fromKMON(props.value)
-                  setConfirmPrice(toKMON(newPrice))
+                  const newPrice = fromCoin(props.value, paymentCoin)
+                  setConfirmPrice(toCoin(newPrice))
                 }
               }}
             />
@@ -235,7 +234,7 @@ const SellModal = (props: Props) => {
               type="submit"
               primary
               disabled={
-                isCreatingOrder || fromKMON(price) !== fromKMON(confirmPrice)
+                isCreatingOrder || fromCoin(price, paymentCoin) !== fromCoin(confirmPrice, paymentCoin)
               }
               loading={isCreatingOrder}
             >

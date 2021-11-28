@@ -4,7 +4,7 @@ import { Page, Header, Button } from '@kmon/ui'
 
 import { locations } from '../../modules/routing/locations'
 import { getNFTName } from '../../modules/nft/utils'
-import { formatKMON } from '../../lib/kmon'
+import { formatCoin } from '../../lib/kmon'
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Wallet } from '../Wallet'
@@ -52,7 +52,7 @@ const CancelSalePage = (props: Props) => {
                         name: <b>{name}</b>,
                         amount: (
                           <CoinPopup network={nft.network} inline>
-                            {formatKMON(order.price)}
+                            {formatCoin(order.price)}
                           </CoinPopup>
                         )
                       }}

@@ -83,7 +83,7 @@
 .NFTFilters .ui.toggle.checkbox input.hidden + label:before {
   width: 26px;
   height: 12px;
-  background-color: black !important;
+  background-color: black;
 }
 
 .NFTFilters .ui.toggle.checkbox input.hidden + label:after {

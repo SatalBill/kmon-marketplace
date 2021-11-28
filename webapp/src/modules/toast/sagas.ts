@@ -61,7 +61,7 @@ function* handleAuthorizationMetaTransactionFailure(
 
   const { network } = getChainConfiguration(authorization.chainId)
   if (!isUserDeniedSignature(error)) {
-    yield put(showToast(getMetaTransactionFailureToast()))
+    // yield put(showToast(getMetaTransactionFailureToast()))
   }
 }
 

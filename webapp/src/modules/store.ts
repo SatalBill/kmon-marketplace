@@ -66,8 +66,5 @@ export function initStore() {
     _window.getState = store.getState
   }
 
-  // fetch tiles
-  store.dispatch(fetchTilesRequest())
-
   return store
 }
