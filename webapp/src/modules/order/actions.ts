@@ -4,7 +4,8 @@ import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/ut
 import { NFT } from '../nft/types'
 import { Order } from './types'
 import { getNFTName } from '../nft/utils'
-import { formatKMON } from '../../lib/kmon'
+import { formatCoin } from '../../lib/kmon'
+import { Address } from 'web3x-es/address'
 
 // Create Order (aka Sell)
 
@@ -15,11 +16,13 @@ export const CREATE_ORDER_FAILURE = '[Failure] Create Order'
 export const createOrderRequest = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number
-) => action(CREATE_ORDER_REQUEST, { nft, price, expiresAt })
+) => action(CREATE_ORDER_REQUEST, { nft, price, paymentToken, expiresAt })
 export const createOrderSuccess = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number,
   txHash: string
 ) =>
@@ -30,6 +33,7 @@ export const createOrderSuccess = (
     ...buildTransactionPayload(nft.chainId, txHash, {
       tokenId: nft.tokenId,
       contractAddress: nft.contractAddress,
+      paymentToken,
       network: nft.network,
       name: getNFTName(nft),
       price
@@ -38,9 +42,10 @@ export const createOrderSuccess = (
 export const createOrderFailure = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number,
   error: string
-) => action(CREATE_ORDER_FAILURE, { nft, price, expiresAt, error })
+) => action(CREATE_ORDER_FAILURE, { nft, price, paymentToken, expiresAt, error })
 
 export type CreateOrderRequestAction = ReturnType<typeof createOrderRequest>
 export type CreateOrderSuccessAction = ReturnType<typeof createOrderSuccess>
@@ -55,9 +60,15 @@ export const EXECUTE_ORDER_FAILURE = '[Failure] Execute Order'
 export const executeOrderRequest = (
   order: Order,
   nft: NFT,
+  paymentToken: string,
   fingerprint?: string
-) => action(EXECUTE_ORDER_REQUEST, { order, nft, fingerprint })
-export const executeOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
+) => action(EXECUTE_ORDER_REQUEST, { order, nft, paymentToken, fingerprint })
+export const executeOrderSuccess = (
+  order: Order,
+  nft: NFT,
+  paymentToken: string,
+  txHash: string
+) =>
   action(EXECUTE_ORDER_SUCCESS, {
     order,
     nft,
@@ -66,11 +77,12 @@ export const executeOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
       contractAddress: nft.contractAddress,
       network: nft.network,
       name: getNFTName(nft),
-      price: formatKMON(order.price)
+      price: formatCoin(order.price),
+      paymentToken
     })
   })
-export const executeOrderFailure = (order: Order, nft: NFT, error: string) =>
-  action(EXECUTE_ORDER_FAILURE, { order, nft, error })
+export const executeOrderFailure = (order: Order, nft: NFT, paymentToken: string, error: string) =>
+  action(EXECUTE_ORDER_FAILURE, { order, nft, paymentToken, error })
 
 export type ExecuteOrderRequestAction = ReturnType<typeof executeOrderRequest>
 export type ExecuteOrderSuccessAction = ReturnType<typeof executeOrderSuccess>
@@ -93,7 +105,8 @@ export const cancelOrderSuccess = (order: Order, nft: NFT, txHash: string) =>
       contractAddress: nft.contractAddress,
       network: nft.network,
       name: getNFTName(nft),
-      price: formatKMON(order.price)
+      price: formatCoin(order.price),
+      paymentToken: order.paymentToken
     })
   })
 export const cancelOrderFailure = (order: Order, nft: NFT, error: string) =>

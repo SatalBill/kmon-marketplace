@@ -26,13 +26,9 @@ const ContractName = {
 export type ContractName = typeof ContractName
 
 export const getContractNames = () =>
-  ({
-    ...decentraland.ContractName,
-    ...superRare.ContractName,
-    ...makersPlace.ContractName,
-    ...knownOrigin.ContractName,
-    ...kryptomon.ContractName
-  } as ContractName)
+({
+  ...kryptomon.ContractName
+} as ContractName)
 
 export enum TransferType {
   SAFE_TRANSFER_FROM = 0,

@@ -21,6 +21,7 @@ const mapState = (state: RootState): MapStateProps => {
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
+  onClickAccount: () => dispatch(push(locations.currentAccount())),
   onClickActivity: () => dispatch(push(locations.activity())),
   onClickSettings: () => dispatch(push(locations.settings()))
 })

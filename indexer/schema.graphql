@@ -31,6 +31,7 @@ type Order @entity {
   owner: Bytes!
   buyer: Bytes
   price: BigInt!
+  paymentToken: Bytes!
   status: OrderStatus!
   blockNumber: BigInt!
   expiresAt: BigInt!
@@ -75,12 +76,16 @@ type Kryptomon @entity {
   timeBorn: BigInt
   extraData: KryptomonExtraData
   genes: KryptomonGenes
+  elementType: String
+  elementTalent: BigInt!
+  elementPercentage: BigInt!
+  speciality: String
   nft: NFT @derivedFrom(field: "kryptomon")
 }
 
 type KryptomonGenes @entity {
   id: ID!
-  fireGenes: BigInt!
+  fire: BigInt!
   fireTalent: BigInt!
   water: BigInt!
   waterTalent: BigInt!
@@ -111,7 +116,7 @@ type KryptomonGenes @entity {
   crazyness: BigInt!
   instinct: BigInt!
   hunger: BigInt!
-  lazyness: BigInt!
+  laziness: BigInt!
   brave: BigInt!
   smart: BigInt!
   bodySize: BigInt!
@@ -154,6 +159,49 @@ type NFT @entity {
   searchText: String
 
   searchIsConsumable: Boolean
+  searchKryptomonGenesGeneration: BigInt
+  searchKryptomonStatus: BigInt
+  searchKryptomonSpeciality: String
+  searchKryptomonElementPercentage: BigInt
+  searchKryptomonElementType: String
+  searchKryptomonElementTalent: BigInt
+  searchKryptomonFire: BigInt
+  searchKryptomonFireTalent: BigInt
+  searchKryptomonWater: BigInt
+  searchKryptomonWaterTalent: BigInt
+  searchKryptomonIce: BigInt
+  searchKryptomonIceTalent: BigInt
+  searchKryptomonGround: BigInt
+  searchKryptomonGroundTalent: BigInt
+  searchKryptomonAir: BigInt
+  searchKryptomonAirTalent: BigInt
+  searchKryptomonElectro: BigInt
+  searchKryptomonElectroTalent: BigInt
+  searchKryptomonGhost: BigInt
+  searchKryptomonGhostTalent: BigInt
+  searchKryptomonGrass: BigInt
+  searchKryptomonGrassTalent: BigInt
+  searchKryptomonColor: BigInt
+  searchKryptomonSex: BigInt
+  searchKryptomonGeneralTalent: BigInt
+  searchKryptomonAttack: BigInt
+  searchKryptomonDefense: BigInt
+  searchKryptomonSpecial: BigInt
+  searchKryptomonXFactor: BigInt
+  searchKryptomonGrowthTalentFactor: BigInt
+  searchKryptomonConstitution: BigInt
+  searchKryptomonHealthPoints: BigInt
+  searchKryptomonSpeed: BigInt
+  searchKryptomonAffections: BigInt
+  searchKryptomonCrazyness: BigInt
+  searchKryptomonInstinct: BigInt
+  searchKryptomonHunger: BigInt
+  searchKryptomonLaziness: BigInt
+  searchKryptomonBrave: BigInt
+  searchKryptomonSmart: BigInt
+  searchKryptomonBodySize: BigInt
+  searchKryptomonEgo: BigInt
+  searchKryptomonSkinType: BigInt
 }
 
 # ---------------------------------------------------------

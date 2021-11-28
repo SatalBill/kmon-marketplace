@@ -1,14 +1,17 @@
-import React from 'react'
 import { UserMenu as BaseUserMenu } from '@kmon/dapps/dist/containers'
-import { IntroPopup } from '../IntroPopup'
+import { Props } from './UserMenu.types'
 
-export default class UserMenu extends React.PureComponent {
-  render() {
-    return (
-      <>
-        <BaseUserMenu />
-        <IntroPopup />
-      </>
-    )
-  }
+const UserMenu = (props: Props) => {
+  const { onClickAccount, onClickActivity, onClickSettings } = props
+  return (
+    <>
+      <BaseUserMenu
+        onClickSettings={onClickSettings}
+        onClickActivity={onClickActivity}
+        onClickAccount={onClickAccount}
+      />
+    </>
+  )
 }
+
+export default UserMenu

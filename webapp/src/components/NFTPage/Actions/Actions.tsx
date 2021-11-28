@@ -8,6 +8,7 @@ import { isOwnedBy } from '../../../modules/nft/utils'
 import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor'
 import { Props } from './Actions.types'
+import './Actions.css'
 
 const Actions = (props: Props) => {
   const { wallet, nft, order, bids } = props
@@ -32,6 +33,7 @@ const Actions = (props: Props) => {
       {order ? (
         isOwner && canSell ? (
           <>
+            <div className="ml-15">
             <Button
               as={Link}
               to={locations.sell(contractAddress, tokenId)}
@@ -39,6 +41,7 @@ const Actions = (props: Props) => {
             >
               {t('nft_page.update')}
             </Button>
+            </div>
             <Button as={Link} to={locations.cancel(contractAddress, tokenId)}>
               {t('nft_page.cancel_sale')}
             </Button>

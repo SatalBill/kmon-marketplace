@@ -192,7 +192,8 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       updatedAt: +order.timestamp,
       expiresAt: Infinity,
       chainId: Number(process.env.REACT_APP_CHAIN_ID),
-      network: Network.ETHEREUM
+      network: Network.ETHEREUM,
+      paymentToken: ''
     }
   }
 

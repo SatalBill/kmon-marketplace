@@ -1,6 +1,6 @@
 # Marketplace Frontend
 
-Decentraland's Marketplace
+Kryptomons's Marketplace
 
 ## Setup
 

@@ -15,39 +15,13 @@ export enum ContractName {
 }
 
 const contracts = ({
-  [AppNetwork.ROPSTEN]: [],
-  [AppNetwork.MAINNET]: [
-    {
-      name: ContractName.DIGITAL_MEDIA_CORE,
-      address: '0x2a46f2ffd99e19a89476e2f62270e0a35bbf0756',
-      vendor: 'makers_place',
-      category: 'art',
-      network: Network.ETHEREUM,
-      chainId: ChainId.ETHEREUM_MAINNET
-    },
-    {
-      name: ContractName.DIGITAL_MEDIA_CORE_2,
-      address: '0x2d9e5de7d36f3830c010a28b29b3bdf5ca73198e',
-      vendor: 'makers_place',
-      category: 'art',
-      network: Network.ETHEREUM,
-      chainId: ChainId.ETHEREUM_MAINNET
-    },
-    {
-      name: ContractName.MARKETPLACE_ADAPTER,
-      address: '0xf4fbd84193f9aaf9779dedbb415a806933eb1c95',
-      vendor: 'makers_place',
-      category: null,
-      network: Network.ETHEREUM,
-      chainId: ChainId.ETHEREUM_MAINNET
-    }
-  ],
   [AppNetwork.RINKEBY]: [],
-  [AppNetwork.BSC]: []
+  [AppNetwork.BSC_MAINNET]: [],
+  [AppNetwork.BSC_TESTNET]: [],
 } as Record<AppNetwork, Contract[]>)[network]
 
 export class ContractService implements ContractServiceInterface {
-  contracts = contracts
+  contracts = []
 
   async build() { }
 

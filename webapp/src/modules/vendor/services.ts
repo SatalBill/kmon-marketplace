@@ -6,6 +6,7 @@ import { Bid } from '../bid/types'
 import { OrderStatus, Order } from '../order/types'
 import { NFTsFetchFilters } from './nft/types'
 import { VendorName, TransferType } from './types'
+import { Address } from 'web3x-es/address'
 
 export type Contract = Omit<BaseContract, 'category'> & {
   category: NFTCategory | 'art' | 'wearable' | 'estate' | null
@@ -39,12 +40,14 @@ export interface OrderService<V extends VendorName> {
     wallet: Wallet | null,
     nft: NFT<V>,
     price: number,
+    paymentToken: string,
     expiresAt: number
   ) => Promise<string>
   execute: (
     wallet: Wallet | null,
     nft: NFT<V>,
     order: Order,
+    paymentToken: string,
     fingerprint?: string
   ) => Promise<string>
   cancel: (wallet: Wallet | null, nft: NFT<V>) => Promise<string>

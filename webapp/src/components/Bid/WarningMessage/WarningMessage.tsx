@@ -3,7 +3,7 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {
-  isInsufficientMANA,
+  isInsufficientKMON,
   checkFingerprint
 } from '../../../modules/bid/utils'
 import { Props } from './WarningMessage.types'
@@ -13,11 +13,11 @@ const WarningMessage = (props: Props) => {
   const { nft, bid } = props
 
   const [fingerprint] = useFingerprint(nft)
-  const [hasInsufficientMANA, setHasInsufficientMANA] = useState(false)
+  const [hasInsufficientKMON, setHasInsufficientKMON] = useState(false)
 
   useEffect(() => {
-    isInsufficientMANA(bid)
-      .then(setHasInsufficientMANA)
+    isInsufficientKMON(bid)
+      .then(setHasInsufficientKMON)
       .catch(error =>
         console.error(`Could not get the KMON from bidder ${bid.bidder}`, error)
       )
@@ -25,19 +25,20 @@ const WarningMessage = (props: Props) => {
 
   const isValidFingerprint = checkFingerprint(bid, fingerprint)
 
-  if (hasInsufficientMANA) {
+  if (hasInsufficientKMON) {
     return (
       <div className="WarningMessage">
         {t('bid.not_enough_mana_on_bid_placed')}
       </div>
     )
-  } else if (!isValidFingerprint) {
-    return (
-      <div className="WarningMessage">
-        {t('bid.invalid_fingerprint_on_bid_placed')}
-      </div>
-    )
   }
+  // else if (!isValidFingerprint) {
+  //   return (
+  //     <div className="WarningMessage">
+  //       {t('bid.invalid_fingerprint_on_bid_placed')}
+  //     </div>
+  //   )
+  // }
 
   return null
 }

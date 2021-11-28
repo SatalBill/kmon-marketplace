@@ -14,17 +14,14 @@ import { toastSaga } from './toast/sagas'
 import { translationSaga } from './translation/sagas'
 import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
-
-import { TRANSACTIONS_API_URL } from './wallet/utils'
 import { lootboxSaga } from './lootbox/sagas'
+import { lootboxPriceSaga } from './lootbox_price/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
-const profileSaga = createProfileSaga({
-  peerUrl: process.env.REACT_APP_PEER_URL!
-})
-const authorizationSaga = createAuthorizationSaga({
-  metaTransactionServerUrl: TRANSACTIONS_API_URL
-})
+// const profileSaga = createProfileSaga({
+//   peerUrl: process.env.REACT_APP_PEER_URL!
+// })
+const authorizationSaga = createAuthorizationSaga()
 
 export function* rootSaga() {
   yield all([
@@ -33,15 +30,16 @@ export function* rootSaga() {
     bidSaga(),
     nftSaga(),
     orderSaga(),
-    profileSaga(),
+    //profileSaga(),
     proximitySaga(),
     routingSaga(),
-    tileSaga(),
+    //tileSaga(),
     toastSaga(),
     transactionSaga(),
     translationSaga(),
     uiSaga(),
     walletSaga(),
-    lootboxSaga()
+    lootboxSaga(),
+    lootboxPriceSaga()
   ])
 }

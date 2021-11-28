@@ -38,7 +38,7 @@ export function initStore() {
   })
   const transactionMiddleware = createTransactionMiddleware()
   const { storageMiddleware, loadStorageMiddleware } = createStorageMiddleware({
-    storageKey: 'marketplace-v2', // this is the key used to save the state in localStorage (required)
+    storageKey: 'kryptomon-marketplace', // this is the key used to save the state in localStorage (required)
     paths: [['ui', 'archivedBidIds']], // array of paths from state to be persisted (optional)
     actions: [CLEAR_TRANSACTIONS, ARCHIVE_BID, UNARCHIVE_BID], // array of actions types that will trigger a SAVE (optional)
     migrations: {} // migration object that will migrate your localstorage (optional)
@@ -65,9 +65,6 @@ export function initStore() {
     const _window = window as any
     _window.getState = store.getState
   }
-
-  // fetch tiles
-  store.dispatch(fetchTilesRequest())
 
   return store
 }

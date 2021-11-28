@@ -6,20 +6,20 @@ import {
   AuthorizationType
 } from '@kmon/dapps/dist/modules/authorization/types'
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
-import { Network, NFTCategory } from '@kmon/schemas'
+import { Coin, Network } from '@kmon/schemas'
+import { Address } from 'web3x-es/address'
 import { ContractName } from '@kmon/transactions'
-import { formatKMON } from '../../../lib/kmon'
 import { locations } from '../../../modules/routing/locations'
-import { isPartner } from '../../../modules/vendor/utils'
 import { getNFTName } from '../../../modules/nft/utils'
 import { useFingerprint, useComputedPrice } from '../../../modules/nft/hooks'
 import { NFT } from '../../../modules/nft/types'
 import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTAction } from '../../NFTAction'
-import { Kmon } from '../../Kmon'
+import { CoinPopup } from '../../CoinPopup'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { Props } from './BuyModal.types'
+import { formatCoin } from '../../../lib/kmon'
 
 const BuyPage = (props: Props) => {
   const {
@@ -31,7 +31,7 @@ const BuyPage = (props: Props) => {
     onNavigate,
     onExecuteOrder,
     isOwner,
-    hasInsufficientMANA
+    hasInsufficientCoin
   } = props
 
   const [fingerprint, isFingerprintLoading] = useFingerprint(nft)
@@ -43,33 +43,36 @@ const BuyPage = (props: Props) => {
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
   const [wantsToProceed, setWantsToProceed] = useState(false)
 
+  const contractNames = getContractNames()
+
+  const kmon = getContract({
+    name: contractNames.KMONToken,
+    network: nft.network
+  })
+
   const handleExecuteOrder = useCallback(() => {
-    onExecuteOrder(order!, nft, fingerprint)
+    if (order === null) return
+    if (order.paymentToken === Address.ZERO.toString()) {
+      onExecuteOrder(order, nft, Address.ZERO.toString(), fingerprint)
+    } else {
+      onExecuteOrder(order, nft, kmon.address, fingerprint)
+    }
   }, [order, nft, fingerprint, onExecuteOrder])
 
   if (!wallet) {
     return null
   }
 
-  const contractNames = getContractNames()
-
-  const mana = getContract({
-    name: contractNames.MANA,
-    network: nft.network
-  })
-
   const marketplace = getContract({
-    name: isPartner(nft.vendor)
-      ? contractNames.MARKETPLACE_ADAPTER
-      : contractNames.MARKETPLACE,
+    name: contractNames.MARKETPLACE,
     network: nft.network
   })
 
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: marketplace.address,
-    contractAddress: mana.address,
-    contractName: ContractName.MANAToken,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
     chainId: nft.chainId,
     type: AuthorizationType.ALLOWANCE
   }
@@ -79,7 +82,7 @@ const BuyPage = (props: Props) => {
   }
 
   const handleSubmit = () => {
-    if (hasAuthorization(authorizations, authorization)) {
+    if (order?.paymentToken === Address.ZERO.toString() || hasAuthorization(authorizations, authorization)) {
       handleExecuteOrder()
     } else {
       setShowAuthorizationModal(true)
@@ -91,64 +94,40 @@ const BuyPage = (props: Props) => {
   const isDisabled =
     !order ||
     isOwner ||
-    hasInsufficientMANA ||
-    (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
+    hasInsufficientCoin
+    // || (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
 
   const name = <Name nft={nft} />
 
   let subtitle = null
   if (!order) {
     subtitle = <T id={'buy_page.not_for_sale'} values={{ name }} />
-  } else if (
-    !fingerprint &&
-    nft.category === NFTCategory.KRYPTOMON &&
-    !isFingerprintLoading
-  ) {
-    subtitle = <T id={'buy_page.no_fingerprint'} />
-  } else if (isOwner) {
+  }
+  // else if (
+  //   !fingerprint &&
+  //   nft.category === NFTCategory.KRYPTOMON &&
+  //   !isFingerprintLoading
+  // ) {
+  //   subtitle = <T id={'buy_page.no_fingerprint'} />
+  // }
+  else if (isOwner) {
     subtitle = <T id={'buy_page.is_owner'} values={{ name }} />
-  } else if (hasInsufficientMANA) {
+  } else if (hasInsufficientCoin) {
+    const coin = order.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
     subtitle = (
       <T
-        id={'buy_page.not_enough_mana'}
+        id={'buy_page.not_enough_coin'}
         values={{
+          coin: coin,
           name,
-          amount: <Price network={nft.network} price={order.price} />
+          amount:
+            <Price
+              network={nft.network}
+              price={order.price}
+              coin={coin}
+            />
         }}
       />
-    )
-  } else if (isPartner(nft.vendor) && computedPrice) {
-    subtitle = (
-      <>
-        <T
-          id={'buy_page.subtitle'}
-          values={{
-            name,
-            amount: <Price network={nft.network} price={order.price} />
-          }}
-        />
-        {isAboveMaxPercentage ? (
-          <div className="error">
-            {t('buy_page.price_too_high', {
-              category: t(`global.${nft.category}`),
-              percentageIncrease
-            })}
-            <br />
-            {t('buy_page.please_wait')}
-          </div>
-        ) : percentageIncrease > 0 ? (
-          <div>
-            <T
-              id="buy_page.actual_price"
-              values={{
-                computedPrice: (
-                  <Price network={nft.network} price={computedPrice} />
-                )
-              }}
-            />
-          </div>
-        ) : null}
-      </>
     )
   } else {
     subtitle = (
@@ -156,7 +135,12 @@ const BuyPage = (props: Props) => {
         id={'buy_page.subtitle'}
         values={{
           name,
-          amount: <Price network={nft.network} price={order.price} />
+          amount:
+            <Price
+              network={nft.network}
+              price={order.price}
+              coin={order.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+            />
         }}
       />
     )
@@ -210,10 +194,10 @@ const BuyPage = (props: Props) => {
 
 const Name = (props: { nft: NFT }) => <b>{getNFTName(props.nft)}</b>
 
-const Price = (props: { network?: Network; price: string }) => (
-  <Kmon network={props.network} inline withTooltip>
-    {formatKMON(props.price)}
-  </Kmon>
+const Price = (props: { network?: Network; price: string, coin: Coin }) => (
+  <CoinPopup network={props.network} inline withTooltip coin={props.coin}>
+    {formatCoin(props.price)}
+  </CoinPopup>
 )
 
 export default React.memo(BuyPage)

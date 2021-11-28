@@ -26,7 +26,8 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "makers_place": "MakersPlace",
-    "known_origin": "KnownOrigin"
+    "known_origin": "KnownOrigin",
+    "kryptomon": "Kryptomon"
   },
   "navigation": {
     "collectibles": "Coleccionables",
@@ -228,7 +229,7 @@
     "proceed_anyways": "Proceder",
     "no_fingerprint": "No se pudo cargar la identificación del Estate.",
     "is_owner": "Ya eres el dueño de {name}.",
-    "not_enough_mana": "No tienes suficiente KMON para comprar {name} por {amount}."
+    "not_enough_coin": "No tienes suficiente {coin} para comprar {name} por {amount}."
   },
   "bid_page": {
     "title": "Haz una oferta",
@@ -319,7 +320,8 @@
       "transfer": "Transferiste {name} a {address}.",
       "place_bid": "Hiciste una oferta de {price} por {name}.",
       "accept_bid": "Aceptaste una oferta de {price} por {name}.",
-      "cancel_bid": "Cancelaste una oferta de {price} por {name}."
+      "cancel_bid": "Cancelaste una oferta de {price} por {name}.",
+      "buy_lootbox": "Compraste caja botín {name} por {price}."
     }
   },
   "kmon": {
@@ -359,14 +361,6 @@
     "meta_transaction_failure": {
       "title": "Meta transacción",
       "body": "Ocurrió un error publicando la meta transacción.{br}Intentelo de nuevo o ingrese a nuestro {discord_link} para obtener más información."
-    },
-    "buy_lootbox_approval_confirmation": {
-      "title": "Confirmación de aprobación",
-      "body": "Permitiste gastar tu KMON. View {etherscan_link}"
-    },
-    "buy_lootbox_transfer_confirmation": {
-      "title": "Confirmación de transferencia",
-      "body": "Compraste {box_type} caja botín. Ver {etherscan_link}"
     }
   }
 }

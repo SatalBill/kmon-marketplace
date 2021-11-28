@@ -4,7 +4,7 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {
-  isInsufficientMANA,
+  isInsufficientKMON,
   checkFingerprint
 } from '../../../modules/bid/utils'
 import { Props } from './AcceptButton.types'
@@ -13,11 +13,11 @@ const AcceptButton = (props: Props) => {
   const { nft, bid, onClick } = props
 
   const [fingerprint, isLoadingFingerprint] = useFingerprint(nft)
-  const [hasInsufficientMANA, setHasInsufficientMANA] = useState(false)
+  const [hasInsufficientKMON, setHasInsufficientKMON] = useState(false)
 
   useEffect(() => {
-    isInsufficientMANA(bid)
-      .then(setHasInsufficientMANA)
+    isInsufficientKMON(bid)
+      .then(setHasInsufficientKMON)
       .catch(error =>
         console.error(`Could not get the KMON from bidder ${bid.bidder}`, error)
       )
@@ -28,9 +28,9 @@ const AcceptButton = (props: Props) => {
 
   const isDisabled =
     !nft ||
-    isLoadingFingerprint ||
-    hasInsufficientMANA ||
-    !isValidFingerprint ||
+    // isLoadingFingerprint ||
+    hasInsufficientKMON ||
+    // !isValidFingerprint ||
     !isValidSeller
 
   let button = (
@@ -39,7 +39,7 @@ const AcceptButton = (props: Props) => {
     </Button>
   )
 
-  if (hasInsufficientMANA) {
+  if (hasInsufficientKMON) {
     button = (
       <Popup
         content={t('bid.not_enough_mana_on_bid_received')}
@@ -47,15 +47,17 @@ const AcceptButton = (props: Props) => {
         trigger={<div className="popup-button">{button}</div>}
       />
     )
-  } else if (!isValidFingerprint) {
-    button = (
-      <Popup
-        content={t('bid.invalid_fingerprint_on_bid_received')}
-        position="top center"
-        trigger={<div className="popup-button">{button}</div>}
-      />
-    )
-  } else if (!isValidSeller) {
+  }
+  // else if (!isValidFingerprint) {
+  //   button = (
+  //     <Popup
+  //       content={t('bid.invalid_fingerprint_on_bid_received')}
+  //       position="top center"
+  //       trigger={<div className="popup-button">{button}</div>}
+  //     />
+  //   )
+  // }
+  else if (!isValidSeller) {
     button = (
       <Popup
         content={t('bid.invalid_seller')}

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
+import { Address } from 'web3x-es/address'
 
-import { formatKMON } from '../../lib/kmon'
+import { formatCoin } from '../../lib/kmon'
 import { locations } from '../../modules/routing/locations'
 import { NFTImage } from '../NFTImage'
 import { Props } from './NFTCard.types'
@@ -16,10 +17,13 @@ import Ground from '../../images/egg/elem-ground.svg'
 import Water from '../../images/egg/elem-water.svg'
 import Fire from '../../images/egg/elem-fire.svg'
 import { Row } from '../Layout/Row'
+import { Coin } from '@kmon/schemas'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status } = props
+
   const genes = nft.data.kryptomon?.genes
+  const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
   const elementTypes = [
     {
@@ -77,12 +81,13 @@ const NFTCard = (props: Props) => {
     >
       <div className="card-image-container">
         <div className="card-image">
-          <NFTImage nft={nft} showMonospace />
+          <NFTImage nft={nft} showMonospace isSmall />
         </div>
         <div className="card-image-text">
-          {status ? (
+          {status && status.showPrice ? (
             <div className="product-type-price-container">
-              <div className="product-type-price">{status.title}</div>
+              <div className="product-type-price">{(order?.price && formatCoin(order.price)) || '0000'}{' '}
+                {coin}</div>
             </div>
           ) : (
             <img
@@ -93,8 +98,8 @@ const NFTCard = (props: Props) => {
           )}
           <div className="product-info">
             <p className="product-info-value">
-              INDEX VALUE {(order?.price && formatKMON(order.price)) || '0000'}{' '}
-              BNB
+              INDEX VALUE {(order?.price && formatCoin(order.price)) || '0000'}{' '}
+              {coin}
             </p>
             <Row>
               <p className="product-info-number-card">No. {nft.name}</p>

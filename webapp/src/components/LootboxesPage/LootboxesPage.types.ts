@@ -1,12 +1,12 @@
 import { Dispatch } from 'redux'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
-import { Transaction } from '@kmon/dapps/dist/modules/transaction/types'
 
 import {
-  fetchLootboxPricesRequest,
-  FetchLootboxPricesRequestAction
-} from '../../modules/lootbox/actions'
+  fetchLootboxPriceRequest,
+  FetchLootboxPriceRequestAction
+} from '../../modules/lootbox_price/actions'
+import { LootboxPrices } from '../../modules/lootbox_price/types'
 
 export type Params = {
   address?: string
@@ -17,23 +17,20 @@ export type Props = {
   wallet: Wallet | null
   isConnecting: boolean
   isFullscreen?: boolean
-  basicPrice?: string
-  mediumPrice?: string
-  premiumPrice?: string
-  pendingTransaction: Transaction | undefined
+  lootboxPrices: LootboxPrices
   onRedirect: (path: string) => void
-  onFetchLootboxPrices: typeof fetchLootboxPricesRequest
+  onFetchLootboxPrice: typeof fetchLootboxPriceRequest
 }
 
 export type MapStateProps = Pick<
   Props,
-  'address' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'basicPrice' | 'mediumPrice' | 'premiumPrice' | 'pendingTransaction'
+  'address' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'lootboxPrices'
 >
 export type MapDispatchProps = Pick<
   Props,
-  'onRedirect' | 'onFetchLootboxPrices'
+  'onRedirect' | 'onFetchLootboxPrice'
 >
 export type MapDispatch = Dispatch<
   CallHistoryMethodAction
-    | FetchLootboxPricesRequestAction
+    | FetchLootboxPriceRequestAction
 >

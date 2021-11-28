@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { Network } from '@kmon/schemas'
+import { Coin, Network } from '@kmon/schemas'
 import { Header, Form, Field, Button } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
 import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
@@ -8,7 +8,7 @@ import {
   AuthorizationType
 } from '@kmon/dapps/dist/modules/authorization/types'
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
-import { toKMON, fromKMON } from '../../../lib/kmon'
+import { toCoin, fromCoin } from '../../../lib/kmon'
 import { NFTAction } from '../../NFTAction'
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'
 import { getDefaultExpirationDate } from '../../../modules/order/utils'
@@ -17,9 +17,10 @@ import { useFingerprint } from '../../../modules/nft/hooks'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { getContract } from '../../../modules/contract/utils'
 import { getContractNames } from '../../../modules/vendor'
-import { ManaField } from '../../ManaField'
+import { CoinField } from '../../CoinField'
 import { Props } from './BidModal.types'
 import './BidModal.css'
+import { CoinSelectField } from '../../CoinSelectField'
 
 const BidModal = (props: Props) => {
   const {
@@ -33,13 +34,14 @@ const BidModal = (props: Props) => {
 
   const [price, setPrice] = useState('')
   const [expiresAt, setExpiresAt] = useState(getDefaultExpirationDate())
+  const [paymentCoin, setPaymentCoin] = useState(Coin.KMON)
 
   const [fingerprint, isLoading] = useFingerprint(nft)
 
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
   const handlePlaceBid = useCallback(
-    () => onPlaceBid(nft, fromKMON(price), +new Date(expiresAt), fingerprint),
+    () => onPlaceBid(nft, fromCoin(price, paymentCoin), +new Date(expiresAt), fingerprint),
     [nft, price, expiresAt, fingerprint, onPlaceBid]
   )
 
@@ -79,10 +81,13 @@ const BidModal = (props: Props) => {
   const handleClose = () => setShowAuthorizationModal(false)
 
   const isInvalidDate = +new Date(expiresAt) < Date.now()
-  const hasInsufficientMANA =
-    !!price &&
-    !!wallet &&
-    fromKMON(price) > wallet.networks[Network.ETHEREUM].kmon
+  const hasInsufficientCoin = (): boolean => {
+    if (paymentCoin === Coin.KMON) {
+      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].kmonBalance
+    } else {
+      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].coinBalance
+    }
+  }
 
   return (
     <NFTAction nft={nft}>
@@ -97,18 +102,27 @@ const BidModal = (props: Props) => {
       </p>
       <Form onSubmit={handleSubmit}>
         <div className="form-fields">
-          <ManaField
-            network={Network.ETHEREUM}
+          <CoinSelectField
+            coin={Coin.BNB}
+            onChangeCoin={(c) => setPaymentCoin(c)}
+            defaultCoin={paymentCoin}
+          />
+          <CoinField
+            coin={paymentCoin}
             label={t('bid_page.price')}
-            placeholder={toKMON(1000)}
+            placeholder={toCoin(1000)}
             value={price}
             onChange={(_event, props) => {
-              const newPrice = fromKMON(props.value)
-              setPrice(toKMON(newPrice))
+              if (paymentCoin === Coin.BNB) {
+                setPrice(props.value)
+              } else {
+                const newPrice = fromCoin(props.value, paymentCoin)
+                setPrice(toCoin(newPrice))
+              }
             }}
-            error={hasInsufficientMANA}
+            error={hasInsufficientCoin()}
             message={
-              hasInsufficientMANA ? t('bid_page.not_enougn_mana') : undefined
+              hasInsufficientCoin() ? t('bid_page.not_enougn_mana') : undefined
             }
           />
           <Field
@@ -138,9 +152,9 @@ const BidModal = (props: Props) => {
             loading={isPlacingBid}
             disabled={
               isOwnedBy(nft, wallet) ||
-              fromKMON(price) <= 0 ||
+              fromCoin(price, paymentCoin) <= 0 ||
               isInvalidDate ||
-              hasInsufficientMANA ||
+              hasInsufficientCoin() ||
               isLoading ||
               isPlacingBid
             }

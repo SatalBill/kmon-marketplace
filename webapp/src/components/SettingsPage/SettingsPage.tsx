@@ -39,32 +39,18 @@ const SettingsPage = (props: Props) => {
 
   const contractNames = getContractNames()
 
-  const marketplaceEthereum = getContract({
+  const marketplace = getContract({
     name: contractNames.MARKETPLACE,
     network: Network.ETHEREUM
   })
 
-  const marketplaceMatic = getContract({
-    name: contractNames.MARKETPLACE,
-    network: Network.MATIC
+  const erc721Bid = getContract({
+    name: contractNames.ERC721Bid
   })
 
-  const marketplaceAdapter = getContract({
-    name: contractNames.MARKETPLACE_ADAPTER
-  })
-
-  const bids = getContract({
-    name: contractNames.BIDS
-  })
-
-  const manaEthereum = getContract({
-    name: contractNames.MANA,
+  const kmon = getContract({
+    name: contractNames.KMONToken,
     network: Network.ETHEREUM
-  })
-
-  const manaMatic = getContract({
-    name: contractNames.MANA,
-    network: Network.MATIC
   })
 
   const authorizationsForSelling = authorizations.filter(authorization => {
@@ -146,30 +132,10 @@ const SettingsPage = (props: Props) => {
                           <Authorization
                             authorization={{
                               address: wallet.address,
-                              authorizedAddress: marketplaceEthereum.address,
-                              contractAddress: manaEthereum.address,
-                              contractName: ContractName.MANAToken,
-                              chainId: manaEthereum.chainId,
-                              type: AuthorizationType.ALLOWANCE
-                            }}
-                          />
-                          <Authorization
-                            authorization={{
-                              address: wallet.address,
-                              authorizedAddress: marketplaceAdapter.address,
-                              contractAddress: manaEthereum.address,
-                              contractName: ContractName.MANAToken,
-                              chainId: manaEthereum.chainId,
-                              type: AuthorizationType.ALLOWANCE
-                            }}
-                          />
-                          <Authorization
-                            authorization={{
-                              address: wallet.address,
-                              authorizedAddress: marketplaceMatic.address,
-                              contractAddress: manaMatic.address,
-                              contractName: ContractName.MANAToken,
-                              chainId: manaMatic.chainId,
+                              authorizedAddress: marketplace.address,
+                              contractAddress: kmon.address,
+                              contractName: ContractName.KMONToken,
+                              chainId: kmon.chainId,
                               type: AuthorizationType.ALLOWANCE
                             }}
                           />
@@ -182,10 +148,10 @@ const SettingsPage = (props: Props) => {
                           <Authorization
                             authorization={{
                               address: wallet.address,
-                              authorizedAddress: bids.address,
-                              contractAddress: manaEthereum.address,
-                              contractName: ContractName.MANAToken,
-                              chainId: manaEthereum.chainId,
+                              authorizedAddress: erc721Bid.address,
+                              contractAddress: kmon.address,
+                              contractName: ContractName.KMONToken,
+                              chainId: kmon.chainId,
                               type: AuthorizationType.ALLOWANCE
                             }}
                           />

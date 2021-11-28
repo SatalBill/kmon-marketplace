@@ -11,7 +11,7 @@ export type Props = {
   authorizations: Authorization[]
   isLoading: boolean
   isOwner: boolean
-  hasInsufficientMANA: boolean
+  hasInsufficientCoin: boolean
   onNavigate: (path: string) => void
   onExecuteOrder: typeof executeOrderRequest
 }

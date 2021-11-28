@@ -40,6 +40,7 @@ export function handleOrderCreated(event: OrderCreated): void {
     order.txHash = event.transaction.hash
     order.owner = event.params.seller
     order.price = event.params.priceInWei
+    order.paymentToken = event.params.paymentToken
     order.expiresAt = event.params.expiresAt
     order.blockNumber = event.block.number
     order.createdAt = event.block.timestamp

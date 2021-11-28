@@ -6,12 +6,12 @@ import NFTCard from './NFTCard'
 
 const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
   let { order, nft } = ownProps
-
+// console.log(order, nft)
   if (!order && nft.activeOrderId) {
     const orders = getData(state)
     order = orders[nft.activeOrderId]
   }
-
+// console.log(order, nft)
   return {
     order
   }

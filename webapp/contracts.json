@@ -6,11 +6,6 @@
       "net": "mainnet",
       "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942"
     },
-    "Marketplace": {
-      "source": "etherscan",
-      "net": "mainnet",
-      "address": "0x19a8ed4860007a66805782ed7e0bed4e44fc6717"
-    },
     "MarketplaceAdapter": {
       "source": "etherscan",
       "net": "mainnet",
@@ -42,17 +37,22 @@
     "KMONToken": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x20317089818D87df0DE077F02df226bCB4611640"
+      "address": "0x2c2bcce26a6f78728d4282aac9609c18206b375b"
     },
     "Lootbox": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0xAc9cffe24513112B2847F5Ef3f0AD28ab766A640"
+      "address": "0xc4513abe108676178a6d504e4b30dcc2d6701dbe"
     },
     "ERC721Bid": {
       "source": "etherscan",
       "net": "rinkeby",
       "address": "0xAa122dCc62D195C508A63408908a0e5408aEB8De"
+    },
+    "Marketplace": {
+      "source": "etherscan",
+      "net": "rinkeby",
+      "address": "0xB2c6573872200d67a8fE9Aeb149c5201Ef73Fbdd"
     }
   }
 }

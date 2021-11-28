@@ -7,10 +7,10 @@ import { locations } from '../../modules/routing/locations'
 import { addressEquals } from '../../modules/wallet/utils'
 import { NFTProvider } from '../NFTProvider'
 import { NFTImage } from '../NFTImage'
-import { Kmon } from '../Kmon'
+import { CoinPopup } from '../CoinPopup'
 import { AcceptButton } from './AcceptButton'
 import { WarningMessage } from './WarningMessage'
-import { formatKMON } from '../../lib/kmon'
+import { formatCoin } from '../../lib/kmon'
 import { formatDistanceToNow } from '../../lib/date'
 import { Props } from './Bid.types'
 import './Bid.css'
@@ -65,7 +65,7 @@ const Bid = (props: Props) => {
               </Link>
             </Stats>
             <Stats title={t('bid.price')}>
-              <Kmon>{formatKMON(bid.price)}</Kmon>
+              <CoinPopup>{formatCoin(bid.price)}</CoinPopup>
             </Stats>
             <Stats title={t('bid.time_left')}>
               {formatDistanceToNow(+bid.expiresAt)}

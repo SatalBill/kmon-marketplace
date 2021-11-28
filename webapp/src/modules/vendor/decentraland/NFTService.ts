@@ -74,19 +74,13 @@ export class NFTService
     const to = Address.fromString(toAddress)
 
     const erc721 = await ContractFactory.build(ERC721, nft.contractAddress)
-    const contract: ContractData =
-      nft.network !== Network.ETHEREUM
-        ? {
-            ...getContract(ContractName.ERC721CollectionV2, nft.chainId),
-            address: nft.contractAddress
-          }
-        : {
-            name: 'ERC721',
-            abi: ERC721Abi as any,
-            address: nft.contractAddress,
-            chainId: nft.chainId,
-            version: '1'
-          }
+    const contract: ContractData = {
+      name: 'ERC721',
+      abi: ERC721Abi as any,
+      address: nft.contractAddress,
+      chainId: nft.chainId,
+      version: '1'
+    }
 
     const transferFrom = erc721.methods.transferFrom(from, to, nft.tokenId)
     return sendTransaction(transferFrom, contract, from)

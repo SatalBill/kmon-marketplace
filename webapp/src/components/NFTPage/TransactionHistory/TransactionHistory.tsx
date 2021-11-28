@@ -5,13 +5,13 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Profile } from '@kmon/dapps/dist/containers'
 import dateFnsFormat from 'date-fns/format'
 
-import { Kmon } from '../../Kmon'
+import { CoinPopup } from '../../CoinPopup'
 import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor'
 import { Bid } from '../../../modules/bid/types'
 import { Order, OrderStatus } from '../../../modules/order/types'
 import { formatDistanceToNow } from '../../../lib/date'
-import { formatKMON } from '../../../lib/kmon'
+import { formatCoin } from '../../../lib/kmon'
 import { Props, HistoryEvent, UnionOrderBid } from './TransactionHistory.types'
 import './TransactionHistory.css'
 
@@ -114,9 +114,9 @@ const TransactionHistory = (props: Props) => {
                       {formatEventDate(event.updatedAt)}
                     </Table.Cell>
                     <Table.Cell>
-                      <Kmon network={network} inline>
-                        {formatKMON(event.price)}
-                      </Kmon>
+                      <CoinPopup network={network} inline>
+                        {formatCoin(event.price)}
+                      </CoinPopup>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -128,9 +128,9 @@ const TransactionHistory = (props: Props) => {
               {events.map((event, index) => (
                 <div className="mobile-tx-history-row" key={index}>
                   <div className="price">
-                    <Kmon network={network} inline>
-                      {formatKMON(event.price)}
-                    </Kmon>
+                    <CoinPopup network={network} inline>
+                      {formatCoin(event.price)}
+                    </CoinPopup>
                   </div>
                   <div className="when">{formatEventDate(event.updatedAt)}</div>
                 </div>

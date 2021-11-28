@@ -26,6 +26,7 @@ export class OrderService
     wallet: Wallet | null,
     nft: NFT,
     price: number,
+    paymentToken: string,
     expiresAt: number
   ) {
     const contractData = getContract(ContractName.Marketplace, nft.chainId)
@@ -40,6 +41,7 @@ export class OrderService
       Address.fromString(nft.contractAddress),
       nft.tokenId,
       toWei(price.toString(), 'ether'),
+      Address.fromString(paymentToken),
       expiresAt
     )
 
@@ -50,6 +52,7 @@ export class OrderService
     wallet: Wallet | null,
     nft: NFT,
     order: Order,
+    paymentToken: string,
     fingerprint?: string
   ) {
     const contractData = getContract(ContractName.Marketplace, nft.chainId)
@@ -67,6 +70,7 @@ export class OrderService
           Address.fromString(nft.contractAddress),
           nft.tokenId,
           price,
+          Address.fromString(paymentToken),
           fingerprint
         )
         .send({ from })
@@ -75,9 +79,11 @@ export class OrderService
       const executeOrder = marketplace.methods.executeOrder(
         Address.fromString(nft.contractAddress),
         nft.tokenId,
-        price
+        price,
+        Address.fromString(paymentToken)
       )
-
+      if (order.paymentToken === Address.ZERO.toString())
+        return sendTransaction(executeOrder, contractData, from, Number(price))
       return sendTransaction(executeOrder, contractData, from)
     }
   }

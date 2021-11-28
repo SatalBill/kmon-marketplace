@@ -26,7 +26,8 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "makers_place": "MakersPlace",
-    "known_origin": "KnownOrigin"
+    "known_origin": "KnownOrigin",
+    "kryptomon": "Kryptomon"
   },
   "navigation": {
     "collectibles": "藏品",
@@ -229,7 +230,7 @@
     "proceed_anyways": "仍然继续",
     "no_fingerprint": "无法加载指纹。",
     "is_owner": "您是{name}的所有者。",
-    "not_enough_mana": "您没有足够的MANA来购买{name}。"
+    "not_enough_coin": "您没有足够的{coin}来购买{name}。"
   },
   "bid_page": {
     "title": "出价",
@@ -320,7 +321,8 @@
       "transfer": "您已将{name}转移到{address}。",
       "place_bid": "您对{name}出价了{price}。",
       "accept_bid": "您接受了{name}的{price}出价。",
-      "cancel_bid": "您取消了对{name}的{price}出价。"
+      "cancel_bid": "您取消了对{name}的{price}出价。",
+      "buy_lootbox": "您以 {price} 购买了 {name} 战利品箱。"
     }
   },
   "kmon": {
@@ -360,14 +362,6 @@
     "meta_transaction_failure": {
       "title": "元交易",
       "body": "发送元交易时出错。{br}请重试或加入我们的{discord_link}以获取支持。"
-    },
-    "buy_lootbox_approval_confirmation": {
-      "title": "批准确认",
-      "body": "您允许使用您的 KMON。 View {etherscan_link}"
-    },
-    "buy_lootbox_transfer_confirmation": {
-      "title": "转账确认",
-      "body": "您购买了 {box_type} 个战利品箱。 查看 {etherscan_link}"
     }
   }
 }

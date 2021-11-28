@@ -7,6 +7,9 @@ import {
   GRANT_TOKEN_SUCCESS,
   REVOKE_TOKEN_SUCCESS
 } from '@kmon/dapps/dist/modules/authorization/actions'
+import { fromWei } from 'web3x-es/utils'
+import { Address } from 'web3x-es/address'
+import { Coin } from '@kmon/schemas'
 
 import { getNFTName } from '../../../modules/nft/utils'
 import {
@@ -23,9 +26,11 @@ import {
 import { locations } from '../../../modules/routing/locations'
 import { getContract } from '../../../modules/contract/utils'
 import { NFTProvider } from '../../NFTProvider'
-import { Kmon } from '../../Kmon'
+import { CoinPopup } from '../../CoinPopup'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
+import { BUY_LOOTBOX_SUCCESS } from '../../../modules/lootbox/actions'
+import { toStringLootboxType } from '../../../modules/lootbox/utils'
 
 const Transaction = (props: Props) => {
   const { tx } = props
@@ -107,37 +112,43 @@ const Transaction = (props: Props) => {
       )
     }
     case CREATE_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
-          {nft => (
-            <TransactionDetail
-              nft={nft}
-              text={
-                <T
-                  id="transaction.detail.create_order"
-                  values={{
-                    name: (
-                      <Link to={locations.nft(contractAddress, tokenId)}>
-                        {name}
-                      </Link>
-                    ),
-                    price: (
-                      <Kmon network={network} inline>
-                        {price.toLocaleString()}
-                      </Kmon>
-                    )
-                  }}
-                />
-              }
-              tx={tx}
-            />
-          )}
+          {nft => {
+            return (
+              <TransactionDetail
+                nft={nft}
+                text={
+                  <T
+                    id="transaction.detail.create_order"
+                    values={{
+                      name: (
+                        <Link to={locations.nft(contractAddress, tokenId)}>
+                          {name}
+                        </Link>
+                      ),
+                      price: (
+                        <CoinPopup
+                          network={network}
+                          inline
+                          coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                        >
+                          {price.toLocaleString()}
+                        </CoinPopup>
+                      )
+                    }}
+                  />
+                }
+                tx={tx}
+              />
+            )
+          }}
         </NFTProvider>
       )
     }
     case CANCEL_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -153,9 +164,13 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Kmon network={network} inline>
+                      <CoinPopup
+                        network={network}
+                        inline
+                        coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                      >
                         {price.toLocaleString()}
-                      </Kmon>
+                      </CoinPopup>
                     )
                   }}
                 />
@@ -167,7 +182,7 @@ const Transaction = (props: Props) => {
       )
     }
     case EXECUTE_ORDER_SUCCESS: {
-      const { tokenId, contractAddress, network, name, price } = tx.payload
+      const { tokenId, contractAddress, network, name, price, paymentToken } = tx.payload
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -183,9 +198,13 @@ const Transaction = (props: Props) => {
                       </Link>
                     ),
                     price: (
-                      <Kmon network={network} inline>
+                      <CoinPopup
+                        network={network}
+                        inline
+                        coin={paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON}
+                      >
                         {price.toLocaleString()}
-                      </Kmon>
+                      </CoinPopup>
                     )
                   }}
                 />
@@ -243,7 +262,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -269,7 +288,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -295,7 +314,7 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <Kmon inline>{price.toLocaleString()}</Kmon>
+                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
                   }}
                 />
               }
@@ -303,6 +322,25 @@ const Transaction = (props: Props) => {
             />
           )}
         </NFTProvider>
+      )
+    }
+    case BUY_LOOTBOX_SUCCESS: {
+      const { boxType, boxPrice } = tx.payload
+      return (
+        <TransactionDetail
+          text={
+            <T
+              id="transaction.detail.buy_lootbox"
+              values={{
+                name: (
+                  toStringLootboxType(boxType)
+                ),
+                price: <CoinPopup inline>{fromWei(boxPrice, 'ether').toLocaleString()}</CoinPopup>
+              }}
+            />
+          }
+          tx={tx}
+        />
       )
     }
     default:
