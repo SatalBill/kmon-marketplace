@@ -9,7 +9,6 @@ import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { Coin, Network } from '@kmon/schemas'
 import { Address } from 'web3x-es/address'
 import { ContractName } from '@kmon/transactions'
-import { formatKMON } from '../../../lib/kmon'
 import { locations } from '../../../modules/routing/locations'
 import { getNFTName } from '../../../modules/nft/utils'
 import { useFingerprint, useComputedPrice } from '../../../modules/nft/hooks'
@@ -20,6 +19,7 @@ import { NFTAction } from '../../NFTAction'
 import { CoinPopup } from '../../CoinPopup'
 import { AuthorizationModal } from '../../AuthorizationModal'
 import { Props } from './BuyModal.types'
+import { formatCoin } from '../../../lib/kmon'
 
 const BuyPage = (props: Props) => {
   const {
@@ -196,7 +196,7 @@ const Name = (props: { nft: NFT }) => <b>{getNFTName(props.nft)}</b>
 
 const Price = (props: { network?: Network; price: string, coin: Coin }) => (
   <CoinPopup network={props.network} inline withTooltip coin={props.coin}>
-    {formatKMON(props.price)}
+    {formatCoin(props.price)}
   </CoinPopup>
 )
 

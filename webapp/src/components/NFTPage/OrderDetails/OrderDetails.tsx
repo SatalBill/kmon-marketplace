@@ -3,7 +3,7 @@ import { Stats } from '@kmon/ui'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { CoinPopup } from '../../CoinPopup'
-import { formatKMON } from '../../../lib/kmon'
+import { formatCoin } from '../../../lib/kmon'
 import { formatDistanceToNow } from '../../../lib/date'
 import { isPartner } from '../../../modules/vendor/utils'
 import { Props } from './OrderDetails.types'
@@ -19,7 +19,7 @@ const OrderDetails = (props: Props) => {
       {order ? (
         <Stats title={t('nft_page.price')}>
           <CoinPopup network={nft.network} withTooltip>
-            {formatKMON(order.price)}
+            {formatCoin(order.price)}
           </CoinPopup>
           {isPartner(nft.vendor) ? (
             <div className="secondary-text">

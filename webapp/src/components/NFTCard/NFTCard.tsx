@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 import { Address } from 'web3x-es/address'
 
-import { formatKMON } from '../../lib/kmon'
+import { formatCoin } from '../../lib/kmon'
 import { locations } from '../../modules/routing/locations'
 import { NFTImage } from '../NFTImage'
 import { Props } from './NFTCard.types'
@@ -21,6 +21,7 @@ import { Coin } from '@kmon/schemas'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status } = props
+
   const genes = nft.data.kryptomon?.genes
   const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
@@ -83,9 +84,10 @@ const NFTCard = (props: Props) => {
           <NFTImage nft={nft} showMonospace />
         </div>
         <div className="card-image-text">
-          {status ? (
+          {status && status.showPrice ? (
             <div className="product-type-price-container">
-              <div className="product-type-price">{status.title}</div>
+              <div className="product-type-price">{(order?.price && formatCoin(order.price)) || '0000'}{' '}
+              {coin}</div>
             </div>
           ) : (
             <img
@@ -96,7 +98,7 @@ const NFTCard = (props: Props) => {
           )}
           <div className="product-info">
             <p className="product-info-value">
-              INDEX VALUE {(order?.price && formatKMON(order.price)) || '0000'}{' '}
+              INDEX VALUE {(order?.price && formatCoin(order.price)) || '0000'}{' '}
               {coin}
             </p>
             <Row>

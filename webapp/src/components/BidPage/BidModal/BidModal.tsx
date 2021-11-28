@@ -8,7 +8,7 @@ import {
   AuthorizationType
 } from '@kmon/dapps/dist/modules/authorization/types'
 import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
-import { toKMON, fromKMON } from '../../../lib/kmon'
+import { toCoin, fromCoin } from '../../../lib/kmon'
 import { NFTAction } from '../../NFTAction'
 import { getNFTName, isOwnedBy } from '../../../modules/nft/utils'
 import { getDefaultExpirationDate } from '../../../modules/order/utils'
@@ -41,7 +41,7 @@ const BidModal = (props: Props) => {
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
   const handlePlaceBid = useCallback(
-    () => onPlaceBid(nft, fromKMON(price), +new Date(expiresAt), fingerprint),
+    () => onPlaceBid(nft, fromCoin(price, paymentCoin), +new Date(expiresAt), fingerprint),
     [nft, price, expiresAt, fingerprint, onPlaceBid]
   )
 
@@ -81,11 +81,11 @@ const BidModal = (props: Props) => {
   const handleClose = () => setShowAuthorizationModal(false)
 
   const isInvalidDate = +new Date(expiresAt) < Date.now()
-  const hasInsufficientKMON = (): boolean => {
+  const hasInsufficientCoin = (): boolean => {
     if (paymentCoin === Coin.KMON) {
-      return !!price && !!wallet && fromKMON(price) > wallet.networks[Network.BSC].kmonBalance
+      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].kmonBalance
     } else {
-      return !!price && !!wallet && fromKMON(price) > wallet.networks[Network.BSC].coinBalance
+      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].coinBalance
     }
   }
 
@@ -110,15 +110,19 @@ const BidModal = (props: Props) => {
           <CoinField
             coin={paymentCoin}
             label={t('bid_page.price')}
-            placeholder={toKMON(1000)}
+            placeholder={toCoin(1000)}
             value={price}
             onChange={(_event, props) => {
-              const newPrice = fromKMON(props.value)
-              setPrice(toKMON(newPrice))
+              if (paymentCoin === Coin.BNB) {
+                setPrice(props.value)
+              } else {
+                const newPrice = fromCoin(props.value, paymentCoin)
+                setPrice(toCoin(newPrice))
+              }
             }}
-            error={hasInsufficientKMON()}
+            error={hasInsufficientCoin()}
             message={
-              hasInsufficientKMON() ? t('bid_page.not_enougn_mana') : undefined
+              hasInsufficientCoin() ? t('bid_page.not_enougn_mana') : undefined
             }
           />
           <Field
@@ -148,9 +152,9 @@ const BidModal = (props: Props) => {
             loading={isPlacingBid}
             disabled={
               isOwnedBy(nft, wallet) ||
-              fromKMON(price) <= 0 ||
+              fromCoin(price, paymentCoin) <= 0 ||
               isInvalidDate ||
-              hasInsufficientKMON() ||
+              hasInsufficientCoin() ||
               isLoading ||
               isPlacingBid
             }

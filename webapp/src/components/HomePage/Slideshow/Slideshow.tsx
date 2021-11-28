@@ -13,7 +13,7 @@ const Slideshow = (props: Props) => {
       <NFTCard
         key={index}
         nft={nft}
-        status={{ title: '0000 KMON', color: 'red' }}
+        status={{ showPrice: true }}
       />
     ))
 
