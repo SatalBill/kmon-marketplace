@@ -389,8 +389,11 @@
     "copied": "COPIED ✔",
     "authorization_error": "We couldn't load your authorizations, please try again",
     "authorization_error_contact": "If the error persist don't hesitate to contact us",
-    "for_buying": "For buying",
-    "for_bidding": "For bidding",
+    "for_buying_nft": "For buying",
+    "for_selling_or_approving": "For selling or approving NFT",
+    "for_bidding_with_kmon": "For bidding with KMON",
+    "for_bidding_with_wbnb": "For bidding with WBNB",
+    "for_buying_lootbox": "For buying lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "For selling",
     "pending_tx": "Transaction pending, click the spinner to go to your activity for a detailed status"

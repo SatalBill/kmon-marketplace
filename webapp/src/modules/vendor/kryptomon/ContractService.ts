@@ -15,7 +15,8 @@ export enum ContractName {
   MARKETPLACE = 'Marketplace',
   ERC721Bid = 'ERC721Bid',
   Lootbox = 'Lootbox',
-  WBNB = 'WBNB'
+  WBNB = 'WBNB',
+  KMONFT = 'KMONFT'
 }
 
 const contracts = ({
@@ -59,6 +60,14 @@ const contracts = ({
       category: null,
       network: Network.ETHEREUM,
       chainId: ChainId.ETHEREUM_RINKEBY
+    },
+    {
+      name: ContractName.KMONFT,
+      address: getContract(CN.KMONFT, ChainId.ETHEREUM_RINKEBY).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.ETHEREUM,
+      chainId: ChainId.ETHEREUM_RINKEBY
     }
   ],
   [AppNetwork.BSC_MAINNET]: [
@@ -97,6 +106,14 @@ const contracts = ({
     {
       name: ContractName.WBNB,
       address: getContract(CN.WBNB, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.KMONFT,
+      address: getContract(CN.KMONFT, ChainId.BSC_MAINNET).address,
       vendor: 'kryptomon',
       category: null,
       network: Network.BSC,
