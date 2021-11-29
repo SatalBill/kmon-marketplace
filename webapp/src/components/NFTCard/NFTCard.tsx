@@ -23,7 +23,8 @@ const NFTCard = (props: Props) => {
   const { nft, order, status } = props
 
   const genes = nft.data.kryptomon?.genes
-  const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
+  const coin =
+    order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
   const elementTypes = [
     {
@@ -86,8 +87,11 @@ const NFTCard = (props: Props) => {
         <div className="card-image-text">
           {status && status.showPrice ? (
             <div className="product-type-price-container">
-              <div className="product-type-price">{(order?.price && formatCoin(order.price)) || '0000'}{' '}
-                {coin}</div>
+              {order?.price ? (
+                <div className="product-type-price">
+                  {order.price && formatCoin(order.price)} {coin}
+                </div>
+              ) : null}
             </div>
           ) : (
             <img
@@ -97,10 +101,17 @@ const NFTCard = (props: Props) => {
             />
           )}
           <div className="product-info">
-            <p className="product-info-value">
-              INDEX VALUE {(order?.price && formatCoin(order.price)) || '0000'}{' '}
-              {coin}
-            </p>
+            <div className="product-info-value">
+              {status && status.showPriceBottom && (
+                <div className="product-type-price-container">
+                  {status.showPriceBottom && order?.price ? (
+                    <div className="product-type-price">
+                      {order.price && formatCoin(order.price)} {coin}
+                    </div>
+                  ) : null}
+                </div>
+              )}
+            </div>
             <Row>
               <p className="product-info-number-card">No. {nft.name}</p>
               <div className="product-verified" />
