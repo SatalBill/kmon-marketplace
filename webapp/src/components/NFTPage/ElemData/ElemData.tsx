@@ -19,6 +19,8 @@ const ElemData = (props: Props) => {
     .reverse()
     .join('-')
 
+  const age = new Date(Date.now() - timeBorn! * 1000).getMonth();
+
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return 'Male'
     else return 'Female'
@@ -40,16 +42,18 @@ const ElemData = (props: Props) => {
     { title: 'Ghost talent', value: data?.ghostTalent },
     { title: 'Air talent', value: data?.airTalent },
     { title: 'Body size', value: data?.bodySize },
+    { title: 'Attack', value: data?.attack },
     { title: 'Defence', value: data?.defense },
     { title: 'Ego', value: data?.ego },
     { title: 'General talent', value: data?.generalTalent },
+    { title: 'xFactor', value: data?.xFactor },
     { title: 'Growth talent factor', value: data?.growthTalentFactor },
     { title: 'Health points', value: data?.healthPoints },
     { title: 'Sex', value: whatTheSex(data?.sex) },
     { title: 'Skin type', value: skinTypeToString[data?.skinType || 0] },
     { title: 'Special', value: data?.special },
     { title: 'Speed', value: data?.speed },
-    { title: 'Birth', value: birthDateInFormat }
+    { title: 'Age(months)', value: age }
   ]
 
   return (

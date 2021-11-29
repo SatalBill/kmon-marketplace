@@ -11,7 +11,7 @@ const graphByNetwork: Record<Network, string> = {
   [Network.ROPSTEN]:
     process.env.GRAPH_NAME || 'kryptomon/marketplace-ropsten',
   [Network.RINKEBY]:
-    process.env.GRAPH_NAME || 'kryptomon-marketplace-rinkeby'
+    process.env.GRAPH_NAME || 'kryptomon-rinkeby'
 }
 
 // TODO: Handle ctrl+C

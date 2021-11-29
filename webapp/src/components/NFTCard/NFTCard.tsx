@@ -87,6 +87,11 @@ const NFTCard = (props: Props) => {
         <div className="card-image-text">
           {status && status.showPrice ? (
             <div className="product-type-price-container">
+              <img
+                className="product-type-icon"
+                src={elementType?.icon}
+                alt="icon"
+              />
               {order?.price ? (
                 <div className="product-type-price">
                   {order.price && formatCoin(order.price)} {coin}

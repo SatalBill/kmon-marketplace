@@ -140,8 +140,8 @@ export function handleBirth(event: Birth): void {
   nft.tokenId = event.params.kryptomonId
   nft.category = categories.KRYPTOMON
   nft.owner = event.params.owner.toHex()
-  nft.tokenURI = getKryptomonTokenURI(kryptomon);
   nft.kryptomon = kryptomon.id;
+  nft.tokenURI = getKryptomonTokenURI(kryptomon);
   nft.searchText = ''
   nft.createdAt = event.block.timestamp
   nft.updatedAt = event.block.timestamp

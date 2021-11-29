@@ -28,12 +28,12 @@ const NFTList = (props: Props) => {
       <Card.Group>
         {nfts.length > 0
           ? nfts.map((nft, index) => (
-              <NFTCard
-                key={nft.id + '-' + index}
-                nft={nft}
-                status={{ showPriceBottom: true }}
-              />
-            ))
+            <NFTCard
+              key={nft.id + '-' + index}
+              nft={nft}
+              status={{ showPrice: true }}
+            />
+          ))
           : null}
 
         {isLoading ? (
