@@ -1,32 +1,6 @@
 import { ContractAbi} from 'web3x-es/contract';
 export default new ContractAbi([
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_kmonToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_ownerCutPerMillion",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_kmonOwnerCutPerMillion",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -288,6 +262,34 @@ export default new ContractAbi([
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_kmonToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ownerCutPerMillion",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_kmonOwnerCutPerMillion",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "__Marketplace_init",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
