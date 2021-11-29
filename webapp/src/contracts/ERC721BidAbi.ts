@@ -1,27 +1,6 @@
 import { ContractAbi} from 'web3x-es/contract';
 export default new ContractAbi([
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_KMONCoin",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_ownerCutPerMillion",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -59,6 +38,12 @@ export default new ContractAbi([
         "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
       },
       {
         "indexed": false,
@@ -136,6 +121,12 @@ export default new ContractAbi([
       },
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
         "internalType": "uint256",
         "name": "_expiresAt",
         "type": "uint256"
@@ -148,6 +139,19 @@ export default new ContractAbi([
       }
     ],
     "name": "BidCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_kmonOwnerCutPerMillion",
+        "type": "uint256"
+      }
+    ],
+    "name": "ChangedKmonOwnerCutPerMillion",
     "type": "event"
   },
   {
@@ -319,6 +323,71 @@ export default new ContractAbi([
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_KMONCoin",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_wBNB",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ownerCutPerMillion",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_kmonOwnerCutPerMillion",
+        "type": "uint256"
+      }
+    ],
+    "name": "__ERC721Bid_init",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "acceptToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "acceptedToken",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -507,6 +576,11 @@ export default new ContractAbi([
         "type": "uint256"
       },
       {
+        "internalType": "address",
+        "name": "paymentToken",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "expiresAt",
         "type": "uint256"
@@ -551,6 +625,11 @@ export default new ContractAbi([
         "type": "uint256"
       },
       {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
@@ -585,6 +664,19 @@ export default new ContractAbi([
       {
         "internalType": "uint256",
         "name": "nonce",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "kmonOwnerCutPerMillion",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -689,6 +781,11 @@ export default new ContractAbi([
         "type": "uint256"
       },
       {
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_duration",
         "type": "uint256"
@@ -715,6 +812,11 @@ export default new ContractAbi([
         "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_paymentToken",
+        "type": "address"
       },
       {
         "internalType": "uint256",
@@ -758,6 +860,32 @@ export default new ContractAbi([
   {
     "inputs": [],
     "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "revokeToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_kmonOwnerCutPerMillion",
+        "type": "uint256"
+      }
+    ],
+    "name": "setKmonOwnerCutPerMillion",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

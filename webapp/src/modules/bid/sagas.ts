@@ -43,19 +43,20 @@ export function* bidSaga() {
 }
 
 function* handlePlaceBidRequest(action: PlaceBidRequestAction) {
-  const { nft, price, expiresAt, fingerprint } = action.payload
+  const { nft, price, paymentToken, expiresAt, fingerprint } = action.payload
   try {
     const { bidService } = VendorFactory.build(nft.vendor)
 
     const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
     const txHash: string = yield call(() =>
-      bidService!.place(wallet, nft, price, expiresAt, fingerprint)
+      bidService!.place(wallet, nft, price, paymentToken, expiresAt, fingerprint)
     )
     const chainId: ChainId = yield select(getChainId)
     yield put(
       placeBidSuccess(
         nft,
         price,
+        paymentToken,
         expiresAt,
         chainId,
         txHash,
@@ -66,7 +67,7 @@ function* handlePlaceBidRequest(action: PlaceBidRequestAction) {
     yield put(push(locations.activity()))
   } catch (error) {
     // @ts-ignore
-    yield put(placeBidFailure(nft, price, expiresAt, error, fingerprint))
+    yield put(placeBidFailure(nft, price, paymentToken, expiresAt, error, fingerprint))
   }
 }
 

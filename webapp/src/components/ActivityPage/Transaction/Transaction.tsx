@@ -31,6 +31,7 @@ import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
 import { BUY_LOOTBOX_SUCCESS } from '../../../modules/lootbox/actions'
 import { toStringLootboxType } from '../../../modules/lootbox/utils'
+import { getContractNames } from '../../../modules/vendor'
 
 const Transaction = (props: Props) => {
   const { tx } = props
@@ -246,7 +247,11 @@ const Transaction = (props: Props) => {
       )
     }
     case PLACE_BID_SUCCESS: {
-      const { tokenId, contractAddress, price } = tx.payload
+      const { tokenId, contractAddress, price, paymentToken } = tx.payload
+      const contractNames = getContractNames()
+      const kmon = getContract({
+        name: contractNames.KMONToken,
+      })
 
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
@@ -262,7 +267,13 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
+                    price:
+                      <CoinPopup
+                        inline
+                        coin={paymentToken === kmon.address ? Coin.KMON : Coin.WBNB}
+                      >
+                        {price.toLocaleString()}
+                      </CoinPopup>
                   }}
                 />
               }

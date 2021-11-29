@@ -355,7 +355,7 @@
     "price": "Price",
     "expiration_date": "Expiration date",
     "invalid_date": "This date has already passed",
-    "not_enougn_mana": "You don't have enough KMON",
+    "not_enough_coin": "You don't have enough {coin}",
     "submit": "Bid"
   },
   "my_bids_page": {

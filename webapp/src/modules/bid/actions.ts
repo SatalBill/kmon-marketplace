@@ -13,12 +13,14 @@ export const PLACE_BID_FAILURE = '[Failure] Place Bid'
 export const placeBidRequest = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number,
   fingerprint?: string
-) => action(PLACE_BID_REQUEST, { nft, price, expiresAt, fingerprint })
+) => action(PLACE_BID_REQUEST, { nft, price, paymentToken, expiresAt, fingerprint })
 export const placeBidSuccess = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number,
   chainId: ChainId,
   txHash: string,
@@ -28,18 +30,21 @@ export const placeBidSuccess = (
   action(PLACE_BID_SUCCESS, {
     nft,
     price,
+    paymentToken,
     expiresAt,
     bidder,
     fingerprint,
     ...buildTransactionPayload(chainId, txHash, {
       tokenId: nft.tokenId,
       contractAddress: nft.contractAddress,
-      price
+      price,
+      paymentToken
     })
   })
 export const placeBidFailure = (
   nft: NFT,
   price: number,
+  paymentToken: string,
   expiresAt: number,
   error: string,
   fingerprint?: string
@@ -47,6 +52,7 @@ export const placeBidFailure = (
   action(PLACE_BID_FAILURE, {
     nft,
     price,
+    paymentToken,
     expiresAt,
     error,
     fingerprint
