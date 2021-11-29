@@ -43,31 +43,23 @@ const BuyPage = (props: Props) => {
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
   const [wantsToProceed, setWantsToProceed] = useState(false)
 
-  const contractNames = getContractNames()
-
-  const kmon = getContract({
-    name: contractNames.KMONToken,
-    network: nft.network
-  })
-
   const handleExecuteOrder = useCallback(() => {
     if (order === null) return
-    if (order.paymentToken === Address.ZERO.toString()) {
-      onExecuteOrder(order, nft, Address.ZERO.toString(), fingerprint)
-    } else {
-      onExecuteOrder(order, nft, kmon.address, fingerprint)
-    }
+    onExecuteOrder(order, nft, order.paymentToken, fingerprint)
   }, [order, nft, fingerprint, onExecuteOrder])
 
   if (!wallet) {
     return null
   }
-
+  const contractNames = getContractNames()
+  const kmon = getContract({
+    name: contractNames.KMONToken,
+    network: nft.network
+  })
   const marketplace = getContract({
     name: contractNames.MARKETPLACE,
     network: nft.network
   })
-
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: marketplace.address,

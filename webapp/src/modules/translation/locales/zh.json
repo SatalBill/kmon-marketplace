@@ -238,7 +238,7 @@
     "price": "价格",
     "expiration_date": "截止日期",
     "invalid_date": "这个日期已过期",
-    "not_enougn_mana": "您没有足够的MANA",
+    "not_enough_coin": "您没有足够的{coin}",
     "submit": "出价"
   },
   "my_bids_page": {

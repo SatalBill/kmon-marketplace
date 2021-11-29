@@ -63,6 +63,7 @@ export interface BidService<V extends VendorName> {
     wallet: Wallet | null,
     nft: NFT<V>,
     price: number,
+    paymentToken: string,
     expiresAt: number,
     fingerprint?: string
   ) => Promise<string>
