@@ -39,7 +39,7 @@ dataSources:
     name: Marketplace
     network: {{network}}
     source:
-      address: '{{address:Marketplace}}'
+      address: '{{address:MarketplaceProxy}}'
       abi: Marketplace
       startBlock: {{startBlock:Marketplace}}
     mapping:
