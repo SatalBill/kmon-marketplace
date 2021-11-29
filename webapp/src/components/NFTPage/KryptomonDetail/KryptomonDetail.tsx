@@ -12,6 +12,7 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
+import { ElemData } from '../ElemData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
 import Ice from '../../../images/egg/elem-ice.svg'
@@ -141,6 +142,9 @@ const KryptomonDetail = (props: Props) => {
             maxElementType={maxElementType}
             nft={nft}
           />
+        </TitleBlock>
+        <TitleBlock title={t('nft_page.metadata')}>
+          <ElemData nft={nft} />
         </TitleBlock>
         {/* <TitleBlock
           title={t('nft_page.price_chart.title')}
