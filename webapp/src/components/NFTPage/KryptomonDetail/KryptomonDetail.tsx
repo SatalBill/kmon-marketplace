@@ -12,6 +12,7 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
+import { ElemData } from '../ElemData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
 import Ice from '../../../images/egg/elem-ice.svg'
@@ -22,7 +23,6 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
-import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order } = props
@@ -127,11 +127,9 @@ const KryptomonDetail = (props: Props) => {
         <NFTDetailCard elementType={elementType} nft={nft} />
         <Column>
           <Details nft={nft} order={order} />
-          {!isMobile() && (
-            <TitleBlock title={t('nft_page.dna_chart.title')}>
-              <DNAChart nft={nft} />
-            </TitleBlock>
-          )}
+          <TitleBlock title={t('nft_page.dna_chart.title')}>
+            <DNAChart nft={nft} />
+          </TitleBlock>
         </Column>
       </Row>
       <Row className="Row-space-between">
@@ -141,6 +139,9 @@ const KryptomonDetail = (props: Props) => {
             maxElementType={maxElementType}
             nft={nft}
           />
+        </TitleBlock>
+        <TitleBlock title={t('nft_page.metadata')}>
+          <ElemData nft={nft} />
         </TitleBlock>
         {/* <TitleBlock
           title={t('nft_page.price_chart.title')}

@@ -212,6 +212,7 @@
       "ice": "Ice",
       "air": "Air"
     },
+    "metadata": "Metadata",
     "price_chart": {
       "title": "Price chart",
       "day": "Day",
