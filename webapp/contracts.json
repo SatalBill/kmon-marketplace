@@ -47,17 +47,17 @@
     "Lootbox": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0xc4513abe108676178a6d504e4b30dcc2d6701dbe"
+      "address": "0xEc75a46B10205078710a2b6Fa6320c9628D18390"
     },
     "ERC721Bid": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x1635642ff5a7bc44aa60f681bafdf0c686f732d7"
+      "address": "0x4ACACC0991bE68C51c8261Ee81C204a40856c8D4"
     },
     "Marketplace": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x4498e9e7956d88a317b2e3a34ed88fd3fb0ab1e9"
+      "address": "0xD0C48e63C27CbFdF6b09F2c3aFD8C9D8a5A51D59"
     }
   }
 }
