@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import { Network } from '@kmon/schemas'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Footer } from '@kmon/dapps/dist/containers'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
@@ -41,7 +40,6 @@ const SettingsPage = (props: Props) => {
 
   const marketplace = getContract({
     name: contractNames.MARKETPLACE,
-    network: Network.ETHEREUM
   })
 
   const erc721Bid = getContract({
@@ -50,7 +48,18 @@ const SettingsPage = (props: Props) => {
 
   const kmon = getContract({
     name: contractNames.KMONToken,
-    network: Network.ETHEREUM
+  })
+
+  const wbnb = getContract({
+    name: contractNames.WBNB
+  })
+
+  const lootbox = getContract({
+    name: contractNames.Lootbox,
+  })
+
+  const kmonft = getContract({
+    name: contractNames.KMONFT
   })
 
   const authorizationsForSelling = authorizations.filter(authorization => {
@@ -127,7 +136,7 @@ const SettingsPage = (props: Props) => {
                       <Form>
                         <div className="authorization-checks">
                           <label className="secondary-text">
-                            {t('settings_page.for_buying')}
+                            {t('settings_page.for_buying_nft')}
                           </label>
                           <Authorization
                             authorization={{
@@ -143,12 +152,60 @@ const SettingsPage = (props: Props) => {
 
                         <div className="authorization-checks">
                           <label className="secondary-text">
-                            {t('settings_page.for_bidding')}
+                            {t('settings_page.for_selling_or_approving')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: marketplace.address,
+                              contractAddress: kmonft.address,
+                              contractName: ContractName.KMONFT,
+                              chainId: kmonft.chainId,
+                              type: AuthorizationType.APPROVAL
+                            }}
+                          />
+                        </div>
+
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
+                            {t('settings_page.for_bidding_with_kmon')}
                           </label>
                           <Authorization
                             authorization={{
                               address: wallet.address,
                               authorizedAddress: erc721Bid.address,
+                              contractAddress: kmon.address,
+                              contractName: ContractName.KMONToken,
+                              chainId: kmon.chainId,
+                              type: AuthorizationType.ALLOWANCE
+                            }}
+                          />
+                        </div>
+
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
+                            {t('settings_page.for_bidding_with_wbnb')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: erc721Bid.address,
+                              contractAddress: wbnb.address,
+                              contractName: ContractName.WBNB,
+                              chainId: wbnb.chainId,
+                              type: AuthorizationType.ALLOWANCE
+                            }}
+                          />
+                        </div>
+
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
+                            {t('settings_page.for_buying_lootbox')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: lootbox.address,
                               contractAddress: kmon.address,
                               contractName: ContractName.KMONToken,
                               chainId: kmon.chainId,
