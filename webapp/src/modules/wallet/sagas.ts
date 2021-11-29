@@ -44,7 +44,6 @@ function* handleWallet(
 
   const marketplace = getContract({
     name: contractNames.MARKETPLACE,
-    network: Network.ETHEREUM
   })
 
   const erc721Bid = getContract({
@@ -53,16 +52,23 @@ function* handleWallet(
 
   const kmon = getContract({
     name: contractNames.KMONToken,
-    network: Network.ETHEREUM
+  })
+
+  const wbnb = getContract({
+    name: contractNames.WBNB
   })
 
   const lootbox = getContract({
     name: contractNames.Lootbox,
-    network: Network.ETHEREUM
+  })
+
+  const kmonft = getContract({
+    name: contractNames.KMONFT
   })
 
   const authorizations: Authorization[] = []
 
+  // Buy NFT
   authorizations.push({
     address,
     authorizedAddress: marketplace.address,
@@ -72,6 +78,17 @@ function* handleWallet(
     type: AuthorizationType.ALLOWANCE
   })
 
+  // Sell NFT or Approve
+  authorizations.push({
+    address,
+    authorizedAddress: marketplace.address,
+    contractAddress: kmonft.address,
+    contractName: ContractName.KMONFT,
+    chainId: kmonft.chainId,
+    type: AuthorizationType.APPROVAL
+  })
+
+  // Bid with KMON
   authorizations.push({
     address,
     authorizedAddress: erc721Bid.address,
@@ -81,6 +98,17 @@ function* handleWallet(
     type: AuthorizationType.ALLOWANCE
   })
 
+  // Bid with WBNB
+  authorizations.push({
+    address,
+    authorizedAddress: erc721Bid.address,
+    contractAddress: wbnb.address,
+    contractName: ContractName.WBNB,
+    chainId: wbnb.chainId,
+    type: AuthorizationType.ALLOWANCE
+  })
+
+  // Buy lootbox
   authorizations.push({
     address,
     authorizedAddress: lootbox.address,
