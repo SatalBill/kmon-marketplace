@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
 import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
@@ -51,6 +52,15 @@ const DNAChart = (props: Props) => {
       },
       tooltip: {
         enabled: true
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        formatter: Math.round,
+        font: {
+          weight: 'bold',
+          family: 'PT Mono'
+        }
       }
     },
     scales: {
@@ -114,6 +124,7 @@ const DNAChart = (props: Props) => {
         height={isMobile() ? 400 : 210}
         data={data}
         options={options}
+        plugins={[ChartDataLabels]}
       />
     </div>
   )
