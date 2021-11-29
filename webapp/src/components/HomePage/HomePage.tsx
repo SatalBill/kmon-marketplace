@@ -19,7 +19,7 @@ const HomePage = (props: Props) => {
 
   const sections = {
     [View.KRYPTOMONS]: Section.KRYPTOMONS,
-    [View.LATEST_SOLD]: Section.LATEST_SOLD,
+    // [View.LATEST_SOLD]: Section.LATEST_SOLD,
     [View.ALL_ASSETS]: Section.ALL
   }
 
@@ -50,9 +50,9 @@ const HomePage = (props: Props) => {
       if (view === 'kryptomons') {
         fetchObj.onlyOnSale = true
       }
-      if (view === 'latest_sold') {
-        fetchObj.orderStatus = OrderStatus.SOLD
-      }
+      // if (view === 'latest_sold') {
+      //   fetchObj.orderStatus = OrderStatus.SOLD
+      // }
       onFetchNFTsFromRoute(fetchObj)
     }
     // eslint-disable-next-line
