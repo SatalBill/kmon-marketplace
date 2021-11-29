@@ -2396,10 +2396,10 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.19.tgz#72ae91f7a65ffb833b3643088f3c5be43884876a"
-  integrity sha512-44AmDC9QloTZR1ewS6SEhOnVLoKM3SjxoK9zPiwKNNvUMRbBSFldZFRrImtaC9CByVwN07A8pMp3JqYjRoBYnA==
+"@kmon/dapps@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.21.tgz#12486997d57d74ee5473ee08985028bb905615d8"
+  integrity sha512-jkwju78lqzjt7KZeLKfEZlZ3RgoL2aj/uT5MkFAuXLlNWGncJuZl204NvZCfQ2tm57/rFU0Hrs0NgZmSaIV8lA==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
