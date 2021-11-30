@@ -125,7 +125,6 @@ const BidModal = (props: Props) => {
             }
           />
           <Field
-            network={Network.ETHEREUM}
             label={t('bid_page.expiration_date')}
             type="date"
             value={expiresAt}
