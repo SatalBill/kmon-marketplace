@@ -25,7 +25,7 @@ const Actions = (props: Props) => {
   const canBid =
     !isOwner &&
     isBiddable &&
-    nft.network === Network.ETHEREUM &&
+    nft.network === Network.BSC &&
     (!wallet || !bids.some(bid => bid.bidder === wallet.address))
 
   return (
