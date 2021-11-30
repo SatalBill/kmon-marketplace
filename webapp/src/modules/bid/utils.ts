@@ -19,7 +19,7 @@ export async function isInsufficientKMON(bid: Bid) {
 
     const { address } = getContract({
       name: contractNames.KMONToken,
-      network: Network.ETHEREUM
+      network: Network.BSC
     })
 
     const kmon = new KMONToken(eth, Address.fromString(address))
