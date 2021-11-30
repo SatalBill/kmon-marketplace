@@ -34,13 +34,13 @@ const Actions = (props: Props) => {
         isOwner && canSell ? (
           <>
             <div className="ml-15">
-            <Button
-              as={Link}
-              to={locations.sell(contractAddress, tokenId)}
-              primary
-            >
-              {t('nft_page.update')}
-            </Button>
+              <Button
+                as={Link}
+                to={locations.sell(contractAddress, tokenId)}
+                primary
+              >
+                {t('nft_page.update')}
+              </Button>
             </div>
             <Button as={Link} to={locations.cancel(contractAddress, tokenId)}>
               {t('nft_page.cancel_sale')}

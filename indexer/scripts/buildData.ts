@@ -6,7 +6,8 @@ import * as path from 'path'
 enum Network {
   MAINNET = 'mainnet',
   ROPSTEN = 'ropsten',
-  RINKEBY = 'rinkeby'
+  RINKEBY = 'rinkeby',
+  BSC = 'bsc'
 }
 enum ContractName {
   KMONToken = 'KMONToken',
@@ -34,6 +35,12 @@ const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
     KMONFT: 8841814,
     ERC721Bid: 9654196,
     MarketplaceProxy: 9670849
+  },
+  [Network.BSC]: {
+    KMONToken: 7891700,
+    KMONFT: 8726547,
+    ERC721Bid: 13059052,
+    MarketplaceProxy: 13060664
   }
 }
 
@@ -96,7 +103,7 @@ class Ethereum {
   async fetchContracts() {
     console.log(this.contractAddresses);
     const contractsByNetwork: ContractsResponse = await fetch(
-      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7KXIHVG7WRKAICQ4U3BUTYEM'
+      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7J52YXSIR6VBGB5AY3BUVLBU'
     )
     this.contractAddresses = contractsByNetwork[this.network]
   }
