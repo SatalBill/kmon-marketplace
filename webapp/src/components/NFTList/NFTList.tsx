@@ -50,7 +50,7 @@ const NFTList = (props: Props) => {
 
       {nfts.length > 0 && hasExtraPages && (!isLoading || isLoadingNewPage) ? (
         <div className="load-more">
-          <Button loading={isLoading} inverted primary onClick={handleLoadMore}>
+          <Button loading={isLoading} primary onClick={handleLoadMore}>
             {t('global.load_more')}
           </Button>
         </div>
