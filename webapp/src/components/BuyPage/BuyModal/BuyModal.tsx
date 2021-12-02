@@ -53,12 +53,10 @@ const BuyPage = (props: Props) => {
   }
   const contractNames = getContractNames()
   const kmon = getContract({
-    name: contractNames.KMONToken,
-    network: nft.network
+    name: contractNames.KMONToken
   })
   const marketplace = getContract({
-    name: contractNames.MARKETPLACE,
-    network: nft.network
+    name: contractNames.MARKETPLACE
   })
   const authorization: Authorization = {
     address: wallet.address,
