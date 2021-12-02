@@ -10,12 +10,9 @@ import { buildKryptomonFromNFT, ElementData, getKryptomonTokenURI, typeFormatted
 import { buildCountFromNFT } from "../modules/count"
 
 export function handleBirth(event: Birth): void {
-  log.warning('handleBirth', [])
   let kryptomonId = event.params.kryptomonId.toString()
 
   let id = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonId)
-
-  log.warning('id: ' + id, [])
 
   let kryptomon = new Kryptomon(id)
 
@@ -83,25 +80,18 @@ export function handleBirth(event: Birth): void {
   extraData.save()
 
   // element type
-  log.warning('typeDraft', [])
   const typeDraft: BigInt[] = [];
   let elementBreakDown: ElementData[] = [];
   let c = 0;
   for (let i = 0; i < 8; i++) {
     let sum: BigInt = paramsGenes[c].times(paramsGenes[c + 1]);
     c = c + 2;
-    log.warning("typeDraft = {}", [sum.toString()]);
     typeDraft.push(sum);
     let data: ElementData;
     data.typeName = typeFormatted[i];
     data.valueName = typeDraft[i];
     elementBreakDown.push(data);
   }
-
-  log.warning('elementBreakDown', [])
-  log.warning("typeDraft[0] = {}", [typeDraft[0].toString()])
-
-  log.warning('totalSum', [])
   let totalSum: BigInt;
   for (let i = 0; i < elementBreakDown.length; i++) {
     totalSum = totalSum.plus(elementBreakDown[i].valueName);
@@ -111,15 +101,10 @@ export function handleBirth(event: Birth): void {
     elementBreakDown[i].percentage = elementBreakDown[i].valueName.times(BigInt.fromString("100")).div(totalSum)
   }
 
-  log.warning('selectingType', [])
   let typeSelected = indexOfMax(typeDraft);
-  log.warning('typeSelected', [typeSelected.toString()])
   kryptomon.elementType = typeFormatted[typeSelected.toI32()];
-  log.warning('elementTalent', [])
   kryptomon.elementTalent = typeDraft[typeSelected.toI32()];
-  log.warning('percentage', [])
   const percentage = kryptomon.elementTalent.times(BigInt.fromString("100")).div(totalSum);
-  log.warning('elementPercentage', [])
   kryptomon.elementPercentage = percentage
 
   if (genes.attack.times(BigInt.fromString("10")).gt(genes.defense.times(BigInt.fromString("11")))) {
@@ -131,9 +116,6 @@ export function handleBirth(event: Birth): void {
   }
 
   kryptomon.save()
-  log.warning('kryptomon saved', [])
-
-  log.warning('saving nft', [])
   let nft = new NFT(id)
   nft.name = kryptomonId
   nft.contractAddress = event.address
@@ -191,10 +173,7 @@ export function handleBirth(event: Birth): void {
 
   nft.save()
 
-  log.warning('nft saved', [])
-
   createAccount(event.params.owner)
-  log.warning('createAccount saved', [])
 }
 
 export function handleHatching(event: EggHatched): void {
@@ -208,6 +187,7 @@ export function handleHatching(event: EggHatched): void {
 
   let kryptomon = Kryptomon.load(id);
   kryptomon.status = status;
+  kryptomon.isHatched = true;
   kryptomon.save();
 }
 
