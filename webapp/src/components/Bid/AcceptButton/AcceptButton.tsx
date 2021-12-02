@@ -1,25 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Popup } from '@kmon/ui'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { Coin } from '@kmon/schemas'
 
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {
-  isInsufficientKMON,
+  isInsufficientCoin,
   checkFingerprint
 } from '../../../modules/bid/utils'
 import { Props } from './AcceptButton.types'
+import { getContractNames } from '../../../modules/vendor'
+import { getContract } from '../../../modules/contract/utils'
 
 const AcceptButton = (props: Props) => {
   const { nft, bid, onClick } = props
 
   const [fingerprint, isLoadingFingerprint] = useFingerprint(nft)
-  const [hasInsufficientKMON, setHasInsufficientKMON] = useState(false)
+  const [hasInsufficientCoin, setHasInsufficientCoin] = useState(false)
+
+  const contractNames = getContractNames()
+
+  const { address: kmonAddress } = getContract({
+    name: contractNames.KMONToken
+  })
+  const { address: wbnbAddress } = getContract({
+    name: contractNames.WBNB
+  })
+
+  let coin = Coin.KMON
+  if (bid.paymentToken === kmonAddress) {
+    coin = Coin.KMON
+  } else if (bid.paymentToken === wbnbAddress) {
+    coin = Coin.WBNB
+  } else {
+    throw new Error(`Invalid payment token in a Bid ${bid}`)
+  }
 
   useEffect(() => {
-    isInsufficientKMON(bid)
-      .then(setHasInsufficientKMON)
+    isInsufficientCoin(bid, coin)
+      .then(setHasInsufficientCoin)
       .catch(error =>
-        console.error(`Could not get the KMON from bidder ${bid.bidder}`, error)
+        console.error(`Could not get ${coin} from bidder ${bid.bidder}`, error)
       )
   }, [bid])
 
@@ -29,7 +50,7 @@ const AcceptButton = (props: Props) => {
   const isDisabled =
     !nft ||
     // isLoadingFingerprint ||
-    hasInsufficientKMON ||
+    hasInsufficientCoin ||
     // !isValidFingerprint ||
     !isValidSeller
 
@@ -39,10 +60,10 @@ const AcceptButton = (props: Props) => {
     </Button>
   )
 
-  if (hasInsufficientKMON) {
+  if (hasInsufficientCoin) {
     button = (
       <Popup
-        content={t('bid.not_enough_mana_on_bid_received')}
+        content={t('bid.not_enough_coin_on_bid_received', { coin })}
         position="top center"
         trigger={<div className="popup-button">{button}</div>}
       />

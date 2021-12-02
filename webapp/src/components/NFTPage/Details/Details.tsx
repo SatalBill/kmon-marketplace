@@ -27,11 +27,13 @@ const Details = (props: Props) => {
       <DetailItem title="Network">
         <p className="detail-medium-text">{nft.network}</p>
       </DetailItem>
-      <DetailItem title="Price">
-        <p className="detail-medium-text">
-          {order?.price && formatCoin(order.price)} {coin}
-        </p>
-      </DetailItem>
+      {nft.activeOrderId !== null && (
+        <DetailItem title="Price">
+          <p className="detail-medium-text">
+            {order?.price && formatCoin(order.price)} {coin}
+          </p>
+        </DetailItem>
+      )}
       <Actions nft={nft} />
     </div>
   )

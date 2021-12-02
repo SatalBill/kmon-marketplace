@@ -26,7 +26,7 @@ const contracts = ({
       address: getContract(CN.KMONToken, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -34,7 +34,7 @@ const contracts = ({
       address: getContract(CN.ERC721Bid, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -42,7 +42,7 @@ const contracts = ({
       address: getContract(CN.Marketplace, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -50,7 +50,7 @@ const contracts = ({
       address: getContract(CN.Lootbox, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -58,7 +58,7 @@ const contracts = ({
       address: getContract(CN.WBNB, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -66,7 +66,7 @@ const contracts = ({
       address: getContract(CN.KMONFT, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     }
   ],
