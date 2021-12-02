@@ -40,12 +40,10 @@ const BidModal = (props: Props) => {
 
   const contractNames = getContractNames()
   const kmon = getContract({
-    name: contractNames.KMONToken,
-    network: nft.network
+    name: contractNames.KMONToken
   })
   const wbnb = getContract({
-    name: contractNames.WBNB,
-    network: nft.network
+    name: contractNames.WBNB
   })
   const handlePlaceBid = useCallback(() => {
     const coinAddress = paymentCoin === Coin.KMON ? kmon.address : wbnb.address
@@ -56,8 +54,7 @@ const BidModal = (props: Props) => {
     return null
   }
   const erc721Bid = getContract({
-    name: contractNames.ERC721Bid,
-    network: nft.network
+    name: contractNames.ERC721Bid
   })
   const authorization: Authorization = {
     address: wallet.address,

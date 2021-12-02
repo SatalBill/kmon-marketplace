@@ -71,13 +71,11 @@ const SellModal = (props: Props) => {
   const contractNames = getContractNames()
 
   const marketplace = getContract({
-    name: contractNames.MARKETPLACE,
-    network: nft.network
+    name: contractNames.MARKETPLACE
   })
 
   const kmon = getContract({
-    name: contractNames.KMONToken,
-    network: nft.network
+    name: contractNames.KMONToken
   })
 
 
