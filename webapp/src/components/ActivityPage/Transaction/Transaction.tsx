@@ -284,7 +284,14 @@ const Transaction = (props: Props) => {
       )
     }
     case ACCEPT_BID_SUCCESS: {
-      const { tokenId, contractAddress, price } = tx.payload
+      const { tokenId, contractAddress, price, paymentToken } = tx.payload
+      const contractNames = getContractNames()
+      const kmon = getContract({
+        name: contractNames.KMONToken,
+      })
+      const wbnb = getContract({
+        name: contractNames.WBNB,
+      })
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -299,7 +306,19 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
+                    price:
+                      <CoinPopup
+                        inline
+                        coin={
+                          paymentToken?.toLowerCase() === kmon.address.toLowerCase() ?
+                          Coin.KMON :
+                          paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
+                          Coin.WBNB :
+                          undefined
+                        }
+                      >
+                        {price.toLocaleString()}
+                      </CoinPopup>
                   }}
                 />
               }
@@ -310,7 +329,14 @@ const Transaction = (props: Props) => {
       )
     }
     case CANCEL_BID_SUCCESS: {
-      const { tokenId, contractAddress, price } = tx.payload
+      const { tokenId, contractAddress, price, paymentToken } = tx.payload
+      const contractNames = getContractNames()
+      const kmon = getContract({
+        name: contractNames.KMONToken,
+      })
+      const wbnb = getContract({
+        name: contractNames.WBNB,
+      })
       return (
         <NFTProvider contractAddress={contractAddress} tokenId={tokenId}>
           {nft => (
@@ -325,7 +351,19 @@ const Transaction = (props: Props) => {
                         {nft ? getNFTName(nft) : ''}
                       </Link>
                     ),
-                    price: <CoinPopup inline>{price.toLocaleString()}</CoinPopup>
+                    price:
+                      <CoinPopup
+                        inline
+                        coin={
+                          paymentToken?.toLowerCase() === kmon.address.toLowerCase() ?
+                          Coin.KMON :
+                          paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
+                          Coin.WBNB :
+                          undefined
+                        }
+                      >
+                        {price.toLocaleString()}
+                      </CoinPopup>
                   }}
                 />
               }
