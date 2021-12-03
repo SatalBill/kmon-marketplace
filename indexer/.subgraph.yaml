@@ -106,9 +106,9 @@ dataSources:
         - name: ERC721Bid
           file: ./abis/ERC721Bid.json
       eventHandlers:
-        - event: BidCreated(bytes32,indexed address,indexed uint256,indexed address,uint256,uint256,bytes)
+        - event: BidCreated(bytes32,indexed address,indexed uint256,indexed address,uint256,address,uint256,bytes)
           handler: handleBidCreated
-        - event: BidAccepted(bytes32,indexed address,indexed uint256,address,indexed address,uint256,uint256)
+        - event: BidAccepted(bytes32,indexed address,indexed uint256,address,indexed address,uint256,address,uint256)
           handler: handleBidAccepted
         - event: BidCancelled(bytes32,indexed address,indexed uint256,indexed address)
           handler: handleBidCancelled

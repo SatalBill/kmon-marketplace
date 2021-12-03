@@ -80,18 +80,25 @@ export function handleBirth(event: Birth): void {
   extraData.save()
 
   // element type
+  log.warning('typeDraft', [])
   const typeDraft: BigInt[] = [];
   let elementBreakDown: ElementData[] = [];
   let c = 0;
   for (let i = 0; i < 8; i++) {
     let sum: BigInt = paramsGenes[c].times(paramsGenes[c + 1]);
     c = c + 2;
+    log.warning("typeDraft = {}", [sum.toString()]);
     typeDraft.push(sum);
     let data: ElementData;
     data.typeName = typeFormatted[i];
     data.valueName = typeDraft[i];
     elementBreakDown.push(data);
   }
+
+  log.warning('elementBreakDown', [])
+  log.warning("typeDraft[0] = {}", [typeDraft[0].toString()])
+
+  log.warning('totalSum', [])
   let totalSum: BigInt;
   for (let i = 0; i < elementBreakDown.length; i++) {
     totalSum = totalSum.plus(elementBreakDown[i].valueName);
@@ -188,6 +195,7 @@ export function handleHatching(event: EggHatched): void {
   let kryptomon = Kryptomon.load(id);
   kryptomon.status = status;
   kryptomon.isHatched = true;
+  kryptomon.timeHatched = event.block.timestamp;
   kryptomon.save();
 }
 

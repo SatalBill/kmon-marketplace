@@ -1,4 +1,4 @@
-import { BigInt, Address } from '@graphprotocol/graph-ts'
+import { BigInt, Address, log } from '@graphprotocol/graph-ts'
 import {
   BidCreated,
   BidAccepted,
@@ -11,6 +11,7 @@ import { getCategory } from '../modules/category'
 import * as status from '../modules/order/status'
 
 export function handleBidCreated(event: BidCreated): void {
+  log.info("handleBidCreated", [])
   let category = getCategory(event.params._tokenAddress.toHexString())
   let nftId = getNFTId(
     category,
@@ -32,6 +33,7 @@ export function handleBidCreated(event: BidCreated): void {
     bid.nftAddress = event.params._tokenAddress
     bid.bidder = event.params._bidder
     bid.price = event.params._price
+    bid.paymentToken = event.params._paymentToken
     bid.fingerprint = event.params._fingerprint
     bid.tokenId = event.params._tokenId
     bid.blockchainId = event.params._id.toHexString()

@@ -2396,16 +2396,16 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.24.tgz#43f2f6b1cf9d5f8afc326b1b531033b0170ffbc3"
-  integrity sha512-aRUDitsMipLbptSJep3VWaHSaPc1jrvL8MEtEOLW0kvUzK11t5FcxLF7qyBM1KTNG1WPQ8TJtk7kannbiYHDvA==
+"@kmon/dapps@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.25.tgz#7ad4acdb258444cad2fd44ff89a73e65f7d4494d"
+  integrity sha512-KhNvDgHCHFM2qRMl8tJx7KmqW7arYO+vJkUEziwHmjHROkezLST4QrVU92HeF1mckQ9IOJjbmFe2kgJgZNgEUA==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
     "@kmon/connect" "^0.0.3"
-    "@kmon/schemas" "^0.0.10"
-    "@kmon/transactions" "^0.0.30"
+    "@kmon/schemas" "^0.0.11"
+    "@kmon/transactions" "^0.0.31"
     "@kmon/ui" "^0.0.15"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.28"
@@ -2432,6 +2432,13 @@
   dependencies:
     ajv "^7.1.0"
 
+"@kmon/schemas@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.11.tgz#64ee38f7a2649476710ea20552a322aaee68e9a0"
+  integrity sha512-YNWc64t4WYcG5UIhjbewAcMCN5c0JpjqQOtMQYL1sZX+AQdvyYCSoWqxw1NkNTg7vyM9xrOLgPaejCsdvtS8Sw==
+  dependencies:
+    ajv "^7.1.0"
+
 "@kmon/schemas@^0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.9.tgz#88d1c074a1d914d24495e87cbb710dacc39f3b12"
@@ -2439,12 +2446,12 @@
   dependencies:
     ajv "^7.1.0"
 
-"@kmon/transactions@^0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.30.tgz#5f47abb6870f3fb3b55d91280e56e2689cf5d3d4"
-  integrity sha512-RdZqoe6hIgrwCBk6v81Il8aHLEAUWPhjPf2yl55hm5neT81+3a/HHlc44nJlxgnr/XvvaV86w6HdLmBsXDC7dg==
+"@kmon/transactions@^0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.31.tgz#6dc491033b6912ea4204f1c53f5e40ae42dd6cff"
+  integrity sha512-FAxY6lgEfaOn42pttTswOidrOpFJKMYHNM8ok/wCXrTS9R6DPOXGDZU0+jCfisFXOzZInTxMfO8YlAhkjHXhqA==
   dependencies:
-    "@kmon/schemas" "^0.0.10"
+    "@kmon/schemas" "^0.0.11"
     tslint "^6.1.3"
 
 "@kmon/ui@^0.0.15":
