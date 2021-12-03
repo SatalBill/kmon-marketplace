@@ -25,7 +25,7 @@ const Details = (props: Props) => {
         </DetailItem>
         <DetailItem title="Name">
           <p className="detail-medium-text">
-            <span className="detail-nft-name">{nft.name}</span>
+            <span className="detail-nft-name">{nft.metadata?.name}</span>
           </p>
         </DetailItem>
         {nft.activeOrderId !== null && (
