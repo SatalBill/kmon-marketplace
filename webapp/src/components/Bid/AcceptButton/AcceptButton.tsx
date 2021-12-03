@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Popup } from '@kmon/ui'
-import { Coin } from '@kmon/schemas'
 
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { useFingerprint } from '../../../modules/nft/hooks'
@@ -9,32 +8,12 @@ import {
   checkFingerprint
 } from '../../../modules/bid/utils'
 import { Props } from './AcceptButton.types'
-import { getContractNames } from '../../../modules/vendor'
-import { getContract } from '../../../modules/contract/utils'
 
 const AcceptButton = (props: Props) => {
-  const { nft, bid, onClick } = props
+  const { nft, bid, coin, onClick } = props
 
   const [fingerprint, isLoadingFingerprint] = useFingerprint(nft)
   const [hasInsufficientCoin, setHasInsufficientCoin] = useState(false)
-
-  const contractNames = getContractNames()
-
-  const { address: kmonAddress } = getContract({
-    name: contractNames.KMONToken
-  })
-  const { address: wbnbAddress } = getContract({
-    name: contractNames.WBNB
-  })
-
-  let coin = Coin.KMON
-  if (bid.paymentToken === kmonAddress) {
-    coin = Coin.KMON
-  } else if (bid.paymentToken === wbnbAddress) {
-    coin = Coin.WBNB
-  } else {
-    throw new Error(`Invalid payment token in a Bid ${bid}`)
-  }
 
   useEffect(() => {
     isInsufficientCoin(bid, coin)

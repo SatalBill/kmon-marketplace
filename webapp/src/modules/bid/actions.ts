@@ -85,7 +85,8 @@ export const acceptBidSuccess = (bid: Bid, chainId: ChainId, txHash: string) =>
     ...buildTransactionPayload(chainId, txHash, {
       tokenId: bid.tokenId,
       contractAddress: bid.contractAddress,
-      price: formatCoin(bid.price)
+      price: formatCoin(bid.price),
+      paymentToken: bid.paymentToken
     })
   })
 export const acceptBidFailure = (bid: Bid, error: string) =>
@@ -108,7 +109,8 @@ export const cancelBidSuccess = (bid: Bid, chainId: ChainId, txHash: string) =>
     ...buildTransactionPayload(chainId, txHash, {
       tokenId: bid.tokenId,
       contractAddress: bid.contractAddress,
-      price: formatCoin(bid.price)
+      price: formatCoin(bid.price),
+      paymentToken: bid.paymentToken
     })
   })
 export const cancelBidFailure = (bid: Bid, error: string) =>

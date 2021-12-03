@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
-import { Coin } from '@kmon/schemas'
 
 import { useFingerprint } from '../../../modules/nft/hooks'
 import {
@@ -9,32 +8,12 @@ import {
 } from '../../../modules/bid/utils'
 import { Props } from './WarningMessage.types'
 import './WarningMessage.css'
-import { getContractNames } from '../../../modules/vendor'
-import { getContract } from '../../../modules/contract/utils'
 
 const WarningMessage = (props: Props) => {
-  const { nft, bid } = props
+  const { nft, bid, coin } = props
 
   const [fingerprint] = useFingerprint(nft)
   const [hasInsufficientCoin, setHasInsufficientCoin] = useState(false)
-
-  const contractNames = getContractNames()
-
-  const { address: kmonAddress } = getContract({
-    name: contractNames.KMONToken
-  })
-  const { address: wbnbAddress } = getContract({
-    name: contractNames.WBNB
-  })
-
-  let coin = Coin.KMON
-  if (bid.paymentToken === kmonAddress) {
-    coin = Coin.KMON
-  } else if (bid.paymentToken === wbnbAddress) {
-    coin = Coin.WBNB
-  } else {
-    throw new Error(`Invalid payment token in a Bid ${bid}`)
-  }
 
   useEffect(() => {
     isInsufficientCoin(bid, coin)
