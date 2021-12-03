@@ -1,10 +1,13 @@
 import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { Coin } from '@kmon/schemas'
 import { Loader, Stats, Button } from '@kmon/ui'
 import { Profile } from '@kmon/dapps/dist/containers'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { locations } from '../../modules/routing/locations'
 import { addressEquals } from '../../modules/wallet/utils'
+import { getContractNames } from '../../modules/vendor'
+import { getContract } from '../../modules/contract/utils'
 import { NFTProvider } from '../NFTProvider'
 import { NFTImage } from '../NFTImage'
 import { CoinPopup } from '../CoinPopup'
@@ -32,6 +35,24 @@ const Bid = (props: Props) => {
   const isArchived = archivedBidIds.includes(bid.id)
   const isBidder = !!wallet && addressEquals(wallet.address, bid.bidder)
   const isSeller = !!wallet && addressEquals(wallet.address, bid.seller)
+
+  const contractNames = getContractNames()
+
+  const { address: kmonAddress } = getContract({
+    name: contractNames.KMONToken
+  })
+  const { address: wbnbAddress } = getContract({
+    name: contractNames.WBNB
+  })
+
+  let coin: Coin | null = null
+  if (bid.paymentToken?.toLowerCase() === kmonAddress.toLowerCase()) {
+    coin = Coin.KMON
+  } else if (bid.paymentToken?.toLowerCase() === wbnbAddress.toLowerCase()) {
+    coin = Coin.WBNB
+  } else {
+    throw new Error(`Invalid payment token ${bid.paymentToken} in a Bid ${bid.tokenId}`)
+  }
 
   const handleAccept = useCallback(() => onAccept(bid), [bid, onAccept])
 
@@ -65,7 +86,7 @@ const Bid = (props: Props) => {
               </Link>
             </Stats>
             <Stats title={t('bid.price')}>
-              <CoinPopup>{formatCoin(bid.price)}</CoinPopup>
+              <CoinPopup coin={coin}>{formatCoin(bid.price)}</CoinPopup>
             </Stats>
             <Stats title={t('bid.time_left')}>
               {formatDistanceToNow(+bid.expiresAt)}
@@ -93,6 +114,7 @@ const Bid = (props: Props) => {
                       <AcceptButton
                         nft={nft}
                         bid={bid}
+                        coin={coin}
                         onClick={handleAccept}
                       />
                     )}
@@ -120,7 +142,7 @@ const Bid = (props: Props) => {
           contractAddress={bid.contractAddress}
           tokenId={bid.tokenId}
         >
-          {nft => <WarningMessage nft={nft} bid={bid} />}
+          {nft => <WarningMessage nft={nft} bid={bid} coin={coin} />}
         </NFTProvider>
       ) : null}
     </div>

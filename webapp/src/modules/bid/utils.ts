@@ -6,7 +6,7 @@ import { KMONToken } from '../../contracts/KMONToken'
 import { WBNB } from '../../contracts/WBNB'
 import { Bid } from './types'
 
-export async function isInsufficientCoin(bid: Bid, coin: Coin) {
+export async function isInsufficientCoin(bid: Bid, coin: Coin | null) {
   try {
     const provider = await getConnectedProvider()
     if (!provider) {

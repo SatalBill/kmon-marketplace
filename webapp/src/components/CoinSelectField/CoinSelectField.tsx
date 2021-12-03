@@ -16,7 +16,7 @@ export default class CoinSelectField extends React.PureComponent<Props> {
         {...rest}
         className={classes}
         options={[
-        { key: 1, text: <span><CoinIcon /> KMON</span>, value: Coin.KMON },
+        { key: 1, text: <span><CoinIcon coin={Coin.KMON} /> KMON</span>, value: Coin.KMON },
         { key: 2, text: <span><CoinIcon coin={coin} /> {coin}</span>, value: coin },
         ]}
         onChange={(_, a) => onChangeCoin(a.value as Coin)}

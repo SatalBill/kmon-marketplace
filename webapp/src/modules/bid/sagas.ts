@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router'
 import { ChainId } from '@kmon/schemas'
 import { getChainId } from '@kmon/dapps/dist/modules/wallet/selectors'
-import { takeEvery, put, select, call } from 'redux-saga/effects'
+import { takeEvery, put, select, call, all } from 'redux-saga/effects'
 import {
   PLACE_BID_REQUEST,
   PlaceBidRequestAction,
@@ -131,14 +131,10 @@ function* handleFetchBidsByAddressRequest(
         continue
       }
 
-      const bids: [Bid[], Bid[]] = yield call(() =>
-        Promise.all([
-          bidService.fetchBySeller(address),
-          bidService.fetchByBidder(address)
-        ])
-      )
-      sellerBids = sellerBids.concat(bids[0])
-      bidderBids = bidderBids.concat(bids[1])
+      [sellerBids, bidderBids] = yield all([
+        bidService.fetchBySeller(address),
+        bidService.fetchByBidder(address)
+      ])
     }
 
     yield put(fetchBidsByAddressSuccess(address, sellerBids, bidderBids))
