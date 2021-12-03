@@ -2396,17 +2396,17 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.25.tgz#7ad4acdb258444cad2fd44ff89a73e65f7d4494d"
-  integrity sha512-KhNvDgHCHFM2qRMl8tJx7KmqW7arYO+vJkUEziwHmjHROkezLST4QrVU92HeF1mckQ9IOJjbmFe2kgJgZNgEUA==
+"@kmon/dapps@^0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.26.tgz#05472258292f3c80bf279152fb161d2f407f31d1"
+  integrity sha512-ZPgfvPyoPpBSQA/8B5fAYATA/6as92hWeDgL9ve1W7NG5iQXYxbv+M3KKTLaxgtCYa8ZGmMqeHW5AiA3JhOSCQ==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
     "@kmon/connect" "^0.0.3"
     "@kmon/schemas" "^0.0.11"
     "@kmon/transactions" "^0.0.31"
-    "@kmon/ui" "^0.0.15"
+    "@kmon/ui" "^0.0.16"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.28"
     "@types/uuid" "^3.4.3"
@@ -2454,10 +2454,10 @@
     "@kmon/schemas" "^0.0.11"
     tslint "^6.1.3"
 
-"@kmon/ui@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.15.tgz#ebe007ae29c7c198bdf9b49e309501535a527a3f"
-  integrity sha512-1A9by9GhtpPCT2lD/SWdhg9Gfw2U2WTe31a1bogeXaqs6jtWNa+UZoVtUbhg9gikVhxoEia17LAkWeNPhIX5Tg==
+"@kmon/ui@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.16.tgz#9f45347c4d4ed990097618e171c6dc6a1715aff6"
+  integrity sha512-4vLSUKBvjhd+HSSyTaOz7WWJz6qcsbN0lIF1D84T4JyLaaiipTlaeA0vPtFG1OM40U7sa9V2ZgpkBfJAwWRoQQ==
   dependencies:
     "@kmon/schemas" "^0.0.10"
     balloon-css "^0.5.0"
