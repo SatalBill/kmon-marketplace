@@ -63,6 +63,7 @@ export type NFTsFetchParams = {
   specialties?: string
   supers?: string
   unfreezable?: string
+  generation?: string
   affection?: string
   braveness?: string
   constitution?: string

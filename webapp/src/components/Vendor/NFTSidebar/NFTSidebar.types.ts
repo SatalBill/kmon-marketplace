@@ -19,6 +19,7 @@ export type MapStateProps = Pick<
   | 'elemTypes'
   | 'specialties'
   | 'supers'
+  | 'generation'
   | 'affection'
   | 'braveness'
   | 'constitution'

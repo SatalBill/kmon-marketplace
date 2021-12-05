@@ -83,6 +83,12 @@ export function getSearchParams(options?: SearchOptions) {
     if (options.supers && options.supers.length > 0) {
       params.set('supers', options.supers.join(SEARCH_ARRAY_PARAM_SEPARATOR))
     }
+    if (options.generation && options.generation.length > 0) {
+      params.set(
+        'generation',
+        options.generation.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
     if (options.affection && options.affection.length > 0) {
       params.set(
         'affection',

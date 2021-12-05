@@ -25,7 +25,8 @@ import {
   getSex,
   getSkinType,
   getWater,
-  getArrayByType
+  getArrayByType,
+  getGeneration
 } from '../../../modules/routing/selectors'
 import {
   MapStateProps,
@@ -40,6 +41,7 @@ const mapState = (state: RootState): MapStateProps => ({
   section: getSection(state),
   pathname: getPathname(state),
   elemTypes: getElemTypes(state),
+  generation: getGeneration(state),
   affection: getAffection(state),
   specialties: getSpecialties(state),
   supers: getSuper(state),

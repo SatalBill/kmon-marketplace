@@ -25,7 +25,8 @@ import {
   getSpeed,
   getSex,
   getSkinType,
-  getArrayByType
+  getArrayByType,
+  getGeneration
 } from '../routing/selectors'
 import { getAddress as getWalletAddress } from '../wallet/selectors'
 import { getAddress as getAccountAddress } from '../account/selectors'
@@ -104,6 +105,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     elemTypes,
     specialties,
     supers,
+    generation,
     affection,
     braveness,
     constitution,
@@ -182,6 +184,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           elemTypes: arrayToString(elemTypes),
           specialties: arrayToString(specialties),
           supers: arrayToString(supers),
+          generation: arrayToString(generation),
           affection: arrayToString(affection),
           braveness: arrayToString(braveness),
           constitution: arrayToString(constitution),
@@ -247,6 +250,7 @@ function* getNewSearchOptions(current: SearchOptions) {
     elemTypes: yield select(getElemTypes),
     specialties: yield select(getSpecialties),
     supers: yield select(getSuper),
+    generation: yield select(getGeneration),
     affection: yield select(getAffection),
     braveness: yield select(getBraveness),
     constitution: yield select(getConstitution),

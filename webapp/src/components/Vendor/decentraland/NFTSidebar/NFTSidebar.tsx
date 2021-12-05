@@ -14,6 +14,7 @@ const NFTSidebar = (props: Props) => {
     elemTypes,
     specialties,
     supers,
+    generation,
     affection,
     braveness,
     constitution,
@@ -64,6 +65,7 @@ const NFTSidebar = (props: Props) => {
         elemTypes={elemTypes}
         specialties={specialties}
         supers={supers}
+        generation={generation}
         affection={affection}
         braveness={braveness}
         constitution={constitution}

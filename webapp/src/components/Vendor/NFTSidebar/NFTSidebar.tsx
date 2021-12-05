@@ -11,6 +11,7 @@ export type MultipleFilters = {
   elemTypes?: string[]
   specialties?: string[]
   supers?: string[]
+  generation?: string[]
   affection?: string[]
   braveness?: string[]
   constitution?: string[]
@@ -58,6 +59,7 @@ const NFTSidebar = (props: Props) => {
     onBrowse,
     pathname,
     elemTypes,
+    generation,
     affection,
     specialties,
     supers,
@@ -152,6 +154,7 @@ const NFTSidebar = (props: Props) => {
           onMenuItemClick={handleOnBrowse}
           onMultiItemClick={handleOnBrowseMultiple}
           elemTypes={elemTypes}
+          generation={generation}
           affection={affection}
           specialties={specialties}
           supers={supers}

@@ -93,6 +93,9 @@ class NFTAPI {
     if (params.supers) {
       queryParams.set('supers', params.supers)
     }
+    if (params.generation) {
+      queryParams.set('generation', params.generation)
+    }
     if (params.affection) {
       queryParams.set('affection', params.affection)
     }

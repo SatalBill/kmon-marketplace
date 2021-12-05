@@ -24,6 +24,7 @@ const NFTSections = (props: Props) => {
     elemTypes = [],
     specialties = [],
     supers = [],
+    generation = [],
     affection = [],
     braveness = [],
     constitution = [],
@@ -65,6 +66,7 @@ const NFTSections = (props: Props) => {
   } = props
   const [state, setState] = useState({
     elemTypes,
+    generation,
     affection,
     specialties,
     supers,
@@ -152,29 +154,16 @@ const NFTSections = (props: Props) => {
             />
           ))
         : null}
-      <Dropdown value={Section.GENERATIONS}>
-        <>
-          {[
-            Section.GENERATIONS_0,
-            Section.GENERATIONS_1,
-            Section.GENERATIONS_2,
-            Section.GENERATIONS_3,
-            Section.GENERATIONS_4,
-            Section.GENERATIONS_5,
-            Section.GENERATIONS_6,
-            Section.GENERATIONS_7,
-            Section.GENERATIONS_8,
-            Section.GENERATIONS_9
-          ].map(menuSection => (
-            <MenuItem
-              key={menuSection}
-              value={menuSection}
-              currentValue={section}
-              onClick={onSectionClick}
-              nestedLevel={1}
-            />
-          ))}
-        </>
+      <Dropdown value={Section.GENERATIONS} open={state.generation.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={10}
+          minValue={+state.generation[0] || 0}
+          maxValue={+state.generation[1] || 10}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'generation')
+          }}
+        />
       </Dropdown>
       <Dropdown value={Section.ELEMENT_TYPE} open={state.elemTypes.length > 0}>
         <CheckboxContainer>
@@ -462,7 +451,7 @@ const NFTSections = (props: Props) => {
           ))}
         </CheckboxContainer>
       </Dropdown>
-      {/* <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
+      <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
         <CheckboxContainer>
           {SUPERS.map(elem => (
             <Checkbox
@@ -482,7 +471,7 @@ const NFTSections = (props: Props) => {
             />
           ))}
         </CheckboxContainer>
-      </Dropdown> */}
+      </Dropdown>
       <Dropdown value={Section.AFFECTION} open={state.affection.length > 0}>
         <MultiRangeSlider
           min={0}

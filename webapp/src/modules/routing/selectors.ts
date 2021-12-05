@@ -162,6 +162,11 @@ export const getSuper = createSelector<RootState, string, string[]>(
   search => getURLParamArray<string>(search, 'supers')
 )
 
+export const getGeneration = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'generation')
+)
+
 export const getAffection = createSelector<RootState, string, string[]>(
   getRouterSearch,
   search => getURLParamArray<string>(search, 'affection')
