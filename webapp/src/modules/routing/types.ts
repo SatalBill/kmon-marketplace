@@ -37,7 +37,7 @@ export type SearchOptions = {
   specialties?: string[]
   supers?: string[]
   unfreezable?: string[]
-
+  generation?: string[]
   affection?: string[]
   braveness?: string[]
   constitution?: string[]
@@ -77,4 +77,6 @@ export type SearchOptions = {
   growthTalentFactor?: string[]
   elementPercentage?: string[]
   special?: string[]
+  price?: string[]
+  priceToken?: string[]
 }
