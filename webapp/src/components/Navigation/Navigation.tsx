@@ -2,8 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Tabs, Responsive } from '@kmon/ui'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+
 import { locations } from '../../modules/routing/locations'
 import { Props, NavigationTab } from './Navigation.types'
+import { IndexingDelay } from '../IndexingDelay'
 
 const Navigation = (props: Props) => {
   const { activeTab, isFullscreen } = props
@@ -48,6 +50,9 @@ const Navigation = (props: Props) => {
           </Link>
         </Responsive>
       </Tabs.Left>
+      <Tabs.Right>
+        <IndexingDelay />
+      </Tabs.Right>
     </Tabs>
   )
 }

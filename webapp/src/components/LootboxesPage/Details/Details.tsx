@@ -13,9 +13,6 @@ const Details = (props: Props) => {
       <DetailItem title="Lootbox type">
         <p className="detail-big-text">{boxTypeStr}</p>
       </DetailItem>
-      <DetailItem title="Network">
-        <p className="detail-big-text">Ethereum</p>
-      </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
           {boxPrice} KMON

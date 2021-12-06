@@ -37,7 +37,11 @@
     "my_assets": "My Assets",
     "my_bids": "My Bids",
     "activity": "Activity",
-    "lootboxes": "Lootboxes"
+    "lootboxes": "Lootboxes",
+    "indexing_delay": {
+      "title": "Indexing delay",
+      "tooltip": "All marketplace data is powered by Subgraphs which index blockchain data. Due to network congestion they are sometimes behind. Although you should be still able to buy, sell, bid and all, you will see delay in the marketplace displaying those actions. Please be patient."
+    }
   },
   "menu": {
     "all": "All Assets",
