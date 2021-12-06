@@ -11,10 +11,12 @@ import {
   SPECIALTIES,
   SUPERS,
   SKIN_TYPES,
-  SEXES
+  SEXES,
+  PRICE_TOKENS
 } from './NFTSection.data'
 import { Props } from './NFTSections.types'
 import './NFTSections.style.css'
+import { RadioRange } from '../../../Menu/RadioRange'
 
 const NFTSections = (props: Props) => {
   const {
@@ -62,7 +64,9 @@ const NFTSections = (props: Props) => {
     generalTalent = [],
     growthTalentFactor = [],
     elementPercentage = [],
-    special = []
+    special = [],
+    price = [],
+    priceToken = []
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -106,7 +110,9 @@ const NFTSections = (props: Props) => {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   })
 
   useEffect(() => {
@@ -162,6 +168,32 @@ const NFTSections = (props: Props) => {
           maxValue={+state.generation[1] || 10}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'generation')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.PRICE}
+        open={state.price.length > 0 || state.priceToken.length > 0}
+      >
+        <RadioRange
+          min={0}
+          max={1000}
+          minValue={+state.price[0] || 0}
+          maxValue={+state.price[1] || 1000}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'price')
+          }}
+          radioState={state.priceToken}
+          radioOptions={PRICE_TOKENS}
+          onRadioChange={(elem: string) => {
+            if (state.priceToken.indexOf(elem) > -1) {
+              const newArr = [...state.priceToken]
+              newArr.splice(newArr.indexOf(elem), 1)
+              setState({ ...state, priceToken: newArr })
+            } else {
+              const newArr = [elem]
+              setState({ ...state, priceToken: newArr })
+            }
           }}
         />
       </Dropdown>

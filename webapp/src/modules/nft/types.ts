@@ -103,6 +103,8 @@ export type NFTsFetchParams = {
   growthTalentFactor?: string
   elementPercentage?: string
   special?: string
+  price?: string
+  priceToken?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

@@ -81,7 +81,9 @@ const mapState = (state: RootState): MapStateProps => ({
   generalTalent: getArrayByType('generalTalent')(state),
   growthTalentFactor: getArrayByType('growthTalentFactor')(state),
   elementPercentage: getArrayByType('elementPercentage')(state),
-  special: getArrayByType('special')(state)
+  special: getArrayByType('special')(state),
+  price: getArrayByType('price')(state),
+  priceToken: getArrayByType('priceToken')(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

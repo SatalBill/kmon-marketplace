@@ -50,6 +50,8 @@ export type MultipleFilters = {
   growthTalentFactor?: string[]
   elementPercentage?: string[]
   special?: string[]
+  price?: string[]
+  priceToken?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -99,7 +101,9 @@ const NFTSidebar = (props: Props) => {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   } = props
 
   const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
@@ -195,6 +199,8 @@ const NFTSidebar = (props: Props) => {
           growthTalentFactor={growthTalentFactor}
           elementPercentage={elementPercentage}
           special={special}
+          price={price}
+          priceToken={priceToken}
         />
       )
   }

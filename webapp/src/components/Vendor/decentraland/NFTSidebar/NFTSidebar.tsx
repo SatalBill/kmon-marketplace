@@ -52,7 +52,9 @@ const NFTSidebar = (props: Props) => {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   } = props
 
   return (
@@ -104,6 +106,8 @@ const NFTSidebar = (props: Props) => {
         growthTalentFactor={growthTalentFactor}
         elementPercentage={elementPercentage}
         special={special}
+        price={price}
+        priceToken={priceToken}
       />
     </div>
   )

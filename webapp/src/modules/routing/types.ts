@@ -77,4 +77,6 @@ export type SearchOptions = {
   growthTalentFactor?: string[]
   elementPercentage?: string[]
   special?: string[]
+  price?: string[]
+  priceToken?: string[]
 }

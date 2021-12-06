@@ -89,6 +89,15 @@ export function getSearchParams(options?: SearchOptions) {
         options.generation.join(SEARCH_ARRAY_PARAM_SEPARATOR)
       )
     }
+    if (options.price && options.price.length > 0) {
+      params.set('price', options.price.join(SEARCH_ARRAY_PARAM_SEPARATOR))
+    }
+    if (options.priceToken && options.priceToken.length > 0) {
+      params.set(
+        'priceToken',
+        options.priceToken.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
     if (options.affection && options.affection.length > 0) {
       params.set(
         'affection',

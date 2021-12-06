@@ -4,6 +4,7 @@ export enum Section {
   NEWEST = 'newest',
   LATEST_SOLD = 'latest_sold',
   GENERATIONS = 'generations',
+  PRICE = 'price',
   GENERATIONS_0 = 'gen_0',
   GENERATIONS_1 = 'gen_1',
   GENERATIONS_2 = 'gen_2',

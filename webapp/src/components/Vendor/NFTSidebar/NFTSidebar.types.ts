@@ -58,6 +58,8 @@ export type MapStateProps = Pick<
   | 'growthTalentFactor'
   | 'elementPercentage'
   | 'special'
+  | 'price'
+  | 'priceToken'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

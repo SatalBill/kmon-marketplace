@@ -26,7 +26,9 @@ import {
   getSex,
   getSkinType,
   getArrayByType,
-  getGeneration
+  getGeneration,
+  getPrice,
+  getPriceToken
 } from '../routing/selectors'
 import { getAddress as getWalletAddress } from '../wallet/selectors'
 import { getAddress as getAccountAddress } from '../account/selectors'
@@ -144,7 +146,9 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -223,7 +227,9 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           generalTalent: arrayToString(generalTalent),
           growthTalentFactor: arrayToString(growthTalentFactor),
           elementPercentage: arrayToString(elementPercentage),
-          special: arrayToString(special)
+          special: arrayToString(special),
+          price: arrayToString(price),
+          priceToken: arrayToString(priceToken)
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -288,7 +294,9 @@ function* getNewSearchOptions(current: SearchOptions) {
     generalTalent: yield select(getArrayByType('generalTalent')),
     growthTalentFactor: yield select(getArrayByType('growthTalentFactor')),
     elementPercentage: yield select(getArrayByType('elementPercentage')),
-    special: yield select(getArrayByType('special'))
+    special: yield select(getArrayByType('special')),
+    price: yield select(getPrice),
+    priceToken: yield select(getPriceToken)
   }
   current = yield deriveCurrentOptions(previous, current)
 
