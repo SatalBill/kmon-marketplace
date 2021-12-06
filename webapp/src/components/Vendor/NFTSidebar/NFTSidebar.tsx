@@ -11,6 +11,7 @@ export type MultipleFilters = {
   elemTypes?: string[]
   specialties?: string[]
   supers?: string[]
+  generation?: string[]
   affection?: string[]
   braveness?: string[]
   constitution?: string[]
@@ -49,6 +50,8 @@ export type MultipleFilters = {
   growthTalentFactor?: string[]
   elementPercentage?: string[]
   special?: string[]
+  price?: string[]
+  priceToken?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -58,6 +61,7 @@ const NFTSidebar = (props: Props) => {
     onBrowse,
     pathname,
     elemTypes,
+    generation,
     affection,
     specialties,
     supers,
@@ -97,7 +101,9 @@ const NFTSidebar = (props: Props) => {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   } = props
 
   const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
@@ -152,6 +158,7 @@ const NFTSidebar = (props: Props) => {
           onMenuItemClick={handleOnBrowse}
           onMultiItemClick={handleOnBrowseMultiple}
           elemTypes={elemTypes}
+          generation={generation}
           affection={affection}
           specialties={specialties}
           supers={supers}
@@ -192,6 +199,8 @@ const NFTSidebar = (props: Props) => {
           growthTalentFactor={growthTalentFactor}
           elementPercentage={elementPercentage}
           special={special}
+          price={price}
+          priceToken={priceToken}
         />
       )
   }

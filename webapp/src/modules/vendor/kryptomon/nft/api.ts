@@ -9,6 +9,8 @@ import {
   SKIN_TYPE_TO_REQ
 } from '../../decentraland/nft/utils'
 import { orderAPI } from '../order'
+import { SEARCH_ARRAY_PARAM_SEPARATOR } from '../../../routing/search'
+import { toWei } from 'web3x-es/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -92,6 +94,22 @@ class NFTAPI {
     }
     if (params.supers) {
       queryParams.set('supers', params.supers)
+    }
+    if (params.generation) {
+      queryParams.set('generation', params.generation)
+    }
+    if (params.price) {
+      const data = params.price
+        .split(SEARCH_ARRAY_PARAM_SEPARATOR)
+        .map(el => toWei(el, 'ether'))
+        .join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      queryParams.set('price', data)
+    }
+    if (params.priceToken) {
+      queryParams.set('priceToken', params.priceToken)
+    }
+    if (params.affection) {
+      queryParams.set('affection', params.affection)
     }
     if (params.affection) {
       queryParams.set('affection', params.affection)

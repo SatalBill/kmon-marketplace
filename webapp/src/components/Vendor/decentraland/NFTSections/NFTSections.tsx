@@ -11,10 +11,12 @@ import {
   SPECIALTIES,
   SUPERS,
   SKIN_TYPES,
-  SEXES
+  SEXES,
+  PRICE_TOKENS
 } from './NFTSection.data'
 import { Props } from './NFTSections.types'
 import './NFTSections.style.css'
+import { RadioRange } from '../../../Menu/RadioRange'
 
 const NFTSections = (props: Props) => {
   const {
@@ -24,6 +26,7 @@ const NFTSections = (props: Props) => {
     elemTypes = [],
     specialties = [],
     supers = [],
+    generation = [],
     affection = [],
     braveness = [],
     constitution = [],
@@ -61,10 +64,13 @@ const NFTSections = (props: Props) => {
     generalTalent = [],
     growthTalentFactor = [],
     elementPercentage = [],
-    special = []
+    special = [],
+    price = [],
+    priceToken = []
   } = props
   const [state, setState] = useState({
     elemTypes,
+    generation,
     affection,
     specialties,
     supers,
@@ -104,7 +110,9 @@ const NFTSections = (props: Props) => {
     generalTalent,
     growthTalentFactor,
     elementPercentage,
-    special
+    special,
+    price,
+    priceToken
   })
 
   useEffect(() => {
@@ -152,29 +160,42 @@ const NFTSections = (props: Props) => {
             />
           ))
         : null}
-      <Dropdown value={Section.GENERATIONS}>
-        <>
-          {[
-            Section.GENERATIONS_0,
-            Section.GENERATIONS_1,
-            Section.GENERATIONS_2,
-            Section.GENERATIONS_3,
-            Section.GENERATIONS_4,
-            Section.GENERATIONS_5,
-            Section.GENERATIONS_6,
-            Section.GENERATIONS_7,
-            Section.GENERATIONS_8,
-            Section.GENERATIONS_9
-          ].map(menuSection => (
-            <MenuItem
-              key={menuSection}
-              value={menuSection}
-              currentValue={section}
-              onClick={onSectionClick}
-              nestedLevel={1}
-            />
-          ))}
-        </>
+      <Dropdown value={Section.GENERATIONS} open={state.generation.length > 0}>
+        <MultiRangeSlider
+          min={0}
+          max={10}
+          minValue={+state.generation[0] || 0}
+          maxValue={+state.generation[1] || 10}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'generation')
+          }}
+        />
+      </Dropdown>
+      <Dropdown
+        value={Section.PRICE}
+        open={state.price.length > 0 || state.priceToken.length > 0}
+      >
+        <RadioRange
+          min={0}
+          max={1000}
+          minValue={+state.price[0] || 0}
+          maxValue={+state.price[1] || 1000}
+          onChange={({ min, max }) => {
+            handleStateChange(min, max, 'price')
+          }}
+          radioState={state.priceToken}
+          radioOptions={PRICE_TOKENS}
+          onRadioChange={(elem: string) => {
+            if (state.priceToken.indexOf(elem) > -1) {
+              const newArr = [...state.priceToken]
+              newArr.splice(newArr.indexOf(elem), 1)
+              setState({ ...state, priceToken: newArr })
+            } else {
+              const newArr = [elem]
+              setState({ ...state, priceToken: newArr })
+            }
+          }}
+        />
       </Dropdown>
       <Dropdown value={Section.ELEMENT_TYPE} open={state.elemTypes.length > 0}>
         <CheckboxContainer>
@@ -462,7 +483,7 @@ const NFTSections = (props: Props) => {
           ))}
         </CheckboxContainer>
       </Dropdown>
-      {/* <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
+      <Dropdown value={Section.SUPER} open={state.supers.length > 0}>
         <CheckboxContainer>
           {SUPERS.map(elem => (
             <Checkbox
@@ -482,7 +503,7 @@ const NFTSections = (props: Props) => {
             />
           ))}
         </CheckboxContainer>
-      </Dropdown> */}
+      </Dropdown>
       <Dropdown value={Section.AFFECTION} open={state.affection.length > 0}>
         <MultiRangeSlider
           min={0}
