@@ -44,15 +44,9 @@ const RadioRange: FC<Props> = ({
     callback?: ({ min, max }: { min?: number; max?: number }) => void
   ) => {
     const value = Math.max(+event.target.value, minVal)
-    if (value < max) {
-      setMaxVal(value)
-      event.target.value = value.toString()
-      callback && callback({ max: value })
-    } else {
-      setMaxVal(max)
-      event.target.value = max.toString()
-      callback && callback({ max })
-    }
+    setMaxVal(value)
+    event.target.value = value.toString()
+    callback && callback({ max: value })
   }
   const handleChange = ({ min, max }: { min?: number; max?: number }) => {
     onChange({ min: min || minVal, max: max || maxVal })

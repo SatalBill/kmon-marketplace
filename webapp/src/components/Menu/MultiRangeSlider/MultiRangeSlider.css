@@ -1,5 +1,6 @@
 .slider-container {
   padding-left: 8px;
+  min-height: 20px;
 }
 
 .slider {
@@ -111,7 +112,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 

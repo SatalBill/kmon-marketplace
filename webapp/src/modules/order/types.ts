@@ -13,6 +13,7 @@ export type Order = {
   tokenId: string
   owner: string
   buyer: string | null
+  priceUSD?: number
   price: string
   ethPrice?: string
   status: OrderStatus

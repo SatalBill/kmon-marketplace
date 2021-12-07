@@ -118,7 +118,7 @@ const NFTSidebar = (props: Props) => {
         onBrowse({ section, kryptomonStatus })
       }
     },
-    [onBrowse]
+    [onBrowse, kryptomonStatus]
   )
 
   const handleOnBrowseMultiple = useCallback(
@@ -134,7 +134,7 @@ const NFTSidebar = (props: Props) => {
         })
       }
     },
-    [onBrowse]
+    [onBrowse, kryptomonStatus]
   )
 
   switch (vendor) {

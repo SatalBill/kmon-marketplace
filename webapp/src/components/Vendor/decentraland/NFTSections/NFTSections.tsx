@@ -169,6 +169,7 @@ const NFTSections = (props: Props) => {
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'generation')
           }}
+          disableInputs
         />
       </Dropdown>
       <Dropdown
