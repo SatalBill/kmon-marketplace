@@ -11,6 +11,7 @@ import {
 import { orderAPI } from '../order'
 import { SEARCH_ARRAY_PARAM_SEPARATOR } from '../../../routing/search'
 import { toWei } from 'web3x-es/utils'
+import { getSortBy } from '../../../nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
@@ -61,9 +62,9 @@ class NFTAPI {
 
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
-    // if (params.orderBy) {
-    //   queryParams.append('sortBy', getSortBy(params.orderBy))
-    // }
+    if (params.orderBy) {
+      queryParams.append('sortBy', getSortBy(params.orderBy))
+    }
     if (params.category) {
       queryParams.append('category', params.category)
     }

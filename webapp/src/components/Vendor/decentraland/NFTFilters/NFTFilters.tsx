@@ -39,10 +39,7 @@ const NFTFilters = (props: Props) => {
   const [showFiltersModal, setShowFiltersModal] = useState(false)
 
   const category = section ? getSearchCategory(section) : undefined
-  const dropdownOptions = [
-    { value: SortBy.NEWEST, text: t('filters.newest') },
-    { value: SortBy.NAME, text: t('filters.name') }
-  ]
+  const dropdownOptions = [{ value: SortBy.NEWEST, text: t('filters.newest') }]
 
   if (onlyOnSale) {
     dropdownOptions.unshift({
@@ -171,7 +168,7 @@ const NFTFilters = (props: Props) => {
               placeholder={searchPlaceholder}
               onChange={handleSearch}
             />
-            {/* <Responsive
+            <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
               className="topbar-filter"
             >
@@ -181,7 +178,7 @@ const NFTFilters = (props: Props) => {
                 options={dropdownOptions}
                 onChange={handleDropdownChange}
               />
-            </Responsive> */}
+            </Responsive>
             <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
               className="topbar-filter"

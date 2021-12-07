@@ -4,4 +4,5 @@ export type Props = {
   minValue?: number
   maxValue?: number
   onChange: ({ min, max }: { min: number; max: number }) => void
+  disableInputs?: boolean
 }
