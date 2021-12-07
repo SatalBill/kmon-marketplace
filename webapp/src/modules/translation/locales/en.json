@@ -39,6 +39,10 @@
     "activity": "Activity",
     "lootboxes": "Lootboxes"
   },
+  "banner": {
+    "title": "Indexing delay",
+    "content": "All marketplace data is powered by Subgraphs which index blockchain data. Due to network congestion they are sometimes behind. Although you should be still able to buy, sell, bid and all, you will see delay in the marketplace displaying those actions. Please be patient."
+  },
   "menu": {
     "all": "All Assets",
     "popular": "Popular",
@@ -264,10 +268,10 @@
     "from": "From",
     "price": "Price",
     "time_left": "Time Left",
-    "not_enough_mana_on_bid_received": "The bidder doesn't have enough KMON to pay for this bid",
+    "not_enough_coin_on_bid_received": "The bidder doesn't have enough {coin} to pay for this bid",
     "invalid_fingerprint_on_bid_received": "This asset has been modified since this bid was made and it's not valid anymore",
     "invalid_seller": "You don't own this asset anymore",
-    "not_enough_mana_on_bid_placed": "You don't have enough KMON to pay for this bid",
+    "not_enough_coin_on_bid_placed": "You don't have enough {coin} to pay for this bid",
     "invalid_fingerprint_on_bid_placed": "This asset has been modified since this bid was made and it's not valid anymore unless you update it"
   },
   "transaction_history": {
@@ -356,7 +360,7 @@
     "price": "Price",
     "expiration_date": "Expiration date",
     "invalid_date": "This date has already passed",
-    "not_enougn_mana": "You don't have enough KMON",
+    "not_enough_coin": "You don't have enough {coin}",
     "submit": "Bid"
   },
   "my_bids_page": {
@@ -390,8 +394,11 @@
     "copied": "COPIED ✔",
     "authorization_error": "We couldn't load your authorizations, please try again",
     "authorization_error_contact": "If the error persist don't hesitate to contact us",
-    "for_buying": "For buying",
-    "for_bidding": "For bidding",
+    "for_buying_nft": "For buying",
+    "for_selling_or_approving": "For selling or approving NFT",
+    "for_bidding_with_kmon": "For bidding with KMON",
+    "for_bidding_with_wbnb": "For bidding with WBNB",
+    "for_buying_lootbox": "For buying lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "For selling",
     "pending_tx": "Transaction pending, click the spinner to go to your activity for a detailed status"

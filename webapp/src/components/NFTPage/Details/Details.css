@@ -32,6 +32,12 @@
   text-transform: uppercase;
 }
 
+.detail-nft-name {
+  color: #eb2f96;
+  font-family: var(--font-family);
+  font-size: 15px
+}
+
 .detail-medium-text {
   font-family: var(--font-monospace);
   font-size: 12px;

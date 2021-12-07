@@ -1,13 +1,12 @@
 import { Address } from 'web3x-es/address'
 import { Eth } from 'web3x-es/eth'
 import { getConnectedProvider } from '@kmon/dapps/dist/lib/eth'
-import { Network } from '@kmon/schemas'
+import { Coin } from '@kmon/schemas'
 import { KMONToken } from '../../contracts/KMONToken'
+import { WBNB } from '../../contracts/WBNB'
 import { Bid } from './types'
-import { getContractNames } from '../vendor'
-import { getContract } from '../contract/utils'
 
-export async function isInsufficientKMON(bid: Bid) {
+export async function isInsufficientCoin(bid: Bid, coin: Coin | null) {
   try {
     const provider = await getConnectedProvider()
     if (!provider) {
@@ -15,20 +14,25 @@ export async function isInsufficientKMON(bid: Bid) {
     }
     const eth = new Eth(provider)
 
-    const contractNames = getContractNames()
+    if (coin === Coin.KMON) {
+      const kmon = new KMONToken(eth, Address.fromString(bid.paymentToken))
+      const balance = await kmon.methods
+        .balanceOf(Address.fromString(bid.bidder))
+        .call()
 
-    const { address } = getContract({
-      name: contractNames.KMONToken,
-      network: Network.ETHEREUM
-    })
+      return +balance < +bid.price
+    } else if (coin === Coin.WBNB) {
+      const wbnb = new WBNB(eth, Address.fromString(bid.paymentToken))
+      const balance = await wbnb.methods
+        .balanceOf(Address.fromString(bid.bidder))
+        .call()
 
-    const kmon = new KMONToken(eth, Address.fromString(address))
+      return +balance < +bid.price
+    } else {
+      return false
+    }
 
-    const balance = await kmon.methods
-      .balanceOf(Address.fromString(bid.bidder))
-      .call()
-
-    return +balance < +bid.price
+    
   } catch (error) {
     // @ts-ignore
     console.warn(error.message)

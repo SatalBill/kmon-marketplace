@@ -20,6 +20,8 @@ import { buildContracts } from './modules/contract/utils'
 
 import './themes'
 import './index.css'
+import { WrappedApolloProvider } from './components/WrappedApolloProvider'
+import { Banner } from './components/Banner'
 
 async function main() {
   await buildContracts()
@@ -30,8 +32,11 @@ async function main() {
         <ToastProvider>
           <WalletProvider>
             <ConnectedRouter history={history}>
-              <ScrollToTop />
-              <Routes />
+              <WrappedApolloProvider>
+                <Banner />
+                <ScrollToTop />
+                <Routes />
+              </WrappedApolloProvider>
             </ConnectedRouter>
           </WalletProvider>
         </ToastProvider>

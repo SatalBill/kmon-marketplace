@@ -38,6 +38,8 @@ export class BidService
     wallet: Wallet | null,
     nft: NFT,
     price: number,
+    // @ts-ignore
+    paymentToken: string,
     expiresAt: number,
     fingerprint?: string
   ) {

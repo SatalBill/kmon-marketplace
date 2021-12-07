@@ -14,7 +14,9 @@ export enum ContractName {
   KMONToken = 'KMON',
   MARKETPLACE = 'Marketplace',
   ERC721Bid = 'ERC721Bid',
-  Lootbox = 'Lootbox'
+  Lootbox = 'Lootbox',
+  WBNB = 'WBNB',
+  KMONFT = 'KMONFT'
 }
 
 const contracts = ({
@@ -24,7 +26,7 @@ const contracts = ({
       address: getContract(CN.KMONToken, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -32,7 +34,7 @@ const contracts = ({
       address: getContract(CN.ERC721Bid, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -40,7 +42,7 @@ const contracts = ({
       address: getContract(CN.Marketplace, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
@@ -48,11 +50,76 @@ const contracts = ({
       address: getContract(CN.Lootbox, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
-      network: Network.ETHEREUM,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_RINKEBY
+    },
+    {
+      name: ContractName.WBNB,
+      address: getContract(CN.WBNB, ChainId.ETHEREUM_RINKEBY).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.ETHEREUM_RINKEBY
+    },
+    {
+      name: ContractName.KMONFT,
+      address: getContract(CN.KMONFT, ChainId.ETHEREUM_RINKEBY).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
       chainId: ChainId.ETHEREUM_RINKEBY
     }
   ],
-  [AppNetwork.BSC_MAINNET]: [],
+  [AppNetwork.BSC_MAINNET]: [
+    {
+      name: ContractName.KMONToken,
+      address: getContract(CN.KMONToken, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.ERC721Bid,
+      address: getContract(CN.ERC721Bid, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.MARKETPLACE,
+      address: getContract(CN.Marketplace, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.Lootbox,
+      address: getContract(CN.Lootbox, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.WBNB,
+      address: getContract(CN.WBNB, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    },
+    {
+      name: ContractName.KMONFT,
+      address: getContract(CN.KMONFT, ChainId.BSC_MAINNET).address,
+      vendor: 'kryptomon',
+      category: null,
+      network: Network.BSC,
+      chainId: ChainId.BSC_MAINNET
+    }
+  ],
   [AppNetwork.BSC_TESTNET]: []
 } as Record<AppNetwork, Contract[]>)[network]
 

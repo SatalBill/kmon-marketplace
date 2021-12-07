@@ -52,6 +52,7 @@ type Bid @entity {
   bidder: Bytes
   seller: Bytes
   price: BigInt!
+  paymentToken: Bytes!
   fingerprint: Bytes
   status: OrderStatus!
   blockchainId: String!
@@ -74,6 +75,7 @@ type Kryptomon @entity {
   sireId: BigInt
   status: BigInt 
   timeBorn: BigInt
+  timeHatched: BigInt
   extraData: KryptomonExtraData
   genes: KryptomonGenes
   elementType: String

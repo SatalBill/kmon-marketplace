@@ -6,15 +6,9 @@ import { Row } from '../Layout/Row'
 
 const NFTDetailCard = (props: Props) => {
   const { nft, elementType } = props
-  const date = nft.metadata.attributes?.find(
-    elem => elem.trait_type === 'Birthday'
-  )?.value
-  const dateArr = date ? date.toString().split('-') : []
-  const formattedDate = new Date(+dateArr[2], +dateArr[1], +dateArr[0])
-  const month = formattedDate.toLocaleString('default', { month: 'short' })
-  const day = dateArr[0]
-  const year = dateArr[2]
-  const laid = `${month} ${day} ${year}`
+  const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000;
+  var options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options);
 
   return (
     <div className="card">

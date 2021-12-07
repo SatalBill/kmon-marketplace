@@ -26,7 +26,7 @@ const BuyPage = (props: Props) => {
   const isInsufficientCoin = (wallet: Wallet, order: Order | null) => {
     if (order === null) return false
     if (order.paymentToken === Address.ZERO.toString()) {
-      return wallet.networks[Network.BSC].coinBalance < +fromWei(order.price, 'ether')
+      return wallet.networks[Network.BSC].bnbBalance < +fromWei(order.price, 'ether')
     } else {
       return wallet.networks[Network.BSC].kmonBalance < +fromWei(order.price, 'ether')
     }

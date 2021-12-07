@@ -137,9 +137,10 @@ a.ui.card.link:hover .meta {
 
 .product-type-price-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .product-type-price {
+  height: 23px;
   background-color: #39c876;
   padding: 2px 10px;
   color: #232123;

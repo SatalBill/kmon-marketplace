@@ -7,6 +7,7 @@ export type Props = {
   status?: {
     showPrice?: boolean
     showPriceBottom?: boolean
+    showPriceTopLeft?: boolean
   }
 }
 

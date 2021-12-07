@@ -28,12 +28,12 @@ const NFTList = (props: Props) => {
       <Card.Group>
         {nfts.length > 0
           ? nfts.map((nft, index) => (
-              <NFTCard
-                key={nft.id + '-' + index}
-                nft={nft}
-                status={{ showPriceBottom: true }}
-              />
-            ))
+            <NFTCard
+              key={nft.id + '-' + index}
+              nft={nft}
+              status={{ showPrice: true }}
+            />
+          ))
           : null}
 
         {isLoading ? (
@@ -50,7 +50,7 @@ const NFTList = (props: Props) => {
 
       {nfts.length > 0 && hasExtraPages && (!isLoading || isLoadingNewPage) ? (
         <div className="load-more">
-          <Button loading={isLoading} inverted primary onClick={handleLoadMore}>
+          <Button loading={isLoading} primary onClick={handleLoadMore}>
             {t('global.load_more')}
           </Button>
         </div>

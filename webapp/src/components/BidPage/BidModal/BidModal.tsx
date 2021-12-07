@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Coin, Network } from '@kmon/schemas'
 import { Header, Form, Field, Button } from '@kmon/ui'
 import { ContractName } from '@kmon/transactions'
@@ -35,38 +35,33 @@ const BidModal = (props: Props) => {
   const [price, setPrice] = useState('')
   const [expiresAt, setExpiresAt] = useState(getDefaultExpirationDate())
   const [paymentCoin, setPaymentCoin] = useState(Coin.KMON)
-
   const [fingerprint, isLoading] = useFingerprint(nft)
-
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
-  const handlePlaceBid = useCallback(
-    () => onPlaceBid(nft, fromCoin(price, paymentCoin), +new Date(expiresAt), fingerprint),
-    [nft, price, expiresAt, fingerprint, onPlaceBid]
-  )
+  const contractNames = getContractNames()
+  const kmon = getContract({
+    name: contractNames.KMONToken
+  })
+  const wbnb = getContract({
+    name: contractNames.WBNB
+  })
+  const handlePlaceBid = useCallback(() => {
+    const coinAddress = paymentCoin === Coin.KMON ? kmon.address : wbnb.address
+    onPlaceBid(nft, fromCoin(price, paymentCoin), coinAddress, +new Date(expiresAt), fingerprint)
+  }, [nft, price, paymentCoin, expiresAt, fingerprint, onPlaceBid])
 
   if (!wallet) {
     return null
   }
-
-  const contractNames = getContractNames()
-
-  const kmon = getContract({
-    name: contractNames.KMONToken,
-    network: nft.network
-  })
-
   const erc721Bid = getContract({
-    name: contractNames.ERC721Bid,
-    network: nft.network
+    name: contractNames.ERC721Bid
   })
-
   const authorization: Authorization = {
     address: wallet.address,
     authorizedAddress: erc721Bid.address,
-    contractAddress: kmon.address,
-    contractName: ContractName.KMONToken,
-    chainId: kmon.chainId,
+    contractAddress: paymentCoin === Coin.KMON ? kmon.address : wbnb.address,
+    contractName: paymentCoin === Coin.KMON ? ContractName.KMONToken : ContractName.WBNB,
+    chainId: paymentCoin === Coin.KMON ? kmon.chainId : wbnb.chainId,
     type: AuthorizationType.ALLOWANCE
   }
 
@@ -84,9 +79,10 @@ const BidModal = (props: Props) => {
   const hasInsufficientCoin = (): boolean => {
     if (paymentCoin === Coin.KMON) {
       return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].kmonBalance
-    } else {
-      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].coinBalance
+    } else if (paymentCoin === Coin.WBNB) {
+      return !!price && !!wallet && fromCoin(price, paymentCoin) > wallet.networks[Network.BSC].wbnbBalance
     }
+    return false
   }
 
   return (
@@ -103,7 +99,7 @@ const BidModal = (props: Props) => {
       <Form onSubmit={handleSubmit}>
         <div className="form-fields">
           <CoinSelectField
-            coin={Coin.BNB}
+            coin={Coin.WBNB}
             onChangeCoin={(c) => setPaymentCoin(c)}
             defaultCoin={paymentCoin}
           />
@@ -113,7 +109,7 @@ const BidModal = (props: Props) => {
             placeholder={toCoin(1000)}
             value={price}
             onChange={(_event, props) => {
-              if (paymentCoin === Coin.BNB) {
+              if (paymentCoin === Coin.WBNB) {
                 setPrice(props.value)
               } else {
                 const newPrice = fromCoin(props.value, paymentCoin)
@@ -122,11 +118,10 @@ const BidModal = (props: Props) => {
             }}
             error={hasInsufficientCoin()}
             message={
-              hasInsufficientCoin() ? t('bid_page.not_enougn_mana') : undefined
+              hasInsufficientCoin() ? t('bid_page.not_enough_coin', { coin: paymentCoin }) : undefined
             }
           />
           <Field
-            network={Network.ETHEREUM}
             label={t('bid_page.expiration_date')}
             type="date"
             value={expiresAt}

@@ -10,12 +10,9 @@ import { buildKryptomonFromNFT, ElementData, getKryptomonTokenURI, typeFormatted
 import { buildCountFromNFT } from "../modules/count"
 
 export function handleBirth(event: Birth): void {
-  log.warning('handleBirth', [])
   let kryptomonId = event.params.kryptomonId.toString()
 
   let id = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonId)
-
-  log.warning('id: ' + id, [])
 
   let kryptomon = new Kryptomon(id)
 
@@ -111,15 +108,10 @@ export function handleBirth(event: Birth): void {
     elementBreakDown[i].percentage = elementBreakDown[i].valueName.times(BigInt.fromString("100")).div(totalSum)
   }
 
-  log.warning('selectingType', [])
   let typeSelected = indexOfMax(typeDraft);
-  log.warning('typeSelected', [typeSelected.toString()])
   kryptomon.elementType = typeFormatted[typeSelected.toI32()];
-  log.warning('elementTalent', [])
   kryptomon.elementTalent = typeDraft[typeSelected.toI32()];
-  log.warning('percentage', [])
   const percentage = kryptomon.elementTalent.times(BigInt.fromString("100")).div(totalSum);
-  log.warning('elementPercentage', [])
   kryptomon.elementPercentage = percentage
 
   if (genes.attack.times(BigInt.fromString("10")).gt(genes.defense.times(BigInt.fromString("11")))) {
@@ -131,17 +123,14 @@ export function handleBirth(event: Birth): void {
   }
 
   kryptomon.save()
-  log.warning('kryptomon saved', [])
-
-  log.warning('saving nft', [])
   let nft = new NFT(id)
   nft.name = kryptomonId
   nft.contractAddress = event.address
   nft.tokenId = event.params.kryptomonId
   nft.category = categories.KRYPTOMON
   nft.owner = event.params.owner.toHex()
-  nft.tokenURI = getKryptomonTokenURI(kryptomon);
   nft.kryptomon = kryptomon.id;
+  nft.tokenURI = getKryptomonTokenURI(kryptomon);
   nft.searchText = ''
   nft.createdAt = event.block.timestamp
   nft.updatedAt = event.block.timestamp
@@ -191,10 +180,7 @@ export function handleBirth(event: Birth): void {
 
   nft.save()
 
-  log.warning('nft saved', [])
-
   createAccount(event.params.owner)
-  log.warning('createAccount saved', [])
 }
 
 export function handleHatching(event: EggHatched): void {
@@ -208,6 +194,8 @@ export function handleHatching(event: EggHatched): void {
 
   let kryptomon = Kryptomon.load(id);
   kryptomon.status = status;
+  kryptomon.isHatched = true;
+  kryptomon.timeHatched = event.block.timestamp;
   kryptomon.save();
 }
 

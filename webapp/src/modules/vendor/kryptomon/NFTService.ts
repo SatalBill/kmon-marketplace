@@ -34,9 +34,12 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
       ).then(resp => resp.json())
       result.nft.metadata = metadata
 
-      nfts.push({ ...result.nft, vendor: VendorName.KRYPTOMON })
-      if (result.order) {
-        orders.push(result.order)
+      if (metadata.image !== undefined) {
+        nfts.push({ ...result.nft, vendor: VendorName.KRYPTOMON })
+
+        if (result.order) {
+          orders.push(result.order)
+        }
       }
     }
 

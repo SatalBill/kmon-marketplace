@@ -3,7 +3,8 @@ import { spawn, SpawnOptions } from 'child_process'
 enum Network {
   MAINNET = 'mainnet',
   ROPSTEN = 'ropsten',
-  RINKEBY = 'rinkeby'
+  RINKEBY = 'rinkeby',
+  BSC = 'bsc'
 }
 
 const graphByNetwork: Record<Network, string> = {
@@ -11,18 +12,22 @@ const graphByNetwork: Record<Network, string> = {
   [Network.ROPSTEN]:
     process.env.GRAPH_NAME || 'kryptomon/marketplace-ropsten',
   [Network.RINKEBY]:
-    process.env.GRAPH_NAME || 'kryptomon-marketplace-rinkeby'
+    process.env.GRAPH_NAME || 'kryptomon-rinkeby',
+  [Network.BSC]:
+    process.env.GRAPH_NAME || 'kryptomondao/kryptomon'
 }
 
 // TODO: Handle ctrl+C
 async function deploy() {
   const network = getNetwork()
+  console.log(network);
+  console.log(graphByNetwork[network])
   await run(
     `npx`,
     [
       'graph',
       'deploy',
-      '--studio',
+      '--product hosted-service',
       graphByNetwork[network]
     ],
     {

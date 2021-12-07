@@ -23,3 +23,8 @@
   margin: auto;
   max-height: 100%;
 }
+
+.LootboxCard .Image .image {
+  margin-top: 8%;
+  max-height: 75%;
+}

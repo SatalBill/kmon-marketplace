@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router'
 import { ChainId } from '@kmon/schemas'
 import { getChainId } from '@kmon/dapps/dist/modules/wallet/selectors'
-import { takeEvery, put, select, call } from 'redux-saga/effects'
+import { takeEvery, put, select, call, all } from 'redux-saga/effects'
 import {
   PLACE_BID_REQUEST,
   PlaceBidRequestAction,
@@ -43,19 +43,20 @@ export function* bidSaga() {
 }
 
 function* handlePlaceBidRequest(action: PlaceBidRequestAction) {
-  const { nft, price, expiresAt, fingerprint } = action.payload
+  const { nft, price, paymentToken, expiresAt, fingerprint } = action.payload
   try {
     const { bidService } = VendorFactory.build(nft.vendor)
 
     const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
     const txHash: string = yield call(() =>
-      bidService!.place(wallet, nft, price, expiresAt, fingerprint)
+      bidService!.place(wallet, nft, price, paymentToken, expiresAt, fingerprint)
     )
     const chainId: ChainId = yield select(getChainId)
     yield put(
       placeBidSuccess(
         nft,
         price,
+        paymentToken,
         expiresAt,
         chainId,
         txHash,
@@ -66,7 +67,7 @@ function* handlePlaceBidRequest(action: PlaceBidRequestAction) {
     yield put(push(locations.activity()))
   } catch (error) {
     // @ts-ignore
-    yield put(placeBidFailure(nft, price, expiresAt, error, fingerprint))
+    yield put(placeBidFailure(nft, price, paymentToken, expiresAt, error, fingerprint))
   }
 }
 
@@ -130,14 +131,10 @@ function* handleFetchBidsByAddressRequest(
         continue
       }
 
-      const bids: [Bid[], Bid[]] = yield call(() =>
-        Promise.all([
-          bidService.fetchBySeller(address),
-          bidService.fetchByBidder(address)
-        ])
-      )
-      sellerBids = sellerBids.concat(bids[0])
-      bidderBids = bidderBids.concat(bids[1])
+      [sellerBids, bidderBids] = yield all([
+        bidService.fetchBySeller(address),
+        bidService.fetchByBidder(address)
+      ])
     }
 
     yield put(fetchBidsByAddressSuccess(address, sellerBids, bidderBids))

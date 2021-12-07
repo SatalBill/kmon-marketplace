@@ -146,10 +146,10 @@
     "from": "从",
     "price": "价格",
     "time_left": "剩下时间",
-    "not_enough_mana_on_bid_received": "投标人没有足够的MANA来支付此投标",
+    "not_enough_coin_on_bid_received": "投标人没有足够的{coin}来支付此投标",
     "invalid_fingerprint_on_bid_received": "此资产自此出价以来已被修改，因此不再有效",
     "invalid_seller": "您不再拥有此资产",
-    "not_enough_mana_on_bid_placed": "您没有足够的MANA来支付此出价",
+    "not_enough_coin_on_bid_placed": "您没有足够的{coin}来支付此出价",
     "invalid_fingerprint_on_bid_placed": "此资产自出价后就已被修改，除非您对其进行更新，否则它将不再有效"
   },
   "transaction_history": {
@@ -238,7 +238,7 @@
     "price": "价格",
     "expiration_date": "截止日期",
     "invalid_date": "这个日期已过期",
-    "not_enougn_mana": "您没有足够的MANA",
+    "not_enough_coin": "您没有足够的{coin}",
     "submit": "出价"
   },
   "my_bids_page": {

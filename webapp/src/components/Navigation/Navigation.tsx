@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Tabs, Responsive } from '@kmon/ui'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+
 import { locations } from '../../modules/routing/locations'
 import { Props, NavigationTab } from './Navigation.types'
 
@@ -15,7 +16,7 @@ const Navigation = (props: Props) => {
             {t('navigation.collectibles')}
           </Tabs.Tab>
         </Link>
-        <Link to={locations.kryptomons()}>
+        <Link to={locations.kryptomons() + "?kryptomonStatus=1"}>
           <Tabs.Tab active={activeTab === NavigationTab.KRYPTOMONS}>
             {t('navigation.kryptomons')}
           </Tabs.Tab>
