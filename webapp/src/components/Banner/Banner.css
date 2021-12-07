@@ -1,0 +1,10 @@
+.Banner {
+  background: linear-gradient(#D7319E, #6331F2);
+}
+.Banner .ui.container {
+  padding: 3px 0;
+}
+.Banner .indexing-delay {
+  font-weight: 600;
+  font-family: var(--font-family);
+}

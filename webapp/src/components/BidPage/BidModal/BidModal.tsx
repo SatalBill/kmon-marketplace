@@ -109,7 +109,7 @@ const BidModal = (props: Props) => {
             placeholder={toCoin(1000)}
             value={price}
             onChange={(_event, props) => {
-              if (paymentCoin === Coin.BNB) {
+              if (paymentCoin === Coin.WBNB) {
                 setPrice(props.value)
               } else {
                 const newPrice = fromCoin(props.value, paymentCoin)
