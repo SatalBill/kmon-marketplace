@@ -6,7 +6,6 @@ export const locations = {
   signIn: () => '/sign-in',
   settings: () => '/settings',
   partners: () => '/partners',
-  // kryptomons: () => '/kryptomons',
   items: () => '/items',
   bids: () => '/bids',
   browse: (options?: SearchOptions) => {

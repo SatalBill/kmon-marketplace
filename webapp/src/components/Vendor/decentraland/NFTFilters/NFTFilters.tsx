@@ -39,13 +39,15 @@ const NFTFilters = (props: Props) => {
   const [showFiltersModal, setShowFiltersModal] = useState(false)
 
   const category = section ? getSearchCategory(section) : undefined
-  const dropdownOptions = [{ value: SortBy.NEWEST, text: t('filters.newest') }]
-
-  if (onlyOnSale) {
-    dropdownOptions.unshift({
+  const dropdownOptions = [
+    { value: SortBy.NEWEST, text: t('filters.newest') },
+    {
       value: SortBy.RECENTLY_LISTED,
       text: t('filters.recently_listed')
-    })
+    }
+  ]
+
+  if (onlyOnSale) {
     dropdownOptions.unshift({
       value: SortBy.CHEAPEST,
       text: t('filters.cheapest')
