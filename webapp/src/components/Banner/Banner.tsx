@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useQuery, gql } from '@apollo/client';
 import { getConnectedProvider } from '@kmon/dapps/dist/lib/eth'
 import { Eth } from 'web3x-es/eth'
-import { Popup } from '@kmon/ui'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+
+import { Props } from './Banner.types'
+import './Banner.css'
 
 const getSubgraphBlockQuery = gql`
   {
@@ -32,9 +34,11 @@ const convertTime = (secondsData: number): string => {
   return `${seconds}s`
 }
 
-const IndexingDelay = () => {
+const Banner = (props: Props) => {
   const [indexingDelay, setIndexingDelay] = useState<string | null>(null)
   const { data: subgraphBlock, refetch: fetchSubgraphBlock } = useQuery(getSubgraphBlockQuery)
+
+  const showMessage = props.isSignedIn && indexingDelay
 
   useEffect(() => {
     let interval: any
@@ -54,12 +58,13 @@ const IndexingDelay = () => {
       console.warn('Could not connect to network')
       return
     }
-
+    
     const eth = new Eth(provider)
     const subgraphTimestamp = (await eth.getBlock(subgraphBlockNumber)).timestamp
     const currentBlockNumber = await eth.getBlockNumber()
     const currentTimestamp = (await eth.getBlock(currentBlockNumber)).timestamp
     const delay = currentTimestamp - subgraphTimestamp
+    console.log(currentTimestamp, subgraphTimestamp, delay)
     if (delay > 60) {
       setIndexingDelay(convertTime(delay))
     } else {
@@ -68,17 +73,14 @@ const IndexingDelay = () => {
   }
 
   return (
-    <>
-      {indexingDelay && (
-          <Popup
-            content={t('navigation.indexing_delay.tooltip')}
-            position="top center"
-            trigger={<span>{t('navigation.indexing_delay.title')}: {indexingDelay}</span>}
-            on="hover"
-          />
-        )}
-    </>
+    <div className="Banner">
+      {showMessage && (
+        <div className="ui container">
+          <span className="indexing-delay">{t('banner.title')}: {indexingDelay}</span> {t('banner.content')}
+        </div>
+      )}
+    </div>
   )
 }
 
-export default React.memo(IndexingDelay)
+export default React.memo(Banner)
