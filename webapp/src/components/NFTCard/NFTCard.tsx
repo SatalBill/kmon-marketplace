@@ -94,8 +94,8 @@ const NFTCard = (props: Props) => {
               />
               {order?.price ? (
                 <div className="product-type-price">
-                  {order.price && formatCoin(order.price)} {coin} (
-                  {order.priceUSD && order.priceUSD}$)
+                  {order.price && formatCoin(order.price)} {coin}
+                  {order.priceUSD && ` (${order.priceUSD}$)`}
                 </div>
               ) : null}
             </div>
@@ -112,8 +112,8 @@ const NFTCard = (props: Props) => {
                 <div className="product-type-price-container">
                   {status.showPriceBottom && order?.price ? (
                     <div className="product-type-price">
-                      {order.price && formatCoin(order.price)} {coin} (
-                      {order.priceUSD && order.priceUSD}$)
+                      {order.price && formatCoin(order.price)} {coin}
+                      {order.priceUSD && ` (${order.priceUSD}$)`}
                     </div>
                   ) : null}
                 </div>

@@ -140,7 +140,8 @@ a.ui.card.link:hover .meta {
   justify-content: space-between;
 }
 .product-type-price {
-  height: 23px;
+  height: fit-content;
+  margin-left: 10px;
   background-color: #39c876;
   padding: 2px 10px;
   color: #232123;
