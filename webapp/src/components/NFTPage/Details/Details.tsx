@@ -9,7 +9,8 @@ import { formatCoin } from '../../../lib/kmon'
 
 const Details = (props: Props) => {
   const { nft, order } = props
-  const coin = order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
+  const coin =
+    order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
   return (
     <div className="details-container">
       <div className="profile-container">
@@ -32,10 +33,14 @@ const Details = (props: Props) => {
           <DetailItem title="Price">
             <p className="detail-medium-text">
               {order?.price && formatCoin(order.price)} {coin}
+              {order?.priceUSD && ` (${order.priceUSD}$)`}
             </p>
           </DetailItem>
         )}
       </div>
+      <DetailItem title="Network">
+        <p className="detail-medium-text">{nft.network}</p>
+      </DetailItem>
       <Actions nft={nft} />
     </div>
   )
