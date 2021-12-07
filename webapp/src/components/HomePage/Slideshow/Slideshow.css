@@ -13,7 +13,7 @@
     rgba(35, 33, 35, 0.3) 80%,
     rgba(35, 33, 35, 0)
   );
-  content: "";
+  content: '';
   display: block;
   height: 100%;
   position: absolute;
@@ -39,7 +39,7 @@
 .Slideshow .nfts .NFTCard,
 .Slideshow .nfts .ui.card.NFTCard:first-child {
   flex: 0 0 auto;
-  width: 190px;
+  width: 220px;
   margin-right: 20px;
   height: 280px;
   margin-top: 12px;
