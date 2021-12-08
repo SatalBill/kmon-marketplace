@@ -64,7 +64,6 @@ const Banner = (props: Props) => {
     const currentBlockNumber = await eth.getBlockNumber()
     const currentTimestamp = (await eth.getBlock(currentBlockNumber)).timestamp
     const delay = currentTimestamp - subgraphTimestamp
-    console.log(currentTimestamp, subgraphTimestamp, delay)
     if (delay > 60) {
       setIndexingDelay(convertTime(delay))
     } else {
