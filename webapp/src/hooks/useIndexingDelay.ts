@@ -29,7 +29,7 @@ export const useIndexingDelay = (subgraphBlockNumber: number | undefined, isSign
     const subgraphTimestamp = (await eth.getBlock(subgraphBlockNumber as number)).timestamp
     const currentBlockNumber = await eth.getBlockNumber()
     const currentTimestamp = (await eth.getBlock(currentBlockNumber)).timestamp
-    const delay = currentTimestamp - subgraphTimestamp + 100
+    const delay = currentTimestamp - subgraphTimestamp
 
     if (delay > 60) {
       setShowIndexingDelay(true)
