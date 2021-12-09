@@ -1,8 +1,8 @@
 .Banner {
-  background: #6331F2;
+  background: var(--primary);
 }
 .Banner .ui.container {
-  padding: 3px 0;
+  padding: 6px 0 5px;
 }
 .Banner .indexing-delay {
   font-weight: 600;
