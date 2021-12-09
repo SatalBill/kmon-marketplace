@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
 import { isLoadingType } from '@kmon/dapps/dist/modules/loading/selectors'
+import {
+  isConnected
+} from '@kmon/dapps/dist/modules/wallet/selectors'
 
 import { RootState } from '../../modules/reducer'
 import { FETCH_NFTS_REQUEST } from '../../modules/nft/actions'
@@ -9,13 +12,16 @@ import { getVendor, getPage } from '../../modules/routing/selectors'
 import { getLoading } from '../../modules/nft/selectors'
 import { MapStateProps, MapDispatch, MapDispatchProps } from './NFTList.types'
 import NFTList from './NFTList'
+import { getSubgraphBlockNumber } from '../../modules/subgraph/selectors'
 
 const mapState = (state: RootState): MapStateProps => ({
   vendor: getVendor(state),
   nfts: getNFTs(state),
   page: getPage(state),
   count: getCount(state),
-  isLoading: isLoadingType(getLoading(state), FETCH_NFTS_REQUEST)
+  subgraphBlockNumber: getSubgraphBlockNumber(state),
+  isLoading: isLoadingType(getLoading(state), FETCH_NFTS_REQUEST),
+  isSignedIn: isConnected(state),
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

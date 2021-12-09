@@ -19,6 +19,7 @@ import { tileReducer as tile } from './tile/reducer'
 import { uiReducer as ui } from './ui/reducer'
 import { lootboxPriceReducer as lootboxPrice } from './lootbox_price/reducer'
 import { lootboxReducer as lootbox } from './lootbox/reducer'
+import { subgraphReducer as subgraph } from './subgraph/reducer'
 
 export const createRootReducer = (history: History) =>
   combineReducers({
@@ -39,7 +40,8 @@ export const createRootReducer = (history: History) =>
     ui,
     wallet,
     lootbox,
-    lootboxPrice
+    lootboxPrice,
+    subgraph
   })
 
 export type RootState = ReturnType<ReturnType<typeof createRootReducer>>
