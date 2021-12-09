@@ -16,7 +16,7 @@ const MultiRangeSlider: FC<Props> = ({
   minValue,
   maxValue,
   onChange,
-  disableInputs
+  isInteger
 }) => {
   const [minVal, setMinVal] = useState(minValue ? minValue : min)
   const [maxVal, setMaxVal] = useState(maxValue ? maxValue : max)
@@ -56,7 +56,8 @@ const MultiRangeSlider: FC<Props> = ({
     event: ChangeEvent<HTMLInputElement>,
     callback?: ({ min, max }: { min?: number; max?: number }) => void
   ) => {
-    const value = Math.min(+event.target.value, maxVal)
+    const formattedValue = Math.min(+event.target.value, maxVal)
+    const value = isInteger ? Math.round(formattedValue) : formattedValue
     if (value > min) {
       setMinVal(value)
       event.target.value = value.toString()
@@ -71,7 +72,8 @@ const MultiRangeSlider: FC<Props> = ({
     event: ChangeEvent<HTMLInputElement>,
     callback?: ({ min, max }: { min?: number; max?: number }) => void
   ) => {
-    const value = Math.max(+event.target.value, minVal)
+    const formattedValue = Math.max(+event.target.value, minVal)
+    const value = isInteger ? Math.round(formattedValue) : formattedValue
     if (value < max) {
       setMaxVal(value)
       event.target.value = value.toString()
@@ -114,34 +116,32 @@ const MultiRangeSlider: FC<Props> = ({
       <div className="slider">
         <div className="slider__track"></div>
         <div ref={range} className="slider__range"></div>
-        {!disableInputs && (
-          <div className="inputs">
-            <div className="input-container">
-              <label htmlFor="min">Min</label>
-              <input
-                type="number"
-                id="min"
-                className="input"
-                value={minVal}
-                onChange={event => {
-                  handleMinChange(event, handleChange)
-                }}
-              />
-            </div>
-            <div className="input-container">
-              <label htmlFor="max">Max</label>
-              <input
-                type="number"
-                id="max"
-                className="input"
-                value={maxVal}
-                onChange={event => {
-                  handleMaxChange(event, handleChange)
-                }}
-              />
-            </div>
+        <div className="inputs">
+          <div className="input-container">
+            <label htmlFor="min">Min</label>
+            <input
+              type="number"
+              id="min"
+              className="input"
+              value={minVal}
+              onChange={event => {
+                handleMinChange(event, handleChange)
+              }}
+            />
           </div>
-        )}
+          <div className="input-container">
+            <label htmlFor="max">Max</label>
+            <input
+              type="number"
+              id="max"
+              className="input"
+              value={maxVal}
+              onChange={event => {
+                handleMaxChange(event, handleChange)
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   )
