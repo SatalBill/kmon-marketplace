@@ -23,3 +23,8 @@ export const SEX_TO_REQ: Record<string, string> = {
   Female: '5',
   Male: '6'
 }
+
+export const STATUS_TO_REQ: Record<string, string> = {
+  Egg: '0',
+  Hatched: '1'
+}

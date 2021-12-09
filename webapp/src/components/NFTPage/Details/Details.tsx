@@ -33,7 +33,7 @@ const Details = (props: Props) => {
           <DetailItem title="Price">
             <p className="detail-medium-text">
               {order?.price && formatCoin(order.price)} {coin}
-              {order?.priceUSD && ` (${order.priceUSD}$)`}
+              {order?.priceUSD && ` ($${order.priceUSD})`}
             </p>
           </DetailItem>
         )}

@@ -52,6 +52,7 @@ export type MultipleFilters = {
   special?: string[]
   price?: string[]
   priceToken?: string[]
+  kryptomonStatus?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -103,10 +104,9 @@ const NFTSidebar = (props: Props) => {
     elementPercentage,
     special,
     price,
-    priceToken
+    priceToken,
+    kryptomonStatus
   } = props
-
-  const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
 
   const handleOnBrowse = useCallback(
     (section: Section) => {
@@ -115,10 +115,10 @@ const NFTSidebar = (props: Props) => {
           section
         })
       } else {
-        onBrowse({ section, kryptomonStatus })
+        onBrowse({ section })
       }
     },
-    [onBrowse, kryptomonStatus]
+    [onBrowse]
   )
 
   const handleOnBrowseMultiple = useCallback(
@@ -129,12 +129,11 @@ const NFTSidebar = (props: Props) => {
         })
       } else {
         onBrowse({
-          ...data,
-          kryptomonStatus
+          ...data
         })
       }
     },
-    [onBrowse, kryptomonStatus]
+    [onBrowse]
   )
 
   switch (vendor) {
@@ -201,6 +200,7 @@ const NFTSidebar = (props: Props) => {
           special={special}
           price={price}
           priceToken={priceToken}
+          kryptomonStatus={kryptomonStatus}
         />
       )
   }

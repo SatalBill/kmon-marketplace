@@ -26,7 +26,8 @@ import {
   getSkinType,
   getWater,
   getArrayByType,
-  getGeneration
+  getGeneration,
+  getKryptomonStatus
 } from '../../../modules/routing/selectors'
 import {
   MapStateProps,
@@ -83,7 +84,8 @@ const mapState = (state: RootState): MapStateProps => ({
   elementPercentage: getArrayByType('elementPercentage')(state),
   special: getArrayByType('special')(state),
   price: getArrayByType('price')(state),
-  priceToken: getArrayByType('priceToken')(state)
+  priceToken: getArrayByType('priceToken')(state),
+  kryptomonStatus: getKryptomonStatus(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

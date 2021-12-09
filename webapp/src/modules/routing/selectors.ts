@@ -142,9 +142,9 @@ export const getNetwork = createSelector<
   search => (getURLParam(search, 'network') as Network) || undefined
 )
 
-export const getKryptomonStatus = createSelector<RootState, string, string>(
+export const getKryptomonStatus = createSelector<RootState, string, string[]>(
   getRouterSearch,
-  search => getURLParam(search, 'kryptomonStatus') || ''
+  search => getURLParamArray<string>(search, 'kryptomonStatus')
 )
 
 export const getElemTypes = createSelector<RootState, string, string[]>(
