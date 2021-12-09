@@ -35,7 +35,6 @@ const NFTBrowse = (props: Props) => {
 
   useEffect(() => {
     if (viewInState === view) {
-      const kryptomonStatus = pathname === '/kryptomons' ? '1' : '0'
       if (pathname === '/account') {
         onFetchNFTsFromRoute({
           vendor,
@@ -48,8 +47,7 @@ const NFTBrowse = (props: Props) => {
           vendor,
           view,
           address,
-          onlyOnSale,
-          kryptomonStatus
+          onlyOnSale
         })
       }
     }

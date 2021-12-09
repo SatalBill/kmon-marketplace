@@ -9,7 +9,7 @@ export const SEARCH_ARRAY_PARAM_SEPARATOR = '_'
 export function getDefaultOptionsByView(view?: View): SearchOptions {
   return {
     onlyOnSale: false,
-    sortBy: view === View.ACCOUNT ? SortBy.NEWEST : SortBy.RECENTLY_LISTED
+    sortBy: view === View.ACCOUNT ? SortBy.NEWEST : SortBy.NEWEST
   }
 }
 
@@ -64,8 +64,12 @@ export function getSearchParams(options?: SearchOptions) {
     if (options.network && Object.values(Network).includes(options.network)) {
       params.set('network', options.network)
     }
-    if (options.kryptomonStatus) {
-      params.set('kryptomonStatus', options.kryptomonStatus.toString())
+
+    if (options.kryptomonStatus && options.kryptomonStatus.length > 0) {
+      params.set(
+        'kryptomonStatus',
+        options.kryptomonStatus.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
     }
 
     if (options.elemTypes && options.elemTypes.length > 0) {

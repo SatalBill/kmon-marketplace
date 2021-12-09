@@ -13,19 +13,9 @@ const Navigation = (props: Props) => {
       <Tabs.Left>
         <Link to={locations.browse()}>
           <Tabs.Tab active={activeTab === NavigationTab.BROWSE}>
-            {t('navigation.collectibles')}
-          </Tabs.Tab>
-        </Link>
-        <Link to={locations.kryptomons() + "?kryptomonStatus=1"}>
-          <Tabs.Tab active={activeTab === NavigationTab.KRYPTOMONS}>
             {t('navigation.kryptomons')}
           </Tabs.Tab>
         </Link>
-        {/* <Link to={locations.items()}>
-          <Tabs.Tab active={activeTab === NavigationTab.ITEMS}>
-            {t('navigation.items')}
-          </Tabs.Tab>
-        </Link> */}
         <Link to={locations.lootboxes()}>
           <Tabs.Tab active={activeTab === NavigationTab.LOOTBOXES}>
             {t('navigation.lootboxes')}

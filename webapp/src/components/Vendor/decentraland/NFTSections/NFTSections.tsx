@@ -12,7 +12,8 @@ import {
   SUPERS,
   SKIN_TYPES,
   SEXES,
-  PRICE_TOKENS
+  PRICE_TOKENS,
+  STATUSES
 } from './NFTSection.data'
 import { Props } from './NFTSections.types'
 import './NFTSections.style.css'
@@ -66,7 +67,8 @@ const NFTSections = (props: Props) => {
     elementPercentage = [],
     special = [],
     price = [],
-    priceToken = []
+    priceToken = [],
+    kryptomonStatus = []
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -112,7 +114,8 @@ const NFTSections = (props: Props) => {
     elementPercentage,
     special,
     price,
-    priceToken
+    priceToken,
+    kryptomonStatus
   })
 
   useEffect(() => {
@@ -171,6 +174,30 @@ const NFTSections = (props: Props) => {
           }}
           disableInputs
         />
+      </Dropdown>
+      <Dropdown
+        value={Section.KRYPTOMON_STATUS}
+        open={state.kryptomonStatus.length > 0}
+      >
+        <CheckboxContainer>
+          {STATUSES.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.kryptomonStatus.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.kryptomonStatus.indexOf(elem) > -1) {
+                  const newArr = [...state.kryptomonStatus]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, kryptomonStatus: newArr })
+                } else {
+                  const newArr = [...state.kryptomonStatus, elem]
+                  setState({ ...state, kryptomonStatus: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
       </Dropdown>
       <Dropdown
         value={Section.PRICE}

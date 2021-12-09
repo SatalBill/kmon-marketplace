@@ -184,7 +184,7 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           category,
           search,
           section,
-          kryptomonStatus,
+          kryptomonStatus: arrayToString(kryptomonStatus),
           elemTypes: arrayToString(elemTypes),
           specialties: arrayToString(specialties),
           supers: arrayToString(supers),

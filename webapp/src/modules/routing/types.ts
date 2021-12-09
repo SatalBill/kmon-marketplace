@@ -31,7 +31,7 @@ export type SearchOptions = {
   contracts?: string[]
   address?: string
   network?: Network
-  kryptomonStatus?: string
+  kryptomonStatus?: string[]
 
   elemTypes?: string[]
   specialties?: string[]

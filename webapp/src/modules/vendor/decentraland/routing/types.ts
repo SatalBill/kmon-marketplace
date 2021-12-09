@@ -61,7 +61,7 @@ export enum Section {
   EGO = 'ego',
   HEALTH_POINTS = 'health_points',
   SPEED = 'speed',
-
+  KRYPTOMON_STATUS = 'kryptomon_status',
   COLOR = 'color',
   ATTACK = 'attack',
   DEFENCE = 'defence',

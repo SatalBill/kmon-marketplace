@@ -6,7 +6,8 @@ import { VendorName } from '../../types'
 import {
   GENERATION_TO_REQ,
   SEX_TO_REQ,
-  SKIN_TYPE_TO_REQ
+  SKIN_TYPE_TO_REQ,
+  STATUS_TO_REQ
 } from '../../decentraland/nft/utils'
 import { orderAPI } from '../order'
 import { SEARCH_ARRAY_PARAM_SEPARATOR } from '../../../routing/search'
@@ -85,7 +86,12 @@ class NFTAPI {
       queryParams.set('section', params.section)
     }
     if (params.kryptomonStatus) {
-      queryParams.set('kryptomonStatus', params.kryptomonStatus)
+      if (STATUS_TO_REQ[params.kryptomonStatus]) {
+        queryParams.set(
+          'kryptomonStatus',
+          STATUS_TO_REQ[params.kryptomonStatus]
+        )
+      }
     }
     if (params.elemTypes) {
       queryParams.set('elemTypes', params.elemTypes)
