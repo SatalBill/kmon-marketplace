@@ -8,7 +8,7 @@ import './IndexingDelayCard.css'
 const IndexingDelay = () => {
   return (
     <Card
-      className="NFTCard"
+      className="IndexingDelayCard"
       link
       as={Link}
       to={'#'}
