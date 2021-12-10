@@ -62,12 +62,17 @@ export function getOrder(sortBy: SortBy) {
       orderDirection = SortDirection.ASC
       break
     }
+    case SortBy.DEAREST: {
+      orderBy = NFTSortBy.PRICE
+      orderDirection = SortDirection.DESC
+      break
+    }
   }
 
   return [orderBy, orderDirection] as const
 }
 
-export function getSortBy(orderBy: NFTSortBy) {
+export function getSortBy(orderBy: NFTSortBy, orderDirection?: SortDirection) {
   let sortBy: SortBy = SortBy.NEWEST
 
   switch (orderBy) {
@@ -84,7 +89,8 @@ export function getSortBy(orderBy: NFTSortBy) {
       break
     }
     case NFTSortBy.PRICE: {
-      sortBy = SortBy.CHEAPEST
+      if (orderDirection === SortDirection.ASC) sortBy = SortBy.CHEAPEST
+      if (orderDirection === SortDirection.DESC) sortBy = SortBy.DEAREST
       break
     }
   }

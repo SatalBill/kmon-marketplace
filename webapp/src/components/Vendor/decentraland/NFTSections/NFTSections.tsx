@@ -18,6 +18,7 @@ import {
 import { Props } from './NFTSections.types'
 import './NFTSections.style.css'
 import { RadioRange } from '../../../Menu/RadioRange'
+import { Button } from 'semantic-ui-react'
 
 const NFTSections = (props: Props) => {
   const {
@@ -143,6 +144,62 @@ const NFTSections = (props: Props) => {
 
   return (
     <Menu className="NFTSections">
+      <div className="clear-filters">
+        <Button
+          basic
+          onClick={() => {
+            setState({
+              elemTypes: [],
+              generation: [],
+              affection: [],
+              specialties: [],
+              supers: [],
+              braveness: [],
+              constitution: [],
+              craziness: [],
+              hunger: [],
+              instinct: [],
+              smart: [],
+              elementStartingTalent: [],
+              laziness: [],
+              bodySize: [],
+              ego: [],
+              healthPoints: [],
+              speed: [],
+              sex: [],
+              skinType: [],
+              water: [],
+              waterTalent: [],
+              fire: [],
+              fireTalent: [],
+              ground: [],
+              groundTalent: [],
+              ice: [],
+              iceTalent: [],
+              grass: [],
+              grassTalent: [],
+              electro: [],
+              electroTalent: [],
+              ghost: [],
+              ghostTalent: [],
+              air: [],
+              airTalent: [],
+              color: [],
+              attack: [],
+              defence: [],
+              generalTalent: [],
+              growthTalentFactor: [],
+              elementPercentage: [],
+              special: [],
+              price: [],
+              priceToken: [],
+              kryptomonStatus: []
+            })
+          }}
+        >
+          Clear filters
+        </Button>
+      </div>
       {[Section.ALL].map(menuSection => (
         <MenuItem
           key={menuSection}
@@ -167,8 +224,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={10}
-          minValue={+state.generation[0] || 0}
-          maxValue={+state.generation[1] || 10}
+          minValue={+state.generation[0]}
+          maxValue={+state.generation[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'generation')
           }}
@@ -206,8 +263,8 @@ const NFTSections = (props: Props) => {
         <RadioRange
           min={0}
           max={1000}
-          minValue={+state.price[0] || 0}
-          maxValue={+state.price[1] || 1000}
+          minValue={+state.price[0]}
+          maxValue={+state.price[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'price')
           }}
@@ -249,8 +306,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.water[0] || 0}
-                maxValue={+state.water[1] || 100}
+                minValue={+state.water[0]}
+                maxValue={+state.water[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'water')
                 }}
@@ -263,8 +320,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.waterTalent[0] || 0}
-                maxValue={+state.waterTalent[1] || 10}
+                minValue={+state.waterTalent[0]}
+                maxValue={+state.waterTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'waterTalent')
                 }}
@@ -274,8 +331,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.fire[0] || 0}
-                maxValue={+state.fire[1] || 100}
+                minValue={+state.fire[0]}
+                maxValue={+state.fire[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'fire')
                 }}
@@ -288,8 +345,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.fireTalent[0] || 0}
-                maxValue={+state.fireTalent[1] || 10}
+                minValue={+state.fireTalent[0]}
+                maxValue={+state.fireTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'fireTalent')
                 }}
@@ -299,8 +356,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.ground[0] || 0}
-                maxValue={+state.ground[1] || 100}
+                minValue={+state.ground[0]}
+                maxValue={+state.ground[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'ground')
                 }}
@@ -313,8 +370,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.groundTalent[0] || 0}
-                maxValue={+state.groundTalent[1] || 10}
+                minValue={+state.groundTalent[0]}
+                maxValue={+state.groundTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'groundTalent')
                 }}
@@ -324,8 +381,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.ice[0] || 0}
-                maxValue={+state.ice[1] || 100}
+                minValue={+state.ice[0]}
+                maxValue={+state.ice[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'ice')
                 }}
@@ -338,8 +395,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.iceTalent[0] || 0}
-                maxValue={+state.iceTalent[1] || 10}
+                minValue={+state.iceTalent[0]}
+                maxValue={+state.iceTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'iceTalent')
                 }}
@@ -349,8 +406,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.grass[0] || 0}
-                maxValue={+state.grass[1] || 100}
+                minValue={+state.grass[0]}
+                maxValue={+state.grass[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'grass')
                 }}
@@ -363,8 +420,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.grassTalent[0] || 0}
-                maxValue={+state.grassTalent[1] || 10}
+                minValue={+state.grassTalent[0]}
+                maxValue={+state.grassTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'grassTalent')
                 }}
@@ -374,8 +431,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.electro[0] || 0}
-                maxValue={+state.electro[1] || 100}
+                minValue={+state.electro[0]}
+                maxValue={+state.electro[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'electro')
                 }}
@@ -388,8 +445,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.electroTalent[0] || 0}
-                maxValue={+state.electroTalent[1] || 10}
+                minValue={+state.electroTalent[0]}
+                maxValue={+state.electroTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'electroTalent')
                 }}
@@ -399,8 +456,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.ghost[0] || 0}
-                maxValue={+state.ghost[1] || 100}
+                minValue={+state.ghost[0]}
+                maxValue={+state.ghost[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'ghost')
                 }}
@@ -413,8 +470,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.ghostTalent[0] || 0}
-                maxValue={+state.ghostTalent[1] || 10}
+                minValue={+state.ghostTalent[0]}
+                maxValue={+state.ghostTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'ghostTalent')
                 }}
@@ -424,8 +481,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={100}
-                minValue={+state.air[0] || 0}
-                maxValue={+state.air[1] || 100}
+                minValue={+state.air[0]}
+                maxValue={+state.air[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'air')
                 }}
@@ -438,8 +495,8 @@ const NFTSections = (props: Props) => {
               <MultiRangeSlider
                 min={0}
                 max={10}
-                minValue={+state.airTalent[0] || 0}
-                maxValue={+state.airTalent[1] || 10}
+                minValue={+state.airTalent[0]}
+                maxValue={+state.airTalent[1]}
                 onChange={({ min, max }) => {
                   handleStateChange(min, max, 'airTalent')
                 }}
@@ -536,8 +593,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.affection[0] || 0}
-          maxValue={+state.affection[1] || 100}
+          minValue={+state.affection[0]}
+          maxValue={+state.affection[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'affection')
           }}
@@ -547,8 +604,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.braveness[0] || 0}
-          maxValue={+state.braveness[1] || 100}
+          minValue={+state.braveness[0]}
+          maxValue={+state.braveness[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'braveness')
           }}
@@ -561,8 +618,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.constitution[0] || 0}
-          maxValue={+state.constitution[1] || 100}
+          minValue={+state.constitution[0]}
+          maxValue={+state.constitution[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'constitution')
           }}
@@ -572,8 +629,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.craziness[0] || 0}
-          maxValue={+state.craziness[1] || 100}
+          minValue={+state.craziness[0]}
+          maxValue={+state.craziness[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'craziness')
           }}
@@ -583,8 +640,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.hunger[0] || 0}
-          maxValue={+state.hunger[1] || 100}
+          minValue={+state.hunger[0]}
+          maxValue={+state.hunger[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'hunger')
           }}
@@ -594,8 +651,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.instinct[0] || 0}
-          maxValue={+state.instinct[1] || 100}
+          minValue={+state.instinct[0]}
+          maxValue={+state.instinct[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'instinct')
           }}
@@ -605,8 +662,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.smart[0] || 0}
-          maxValue={+state.smart[1] || 100}
+          minValue={+state.smart[0]}
+          maxValue={+state.smart[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'smart')
           }}
@@ -619,8 +676,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={1000}
-          minValue={+state.elementStartingTalent[0] || 0}
-          maxValue={+state.elementStartingTalent[1] || 1000}
+          minValue={+state.elementStartingTalent[0]}
+          maxValue={+state.elementStartingTalent[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'elementStartingTalent', 1000)
           }}
@@ -630,8 +687,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.laziness[0] || 0}
-          maxValue={+state.laziness[1] || 100}
+          minValue={+state.laziness[0]}
+          maxValue={+state.laziness[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'laziness')
           }}
@@ -641,8 +698,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.bodySize[0] || 0}
-          maxValue={+state.bodySize[1] || 100}
+          minValue={+state.bodySize[0]}
+          maxValue={+state.bodySize[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'bodySize')
           }}
@@ -652,8 +709,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.ego[0] || 0}
-          maxValue={+state.ego[1] || 100}
+          minValue={+state.ego[0]}
+          maxValue={+state.ego[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'ego')
           }}
@@ -666,8 +723,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.healthPoints[0] || 0}
-          maxValue={+state.healthPoints[1] || 100}
+          minValue={+state.healthPoints[0]}
+          maxValue={+state.healthPoints[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'healthPoints')
           }}
@@ -677,8 +734,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.speed[0] || 0}
-          maxValue={+state.speed[1] || 100}
+          minValue={+state.speed[0]}
+          maxValue={+state.speed[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'speed')
           }}
@@ -688,8 +745,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={10000}
-          minValue={+state.color[0] || 0}
-          maxValue={+state.color[1] || 10000}
+          minValue={+state.color[0]}
+          maxValue={+state.color[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'color')
           }}
@@ -699,8 +756,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.attack[0] || 0}
-          maxValue={+state.attack[1] || 100}
+          minValue={+state.attack[0]}
+          maxValue={+state.attack[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'attack')
           }}
@@ -710,8 +767,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.defence[0] || 0}
-          maxValue={+state.defence[1] || 100}
+          minValue={+state.defence[0]}
+          maxValue={+state.defence[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'defence')
           }}
@@ -724,8 +781,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.generalTalent[0] || 0}
-          maxValue={+state.generalTalent[1] || 100}
+          minValue={+state.generalTalent[0]}
+          maxValue={+state.generalTalent[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'generalTalent')
           }}
@@ -738,8 +795,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.growthTalentFactor[0] || 0}
-          maxValue={+state.growthTalentFactor[1] || 100}
+          minValue={+state.growthTalentFactor[0]}
+          maxValue={+state.growthTalentFactor[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'growthTalentFactor')
           }}
@@ -752,8 +809,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={100}
-          minValue={+state.elementPercentage[0] || 0}
-          maxValue={+state.elementPercentage[1] || 100}
+          minValue={+state.elementPercentage[0]}
+          maxValue={+state.elementPercentage[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'elementPercentage')
           }}
@@ -763,8 +820,8 @@ const NFTSections = (props: Props) => {
         <MultiRangeSlider
           min={0}
           max={10}
-          minValue={+state.special[0] || 0}
-          maxValue={+state.special[1] || 10}
+          minValue={+state.special[0]}
+          maxValue={+state.special[1]}
           onChange={({ min, max }) => {
             handleStateChange(min, max, 'special')
           }}

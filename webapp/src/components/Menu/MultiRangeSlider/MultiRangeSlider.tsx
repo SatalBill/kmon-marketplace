@@ -24,6 +24,15 @@ const MultiRangeSlider: FC<Props> = ({
   const maxValRef = useRef<HTMLInputElement>(null)
   const range = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    if (!minValue) {
+      setMinVal(min)
+    }
+    if (!maxValue) {
+      setMaxVal(max)
+    }
+  }, [minValue, maxValue])
+
   const getPercent = useCallback(
     (value: number) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
