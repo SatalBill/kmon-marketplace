@@ -63,8 +63,12 @@ class NFTAPI {
 
     queryParams.append('first', params.first.toString())
     queryParams.append('skip', params.skip.toString())
+
     if (params.orderBy) {
-      queryParams.append('sortBy', getSortBy(params.orderBy))
+      queryParams.append(
+        'sortBy',
+        getSortBy(params.orderBy, params.orderDirection)
+      )
     }
     if (params.category) {
       queryParams.append('category', params.category)
