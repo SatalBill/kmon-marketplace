@@ -9,13 +9,15 @@ export type Props = {
   nfts: NFT[]
   page: number
   count?: number
-  isLoading: boolean
+  subgraphBlockNumber?: number
+  isLoading: boolean,
+  isSignedIn: boolean,
   onBrowse: typeof browseNFTs
 }
 
 export type MapStateProps = Pick<
   Props,
-  'vendor' | 'nfts' | 'page' | 'count' | 'isLoading'
+  'vendor' | 'nfts' | 'page' | 'count' | 'subgraphBlockNumber' | 'isLoading' | 'isSignedIn'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

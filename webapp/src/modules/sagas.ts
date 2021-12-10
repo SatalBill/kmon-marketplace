@@ -16,6 +16,7 @@ import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
 import { lootboxSaga } from './lootbox/sagas'
 import { lootboxPriceSaga } from './lootbox_price/sagas'
+import { subgraphSaga } from './subgraph/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
 // const profileSaga = createProfileSaga({
@@ -40,6 +41,7 @@ export function* rootSaga() {
     uiSaga(),
     walletSaga(),
     lootboxSaga(),
-    lootboxPriceSaga()
+    lootboxPriceSaga(),
+    subgraphSaga(),
   ])
 }
