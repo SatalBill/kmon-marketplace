@@ -142,7 +142,8 @@
     "name": "Name",
     "newest": "Newest",
     "recently_listed": "Recently listed",
-    "cheapest": "Cheapest"
+    "cheapest": "Cheapest",
+    "dearest": "Most Expensive"
   },
   "home_page": {
     "title": "Kryptomon Marketplace",

@@ -44,15 +44,16 @@ const NFTFilters = (props: Props) => {
     {
       value: SortBy.RECENTLY_LISTED,
       text: t('filters.recently_listed')
-    }
-  ]
-
-  if (onlyOnSale) {
-    dropdownOptions.unshift({
+    },
+    {
+      value: SortBy.DEAREST,
+      text: t('filters.dearest')
+    },
+    {
       value: SortBy.CHEAPEST,
       text: t('filters.cheapest')
-    })
-  }
+    }
+  ]
 
   const sortBy = dropdownOptions.find(option => option.value === props.sortBy)
     ? props.sortBy
