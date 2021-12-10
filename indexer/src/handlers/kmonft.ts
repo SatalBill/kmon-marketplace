@@ -116,7 +116,7 @@ export function handleBirth(event: Birth): void {
 
   if (genes.attack.times(BigInt.fromString("10")).gt(genes.defense.times(BigInt.fromString("11")))) {
     kryptomon.speciality = "Attack";
-  } else if (genes.defense.times(BigInt.fromString("10")).lt(genes.attack.times(BigInt.fromString("11")))) {
+  } else if (genes.defense.times(BigInt.fromString("10")).gt(genes.attack.times(BigInt.fromString("11")))) {
     kryptomon.speciality = "Defense";
   } else {
     kryptomon.speciality = "Balance";
