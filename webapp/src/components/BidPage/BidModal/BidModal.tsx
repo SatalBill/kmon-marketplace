@@ -21,6 +21,7 @@ import { CoinField } from '../../CoinField'
 import { Props } from './BidModal.types'
 import './BidModal.css'
 import { CoinSelectField } from '../../CoinSelectField'
+import { toDecimal } from '../../../lib/number'
 
 const BidModal = (props: Props) => {
   const {
@@ -110,7 +111,7 @@ const BidModal = (props: Props) => {
             value={price}
             onChange={(_event, props) => {
               if (paymentCoin === Coin.WBNB) {
-                setPrice(props.value)
+                setPrice(toDecimal(props.value))
               } else {
                 const newPrice = fromCoin(props.value, paymentCoin)
                 setPrice(toCoin(newPrice))

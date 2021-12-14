@@ -110,6 +110,7 @@ const MultiRangeSlider: FC<Props> = ({
           'thumb--zindex-5': minVal > max - 100
         })}
         onMouseUp={() => handleChange({})}
+        onTouchEnd={() => handleChange({})}
       />
       <input
         type="range"
@@ -120,6 +121,7 @@ const MultiRangeSlider: FC<Props> = ({
         onChange={handleMaxChange}
         className="thumb thumb--zindex-4"
         onMouseUp={() => handleChange({})}
+        onTouchEnd={() => handleChange({})}
       />
 
       <div className="slider">
