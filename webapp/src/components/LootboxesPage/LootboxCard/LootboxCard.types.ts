@@ -1,7 +1,6 @@
-import { LootboxType } from '../../../modules/lootbox/types'
-
 export type Props = {
-  boxType: LootboxType
-  image: string
+  itemId: string
+  name: string
   price: string
+  image: string
 }

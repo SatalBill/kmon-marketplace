@@ -3,20 +3,19 @@ import { Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 import { locations } from '../../../modules/routing/locations'
-import { toStringLootboxType } from '../../../modules/lootbox/utils'
 import { Props } from './LootboxCard.types'
 import { Image } from '../../Image'
 import './LootboxCard.css'
 
 const LootboxCard = (props: Props) => {
-  const { boxType, image, price } = props
-  const boxTypeStr = toStringLootboxType(boxType)
+  const { itemId, name, price, image } = props
+
   return (
     <Card
       className="LootboxCard"
       link
       as={Link}
-      to={locations.lootbox(boxType.toString())}
+      to={locations.lootbox(itemId.toString())}
     >
       <div className="card-image-container">
         <div className="card-image">
@@ -37,7 +36,7 @@ const LootboxCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <p className="product-description-left-item">
-            Lootbox type: {boxTypeStr}
+            Lootbox type: {name}
           </p>
         </div>
         <div className="product-description-right">{price} KMON</div>

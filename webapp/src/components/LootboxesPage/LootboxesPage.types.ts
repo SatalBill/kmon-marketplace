@@ -3,10 +3,10 @@ import { CallHistoryMethodAction } from 'connected-react-router'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 
 import {
-  fetchLootboxPriceRequest,
-  FetchLootboxPriceRequestAction
-} from '../../modules/lootbox_price/actions'
-import { LootboxPrices } from '../../modules/lootbox_price/types'
+  fetchItemsRequest,
+  FetchItemsRequestAction
+} from '../../modules/item/actions'
+import { Item } from '../../modules/item/types'
 
 export type Params = {
   address?: string
@@ -17,20 +17,20 @@ export type Props = {
   wallet: Wallet | null
   isConnecting: boolean
   isFullscreen?: boolean
-  lootboxPrices: LootboxPrices
+  items: Record<number, Item>
   onRedirect: (path: string) => void
-  onFetchLootboxPrice: typeof fetchLootboxPriceRequest
+  onFetchItems: typeof fetchItemsRequest
 }
 
 export type MapStateProps = Pick<
   Props,
-  'address' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'lootboxPrices'
+  'address' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'items'
 >
 export type MapDispatchProps = Pick<
   Props,
-  'onRedirect' | 'onFetchLootboxPrice'
+  'onRedirect' | 'onFetchItems'
 >
 export type MapDispatch = Dispatch<
   CallHistoryMethodAction
-    | FetchLootboxPriceRequestAction
+    | FetchItemsRequestAction
 >

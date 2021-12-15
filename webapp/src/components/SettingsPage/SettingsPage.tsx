@@ -54,8 +54,8 @@ const SettingsPage = (props: Props) => {
     name: contractNames.WBNB
   })
 
-  const lootbox = getContract({
-    name: contractNames.Lootbox,
+  const item = getContract({
+    name: contractNames.Item,
   })
 
   const kmonft = getContract({
@@ -205,7 +205,7 @@ const SettingsPage = (props: Props) => {
                           <Authorization
                             authorization={{
                               address: wallet.address,
-                              authorizedAddress: lootbox.address,
+                              authorizedAddress: item.address,
                               contractAddress: kmon.address,
                               contractName: ContractName.KMONToken,
                               chainId: kmon.chainId,

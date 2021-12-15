@@ -1,7 +1,5 @@
-import { LootboxType } from '../../../modules/lootbox/types'
-
 export type Props = {
-  boxType?: LootboxType
+  name: string
   image: string
-  price: string | undefined
+  price: string
 }

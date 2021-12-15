@@ -17,8 +17,7 @@ import { proximityReducer as proximity } from './proximity/reducer'
 import { routingReducer as routing } from './routing/reducer'
 import { tileReducer as tile } from './tile/reducer'
 import { uiReducer as ui } from './ui/reducer'
-import { lootboxPriceReducer as lootboxPrice } from './lootbox_price/reducer'
-import { lootboxReducer as lootbox } from './lootbox/reducer'
+import { itemReducer as item } from './item/reducer'
 import { subgraphReducer as subgraph } from './subgraph/reducer'
 
 export const createRootReducer = (history: History) =>
@@ -39,8 +38,7 @@ export const createRootReducer = (history: History) =>
     translation,
     ui,
     wallet,
-    lootbox,
-    lootboxPrice,
+    item,
     subgraph
   })
 

@@ -8,7 +8,7 @@ import {
   getWallet,
   isConnecting
 } from '../../modules/wallet/selectors'
-import { getData as getLootboxPrices } from '../../modules/lootbox_price/selectors'
+import { getData as getItems } from '../../modules/item/selectors'
 import {
   Params,
   MapStateProps,
@@ -16,7 +16,7 @@ import {
   MapDispatchProps
 } from './LootboxesPage.types'
 import LootboxesPage from './LootboxesPage'
-import { fetchLootboxPriceRequest } from '../../modules/lootbox_price/actions'
+import { fetchItemsRequest } from '../../modules/item/actions'
 
 const mapState = (
   state: RootState,
@@ -29,13 +29,13 @@ const mapState = (
     wallet: getWallet(state),
     isConnecting: isConnecting(state),
     isFullscreen: getIsFullscreen(state),
-    lootboxPrices: getLootboxPrices(state),
+    items: getItems(state),
   })
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onRedirect: path => dispatch(replace(path)),
-  onFetchLootboxPrice: boxType => dispatch(fetchLootboxPriceRequest(boxType))
+  onFetchItems: () => dispatch(fetchItemsRequest())
 })
 
 export default connect(mapState, mapDispatch)(LootboxesPage)

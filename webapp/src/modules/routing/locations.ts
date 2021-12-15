@@ -54,5 +54,5 @@ export const locations = {
   ) => `/contracts/${contractAddress}/tokens/${tokenId}/bid`,
   activity: () => `/activity`,
   lootboxes: () => `/lootboxes`,
-  lootbox: (boxType: string = ':boxType') => `/lootboxes/${boxType}`
+  lootbox: (id: string = ':id') => `/lootboxes/${id}`
 }

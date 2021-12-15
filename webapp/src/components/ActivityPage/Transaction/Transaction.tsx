@@ -29,8 +29,7 @@ import { NFTProvider } from '../../NFTProvider'
 import { CoinPopup } from '../../CoinPopup'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
-import { BUY_LOOTBOX_SUCCESS } from '../../../modules/lootbox/actions'
-import { toStringLootboxType } from '../../../modules/lootbox/utils'
+import { BUY_ITEM_SUCCESS } from '../../../modules/item/actions'
 import { getContractNames } from '../../../modules/vendor'
 
 const Transaction = (props: Props) => {
@@ -373,18 +372,18 @@ const Transaction = (props: Props) => {
         </NFTProvider>
       )
     }
-    case BUY_LOOTBOX_SUCCESS: {
-      const { boxType, boxPrice } = tx.payload
+    case BUY_ITEM_SUCCESS: {
+      const { item, count } = tx.payload
+      const price = fromWei(item.price, 'ether')
+      const calculatedPrice = Number(price) * count
       return (
         <TransactionDetail
           text={
             <T
               id="transaction.detail.buy_lootbox"
               values={{
-                name: (
-                  toStringLootboxType(boxType)
-                ),
-                price: <CoinPopup inline>{fromWei(boxPrice, 'ether').toLocaleString()}</CoinPopup>
+                name: item.name,
+                price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toLocaleString()}</CoinPopup>
               }}
             />
           }
