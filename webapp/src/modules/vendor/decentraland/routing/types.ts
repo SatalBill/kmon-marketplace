@@ -85,5 +85,6 @@ export enum Section {
   GHOST = 'ghost',
   GHOST_TALENT = 'ghost_talent',
   AIR = 'air',
-  AIR_TALENT = 'air_talent'
+  AIR_TALENT = 'air_talent',
+  UNFREEZABLE = 'unfreezable'
 }

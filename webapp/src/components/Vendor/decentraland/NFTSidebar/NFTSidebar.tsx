@@ -55,7 +55,8 @@ const NFTSidebar = (props: Props) => {
     special,
     price,
     priceToken,
-    kryptomonStatus
+    kryptomonStatus,
+    unfreezable
   } = props
 
   return (
@@ -110,6 +111,7 @@ const NFTSidebar = (props: Props) => {
         price={price}
         priceToken={priceToken}
         kryptomonStatus={kryptomonStatus}
+        unfreezable={unfreezable}
       />
     </div>
   )

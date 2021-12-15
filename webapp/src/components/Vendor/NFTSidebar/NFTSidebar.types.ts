@@ -61,6 +61,7 @@ export type MapStateProps = Pick<
   | 'price'
   | 'priceToken'
   | 'kryptomonStatus'
+  | 'unfreezable'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

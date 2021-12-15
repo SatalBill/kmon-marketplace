@@ -91,6 +91,7 @@
     "specialty": "Specialty",
     "super": "Super",
     "affection": "Affection",
+    "unfreezable": "Unfreezable",
     "craziness": "Craziness",
     "instinct": "Instinct",
     "hunger": "Hunger",
@@ -140,7 +141,10 @@
     "newest": "Newest",
     "recently_listed": "Recently listed",
     "cheapest": "Cheapest",
-    "dearest": "Most Expensive"
+    "dearest": "Most Expensive",
+    "bnb": "BNB",
+    "kmon": "KMON",
+    "all": "All"
   },
   "home_page": {
     "title": "Kryptomon Marketplace",

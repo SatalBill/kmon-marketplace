@@ -13,6 +13,12 @@ export enum SortBy {
   DEAREST = 'dearest'
 }
 
+export enum PriceToken {
+  ALL = 'all',
+  BNB = 'bnb',
+  KMON = 'kmon'
+}
+
 export enum SortDirection {
   ASC = 'asc',
   DESC = 'desc'
