@@ -6,12 +6,6 @@
   width: 272px;
 }
 
-@media (max-width: 768px) {
-  .elements-container {
-    width: 100%;
-  }
-}
-
 .top-element {
   background-color: #323132;
   padding: 22px;
@@ -20,6 +14,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-self: flex-start;
+}
+
+@media (max-width: 1201px) {
+  .top-element {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .elements-container {
+    width: 100%;
+  }
+  .top-element {
+    width: 100%;
+  }
 }
 
 .top-element-icon {

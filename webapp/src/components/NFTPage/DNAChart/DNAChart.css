@@ -6,6 +6,23 @@
   background-color: #323132;
   border-radius: 8px;
   position: relative;
+  align-self: flex-end;
+}
+
+@media (max-width: 1201px) {
+  .dna-container {
+    width: 660px;
+    height: 270px;
+    padding: 25px 5px 5px 5px;
+  }
+}
+
+@media (max-width: 991px) {
+  .dna-container {
+    width: 435px;
+    height: 270px;
+    padding: 25px 5px 5px 5px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -42,4 +59,8 @@
 
 .dna-info-start {
   margin-left: 9px;
+}
+
+.dna-chart {
+  width: 678;
 }
