@@ -4,6 +4,7 @@ import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/ut
 
 import { Address } from 'web3x-es/address'
 import { Item } from './types'
+import { ItemVersion } from './constants'
 
 export const FETCH_ITEMS_REQUEST = '[Request] Fetch Items'
 export const FETCH_ITEMS_SUCCESS = '[Success] Fetch Items'
@@ -33,8 +34,8 @@ export const BUY_ITEM_REQUEST = '[Request] Buy item'
 export const BUY_ITEM_SUCCESS = '[Success] Buy item'
 export const BUY_ITEM_FAILURE = '[Failure] Buy item'
 
-export const buyItemRequest = (item: Item, count: number, to: Address) =>
-  action(BUY_ITEM_REQUEST, { item, count, to })
+export const buyItemRequest = (version: ItemVersion, item: Item, count: number, to: Address) =>
+  action(BUY_ITEM_REQUEST, { version, item, count, to })
 export const buyItemSuccess = (
   chainId: ChainId,
   txHash: string,

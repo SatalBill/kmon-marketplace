@@ -13,9 +13,10 @@ import {
   FETCH_ITEM_REQUEST,
   fetchItemSuccess,
   FetchItemRequestAction,
+  fetchItemFailure,
 } from './actions'
 import { locations } from '../routing/locations'
-import { buyItem, fetchItem, fetchItems } from './utils'
+import { fetchItem, fetchItems, buyItem } from './utils'
 import { getWallet } from '../wallet/selectors'
 import { Item } from './types'
 
@@ -46,16 +47,16 @@ function* handleFetchItemRequest(action: FetchItemRequestAction) {
 }
 
 function* handleBuyItemRequest(action: BuyItemRequestAction) {
-  const { item, count, to } = action.payload
+  const { version, item, count, to } = action.payload
   try {
     const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
     const chainId: ChainId = yield select(getChainId)
 
-    const txHash: string = yield call(buyItem, wallet, item.itemId, count, to)
+    const txHash: string = yield call(buyItem, wallet, version, item.itemId, count, to)
     yield put(buyItemSuccess(chainId, txHash, item, count, to))
     yield put(push(locations.activity()))
   } catch (error) {
     // @ts-ignore
-    yield put(buyItemFailure(itemId, error.message))
+    yield put(buyItemFailure(item.itemId, error.message))
   }
 }

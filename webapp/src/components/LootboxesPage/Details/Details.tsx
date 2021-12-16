@@ -4,7 +4,7 @@ import './Details.css'
 import { Actions } from '../Actions'
 
 const Details = (props: Props) => {
-  const { name, price, isTxPending, onBuy } = props
+  const { name, price, isTxPending, onBuyItem } = props
 
   return (
     <div className="details-container">
@@ -16,7 +16,7 @@ const Details = (props: Props) => {
           {price} KMON
         </p>
       </DetailItem>
-      <Actions isTxPending={isTxPending} onBuy={onBuy} />
+      <Actions isTxPending={isTxPending} onBuy={onBuyItem} />
     </div>
   )
 }

@@ -47,7 +47,7 @@
     "Item": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0x6b2ed0aaffd82b05100148ba0d5aee374c8e027b"
+      "address": "0x02ed51dca15cccefc395ede4a0bb39191e14fd2d"
     },
     "ERC721Bid": {
       "source": "etherscan",

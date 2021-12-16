@@ -28,6 +28,7 @@ import premiumLootbox from '../../../images/lootbox/premium.png'
 import './LootboxDetail.css'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { TitleBlock } from '../../NFTPage/TitleBlock'
+import { ItemVersion } from '../../../modules/item/constants'
 
 const images: Record<string, string> = {
   '0': basicLootbox,
@@ -45,12 +46,13 @@ const LootboxDetail = (props: Props) => {
     itemId,
     currentItem,
     onFetchItem,
-    onBuyItem
+    onBuyItem,
   } = props
   const isTxPending = isLoading && isBuyingItem
   const price = currentItem === null ? undefined : currentItem.price
   const priceStr = price !== undefined ? fromWei(price, 'ether') : ''
   const itemImage = itemId !== undefined ? images[itemId] : ''
+  const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
 
   useEffect(() => {
     if (itemId !== undefined) {
@@ -83,9 +85,10 @@ const LootboxDetail = (props: Props) => {
     type: AuthorizationType.ALLOWANCE
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (version: ItemVersion) => {
+    setCurrentItemVersion(version)
     if (hasAuthorization(authorizations, authorization)) {
-      handleBuyItem()
+      handleBuyItem(version)
     } else {
       setShowAuthorizationModal(true)
     }
@@ -93,9 +96,9 @@ const LootboxDetail = (props: Props) => {
 
   const handleClose = () => setShowAuthorizationModal(false)
 
-  const handleBuyItem = () => {
+  const handleBuyItem = (version: ItemVersion) => {
     if (currentItem === null || price === undefined) return
-    onBuyItem(currentItem, 1, Address.ZERO)
+    onBuyItem(version, currentItem, 1, Address.ZERO)
   }
 
   const LootboxDetail = () => {
@@ -115,7 +118,7 @@ const LootboxDetail = (props: Props) => {
                 name={currentItem.name}
                 price={priceStr}
                 isTxPending={isTxPending}
-                onBuy={handleSubmit}
+                onBuyItem={handleSubmit}
               />
             )}
             {isTxPending && (
@@ -136,7 +139,7 @@ const LootboxDetail = (props: Props) => {
         <AuthorizationModal
           open={showAuthorizationModal}
           authorization={authorization}
-          onProceed={handleBuyItem}
+          onProceed={() => handleBuyItem(currentItemVersion)}
           onCancel={handleClose}
         />
       </Container>

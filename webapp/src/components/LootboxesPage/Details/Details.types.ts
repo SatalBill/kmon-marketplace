@@ -1,10 +1,11 @@
 import React from 'react'
+import { ItemVersion } from '../../../modules/item/constants'
 
 export type Props = {
   name: string
   price: string
   isTxPending: boolean
-  onBuy: () => void
+  onBuyItem: (version: ItemVersion) => void
 }
 
 export type ItemProps = {

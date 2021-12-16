@@ -7,7 +7,7 @@ import {
   buyItemRequest,
   BuyItemRequestAction,
   fetchItemRequest,
-  FetchItemRequestAction
+  FetchItemRequestAction,
 } from '../../../modules/item/actions'
 import { Item } from '../../../modules/item/types'
 

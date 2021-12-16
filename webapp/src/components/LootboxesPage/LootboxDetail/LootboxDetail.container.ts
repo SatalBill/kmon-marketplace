@@ -31,6 +31,7 @@ import {
   getLoading as getLoadingItem
 } from '../../../modules/item/selectors'
 import { Item } from '../../../modules/item/types'
+import { ItemVersion } from '../../../modules/item/constants'
 
 const mapState = (
   state: RootState,
@@ -53,8 +54,8 @@ const mapState = (
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onRedirect: path => dispatch(replace(path)),
   onFetchItem: itemId => dispatch(fetchItemRequest(itemId)),
-  onBuyItem: (item: Item, count: number, to: Address) =>
-    dispatch(buyItemRequest(item, count, to))
+  onBuyItem: (version: ItemVersion, item: Item, count: number, to: Address) =>
+    dispatch(buyItemRequest(version, item, count, to)),
 })
 
 export default connect(mapState, mapDispatch)(LootboxDetail)
