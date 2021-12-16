@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Network } from '@kmon/schemas'
 import { Modal, Button } from '@kmon/ui'
@@ -28,6 +28,18 @@ const Actions = (props: Props) => {
     nft.network === Network.BSC &&
     (!wallet || !bids.some(bid => bid.bidder === wallet.address))
 
+  const [screen, setScreen] = useState(0);
+
+  useEffect(() => {
+    window.innerWidth > 992 || window.innerWidth < 769 ? setScreen(0) : setScreen(1);
+    function handleResize() {
+      window.innerWidth > 992 || window.innerWidth < 769 ? setScreen(0) : setScreen(1);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+
   return (
     <>
       {order ? (
@@ -48,15 +60,34 @@ const Actions = (props: Props) => {
           </>
         ) : !isOwner ? (
           <>
-            <Button
-              as={Link}
-              to={locations.buy(contractAddress, tokenId)}
-              primary
-            >
-              {t('nft_page.buy')}
-            </Button>
-            {canBid ? (
-              <Button as={Link} to={locations.bid(contractAddress, tokenId)}>
+            {
+              screen == 1 ? (
+                <Button
+                  as={Link}
+                  to={locations.buy(contractAddress, tokenId)}
+                  primary
+                  style={{ maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', display: 'flex', justifyContent: "center", alignItems: 'center' }}
+                >
+                  {t('nft_page.buy')}
+                </Button>
+              ) : (
+                <Button
+                  as={Link}
+                  to={locations.buy(contractAddress, tokenId)}
+                  primary
+                >
+                  {t('nft_page.buy')}
+                </Button>
+              )
+            }
+            {canBid ? screen == 1 ? (
+              <Button as={Link} to={locations.bid(contractAddress, tokenId)} className='bidbutton'
+                style={{ maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', display: 'flex', justifyContent: "center", alignItems: 'center' }}
+              >
+                {t('nft_page.bid')}
+              </Button>
+            ) : (
+              <Button as={Link} to={locations.bid(contractAddress, tokenId)} className='bidbutton'>
                 {t('nft_page.bid')}
               </Button>
             ) : null}
@@ -79,11 +110,13 @@ const Actions = (props: Props) => {
           {t('nft_page.bid')}
         </Button>
       ) : null}
-      {isOwner && !order ? (
-        <Button as={Link} to={locations.transfer(contractAddress, tokenId)}>
-          {t('nft_page.transfer')}
-        </Button>
-      ) : null}
+      {
+        isOwner && !order ? (
+          <Button as={Link} to={locations.transfer(contractAddress, tokenId)}>
+            {t('nft_page.transfer')}
+          </Button>
+        ) : null
+      }
 
       <Modal
         className="LeavingSiteModal"

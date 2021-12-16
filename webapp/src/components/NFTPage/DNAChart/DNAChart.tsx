@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
@@ -111,6 +111,19 @@ const DNAChart = (props: Props) => {
     }
   }
 
+  const [screen, setScreen] = useState(0);
+
+  useEffect(() => {
+    window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
+    function handleResize() {
+      window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+
+
   return (
     <div className="dna-container">
       <div className="dna-info">
@@ -120,7 +133,8 @@ const DNAChart = (props: Props) => {
         )}
       </div>
       <Bar
-        width={678}
+        className="dna-chart"
+        width={screen == 0 ? 678 : 400}
         height={isMobile() ? 400 : 210}
         data={data}
         options={options}
