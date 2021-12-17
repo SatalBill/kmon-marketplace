@@ -5,7 +5,7 @@ import { getConnectedProviderChainId } from '@kmon/dapps/dist/lib/eth'
 import { ContractFactory } from '../contract/ContractFactory'
 import { Item } from '../../contracts/Item'
 import { sendTransaction } from '../wallet/utils'
-import { ItemVersion } from './constants'
+import { ItemVersion } from './types'
 
 export async function fetchItems() {
   const itemFactory = getContract(CN.Item, Number(getConnectedProviderChainId()))
@@ -16,7 +16,7 @@ export async function fetchItems() {
 export async function fetchItem(itemId: string) {
   const itemFactory = getContract(CN.Item, Number(getConnectedProviderChainId()))
   const item = await ContractFactory.build(Item, itemFactory.address)
-  return item.methods.idToItem(itemId).call()
+  return item.methods.nameToItem(itemId).call()
 }
 
 export async function buyItem(wallet: Wallet | null, version: ItemVersion, itemId: string, count: number, to: Address) {

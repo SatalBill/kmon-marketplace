@@ -28,14 +28,14 @@ export const getCurrentItem = createSelector<
   RootState,
   string | null,
   ItemState['data'],
-  Item | null
+  Item | undefined
 >(
   state => getItemId(state),
   state => getData(state),
   (itemId, items) => {
     if (itemId === null) {
-      return null
+      return undefined
     }
-    return itemId in items ? items[itemId] : null
+    return items.find(item => item.itemId === itemId)
   }
 )

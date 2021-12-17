@@ -23,16 +23,17 @@ import {
   FETCH_ITEM_SUCCESS
 } from './actions'
 import { Item } from './types'
+import { ethers } from 'ethers'
 
 export type ItemState = {
   loading: LoadingState
-  data: Record<string, Item>
+  data: Item[]
   error: string | null
 }
 
 const INITIAL_STATE = {
   loading: [],
-  data: {},
+  data: [],
   error: null
 }
 
@@ -62,27 +63,13 @@ export function itemReducer(
     case FETCH_ITEMS_SUCCESS:
       return {
         ...state,
-        data: {
-          ...state.data,
-          ...action.payload.items.reduce((obj, item) => {
-            obj[item.itemId] = {
-              itemId: item.itemId,
-              name: item.name,
-              price: item.price
-            }
-            return obj
-          }, {} as Record<string, Item>)
-        }
+        data: action.payload.items.map((item) => ({
+          ...item,
+          itemId: item.name,
+          name: ethers.utils.parseBytes32String(item.name)
+        }))
       }
     case FETCH_ITEM_SUCCESS:
-      const { item } = action.payload
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [item.itemId]: item
-        }
-      }
     case BUY_ITEM_SUCCESS:
       return {
         ...state,

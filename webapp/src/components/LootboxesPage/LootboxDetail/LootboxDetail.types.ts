@@ -24,7 +24,7 @@ export type Props = {
   isLoading: boolean
   isBuyingItem: boolean
   itemId?: string
-  currentItem: Item | null
+  currentItem: Item | undefined
   onRedirect: (path: string) => void
   onFetchItem: typeof fetchItemRequest
   onBuyItem: typeof buyItemRequest

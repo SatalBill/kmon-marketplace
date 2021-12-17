@@ -4,7 +4,7 @@ import { buildTransactionPayload } from '@kmon/dapps/dist/modules/transaction/ut
 
 import { Address } from 'web3x-es/address'
 import { Item } from './types'
-import { ItemVersion } from './constants'
+import { ItemVersion } from './types'
 
 export const FETCH_ITEMS_REQUEST = '[Request] Fetch Items'
 export const FETCH_ITEMS_SUCCESS = '[Success] Fetch Items'
@@ -22,8 +22,8 @@ export const FETCH_ITEM_REQUEST = '[Request] Fetch Item'
 export const FETCH_ITEM_SUCCESS = '[Success] Fetch Item'
 export const FETCH_ITEM_FAILURE = '[Failure] Fetch Item'
 
-export const fetchItemRequest = (itemId: string) => action(FETCH_ITEM_REQUEST, { itemId })
-export const fetchItemSuccess = (item: Item) => action(FETCH_ITEM_SUCCESS, { item })
+export const fetchItemRequest = () => action(FETCH_ITEM_REQUEST, {})
+export const fetchItemSuccess = () => action(FETCH_ITEM_SUCCESS, {})
 export const fetchItemFailure = (error: string) => action(FETCH_ITEM_FAILURE, { error })
 
 export type FetchItemRequestAction = ReturnType<typeof fetchItemRequest>

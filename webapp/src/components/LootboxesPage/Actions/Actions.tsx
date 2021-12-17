@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@kmon/ui'
 
 import { Props } from './Actions.types'
-import { ItemVersion } from '../../../modules/item/constants'
+import { ItemVersion } from '../../../modules/item/types'
 
 const Actions = (props: Props) => {
   const { isTxPending, onBuy } = props

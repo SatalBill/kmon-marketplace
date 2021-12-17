@@ -5,15 +5,9 @@ export default new ContractAbi([
     "inputs": [
       {
         "indexed": true,
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
+        "internalType": "bytes32",
         "name": "name",
-        "type": "string"
+        "type": "bytes32"
       },
       {
         "indexed": false,
@@ -30,15 +24,15 @@ export default new ContractAbi([
     "inputs": [
       {
         "indexed": true,
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "name",
+        "type": "bytes32"
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
+        "internalType": "bytes32",
+        "name": "newName",
+        "type": "bytes32"
       }
     ],
     "name": "ItemNameUpdated",
@@ -49,9 +43,9 @@ export default new ContractAbi([
     "inputs": [
       {
         "indexed": true,
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "name",
+        "type": "bytes32"
       },
       {
         "indexed": false,
@@ -68,9 +62,9 @@ export default new ContractAbi([
     "inputs": [
       {
         "indexed": true,
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "name",
+        "type": "bytes32"
       },
       {
         "indexed": true,
@@ -105,9 +99,9 @@ export default new ContractAbi([
     "inputs": [
       {
         "indexed": true,
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "name",
+        "type": "bytes32"
       }
     ],
     "name": "ItemRemoved",
@@ -273,6 +267,19 @@ export default new ContractAbi([
   },
   {
     "inputs": [],
+    "name": "TREASURY_SETTER_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "WITHDRAWER_ROLE",
     "outputs": [
       {
@@ -287,9 +294,9 @@ export default new ContractAbi([
   {
     "inputs": [
       {
-        "internalType": "string",
+        "internalType": "bytes32",
         "name": "_name",
-        "type": "string"
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -310,9 +317,9 @@ export default new ContractAbi([
         "type": "address"
       },
       {
-        "internalType": "uint256",
-        "name": "_itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "_name",
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -351,18 +358,13 @@ export default new ContractAbi([
         "components": [
           {
             "internalType": "uint256",
-            "name": "itemId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
             "name": "price",
             "type": "uint256"
           },
           {
-            "internalType": "string",
+            "internalType": "bytes32",
             "name": "name",
-            "type": "string"
+            "type": "bytes32"
           },
           {
             "internalType": "bool",
@@ -442,48 +444,38 @@ export default new ContractAbi([
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "idToItem",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "active",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_paymentToken",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasury",
         "type": "address"
       }
     ],
     "name": "initialize",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "itemNames",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -506,6 +498,35 @@ export default new ContractAbi([
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "nameToItem",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "name",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "paymentToken",
     "outputs": [
@@ -521,9 +542,9 @@ export default new ContractAbi([
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_itemId",
-        "type": "uint256"
+        "internalType": "bytes32",
+        "name": "_name",
+        "type": "bytes32"
       }
     ],
     "name": "removeItem",
@@ -664,27 +685,9 @@ export default new ContractAbi([
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_itemId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
+        "internalType": "bytes32",
         "name": "_name",
-        "type": "string"
-      }
-    ],
-    "name": "updateItemName",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_itemId",
-        "type": "uint256"
+        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -700,9 +703,9 @@ export default new ContractAbi([
   {
     "inputs": [
       {
-        "internalType": "uint256[]",
-        "name": "_itemIds",
-        "type": "uint256[]"
+        "internalType": "bytes32[]",
+        "name": "_names",
+        "type": "bytes32[]"
       },
       {
         "internalType": "uint256[]",

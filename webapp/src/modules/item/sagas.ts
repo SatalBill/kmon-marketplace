@@ -11,13 +11,13 @@ import {
   fetchItemsSuccess,
   fetchItemsFailure,
   FETCH_ITEM_REQUEST,
-  fetchItemSuccess,
-  FetchItemRequestAction,
   fetchItemFailure,
+  fetchItemsRequest,
 } from './actions'
 import { locations } from '../routing/locations'
-import { fetchItem, fetchItems, buyItem } from './utils'
+import { fetchItems, buyItem } from './utils'
 import { getWallet } from '../wallet/selectors'
+import { getData as getItems } from './selectors'
 import { Item } from './types'
 
 export function* itemSaga() {
@@ -36,10 +36,12 @@ function* handleFetchItemsRequest() {
   }
 }
 
-function* handleFetchItemRequest(action: FetchItemRequestAction) {
+function* handleFetchItemRequest() {
   try {
-    const item: Item = yield call(fetchItem, action.payload.itemId)
-    yield put(fetchItemSuccess(item))
+    const items: Item[] = yield select(getItems)
+    if (items.length === 0) {
+      yield put(fetchItemsRequest())
+    }
   } catch (error) {
     // @ts-ignore
     yield put(fetchItemFailure(error.message))

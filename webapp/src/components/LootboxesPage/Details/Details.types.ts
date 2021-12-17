@@ -1,5 +1,5 @@
 import React from 'react'
-import { ItemVersion } from '../../../modules/item/constants'
+import { ItemVersion } from '../../../modules/item/types'
 
 export type Props = {
   name: string

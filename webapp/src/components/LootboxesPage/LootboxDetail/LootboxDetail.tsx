@@ -22,19 +22,11 @@ import { Navigation } from '../../Navigation'
 import { Footer } from '../../Footer'
 import { Details } from '../Details'
 import { LootboxDetailCard } from '../LootboxDetailCard'
-import basicLootbox from '../../../images/lootbox/basic.png'
-import mediumLootbox from '../../../images/lootbox/medium.png'
-import premiumLootbox from '../../../images/lootbox/premium.png'
 import './LootboxDetail.css'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { TitleBlock } from '../../NFTPage/TitleBlock'
-import { ItemVersion } from '../../../modules/item/constants'
-
-const images: Record<string, string> = {
-  '0': basicLootbox,
-  '1': mediumLootbox,
-  '2': premiumLootbox,
-}
+import { Item, ItemVersion } from '../../../modules/item/types'
+import { images } from '../LootboxesPage'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -49,14 +41,14 @@ const LootboxDetail = (props: Props) => {
     onBuyItem,
   } = props
   const isTxPending = isLoading && isBuyingItem
-  const price = currentItem === null ? undefined : currentItem.price
+  const price = currentItem === undefined ? undefined : currentItem.price
   const priceStr = price !== undefined ? fromWei(price, 'ether') : ''
-  const itemImage = itemId !== undefined ? images[itemId] : ''
+  const itemImage = currentItem === undefined ? '' : images[currentItem.name.toLocaleLowerCase()]
   const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
 
   useEffect(() => {
     if (itemId !== undefined) {
-      onFetchItem(itemId)
+      onFetchItem()
     }
   }, [itemId])
   
@@ -97,8 +89,26 @@ const LootboxDetail = (props: Props) => {
   const handleClose = () => setShowAuthorizationModal(false)
 
   const handleBuyItem = (version: ItemVersion) => {
-    if (currentItem === null || price === undefined) return
+    if (currentItem === undefined || price === undefined) return
+    if (version === ItemVersion.V1) {
+      onBuyItem(version, getLootboxFromItem(currentItem), 1, Address.ZERO)
+      return
+    }
     onBuyItem(version, currentItem, 1, Address.ZERO)
+  }
+
+  const getLootboxFromItem = (item: Item) => {
+    let lootbox = item
+    if (item.name.toLowerCase() === 'basic') {
+      ;(lootbox = { ...lootbox, itemId: '0' })
+    }
+    if (item.name.toLowerCase() === 'medium') {
+      ;(lootbox = { ...lootbox, itemId: '1' })
+    }
+    if (item.name.toLowerCase() === 'premium') {
+      ;(lootbox = { ...lootbox, itemId: '2' })
+    }
+    return lootbox
   }
 
   const LootboxDetail = () => {
@@ -132,7 +142,7 @@ const LootboxDetail = (props: Props) => {
         <Row className="Row-space-between">
           <TitleBlock title={t('lootbox_page.description_block.title')}>
             <DescriptionBlock
-              description={t(`lootbox_page.description_block.description.${currentItem?.itemId}`)}
+              description={t(`lootbox_page.description_block.description.${currentItem?.name.toLowerCase()}`)}
             />
           </TitleBlock>
         </Row>

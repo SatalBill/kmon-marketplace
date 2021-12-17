@@ -13,10 +13,10 @@ import basicLootbox from '../../images/lootbox/basic.png'
 import mediumLootbox from '../../images/lootbox/medium.png'
 import premiumLootbox from '../../images/lootbox/premium.png'
 
-const images: Record<string, string> = {
-  '0': basicLootbox,
-  '1': mediumLootbox,
-  '2': premiumLootbox,
+export const images: Record<string, string> = {
+  'basic': basicLootbox,
+  'medium': mediumLootbox,
+  'premium': premiumLootbox,
 }
 
 const LootboxesPage = (props: Props) => {
@@ -32,8 +32,6 @@ const LootboxesPage = (props: Props) => {
 
   const isCurrentAccount =
     address === undefined || (wallet && wallet.address === address)
-
-    console.log(items, Object.values(items))
 
   // Redirect to signIn if trying to access current account without a wallet
   useEffect(() => {
@@ -60,7 +58,7 @@ const LootboxesPage = (props: Props) => {
               key={item.itemId}
               itemId={item.itemId}
               name={item.name}
-              image={images[item.itemId]}
+              image={images[item.name.toLocaleLowerCase()]}
               price={fromWei(item.price, 'ether')}
             />
           ))}

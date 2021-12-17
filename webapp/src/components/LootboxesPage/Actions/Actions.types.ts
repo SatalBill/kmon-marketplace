@@ -1,4 +1,4 @@
-import { ItemVersion } from "../../../modules/item/constants";
+import { ItemVersion } from "../../../modules/item/types";
 
 export type Props = {
   isTxPending: boolean

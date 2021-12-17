@@ -15,7 +15,7 @@ const LootboxCard = (props: Props) => {
       className="LootboxCard"
       link
       as={Link}
-      to={locations.lootbox(itemId.toString())}
+      to={locations.lootbox(itemId)}
     >
       <div className="card-image-container">
         <div className="card-image">
