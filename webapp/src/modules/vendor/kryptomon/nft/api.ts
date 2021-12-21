@@ -1,4 +1,4 @@
-import { NFTsFetchParams } from '../../../nft/types'
+import { NFTsFetchParams, NFTGenesV2 } from '../../../nft/types'
 import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
@@ -10,7 +10,6 @@ import {
   STATUS_TO_REQ,
   UNFREEZABLE_TO_REQ
 } from '../../decentraland/nft/utils'
-import { orderAPI } from '../order'
 import { SEARCH_ARRAY_PARAM_SEPARATOR } from '../../../routing/search'
 import { toWei } from 'web3x-es/utils'
 import { getSortBy } from '../../../nft/utils'
@@ -34,6 +33,18 @@ class NFTAPI {
       throw new Error('Not found')
     }
     return response.data[0]
+  }
+
+  async fetchOneV2(tokenId: string) {
+    try {
+      const response: { genes: NFTGenesV2 } = await fetch(
+        `https://api-yt9bz.ondigitalocean.app/kryptomon/${tokenId}`
+      ).then(resp => resp.json())
+
+      return response
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async fetchContracts() {

@@ -56,6 +56,8 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
 
   async fetchOne(contractAddress: string, tokenId: string) {
     const response = await nftAPI.fetchOne(contractAddress, tokenId)
+    const responseV2 = await nftAPI.fetchOneV2(tokenId)
+    response.nft.genesV2 = responseV2?.genes
 
     // setting metadata
     const metadata: KryptomonMetadataResponse = await fetch(

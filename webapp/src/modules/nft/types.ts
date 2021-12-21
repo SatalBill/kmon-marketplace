@@ -38,6 +38,47 @@ export type Data<V extends VendorName> = V extends VendorName.DECENTRALAND
       | KryptomonData
   : never
 
+export type NFTGenesV2 = {
+  fire: number
+  fireTalent: number
+  water: number
+  waterTalent: number
+  ice: number
+  iceTalent: number
+  ground: number
+  groundTalent: number
+  air: number
+  airTalent: number
+  electro: number
+  electroTalent: number
+  ghost: number
+  ghostTalent: number
+  grass: number
+  grassTalent: number
+  color: number
+  sex: number
+  generalTalent: number
+  attack: number
+  defense: number
+  special: number
+  xFactor: number
+  growthTalentFactor: number
+  constitution: number
+  healthPoints: number
+  speed: number
+  affections: number
+  crazyness: number
+  instinct: number
+  hunger: number
+  laziness: number
+  brave: number
+  smart: number
+  bodySize: number
+  ego: number
+  skinType: number
+  generation: number
+}
+
 export type NFT<V extends VendorName = VendorName.KRYPTOMON> = Omit<
   BaseNFT,
   'category' | 'data'
@@ -46,6 +87,7 @@ export type NFT<V extends VendorName = VendorName.KRYPTOMON> = Omit<
   vendor: VendorName
   metadata: KryptomonMetadataResponse
   data: Data<V>
+  genesV2?: NFTGenesV2
 }
 
 export type NFTsFetchParams = {

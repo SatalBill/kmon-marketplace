@@ -22,6 +22,8 @@ import { TextFilter } from '../../NFTFilters/TextFilter'
 import { FiltersMenu } from '../../NFTFilters/FiltersMenu'
 import { Props } from './NFTFilters.types'
 
+const isTest = process.env.REACT_APP_NETWORK === 'rinkeby'
+
 const NFTFilters = (props: Props) => {
   const {
     section,
@@ -61,7 +63,7 @@ const NFTFilters = (props: Props) => {
       text: t('filters.bnb')
     },
     {
-      value: PriceToken.KMON,
+      value: isTest ? PriceToken.KMON_TEST : PriceToken.KMON,
       text: t('filters.kmon')
     }
   ]

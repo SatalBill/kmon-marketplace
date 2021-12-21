@@ -4,8 +4,8 @@ import './ElemData.css'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const ElemData = (props: Props) => {
-  const { nft } = props
-  const data = nft.data.kryptomon?.genes
+  const { nft, isV2 } = props
+  const data = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
   const timeBorn = nft.data.kryptomon?.timeBorn
   const date = new Date(1970, 0, 1)
   date.setSeconds(timeBorn || 0)
@@ -19,7 +19,7 @@ const ElemData = (props: Props) => {
     .reverse()
     .join('-')
 
-  const age = new Date(Date.now() - timeBorn! * 1000).getMonth();
+  const age = new Date(Date.now() - timeBorn! * 1000).getMonth()
 
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return 'Male'

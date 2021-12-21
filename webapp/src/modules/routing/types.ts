@@ -16,7 +16,8 @@ export enum SortBy {
 export enum PriceToken {
   ALL = 'all',
   BNB = 'bnb',
-  KMON = 'kmon'
+  KMON = 'kmon',
+  KMON_TEST = 'kmon-test'
 }
 
 export enum SortDirection {

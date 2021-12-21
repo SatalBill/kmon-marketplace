@@ -84,6 +84,8 @@ function* handleFetchNFTRequest(action: FetchNFTRequestAction) {
 
     yield put(fetchNFTSuccess(nft as NFT, order))
   } catch (error) {
+    console.log(error)
+
     // @ts-ignore
     yield put(fetchNFTFailure(contractAddress, tokenId, error.message))
   }
