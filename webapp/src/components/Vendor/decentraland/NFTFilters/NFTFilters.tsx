@@ -201,7 +201,11 @@ const NFTFilters = (props: Props) => {
             >
               <Dropdown
                 direction="left"
-                value={priceToken && priceToken[0]}
+                value={
+                  typeof priceToken === 'string'
+                    ? priceToken
+                    : priceToken && priceToken[0]
+                }
                 options={dropdownPriceToken}
                 onChange={handlePriceTokenChange}
               />
