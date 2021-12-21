@@ -29,6 +29,7 @@ export const createOrderSuccess = (
   action(CREATE_ORDER_SUCCESS, {
     nft,
     price,
+    paymentToken,
     expiresAt,
     ...buildTransactionPayload(nft.chainId, txHash, {
       tokenId: nft.tokenId,
