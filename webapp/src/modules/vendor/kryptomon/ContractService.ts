@@ -14,7 +14,7 @@ export enum ContractName {
   KMONToken = 'KMON',
   MARKETPLACE = 'Marketplace',
   ERC721Bid = 'ERC721Bid',
-  Lootbox = 'Lootbox',
+  Item = 'Item',
   WBNB = 'WBNB',
   KMONFT = 'KMONFT'
 }
@@ -46,8 +46,8 @@ const contracts = ({
       chainId: ChainId.ETHEREUM_RINKEBY
     },
     {
-      name: ContractName.Lootbox,
-      address: getContract(CN.Lootbox, ChainId.ETHEREUM_RINKEBY).address,
+      name: ContractName.Item,
+      address: getContract(CN.Item, ChainId.ETHEREUM_RINKEBY).address,
       vendor: 'kryptomon',
       category: null,
       network: Network.BSC,
@@ -96,8 +96,8 @@ const contracts = ({
       chainId: ChainId.BSC_MAINNET
     },
     {
-      name: ContractName.Lootbox,
-      address: getContract(CN.Lootbox, ChainId.BSC_MAINNET).address,
+      name: ContractName.Item,
+      address: getContract(CN.Item, ChainId.BSC_MAINNET).address,
       vendor: 'kryptomon',
       category: null,
       network: Network.BSC,

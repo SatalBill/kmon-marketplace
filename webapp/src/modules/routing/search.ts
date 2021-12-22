@@ -108,6 +108,12 @@ export function getSearchParams(options?: SearchOptions) {
         options.affection.join(SEARCH_ARRAY_PARAM_SEPARATOR)
       )
     }
+    if (options.unfreezable && options.unfreezable.length > 0) {
+      params.set(
+        'unfreezable',
+        options.unfreezable.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
     if (options.laziness && options.laziness.length > 0) {
       params.set(
         'laziness',

@@ -138,6 +138,23 @@
     "leaving_decentraland_disclaimer": "您的NFT仍将列在Decentraland市场中",
     "part_of_estate": "{estate_name}一部分"
   },
+  "lootbox_page": {
+    "description_block": {
+      "title": "",
+      "description": {
+        "lootbox_basic": "",
+        "lootbox_medium": "",
+        "lootbox_premium": "",
+        "unfreeze_potion": ""
+      }
+    },
+    "confirm": {
+      "title": "",
+      "line_one": "",
+      "line_two": "",
+      "field_label": ""
+    }
+  },
   "proximity": {
     "adjacent": "相邻",
     "distance": "{distance} {distance, plural, one {parcel} other {parcels}} 距离"
@@ -322,7 +339,7 @@
       "place_bid": "您对{name}出价了{price}。",
       "accept_bid": "您接受了{name}的{price}出价。",
       "cancel_bid": "您取消了对{name}的{price}出价。",
-      "buy_lootbox": "您以 {price} 购买了 {name} 战利品箱。"
+      "buy_item": "您以 {price} 购买了 {name} 战利品箱。"
     }
   },
   "kmon": {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
@@ -9,7 +9,17 @@ import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const DNAChart = (props: Props) => {
-  const { nft } = props
+  const { nft, isV2 } = props
+  const genesV2Values = [
+    nft.genesV2?.constitution,
+    nft.genesV2?.affections,
+    nft.genesV2?.crazyness,
+    nft.genesV2?.instinct,
+    nft.genesV2?.hunger,
+    nft.genesV2?.laziness,
+    nft.genesV2?.brave,
+    nft.genesV2?.smart
+  ]
 
   const DNAParams = nft.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -19,12 +29,15 @@ const DNAChart = (props: Props) => {
       return elem.trait_type === title
     })
   })
+
   const DNALabels = sortedDNAParams?.map(elem => {
     return elem?.trait_type
   })
-  const DNAValues = sortedDNAParams?.map(elem => {
-    return elem?.value
-  })
+  const DNAValues = isV2
+    ? genesV2Values
+    : sortedDNAParams?.map(elem => {
+        return elem?.value
+      })
 
   const DNAGeneration = nft.data.kryptomon?.genes.generation
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable
@@ -111,6 +124,19 @@ const DNAChart = (props: Props) => {
     }
   }
 
+  const [screen, setScreen] = useState(0);
+
+  useEffect(() => {
+    window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
+    function handleResize() {
+      window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+
+
   return (
     <div className="dna-container">
       <div className="dna-info">
@@ -120,7 +146,8 @@ const DNAChart = (props: Props) => {
         )}
       </div>
       <Bar
-        width={678}
+        className="dna-chart"
+        width={screen == 0 ? 678 : 400}
         height={isMobile() ? 400 : 210}
         data={data}
         options={options}

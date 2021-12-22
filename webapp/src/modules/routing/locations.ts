@@ -6,7 +6,6 @@ export const locations = {
   signIn: () => '/sign-in',
   settings: () => '/settings',
   partners: () => '/partners',
-  items: () => '/items',
   bids: () => '/bids',
   browse: (options?: SearchOptions) => {
     const params = getSearchParams(options)
@@ -53,6 +52,6 @@ export const locations = {
     tokenId: string = ':tokenId'
   ) => `/contracts/${contractAddress}/tokens/${tokenId}/bid`,
   activity: () => `/activity`,
-  lootboxes: () => `/lootboxes`,
-  lootbox: (boxType: string = ':boxType') => `/lootboxes/${boxType}`
+  items: () => `/items`,
+  item: (id: string = ':id') => `/items/${id}`,
 }

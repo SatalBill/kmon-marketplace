@@ -4,7 +4,7 @@ import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { ContractData, ContractName, getContract } from '@kmon/transactions'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'
-import { NFT, NFTsFetchParams, NFTsCountParams } from '../../nft/types'
+import { NFT, NFTsFetchParams, NFTsCountParams, NFTGenesV2 } from '../../nft/types'
 import { sendTransaction } from '../../wallet/utils'
 import { Account } from '../../account/types'
 import ERC721Abi from '../../../contracts/ERC721Abi'
@@ -56,6 +56,8 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
 
   async fetchOne(contractAddress: string, tokenId: string) {
     const response = await nftAPI.fetchOne(contractAddress, tokenId)
+    const responseV2 = await nftAPI.fetchOneV2(tokenId)
+    response.nft.genesV2 = this.getReorderedGenes(responseV2?.genes);
 
     // setting metadata
     const metadata: KryptomonMetadataResponse = await fetch(
@@ -93,5 +95,49 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
       address,
       nftIds: []
     }
+  }
+
+  getReorderedGenes(newGenes?: NFTGenesV2) {
+    const genes: NFTGenesV2 = {
+      fire: 0,
+      fireTalent: 0,
+      water: 0,
+      waterTalent: 0,
+      ice: 0,
+      iceTalent: 0,
+      ground: 0,
+      groundTalent: 0,
+      air: 0,
+      airTalent: 0,
+      electro: 0,
+      electroTalent: 0,
+      ghost: 0,
+      ghostTalent: 0,
+      grass: 0,
+      grassTalent: 0,
+      color: 0,
+      sex: 0,
+      generalTalent: 0,
+      attack: 0,
+      defense: 0,
+      special: 0,
+      xFactor: 0,
+      growthTalentFactor: 0,
+      constitution: 0,
+      healthPoints: 0,
+      speed: 0,
+      affections: 0,
+      crazyness: 0,
+      instinct: 0,
+      hunger: 0,
+      laziness: 0,
+      brave: 0,
+      smart: 0,
+      bodySize: 0,
+      ego: 0,
+      skinType: 0,
+      generation: 0,
+    };
+    return Object.assign(genes, newGenes);
   }
 }

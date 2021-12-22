@@ -46,6 +46,10 @@ import {
   ArchiveBidAction,
   UnarchiveBidAction
 } from '../bid/actions'
+import {
+  BUY_ITEM_SUCCESS,
+  BuyItemSuccessAction,
+} from '../item/actions'
 
 function track<T extends PayloadAction<string, any>>(
   actionType: string,
@@ -60,6 +64,17 @@ function withCategory(eventName: string, item: { category: string }) {
   return `${eventName} ${category}`
 }
 
+track<BuyItemSuccessAction>(
+  BUY_ITEM_SUCCESS,
+  ({ payload }) => withCategory('Buy Item', { category: payload.item.name }),
+  ({ payload }) => ({
+    name: payload.item.name,
+    price: payload.item.price,
+    count: payload.count,
+    to: payload.to
+  })
+)
+
 track<ExecuteOrderSuccessAction>(
   EXECUTE_ORDER_SUCCESS,
   ({ payload }) => withCategory('Buy', payload.nft),
@@ -67,6 +82,7 @@ track<ExecuteOrderSuccessAction>(
     category: payload.nft.category,
     nft: payload.nft.id,
     price: payload.order.price,
+    paymentToken: payload.order.paymentToken,
     seller: payload.order.owner,
     buyer: payload.order.buyer
   })
@@ -78,7 +94,8 @@ track<CreateOrderSuccessAction>(
   ({ payload }) => ({
     category: payload.nft.category,
     tokenId: payload.nft.tokenId,
-    price: payload.price
+    price: payload.price,
+    paymentToken: payload.paymentToken,
   })
 )
 
@@ -88,7 +105,8 @@ track<CancelOrderSuccessAction>(
   ({ payload }) => ({
     category: payload.nft.category,
     tokenId: payload.nft.tokenId,
-    price: payload.order.price
+    price: payload.order.price,
+    paymentToken: payload.order.paymentToken
   })
 )
 
@@ -129,6 +147,7 @@ track<PlaceBidSuccessAction>(
     category: payload.nft.category,
     tokenId: payload.nft.tokenId,
     price: payload.price,
+    paymentToken: payload.paymentToken,
     bidder: payload.bidder
   })
 )
@@ -140,7 +159,9 @@ track<AcceptBidSuccessAction>(
     tokenId: payload.bid.tokenId,
     bidId: payload.bid.id,
     bidder: payload.bid.bidder,
-    seller: payload.bid.seller
+    seller: payload.bid.seller,
+    price: payload.bid.price,
+    paymentToken: payload.bid.paymentToken
   })
 )
 
@@ -157,13 +178,15 @@ track<CancelBidSuccessAction>(
 track<ArchiveBidAction>(ARCHIVE_BID, 'Archive Bid', ({ payload }) => ({
   tokenId: payload.bid.tokenId,
   bidId: payload.bid.id,
-  price: payload.bid.price
+  price: payload.bid.price,
+  paymentToken: payload.bid.paymentToken
 }))
 
 track<UnarchiveBidAction>(UNARCHIVE_BID, 'Unarchive Bid', ({ payload }) => ({
   tokenId: payload.bid.tokenId,
   bidId: payload.bid.id,
-  price: payload.bid.price
+  price: payload.bid.price,
+  paymentToken: payload.bid.paymentToken
 }))
 
 track<FetchNFTsSuccessAction>(

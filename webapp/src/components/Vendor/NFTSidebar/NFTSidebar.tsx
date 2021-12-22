@@ -53,6 +53,7 @@ export type MultipleFilters = {
   price?: string[]
   priceToken?: string[]
   kryptomonStatus?: string[]
+  unfreezable?: string[]
 }
 
 const NFTSidebar = (props: Props) => {
@@ -105,7 +106,8 @@ const NFTSidebar = (props: Props) => {
     special,
     price,
     priceToken,
-    kryptomonStatus
+    kryptomonStatus,
+    unfreezable
   } = props
 
   const handleOnBrowse = useCallback(
@@ -201,6 +203,7 @@ const NFTSidebar = (props: Props) => {
           price={price}
           priceToken={priceToken}
           kryptomonStatus={kryptomonStatus}
+          unfreezable={unfreezable}
         />
       )
   }

@@ -58,8 +58,8 @@ function* handleWallet(
     name: contractNames.WBNB
   })
 
-  const lootbox = getContract({
-    name: contractNames.Lootbox,
+  const item = getContract({
+    name: contractNames.Item,
   })
 
   const kmonft = getContract({
@@ -108,10 +108,10 @@ function* handleWallet(
     type: AuthorizationType.ALLOWANCE
   })
 
-  // Buy lootbox
+  // Buy item
   authorizations.push({
     address,
-    authorizedAddress: lootbox.address,
+    authorizedAddress: item.address,
     contractAddress: kmon.address,
     contractName: ContractName.KMONToken,
     chainId: kmon.chainId,

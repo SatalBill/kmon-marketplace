@@ -5,6 +5,8 @@ export type Props = {
   nft: NFT
   elementType: any
   order?: Order
+  isV2: boolean
+  toogleV2: () => void
 }
 
 export type MapStateProps = Pick<Props, 'order'>

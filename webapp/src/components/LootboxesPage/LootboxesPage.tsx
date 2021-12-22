@@ -8,11 +8,18 @@ import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
 import { Props } from './LootboxesPage.types'
-import { LootboxType } from '../../modules/lootbox/types'
 import { LootboxCard } from './LootboxCard'
-import basicLootbox from '../../images/lootbox/basic.png'
-import mediumLootbox from '../../images/lootbox/medium.png'
-import premiumLootbox from '../../images/lootbox/premium.png'
+import basicLootbox from '../../images/items/lootbox_basic.png'
+import mediumLootbox from '../../images/items/lootbox_medium.png'
+import premiumLootbox from '../../images/items/lootbox_premium.png'
+import unfreezePotion from '../../images/items/unfreeze_potion.png'
+
+export const images: Record<string, string> = {
+  'lootbox_basic': basicLootbox,
+  'lootbox_medium': mediumLootbox,
+  'lootbox_premium': premiumLootbox,
+  'unfreeze_potion': unfreezePotion
+}
 
 const LootboxesPage = (props: Props) => {
   const {
@@ -20,26 +27,20 @@ const LootboxesPage = (props: Props) => {
     wallet,
     isConnecting,
     isFullscreen,
-    lootboxPrices,
+    items,
     onRedirect,
-    onFetchLootboxPrice
+    onFetchItems
   } = props
 
   const isCurrentAccount =
     address === undefined || (wallet && wallet.address === address)
-
-  const basicPrice = lootboxPrices[LootboxType.Basic]
-  const mediumPrice = lootboxPrices[LootboxType.Medium]
-  const premiumPrice = lootboxPrices[LootboxType.Premium]
 
   // Redirect to signIn if trying to access current account without a wallet
   useEffect(() => {
     if (isCurrentAccount && !isConnecting && !wallet) {
       onRedirect(locations.signIn())
     } else {
-      onFetchLootboxPrice(LootboxType.Basic)
-      onFetchLootboxPrice(LootboxType.Medium)
-      onFetchLootboxPrice(LootboxType.Premium)
+      onFetchItems()
     }
   }, [isCurrentAccount, isConnecting, wallet, onRedirect])
 
@@ -54,21 +55,15 @@ const LootboxesPage = (props: Props) => {
       </div>
       <Page className="NFTBrowse">
         <Card.Group>
-          <LootboxCard
-            boxType={LootboxType.Basic}
-            image={basicLootbox}
-            price={basicPrice === undefined ? '' : fromWei(basicPrice, 'ether')}
-          />
-          <LootboxCard
-            boxType={LootboxType.Medium}
-            image={mediumLootbox}
-            price={mediumPrice === undefined ? '' : fromWei(mediumPrice, 'ether')}
-          />
-          <LootboxCard
-            boxType={LootboxType.Premium}
-            image={premiumLootbox}
-            price={premiumPrice === undefined ? '' : fromWei(premiumPrice, 'ether')}
-          />
+          {Object.values(items).map((item) => (
+            <LootboxCard
+              key={item.itemId}
+              itemId={item.itemId}
+              name={item.name}
+              image={images[item.name.toLocaleLowerCase()]}
+              price={fromWei(item.price, 'ether')}
+            />
+          ))}
         </Card.Group>
       </Page>
       <Footer isFullscreen={isFullscreen} />
