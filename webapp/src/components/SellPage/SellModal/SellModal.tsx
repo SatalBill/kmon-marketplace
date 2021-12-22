@@ -27,6 +27,7 @@ import { getContractNames } from '../../../modules/vendor'
 import { getContract } from '../../../modules/contract/utils'
 import { Props } from './SellModal.types'
 import { CoinSelectField } from '../../CoinSelectField'
+import { toDecimal } from '../../../lib/number'
 
 const SellModal = (props: Props) => {
   const {
@@ -146,7 +147,7 @@ const SellModal = (props: Props) => {
             focus={true}
             onChange={(_event, props) => {
               if (paymentCoin === Coin.BNB) {
-                setPrice(props.value)
+                setPrice(toDecimal(props.value))
               } else {
                 const newPrice = fromCoin(props.value, paymentCoin)
                 console.log(newPrice)
@@ -210,7 +211,7 @@ const SellModal = (props: Props) => {
               value={confirmPrice}
               onChange={(_event, props) => {
                 if (paymentCoin === Coin.BNB) {
-                  setConfirmPrice(props.value)
+                  setConfirmPrice(toDecimal(props.value))
                 } else {
                   const newPrice = fromCoin(props.value, paymentCoin)
                   setConfirmPrice(toCoin(newPrice))

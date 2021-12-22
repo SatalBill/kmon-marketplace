@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Card, Button, Loader } from '@kmon/ui'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { getAnalytics } from '@kmon/dapps/dist/modules/analytics/utils'
@@ -6,9 +6,12 @@ import { getAnalytics } from '@kmon/dapps/dist/modules/analytics/utils'
 import { getMaxQuerySize, MAX_PAGE, PAGE_SIZE } from '../../modules/vendor/api'
 import { NFTCard } from '../NFTCard'
 import { Props } from './NFTList.types'
+import { IndexingDelay } from '../IndexingDelayCard'
+import { useIndexingDelay } from '../../hooks'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, isLoading, onBrowse } = props
+  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, onBrowse } = props
+  const { showIndexingDelay } = useIndexingDelay(subgraphBlockNumber, isSignedIn)
 
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
@@ -26,6 +29,7 @@ const NFTList = (props: Props) => {
   return (
     <>
       <Card.Group>
+        {showIndexingDelay && <IndexingDelay />}
         {nfts.length > 0
           ? nfts.map((nft, index) => (
             <NFTCard

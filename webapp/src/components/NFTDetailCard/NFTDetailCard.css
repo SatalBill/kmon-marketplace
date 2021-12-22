@@ -102,11 +102,14 @@ a.ui.card.link:hover .meta {
   border-radius: 8px;
   overflow: hidden;
   height: fit-content;
+  align-self: flex-end;
+  margin-right: 30px;
 }
 
 @media (max-width: 768px) {
   .card {
     width: 100%;
+    margin-right: 0px;
   }
 }
 

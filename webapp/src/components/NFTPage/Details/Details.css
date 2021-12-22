@@ -25,6 +25,12 @@
   padding-left: 42px;
 }
 
+@media (max-width: 1201px) {
+  .block-title {
+    padding-left: 12px;
+  }
+}
+
 .block-title-text {
   font-family: var(--font-monospace);
   font-size: 10px;
@@ -35,7 +41,7 @@
 .detail-nft-name {
   color: #eb2f96;
   font-family: var(--font-family);
-  font-size: 15px
+  font-size: 15px;
 }
 
 .detail-medium-text {

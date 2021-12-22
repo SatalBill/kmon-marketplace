@@ -26,3 +26,20 @@ export function formatDistanceToNow(
 
   return formatDistanceToNowI18N(date, options)
 }
+
+export function convertTime(secondsData: number) {                    
+  const hours   = Math.floor(secondsData / 3600)
+  const minutes = Math.floor((secondsData - (hours * 3600)) / 60)
+  const seconds = secondsData - (hours * 3600) - (minutes * 60)
+  if ( !!hours ) {
+    if ( !!minutes ) {
+      return `${hours}h ${minutes}m ${seconds}s`
+    } else {
+      return `${hours}h ${seconds}s`
+    }
+  }
+  if ( !!minutes ) {
+    return `${minutes}m ${seconds}s`
+  }
+  return `${seconds}s`
+}

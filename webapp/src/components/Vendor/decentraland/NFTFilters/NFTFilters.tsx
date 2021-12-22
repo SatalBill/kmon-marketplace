@@ -47,10 +47,10 @@ const NFTFilters = (props: Props) => {
       value: SortBy.RECENTLY_LISTED,
       text: t('filters.recently_listed')
     },
-    {
-      value: SortBy.DEAREST,
-      text: t('filters.dearest')
-    },
+    // {
+    //   value: SortBy.DEAREST,
+    //   text: t('filters.dearest')
+    // },
     {
       value: SortBy.CHEAPEST,
       text: t('filters.cheapest')
@@ -156,16 +156,16 @@ const NFTFilters = (props: Props) => {
   const searchPlaceholder = isMap
     ? t('nft_filters.search_land')
     : count === undefined
-    ? t('global.loading') + '...'
-    : t('nft_filters.search', {
+      ? t('global.loading') + '...'
+      : t('nft_filters.search', {
         suffix:
           count < MAX_QUERY_SIZE
             ? t('nft_filters.results', {
-                count: count.toLocaleString()
-              })
+              count: count.toLocaleString()
+            })
             : t('nft_filters.more_than_results', {
-                count: count.toLocaleString()
-              })
+              count: count.toLocaleString()
+            })
       })
 
   return (
@@ -244,9 +244,8 @@ const NFTFilters = (props: Props) => {
             onClick={handleToggleFilterMenu}
           >
             <div
-              className={`open-filters ${
-                showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
-              }`}
+              className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
+                }`}
             />
           </Responsive>
         ) : null}
@@ -258,16 +257,15 @@ const NFTFilters = (props: Props) => {
           >
             <div className="label">{t('nft_filters.filter')}</div>
             <div
-              className={`open-filters ${
-                showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
-              }`}
+              className={`open-filters ${showFiltersMenu || appliedFilters.length > 0 ? 'active' : ''
+                }`}
             />
           </div>
         </Responsive>
 
         {section === Section.LAND ||
-        section === Section.PARCELS ||
-        section === Section.ESTATES ? (
+          section === Section.PARCELS ||
+          section === Section.ESTATES ? (
           <div className="topbar-filter">
             <div className="toggle-map">
               <Chip

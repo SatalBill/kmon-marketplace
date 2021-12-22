@@ -108,15 +108,21 @@ export function handleBirth(event: Birth): void {
     elementBreakDown[i].percentage = elementBreakDown[i].valueName.times(BigInt.fromString("100")).div(totalSum)
   }
 
-  let typeSelected = indexOfMax(typeDraft);
+  let typeSelected = indexOfMax(typeDraft, null);
   kryptomon.elementType = typeFormatted[typeSelected.toI32()];
   kryptomon.elementTalent = typeDraft[typeSelected.toI32()];
   const percentage = kryptomon.elementTalent.times(BigInt.fromString("100")).div(totalSum);
   kryptomon.elementPercentage = percentage
 
+  let typeSelectedSecond = indexOfMax(typeDraft, typeSelected);
+  kryptomon.elementTypeSecond = typeFormatted[typeSelectedSecond.toI32()];
+  kryptomon.elementTalentSecond = typeDraft[typeSelectedSecond.toI32()];
+  const percentageSecond = kryptomon.elementTalentSecond.times(BigInt.fromString("100")).div(totalSum);
+  kryptomon.elementPercentageSecond = percentageSecond
+
   if (genes.attack.times(BigInt.fromString("10")).gt(genes.defense.times(BigInt.fromString("11")))) {
     kryptomon.speciality = "Attack";
-  } else if (genes.defense.times(BigInt.fromString("10")).lt(genes.attack.times(BigInt.fromString("11")))) {
+  } else if (genes.defense.times(BigInt.fromString("10")).gt(genes.attack.times(BigInt.fromString("11")))) {
     kryptomon.speciality = "Defense";
   } else {
     kryptomon.speciality = "Balance";
@@ -177,6 +183,7 @@ export function handleBirth(event: Birth): void {
   nft.searchKryptomonBodySize = genes.bodySize
   nft.searchKryptomonEgo = genes.ego
   nft.searchKryptomonSkinType = genes.skinType
+  nft.searchKryptomonUnfreezable = extraData.unfreezable
 
   nft.save()
 
@@ -254,7 +261,7 @@ export function handleTransfer(event: Transfer): void {
   nft.save()
 }
 
-export function indexOfMax(arr: Array<BigInt>): BigInt {
+export function indexOfMax(arr: Array<BigInt>, indexToIgnore: BigInt): BigInt {
   if (arr.length === 0) {
     return BigInt.fromString("0");
   }
@@ -263,9 +270,19 @@ export function indexOfMax(arr: Array<BigInt>): BigInt {
   var maxIndex = BigInt.fromString("0");
 
   for (var i = 1; i < arr.length; i++) {
-    if (arr[i].gt(max)) {
-      maxIndex = BigInt.fromString(i.toString());
-      max = arr[i];
+    if (indexToIgnore != null) {
+      if (BigInt.fromString(i.toString()).notEqual(indexToIgnore)) {
+        if (arr[i].gt(max)) {
+          maxIndex = BigInt.fromString(i.toString());
+          max = arr[i];
+        }
+      }
+    }
+    else {
+      if (arr[i].gt(max)) {
+        maxIndex = BigInt.fromString(i.toString());
+        max = arr[i];
+      }
     }
   }
 
