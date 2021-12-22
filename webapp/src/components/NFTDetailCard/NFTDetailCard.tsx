@@ -3,12 +3,17 @@ import { NFTImage } from '../NFTImage'
 import { Props } from './NFTDetailCard.types'
 import './NFTDetailCard.css'
 import { Row } from '../Layout/Row'
+import { Radio } from '@kmon/ui'
 
 const NFTDetailCard = (props: Props) => {
-  const { nft, elementType } = props
-  const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000;
-  var options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options);
+  const { nft, elementType, isV2, toogleV2 } = props
+  const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000
+  var options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }
+  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
 
   return (
     <div className="card">
@@ -16,9 +21,15 @@ const NFTDetailCard = (props: Props) => {
         <div className="card-image">
           <NFTImage nft={nft} showMonospace />
         </div>
-        <div className="card-image-text">
+        <div className="card-image-text-details">
+          <Radio
+            toggle
+            checked={isV2}
+            onChange={toogleV2}
+            label={isV2 ? 'V2' : 'V1'}
+          />
           <img
-            className="product-type-icon"
+            className="product-type-icon-details"
             src={elementType.icon}
             alt="icon"
           />
