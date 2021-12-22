@@ -9,14 +9,16 @@ import { Footer } from '../Footer'
 import { Navigation } from '../Navigation'
 import { Props } from './LootboxesPage.types'
 import { LootboxCard } from './LootboxCard'
-import basicLootbox from '../../images/lootbox/basic.png'
-import mediumLootbox from '../../images/lootbox/medium.png'
-import premiumLootbox from '../../images/lootbox/premium.png'
+import basicLootbox from '../../images/items/lootbox_basic.png'
+import mediumLootbox from '../../images/items/lootbox_medium.png'
+import premiumLootbox from '../../images/items/lootbox_premium.png'
+import unfreezePotion from '../../images/items/unfreeze_potion.png'
 
 export const images: Record<string, string> = {
-  'basic': basicLootbox,
-  'medium': mediumLootbox,
-  'premium': premiumLootbox,
+  'lootbox_basic': basicLootbox,
+  'lootbox_medium': mediumLootbox,
+  'lootbox_premium': premiumLootbox,
+  'unfreeze_potion': unfreezePotion
 }
 
 const LootboxesPage = (props: Props) => {

@@ -22,7 +22,7 @@ const LootboxDetailCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <Row>
-            <p className="product-info-number">{name}</p>
+            <p className="product-info-number">{name.replace(/_/g, ' ')}</p>
           </Row>
           <p className="product-description-left-item">{price} KMON</p>
         </div>

@@ -36,7 +36,7 @@ const LootboxCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <p className="product-description-left-item">
-            Lootbox type: {name}
+            Item type: {name.replace(/_/g, ' ')}
           </p>
         </div>
         <div className="product-description-right">{price} KMON</div>

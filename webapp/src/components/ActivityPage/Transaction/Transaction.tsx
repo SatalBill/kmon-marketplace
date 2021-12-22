@@ -382,7 +382,8 @@ const Transaction = (props: Props) => {
             <T
               id="transaction.detail.buy_item"
               values={{
-                name: item.name,
+                count,
+                name: item.name.replace(/_/g, ' '),
                 price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toLocaleString()}</CoinPopup>
               }}
             />
