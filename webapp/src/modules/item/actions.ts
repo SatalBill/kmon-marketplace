@@ -43,6 +43,9 @@ export const buyItemSuccess = (
   count: number,
   to: Address
 ) => action(BUY_ITEM_SUCCESS, {
+  item,
+  count,
+  to,
   ...buildTransactionPayload(chainId, txHash, {
     chainId,
     txHash,
