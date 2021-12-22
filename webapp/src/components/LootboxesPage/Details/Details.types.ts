@@ -1,13 +1,11 @@
 import React from 'react'
-import { Address } from 'web3x-es/address'
-
-import { LootboxType } from '../../../modules/lootbox/types'
+import { ItemVersion } from '../../../modules/item/types'
 
 export type Props = {
-  boxType?: LootboxType
-  boxPrice: string
+  name: string
+  price: string
   isTxPending: boolean
-  onBuy: () => void
+  onBuyItem: (version: ItemVersion) => void
 }
 
 export type ItemProps = {

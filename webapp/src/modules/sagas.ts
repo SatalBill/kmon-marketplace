@@ -14,8 +14,7 @@ import { toastSaga } from './toast/sagas'
 import { translationSaga } from './translation/sagas'
 import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
-import { lootboxSaga } from './lootbox/sagas'
-import { lootboxPriceSaga } from './lootbox_price/sagas'
+import { itemSaga } from './item/sagas'
 import { subgraphSaga } from './subgraph/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
@@ -40,8 +39,7 @@ export function* rootSaga() {
     translationSaga(),
     uiSaga(),
     walletSaga(),
-    lootboxSaga(),
-    lootboxPriceSaga(),
+    itemSaga(),
     subgraphSaga(),
   ])
 }

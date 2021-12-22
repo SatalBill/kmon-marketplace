@@ -21,18 +21,23 @@ import {
   MapDispatchProps
 } from './LootboxDetail.types'
 import LootboxDetail from './LootboxDetail'
-import { LootboxType } from '../../../modules/lootbox/types'
-import { buyLootboxRequest } from '../../../modules/lootbox/actions'
-import { fetchLootboxPriceRequest } from '../../../modules/lootbox_price/actions'
-import { BUY_LOOTBOX_REQUEST } from '../../../modules/lootbox/actions'
-import { getLoading as getLoadingLootbox } from '../../../modules/lootbox/selectors'
-import { getData as getLootboxPrices } from '../../../modules/lootbox_price/selectors'
+import {
+  buyItemRequest,
+  fetchItemRequest,
+  BUY_ITEM_REQUEST
+} from '../../../modules/item/actions'
+import {
+  getCurrentItem,
+  getLoading as getLoadingItem
+} from '../../../modules/item/selectors'
+import { Item } from '../../../modules/item/types'
+import { ItemVersion } from '../../../modules/item/types'
 
 const mapState = (
   state: RootState,
   ownProps: RouteComponentProps<Params>
 ): MapStateProps => {
-  const { address, boxType } = ownProps.match.params
+  const { address, id } = ownProps.match.params
 
   return ({
     address: address?.toLowerCase(),
@@ -40,17 +45,17 @@ const mapState = (
     authorizations: getAuthorizations(state),
     isConnecting: isConnecting(state),
     isLoading: isLoadingType(getLoadingAuthorizations(state), FETCH_AUTHORIZATIONS_REQUEST),
-    isBuyingLootbox: isLoadingType(getLoadingLootbox(state), BUY_LOOTBOX_REQUEST),
-    boxType: boxType === undefined ? undefined : Number(boxType),
-    lootboxPrices: getLootboxPrices(state)
+    isBuyingItem: isLoadingType(getLoadingItem(state), BUY_ITEM_REQUEST),
+    itemId: id,
+    currentItem: getCurrentItem(state)
   })
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onRedirect: path => dispatch(replace(path)),
-  onFetchLootboxPrice: boxType => dispatch(fetchLootboxPriceRequest(boxType)),
-  onBuyLootbox: (boxType: LootboxType, boxPrice: string, to: Address) =>
-    dispatch(buyLootboxRequest(boxType, boxPrice, to))
+  onFetchItem: () => dispatch(fetchItemRequest()),
+  onBuyItem: (version: ItemVersion, item: Item, count: number, to: Address) =>
+    dispatch(buyItemRequest(version, item, count, to)),
 })
 
 export default connect(mapState, mapDispatch)(LootboxDetail)

@@ -1,4 +1,6 @@
+import { ItemVersion } from "../../../modules/item/types";
+
 export type Props = {
   isTxPending: boolean
-  onBuy: () => void
+  onBuy: (itemVersion: ItemVersion) => void
 }

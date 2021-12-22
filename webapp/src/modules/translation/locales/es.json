@@ -138,6 +138,23 @@
     "leaving_decentraland_disclaimer": "Tus NFTs van a listarse en el Marketplace de Decentraland",
     "part_of_estate": "Parte de {estate_name}"
   },
+  "lootbox_page": {
+    "description_block": {
+      "title": "",
+      "description": {
+        "lootbox_basic": "",
+        "lootbox_medium": "",
+        "lootbox_premium": "",
+        "unfreeze_potion": ""
+      }
+    },
+    "confirm": {
+      "title": "",
+      "line_one": "",
+      "line_two": "",
+      "field_label": ""
+    }
+  },
   "proximity": {
     "adjacent": "Adyacente",
     "distance": "{distance} {distance, plural, one {parcela} other {parcelas}} de distancia"
@@ -321,7 +338,7 @@
       "place_bid": "Hiciste una oferta de {price} por {name}.",
       "accept_bid": "Aceptaste una oferta de {price} por {name}.",
       "cancel_bid": "Cancelaste una oferta de {price} por {name}.",
-      "buy_lootbox": "Compraste caja botín {name} por {price}."
+      "buy_item": "Compraste caja botín {name} por {price}."
     }
   },
   "kmon": {

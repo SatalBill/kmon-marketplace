@@ -2,23 +2,21 @@ import React from 'react'
 import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Actions } from '../Actions'
-import { toStringLootboxType } from '../../../modules/lootbox/utils'
 
 const Details = (props: Props) => {
-  const { boxType, boxPrice, isTxPending, onBuy } = props
-  const boxTypeStr = toStringLootboxType(boxType)
+  const { name, price, isTxPending, onBuyItem } = props
 
   return (
     <div className="details-container">
       <DetailItem title="Lootbox type">
-        <p className="detail-big-text">{boxTypeStr}</p>
+        <p className="detail-big-text">{name}</p>
       </DetailItem>
       <DetailItem title="Price">
         <p className="detail-big-text">
-          {boxPrice} KMON
+          {price} KMON
         </p>
       </DetailItem>
-      <Actions isTxPending={isTxPending} onBuy={onBuy} />
+      <Actions isTxPending={isTxPending} onBuy={onBuyItem} />
     </div>
   )
 }

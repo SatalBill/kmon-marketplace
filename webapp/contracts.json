@@ -44,10 +44,10 @@
       "net": "rinkeby",
       "address": "0x08a68ba353e4af7c74b3b89d5340e5b2ddc5093c"
     },
-    "Lootbox": {
+    "Item": {
       "source": "etherscan",
       "net": "rinkeby",
-      "address": "0xEc75a46B10205078710a2b6Fa6320c9628D18390"
+      "address": "0xd0ea7b44ce5a4028f22d243d99ac6e16e8ccb8e3"
     },
     "ERC721Bid": {
       "source": "etherscan",

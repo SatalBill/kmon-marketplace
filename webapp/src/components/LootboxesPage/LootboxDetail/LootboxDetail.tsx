@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Page } from '@kmon/ui'
+import { Button, Container, Field, Form, Modal, Page } from '@kmon/ui'
 import { Loader } from 'semantic-ui-react'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { T, t } from '@kmon/dapps/dist/modules/translation/utils'
 import { fromWei } from 'web3x-es/utils'
 import { Address } from 'web3x-es/address'
 import {
@@ -22,14 +22,13 @@ import { Navigation } from '../../Navigation'
 import { Footer } from '../../Footer'
 import { Details } from '../Details'
 import { LootboxDetailCard } from '../LootboxDetailCard'
-import { LootboxType } from '../../../modules/lootbox/types'
-import basicLootbox from '../../../images/lootbox/basic.png'
-import mediumLootbox from '../../../images/lootbox/medium.png'
-import premiumLootbox from '../../../images/lootbox/premium.png'
 import './LootboxDetail.css'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { TitleBlock } from '../../NFTPage/TitleBlock'
-import { toStringLootboxType } from '../../../modules/lootbox/utils'
+import { Item, ItemVersion } from '../../../modules/item/types'
+import { images } from '../LootboxesPage'
+import { fromItemCount, toItemCount } from '../../../lib/number'
+import { ConfirmModal } from '../ConfirmModal'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -37,32 +36,25 @@ const LootboxDetail = (props: Props) => {
     authorizations,
     isConnecting,
     isLoading,
-    isBuyingLootbox,
-    boxType,
-    lootboxPrices,
-    onFetchLootboxPrice,
-    onBuyLootbox
+    isBuyingItem,
+    itemId,
+    currentItem,
+    onFetchItem,
+    onBuyItem,
   } = props
-  const isTxPending = isLoading && isBuyingLootbox
-  const boxPrice = boxType === undefined ?
-    undefined :
-    lootboxPrices === undefined ?
-    undefined : lootboxPrices[boxType]
-  const boxPriceStr = boxPrice !== undefined ? fromWei(boxPrice, 'ether') : ''
-
-  const lootboxImage = boxType === LootboxType.Basic
-    ? basicLootbox
-    : boxType === LootboxType.Medium
-    ? mediumLootbox
-    : boxType === LootboxType.Premium
-    ? premiumLootbox
-    : ''
+  const isTxPending = isLoading && isBuyingItem
+  const price = currentItem === undefined ? undefined : currentItem.price
+  const priceStr = price !== undefined ? fromWei(price, 'ether') : ''
+  const itemImage = currentItem === undefined ? '' : images[currentItem.name.toLocaleLowerCase()]
+  const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
+  const [currentItemCount, setCurrentItemCount] = useState('')
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
 
   useEffect(() => {
-    if (boxType !== undefined) {
-      onFetchLootboxPrice(boxType)
+    if (itemId !== undefined) {
+      onFetchItem()
     }
-  }, [boxType])
+  }, [itemId])
   
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
@@ -72,8 +64,8 @@ const LootboxDetail = (props: Props) => {
     name: contractNames.KMONToken
   })
 
-  const lootbox = getContract({
-    name: contractNames.Lootbox,
+  const item = getContract({
+    name: contractNames.Item,
   })
 
   if (!wallet) {
@@ -82,16 +74,22 @@ const LootboxDetail = (props: Props) => {
 
   const authorization: Authorization = {
     address: wallet.address,
-    authorizedAddress: lootbox.address,
+    authorizedAddress: item.address,
     contractAddress: kmon.address,
     contractName: ContractName.KMONToken,
     chainId: kmon.chainId,
     type: AuthorizationType.ALLOWANCE
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (version: ItemVersion) => {
+    setCurrentItemVersion(version)
+    setShowConfirmModal(true)
+  }
+
+  const handleProceed = (itemCount: string) => {
+    setCurrentItemCount(itemCount)
     if (hasAuthorization(authorizations, authorization)) {
-      handleBuyLootbox()
+      handleBuyItem(currentItemVersion, itemCount)
     } else {
       setShowAuthorizationModal(true)
     }
@@ -99,27 +97,50 @@ const LootboxDetail = (props: Props) => {
 
   const handleClose = () => setShowAuthorizationModal(false)
 
-  const handleBuyLootbox = () => {
-    if (boxType === undefined || boxPrice === undefined) return
-    onBuyLootbox(boxType, boxPrice, Address.ZERO)
+  const handleBuyItem = (version: ItemVersion, itemCount: string) => {
+    if (currentItem === undefined || price === undefined) return
+    if (Number(itemCount) < 1) return
+    if (version === ItemVersion.V1) {
+      onBuyItem(version, getLootboxFromItem(currentItem), 1, Address.fromString(wallet.address))
+      return
+    }
+    onBuyItem(version, currentItem, Number(itemCount), Address.fromString(wallet.address))
+  }
+
+  const getLootboxFromItem = (item: Item) => {
+    let lootbox = item
+    if (item.name.toLowerCase() === 'basic') {
+      ;(lootbox = { ...lootbox, itemId: '0' })
+    }
+    if (item.name.toLowerCase() === 'medium') {
+      ;(lootbox = { ...lootbox, itemId: '' })
+    }
+    if (item.name.toLowerCase() === 'premium') {
+      ;(lootbox = { ...lootbox, itemId: '2' })
+    }
+    return lootbox
   }
 
   const LootboxDetail = () => {
     return (
       <Container className="lootbox-detail product-container">
         <Row className="Row">
-          <LootboxDetailCard
-            boxType={boxType}
-            image={lootboxImage}
-            price={boxPriceStr}
-          />
-          <Column>
-            <Details
-              boxType={boxType}
-              boxPrice={boxPriceStr}
-              isTxPending={isTxPending}
-              onBuy={handleSubmit}
+          {currentItem && (
+            <LootboxDetailCard
+              name={currentItem.name}
+              image={itemImage}
+              price={priceStr}
             />
+          )}
+          <Column>
+            {currentItem && (
+              <Details
+                name={currentItem.name.replace(/_/g, ' ')}
+                price={priceStr}
+                isTxPending={isTxPending}
+                onBuyItem={handleSubmit}
+              />
+            )}
             {isTxPending && (
               <>
                 <div className="overlay" />
@@ -131,14 +152,25 @@ const LootboxDetail = (props: Props) => {
         <Row className="Row-space-between">
           <TitleBlock title={t('lootbox_page.description_block.title')}>
             <DescriptionBlock
-              description={t(`lootbox_page.description_block.description.${toStringLootboxType(boxType)}`)}
+              description={t(`lootbox_page.description_block.description.${currentItem?.name.toLowerCase()}`)}
             />
           </TitleBlock>
         </Row>
+        <ConfirmModal
+          currentItem={currentItem}
+          currentItemCount={currentItemCount}
+          isBuyingItem={isBuyingItem}
+          showConfirmModal={showConfirmModal}
+          handleProceed={handleProceed}
+          onCloseModal={() => {
+            setShowConfirmModal(false)
+            setCurrentItemCount('')
+          }}
+        />
         <AuthorizationModal
           open={showAuthorizationModal}
           authorization={authorization}
-          onProceed={handleBuyLootbox}
+          onProceed={() => handleBuyItem(currentItemVersion, currentItemCount)}
           onCancel={handleClose}
         />
       </Container>
@@ -165,8 +197,8 @@ const LootboxDetail = (props: Props) => {
       </div>
       <Page className="NFTPage" isFullscreen>
         {isConnecting ? <Loading /> : null}
-        {!isConnecting && boxPrice === undefined ? <NotFound /> : null}
-        {!isConnecting && boxPrice !== undefined ? <LootboxDetail /> : null}
+        {!isConnecting && price === undefined ? <NotFound /> : null}
+        {!isConnecting && price !== undefined ? <LootboxDetail /> : null}
       </Page>
       <Footer />
     </>

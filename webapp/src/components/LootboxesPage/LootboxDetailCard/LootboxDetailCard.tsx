@@ -1,14 +1,12 @@
 import React from 'react'
 import { Row } from '@kmon/ui'
 
-import { toStringLootboxType } from '../../../modules/lootbox/utils'
 import { Props } from './LootboxDetailCard.types'
 import { Image } from '../../Image'
 import './LootboxDetailCard.css'
 
 const LootboxDetailCard = (props: Props) => {
-  const { boxType, image, price } = props
-  const boxTypeStr = toStringLootboxType(boxType)
+  const { name, image, price } = props
   return (
     <div className="lootbox-detail-card card">
       <div className="card-image-container">
@@ -24,7 +22,7 @@ const LootboxDetailCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <Row>
-            <p className="product-info-number">{boxTypeStr}</p>
+            <p className="product-info-number">{name.replace(/_/g, ' ')}</p>
           </Row>
           <p className="product-description-left-item">{price} KMON</p>
         </div>

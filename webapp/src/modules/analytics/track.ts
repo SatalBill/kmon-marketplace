@@ -46,6 +46,10 @@ import {
   ArchiveBidAction,
   UnarchiveBidAction
 } from '../bid/actions'
+import {
+  BUY_ITEM_SUCCESS,
+  BuyItemSuccessAction,
+} from '../item/actions'
 
 function track<T extends PayloadAction<string, any>>(
   actionType: string,
@@ -59,6 +63,17 @@ function withCategory(eventName: string, item: { category: string }) {
   const category = capitalize(item.category)
   return `${eventName} ${category}`
 }
+
+track<BuyItemSuccessAction>(
+  BUY_ITEM_SUCCESS,
+  ({ payload }) => withCategory('Buy Item', { category: payload.item.name }),
+  ({ payload }) => ({
+    name: payload.item.name,
+    price: payload.item.price,
+    count: payload.count,
+    to: payload.to
+  })
+)
 
 track<ExecuteOrderSuccessAction>(
   EXECUTE_ORDER_SUCCESS,
