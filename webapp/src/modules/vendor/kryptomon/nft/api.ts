@@ -1,4 +1,4 @@
-import { NFTsFetchParams } from '../../../nft/types'
+import { NFTsFetchParams, NFTGenesV2 } from '../../../nft/types'
 import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
@@ -7,9 +7,9 @@ import {
   GENERATION_TO_REQ,
   SEX_TO_REQ,
   SKIN_TYPE_TO_REQ,
-  STATUS_TO_REQ
+  STATUS_TO_REQ,
+  UNFREEZABLE_TO_REQ
 } from '../../decentraland/nft/utils'
-import { orderAPI } from '../order'
 import { SEARCH_ARRAY_PARAM_SEPARATOR } from '../../../routing/search'
 import { toWei } from 'web3x-es/utils'
 import { getSortBy } from '../../../nft/utils'
@@ -33,6 +33,18 @@ class NFTAPI {
       throw new Error('Not found')
     }
     return response.data[0]
+  }
+
+  async fetchOneV2(tokenId: string) {
+    try {
+      const response: { genes: NFTGenesV2 } = await fetch(
+        `https://api-yt9bz.ondigitalocean.app/kryptomon/${tokenId}`
+      ).then(resp => resp.json())
+
+      return response
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async fetchContracts() {
@@ -122,8 +134,13 @@ class NFTAPI {
     if (params.affection) {
       queryParams.set('affection', params.affection)
     }
-    if (params.affection) {
-      queryParams.set('affection', params.affection)
+    if (params.unfreezable) {
+      const formatedUnfreezable = params.unfreezable
+        .split('_')
+        .map(elem => UNFREEZABLE_TO_REQ[elem])
+      if (formatedUnfreezable.length === 1) {
+        queryParams.set('unfreezable', formatedUnfreezable.join('_'))
+      }
     }
     if (params.braveness) {
       queryParams.set('braveness', params.braveness)

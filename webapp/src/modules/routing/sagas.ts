@@ -148,7 +148,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     elementPercentage,
     special,
     price,
-    priceToken
+    priceToken,
+    unfreezable
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -229,7 +230,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           elementPercentage: arrayToString(elementPercentage),
           special: arrayToString(special),
           price: arrayToString(price),
-          priceToken: arrayToString(priceToken)
+          priceToken: arrayToString(priceToken),
+          unfreezable: arrayToString(unfreezable)
         },
         filters: getFilters(vendor, searchOptions)
       })
@@ -296,7 +298,8 @@ function* getNewSearchOptions(current: SearchOptions) {
     elementPercentage: yield select(getArrayByType('elementPercentage')),
     special: yield select(getArrayByType('special')),
     price: yield select(getPrice),
-    priceToken: yield select(getPriceToken)
+    priceToken: yield select(getPriceToken),
+    unfreezable: yield select(getArrayByType('unfreezable'))
   }
   current = yield deriveCurrentOptions(previous, current)
 

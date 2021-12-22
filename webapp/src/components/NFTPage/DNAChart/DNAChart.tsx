@@ -9,7 +9,17 @@ import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const DNAChart = (props: Props) => {
-  const { nft } = props
+  const { nft, isV2 } = props
+  const genesV2Values = [
+    nft.genesV2?.constitution,
+    nft.genesV2?.affections,
+    nft.genesV2?.crazyness,
+    nft.genesV2?.instinct,
+    nft.genesV2?.hunger,
+    nft.genesV2?.laziness,
+    nft.genesV2?.brave,
+    nft.genesV2?.smart
+  ]
 
   const DNAParams = nft.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -19,12 +29,15 @@ const DNAChart = (props: Props) => {
       return elem.trait_type === title
     })
   })
+
   const DNALabels = sortedDNAParams?.map(elem => {
     return elem?.trait_type
   })
-  const DNAValues = sortedDNAParams?.map(elem => {
-    return elem?.value
-  })
+  const DNAValues = isV2
+    ? genesV2Values
+    : sortedDNAParams?.map(elem => {
+        return elem?.value
+      })
 
   const DNAGeneration = nft.data.kryptomon?.genes.generation
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable

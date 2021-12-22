@@ -6,6 +6,7 @@ export type Props = {
   count?: number
   section: Section
   sortBy?: SortBy
+  priceToken?: string[]
   search: string
   onlyOnSale?: boolean
   isMap?: boolean
@@ -26,5 +27,6 @@ export type MapStateProps = Pick<
   | 'wearableRarities'
   | 'contracts'
   | 'network'
+  | 'priceToken'
 >
 export type OwnProps = Pick<Props, 'onBrowse'>
