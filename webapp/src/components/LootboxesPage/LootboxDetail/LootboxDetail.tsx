@@ -28,6 +28,7 @@ import { TitleBlock } from '../../NFTPage/TitleBlock'
 import { Item, ItemVersion } from '../../../modules/item/types'
 import { images } from '../LootboxesPage'
 import { fromItemCount, toItemCount } from '../../../lib/number'
+import { ConfirmModal } from '../ConfirmModal'
 
 const LootboxDetail = (props: Props) => {
   const {
@@ -46,8 +47,8 @@ const LootboxDetail = (props: Props) => {
   const priceStr = price !== undefined ? fromWei(price, 'ether') : ''
   const itemImage = currentItem === undefined ? '' : images[currentItem.name.toLocaleLowerCase()]
   const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
+  const [currentItemCount, setCurrentItemCount] = useState('')
   const [showConfirmModal, setShowConfirmModal] = useState(false)
-  const [confirmItemCount, setConfirmItemCount] = useState(1)
 
   useEffect(() => {
     if (itemId !== undefined) {
@@ -85,9 +86,10 @@ const LootboxDetail = (props: Props) => {
     setShowConfirmModal(true)
   }
 
-  const handleProceed = () => {
+  const handleProceed = (itemCount: string) => {
+    setCurrentItemCount(itemCount)
     if (hasAuthorization(authorizations, authorization)) {
-      handleBuyItem(currentItemVersion)
+      handleBuyItem(currentItemVersion, itemCount)
     } else {
       setShowAuthorizationModal(true)
     }
@@ -95,13 +97,14 @@ const LootboxDetail = (props: Props) => {
 
   const handleClose = () => setShowAuthorizationModal(false)
 
-  const handleBuyItem = (version: ItemVersion) => {
+  const handleBuyItem = (version: ItemVersion, itemCount: string) => {
     if (currentItem === undefined || price === undefined) return
+    if (Number(itemCount) < 1) return
     if (version === ItemVersion.V1) {
-      onBuyItem(version, getLootboxFromItem(currentItem), confirmItemCount, Address.fromString(wallet.address))
+      onBuyItem(version, getLootboxFromItem(currentItem), 1, Address.fromString(wallet.address))
       return
     }
-    onBuyItem(version, currentItem, confirmItemCount, Address.fromString(wallet.address))
+    onBuyItem(version, currentItem, Number(itemCount), Address.fromString(wallet.address))
   }
 
   const getLootboxFromItem = (item: Item) => {
@@ -110,7 +113,7 @@ const LootboxDetail = (props: Props) => {
       ;(lootbox = { ...lootbox, itemId: '0' })
     }
     if (item.name.toLowerCase() === 'medium') {
-      ;(lootbox = { ...lootbox, itemId: '1' })
+      ;(lootbox = { ...lootbox, itemId: '' })
     }
     if (item.name.toLowerCase() === 'premium') {
       ;(lootbox = { ...lootbox, itemId: '2' })
@@ -153,55 +156,21 @@ const LootboxDetail = (props: Props) => {
             />
           </TitleBlock>
         </Row>
-        <Modal size="small" open={showConfirmModal} className="ConfirmNumberOfItemsModal">
-          <Modal.Header>{t('lootbox_page.confirm.title')}</Modal.Header>
-          <Form onSubmit={handleProceed}>
-            <Modal.Content>
-              <T
-                id="lootbox_page.confirm.line_one"
-                values={{
-                  item: <b>{currentItem?.name.replace(/_/g, ' ')}</b>
-                }}
-              />
-              <br />
-              <T id="lootbox_page.confirm.line_two" />
-              <Field
-                label={t('lootbox_page.confirm.field_label')}
-                placeholder="1"
-                type="number"
-                min="1"
-                value={confirmItemCount}
-                onChange={(_event, props) => {
-                  const newItemCount = fromItemCount(props.value)
-                  setConfirmItemCount(toItemCount(newItemCount))
-                }}
-              />
-            </Modal.Content>
-            <Modal.Actions>
-              <div
-                className="ui button"
-                onClick={() => {
-                  setConfirmItemCount(1)
-                  setShowConfirmModal(false)
-                }}
-              >
-                {t('global.cancel')}
-              </div>
-              <Button
-                type="submit"
-                primary
-                disabled={isBuyingItem}
-                loading={isBuyingItem}
-              >
-                {t('global.proceed')}
-              </Button>
-            </Modal.Actions>
-          </Form>
-        </Modal>
+        <ConfirmModal
+          currentItem={currentItem}
+          currentItemCount={currentItemCount}
+          isBuyingItem={isBuyingItem}
+          showConfirmModal={showConfirmModal}
+          handleProceed={handleProceed}
+          onCloseModal={() => {
+            setShowConfirmModal(false)
+            setCurrentItemCount('')
+          }}
+        />
         <AuthorizationModal
           open={showAuthorizationModal}
           authorization={authorization}
-          onProceed={() => handleBuyItem(currentItemVersion)}
+          onProceed={() => handleBuyItem(currentItemVersion, currentItemCount)}
           onCancel={handleClose}
         />
       </Container>

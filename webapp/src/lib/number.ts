@@ -3,7 +3,7 @@ export function toDecimal(value: string): string {
 }
 
 export function toItemCount(num: number) {
-  return num > 0 ? num : 1
+  return num > 0 ? num.toString() : ''
 }
 
 export function fromItemCount(value: string) {
@@ -11,8 +11,8 @@ export function fromItemCount(value: string) {
 
   const result = parseInt(num, 10)
 
-  if (isNaN(result) || result <= 0) {
-    return 1
+  if (isNaN(result) || result < 0) {
+    return 0
   }
 
   return result

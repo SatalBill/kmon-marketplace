@@ -12,16 +12,9 @@ const Actions = (props: Props) => {
       <Button
         disabled={isTxPending}
         loading={isTxPending}
-        onClick={() => onBuy(ItemVersion.V1)} primary
-      >
-        Buy V1
-      </Button>
-      <Button
-        disabled={isTxPending}
-        loading={isTxPending}
         onClick={() => onBuy(ItemVersion.V2)} primary
       >
-        Buy V2
+        Buy
       </Button>
     </>
   )
