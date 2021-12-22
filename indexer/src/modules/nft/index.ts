@@ -49,6 +49,7 @@ export function addNFTOrderProperties(nft: NFT, order: Order): NFT {
   nft.activeOrder = order.id
   nft.searchOrderStatus = order.status
   nft.searchOrderPrice = order.price
+  nft.searchOrderPaymentToken = order.paymentToken
   nft.searchOrderCreatedAt = order.createdAt
   nft.searchOrderExpiresAt = order.expiresAt
   return nft
@@ -58,6 +59,7 @@ export function clearNFTOrderProperties(nft: NFT): NFT {
   nft.activeOrder = ''
   nft.searchOrderStatus = null
   nft.searchOrderPrice = null
+  nft.searchOrderPaymentToken = null
   nft.searchOrderCreatedAt = null
   nft.searchOrderExpiresAt = null
   return nft

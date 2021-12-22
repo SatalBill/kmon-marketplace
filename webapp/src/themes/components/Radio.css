@@ -2,6 +2,7 @@
 .ui.radio.checkbox label:before {
   width: 26px;
   height: 26px;
+  opacity: 1;
 }
 
 .ui.radio.checkbox.checked input.hidden + label:after {

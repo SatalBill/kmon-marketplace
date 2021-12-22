@@ -13,7 +13,8 @@ import {
   SKIN_TYPES,
   SEXES,
   PRICE_TOKENS,
-  STATUSES
+  STATUSES,
+  UNFREEZABLE
 } from './NFTSection.data'
 import { Props } from './NFTSections.types'
 import './NFTSections.style.css'
@@ -69,7 +70,8 @@ const NFTSections = (props: Props) => {
     special = [],
     price = [],
     priceToken = [],
-    kryptomonStatus = []
+    kryptomonStatus = [],
+    unfreezable = []
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -116,7 +118,8 @@ const NFTSections = (props: Props) => {
     special,
     price,
     priceToken,
-    kryptomonStatus
+    kryptomonStatus,
+    unfreezable
   })
 
   useEffect(() => {
@@ -193,7 +196,8 @@ const NFTSections = (props: Props) => {
               special: [],
               price: [],
               priceToken: [],
-              kryptomonStatus: []
+              kryptomonStatus: [],
+              unfreezable: []
             })
           }}
         >
@@ -250,6 +254,27 @@ const NFTSections = (props: Props) => {
                 } else {
                   const newArr = [...state.kryptomonStatus, elem]
                   setState({ ...state, kryptomonStatus: newArr })
+                }
+              }}
+            />
+          ))}
+        </CheckboxContainer>
+      </Dropdown>
+      <Dropdown value={Section.UNFREEZABLE} open={state.unfreezable.length > 0}>
+        <CheckboxContainer>
+          {UNFREEZABLE.map(elem => (
+            <Checkbox
+              key={elem}
+              checked={state.unfreezable.indexOf(elem) > -1}
+              label={elem}
+              onChange={() => {
+                if (state.unfreezable.indexOf(elem) > -1) {
+                  const newArr = [...state.unfreezable]
+                  newArr.splice(newArr.indexOf(elem), 1)
+                  setState({ ...state, unfreezable: newArr })
+                } else {
+                  const newArr = [...state.unfreezable, elem]
+                  setState({ ...state, unfreezable: newArr })
                 }
               }}
             />

@@ -12,7 +12,7 @@ import {
 import { Network, Rarity } from '@kmon/schemas'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
-import { SortBy } from '../../../../modules/routing/types'
+import { SortBy, PriceToken } from '../../../../modules/routing/types'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { getSearchCategory } from '../../../../modules/routing/search'
 import { MAX_QUERY_SIZE } from '../../../../modules/vendor/api'
@@ -21,6 +21,8 @@ import { Chip } from '../../../Chip'
 import { TextFilter } from '../../NFTFilters/TextFilter'
 import { FiltersMenu } from '../../NFTFilters/FiltersMenu'
 import { Props } from './NFTFilters.types'
+
+const isTest = process.env.REACT_APP_NETWORK === 'rinkeby'
 
 const NFTFilters = (props: Props) => {
   const {
@@ -45,19 +47,36 @@ const NFTFilters = (props: Props) => {
       value: SortBy.RECENTLY_LISTED,
       text: t('filters.recently_listed')
     },
-    // {
-    //   value: SortBy.DEAREST,
-    //   text: t('filters.dearest')
-    // },
+    {
+      value: SortBy.DEAREST,
+      text: t('filters.dearest')
+    },
     {
       value: SortBy.CHEAPEST,
       text: t('filters.cheapest')
+    }
+  ]
+  const dropdownPriceToken = [
+    { value: PriceToken.ALL, text: t('filters.all') },
+    {
+      value: PriceToken.BNB,
+      text: t('filters.bnb')
+    },
+    {
+      value: isTest ? PriceToken.KMON_TEST : PriceToken.KMON,
+      text: t('filters.kmon')
     }
   ]
 
   const sortBy = dropdownOptions.find(option => option.value === props.sortBy)
     ? props.sortBy
     : dropdownOptions[0].value
+
+  const priceToken = dropdownPriceToken.find(
+    option => props.priceToken && option.value === props.priceToken[0]
+  )
+    ? props.priceToken
+    : dropdownPriceToken[0].value
 
   const appliedFilters = []
   if (wearableRarities.length > 0) {
@@ -84,6 +103,13 @@ const NFTFilters = (props: Props) => {
   const handleDropdownChange = useCallback(
     (_, props: DropdownProps) => {
       onBrowse({ sortBy: props.value as SortBy })
+    },
+    [onBrowse]
+  )
+
+  const handlePriceTokenChange = useCallback(
+    (_, props: DropdownProps) => {
+      onBrowse({ priceToken: [props.value as PriceToken] })
     },
     [onBrowse]
   )
@@ -171,6 +197,21 @@ const NFTFilters = (props: Props) => {
               placeholder={searchPlaceholder}
               onChange={handleSearch}
             />
+            <Responsive
+              minWidth={Responsive.onlyTablet.minWidth}
+              className="topbar-filter"
+            >
+              <Dropdown
+                direction="left"
+                value={
+                  typeof priceToken === 'string'
+                    ? priceToken
+                    : priceToken && priceToken[0]
+                }
+                options={dropdownPriceToken}
+                onChange={handlePriceTokenChange}
+              />
+            </Responsive>
             <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
               className="topbar-filter"

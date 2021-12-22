@@ -85,7 +85,8 @@ const mapState = (state: RootState): MapStateProps => ({
   special: getArrayByType('special')(state),
   price: getArrayByType('price')(state),
   priceToken: getArrayByType('priceToken')(state),
-  kryptomonStatus: getKryptomonStatus(state)
+  kryptomonStatus: getKryptomonStatus(state),
+  unfreezable: getArrayByType('unfreezable')(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

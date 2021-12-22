@@ -28,3 +28,8 @@ export const STATUS_TO_REQ: Record<string, string> = {
   Egg: '0',
   Hatched: '1'
 }
+
+export const UNFREEZABLE_TO_REQ: Record<string, string> = {
+  No: '0',
+  Yes: '1'
+}

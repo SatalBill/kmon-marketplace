@@ -26,6 +26,7 @@ import Fire from '../../../images/egg/elem-fire.svg'
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order } = props
+  const [isV2, setIsV2] = useState(false)
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
     WEEK: t('nft_page.price_chart.week'),
@@ -34,7 +35,9 @@ const KryptomonDetail = (props: Props) => {
   const [currentPriceFilter, setCurrentPriceFilter] = useState(
     PRICE_DROPDOWN_VALUES.MONTH
   )
-
+  const toogleV2Change = () => {
+    setIsV2(!isV2)
+  }
   const onChangeCurrentPriceFilter = (_event: SyntheticEvent, data: any) => {
     setCurrentPriceFilter(data.text)
   }
@@ -61,52 +64,67 @@ const KryptomonDetail = (props: Props) => {
       values: [1625, 1332, 2322, 1239, 2223, 2578]
     }
   }
-  const genes = nft.data.kryptomon?.genes
-  const genesArray = Object.values(genes!);
-  let totalGenes = 0;
+  const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
+
+  const genesArray = Object.values(genes!)
+  let totalGenes = 0
   for (let i = 0; i < 16; i++) {
-    totalGenes += genesArray[i] * genesArray[i + 1];
-    i++;
+    totalGenes += genesArray[i] * genesArray[i + 1]
+    i++
   }
   const elementTypes = [
     {
       title: t('nft_page.elements.water'),
-      value: (genes!.water * genes!.waterTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
+        2
+      ),
       icon: Water
     },
     {
       title: t('nft_page.elements.grass'),
-      value: (genes!.grass * genes!.grassTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
+        2
+      ),
       icon: Grass
     },
     {
       title: t('nft_page.elements.fire'),
-      value: (genes!.fire * genes!.fireTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
+        2
+      ),
       icon: Fire
     },
     {
       title: t('nft_page.elements.electro'),
-      value: (genes!.electro * genes!.electroTalent / totalGenes * 100).toFixed(2),
+      value: (
+        ((genes!.electro * genes!.electroTalent) / totalGenes) *
+        100
+      ).toFixed(2),
       icon: Electro
     },
     {
       title: t('nft_page.elements.ground'),
-      value: (genes!.ground * genes!.groundTalent / totalGenes * 100).toFixed(2),
+      value: (
+        ((genes!.ground * genes!.groundTalent) / totalGenes) *
+        100
+      ).toFixed(2),
       icon: Ground
     },
     {
       title: t('nft_page.elements.ghost'),
-      value: (genes!.ghost * genes!.ghostTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
+        2
+      ),
       icon: Ghost
     },
     {
       title: t('nft_page.elements.ice'),
-      value: (genes!.ice * genes!.iceTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
       icon: Ice
     },
     {
       title: t('nft_page.elements.air'),
-      value: (genes!.air * genes!.airTalent / totalGenes * 100).toFixed(2),
+      value: (((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2),
       icon: Air
     }
   ]
@@ -130,11 +148,16 @@ const KryptomonDetail = (props: Props) => {
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
-        <NFTDetailCard elementType={elementType} nft={nft} />
+        <NFTDetailCard
+          elementType={elementType}
+          nft={nft}
+          isV2={isV2}
+          toogleV2={toogleV2Change}
+        />
         <Column>
           <Details nft={nft} order={order} />
           <TitleBlock title={t('nft_page.dna_chart.title')}>
-            <DNAChart nft={nft} />
+            <DNAChart nft={nft} isV2={isV2} />
           </TitleBlock>
         </Column>
       </Row>
@@ -147,7 +170,7 @@ const KryptomonDetail = (props: Props) => {
           />
         </TitleBlock>
         <TitleBlock title={t('nft_page.metadata')}>
-          <ElemData nft={nft} />
+          <ElemData nft={nft} isV2={isV2} />
         </TitleBlock>
         {/* <TitleBlock
           title={t('nft_page.price_chart.title')}

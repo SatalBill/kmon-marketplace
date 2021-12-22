@@ -27,7 +27,7 @@ async function deploy() {
     [
       'graph',
       'deploy',
-      '--product hosted-service',
+      '--studio',
       graphByNetwork[network]
     ],
     {
