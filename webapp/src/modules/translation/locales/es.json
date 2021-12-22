@@ -321,7 +321,7 @@
       "place_bid": "Hiciste una oferta de {price} por {name}.",
       "accept_bid": "Aceptaste una oferta de {price} por {name}.",
       "cancel_bid": "Cancelaste una oferta de {price} por {name}.",
-      "buy_lootbox": "Compraste caja botín {name} por {price}."
+      "buy_item": "Compraste caja botín {name} por {price}."
     }
   },
   "kmon": {

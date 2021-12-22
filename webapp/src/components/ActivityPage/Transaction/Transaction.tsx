@@ -310,10 +310,10 @@ const Transaction = (props: Props) => {
                         inline
                         coin={
                           paymentToken?.toLowerCase() === kmon.address.toLowerCase() ?
-                          Coin.KMON :
-                          paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
-                          Coin.WBNB :
-                          undefined
+                            Coin.KMON :
+                            paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
+                              Coin.WBNB :
+                              undefined
                         }
                       >
                         {price.toLocaleString()}
@@ -355,10 +355,10 @@ const Transaction = (props: Props) => {
                         inline
                         coin={
                           paymentToken?.toLowerCase() === kmon.address.toLowerCase() ?
-                          Coin.KMON :
-                          paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
-                          Coin.WBNB :
-                          undefined
+                            Coin.KMON :
+                            paymentToken?.toLowerCase() === wbnb.address.toLowerCase() ?
+                              Coin.WBNB :
+                              undefined
                         }
                       >
                         {price.toLocaleString()}
@@ -380,7 +380,7 @@ const Transaction = (props: Props) => {
         <TransactionDetail
           text={
             <T
-              id="transaction.detail.buy_lootbox"
+              id="transaction.detail.buy_item"
               values={{
                 name: item.name,
                 price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toLocaleString()}</CoinPopup>

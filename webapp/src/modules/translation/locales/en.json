@@ -449,7 +449,7 @@
       "place_bid": "You placed a bid of {price} on {name}.",
       "accept_bid": "You accepted a bid of {price} on {name}.",
       "cancel_bid": "You cancelled a bid of {price} on {name}.",
-      "buy_lootbox": "You purchased {name} lootbox for {price}."
+      "buy_item": "You purchased {name} item for {price}."
     }
   },
   "coin": {
