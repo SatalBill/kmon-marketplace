@@ -16,9 +16,9 @@ const Navigation = (props: Props) => {
             {t('navigation.kryptomons')}
           </Tabs.Tab>
         </Link>
-        <Link to={locations.lootboxes()}>
-          <Tabs.Tab active={activeTab === NavigationTab.LOOTBOXES}>
-            {t('navigation.lootboxes')}
+        <Link to={locations.items()}>
+          <Tabs.Tab active={activeTab === NavigationTab.ITEMS}>
+            {t('navigation.items')}
           </Tabs.Tab>
         </Link>
         <Link to={locations.bids()}>

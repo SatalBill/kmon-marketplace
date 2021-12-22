@@ -16,7 +16,7 @@ const itemDetailMatchSelector = createMatchSelector<
   {
     id: string
   }
->(locations.lootbox(':id'))
+>(locations.item(':id'))
 
 export const getItemId = createSelector<
   RootState,

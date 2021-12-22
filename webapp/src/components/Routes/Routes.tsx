@@ -47,8 +47,13 @@ const Routes = () => {
         <Route exact path={locations.root()} component={HomePage} />
         <Route exact path={locations.parcel()} component={LegacyNFTPage} />
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
-        <Route exact path={locations.lootboxes()} component={LootboxesPage} />
-        <Route exact path={locations.lootbox()} component={LootboxDetail} />
+        <Route exact path={locations.items()} component={LootboxesPage} />
+        <Route exact path={locations.item()} component={LootboxDetail} />
+        <Redirect
+          from="/lootboxes"
+          to={locations.items()}
+          push
+        />
         <Redirect
           from="/browse"
           to={locations.browse() + window.location.search}
