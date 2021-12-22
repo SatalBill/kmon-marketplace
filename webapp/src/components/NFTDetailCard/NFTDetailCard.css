@@ -243,3 +243,7 @@ a.ui.card.link:hover .meta {
   height: 400px;
   border-radius: 8px;
 }
+
+.card-image-text-details > .ui.toggle.checkbox input.hidden + label:after {
+  background-color: var(--primary) !important;
+}
