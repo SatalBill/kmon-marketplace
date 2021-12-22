@@ -47,10 +47,10 @@ const NFTFilters = (props: Props) => {
       value: SortBy.RECENTLY_LISTED,
       text: t('filters.recently_listed')
     },
-    // {
-    //   value: SortBy.DEAREST,
-    //   text: t('filters.dearest')
-    // },
+    {
+      value: SortBy.DEAREST,
+      text: t('filters.dearest')
+    },
     {
       value: SortBy.CHEAPEST,
       text: t('filters.cheapest')
