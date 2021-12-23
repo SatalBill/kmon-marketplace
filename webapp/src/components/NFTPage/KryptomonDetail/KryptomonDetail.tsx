@@ -204,7 +204,7 @@ const KryptomonDetail = (props: Props) => {
         </TitleBlock> */}
       </Row>
       <Row className="Row-space-between">
-        <TitleBlock title={t('nft_page.description_block.title')}>
+        <TitleBlock title={t('nft_page.description')}>
           <DescriptionBlock nft={nft} />
         </TitleBlock>
         {/* <TitleBlock title={t('nft_page.trade_history.title')}>
