@@ -9,6 +9,10 @@ import './LootboxCard.css'
 
 const LootboxCard = (props: Props) => {
   const { itemId, name, price, image } = props
+  let itemName = name.replace(/_/g, ' ')
+  itemName = itemName.replace(/basic/gi, 'bronze')
+  itemName = itemName.replace(/medium/gi, 'silver')
+  itemName = itemName.replace(/premium/gi, 'gold')
 
   return (
     <Card
@@ -23,7 +27,7 @@ const LootboxCard = (props: Props) => {
         </div>
         <div className="card-image-text">
           <div className="product-type-price-container">
-            <div className="product-type-price">{price} KMON</div>
+            <div className="product-type-price">{Number.parseFloat(price).toFixed(2)} KMON</div>
           </div>
           <div className="product-info">
             <p className="product-info-value">
@@ -36,7 +40,7 @@ const LootboxCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <p className="product-description-left-item">
-            Item type: {name.replace(/_/g, ' ')}
+            Item type: {itemName}
           </p>
         </div>
         <div className="product-description-right">{price} KMON</div>

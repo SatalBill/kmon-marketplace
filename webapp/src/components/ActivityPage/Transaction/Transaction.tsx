@@ -376,6 +376,10 @@ const Transaction = (props: Props) => {
       const { item, count } = tx.payload
       const price = fromWei(item.price, 'ether')
       const calculatedPrice = Number(price) * count
+      let itemName = item.name.replace(/_/g, ' ')
+      itemName = itemName.replace(/basic/gi, 'bronze').toUpperCase()
+      itemName = itemName.replace(/medium/gi, 'silver').toUpperCase()
+      itemName = itemName.replace(/premium/gi, 'gold').toUpperCase()
       return (
         <TransactionDetail
           text={
@@ -383,8 +387,8 @@ const Transaction = (props: Props) => {
               id="transaction.detail.buy_item"
               values={{
                 count,
-                name: item.name.replace(/_/g, ' '),
-                price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toLocaleString()}</CoinPopup>
+                name: itemName,
+                price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toFixed(2)}</CoinPopup>
               }}
             />
           }
