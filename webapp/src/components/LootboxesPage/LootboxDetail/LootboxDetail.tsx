@@ -49,6 +49,10 @@ const LootboxDetail = (props: Props) => {
   const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
   const [currentItemCount, setCurrentItemCount] = useState('')
   const [showConfirmModal, setShowConfirmModal] = useState(false)
+  let itemName = currentItem ? currentItem.name.replace(/_/g, ' ') : ''
+  itemName = itemName.replace(/basic/gi, 'bronze').toUpperCase()
+  itemName = itemName.replace(/medium/gi, 'silver').toUpperCase()
+  itemName = itemName.replace(/premium/gi, 'gold').toUpperCase()
 
   useEffect(() => {
     if (itemId !== undefined) {
@@ -113,7 +117,7 @@ const LootboxDetail = (props: Props) => {
       ;(lootbox = { ...lootbox, itemId: '0' })
     }
     if (item.name.toLowerCase() === 'medium') {
-      ;(lootbox = { ...lootbox, itemId: '' })
+      ;(lootbox = { ...lootbox, itemId: '1' })
     }
     if (item.name.toLowerCase() === 'premium') {
       ;(lootbox = { ...lootbox, itemId: '2' })
@@ -127,16 +131,16 @@ const LootboxDetail = (props: Props) => {
         <Row className="Row">
           {currentItem && (
             <LootboxDetailCard
-              name={currentItem.name}
+              name={itemName}
               image={itemImage}
-              price={priceStr}
+              price={Number.parseFloat(priceStr).toFixed(2)}
             />
           )}
           <Column>
             {currentItem && (
               <Details
-                name={currentItem.name.replace(/_/g, ' ')}
-                price={priceStr}
+                name={itemName}
+                price={Number.parseFloat(priceStr).toFixed(2)}
                 isTxPending={isTxPending}
                 onBuyItem={handleSubmit}
               />
