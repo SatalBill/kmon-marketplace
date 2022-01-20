@@ -13,6 +13,7 @@ const LootboxCard = (props: Props) => {
   itemName = itemName.replace(/basic/gi, 'bronze')
   itemName = itemName.replace(/medium/gi, 'silver')
   itemName = itemName.replace(/premium/gi, 'gold')
+  const itemPrice = Number.parseFloat(price).toFixed(2)
 
   return (
     <Card
@@ -27,11 +28,11 @@ const LootboxCard = (props: Props) => {
         </div>
         <div className="card-image-text">
           <div className="product-type-price-container">
-            <div className="product-type-price">{Number.parseFloat(price).toFixed(2)} KMON</div>
+            <div className="product-type-price">{itemPrice} KMON</div>
           </div>
           <div className="product-info">
             <p className="product-info-value">
-              VALUE {price}{' '}
+              VALUE {itemPrice}{' '}
               KMON
             </p>
           </div>
@@ -43,7 +44,7 @@ const LootboxCard = (props: Props) => {
             Item type: {itemName}
           </p>
         </div>
-        <div className="product-description-right">{price} KMON</div>
+        <div className="product-description-right">{itemPrice} KMON</div>
       </div>
     </Card>
   )
