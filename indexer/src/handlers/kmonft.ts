@@ -105,19 +105,19 @@ export function handleBirth(event: Birth): void {
   }
 
   for (let i = 0; i < elementBreakDown.length; i++) {
-    elementBreakDown[i].percentage = elementBreakDown[i].valueName.times(BigInt.fromString("100")).div(totalSum)
+    elementBreakDown[i].percentage = elementBreakDown[i].valueName.times(BigInt.fromString("10000")).div(totalSum)
   }
 
   let typeSelected = indexOfMax(typeDraft, null);
   kryptomon.elementType = typeFormatted[typeSelected.toI32()];
   kryptomon.elementTalent = typeDraft[typeSelected.toI32()];
-  const percentage = kryptomon.elementTalent.times(BigInt.fromString("100")).div(totalSum);
+  const percentage = kryptomon.elementTalent.times(BigInt.fromString("10000")).div(totalSum);
   kryptomon.elementPercentage = percentage
 
   let typeSelectedSecond = indexOfMax(typeDraft, typeSelected);
   kryptomon.elementTypeSecond = typeFormatted[typeSelectedSecond.toI32()];
   kryptomon.elementTalentSecond = typeDraft[typeSelectedSecond.toI32()];
-  const percentageSecond = kryptomon.elementTalentSecond.times(BigInt.fromString("100")).div(totalSum);
+  const percentageSecond = kryptomon.elementTalentSecond.times(BigInt.fromString("10000")).div(totalSum);
   kryptomon.elementPercentageSecond = percentageSecond
 
   if (genes.attack.times(BigInt.fromString("10")).gt(genes.defense.times(BigInt.fromString("11")))) {
