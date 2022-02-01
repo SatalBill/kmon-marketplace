@@ -2419,17 +2419,17 @@
     "@web3-react/types" "^6.0.7"
     "@web3-react/walletconnect-connector" "^6.2.4"
 
-"@kmon/dapps@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.31.tgz#c0558bbdefcec70c14d6ab31ef98b51adbee5e6b"
-  integrity sha512-9wu6vQvqPUU/u7OfHj5BWV7/I89/e5+rVa1JP5sCBYL/ld/rThP6qJyISqqXB0zf1FyzscmTXlbEnZoLrp6Diw==
+"@kmon/dapps@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@kmon/dapps/-/dapps-0.0.32.tgz#e685bde5f8cb62bf5ee0576d81903a4384f68534"
+  integrity sha512-Wssd/NHidK/zJ1irG2bmMEH+7nEqW4OCW+Vaf/CT0XPV2qO80gmgOFq2nqyU83PVZX//N9XljhrZDGtF47tf8w==
   dependencies:
     "@0xsequence/multicall" "^0.25.1"
     "@0xsequence/relayer" "^0.25.1"
     "@kmon/connect" "^0.0.3"
     "@kmon/schemas" "^0.0.11"
-    "@kmon/transactions" "^0.0.32"
-    "@kmon/ui" "^0.0.16"
+    "@kmon/transactions" "^0.0.33"
+    "@kmon/ui" "^0.0.17"
     "@types/flat" "0.0.28"
     "@types/segment-analytics" "0.0.34"
     "@types/uuid" "^3.4.3"
@@ -2469,18 +2469,18 @@
   dependencies:
     ajv "^7.1.0"
 
-"@kmon/transactions@^0.0.32":
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.32.tgz#af4f623fd14adee5e673310a47001cef85ac9638"
-  integrity sha512-kWS+mXLPSGqfY8OXkyGPLZKOwmJGWsIQmB0kYeNTbKW9g7qRzC4YaGK47njNgp2jhJ9sMsMA6pDRJnld/9prng==
+"@kmon/transactions@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@kmon/transactions/-/transactions-0.0.33.tgz#26803c849119ff999f2cd6242a377497b7b9bcab"
+  integrity sha512-y4wVTvC9LT8xSjP5CjeAzriR80Wily1LdCjHeT8KEx6sohHB/IXBmCotWloHnl7Ri2w3C/xMwd5rGufZ3Gte8g==
   dependencies:
     "@kmon/schemas" "^0.0.11"
     tslint "^6.1.3"
 
-"@kmon/ui@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.16.tgz#9f45347c4d4ed990097618e171c6dc6a1715aff6"
-  integrity sha512-4vLSUKBvjhd+HSSyTaOz7WWJz6qcsbN0lIF1D84T4JyLaaiipTlaeA0vPtFG1OM40U7sa9V2ZgpkBfJAwWRoQQ==
+"@kmon/ui@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.17.tgz#8862db37318f8780237567ddd2a3b6fa55d94d7d"
+  integrity sha512-Gm1KX18sx6K3R2GbXYF5DsDNlkjwTxFrS1x9rjNQgzsxQ4Y92uJQeImYtquoRjhx6zWHi1eN2UJNj0oQilfS5Q==
   dependencies:
     "@kmon/schemas" "^0.0.10"
     balloon-css "^0.5.0"
