@@ -31,10 +31,10 @@ const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
     MarketplaceProxy: 4202120
   },
   [Network.RINKEBY]: {
-    KMONToken: 9646509,
-    KMONFT: 8841814,
-    ERC721Bid: 9654196,
-    MarketplaceProxy: 9670849
+    KMONToken: 10048228,
+    KMONFT: 10048228,
+    ERC721Bid: 10048228,
+    MarketplaceProxy: 10048228
   },
   [Network.BSC]: {
     KMONToken: 7891700,
@@ -101,9 +101,9 @@ class Ethereum {
   }
 
   async fetchContracts() {
-    console.log(this.contractAddresses);
+    console.log(this.network);
     const contractsByNetwork: ContractsResponse = await fetch(
-      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=ACWWO7PVIG2NFI6FNHYRPKTBYMA7W'
+      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=GHSAT0AAAAAABRDRYFBEHVFDCBRMPWSWUUKYQCZT6A'
     )
     this.contractAddresses = contractsByNetwork[this.network]
   }
