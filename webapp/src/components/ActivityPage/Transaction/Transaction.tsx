@@ -31,6 +31,7 @@ import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
 import { BUY_ITEM_SUCCESS, BUY_ITEM_WITH_CANDIES_SUCCESS } from '../../../modules/item/actions'
 import { getContractNames } from '../../../modules/vendor'
+import { KIcon } from '@kmon/ui'
 
 const Transaction = (props: Props) => {
   const { tx } = props
@@ -414,7 +415,7 @@ const Transaction = (props: Props) => {
               values={{
                 count,
                 name: itemName,
-                price: calculatedPrice.toFixed(2)
+                price: <KIcon icon="candy" inline>{calculatedPrice.toFixed(2)}</KIcon>
               }}
             />
           }
