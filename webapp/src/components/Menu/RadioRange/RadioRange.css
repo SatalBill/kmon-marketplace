@@ -1,10 +1,20 @@
 .slider-container {
   padding-left: 8px;
+  width: 100%;
+  position: relative;
+  max-width: 210px;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    padding-left: 0px;
+    max-width: 100%;
+  }
 }
 
 .slider {
   position: relative;
-  width: 200px;
+  width: 100%;
 }
 
 .slider__track,
@@ -39,7 +49,7 @@
   pointer-events: none;
   position: absolute;
   height: 0;
-  width: 200px;
+  width: 100%;
   outline: none;
 }
 
@@ -111,7 +121,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 

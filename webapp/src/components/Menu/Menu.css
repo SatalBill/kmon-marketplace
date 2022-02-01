@@ -5,9 +5,24 @@
   width: var(--menu-item-width);
 }
 
+@media (max-width: 768px) {
+  .Menu {
+    --menu-item-width: 100%;
+    --menu-sub-item-width: 100%;
+    margin-right: 0px;
+    width: var(--menu-item-width);
+  }
+}
+
 ul.Menu {
   margin-left: -16px;
   padding: 0px;
+}
+
+@media (max-width: 768px) {
+  ul.Menu {
+    margin-left: 0px;
+  }
 }
 
 ul.Menu li {
@@ -19,6 +34,12 @@ ul.Menu li {
   margin-bottom: 8px;
   cursor: pointer;
   text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  ul.Menu li {
+    padding: 9px 0px;
+  }
 }
 
 ul.Menu li .ui.image {
