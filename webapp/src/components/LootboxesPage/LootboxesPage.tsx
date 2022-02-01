@@ -62,6 +62,7 @@ const LootboxesPage = (props: Props) => {
               name={item.name}
               image={images[item.name.toLocaleLowerCase()]}
               price={fromWei(item.price, 'ether')}
+              priceWithCandies={item.priceWithCandies ? fromWei(item.priceWithCandies, 'ether') : '0'}
             />
           ))}
         </Card.Group>

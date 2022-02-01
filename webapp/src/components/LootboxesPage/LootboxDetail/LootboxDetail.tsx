@@ -41,14 +41,18 @@ const LootboxDetail = (props: Props) => {
     currentItem,
     onFetchItem,
     onBuyItem,
+    onBuyItemWithCandies
   } = props
   const isTxPending = isLoading && isBuyingItem
   const price = currentItem === undefined ? undefined : currentItem.price
+  const priceWithCandies = currentItem === undefined ? undefined : currentItem.priceWithCandies
   const priceStr = price !== undefined ? fromWei(price, 'ether') : ''
+  const priceWithCandiesStr = priceWithCandies !== undefined ? fromWei(priceWithCandies, 'ether') : '0'
   const itemImage = currentItem === undefined ? '' : images[currentItem.name.toLocaleLowerCase()]
   const [currentItemVersion, setCurrentItemVersion] = useState(ItemVersion.V2)
   const [currentItemCount, setCurrentItemCount] = useState('')
   const [showConfirmModal, setShowConfirmModal] = useState(false)
+  const [currentPayment, setCurrentPayment] = useState('KMON')
   let itemName = currentItem ? currentItem.name.replace(/_/g, ' ') : ''
   itemName = itemName.replace(/basic/gi, 'bronze').toUpperCase()
   itemName = itemName.replace(/medium/gi, 'silver').toUpperCase()
@@ -88,6 +92,12 @@ const LootboxDetail = (props: Props) => {
   const handleSubmit = (version: ItemVersion) => {
     setCurrentItemVersion(version)
     setShowConfirmModal(true)
+    setCurrentPayment('KMON')
+  }
+
+  const handleSubmitWithCandies = () => {
+    setShowConfirmModal(true)
+    setCurrentPayment('CANDY')
   }
 
   const handleProceed = (itemCount: string) => {
@@ -108,7 +118,12 @@ const LootboxDetail = (props: Props) => {
       onBuyItem(version, getLootboxFromItem(currentItem), 1, Address.fromString(wallet.address))
       return
     }
-    onBuyItem(version, currentItem, Number(itemCount), Address.fromString(wallet.address))
+    if (currentPayment === 'KMON') {
+      onBuyItem(version, currentItem, Number(itemCount), Address.fromString(wallet.address))
+    } else {
+      onBuyItemWithCandies(version, currentItem, Number(itemCount), Address.fromString(wallet.address))
+    }
+    
   }
 
   const getLootboxFromItem = (item: Item) => {
@@ -134,6 +149,7 @@ const LootboxDetail = (props: Props) => {
               name={itemName}
               image={itemImage}
               price={Number.parseFloat(priceStr).toFixed(2)}
+              priceWithCandies={Number.parseFloat(priceWithCandiesStr).toFixed(2)}
             />
           )}
           <Column>
@@ -141,8 +157,10 @@ const LootboxDetail = (props: Props) => {
               <Details
                 name={itemName}
                 price={Number.parseFloat(priceStr).toFixed(2)}
+                priceWithCandies={Number.parseFloat(priceWithCandiesStr).toFixed(2)}
                 isTxPending={isTxPending}
                 onBuyItem={handleSubmit}
+                onBuyItemWithCandies={handleSubmitWithCandies}
               />
             )}
             {isTxPending && (

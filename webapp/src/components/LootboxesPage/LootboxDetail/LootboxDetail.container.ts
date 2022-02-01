@@ -24,7 +24,8 @@ import LootboxDetail from './LootboxDetail'
 import {
   buyItemRequest,
   fetchItemRequest,
-  BUY_ITEM_REQUEST
+  BUY_ITEM_REQUEST,
+  buyItemWithCandiesRequest
 } from '../../../modules/item/actions'
 import {
   getCurrentItem,
@@ -56,6 +57,8 @@ const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onFetchItem: () => dispatch(fetchItemRequest()),
   onBuyItem: (version: ItemVersion, item: Item, count: number, to: Address) =>
     dispatch(buyItemRequest(version, item, count, to)),
+  onBuyItemWithCandies: (version: ItemVersion, item: Item, count: number, to: Address) =>
+    dispatch(buyItemWithCandiesRequest(version, item, count, to)),
 })
 
 export default connect(mapState, mapDispatch)(LootboxDetail)

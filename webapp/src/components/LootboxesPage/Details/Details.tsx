@@ -4,19 +4,26 @@ import './Details.css'
 import { Actions } from '../Actions'
 
 const Details = (props: Props) => {
-  const { name, price, isTxPending, onBuyItem } = props
+  const { name, price, priceWithCandies, isTxPending, onBuyItem, onBuyItemWithCandies } = props
 
   return (
-    <div className="details-container">
+    <div className="LootboxDetails details-container grid-container">
       <DetailItem title="Lootbox type">
         <p className="detail-big-text">{name}</p>
       </DetailItem>
-      <DetailItem title="Price">
+      <DetailItem title="Price with KMON">
         <p className="detail-big-text">
           {price} KMON
         </p>
       </DetailItem>
       <Actions isTxPending={isTxPending} onBuy={onBuyItem} />
+      <div />
+      <DetailItem title="Price with Candy">
+        <p className="detail-big-text">
+          {priceWithCandies} CANDY
+        </p>
+      </DetailItem>
+      <Actions isTxPending={isTxPending} onBuy={onBuyItemWithCandies} />
     </div>
   )
 }

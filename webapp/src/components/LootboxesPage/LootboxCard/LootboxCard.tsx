@@ -8,12 +8,13 @@ import { Image } from '../../Image'
 import './LootboxCard.css'
 
 const LootboxCard = (props: Props) => {
-  const { itemId, name, price, image } = props
+  const { itemId, name, price, priceWithCandies, image } = props
   let itemName = name.replace(/_/g, ' ')
   itemName = itemName.replace(/basic/gi, 'bronze')
   itemName = itemName.replace(/medium/gi, 'silver')
   itemName = itemName.replace(/premium/gi, 'gold')
   const itemPrice = Number.parseFloat(price).toFixed(2)
+  const itemPriceWithCandies = Number.parseFloat(priceWithCandies).toFixed(2)
 
   return (
     <Card
@@ -35,6 +36,11 @@ const LootboxCard = (props: Props) => {
               VALUE {itemPrice}{' '}
               KMON
             </p>
+          </div>
+        </div>
+        <div className="card-image-text candy">
+          <div className="product-type-price-container">
+            <div className="product-type-price">{itemPriceWithCandies} CANDY</div>
           </div>
         </div>
       </div>
