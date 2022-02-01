@@ -6,8 +6,10 @@ import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import {
   buyItemRequest,
   BuyItemRequestAction,
+  buyItemWithCandiesRequest,
+  BuyItemWithCandiesRequestAction,
   fetchItemRequest,
-  FetchItemRequestAction,
+  FetchItemRequestAction
 } from '../../../modules/item/actions'
 import { Item } from '../../../modules/item/types'
 
@@ -28,6 +30,7 @@ export type Props = {
   onRedirect: (path: string) => void
   onFetchItem: typeof fetchItemRequest
   onBuyItem: typeof buyItemRequest
+  onBuyItemWithCandies: typeof buyItemWithCandiesRequest
 }
 
 export type MapStateProps = Pick<
@@ -36,10 +39,11 @@ export type MapStateProps = Pick<
 >
 export type MapDispatchProps = Pick<
   Props,
-  'onRedirect' | 'onFetchItem' | 'onBuyItem'
+  'onRedirect' | 'onFetchItem' | 'onBuyItem' | 'onBuyItemWithCandies'
 >
 export type MapDispatch = Dispatch<
   CallHistoryMethodAction
     | FetchItemRequestAction
     | BuyItemRequestAction
+    | BuyItemWithCandiesRequestAction
 >

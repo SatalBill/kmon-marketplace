@@ -65,3 +65,39 @@ export const buyItemFailure = (
 export type BuyItemRequestAction = ReturnType<typeof buyItemRequest>
 export type BuyItemSuccessAction = ReturnType<typeof buyItemSuccess>
 export type BuyItemFailureAction = ReturnType<typeof buyItemFailure>
+
+export const BUY_ITEM_WITH_CANDIES_REQUEST = '[Request] Buy item with candies'
+export const BUY_ITEM_WITH_CANDIES_SUCCESS = '[Success] Buy item with candies'
+export const BUY_ITEM_WITH_CANDIES_FAILURE = '[Failure] Buy item with candies'
+
+export const buyItemWithCandiesRequest = (version: ItemVersion, item: Item, count: number, to: Address) =>
+  action(BUY_ITEM_WITH_CANDIES_REQUEST, { version, item, count, to })
+export const buyItemWithCandiesSuccess = (
+  chainId: ChainId,
+  txHash: string,
+  item: Item,
+  count: number,
+  to: Address
+) => action(BUY_ITEM_WITH_CANDIES_SUCCESS, {
+  item,
+  count,
+  to,
+  ...buildTransactionPayload(chainId, txHash, {
+    chainId,
+    txHash,
+    item,
+    count,
+    to,
+  })
+})
+export const buyItemWithCandiesFailure = (
+  itemId: string,
+  error: string
+) => action(BUY_ITEM_WITH_CANDIES_FAILURE, {
+  itemId,
+  error
+})
+
+export type BuyItemWithCandiesRequestAction = ReturnType<typeof buyItemWithCandiesRequest>
+export type BuyItemWithCandiesSuccessAction = ReturnType<typeof buyItemWithCandiesSuccess>
+export type BuyItemWithCandiesFailureAction = ReturnType<typeof buyItemWithCandiesFailure>

@@ -6,9 +6,15 @@ import {
   BuyItemFailureAction,
   BuyItemRequestAction,
   BuyItemSuccessAction,
+  BuyItemWithCandiesFailureAction,
+  BuyItemWithCandiesRequestAction,
+  BuyItemWithCandiesSuccessAction,
   BUY_ITEM_FAILURE,
   BUY_ITEM_REQUEST,
   BUY_ITEM_SUCCESS,
+  BUY_ITEM_WITH_CANDIES_FAILURE,
+  BUY_ITEM_WITH_CANDIES_REQUEST,
+  BUY_ITEM_WITH_CANDIES_SUCCESS,
   FetchItemFailureAction,
   FetchItemRequestAction,
   FetchItemsFailureAction,
@@ -47,6 +53,9 @@ type ItemReducerAction =
   | BuyItemRequestAction
   | BuyItemSuccessAction
   | BuyItemFailureAction
+  | BuyItemWithCandiesRequestAction
+  | BuyItemWithCandiesSuccessAction
+  | BuyItemWithCandiesFailureAction
 
 export function itemReducer(
   state: ItemState = INITIAL_STATE,
@@ -56,6 +65,7 @@ export function itemReducer(
     case FETCH_ITEMS_REQUEST:
     case FETCH_ITEM_REQUEST:
     case BUY_ITEM_REQUEST:
+    case BUY_ITEM_WITH_CANDIES_REQUEST:
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
@@ -71,6 +81,7 @@ export function itemReducer(
       }
     case FETCH_ITEM_SUCCESS:
     case BUY_ITEM_SUCCESS:
+    case BUY_ITEM_WITH_CANDIES_SUCCESS:
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
@@ -79,6 +90,7 @@ export function itemReducer(
     case FETCH_ITEMS_FAILURE:
     case FETCH_ITEM_FAILURE:
     case BUY_ITEM_FAILURE:
+    case BUY_ITEM_WITH_CANDIES_FAILURE:
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
