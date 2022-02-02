@@ -30,17 +30,23 @@ const LootboxesPage = (props: Props) => {
     onRedirect,
     onFetchItems
   } = props
-  
+
+  const isConnected = !!wallet
+
   useEffect(() => {
-    onFetchItems()
-  }, [])
+    if (isConnected) {
+      onFetchItems()
+    } else {
+      onRedirect(locations.signIn('items'))
+    }
+  }, [isConnected])
 
   return (
     <>
       <div className="PageCustomHeader">
         <Navbar isFullscreen />
         <Navigation
-          activeTab={NavigationTab.LOOTBOXES}
+          activeTab={NavigationTab.ITEMS}
           isFullscreen={isFullscreen}
         />
       </div>

@@ -1,10 +1,11 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, call } from 'redux-saga/effects'
 import {
   CONNECT_WALLET_SUCCESS,
   ConnectWalletSuccessAction
 } from '@kmon/dapps/dist/modules/wallet/actions'
 import { push, getLocation } from 'connected-react-router'
 import { locations } from '../routing/locations'
+import { getReturnPath } from '../routing/selectors'
 
 export function* uiSaga() {
   yield takeEvery(CONNECT_WALLET_SUCCESS, handleConnectWalletSuccess)
@@ -12,7 +13,13 @@ export function* uiSaga() {
 
 function* handleConnectWalletSuccess(_action: ConnectWalletSuccessAction) {
   const location: ReturnType<typeof getLocation> = yield select(getLocation)
+  const returnPath: string | null = yield select(getReturnPath)
+
   if (location.pathname === locations.signIn()) {
-    yield put(push(locations.currentAccount()))
+    if (returnPath === null) {
+      yield put(push(locations.currentAccount()))
+    } else if (returnPath === 'items') {
+      yield put(push(locations.items()))
+    }
   }
 }
