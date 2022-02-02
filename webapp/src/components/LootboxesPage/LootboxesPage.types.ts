@@ -8,12 +8,9 @@ import {
 } from '../../modules/item/actions'
 import { Item } from '../../modules/item/types'
 
-export type Params = {
-  address?: string
-}
+export type Params = {}
 
 export type Props = {
-  address?: string
   wallet: Wallet | null
   isConnecting: boolean
   isFullscreen?: boolean
@@ -24,7 +21,7 @@ export type Props = {
 
 export type MapStateProps = Pick<
   Props,
-  'address' | 'wallet' | 'isConnecting' | 'isFullscreen' | 'items'
+  'wallet' | 'isConnecting' | 'isFullscreen' | 'items'
 >
 export type MapDispatchProps = Pick<
   Props,
