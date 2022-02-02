@@ -29,11 +29,13 @@ import { NFTProvider } from '../../NFTProvider'
 import { CoinPopup } from '../../CoinPopup'
 import { TransactionDetail } from './TransactionDetail'
 import { Props } from './Transaction.types'
-import { BUY_ITEM_SUCCESS } from '../../../modules/item/actions'
+import { BUY_ITEM_SUCCESS, BUY_ITEM_WITH_CANDIES_SUCCESS } from '../../../modules/item/actions'
 import { getContractNames } from '../../../modules/vendor'
+import { KIcon } from '@kmon/ui'
 
 const Transaction = (props: Props) => {
   const { tx } = props
+  console.log('Top', tx)
   switch (tx.actionType) {
     case GRANT_TOKEN_SUCCESS: {
       const { authorization } = tx.payload as GrantTokenSuccessAction['payload']
@@ -389,6 +391,31 @@ const Transaction = (props: Props) => {
                 count,
                 name: itemName,
                 price: <CoinPopup coin={Coin.KMON} inline>{calculatedPrice.toFixed(2)}</CoinPopup>
+              }}
+            />
+          }
+          tx={tx}
+        />
+      )
+    }
+    case BUY_ITEM_WITH_CANDIES_SUCCESS: {
+      console.log('Test', tx.payload)
+      const { item, count } = tx.payload
+      const price = fromWei(item.priceWithCandies, 'ether')
+      const calculatedPrice = Number(price) * count
+      let itemName = item.name.replace(/_/g, ' ')
+      itemName = itemName.replace(/basic/gi, 'bronze').toUpperCase()
+      itemName = itemName.replace(/medium/gi, 'silver').toUpperCase()
+      itemName = itemName.replace(/premium/gi, 'gold').toUpperCase()
+      return (
+        <TransactionDetail
+          text={
+            <T
+              id="transaction.detail.buy_item"
+              values={{
+                count,
+                name: itemName,
+                price: <KIcon icon="candy" inline>{calculatedPrice.toFixed(2)}</KIcon>
               }}
             />
           }

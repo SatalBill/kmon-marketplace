@@ -6,7 +6,7 @@ import { Image } from '../../Image'
 import './LootboxDetailCard.css'
 
 const LootboxDetailCard = (props: Props) => {
-  const { name, image, price } = props
+  const { name, image, price, priceWithCandies } = props
   return (
     <div className="lootbox-detail-card card">
       <div className="card-image-container">
@@ -16,6 +16,11 @@ const LootboxDetailCard = (props: Props) => {
         <div className="card-image-text">
           <div className="product-type-price-container">
             <div className="product-type-price">{price} KMON</div>
+          </div>
+        </div>
+        <div className="card-image-text candy">
+          <div className="product-type-price-container">
+            <div className="product-type-price">{priceWithCandies} CANDY</div>
           </div>
         </div>
       </div>

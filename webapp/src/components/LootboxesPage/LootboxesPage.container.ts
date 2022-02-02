@@ -6,9 +6,9 @@ import { RootState } from '../../modules/reducer'
 import { getIsFullscreen } from '../../modules/routing/selectors'
 import {
   getWallet,
-  isConnecting
 } from '../../modules/wallet/selectors'
 import { getData as getItems } from '../../modules/item/selectors'
+import {isConnecting} from '@kmon/dapps/dist/modules/wallet/selectors'
 import {
   Params,
   MapStateProps,
@@ -19,13 +19,10 @@ import LootboxesPage from './LootboxesPage'
 import { fetchItemsRequest } from '../../modules/item/actions'
 
 const mapState = (
-  state: RootState,
-  ownProps: RouteComponentProps<Params>
+  state: RootState
 ): MapStateProps => {
-  const { address } = ownProps.match.params
 
   return ({
-    address: address?.toLowerCase(),
     wallet: getWallet(state),
     isConnecting: isConnecting(state),
     isFullscreen: getIsFullscreen(state),

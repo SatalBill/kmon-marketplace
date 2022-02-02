@@ -23,7 +23,6 @@ export const images: Record<string, string> = {
 
 const LootboxesPage = (props: Props) => {
   const {
-    address,
     wallet,
     isConnecting,
     isFullscreen,
@@ -31,25 +30,17 @@ const LootboxesPage = (props: Props) => {
     onRedirect,
     onFetchItems
   } = props
-
-  const isCurrentAccount =
-    address === undefined || (wallet && wallet.address === address)
-
-  // Redirect to signIn if trying to access current account without a wallet
+  
   useEffect(() => {
-    if (isCurrentAccount && !isConnecting && !wallet) {
-      onRedirect(locations.signIn())
-    } else {
-      onFetchItems()
-    }
-  }, [isCurrentAccount, isConnecting, wallet, onRedirect])
+    onFetchItems()
+  }, [])
 
   return (
     <>
       <div className="PageCustomHeader">
         <Navbar isFullscreen />
         <Navigation
-          activeTab={isCurrentAccount ? NavigationTab.LOOTBOXES : undefined}
+          activeTab={NavigationTab.LOOTBOXES}
           isFullscreen={isFullscreen}
         />
       </div>
@@ -62,6 +53,7 @@ const LootboxesPage = (props: Props) => {
               name={item.name}
               image={images[item.name.toLocaleLowerCase()]}
               price={fromWei(item.price, 'ether')}
+              priceWithCandies={item.priceWithCandies ? fromWei(item.priceWithCandies, 'ether') : '0'}
             />
           ))}
         </Card.Group>
