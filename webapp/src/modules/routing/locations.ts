@@ -3,7 +3,9 @@ import { SearchOptions } from './types'
 
 export const locations = {
   root: () => '/',
-  signIn: () => '/sign-in',
+  signIn: (returnPath?: string) => {
+    return returnPath ? `/sign-in?returnPath=${returnPath}` : '/sign-in'
+  },
   settings: () => '/settings',
   partners: () => '/partners',
   bids: () => '/bids',
