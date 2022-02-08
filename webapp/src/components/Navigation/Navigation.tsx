@@ -31,6 +31,11 @@ const Navigation = (props: Props) => {
             {t('navigation.my_assets')}
           </Tabs.Tab>
         </Link>
+        <Link to={locations.breedingCenter()}>
+          <Tabs.Tab active={activeTab === NavigationTab.BREEDING_CENTER}>
+            {t('navigation.breeding_center')}
+          </Tabs.Tab>
+        </Link>
         <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
           <Link to={locations.activity()}>
             <Tabs.Tab active={activeTab === NavigationTab.ACTIVITY}>
