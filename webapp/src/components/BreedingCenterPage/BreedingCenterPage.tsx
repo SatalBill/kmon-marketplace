@@ -1,14 +1,17 @@
 import React from 'react'
+import { Page, Responsive } from '@kmon/ui'
 
 import { Navbar } from '../Navbar'
 import { Footer } from '../Footer'
 import { Props } from './BreedingCenterPage.types'
 import { NavigationTab } from '../Navigation/Navigation.types'
 import { Navigation } from '../Navigation'
-import { NFTBrowse } from '../NFTBrowse'
-import { VendorName } from '../../modules/vendor'
-import { View } from '../../modules/ui/types'
 import { ChoosePair } from './ChoosePair'
+import { Row } from '../Layout/Row'
+import { Column } from '../Layout/Column'
+import { NFTSidebar } from '../Vendor/NFTSidebar'
+import { NFTList } from '../NFTList'
+import { NFTFilters } from '../Vendor/NFTFilters'
 
 const BreedingCenterPage = (props: Props) => {
   const {} = props
@@ -18,8 +21,20 @@ const BreedingCenterPage = (props: Props) => {
         <Navbar isFullscreen />
         <Navigation activeTab={NavigationTab.BREEDING_CENTER} />
       </div>
-      <ChoosePair />
-      <NFTBrowse vendor={VendorName.KRYPTOMON} view={View.MARKET} />
+      <Page className="NFTBrowse">
+        <Row>
+          <Column align="left" className="sidebar">
+            <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+              <NFTSidebar />
+            </Responsive>
+          </Column>
+          <Column align="right" grow={true}>
+            <ChoosePair />
+            <NFTFilters />
+            <NFTList />
+          </Column>
+        </Row>
+      </Page>
       <Footer />
     </>
   )
