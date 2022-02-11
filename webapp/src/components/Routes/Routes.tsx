@@ -50,7 +50,7 @@ const Routes = () => {
         <Route exact path={locations.estate()} component={LegacyNFTPage} />
         <Route exact path={locations.items()} component={LootboxesPage} />
         <Route exact path={locations.item()} component={LootboxDetail} />
-        <Route exact path={locations.breedingCenter()} component={BreedingCenterPage} />
+        <Route exact path={locations.breed()} component={BreedingCenterPage} />
         <Redirect
           from="/lootboxes"
           to={locations.items()}

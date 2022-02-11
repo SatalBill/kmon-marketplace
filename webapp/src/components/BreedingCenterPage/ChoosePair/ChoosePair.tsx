@@ -2,18 +2,21 @@ import React from 'react'
 
 import { Props } from './ChoosePair.types'
 import './ChoosePair.css'
-import plus from './plus.svg'
 import { EmptyCard } from '@kmon/ui'
+import { NFTCard } from '../../NFTCard'
 
 const ChoosePair = (props: Props) => {
-  const {} = props
+  const { nft } = props
 
   const classes = ['kryptomon', 'choose-pair']
 
   return (
     <div className={classes.join(' ')}>
       <div className='empty-card-box'>
-        <EmptyCard title='MY KRYPTOMON' text='Select one of your kryptomon' isPlus />
+        {!nft && <EmptyCard title='MY KRYPTOMON' text='Select one of your kryptomon' isPlus />}
+        {nft && (
+          <NFTCard nft={nft} />
+        )}
       </div>
       <div className='empty-card-box border-left'>
         <EmptyCard title='SELECTED' text='Search a kryptomon in the marketplace' />

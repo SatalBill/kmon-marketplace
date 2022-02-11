@@ -12,6 +12,7 @@ import { Column } from '../Layout/Column'
 import { NFTSidebar } from '../Vendor/NFTSidebar'
 import { NFTList } from '../NFTList'
 import { NFTFilters } from '../Vendor/NFTFilters'
+import { NFTProvider } from '../NFTProvider'
 
 const BreedingCenterPage = (props: Props) => {
   const {} = props
@@ -29,7 +30,11 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <ChoosePair />
+            <NFTProvider>
+              {nft => (
+                <ChoosePair nft={nft} />
+              )}
+            </NFTProvider>
             <NFTFilters />
             <NFTList />
           </Column>

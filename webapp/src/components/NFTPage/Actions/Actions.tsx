@@ -45,11 +45,19 @@ const Actions = (props: Props) => {
       {order ? (
         isOwner && canSell ? (
           <>
+            <Button
+                as={Link}
+                to={locations.breed(nft.contractAddress, nft.tokenId)}
+                primary
+              >
+                {t('nft_page.breed')}
+            </Button>
             <div className="ml-15">
               <Button
                 as={Link}
                 to={locations.sell(contractAddress, tokenId)}
                 primary
+                className='update-button'
               >
                 {t('nft_page.update')}
               </Button>

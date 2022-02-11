@@ -4,7 +4,9 @@ import { RootState } from '../../modules/reducer'
 import { fetchNFTRequest, FETCH_NFT_REQUEST } from '../../modules/nft/actions'
 import {
   getTokenId,
+  getTokenId2,
   getContractAddress,
+  getContractAddress2,
   getLoading,
   getData as getNFTs
 } from '../../modules/nft/selectors'
@@ -20,8 +22,8 @@ import NFTProvider from './NFTProvider'
 import { getActiveOrder } from '../../modules/order/utils'
 
 const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
-  const contractAddress = ownProps.contractAddress || getContractAddress(state)
-  const tokenId = ownProps.tokenId || getTokenId(state)
+  const contractAddress = ownProps.contractAddress || getContractAddress(state) || getContractAddress2(state)
+  const tokenId = ownProps.tokenId || getTokenId(state) || getTokenId2(state)
   const nfts = getNFTs(state)
   const orders = getOrders(state)
   const nft = getNFT(contractAddress, tokenId, nfts)
