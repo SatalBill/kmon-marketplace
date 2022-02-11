@@ -4,6 +4,8 @@ import { NFT } from '../../modules/nft/types'
 export type Props = {
   nft: NFT
   order?: Order
+  isPreventClick?: boolean
+  onClickCard?: () => void
   status?: {
     showPrice?: boolean
     showPriceBottom?: boolean

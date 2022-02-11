@@ -10,16 +10,24 @@ const ChoosePair = (props: Props) => {
 
   const classes = ['kryptomon', 'choose-pair']
 
+  const handleClickCard = () => {
+    console.log('Clicked card')
+  }
+
   return (
     <div className={classes.join(' ')}>
       <div className='empty-card-box'>
-        {!nft && <EmptyCard title='MY KRYPTOMON' text='Select one of your kryptomon' isPlus />}
-        {nft && (
-          <NFTCard nft={nft} />
-        )}
+        <span className='card-title'>MY KRYPTOMON</span>
+        <div className='card-content'>
+        {!nft && <EmptyCard text='Select one of your kryptomon' isPlus />}
+        {nft && <NFTCard nft={nft} isPreventClick onClickCard={handleClickCard} />}
+        </div>
       </div>
       <div className='empty-card-box border-left'>
-        <EmptyCard title='SELECTED' text='Search a kryptomon in the marketplace' />
+        <span className='card-title'>SELECTED</span>
+        <div className='card-content'>
+          <EmptyCard text='Search a kryptomon in the marketplace' />
+        </div>
       </div>
     </div>
   )
