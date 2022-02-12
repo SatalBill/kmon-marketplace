@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Page, Responsive } from '@kmon/ui'
 
 import { Navbar } from '../Navbar'
@@ -12,10 +12,21 @@ import { Column } from '../Layout/Column'
 import { NFTSidebar } from '../Vendor/NFTSidebar'
 import { NFTList } from '../NFTList'
 import { NFTFilters } from '../Vendor/NFTFilters'
-import { NFTProvider } from '../NFTProvider'
+import { NFT } from "../../modules/nft/types"
 
 const BreedingCenterPage = (props: Props) => {
-  const {} = props
+  const { myNFT, selectedNFT, contractAddress, tokenId, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
+
+  useEffect(() => {
+    if (contractAddress && tokenId && contractAddress !== 'undefined' && tokenId !== 'undefined') {
+      onFetchNFTForBreeding(contractAddress, tokenId)
+    }
+  }, [contractAddress, tokenId, onFetchNFTForBreeding])
+
+  const handleSelectCard = (nft: NFT) => {
+    onSelectNFTForBreeding(nft)
+  }
+
   return (
     <>
       <div className="PageCustomHeader">
@@ -30,13 +41,9 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <NFTProvider>
-              {nft => (
-                <ChoosePair nft={nft} />
-              )}
-            </NFTProvider>
+            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} />
             <NFTFilters />
-            <NFTList />
+            <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
         </Row>
       </Page>

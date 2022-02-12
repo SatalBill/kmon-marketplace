@@ -12,6 +12,8 @@ export type Props = {
   subgraphBlockNumber?: number
   isLoading: boolean,
   isSignedIn: boolean,
+  isPreventClick?: boolean
+  onClickCard?: (nft: NFT) => void
   onBrowse: typeof browseNFTs
 }
 

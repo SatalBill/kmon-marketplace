@@ -5,7 +5,7 @@ export type Props = {
   nft: NFT
   order?: Order
   isPreventClick?: boolean
-  onClickCard?: () => void
+  onClickCard?: (nft: NFT) => void
   status?: {
     showPrice?: boolean
     showPriceBottom?: boolean

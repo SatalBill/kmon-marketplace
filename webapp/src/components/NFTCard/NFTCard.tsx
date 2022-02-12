@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 import { Address } from 'web3x-es/address'
@@ -73,12 +73,14 @@ const NFTCard = (props: Props) => {
     element => element.title === nft.data.kryptomon?.elementType
   )
 
-  const handleClickCard = (e: any) => {
-    if (isPreventClick && onClickCard) {
+  const handleClickCard = useCallback((e: any) => {
+    if (isPreventClick) {
       e.preventDefault()
-      onClickCard()
+      if (onClickCard) {
+        onClickCard(nft)
+      }
     }
-  }
+  }, [isPreventClick, onClickCard, nft])
 
   return (
     <Card

@@ -1,7 +1,8 @@
 import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
-  nft: NFT | null
+  myNFT: NFT | null,
+  selectedNFT: NFT | null
 }
 
 export type MapStateProps = void
