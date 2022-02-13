@@ -15,7 +15,7 @@ import { NFTFilters } from '../Vendor/NFTFilters'
 import { NFT } from "../../modules/nft/types"
 
 const BreedingCenterPage = (props: Props) => {
-  const { myNFT, selectedNFT, contractAddress, tokenId, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
+  const { contractAddress, tokenId, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
 
   useEffect(() => {
     if (contractAddress && tokenId && contractAddress !== 'undefined' && tokenId !== 'undefined') {
@@ -41,7 +41,7 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} />
+            <ChoosePair />
             <NFTFilters />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
