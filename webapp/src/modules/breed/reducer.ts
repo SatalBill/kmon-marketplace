@@ -12,7 +12,9 @@ import {
   FETCH_NFT_FOR_BREEDING_REQUEST,
   FETCH_NFT_FOR_BREEDING_SUCCESS,
   ResetNFTForBreedingRequestAction,
+  ResetSelectedNFTForBreedingRequestAction,
   RESET_NFT_FOR_BREEDING_REQUEST,
+  RESET_SELECTED_NFT_FOR_BREEDING_REQUEST,
   SelectNFTForBreedingRequestAction,
   SELECT_NFT_FOR_BREEDING_REQUEST
 } from './actions'
@@ -41,6 +43,7 @@ type NFTReducerAction =
   | FetchNFTForBreedingFailureAction
   | ResetNFTForBreedingRequestAction
   | SelectNFTForBreedingRequestAction
+  | ResetSelectedNFTForBreedingRequestAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -87,6 +90,15 @@ export function breedReducer(
         data: {
           ...state.data,
           selectedNFT: action.payload.nft
+        }
+      }
+    }
+    case RESET_SELECTED_NFT_FOR_BREEDING_REQUEST: {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          selectedNFT: null
         }
       }
     }
