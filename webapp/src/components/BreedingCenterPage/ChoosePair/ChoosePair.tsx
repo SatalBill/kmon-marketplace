@@ -8,7 +8,7 @@ import { Probability } from './Probability'
 import './ChoosePair.css'
 
 const ChoosePair = (props: Props) => {
-  const { myNFT, selectedNFT, onNavigate, onResetMyNFT, onResetSelectedNFT } = props
+  const { myNFT, selectedNFT, onNavigate, onResetMyNFT, onResetSelectedNFT, onCompare } = props
 
   const classes = ['kryptomon', 'choose-pair']
   const isMatch = myNFT && selectedNFT
@@ -50,7 +50,7 @@ const ChoosePair = (props: Props) => {
           )}
         </div>
       </div>
-      {isMatch && <Button primary className="compare-button">Compare</Button>}
+      {isMatch && <Button primary className="compare-button" onClick={() => onCompare()}>Compare</Button>}
     </div>
   )
 }

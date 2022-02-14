@@ -14,9 +14,10 @@ export type Props = {
   onNavigate: (path: string) => void
   onResetMyNFT: typeof resetNFTForBreedingRequest
   onResetSelectedNFT: typeof resetSelectedNFTForBreedingRequest
+  onCompare: () => void
 }
 
-export type MapStateProps = Pick<Props, 'myNFT' | 'selectedNFT'>
+export type MapStateProps = void
 export type MapDispatchProps = Pick<Props, 'onNavigate' | 'onResetMyNFT' | 'onResetSelectedNFT'>
 export type MapDispatch = Dispatch<
   CallHistoryMethodAction | 

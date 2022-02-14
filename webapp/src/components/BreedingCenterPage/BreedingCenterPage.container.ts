@@ -10,10 +10,14 @@ import { NFT } from "../../modules/nft/types"
 const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
   const contractAddress = ownProps.contractAddress || getContractAddress(state)
   const tokenId = ownProps.tokenId || getTokenId(state)
+  const myNFT = getMyNFT(state)
+  const selectedNFT = getSelectedNFT(state)
 
   return {
     contractAddress,
-    tokenId
+    tokenId,
+    myNFT,
+    selectedNFT
   }
 }
 

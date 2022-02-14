@@ -1,0 +1,14 @@
+.kryptomon.breeding-modal-probability {
+  margin: 58px 0;
+}
+
+.kryptomon.breeding-modal-probability .value {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 0.86px;
+  text-align: center;
+}

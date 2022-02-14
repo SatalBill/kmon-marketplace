@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Page, Responsive } from '@kmon/ui'
 
 import { Navbar } from '../Navbar'
@@ -13,9 +13,11 @@ import { NFTSidebar } from '../Vendor/NFTSidebar'
 import { NFTList } from '../NFTList'
 import { NFTFilters } from '../Vendor/NFTFilters'
 import { NFT } from "../../modules/nft/types"
+import { BreedingModal } from './BreedingModal'
 
 const BreedingCenterPage = (props: Props) => {
-  const { contractAddress, tokenId, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
+  const { contractAddress, tokenId, myNFT, selectedNFT, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     if (contractAddress && tokenId && contractAddress !== 'undefined' && tokenId !== 'undefined') {
@@ -41,13 +43,16 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <ChoosePair />
+            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} onCompare={() => setShowModal(true)} />
             <NFTFilters />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
         </Row>
       </Page>
       <Footer />
+      {myNFT && selectedNFT && (
+        <BreedingModal myNFT={myNFT} selectedNFT={selectedNFT} open={showModal} onClose={() => setShowModal(false)} />
+      )}
     </>
   )
 }
