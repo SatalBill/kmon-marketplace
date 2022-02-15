@@ -11,7 +11,6 @@ type Count @entity {
   orderKryptomon: Int!
 
   kryptomonTotal: Int!
-
   started: Int!
 }
 
@@ -85,7 +84,31 @@ type Kryptomon @entity {
   elementTalentSecond: BigInt!
   elementPercentageSecond: BigInt!
   speciality: String
+  breedingsLeft: BigInt
+  breedingCount: BigInt
+  totalBreedingCount: BigInt
+  timeCanBreed: BigInt
+  lastEvolved: BigInt
+  lastInteracted: BigInt
+  interactionCount: BigInt
+  maxBreedingsDuringLifePhase: BigInt
   nft: NFT @derivedFrom(field: "kryptomon")
+}
+
+type BreedingOrder @entity {
+  id: ID!
+  kryptomon: Kryptomon
+  kryptomonAddress: Bytes!
+  tokenId: BigInt!
+  txHash: Bytes!
+  breeder: Bytes!
+  buyer: Bytes
+  price: BigInt!
+  paymentToken: Bytes!
+  status: OrderStatus!
+  blockNumber: BigInt!
+  createdAt: BigInt!
+  updatedAt: BigInt!
 }
 
 type KryptomonGenes @entity {
@@ -128,6 +151,12 @@ type KryptomonGenes @entity {
   ego: BigInt!
   skinType: BigInt!
   generation: BigInt!
+}
+
+type BreedingCentre @entity {
+  id: ID!
+  breedingFee: BigInt!
+  kryptomonTotal: Int!
 }
 
 type KryptomonExtraData @entity {
@@ -212,6 +241,13 @@ type NFT @entity {
   searchKryptomonEgo: BigInt
   searchKryptomonSkinType: BigInt
   searchKryptomonUnfreezable: BigInt
+  searchIsKryptomonV2: Boolean
+
+  # search indexes
+  searchBreedingOrderStatus: OrderStatus
+  searchBreedingOrderPrice: BigInt
+  searchBreedingOrderCreatedAt: BigInt
+  searchTimeCanBreed: BigInt
 }
 
 # ---------------------------------------------------------

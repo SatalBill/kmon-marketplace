@@ -1,5 +1,5 @@
 import { log, BigInt } from '@graphprotocol/graph-ts'
-import { NFT, Order, Bid } from '../../entities/schema'
+import { NFT, Order, Bid, BreedingOrder } from '../../entities/schema'
 import { ERC721, Transfer } from '../../entities/templates/ERC721/ERC721'
 import * as status from '../order/status'
 import * as addresses from '../../data/addresses'
@@ -45,6 +45,30 @@ export function updateNFTOrderProperties(nft: NFT, order: Order): NFT {
   }
 }
 
+export function updateNFTBreedingOrderProperties(nft: NFT, order: BreedingOrder): NFT {
+  if (order.status == status.OPEN) {
+    return addNFTBreedingOrderProperties(nft, order)
+  } else if (order.status == status.SOLD || order.status == status.CANCELLED) {
+    return clearNFTBreedingOrderProperties(nft)
+  } else {
+    return nft
+  }
+}
+
+export function addNFTBreedingOrderProperties(nft: NFT, order: BreedingOrder): NFT {
+  nft.searchBreedingOrderStatus = order.status
+  nft.searchBreedingOrderPrice = order.price
+  nft.searchBreedingOrderCreatedAt = order.createdAt
+  return nft
+}
+
+export function clearNFTBreedingOrderProperties(nft: NFT): NFT {
+  nft.searchBreedingOrderStatus = null
+  nft.searchBreedingOrderPrice = null
+  nft.searchBreedingOrderCreatedAt = null
+  return nft
+}
+
 export function addNFTOrderProperties(nft: NFT, order: Order): NFT {
   nft.activeOrder = order.id
   nft.searchOrderStatus = order.status
@@ -62,6 +86,61 @@ export function clearNFTOrderProperties(nft: NFT): NFT {
   nft.searchOrderPaymentToken = null
   nft.searchOrderCreatedAt = null
   nft.searchOrderExpiresAt = null
+  return nft
+}
+
+export function clearNFTProperties(nft: NFT): NFT {
+  nft.name = ''
+  nft.tokenId = null
+  nft.owner = ''
+  nft.searchText = ''
+  nft.createdAt = null
+  nft.updatedAt = null
+  nft.searchKryptomonGenesGeneration = null
+  nft.searchKryptomonStatus = null
+  nft.searchKryptomonSpeciality = null
+  nft.searchKryptomonElementPercentage = null
+  nft.searchKryptomonElementType = null
+  nft.searchKryptomonElementTalent = null
+  nft.searchKryptomonFire = null
+  nft.searchKryptomonFireTalent = null
+  nft.searchKryptomonWater = null
+  nft.searchKryptomonWaterTalent = null
+  nft.searchKryptomonIce = null
+  nft.searchKryptomonIceTalent = null
+  nft.searchKryptomonGround = null
+  nft.searchKryptomonGroundTalent = null
+  nft.searchKryptomonAir = null
+  nft.searchKryptomonAirTalent = null
+  nft.searchKryptomonElectro = null
+  nft.searchKryptomonElectroTalent = null
+  nft.searchKryptomonGhost = null
+  nft.searchKryptomonGhostTalent = null
+  nft.searchKryptomonGrass = null
+  nft.searchKryptomonGrassTalent = null
+  nft.searchKryptomonColor = null
+  nft.searchKryptomonSex = null
+  nft.searchKryptomonGeneralTalent = null
+  nft.searchKryptomonAttack = null
+  nft.searchKryptomonDefense = null
+  nft.searchKryptomonSpecial = null
+  nft.searchKryptomonXFactor = null
+  nft.searchKryptomonGrowthTalentFactor = null
+  nft.searchKryptomonConstitution = null
+  nft.searchKryptomonHealthPoints = null
+  nft.searchKryptomonSpeed = null
+  nft.searchKryptomonAffections = null
+  nft.searchKryptomonCrazyness = null
+  nft.searchKryptomonInstinct = null
+  nft.searchKryptomonHunger = null
+  nft.searchKryptomonLaziness = null
+  nft.searchKryptomonBrave = null
+  nft.searchKryptomonSmart = null
+  nft.searchKryptomonBodySize = null
+  nft.searchKryptomonEgo = null
+  nft.searchKryptomonSkinType = null
+  nft.searchKryptomonUnfreezable = null
+  nft.searchIsKryptomonV2 = false;
   return nft
 }
 
