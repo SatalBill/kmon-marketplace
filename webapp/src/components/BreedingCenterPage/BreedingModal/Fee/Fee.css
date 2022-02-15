@@ -1,5 +1,13 @@
 .kryptomon.breeding-modal-fee {
+  display: flex;
+  flex: 1;
+}
 
+.kryptomon.breeding-modal-fee > div {
+  width: 33.33%;
+}
+
+.kryptomon.breeding-modal-fee .my-kryptomon {
 }
 
 .kryptomon.breeding-modal-fee .fee-detail {
