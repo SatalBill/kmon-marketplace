@@ -66,6 +66,10 @@ function* handleWallet(
     name: contractNames.KMONFT
   })
 
+  const kmonftv2 = getContract({
+    name: contractNames.KMONFTV2
+  })
+
   const authorizations: Authorization[] = []
 
   // Buy NFT
@@ -76,6 +80,16 @@ function* handleWallet(
     contractName: ContractName.KMONToken,
     chainId: kmon.chainId,
     type: AuthorizationType.ALLOWANCE
+  })
+
+  // Sell NFT V2 or Approve
+  authorizations.push({
+    address,
+    authorizedAddress: marketplace.address,
+    contractAddress: kmonftv2.address,
+    contractName: ContractName.KMONFTV2,
+    chainId: kmonftv2.chainId,
+    type: AuthorizationType.APPROVAL
   })
 
   // Sell NFT or Approve
