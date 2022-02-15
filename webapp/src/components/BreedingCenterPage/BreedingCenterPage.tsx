@@ -16,7 +16,15 @@ import { NFT } from "../../modules/nft/types"
 import { BreedingModal } from './BreedingModal'
 
 const BreedingCenterPage = (props: Props) => {
-  const { contractAddress, tokenId, myNFT, selectedNFT, onFetchNFTForBreeding, onSelectNFTForBreeding } = props
+  const {
+    contractAddress,
+    tokenId,
+    myNFT,
+    selectedNFT,
+    onFetchNFTForBreeding,
+    onSelectNFTForBreeding,
+    onFetchSelectedNFTForBreedig
+  } = props
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
@@ -27,6 +35,13 @@ const BreedingCenterPage = (props: Props) => {
 
   const handleSelectCard = (nft: NFT) => {
     onSelectNFTForBreeding(nft)
+  }
+
+  const handleCompare = () => {
+    setShowModal(true)
+    if (contractAddress && selectedNFT?.tokenId && !selectedNFT?.genesV2) {
+      onFetchSelectedNFTForBreedig(contractAddress, selectedNFT?.tokenId)  
+    }
   }
 
   return (
@@ -43,7 +58,7 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} onCompare={() => setShowModal(true)} />
+            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} onCompare={handleCompare} />
             <NFTFilters />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>

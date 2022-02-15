@@ -61,7 +61,7 @@ const Fee = (props: Props) => {
       }
     }
   }
-console.log(myNFT, selectedNFT)
+
   const selectedNFTData = {
     labels: DNALabels,
     datasets: [

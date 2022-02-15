@@ -32,7 +32,7 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Probability />
+              <Probability myNFT={myNFT} selectedNFT={selectedNFT} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -12,3 +12,13 @@
   letter-spacing: 0.86px;
   text-align: center;
 }
+
+.kryptomon.breeding-modal-probability .probability-chart-box {
+  display: flex;
+  justify-content: center;
+}
+
+.kryptomon.breeding-modal-probability .probability-chart-box .probability-chart {
+  margin-top: 20px;
+  width: 60%;
+}
