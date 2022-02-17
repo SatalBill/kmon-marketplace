@@ -33,6 +33,47 @@ dataSources:
           handler: handleTransfer
 
   # ---------------------------------------------------------
+  # KRYPTOMON -------------------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: KMONFTV2
+    network: {{network}}
+    source:
+      address: '{{address:KMONFTV2}}'
+      abi: KMONFTV2
+      startBlock: {{startBlock:KMONFTV2}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/handlers/kmonft.ts
+      entities:
+        - ERC721
+        - Kryptomon
+      abis:
+        - name: KMONFTV2
+          file: ./abis/KMONFTV2.json
+      eventHandlers:
+        - event: Birth(address,uint256,uint256,uint256,uint256,uint256[],uint256,uint256[])
+          handler: handleBirth
+        - event: EggHatched(indexed uint256)
+          handler: handleHatching
+        - event: EvolveKryptomon(indexed uint256,indexed uint256,indexed uint256)
+          handler: handleEvoleKryptomon
+        - event: KmonftV1Migration(indexed uint256,indexed uint256,uint256[])
+          handler: handleKmonftV1Migration
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: SetBreedingFee(indexed uint256)
+          handler: handleSetBreedingFee
+        - event: AddToBreedingCentre(indexed uint256,uint256)
+          handler: handleAddToBreedingCentre
+        - event: RemoveFromBreedingCentre(indexed uint256)
+          handler: handleRemoveFromBreedingCentre
+        - event: BreedKryptomon(indexed uint256,indexed uint256,indexed uint256,uint256,uint256)
+          handler: handleBreedKryptomon
+
+  # ---------------------------------------------------------
   # ORDERS --------------------------------------------------
   # ---------------------------------------------------------
   - kind: ethereum/contract

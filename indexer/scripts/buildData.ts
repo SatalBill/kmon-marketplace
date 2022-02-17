@@ -13,6 +13,7 @@ enum ContractName {
   KMONToken = 'KMONToken',
   ERC721Bid = 'ERC721Bid',
   KMONFT = 'KMONFT',
+  KMONFTV2 = 'KMONFTV2',
   MarketplaceProxy = 'MarketplaceProxy'
 }
 type ContractsResponse = Record<Network, Record<ContractName, string>>
@@ -21,6 +22,7 @@ const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
   [Network.MAINNET]: {
     KMONToken: 4162050,
     KMONFT: 2482847,
+    KMONFTV2: 13059052,
     ERC721Bid: 7270906,
     MarketplaceProxy: 6496012,
   },
@@ -28,17 +30,20 @@ const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
     KMONToken: 1891200,
     ERC721Bid: 5058246,
     KMONFT: 2482847,
+    KMONFTV2: 13059052,
     MarketplaceProxy: 4202120
   },
   [Network.RINKEBY]: {
     KMONToken: 10048228,
     KMONFT: 10048228,
+    KMONFTV2: 10165886,
     ERC721Bid: 10048228,
     MarketplaceProxy: 10048228
   },
   [Network.BSC]: {
     KMONToken: 7891700,
     KMONFT: 8726547,
+    KMONFTV2: 15265012,
     ERC721Bid: 13059052,
     MarketplaceProxy: 13060664
   }
@@ -103,7 +108,7 @@ class Ethereum {
   async fetchContracts() {
     console.log(this.network);
     const contractsByNetwork: ContractsResponse = await fetch(
-      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=GHSAT0AAAAAABRDRYFBEHVFDCBRMPWSWUUKYQCZT6A'
+      'https://raw.githubusercontent.com/KryptomonDAO/contracts/master/addresses.json?token=GHSAT0AAAAAABRDRYFAVRSETH5R55TULY7EYQUCCRA'
     )
     this.contractAddresses = contractsByNetwork[this.network]
   }
