@@ -56,6 +56,7 @@ export function updateNFTBreedingOrderProperties(nft: NFT, order: BreedingOrder)
 }
 
 export function addNFTBreedingOrderProperties(nft: NFT, order: BreedingOrder): NFT {
+  nft.activeBreedingOrder = order.id
   nft.searchBreedingOrderStatus = order.status
   nft.searchBreedingOrderPrice = order.price
   nft.searchBreedingOrderCreatedAt = order.createdAt
@@ -63,6 +64,7 @@ export function addNFTBreedingOrderProperties(nft: NFT, order: BreedingOrder): N
 }
 
 export function clearNFTBreedingOrderProperties(nft: NFT): NFT {
+  nft.activeBreedingOrder = '';
   nft.searchBreedingOrderStatus = null
   nft.searchBreedingOrderPrice = null
   nft.searchBreedingOrderCreatedAt = null

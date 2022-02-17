@@ -93,6 +93,7 @@ type Kryptomon @entity {
   interactionCount: BigInt
   maxBreedingsDuringLifePhase: BigInt
   nft: NFT @derivedFrom(field: "kryptomon")
+  breedingOrder: BreedingOrder @derivedFrom(field: "kryptomon")
 }
 
 type BreedingOrder @entity {
@@ -101,10 +102,8 @@ type BreedingOrder @entity {
   kryptomonAddress: Bytes!
   tokenId: BigInt!
   txHash: Bytes!
-  breeder: Bytes!
-  buyer: Bytes
+  breeder: Account!
   price: BigInt!
-  paymentToken: Bytes!
   status: OrderStatus!
   blockNumber: BigInt!
   createdAt: BigInt!
@@ -175,6 +174,7 @@ type NFT @entity {
   orders: [Order!] @derivedFrom(field: "nft") # History of all orders. Should only ever be ONE open order. all others must be cancelled or sold
   bids: [Bid!] @derivedFrom(field: "nft") # History of all bids.
   activeOrder: Order
+  activeBreedingOrder: BreedingOrder
 
   name: String
   image: String

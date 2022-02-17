@@ -277,11 +277,16 @@ export function handleEvoleKryptomon(event: EvolveKryptomon): void {
 
   let nft = NFT.load(id);
   nft.searchKryptomonStatus = status;
+  if (status.ge(BigInt.fromString("2"))) {
+    nft.searchTimeCanBreed = event.block.timestamp
+  }
   nft.save();
 
   let kryptomon = Kryptomon.load(id);
   kryptomon.status = status;
   kryptomon.maxBreedingsDuringLifePhase = event.params.maxBreedingsDuringLifePhase;
+  kryptomon.breedingsLeft = event.params.maxBreedingsDuringLifePhase;
+  kryptomon.timeCanBreed = event.block.timestamp;
   kryptomon.save();
 }
 
@@ -493,6 +498,12 @@ export function handleAddToBreedingCentre(event: AddToBreedingCentre): void {
   breedingOrder.tokenId = event.params._tokenId
   breedingOrder.createdAt = event.block.timestamp
   breedingOrder.kryptomon = nftId
+  breedingOrder.kryptomonAddress = event.address
+  breedingOrder.txHash = event.transaction.hash
+  breedingOrder.breeder = nft.owner;
+  breedingOrder.blockNumber = event.block.number
+  breedingOrder.createdAt = event.block.timestamp
+  breedingOrder.updatedAt = event.block.timestamp
 
   nft = updateNFTBreedingOrderProperties(nft!, breedingOrder!)
   nft.save();
@@ -544,6 +555,24 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   let nftMatron = NFT.load(nftMatronId)
   nftMatron.searchTimeCanBreed = event.params._matronCanBreedNext
   nftMatron.save();
+
+  // breeding counts
+  const count = BigInt.fromString("1")
+  let sireKryptomon = Kryptomon.load(nftSireId);
+  sireKryptomon.breedingsLeft = sireKryptomon.breedingsLeft.minus(count);
+  sireKryptomon.totalBreedingCount = sireKryptomon.totalBreedingCount.plus(count);
+  sireKryptomon.breedingCount = sireKryptomon.breedingCount.plus(count);
+  sireKryptomon.timeCanBreed = event.params._sireCanBreedNext;
+
+  sireKryptomon.save();
+
+  let matronKryptomon = Kryptomon.load(nftMatronId);
+  matronKryptomon.breedingsLeft = matronKryptomon.breedingsLeft.minus(count);
+  matronKryptomon.totalBreedingCount = matronKryptomon.totalBreedingCount.plus(count);
+  matronKryptomon.breedingCount = matronKryptomon.breedingCount.plus(count);
+  matronKryptomon.timeCanBreed = event.params._matronCanBreedNext;
+
+  matronKryptomon.save();
 }
 
 export function indexOfMax(arr: Array<BigInt>, indexToIgnore: BigInt): BigInt {
