@@ -87,4 +87,6 @@ export type SearchOptions = {
   special?: string[]
   price?: string[]
   priceToken?: string[]
+
+  returnPath?: string
 }

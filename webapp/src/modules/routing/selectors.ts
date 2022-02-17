@@ -273,3 +273,10 @@ export const getPathname = createSelector<
 >(getLocation, location => {
   return location.pathname
 })
+
+export const getReturnPath = createSelector<RootState, string, string | null>(
+  getRouterSearch,
+  search => {
+    return getURLParam(search, 'returnPath')
+  }
+)
