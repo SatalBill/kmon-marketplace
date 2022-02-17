@@ -5,6 +5,12 @@ import {
 
 import { NFT } from '../nft/types'
 import {
+  AddToBreedingCentreFailureAction,
+  AddToBreedingCentreRequestAction,
+  AddToBreedingCentreSuccessAction,
+  ADD_TO_BREEDING_CENTRE_FAILURE,
+  ADD_TO_BREEDING_CENTRE_REQUEST,
+  ADD_TO_BREEDING_CENTRE_SUCCESS,
   FetchNFTForBreedingFailureAction,
   FetchNFTForBreedingRequestAction,
   FetchNFTForBreedingSuccessAction,
@@ -53,6 +59,9 @@ type NFTReducerAction =
   | FetchSelectedNFTForBreedingRequestAction
   | FetchSelectedNFTForBreedingSuccessAction
   | FetchSelectedNFTForBreedingFailureAction
+  | AddToBreedingCentreRequestAction
+  | AddToBreedingCentreSuccessAction
+  | AddToBreedingCentreFailureAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -60,14 +69,16 @@ export function breedReducer(
 ) {
   switch (action.type) {
     case FETCH_NFT_FOR_BREEDING_REQUEST:
-    case FETCH_SELECTED_NFT_FOR_BREEDING_REQUEST: {
+    case FETCH_SELECTED_NFT_FOR_BREEDING_REQUEST:
+    case ADD_TO_BREEDING_CENTRE_REQUEST: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
       }
     }
     case FETCH_NFT_FOR_BREEDING_FAILURE:
-    case FETCH_SELECTED_NFT_FOR_BREEDING_FAILURE: {
+    case FETCH_SELECTED_NFT_FOR_BREEDING_FAILURE:
+    case ADD_TO_BREEDING_CENTRE_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
@@ -125,6 +136,12 @@ export function breedReducer(
         }
       }
     }
+    case ADD_TO_BREEDING_CENTRE_SUCCESS:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        error: null
+      }
     default:
       return state
   }

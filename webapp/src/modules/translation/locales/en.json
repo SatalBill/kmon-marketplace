@@ -256,6 +256,12 @@
       "from": "From",
       "to": "To",
       "date": "Date"
+    },
+    "breed_price_modal": {
+      "title": "Enter price",
+      "line_one": "You are about to add {name} to the breeding centre.",
+      "line_two": "Please enter the price of how much you want to get paid.",
+      "price": "Price"
     }
   },
   "lootbox_page": {
