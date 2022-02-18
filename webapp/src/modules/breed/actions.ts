@@ -1,6 +1,7 @@
 import { action } from 'typesafe-actions'
 
 import { NFT } from '../nft/types'
+import { GenesV2 } from './types'
 
 export const FETCH_NFT_FOR_BREEDING_REQUEST = '[Request] Fetch NFT FOR BREEDING'
 export const FETCH_NFT_FOR_BREEDING_SUCCESS = '[Success] Fetch NFT FOR BREEDING'
@@ -47,3 +48,18 @@ export const addToBreedingCentreFailure = (
 export type AddToBreedingCentreRequestAction = ReturnType<typeof addToBreedigCentreRequest>
 export type AddToBreedingCentreSuccessAction = ReturnType<typeof addToBreedigCentreSuccess>
 export type AddToBreedingCentreFailureAction = ReturnType<typeof addToBreedingCentreFailure>
+
+export const SIMULATE_BREEDING_REQUEST = '[Request] Simulate Breeding'
+export const SIMULATE_BREEDING_SUCCESS = '[Success] Simulate Breeding'
+export const SIMULATE_BREEDING_FAILURE = '[Failure] Simulate Breeding'
+
+export const simulateBreedingRequest = (femaleTokenId: string, maleTokenId: string) =>
+  action(SIMULATE_BREEDING_REQUEST, { femaleTokenId, maleTokenId })
+export const simulateBreedingSuccess = (genes: GenesV2) =>
+  action(SIMULATE_BREEDING_SUCCESS, { genes })
+export const simulateBreedingFailure = (femaleTokenId: string, maleTokenId: string, error: string) =>
+  action(SIMULATE_BREEDING_FAILURE, { femaleTokenId, maleTokenId, error })
+
+export type SimulateBreedingRequestAction = ReturnType<typeof simulateBreedingRequest>
+export type SimulateBreedingSuccessAction = ReturnType<typeof simulateBreedingSuccess>
+export type SimulateBreedingFailureAction = ReturnType<typeof simulateBreedingFailure>

@@ -11,6 +11,7 @@ export const getError = (state: RootState) => getState(state).error
 
 export const getMyNFT = (state: RootState) => getData(state).myNFT
 export const getSelectedNFT = (state: RootState) => getData(state).selectedNFT
+export const getSimulatedGenes = (state: RootState) => getData(state).simulatedGenes
 
 const nftDetailMatchSelector = createMatchSelector<
   RootState,

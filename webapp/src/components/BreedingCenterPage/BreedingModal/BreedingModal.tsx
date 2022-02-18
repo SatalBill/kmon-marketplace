@@ -6,11 +6,10 @@ import './BreedingModal.css'
 import { NFTDetail } from './NFTDetail'
 import { Fee } from './Fee'
 import { Probability } from './Probability'
-import { simulateBreeding } from '../../../modules/breed/utils'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, open, onClose } = props
-  const [simulatedGenes, setSimulatedGenes] = useState<number[]>([])
+  const { myNFT, selectedNFT, open, simulatedGenes, onClose, onSimulateBreeding } = props
+  const [genes, setGenes] = useState<number[]>([])
 
   const classes = ["kryptomon", "breeding-modal"]
 
@@ -19,15 +18,11 @@ const BreedingModal = (props: Props) => {
   }
 
   const simulate = async () => {
-    let constitution,affections,crazyness,instinct,hunger,laziness,brave,smart
     if (myNFT.genesV2 && selectedNFT.genesV2) {
       if (myNFT.genesV2.sex > 5 && selectedNFT.genesV2.sex <= 5) {
-        ;([,,,,,,,,,,,,,,,,,,,,,,,,constitution,,,affections,crazyness,instinct,hunger,laziness,brave,smart,,,,] = await simulateBreeding(myNFT.tokenId, selectedNFT.tokenId))
+        onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
       } else if (myNFT.genesV2.sex <=5 && selectedNFT.genesV2.sex > 5) {
-        ;([,,,,,,,,,,,,,,,,,,,,,,,,constitution,,,affections,crazyness,instinct,hunger,laziness,brave,smart,,,,] = await simulateBreeding(selectedNFT.tokenId, myNFT.tokenId))
-      }
-      if (constitution !== undefined && affections !== undefined && crazyness !== undefined && instinct !== undefined && hunger !== undefined && laziness !== undefined && brave !== undefined && smart !== undefined) {
-        setSimulatedGenes([constitution,affections,crazyness,instinct,hunger,laziness,brave,smart])
+        onSimulateBreeding(selectedNFT.tokenId, myNFT.tokenId)
       }
     }
   }
@@ -35,6 +30,13 @@ const BreedingModal = (props: Props) => {
   useEffect(() => {
     simulate()
   }, [myNFT, selectedNFT])
+
+  useEffect(() => {
+    if (simulatedGenes) {
+      const [,,,,,,,,,,,,,,,,,,,,,,,,constitution,,,affections,crazyness,instinct,hunger,laziness,brave,smart,,,,] = simulatedGenes
+      setGenes([constitution,affections,crazyness,instinct,hunger,laziness,brave,smart])
+    }
+  }, [simulatedGenes])
 
   return (
     <Modal size="large" open={open} closeIcon={<Close onClick={() => onClose()} />} className={classes.join(' ')}>
@@ -51,12 +53,12 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} />
+              <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={simulatedGenes} />
+              <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={genes} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

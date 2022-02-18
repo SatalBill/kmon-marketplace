@@ -22,13 +22,21 @@ import {
   RESET_NFT_FOR_BREEDING_REQUEST,
   RESET_SELECTED_NFT_FOR_BREEDING_REQUEST,
   SelectNFTForBreedingRequestAction,
-  SELECT_NFT_FOR_BREEDING_REQUEST
+  SELECT_NFT_FOR_BREEDING_REQUEST,
+  SimulateBreedingFailureAction,
+  SimulateBreedingRequestAction,
+  SimulateBreedingSuccessAction,
+  SIMULATE_BREEDING_FAILURE,
+  SIMULATE_BREEDING_REQUEST,
+  SIMULATE_BREEDING_SUCCESS
 } from './actions'
+import { GenesV2 } from './types'
 
 export type BreedState = {
   data: {
     myNFT: NFT | null,
-    selectedNFT: NFT | null
+    selectedNFT: NFT | null,
+    simulatedGenes: GenesV2 | null
   }
   loading: LoadingState
   error: string | null
@@ -37,7 +45,8 @@ export type BreedState = {
 const INITIAL_STATE = {
   data: {
     myNFT: null,
-    selectedNFT: null
+    selectedNFT: null,
+    simulatedGenes: null
   },
   loading: [],
   error: null
@@ -53,6 +62,9 @@ type NFTReducerAction =
   | AddToBreedingCentreRequestAction
   | AddToBreedingCentreSuccessAction
   | AddToBreedingCentreFailureAction
+  | SimulateBreedingRequestAction
+  | SimulateBreedingSuccessAction
+  | SimulateBreedingFailureAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -60,14 +72,16 @@ export function breedReducer(
 ) {
   switch (action.type) {
     case FETCH_NFT_FOR_BREEDING_REQUEST:
-    case ADD_TO_BREEDING_CENTRE_REQUEST: {
+    case ADD_TO_BREEDING_CENTRE_REQUEST:
+    case SIMULATE_BREEDING_REQUEST: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
       }
     }
     case FETCH_NFT_FOR_BREEDING_FAILURE:
-    case ADD_TO_BREEDING_CENTRE_FAILURE: {
+    case ADD_TO_BREEDING_CENTRE_FAILURE:
+    case SIMULATE_BREEDING_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
@@ -117,6 +131,16 @@ export function breedReducer(
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
+        error: null
+      }
+    case SIMULATE_BREEDING_SUCCESS:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
+        data: {
+          ...state.data,
+          simulatedGenes: action.payload.genes
+        },
         error: null
       }
     default:

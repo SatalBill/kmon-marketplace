@@ -7,7 +7,7 @@ import './Fee.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Fee = (props: Props) => {
-  const { myNFT, selectedNFT, onBreed } = props
+  const { myNFT, selectedNFT, onBreed, onCancel } = props
 
   const DNAParams = myNFT.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -114,7 +114,7 @@ const Fee = (props: Props) => {
           Total Cost: 2345 KMON
         </div>
         <Button primary className="breed-button" onClick={onBreed}>BREED</Button>
-        <Button>CANCEL</Button>
+        <Button onClick={onCancel}>CANCEL</Button>
       </div>
       <div className="selected-kryptomon">
         <Radar data={selectedNFTData} options={selectedNFTOptions}/>

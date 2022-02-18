@@ -1,9 +1,21 @@
 import { connect } from 'react-redux'
-import { MapStateProps, MapDispatchProps } from './BreedingModal.types'
+import { MapStateProps, MapDispatchProps, MapDispatch } from './BreedingModal.types'
 import BreedingModal from './BreedingModal'
+import { simulateBreedingRequest } from '../../../modules/breed/actions'
+import { getSimulatedGenes } from '../../../modules/breed/selectors'
+import { RootState } from '../../../modules/reducer'
 
-const mapState = (): MapStateProps => {}
+const mapState = (state: RootState): MapStateProps => {
+  const simulatedGenes = getSimulatedGenes(state)
 
-const mapDispatch = (): MapDispatchProps => {}
+  return {
+    simulatedGenes
+  }
+}
+
+const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
+  onSimulateBreeding: (femaleTokenId: string, maleTokenId: string) =>
+    dispatch(simulateBreedingRequest(femaleTokenId, maleTokenId))
+})
 
 export default connect(mapState, mapDispatch)(BreedingModal)
