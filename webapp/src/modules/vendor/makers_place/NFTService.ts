@@ -130,6 +130,7 @@ export class NFTService
       id: getNFTId(contractAddress, tokenId),
       tokenId,
       contractAddress,
+      activeBreedingOrderId: null,
       activeOrderId: '',
       owner: asset.owner,
       name: asset.name,

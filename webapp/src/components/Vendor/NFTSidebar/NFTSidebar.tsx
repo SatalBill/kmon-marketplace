@@ -53,7 +53,8 @@ export type MultipleFilters = {
   price?: string[]
   priceToken?: string[]
   kryptomonStatus?: string[]
-  unfreezable?: string[]
+  unfreezable?: string[],
+  isInBreedingCenter?: boolean
 }
 
 const NFTSidebar = (props: Props) => {
@@ -128,6 +129,11 @@ const NFTSidebar = (props: Props) => {
       if (pathname === '/account') {
         onBrowse({
           ...data
+        })
+      } else if (/^\/breed/gi.test(pathname)) {
+        onBrowse({
+          ...data,
+          isInBreedingCentre: true
         })
       } else {
         onBrowse({

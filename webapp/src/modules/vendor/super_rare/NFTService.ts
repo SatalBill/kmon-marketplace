@@ -150,6 +150,7 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       id: getNFTId(asset.contractAddress, asset.id.toString()),
       tokenId: asset.id.toString(),
       contractAddress: asset.contractAddress,
+      activeBreedingOrderId: null,
       activeOrderId: '',
       owner: asset.owner.address,
       name: asset.name,

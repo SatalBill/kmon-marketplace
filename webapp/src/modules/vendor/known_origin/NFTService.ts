@@ -138,6 +138,7 @@ export class NFTService
       id: getNFTId(contractAddress, tokenId),
       tokenId,
       contractAddress,
+      activeBreedingOrderId: null,
       activeOrderId: '',
       owner: this.getOwner(fragment),
       metadata: { name: "", image: "", description: "" },

@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux'
 import { Wallet } from '@kmon/dapps/dist/modules//wallet/types'
+import { CallHistoryMethodAction } from 'connected-react-router'
 import { NFT } from '../../../modules/nft/types'
 import { Order } from '../../../modules/order/types'
 import { Bid } from '../../../modules/bid/types'
@@ -15,9 +16,10 @@ export type Props = {
   bids: Bid[]
   isAddingToBreedingCentre: boolean
   onAddToBreedingCentre: typeof addToBreedigCentreRequest
+  onNavigate: (path: string) => void
 }
 
 export type MapStateProps = Pick<Props, 'wallet' | 'order' | 'bids' | 'isAddingToBreedingCentre'>
-export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre'>
-export type MapDispatch = Dispatch<AddToBreedingCentreRequestAction>
+export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre' | 'onNavigate'>
+export type MapDispatch = Dispatch<AddToBreedingCentreRequestAction | CallHistoryMethodAction>
 export type OwnProps = Pick<Props, 'nft'>

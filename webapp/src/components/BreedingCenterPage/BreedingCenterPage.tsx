@@ -22,8 +22,7 @@ const BreedingCenterPage = (props: Props) => {
     myNFT,
     selectedNFT,
     onFetchNFTForBreeding,
-    onSelectNFTForBreeding,
-    onFetchSelectedNFTForBreedig
+    onSelectNFTForBreeding
   } = props
   const [showModal, setShowModal] = useState(false)
 
@@ -39,9 +38,6 @@ const BreedingCenterPage = (props: Props) => {
 
   const handleCompare = () => {
     setShowModal(true)
-    if (contractAddress && selectedNFT?.tokenId && !selectedNFT?.genesV2) {
-      onFetchSelectedNFTForBreedig(contractAddress, selectedNFT?.tokenId)  
-    }
   }
 
   return (

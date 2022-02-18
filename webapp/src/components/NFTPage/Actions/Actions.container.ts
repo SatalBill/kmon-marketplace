@@ -12,6 +12,7 @@ import {
   ADD_TO_BREEDING_CENTRE_REQUEST
 } from '../../../modules/breed/actions'
 import { getLoading } from '../../../modules/breed/selectors'
+import { replace } from 'connected-react-router'
 
 const mapState = (state: RootState): MapStateProps => ({
   wallet: getWallet(state),
@@ -22,7 +23,8 @@ const mapState = (state: RootState): MapStateProps => ({
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onAddToBreedingCentre: (contractAddress: string, tokenId: string, price: string) =>
-    dispatch(addToBreedigCentreRequest(contractAddress, tokenId, price))
+    dispatch(addToBreedigCentreRequest(contractAddress, tokenId, price)),
+  onNavigate: (path) => dispatch(replace(path))
 })
 
 export default connect(mapState, mapDispatch)(Actions)

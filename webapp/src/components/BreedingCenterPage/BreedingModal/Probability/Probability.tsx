@@ -6,7 +6,7 @@ import './Probability.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Probability = (props: Props) => {
-  const { myNFT, selectedNFT } = props
+  const { myNFT, selectedNFT, simulatedGenes } = props
 
   const DNAParams = myNFT.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -25,7 +25,7 @@ const Probability = (props: Props) => {
     labels: DNALabels,
     datasets: [
       {
-        label: 'My NFT',
+        label: myNFT.metadata.name,
         data: [
           myNFT.genesV2?.constitution,
           myNFT.genesV2?.affections,
@@ -44,7 +44,7 @@ const Probability = (props: Props) => {
         pointHoverBorderColor: 'rgb(255, 99, 132)'
       },
       {
-        label: 'Selected NFT',
+        label: selectedNFT.metadata.name,
         data: [
           selectedNFT.genesV2?.constitution,
           selectedNFT.genesV2?.affections,
@@ -61,6 +61,16 @@ const Probability = (props: Props) => {
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgb(54, 162, 235)'
+      },
+      {
+        label: 'Simulated',
+        data: simulatedGenes,
+        backgroundColor: 'rgba(217, 225, 160, 0.2)',
+        borderColor: 'rgb(217, 225, 160)',
+        pointBackgroundColor: 'rgb(217, 225, 160)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(217, 225, 160)'
       }
     ]
   }

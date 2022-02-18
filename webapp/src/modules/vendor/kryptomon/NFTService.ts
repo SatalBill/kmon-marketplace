@@ -28,7 +28,13 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
       }
       account.nftIds.push(result.nft.id)
 
+      if (params.isInBreedingCentre) {
+        const responseV2 = await nftAPI.fetchOneV2(result.nft.tokenId)
+        result.nft.genesV2 = this.getReorderedGenes(responseV2?.genes);
+      }
+
       // setting metadata
+      if (!result.nft.tokenURI) continue
       const metadata: KryptomonMetadataResponse = await fetch(
         result.nft.tokenURI
       ).then(resp => resp.json())

@@ -76,7 +76,7 @@ const NFTDetail = (props: Props) => {
       </div>
       <div className="detail">
         <div className="detail-title">
-          No. {nft.name}
+          {nft.metadata.name}
           <img
             className="product-type-icon"
             src={elementType?.icon}

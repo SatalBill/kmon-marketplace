@@ -11,9 +11,11 @@ const ChoosePair = (props: Props) => {
   const { myNFT, selectedNFT, onNavigate, onResetMyNFT, onResetSelectedNFT, onCompare } = props
 
   const classes = ['kryptomon', 'choose-pair']
-  const isMatch = myNFT && selectedNFT
 
   const probabilityFactor = 56
+
+  const isMatch = myNFT && selectedNFT && myNFT.genesV2 !== undefined && selectedNFT.genesV2 !== undefined &&
+    (myNFT.genesV2.sex > 5 && selectedNFT.genesV2.sex <= 5 || myNFT.genesV2.sex <= 5 && selectedNFT.genesV2.sex > 5)
 
   return (
     <div className={classes.join(' ')}>

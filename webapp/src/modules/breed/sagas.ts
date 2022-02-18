@@ -10,12 +10,7 @@ import {
   fetchNFTForBreedingFailure,
   FetchNFTForBreedingRequestAction,
   fetchNFTForBreedingSuccess,
-  fetchSelectedNFTForBreedingFailure,
-  FetchSelectedNFTForBreedingRequestAction,
-  fetchSelectedNFTForBreedingSuccess,
   FETCH_NFT_FOR_BREEDING_REQUEST,
-  FETCH_SELECTED_NFT_FOR_BREEDING_REQUEST,
-  SELECT_NFT_FOR_BREEDING_REQUEST
 } from "./actions"
 import { getContract } from "../contract/utils"
 import { NFT } from "../nft/types"
@@ -28,7 +23,6 @@ import { locations } from "../routing/locations"
 
 export function* breedSaga() {
   yield takeEvery(FETCH_NFT_FOR_BREEDING_REQUEST, handleFetchNFTForBreedingRequest)
-  yield takeEvery(FETCH_SELECTED_NFT_FOR_BREEDING_REQUEST, handleFetchSelectedNFTForBreedingRequest)
   yield takeEvery(ADD_TO_BREEDING_CENTRE_REQUEST, handleAddToBreedingCentre)
 }
 
@@ -58,41 +52,12 @@ function* handleFetchNFTForBreedingRequest(action: FetchNFTForBreedingRequestAct
   }
 }
 
-function* handleFetchSelectedNFTForBreedingRequest(action: FetchSelectedNFTForBreedingRequestAction) {
-  const { contractAddress, tokenId } = action.payload
-
-  try {
-    const contract = getContract({ address: contractAddress })
-    if (!contract.vendor) {
-      throw new Error(
-        `Couldn't find a valid vendor for contract ${contract.address}`
-      )
-    }
-
-    const { nftService } = VendorFactory.build(contract.vendor)
-
-    const [nft]: AwaitFn<typeof nftService.fetchOne> = yield call(() =>
-      nftService.fetchOne(contractAddress, tokenId)
-    )
-
-    yield put(fetchSelectedNFTForBreedingSuccess(nft as NFT))
-  } catch (error) {
-    console.log(error)
-
-    // @ts-ignore
-    yield put(fetchSelectedNFTForBreedingFailure(contractAddress, tokenId, error.message))
-  }
-}
-
 function* handleAddToBreedingCentre(action: AddToBreedingCentreRequestAction) {
   const { contractAddress, tokenId, price } = action.payload
 
   try {
-    const wallet: ReturnType<typeof getWallet> = yield select(getWallet)
-    const chainId: ChainId = yield select(getChainId)
-
-    const txHash: string = yield call(addToBreedingCentre, wallet, tokenId, price)
-    yield put(addToBreedigCentreSuccess(chainId, txHash, tokenId, price))
+    yield call(addToBreedingCentre, tokenId, price)
+    yield put(addToBreedigCentreSuccess())
     yield put(push(locations.breed(contractAddress, tokenId)))
   } catch (error) {
     // @ts-ignore

@@ -2,8 +2,6 @@ import { Dispatch } from "redux"
 import {
   fetchNFTForBreedingRequest,
   FetchNFTForBreedingRequestAction,
-  fetchSelectedNFTForBreedingRequest,
-  FetchSelectedNFTForBreedingRequestAction,
   selectNFTForBreedingRequest,
   SelectNFTForBreedingRequestAction
 } from "../../modules/breed/actions"
@@ -16,18 +14,15 @@ export type Props = {
   selectedNFT: NFT | null
   onFetchNFTForBreeding: typeof fetchNFTForBreedingRequest
   onSelectNFTForBreeding: typeof selectNFTForBreedingRequest
-  onFetchSelectedNFTForBreedig: typeof fetchSelectedNFTForBreedingRequest
 }
 
 export type MapStateProps = Pick<Props, 'contractAddress' | 'tokenId' | 'myNFT' | 'selectedNFT'>
 export type MapDispatchProps = Pick<Props,
   'onFetchNFTForBreeding' |
-  'onSelectNFTForBreeding' |
-  'onFetchSelectedNFTForBreedig'
+  'onSelectNFTForBreeding'
 >
 export type MapDispatch = Dispatch<
   FetchNFTForBreedingRequestAction |
-  SelectNFTForBreedingRequestAction |
-  FetchSelectedNFTForBreedingRequestAction
+  SelectNFTForBreedingRequestAction
 >
 export type OwnProps = Partial<Pick<Props, 'contractAddress' | 'tokenId'>>

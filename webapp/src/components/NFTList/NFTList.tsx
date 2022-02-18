@@ -16,7 +16,7 @@ const NFTList = (props: Props) => {
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
     onBrowse({ page: newPage })
-    getAnalytics().track('Load more', { page: newPage })
+    // getAnalytics().track('Load more', { page: newPage })
   }, [onBrowse, page])
 
   const maxQuerySize = getMaxQuerySize(vendor)

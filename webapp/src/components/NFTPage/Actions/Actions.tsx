@@ -13,7 +13,7 @@ import { toWei } from 'web3x-es/utils'
 import { BreedPriceModal } from '../BreedPriceModal'
 
 const Actions = (props: Props) => {
-  const { wallet, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre } = props
+  const { wallet, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate } = props
   const { vendor, contractAddress, tokenId } = nft
 
   const [showLeavingSiteModal, setShowLeavingSiteModal] = useState(false)
@@ -43,6 +43,15 @@ const Actions = (props: Props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
 
+  const handleClickBreed = () => {
+    console.log(nft.activeBreedingOrderId)
+    if (nft.activeBreedingOrderId) {
+      onNavigate(locations.breed(nft.contractAddress, nft.tokenId))
+    } else {
+      setShowBreedPriceModal(true)
+    }
+  }
+
   const handleSubmitBreedPrice = (breedPrice: string) => {
     onAddToBreedingCentre(nft.contractAddress, nft.tokenId, toWei(breedPrice, 'ether'))
   }
@@ -52,7 +61,7 @@ const Actions = (props: Props) => {
       {
         isOwner && (
           <Button
-            onClick={() => setShowBreedPriceModal(true)}
+            onClick={handleClickBreed}
             primary
           >
             {t('nft_page.breed')}

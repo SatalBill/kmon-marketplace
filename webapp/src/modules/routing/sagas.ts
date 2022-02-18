@@ -149,7 +149,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
     special,
     price,
     priceToken,
-    unfreezable
+    unfreezable,
+    isInBreedingCentre
   } = searchOptions
 
   const isLoadMore = view === View.LOAD_MORE
@@ -231,7 +232,8 @@ function* fetchNFTsFromRoute(searchOptions: SearchOptions) {
           special: arrayToString(special),
           price: arrayToString(price),
           priceToken: arrayToString(priceToken),
-          unfreezable: arrayToString(unfreezable)
+          unfreezable: arrayToString(unfreezable),
+          isInBreedingCentre
         },
         filters: getFilters(vendor, searchOptions)
       })

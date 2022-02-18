@@ -295,6 +295,9 @@ class NFTAPI {
       if (filters.network) {
         queryParams.append('network', filters.network)
       }
+      if (params.isInBreedingCentre) {
+        queryParams.append('isInBreedingCentre', `${params.onlyOnSale}`)
+      }
     }
 
     return queryParams.toString()
