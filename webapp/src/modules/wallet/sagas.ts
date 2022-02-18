@@ -132,5 +132,15 @@ function* handleWallet(
     type: AuthorizationType.ALLOWANCE
   })
 
+  // Breed
+  authorizations.push({
+    address,
+    authorizedAddress: kmonftv2.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
+    type: AuthorizationType.ALLOWANCE
+  })
+
   yield put(fetchAuthorizationsRequest(authorizations))
 }

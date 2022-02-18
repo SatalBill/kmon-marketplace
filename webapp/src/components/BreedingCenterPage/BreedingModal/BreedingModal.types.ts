@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux'
 import {
+  breedRequest,
+  BreedRequestAction,
   simulateBreedingRequest,
   SimulateBreedingRequestAction
 } from '../../../modules/breed/actions'
@@ -11,10 +13,15 @@ export type Props = {
   selectedNFT: NFT
   open: boolean
   simulatedGenes: GenesV2 | null
+  isBreeding: boolean
   onClose: () => void
   onSimulateBreeding: typeof simulateBreedingRequest
+  onBreed: typeof breedRequest
 }
 
-export type MapStateProps = Pick<Props, 'simulatedGenes'>
-export type MapDispatchProps = Pick<Props, 'onSimulateBreeding'>
-export type MapDispatch = Dispatch<SimulateBreedingRequestAction>
+export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding'>
+export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed'>
+export type MapDispatch = Dispatch<
+  SimulateBreedingRequestAction |
+  BreedRequestAction
+>

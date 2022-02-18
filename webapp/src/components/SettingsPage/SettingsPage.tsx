@@ -234,6 +234,22 @@ const SettingsPage = (props: Props) => {
                           />
                         </div>
 
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
+                            {t('settings_page.for_breeding')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: kmonftV2.address,
+                              contractAddress: kmon.address,
+                              contractName: ContractName.KMONToken,
+                              chainId: kmon.chainId,
+                              type: AuthorizationType.ALLOWANCE
+                            }}
+                          />
+                        </div>
+
                         {authorizationsForSelling.length > 0 ? (
                           <div className="authorization-checks">
                             <label className="secondary-text">

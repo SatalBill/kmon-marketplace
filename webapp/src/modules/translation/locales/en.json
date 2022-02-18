@@ -422,6 +422,7 @@
     "for_buying_lootbox": "For buying lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "For selling",
+    "for_breeding": "For breeding",
     "pending_tx": "Transaction pending, click the spinner to go to your activity for a detailed status"
   },
   "authorization": {

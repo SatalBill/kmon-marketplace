@@ -13,7 +13,7 @@ import { toWei } from 'web3x-es/utils'
 import { BreedPriceModal } from '../BreedPriceModal'
 
 const Actions = (props: Props) => {
-  const { wallet, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate } = props
+  const { wallet, authorizations, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate } = props
   const { vendor, contractAddress, tokenId } = nft
 
   const [showLeavingSiteModal, setShowLeavingSiteModal] = useState(false)
@@ -190,8 +190,11 @@ const Actions = (props: Props) => {
       </Modal>
 
       <BreedPriceModal
+        wallet={wallet}
+        authorizations={authorizations}
         show={showBreedPriceModal}
         nft={nft}
+        isOwner={isOwner}
         isLoading={isAddingToBreedingCentre}
         onSubmitBreedPrice={handleSubmitBreedPrice}
         onCancel={() => setShowBreedPriceModal(false)}

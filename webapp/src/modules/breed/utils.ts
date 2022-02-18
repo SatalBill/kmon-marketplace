@@ -78,3 +78,19 @@ export async function simulateBreeding(matronId: string, sireId: string): Promis
   } catch (e) {}
   return genes
 }
+
+export async function breed(femaleTokenId: string, maleTokenId: string) {
+  const connectedProvider = await getConnectedProvider()
+  if (!connectedProvider) {
+    throw new Error('Provider not connected')
+  }
+
+  const kmonftV2Factory = getContract(CN.KMONFTV2, Number(getConnectedProviderChainId()))
+  const provider = await new providers.Web3Provider(connectedProvider)
+
+  const kmonftV2 = new ethers.Contract(kmonftV2Factory.address, kmonftV2Factory.abi, provider.getSigner())
+  const tx = await kmonftV2.breedKryptomons(femaleTokenId, maleTokenId)
+  const txReceipt = await tx.wait()
+
+  console.log(txReceipt)
+}

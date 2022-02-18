@@ -14,8 +14,8 @@ const ChoosePair = (props: Props) => {
 
   const probabilityFactor = 56
 
-  const isMatch = myNFT && selectedNFT && myNFT.genesV2 !== undefined && selectedNFT.genesV2 !== undefined &&
-    (myNFT.genesV2.sex > 5 && selectedNFT.genesV2.sex <= 5 || myNFT.genesV2.sex <= 5 && selectedNFT.genesV2.sex > 5)
+  const isMatch = myNFT && selectedNFT && myNFT.data.kryptomon?.genes !== undefined && selectedNFT.data.kryptomon?.genes !== undefined &&
+    (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5 || myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5)
 
   return (
     <div className={classes.join(' ')}>

@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
 import { isLoadingType } from '@kmon/dapps/dist/modules/loading/selectors'
+import {
+  getData as getAuthorizations
+} from '@kmon/dapps/dist/modules/authorization/selectors'
 
 import { RootState } from '../../../modules/reducer'
 import { getWallet } from '../../../modules/wallet/selectors'
@@ -16,6 +19,7 @@ import { replace } from 'connected-react-router'
 
 const mapState = (state: RootState): MapStateProps => ({
   wallet: getWallet(state),
+  authorizations: getAuthorizations(state),
   order: getCurrentOrder(state),
   bids: getNFTBids(state),
   isAddingToBreedingCentre: isLoadingType(getLoading(state), ADD_TO_BREEDING_CENTRE_REQUEST)

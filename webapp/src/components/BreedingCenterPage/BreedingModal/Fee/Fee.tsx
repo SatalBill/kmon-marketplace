@@ -7,7 +7,7 @@ import './Fee.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Fee = (props: Props) => {
-  const { myNFT, selectedNFT, onBreed, onCancel } = props
+  const { myNFT, selectedNFT, isBreeding, onBreed, onCancel } = props
 
   const DNAParams = myNFT.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -28,14 +28,14 @@ const Fee = (props: Props) => {
       {
         label: '',
         data: [
-          myNFT.genesV2?.constitution,
-          myNFT.genesV2?.affections,
-          myNFT.genesV2?.crazyness,
-          myNFT.genesV2?.instinct,
-          myNFT.genesV2?.hunger,
-          myNFT.genesV2?.laziness,
-          myNFT.genesV2?.brave,
-          myNFT.genesV2?.smart
+          myNFT.data.kryptomon?.genes.constitution,
+          myNFT.data.kryptomon?.genes.affections,
+          myNFT.data.kryptomon?.genes.crazyness,
+          myNFT.data.kryptomon?.genes.instinct,
+          myNFT.data.kryptomon?.genes.hunger,
+          myNFT.data.kryptomon?.genes.laziness,
+          myNFT.data.kryptomon?.genes.brave,
+          myNFT.data.kryptomon?.genes.smart
         ],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -68,14 +68,14 @@ const Fee = (props: Props) => {
       {
         label: '',
         data: [
-          selectedNFT.genesV2?.constitution,
-          selectedNFT.genesV2?.affections,
-          selectedNFT.genesV2?.crazyness,
-          selectedNFT.genesV2?.instinct,
-          selectedNFT.genesV2?.hunger,
-          selectedNFT.genesV2?.laziness,
-          selectedNFT.genesV2?.brave,
-          selectedNFT.genesV2?.smart
+          selectedNFT.data.kryptomon?.genes.constitution,
+          selectedNFT.data.kryptomon?.genes.affections,
+          selectedNFT.data.kryptomon?.genes.crazyness,
+          selectedNFT.data.kryptomon?.genes.instinct,
+          selectedNFT.data.kryptomon?.genes.hunger,
+          selectedNFT.data.kryptomon?.genes.laziness,
+          selectedNFT.data.kryptomon?.genes.brave,
+          selectedNFT.data.kryptomon?.genes.smart
         ],
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgb(54, 162, 235)',
@@ -113,7 +113,7 @@ const Fee = (props: Props) => {
           Breeding Fee: 1234 KMON<br />
           Total Cost: 2345 KMON
         </div>
-        <Button primary className="breed-button" onClick={onBreed}>BREED</Button>
+        <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>BREED</Button>
         <Button onClick={onCancel}>CANCEL</Button>
       </div>
       <div className="selected-kryptomon">

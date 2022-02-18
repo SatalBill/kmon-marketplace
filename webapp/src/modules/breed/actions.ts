@@ -63,3 +63,17 @@ export const simulateBreedingFailure = (femaleTokenId: string, maleTokenId: stri
 export type SimulateBreedingRequestAction = ReturnType<typeof simulateBreedingRequest>
 export type SimulateBreedingSuccessAction = ReturnType<typeof simulateBreedingSuccess>
 export type SimulateBreedingFailureAction = ReturnType<typeof simulateBreedingFailure>
+
+export const BREED_REQUEST = '[Request] Breed'
+export const BREED_SUCCESS = '[Success] Breed'
+export const BREED_FAILURE = '[Failure] Breed'
+
+export const breedRequest = (femaleTokenId: string, maleTokenId: string) =>
+  action(BREED_REQUEST, { femaleTokenId, maleTokenId })
+export const breedSuccess = () => action(BREED_SUCCESS, {})
+export const breedFailure = (femaleTokenId: string, maleTokenId: string, error: string) =>
+  action(BREED_FAILURE, { femaleTokenId, maleTokenId, error })
+
+export type BreedRequestAction = ReturnType<typeof breedRequest>
+export type BreedSuccessAction = ReturnType<typeof breedSuccess>
+export type BreedFailureAction = ReturnType<typeof breedFailure>

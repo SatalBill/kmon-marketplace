@@ -8,21 +8,29 @@ import { Fee } from './Fee'
 import { Probability } from './Probability'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, open, simulatedGenes, onClose, onSimulateBreeding } = props
+  const { myNFT, selectedNFT, open, simulatedGenes, isBreeding, onClose, onSimulateBreeding, onBreed } = props
   const [genes, setGenes] = useState<number[]>([])
+  const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
+  const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
 
   const classes = ["kryptomon", "breeding-modal"]
 
   const handleBreed = async () => {
-    
+    if (femaleTokenId && maleTokenId) {
+      onBreed(femaleTokenId, maleTokenId)
+    }
   }
 
   const simulate = async () => {
-    if (myNFT.genesV2 && selectedNFT.genesV2) {
-      if (myNFT.genesV2.sex > 5 && selectedNFT.genesV2.sex <= 5) {
+    if (myNFT.data.kryptomon?.genes && selectedNFT.data.kryptomon?.genes) {
+      if (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5) {
         onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
-      } else if (myNFT.genesV2.sex <=5 && selectedNFT.genesV2.sex > 5) {
+        setFemaleTokenId(myNFT.tokenId)
+        setMaleTokenId(selectedNFT.tokenId)
+      } else if (myNFT.data.kryptomon?.genes.sex <=5 && selectedNFT.data.kryptomon?.genes.sex > 5) {
         onSimulateBreeding(selectedNFT.tokenId, myNFT.tokenId)
+        setFemaleTokenId(selectedNFT.tokenId)
+        setMaleTokenId(myNFT.tokenId)
       }
     }
   }
@@ -53,7 +61,7 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} />
+              <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

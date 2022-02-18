@@ -5,6 +5,10 @@ import {
   addToBreedingCentreFailure,
   AddToBreedingCentreRequestAction,
   ADD_TO_BREEDING_CENTRE_REQUEST,
+  breedFailure,
+  BreedRequestAction,
+  breedSuccess,
+  BREED_REQUEST,
   fetchNFTForBreedingFailure,
   FetchNFTForBreedingRequestAction,
   fetchNFTForBreedingSuccess,
@@ -18,7 +22,7 @@ import { getContract } from "../contract/utils"
 import { NFT } from "../nft/types"
 import { AwaitFn } from "../types"
 import { VendorFactory } from "../vendor"
-import { addToBreedingCentre, simulateBreeding } from "./utils"
+import { addToBreedingCentre, breed, simulateBreeding } from "./utils"
 import { push } from "connected-react-router"
 import { locations } from "../routing/locations"
 import { GenesV2 } from "./types"
@@ -27,6 +31,7 @@ export function* breedSaga() {
   yield takeEvery(FETCH_NFT_FOR_BREEDING_REQUEST, handleFetchNFTForBreedingRequest)
   yield takeEvery(ADD_TO_BREEDING_CENTRE_REQUEST, handleAddToBreedingCentre)
   yield takeEvery(SIMULATE_BREEDING_REQUEST, handleSimulateBreeding)
+  yield takeEvery(BREED_REQUEST, handleBreedRequest)
 }
 
 function* handleFetchNFTForBreedingRequest(action: FetchNFTForBreedingRequestAction) {
@@ -75,5 +80,17 @@ function* handleSimulateBreeding(action: SimulateBreedingRequestAction) {
   } catch (error) {
     // @ts-ignore
     yield put(simulateBreedingFailure(femaleTokenId, maleTokenId, error.message))
+  }
+}
+
+function* handleBreedRequest(action: BreedRequestAction) {
+  const { femaleTokenId, maleTokenId } = action.payload
+
+  try {
+    yield call(breed, femaleTokenId, maleTokenId)
+    yield put(breedSuccess())
+  } catch (error) {
+    // @ts-ignore
+    yield put(breedFailure(femaleTokenId, maleTokenId, error.message))
   }
 }

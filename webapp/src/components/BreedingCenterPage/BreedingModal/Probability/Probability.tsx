@@ -27,14 +27,14 @@ const Probability = (props: Props) => {
       {
         label: myNFT.metadata.name,
         data: [
-          myNFT.genesV2?.constitution,
-          myNFT.genesV2?.affections,
-          myNFT.genesV2?.crazyness,
-          myNFT.genesV2?.instinct,
-          myNFT.genesV2?.hunger,
-          myNFT.genesV2?.laziness,
-          myNFT.genesV2?.brave,
-          myNFT.genesV2?.smart
+          myNFT.data.kryptomon?.genes.constitution,
+          myNFT.data.kryptomon?.genes.affections,
+          myNFT.data.kryptomon?.genes.crazyness,
+          myNFT.data.kryptomon?.genes.instinct,
+          myNFT.data.kryptomon?.genes.hunger,
+          myNFT.data.kryptomon?.genes.laziness,
+          myNFT.data.kryptomon?.genes.brave,
+          myNFT.data.kryptomon?.genes.smart
         ],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -46,14 +46,14 @@ const Probability = (props: Props) => {
       {
         label: selectedNFT.metadata.name,
         data: [
-          selectedNFT.genesV2?.constitution,
-          selectedNFT.genesV2?.affections,
-          selectedNFT.genesV2?.crazyness,
-          selectedNFT.genesV2?.instinct,
-          selectedNFT.genesV2?.hunger,
-          selectedNFT.genesV2?.laziness,
-          selectedNFT.genesV2?.brave,
-          selectedNFT.genesV2?.smart
+          selectedNFT.data.kryptomon?.genes.constitution,
+          selectedNFT.data.kryptomon?.genes.affections,
+          selectedNFT.data.kryptomon?.genes.crazyness,
+          selectedNFT.data.kryptomon?.genes.instinct,
+          selectedNFT.data.kryptomon?.genes.hunger,
+          selectedNFT.data.kryptomon?.genes.laziness,
+          selectedNFT.data.kryptomon?.genes.brave,
+          selectedNFT.data.kryptomon?.genes.smart
         ],
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgb(54, 162, 235)',

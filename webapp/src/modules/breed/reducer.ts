@@ -11,6 +11,12 @@ import {
   ADD_TO_BREEDING_CENTRE_FAILURE,
   ADD_TO_BREEDING_CENTRE_REQUEST,
   ADD_TO_BREEDING_CENTRE_SUCCESS,
+  BreedFailureAction,
+  BreedRequestAction,
+  BreedSuccessAction,
+  BREED_FAILURE,
+  BREED_REQUEST,
+  BREED_SUCCESS,
   FetchNFTForBreedingFailureAction,
   FetchNFTForBreedingRequestAction,
   FetchNFTForBreedingSuccessAction,
@@ -65,6 +71,9 @@ type NFTReducerAction =
   | SimulateBreedingRequestAction
   | SimulateBreedingSuccessAction
   | SimulateBreedingFailureAction
+  | BreedRequestAction
+  | BreedSuccessAction
+  | BreedFailureAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -73,7 +82,8 @@ export function breedReducer(
   switch (action.type) {
     case FETCH_NFT_FOR_BREEDING_REQUEST:
     case ADD_TO_BREEDING_CENTRE_REQUEST:
-    case SIMULATE_BREEDING_REQUEST: {
+    case SIMULATE_BREEDING_REQUEST:
+    case BREED_REQUEST: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
@@ -81,7 +91,8 @@ export function breedReducer(
     }
     case FETCH_NFT_FOR_BREEDING_FAILURE:
     case ADD_TO_BREEDING_CENTRE_FAILURE:
-    case SIMULATE_BREEDING_FAILURE: {
+    case SIMULATE_BREEDING_FAILURE:
+    case BREED_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
@@ -141,6 +152,12 @@ export function breedReducer(
           ...state.data,
           simulatedGenes: action.payload.genes
         },
+        error: null
+      }
+    case BREED_SUCCESS:
+      return {
+        ...state,
+        loading: loadingReducer(state.loading, action),
         error: null
       }
     default:
