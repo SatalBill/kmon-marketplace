@@ -94,7 +94,7 @@ const Probability = (props: Props) => {
   return (
     <div className={classes.join(" ")}>
       <div className="value">
-        Probabilty factor {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
+        Mutation factor {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
       </div>
       <div className="probability-chart-box">
         <div className="probability-chart">

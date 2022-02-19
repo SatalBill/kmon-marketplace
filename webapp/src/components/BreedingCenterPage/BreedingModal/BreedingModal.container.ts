@@ -8,16 +8,18 @@ import {
   BREED_REQUEST,
   simulateBreedingRequest
 } from '../../../modules/breed/actions'
-import { getSimulatedGenes, getLoading } from '../../../modules/breed/selectors'
+import { getSimulatedGenes, getLoading, getBreedingPrice } from '../../../modules/breed/selectors'
 import { RootState } from '../../../modules/reducer'
 
 const mapState = (state: RootState): MapStateProps => {
   const simulatedGenes = getSimulatedGenes(state)
   const isBreeding = isLoadingType(getLoading(state), BREED_REQUEST)
+  const breedingPrice = getBreedingPrice(state)
 
   return {
     simulatedGenes,
-    isBreeding
+    isBreeding,
+    breedingPrice
   }
 }
 

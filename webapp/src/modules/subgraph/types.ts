@@ -5,3 +5,11 @@ export type BlockNumberType = {
     }
   }
 }
+
+export type BreedingFeeType = {
+  breedingCentres: [
+    {
+      breedingFee: string
+    }
+  ]
+}

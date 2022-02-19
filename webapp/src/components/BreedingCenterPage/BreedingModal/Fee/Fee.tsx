@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { BigNumber } from 'ethers'
 import { Button } from '@kmon/ui'
 import { Radar } from 'react-chartjs-2'
+import { fromWei } from 'web3x-es/utils'
 
 import { Props } from './Fee.types'
 import './Fee.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Fee = (props: Props) => {
-  const { myNFT, selectedNFT, isBreeding, onBreed, onCancel } = props
+  const { myNFT, selectedNFT, isBreeding, breedingPrice, selectedBreedingOrder, onBreed, onCancel } = props
+  const [totalBreedingPrice, setTotalBreedingPrice] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (breedingPrice && selectedBreedingOrder) {
+      setTotalBreedingPrice(BigNumber.from(breedingPrice).add(BigNumber.from(selectedBreedingOrder.price)).toString())
+    } else {
+      setTotalBreedingPrice(null)
+    }
+  }, [breedingPrice, selectedBreedingOrder])
 
   const DNAParams = myNFT.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -110,8 +121,8 @@ const Fee = (props: Props) => {
       </div>
       <div className="fee-detail">
         <div className="fee-detail-info">
-          Breeding Fee: 1234 KMON<br />
-          Total Cost: 2345 KMON
+          Breeding Fee: {breedingPrice ? fromWei(breedingPrice, 'ether') : ''} KMON<br />
+          Total Cost: {totalBreedingPrice ? fromWei(totalBreedingPrice, 'ether') : ''} KMON
         </div>
         <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>BREED</Button>
         <Button onClick={onCancel}>CANCEL</Button>

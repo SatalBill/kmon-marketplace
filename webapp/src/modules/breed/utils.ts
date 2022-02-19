@@ -93,3 +93,16 @@ export function calcMutationFactor(myNFT: NFT | null, selectedNFT: NFT | null) {
 
   return null
 }
+
+export function calcBreedingPrice(myNFT: NFT | null, selectedNFT: NFT | null, breedingFee: string | null) {
+  if (myNFT && selectedNFT && breedingFee) {
+    if (myNFT.data.kryptomon?.genes !== undefined && selectedNFT.data.kryptomon?.genes !== undefined &&
+      (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5 || myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5)) {
+        const breedingCount = Number(myNFT.data.kryptomon.breedingCount) + Number(selectedNFT.data.kryptomon.breedingCount)
+        return BigNumber.from(breedingFee).mul(BigNumber.from(breedingCount)).div(BigNumber.from(10)).add(BigNumber.from(breedingFee)).toString()
+      }
+    return null
+  }
+
+  return null
+}

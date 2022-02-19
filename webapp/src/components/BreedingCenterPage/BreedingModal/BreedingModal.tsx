@@ -8,7 +8,7 @@ import { Fee } from './Fee'
 import { Probability } from './Probability'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, onClose, onSimulateBreeding, onBreed } = props
+  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, breedingPrice, onClose, onSimulateBreeding, onBreed } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
   const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
@@ -63,7 +63,7 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} />}
+              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} breedingPrice={breedingPrice} selectedBreedingOrder={selectedBreedingOrder} />}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

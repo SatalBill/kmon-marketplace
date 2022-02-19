@@ -6,6 +6,7 @@ import {
 import { BreedingOrder } from "../../modules/breedingOrder/types"
 import { fetchNFTRequest, FetchNFTRequestAction } from "../../modules/nft/actions"
 import { NFT } from '../../modules/nft/types'
+import { GetBreedingFeeFailureAction, getBreedingFeeRequest, GetBreedingFeeRequestAction } from "../../modules/subgraph/actions"
 
 export type Props = {
   contractAddress: string | null
@@ -17,6 +18,7 @@ export type Props = {
   mutationFactor: number | null
   onFetchRequest: typeof fetchNFTRequest
   onSelectNFTForBreeding: typeof selectNFTForBreedingRequest
+  onGetBreedingFee: typeof getBreedingFeeRequest
 }
 
 export type MapStateProps = Pick<Props,
@@ -24,10 +26,12 @@ export type MapStateProps = Pick<Props,
 >
 export type MapDispatchProps = Pick<Props,
   'onFetchRequest' |
-  'onSelectNFTForBreeding'
+  'onSelectNFTForBreeding' |
+  'onGetBreedingFee'
 >
 export type MapDispatch = Dispatch<
   FetchNFTRequestAction |
-  SelectNFTForBreedingRequestAction
+  SelectNFTForBreedingRequestAction |
+  GetBreedingFeeRequestAction
 >
 export type OwnProps = Partial<Pick<Props, 'contractAddress' | 'tokenId'>>

@@ -8,6 +8,8 @@ import { selectNFTForBreedingRequest } from '../../modules/breed/actions'
 import { NFT } from "../../modules/nft/types"
 import { fetchNFTRequest } from '../../modules/nft/actions'
 import { getMyBreedingOrder, getSelectedBreedingOrder } from '../../modules/breedingOrder/selectors'
+import { getBreedingFee } from '../../modules/subgraph/selectors'
+import { getBreedingFeeRequest } from '../../modules/subgraph/actions'
 
 const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
   const contractAddress = ownProps.contractAddress || getContractAddress(state)
@@ -34,6 +36,8 @@ const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
     dispatch(fetchNFTRequest(contractAddress, tokenId)),
   onSelectNFTForBreeding: (nft: NFT) =>
     dispatch(selectNFTForBreedingRequest(nft)),
+  onGetBreedingFee: () =>
+    dispatch(getBreedingFeeRequest())
 })
 
 export default connect(mapState, mapDispatch)(BreedingCenterPage)

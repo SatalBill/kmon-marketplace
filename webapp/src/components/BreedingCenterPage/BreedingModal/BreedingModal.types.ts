@@ -18,12 +18,13 @@ export type Props = {
   simulatedGenes: GenesV2 | null
   isBreeding: boolean
   mutationFactor: number | null
+  breedingPrice: string | null
   onClose: () => void
   onSimulateBreeding: typeof simulateBreedingRequest
   onBreed: typeof breedRequest
 }
 
-export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding'>
+export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breedingPrice'>
 export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed'>
 export type MapDispatch = Dispatch<
   SimulateBreedingRequestAction |

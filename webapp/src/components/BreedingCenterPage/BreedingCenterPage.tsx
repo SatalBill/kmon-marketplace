@@ -25,7 +25,8 @@ const BreedingCenterPage = (props: Props) => {
     selectedBreedingOrder,
     mutationFactor,
     onFetchRequest,
-    onSelectNFTForBreeding
+    onSelectNFTForBreeding,
+    onGetBreedingFee
   } = props
   const [showModal, setShowModal] = useState(false)
 
@@ -34,6 +35,10 @@ const BreedingCenterPage = (props: Props) => {
       onFetchRequest(contractAddress, tokenId)
     }
   }, [contractAddress, tokenId, onFetchRequest])
+
+  useEffect(() => {
+    onGetBreedingFee()
+  }, [])
 
   const handleSelectCard = (nft: NFT) => {
     onSelectNFTForBreeding(nft)
