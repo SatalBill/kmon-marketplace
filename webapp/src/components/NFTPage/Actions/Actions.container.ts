@@ -13,7 +13,7 @@ import Actions from './Actions'
 import {
   addToBreedigCentreRequest,
   ADD_TO_BREEDING_CENTRE_REQUEST
-} from '../../../modules/breed/actions'
+} from '../../../modules/breedingOrder/actions'
 import { getLoading } from '../../../modules/breed/selectors'
 import { replace } from 'connected-react-router'
 

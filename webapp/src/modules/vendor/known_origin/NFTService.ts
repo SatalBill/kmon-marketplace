@@ -22,6 +22,7 @@ import { editionAPI } from './edition/api'
 import { tokenAPI } from './token/api'
 import { MAX_QUERY_SIZE } from './api'
 import { AssetType } from './types'
+import { BreedingOrder } from '../../breedingOrder/types'
 
 type Fragment = TokenFragment | EditionFragment
 
@@ -47,6 +48,7 @@ export class NFTService
     const nfts: NFT<VendorName.KNOWN_ORIGIN>[] = []
     const accounts: Account[] = []
     const orders: Order[] = []
+    const breedingOrders: BreedingOrder[] = []
 
     for (const fragment of fragments) {
       const nft = this.toNFT(fragment)
@@ -69,7 +71,7 @@ export class NFTService
       accounts.push(account)
     }
 
-    return [nfts, accounts, orders, total] as const
+    return [nfts, accounts, orders, breedingOrders, total] as const
   }
 
   async count(countParams: NFTsCountParams, filters?: NFTsFetchFilters) {
@@ -102,7 +104,7 @@ export class NFTService
       nft.activeOrderId = order.id
     }
 
-    return [nft, order] as const
+    return [nft, order, undefined] as const
   }
 
   async transfer(

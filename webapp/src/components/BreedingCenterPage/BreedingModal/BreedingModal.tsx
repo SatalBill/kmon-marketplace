@@ -8,7 +8,7 @@ import { Fee } from './Fee'
 import { Probability } from './Probability'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, open, simulatedGenes, isBreeding, onClose, onSimulateBreeding, onBreed } = props
+  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, onClose, onSimulateBreeding, onBreed } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
   const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
@@ -22,7 +22,7 @@ const BreedingModal = (props: Props) => {
   }
 
   const simulate = async () => {
-    if (myNFT.data.kryptomon?.genes && selectedNFT.data.kryptomon?.genes) {
+    if (myNFT && selectedNFT && myNFT.data.kryptomon?.genes && selectedNFT.data.kryptomon?.genes) {
       if (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5) {
         onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
         setFemaleTokenId(myNFT.tokenId)
@@ -36,7 +36,9 @@ const BreedingModal = (props: Props) => {
   }
 
   useEffect(() => {
-    simulate()
+    if (myNFT && selectedNFT) {
+      simulate()
+    }
   }, [myNFT, selectedNFT])
 
   useEffect(() => {
@@ -53,20 +55,20 @@ const BreedingModal = (props: Props) => {
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column width={8}>
-              <NFTDetail nft={myNFT} />
+              {myNFT && myBreedingOrder && <NFTDetail nft={myNFT} breedingOrder={myBreedingOrder} />}
             </Grid.Column>
             <Grid.Column width={8}>
-              <NFTDetail nft={selectedNFT} view="right" />
+              {selectedNFT && selectedBreedingOrder && <NFTDetail nft={selectedNFT} view="right" breedingOrder={selectedBreedingOrder} />}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} />
+              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} />}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={genes} />
+              {myNFT && selectedNFT && <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={genes} />}
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -9,7 +9,7 @@ import { Bid } from '../../../modules/bid/types'
 import {
   addToBreedigCentreRequest,
   AddToBreedingCentreRequestAction
-} from '../../../modules/breed/actions'
+} from '../../../modules/breedingOrder/actions'
 
 export type Props = {
   wallet: Wallet | null

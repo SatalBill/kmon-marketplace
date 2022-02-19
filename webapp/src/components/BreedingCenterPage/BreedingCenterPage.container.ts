@@ -4,29 +4,32 @@ import { MapStateProps, MapDispatchProps, OwnProps, MapDispatch } from './Breedi
 import BreedingCenterPage from './BreedingCenterPage'
 import { RootState } from '../../modules/reducer'
 import { getContractAddress, getMyNFT, getSelectedNFT, getTokenId } from '../../modules/breed/selectors'
-import {
-  fetchNFTForBreedingRequest,
-  selectNFTForBreedingRequest
-} from '../../modules/breed/actions'
+import { selectNFTForBreedingRequest } from '../../modules/breed/actions'
 import { NFT } from "../../modules/nft/types"
+import { fetchNFTRequest } from '../../modules/nft/actions'
+import { getMyBreedingOrder, getSelectedBreedingOrder } from '../../modules/breedingOrder/selectors'
 
 const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
   const contractAddress = ownProps.contractAddress || getContractAddress(state)
   const tokenId = ownProps.tokenId || getTokenId(state)
   const myNFT = getMyNFT(state)
   const selectedNFT = getSelectedNFT(state)
+  const myBreedingOrder = getMyBreedingOrder(state)
+  const selectedBreedingOrder = getSelectedBreedingOrder(state)
 
   return {
     contractAddress,
     tokenId,
     myNFT,
-    selectedNFT
+    selectedNFT,
+    myBreedingOrder,
+    selectedBreedingOrder
   }
 }
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
-  onFetchNFTForBreeding: (contractAddress: string, tokenId: string) =>
-    dispatch(fetchNFTForBreedingRequest(contractAddress, tokenId)),
+  onFetchRequest: (contractAddress: string, tokenId: string) =>
+    dispatch(fetchNFTRequest(contractAddress, tokenId)),
   onSelectNFTForBreeding: (nft: NFT) =>
     dispatch(selectNFTForBreedingRequest(nft)),
 })

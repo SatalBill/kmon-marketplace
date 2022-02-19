@@ -2,27 +2,16 @@ import {
   LoadingState,
   loadingReducer
 } from '@kmon/dapps/dist/modules/loading/reducer'
+import { FetchNFTFailureAction, FetchNFTRequestAction, FetchNFTSuccessAction, FETCH_NFT_FAILURE, FETCH_NFT_REQUEST, FETCH_NFT_SUCCESS } from '../nft/actions'
 
 import { NFT } from '../nft/types'
 import {
-  AddToBreedingCentreFailureAction,
-  AddToBreedingCentreRequestAction,
-  AddToBreedingCentreSuccessAction,
-  ADD_TO_BREEDING_CENTRE_FAILURE,
-  ADD_TO_BREEDING_CENTRE_REQUEST,
-  ADD_TO_BREEDING_CENTRE_SUCCESS,
   BreedFailureAction,
   BreedRequestAction,
   BreedSuccessAction,
   BREED_FAILURE,
   BREED_REQUEST,
   BREED_SUCCESS,
-  FetchNFTForBreedingFailureAction,
-  FetchNFTForBreedingRequestAction,
-  FetchNFTForBreedingSuccessAction,
-  FETCH_NFT_FOR_BREEDING_FAILURE,
-  FETCH_NFT_FOR_BREEDING_REQUEST,
-  FETCH_NFT_FOR_BREEDING_SUCCESS,
   ResetNFTForBreedingRequestAction,
   ResetSelectedNFTForBreedingRequestAction,
   RESET_NFT_FOR_BREEDING_REQUEST,
@@ -59,15 +48,12 @@ const INITIAL_STATE = {
 }
 
 type NFTReducerAction =
-  | FetchNFTForBreedingRequestAction
-  | FetchNFTForBreedingSuccessAction
-  | FetchNFTForBreedingFailureAction
+  | FetchNFTRequestAction
+  | FetchNFTSuccessAction
+  | FetchNFTFailureAction
   | ResetNFTForBreedingRequestAction
   | SelectNFTForBreedingRequestAction
   | ResetSelectedNFTForBreedingRequestAction
-  | AddToBreedingCentreRequestAction
-  | AddToBreedingCentreSuccessAction
-  | AddToBreedingCentreFailureAction
   | SimulateBreedingRequestAction
   | SimulateBreedingSuccessAction
   | SimulateBreedingFailureAction
@@ -80,8 +66,7 @@ export function breedReducer(
   action: NFTReducerAction
 ) {
   switch (action.type) {
-    case FETCH_NFT_FOR_BREEDING_REQUEST:
-    case ADD_TO_BREEDING_CENTRE_REQUEST:
+    case FETCH_NFT_REQUEST:
     case SIMULATE_BREEDING_REQUEST:
     case BREED_REQUEST: {
       return {
@@ -89,8 +74,7 @@ export function breedReducer(
         loading: loadingReducer(state.loading, action)
       }
     }
-    case FETCH_NFT_FOR_BREEDING_FAILURE:
-    case ADD_TO_BREEDING_CENTRE_FAILURE:
+    case FETCH_NFT_FAILURE:
     case SIMULATE_BREEDING_FAILURE:
     case BREED_FAILURE: {
       return {
@@ -99,7 +83,7 @@ export function breedReducer(
         error: action.payload.error
       }
     }
-    case FETCH_NFT_FOR_BREEDING_SUCCESS: {
+    case FETCH_NFT_SUCCESS: {
       const { nft } = action.payload
       return {
         ...state,
@@ -138,12 +122,6 @@ export function breedReducer(
         }
       }
     }
-    case ADD_TO_BREEDING_CENTRE_SUCCESS:
-      return {
-        ...state,
-        loading: loadingReducer(state.loading, action),
-        error: null
-      }
     case SIMULATE_BREEDING_SUCCESS:
       return {
         ...state,

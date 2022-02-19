@@ -21,16 +21,18 @@ const BreedingCenterPage = (props: Props) => {
     tokenId,
     myNFT,
     selectedNFT,
-    onFetchNFTForBreeding,
+    myBreedingOrder,
+    selectedBreedingOrder,
+    onFetchRequest,
     onSelectNFTForBreeding
   } = props
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     if (contractAddress && tokenId && contractAddress !== 'undefined' && tokenId !== 'undefined') {
-      onFetchNFTForBreeding(contractAddress, tokenId)
+      onFetchRequest(contractAddress, tokenId)
     }
-  }, [contractAddress, tokenId, onFetchNFTForBreeding])
+  }, [contractAddress, tokenId, onFetchRequest])
 
   const handleSelectCard = (nft: NFT) => {
     onSelectNFTForBreeding(nft)
@@ -61,9 +63,14 @@ const BreedingCenterPage = (props: Props) => {
         </Row>
       </Page>
       <Footer />
-      {myNFT && selectedNFT && (
-        <BreedingModal myNFT={myNFT} selectedNFT={selectedNFT} open={showModal} onClose={() => setShowModal(false)} />
-      )}
+      <BreedingModal
+        myNFT={myNFT}
+        selectedNFT={selectedNFT}
+        myBreedingOrder={myBreedingOrder}
+        selectedBreedingOrder={selectedBreedingOrder}
+        open={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </>
   )
 }

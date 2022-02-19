@@ -16,6 +16,7 @@ import { VendorName, TransferType } from '../types'
 import { ContractService } from './ContractService'
 import { SuperRareAsset, SuperRareOrder, SuperRareOwner } from './types'
 import { superRareAPI, MAX_QUERY_SIZE } from './api'
+import { BreedingOrder } from '../../breedingOrder/types'
 
 export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
   private tokenConverter: TokenConverter
@@ -47,6 +48,7 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
     const nfts: NFT<VendorName.SUPER_RARE>[] = []
     const accounts: Account[] = []
     const orders: Order[] = []
+    const breedingOrders: BreedingOrder[] = []
 
     const total = await this.count(params)
     const oneEthInMANA = await this.getOneEthInMANA()
@@ -76,7 +78,7 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       accounts.push(account)
     }
 
-    return [nfts, accounts, orders, total] as const
+    return [nfts, accounts, orders, breedingOrders, total] as const
   }
 
   async count(countParams: NFTsCountParams) {
@@ -112,7 +114,7 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       nft.activeOrderId = order.id
     }
 
-    return [nft, order] as const
+    return [nft, order, undefined] as const
   }
 
   async transfer(

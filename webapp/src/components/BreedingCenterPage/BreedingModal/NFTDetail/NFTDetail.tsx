@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid } from '@kmon/ui'
+import { fromWei } from 'web3x-es/utils'
 
 import { Props } from './NFTDetail.types'
 import './NFTDetail.css'
@@ -14,7 +15,7 @@ import Water from '../../../../images/egg/elem-water.svg'
 import Fire from '../../../../images/egg/elem-fire.svg'
 
 const NFTDetail = (props: Props) => {
-  const { nft, view } = props
+  const { nft, breedingOrder, view } = props
 
   const genes = nft.data.kryptomon?.genes
   const classes = ['kryptomon', 'breeding-modal-nft-detail']
@@ -90,11 +91,11 @@ const NFTDetail = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>BREED PRICE:</Grid.Column>
-            <Grid.Column>200 KMON</Grid.Column>
+            <Grid.Column>{fromWei(breedingOrder.price, "ether")} KMON</Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>BREED AMOUNT:</Grid.Column>
-            <Grid.Column>04/10</Grid.Column>
+            <Grid.Column>{nft.data.kryptomon?.totalBreedingCount}/{nft.data.kryptomon?.maxBreedingsDuringLifePhase}</Grid.Column>
           </Grid.Row>
         </Grid>
       </div>

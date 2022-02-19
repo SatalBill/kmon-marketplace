@@ -133,7 +133,8 @@ const NFTSidebar = (props: Props) => {
       } else if (/^\/breed/gi.test(pathname)) {
         onBrowse({
           ...data,
-          isInBreedingCentre: true
+          isInBreedingCentre: true,
+          view: 'load_more'
         })
       } else {
         onBrowse({
