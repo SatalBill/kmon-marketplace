@@ -5,12 +5,12 @@ import "./Probability.css"
 import { Props } from "./Probability.types"
 
 const Probability = (props: Props) => {
-  const { value } = props
+  const { mutationFactor } = props
   const classes = ['kryptomon', 'probability']
 
   return (
     <div className={classes.join(' ')}>
-      <span className="probability-title">PROBABILITY FACTOR {value}%</span>
+      <span className="probability-title">MUTATION FACTOR {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%</span>
       <div className="circle1">
         <div className="circle2">
           <SVG name="heart" />

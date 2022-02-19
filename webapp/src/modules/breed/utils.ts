@@ -2,6 +2,7 @@ import { ethers, providers, BigNumber } from 'ethers'
 import { getContract, ContractName as CN } from '@kmon/transactions'
 import { getConnectedProvider, getConnectedProviderChainId } from '@kmon/dapps/dist/lib/eth'
 import { GenesV2 } from './types'
+import { NFT } from '../nft/types'
 
 export async function simulateBreeding(matronId: string, sireId: string): Promise<GenesV2> {
   const connectedProvider = await getConnectedProvider()
@@ -77,4 +78,18 @@ export async function breed(femaleTokenId: string, maleTokenId: string) {
   const txReceipt = await tx.wait()
 
   console.log(txReceipt)
+}
+
+export function calcMutationFactor(myNFT: NFT | null, selectedNFT: NFT | null) {
+  if (myNFT && selectedNFT) {
+    const myGen = myNFT.data.kryptomon?.genes.generation
+    const selectedGen = selectedNFT.data.kryptomon?.genes.generation
+    if (myGen && selectedGen) {
+      const gen = Math.min(Number(myGen), Number(selectedGen))
+      return 2.0 / Math.pow(2.78, -0.033 * gen) - 1
+    }
+    return null
+  }
+
+  return null
 }

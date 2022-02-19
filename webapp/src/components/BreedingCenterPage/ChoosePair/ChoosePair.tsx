@@ -8,11 +8,9 @@ import { Probability } from './Probability'
 import './ChoosePair.css'
 
 const ChoosePair = (props: Props) => {
-  const { myNFT, selectedNFT, onNavigate, onResetMyNFT, onResetSelectedNFT, onCompare } = props
+  const { myNFT, selectedNFT, mutationFactor, onNavigate, onResetMyNFT, onResetSelectedNFT, onCompare } = props
 
   const classes = ['kryptomon', 'choose-pair']
-
-  const probabilityFactor = 56
 
   const isMatch = myNFT && selectedNFT && myNFT.data.kryptomon?.genes !== undefined && selectedNFT.data.kryptomon?.genes !== undefined &&
     (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5 || myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5)
@@ -38,7 +36,7 @@ const ChoosePair = (props: Props) => {
             </Button>
           )}
         </div>
-        {isMatch && <Probability value={probabilityFactor} />}
+        {isMatch && <Probability mutationFactor={mutationFactor} />}
         <div className={`empty-card-box ${isMatch ? '' : 'vertical-line'}`}>
           <span className='card-title'>SELECTED</span>
           <div className='card-content'>

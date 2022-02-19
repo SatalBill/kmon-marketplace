@@ -23,6 +23,7 @@ const BreedingCenterPage = (props: Props) => {
     selectedNFT,
     myBreedingOrder,
     selectedBreedingOrder,
+    mutationFactor,
     onFetchRequest,
     onSelectNFTForBreeding
   } = props
@@ -56,7 +57,12 @@ const BreedingCenterPage = (props: Props) => {
             </Responsive>
           </Column>
           <Column align="right" grow={true}>
-            <ChoosePair myNFT={myNFT} selectedNFT={selectedNFT} onCompare={handleCompare} />
+            <ChoosePair
+              myNFT={myNFT}
+              selectedNFT={selectedNFT}
+              onCompare={handleCompare}
+              mutationFactor={mutationFactor}
+            />
             <NFTFilters />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
@@ -70,6 +76,7 @@ const BreedingCenterPage = (props: Props) => {
         selectedBreedingOrder={selectedBreedingOrder}
         open={showModal}
         onClose={() => setShowModal(false)}
+        mutationFactor={mutationFactor}
       />
     </>
   )

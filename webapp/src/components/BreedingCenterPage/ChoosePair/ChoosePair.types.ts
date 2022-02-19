@@ -11,6 +11,7 @@ import { NFT } from '../../../modules/nft/types'
 export type Props = {
   myNFT: NFT | null,
   selectedNFT: NFT | null,
+  mutationFactor: number | null
   onNavigate: (path: string) => void
   onResetMyNFT: typeof resetNFTForBreedingRequest
   onResetSelectedNFT: typeof resetSelectedNFTForBreedingRequest

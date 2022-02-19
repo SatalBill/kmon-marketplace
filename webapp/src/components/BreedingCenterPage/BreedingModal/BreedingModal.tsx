@@ -8,7 +8,7 @@ import { Fee } from './Fee'
 import { Probability } from './Probability'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, onClose, onSimulateBreeding, onBreed } = props
+  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, onClose, onSimulateBreeding, onBreed } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
   const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
@@ -68,7 +68,7 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              {myNFT && selectedNFT && <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={genes} />}
+              {myNFT && selectedNFT && <Probability myNFT={myNFT} selectedNFT={selectedNFT} simulatedGenes={genes} mutationFactor={mutationFactor} />}
             </Grid.Column>
           </Grid.Row>
         </Grid>

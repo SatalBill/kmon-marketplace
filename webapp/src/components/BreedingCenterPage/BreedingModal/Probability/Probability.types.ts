@@ -3,5 +3,6 @@ import { NFT } from '../../../../modules/nft/types'
 export type Props = {
   myNFT: NFT,
   selectedNFT: NFT,
-  simulatedGenes: number[]
+  simulatedGenes: number[],
+  mutationFactor: number | null
 }

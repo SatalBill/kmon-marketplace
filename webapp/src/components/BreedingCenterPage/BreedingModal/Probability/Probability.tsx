@@ -6,7 +6,7 @@ import './Probability.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Probability = (props: Props) => {
-  const { myNFT, selectedNFT, simulatedGenes } = props
+  const { myNFT, selectedNFT, simulatedGenes, mutationFactor } = props
 
   const DNAParams = myNFT.metadata.attributes?.filter(elem =>
     DNA_CONSTANTS.includes(elem.trait_type)
@@ -94,7 +94,7 @@ const Probability = (props: Props) => {
   return (
     <div className={classes.join(" ")}>
       <div className="value">
-        Probabilty factor 56%
+        Probabilty factor {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
       </div>
       <div className="probability-chart-box">
         <div className="probability-chart">

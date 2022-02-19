@@ -14,12 +14,13 @@ export type Props = {
   selectedNFT: NFT | null
   myBreedingOrder: BreedingOrder | null
   selectedBreedingOrder: BreedingOrder | null
+  mutationFactor: number | null
   onFetchRequest: typeof fetchNFTRequest
   onSelectNFTForBreeding: typeof selectNFTForBreedingRequest
 }
 
 export type MapStateProps = Pick<Props,
-  'contractAddress' | 'tokenId' | 'myNFT' | 'selectedNFT' | 'myBreedingOrder' | 'selectedBreedingOrder'
+  'contractAddress' | 'tokenId' | 'myNFT' | 'selectedNFT' | 'myBreedingOrder' | 'selectedBreedingOrder' | 'mutationFactor'
 >
 export type MapDispatchProps = Pick<Props,
   'onFetchRequest' |

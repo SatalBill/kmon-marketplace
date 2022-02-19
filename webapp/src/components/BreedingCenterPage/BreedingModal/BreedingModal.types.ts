@@ -17,6 +17,7 @@ export type Props = {
   open: boolean
   simulatedGenes: GenesV2 | null
   isBreeding: boolean
+  mutationFactor: number | null
   onClose: () => void
   onSimulateBreeding: typeof simulateBreedingRequest
   onBreed: typeof breedRequest

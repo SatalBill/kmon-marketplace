@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { MapStateProps, MapDispatchProps, OwnProps, MapDispatch } from './BreedingCenterPage.types'
 import BreedingCenterPage from './BreedingCenterPage'
 import { RootState } from '../../modules/reducer'
-import { getContractAddress, getMyNFT, getSelectedNFT, getTokenId } from '../../modules/breed/selectors'
+import { getContractAddress, getMutationFactor, getMyNFT, getSelectedNFT, getTokenId } from '../../modules/breed/selectors'
 import { selectNFTForBreedingRequest } from '../../modules/breed/actions'
 import { NFT } from "../../modules/nft/types"
 import { fetchNFTRequest } from '../../modules/nft/actions'
@@ -16,6 +16,7 @@ const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
   const selectedNFT = getSelectedNFT(state)
   const myBreedingOrder = getMyBreedingOrder(state)
   const selectedBreedingOrder = getSelectedBreedingOrder(state)
+  const mutationFactor = getMutationFactor(state)
 
   return {
     contractAddress,
@@ -23,7 +24,8 @@ const mapState = (state: RootState, ownProps: OwnProps): MapStateProps => {
     myNFT,
     selectedNFT,
     myBreedingOrder,
-    selectedBreedingOrder
+    selectedBreedingOrder,
+    mutationFactor
   }
 }
 
