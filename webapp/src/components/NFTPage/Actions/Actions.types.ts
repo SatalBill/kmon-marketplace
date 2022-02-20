@@ -8,8 +8,9 @@ import { Order } from '../../../modules/order/types'
 import { Bid } from '../../../modules/bid/types'
 import {
   addToBreedigCentreRequest,
-  AddToBreedingCentreRequestAction
+  AddToBreedingCentreRequestAction,
 } from '../../../modules/breedingOrder/actions'
+import { resetNFTForBreedingRequest, ResetNFTForBreedingRequestAction } from '../../../modules/breed/actions'
 
 export type Props = {
   wallet: Wallet | null
@@ -19,10 +20,11 @@ export type Props = {
   bids: Bid[]
   isAddingToBreedingCentre: boolean
   onAddToBreedingCentre: typeof addToBreedigCentreRequest
+  onResetMyNFT: typeof resetNFTForBreedingRequest
   onNavigate: (path: string) => void
 }
 
 export type MapStateProps = Pick<Props, 'wallet' | 'authorizations' | 'order' | 'bids' | 'isAddingToBreedingCentre'>
-export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre' | 'onNavigate'>
-export type MapDispatch = Dispatch<AddToBreedingCentreRequestAction | CallHistoryMethodAction>
+export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre' | 'onNavigate' | 'onResetMyNFT'>
+export type MapDispatch = Dispatch<AddToBreedingCentreRequestAction | CallHistoryMethodAction | ResetNFTForBreedingRequestAction>
 export type OwnProps = Pick<Props, 'nft'>

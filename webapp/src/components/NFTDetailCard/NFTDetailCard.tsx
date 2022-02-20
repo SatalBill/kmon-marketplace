@@ -14,7 +14,7 @@ const NFTDetailCard = (props: Props) => {
     day: 'numeric'
   }
   const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
-
+  const isV2New = nft.contractAddress.toUpperCase() == '0x04b0f7d5cb2ce4688497f2525748fb7a9affa394'.toUpperCase() || nft.contractAddress.toUpperCase() == '0x5eA74A7105f9c2628AbE80D3Af22Afb1d7CE9A46'.toUpperCase();
   return (
     <div className="card">
       <div className="card-image-container">
@@ -22,12 +22,16 @@ const NFTDetailCard = (props: Props) => {
           <NFTImage nft={nft} showMonospace />
         </div>
         <div className="card-image-text-details">
-          <Radio
-            toggle
-            checked={isV2}
-            onChange={toogleV2}
-            label={isV2 ? 'V2' : 'V1'}
-          />
+          {
+            !isV2New && (
+              <Radio
+                toggle
+                checked={isV2}
+                onChange={toogleV2}
+                label={isV2 ? 'V2' : 'V1'}
+              />
+            )
+          }
           <img
             className="product-type-icon-details"
             src={elementType.icon}

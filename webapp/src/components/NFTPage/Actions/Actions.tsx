@@ -13,7 +13,7 @@ import { toWei } from 'web3x-es/utils'
 import { BreedPriceModal } from '../BreedPriceModal'
 
 const Actions = (props: Props) => {
-  const { wallet, authorizations, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate } = props
+  const { wallet, authorizations, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate, onResetMyNFT } = props
   const { vendor, contractAddress, tokenId } = nft
 
   const [showLeavingSiteModal, setShowLeavingSiteModal] = useState(false)
@@ -23,6 +23,10 @@ const Actions = (props: Props) => {
   const isBiddable = bidService !== undefined
 
   const isOwner = isOwnedBy(nft, wallet)
+
+  if (!isOwner) {
+    onResetMyNFT();
+  }
 
   const canSell = orderService.canSell()
   const canBid =
@@ -43,13 +47,17 @@ const Actions = (props: Props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
 
-  const handleClickBreed = () => {
+  const handleClickListForBreeding = () => {
     console.log(nft.activeBreedingOrderId)
     if (nft.activeBreedingOrderId) {
       onNavigate(locations.breed(nft.contractAddress, nft.tokenId))
     } else {
       setShowBreedPriceModal(true)
     }
+  }
+
+  const handleClickBreed = () => {
+    onNavigate(locations.breed(nft.contractAddress, nft.tokenId))
   }
 
   const handleSubmitBreedPrice = (breedPrice: string) => {
@@ -65,6 +73,16 @@ const Actions = (props: Props) => {
             primary
           >
             {t('nft_page.breed')}
+          </Button>
+        )
+      }
+      {
+        isOwner && (
+          <Button
+            onClick={handleClickListForBreeding}
+            primary
+          >
+            {t('nft_page.list_for_breeding')}
           </Button>
         )
       }

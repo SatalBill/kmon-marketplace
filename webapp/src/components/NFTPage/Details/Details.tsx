@@ -14,7 +14,7 @@ const Details = (props: Props) => {
   return (
     <div className="details-container">
       <div className="profile-container">
-        <Profile
+        {/* <Profile
           size={'huge'}
           address={nft.owner}
           imageOnly
@@ -23,7 +23,7 @@ const Details = (props: Props) => {
         />
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
-        </DetailItem>
+        </DetailItem> */}
         {/* <DetailItem title="Name">
           <p className="detail-medium-text">
             <span className="detail-nft-name">{nft.metadata?.name}</span>

@@ -15,6 +15,7 @@ import { toWei } from 'web3x-es/utils'
 import { getSortBy } from '../../../nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
+export const API_SERVER_URL = process.env.REACT_APP_API_SERVER_URL!
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
@@ -22,6 +23,7 @@ class NFTAPI {
     const response: NFTResponse = await fetch(
       `${NFT_SERVER_URL}/v1/nfts?${queryParams}`
     ).then(resp => resp.json())
+    console.log(response);
     return response
   }
 

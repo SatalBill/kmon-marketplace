@@ -16,6 +16,7 @@ import {
 } from '../../../modules/breedingOrder/actions'
 import { getLoading } from '../../../modules/breed/selectors'
 import { replace } from 'connected-react-router'
+import { resetNFTForBreedingRequest } from '../../../modules/breed/actions'
 
 const mapState = (state: RootState): MapStateProps => ({
   wallet: getWallet(state),
@@ -28,7 +29,8 @@ const mapState = (state: RootState): MapStateProps => ({
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
   onAddToBreedingCentre: (contractAddress: string, tokenId: string, price: string) =>
     dispatch(addToBreedigCentreRequest(contractAddress, tokenId, price)),
-  onNavigate: (path) => dispatch(replace(path))
+  onNavigate: (path) => dispatch(replace(path)),
+  onResetMyNFT: () => dispatch(resetNFTForBreedingRequest()),
 })
 
 export default connect(mapState, mapDispatch)(Actions)
