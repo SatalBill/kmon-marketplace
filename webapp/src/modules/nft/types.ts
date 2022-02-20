@@ -147,7 +147,8 @@ export type NFTsFetchParams = {
   special?: string
   price?: string
   priceToken?: string
-  isInBreedingCentre?: boolean
+  isInBreedingCentre?: boolean,
+  owner?: string
 }
 
 export type NFTsCountParams = Omit<NFTsFetchParams, 'first' | 'skip'>

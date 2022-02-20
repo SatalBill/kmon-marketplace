@@ -14,7 +14,11 @@ const Fee = (props: Props) => {
 
   useEffect(() => {
     if (breedingPrice && selectedBreedingOrder) {
-      setTotalBreedingPrice(BigNumber.from(breedingPrice).add(BigNumber.from(selectedBreedingOrder.price)).toString())
+      if (myNFT.owner === selectedNFT.owner) {
+        setTotalBreedingPrice(BigNumber.from(breedingPrice).toString())
+      } else {
+        setTotalBreedingPrice(BigNumber.from(breedingPrice).add(BigNumber.from(selectedBreedingOrder.price)).toString())
+      }
     } else {
       setTotalBreedingPrice(null)
     }

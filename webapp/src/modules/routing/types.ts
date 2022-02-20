@@ -90,4 +90,5 @@ export type SearchOptions = {
 
   returnPath?: string
   isInBreedingCentre?: boolean
+  owner?: string
 }
