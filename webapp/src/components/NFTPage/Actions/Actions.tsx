@@ -9,12 +9,15 @@ import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor'
 import { Props } from './Actions.types'
 import './Actions.css'
+import { toWei } from 'web3x-es/utils'
+import { BreedPriceModal } from '../BreedPriceModal'
 
 const Actions = (props: Props) => {
-  const { wallet, nft, order, bids } = props
+  const { wallet, authorizations, nft, order, bids, isAddingToBreedingCentre, onAddToBreedingCentre, onNavigate } = props
   const { vendor, contractAddress, tokenId } = nft
 
   const [showLeavingSiteModal, setShowLeavingSiteModal] = useState(false)
+  const [showBreedPriceModal, setShowBreedPriceModal] = useState(false)
 
   const { bidService, orderService } = VendorFactory.build(nft.vendor)
   const isBiddable = bidService !== undefined
@@ -40,8 +43,31 @@ const Actions = (props: Props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
 
+  const handleClickBreed = () => {
+    console.log(nft.activeBreedingOrderId)
+    if (nft.activeBreedingOrderId) {
+      onNavigate(locations.breed(nft.contractAddress, nft.tokenId))
+    } else {
+      setShowBreedPriceModal(true)
+    }
+  }
+
+  const handleSubmitBreedPrice = (breedPrice: string) => {
+    onAddToBreedingCentre(nft.contractAddress, nft.tokenId, toWei(breedPrice, 'ether'))
+  }
+
   return (
     <>
+      {
+        isOwner && (
+          <Button
+            onClick={handleClickBreed}
+            primary
+          >
+            {t('nft_page.breed')}
+          </Button>
+        )
+      }
       {order ? (
         isOwner && canSell ? (
           <>
@@ -50,6 +76,7 @@ const Actions = (props: Props) => {
                 as={Link}
                 to={locations.sell(contractAddress, tokenId)}
                 primary
+                className='update-button'
               >
                 {t('nft_page.update')}
               </Button>
@@ -98,7 +125,7 @@ const Actions = (props: Props) => {
           </Button>
         )
       ) : isOwner && canSell ? (
-        <Button as={Link} to={locations.sell(contractAddress, tokenId)} primary>
+        <Button as={Link} to={locations.sell(contractAddress, tokenId)} primary className='update-button'>
           {t('nft_page.sell')}
         </Button>
       ) : isOwner && !canSell ? (
@@ -161,6 +188,17 @@ const Actions = (props: Props) => {
           </Button>
         </Modal.Actions>
       </Modal>
+
+      <BreedPriceModal
+        wallet={wallet}
+        authorizations={authorizations}
+        show={showBreedPriceModal}
+        nft={nft}
+        isOwner={isOwner}
+        isLoading={isAddingToBreedingCentre}
+        onSubmitBreedPrice={handleSubmitBreedPrice}
+        onCancel={() => setShowBreedPriceModal(false)}
+      />
     </>
   )
 }

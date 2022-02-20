@@ -13,6 +13,7 @@ import { KryptomonMetadataResponse, NFTsFetchFilters } from './nft/types'
 import { VendorName } from '../types'
 import { nftAPI } from './nft/api'
 import { Order } from '../../order/types'
+import { BreedingOrder } from '../../breedingOrder/types'
 
 export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
   async fetch(params: NFTsFetchParams, filters?: NFTsFetchFilters) {
@@ -20,6 +21,7 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
     const accounts: Account[] = []
     const nfts: NFT[] = []
     const orders: Order[] = []
+    const breedingOrders: BreedingOrder[] = []
     for (const result of results) {
       const address = result.nft.owner
       let account = accounts.find(account => account.id === address)
@@ -28,7 +30,13 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
       }
       account.nftIds.push(result.nft.id)
 
+      if (params.isInBreedingCentre) {
+        const responseV2 = await nftAPI.fetchOneV2(result.nft.tokenId)
+        result.nft.genesV2 = this.getReorderedGenes(responseV2?.genes)
+      }
+
       // setting metadata
+      if (!result.nft.tokenURI) continue
       const metadata: KryptomonMetadataResponse = await fetch(
         result.nft.tokenURI
       ).then(resp => resp.json())
@@ -40,10 +48,13 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
         if (result.order) {
           orders.push(result.order)
         }
+        if (result.breedingOrder) {
+          breedingOrders.push(result.breedingOrder)
+        }
       }
     }
 
-    return [nfts, accounts, orders, total] as const
+    return [nfts, accounts, orders, breedingOrders, total] as const
   }
 
   async count(countParams: NFTsCountParams, filters?: NFTsFetchFilters) {
@@ -66,7 +77,7 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
     response.nft.metadata = metadata
 
     const nft: NFT = { ...response.nft, vendor: VendorName.KRYPTOMON }
-    return [nft, response.order || undefined] as const
+    return [nft, response.order || undefined, response.breedingOrder || undefined] as const
   }
 
   async transfer(wallet: Wallet | null, toAddress: string, nft: NFT) {

@@ -89,4 +89,6 @@ export type SearchOptions = {
   priceToken?: string[]
 
   returnPath?: string
+  isInBreedingCentre?: boolean
+  owner?: string
 }

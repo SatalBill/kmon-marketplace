@@ -37,7 +37,8 @@
     "my_assets": "My Assets",
     "my_bids": "My Bids",
     "activity": "Activity",
-    "lootboxes": "Lootboxes"
+    "lootboxes": "Lootboxes",
+    "breeding_center": "Breeding Center"
   },
   "banner": {
     "title": "Indexing delay",
@@ -202,6 +203,7 @@
     "cancel_sale": "Remove listing",
     "buy": "Buy",
     "sell": "Sell",
+    "breed": "Breed",
     "see_listing": "See listing",
     "bid": "Bid",
     "update": "Update price",
@@ -254,6 +256,12 @@
       "from": "From",
       "to": "To",
       "date": "Date"
+    },
+    "breed_price_modal": {
+      "title": "Enter price",
+      "line_one": "You are about to add {name} to the breeding centre.",
+      "line_two": "Please enter the price of how much you want to get paid.",
+      "price": "Price"
     }
   },
   "lootbox_page": {
@@ -414,6 +422,7 @@
     "for_buying_lootbox": "For buying lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "For selling",
+    "for_breeding": "For breeding",
     "pending_tx": "Transaction pending, click the spinner to go to your activity for a detailed status"
   },
   "authorization": {

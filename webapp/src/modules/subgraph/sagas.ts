@@ -9,13 +9,17 @@ import {
   getBlockNumberFailure,
   GET_BLOCK_NUMBER_REQUEST,
   getBlockNumberRequest,
+  GET_BREEDING_FEE_REQUEST,
+  getBreedingFeeFailure,
+  getBreedingFeeSuccess,
 } from './actions'
-import { BlockNumberType } from './types'
+import { BlockNumberType, BreedingFeeType } from './types'
 import { subgraphAPI } from './api'
 
 export function* subgraphSaga() {
   yield takeEvery(CONNECT_WALLET_SUCCESS, handleConnectWalletSuccess)
   yield takeEvery(GET_BLOCK_NUMBER_REQUEST, handleFetchGetBlockNumberRequest)
+  yield takeEvery(GET_BREEDING_FEE_REQUEST, handleGetBreedingFeeRequest)
 }
 
 function* handleConnectWalletSuccess() {
@@ -35,5 +39,15 @@ function* handleFetchGetBlockNumberRequest() {
   } catch (error) {
     // @ts-ignore
     yield put(getBlockNumberFailure(error.message))
+  }
+}
+
+function* handleGetBreedingFeeRequest() {
+  try {
+    const { data }: { data: BreedingFeeType } = yield call(subgraphAPI.getBredingFee)
+    yield put(getBreedingFeeSuccess(data.breedingCentres[0].breedingFee))
+  } catch (error) {
+    // @ts-ignore
+    yield put(getBreedingFeeFailure(error.message))
   }
 }

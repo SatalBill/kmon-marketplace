@@ -62,6 +62,10 @@ const SettingsPage = (props: Props) => {
     name: contractNames.KMONFT
   })
 
+  const kmonftV2 = getContract({
+    name: contractNames.KMONFTV2
+  })
+
   const authorizationsForSelling = authorizations.filter(authorization => {
     const contract = getContract({ address: authorization.contractAddress })
     return contract.category != null
@@ -168,6 +172,22 @@ const SettingsPage = (props: Props) => {
 
                         <div className="authorization-checks">
                           <label className="secondary-text">
+                            {t('settings_page.for_selling_or_approving')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: marketplace.address,
+                              contractAddress: kmonftV2.address,
+                              contractName: ContractName.KMONFTV2,
+                              chainId: kmonftV2.chainId,
+                              type: AuthorizationType.APPROVAL
+                            }}
+                          />
+                        </div>
+
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
                             {t('settings_page.for_bidding_with_kmon')}
                           </label>
                           <Authorization
@@ -206,6 +226,22 @@ const SettingsPage = (props: Props) => {
                             authorization={{
                               address: wallet.address,
                               authorizedAddress: item.address,
+                              contractAddress: kmon.address,
+                              contractName: ContractName.KMONToken,
+                              chainId: kmon.chainId,
+                              type: AuthorizationType.ALLOWANCE
+                            }}
+                          />
+                        </div>
+
+                        <div className="authorization-checks">
+                          <label className="secondary-text">
+                            {t('settings_page.for_breeding')}
+                          </label>
+                          <Authorization
+                            authorization={{
+                              address: wallet.address,
+                              authorizedAddress: kmonftV2.address,
                               contractAddress: kmon.address,
                               contractName: ContractName.KMONToken,
                               chainId: kmon.chainId,

@@ -267,6 +267,12 @@ class NFTAPI {
     if (params.special) {
       queryParams.set('special', params.special)
     }
+    if (params.isInBreedingCentre) {
+      queryParams.append('isInBreedingCentre', `${params.isInBreedingCentre}`)
+    }
+    if (params.owner) {
+      queryParams.append('owner', `${params.owner}`)
+    }
     if (filters) {
       if (filters.isLand) {
         // queryParams.append('isLand', 'true')

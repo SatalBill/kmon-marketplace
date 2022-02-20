@@ -235,8 +235,9 @@ a.ui.card.link:hover .meta {
 
 .product-description-right {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #000000;
   font-size: 8px;
 }

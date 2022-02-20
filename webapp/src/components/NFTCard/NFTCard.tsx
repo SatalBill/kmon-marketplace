@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 import { Address } from 'web3x-es/address'
@@ -20,7 +20,7 @@ import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
 
 const NFTCard = (props: Props) => {
-  const { nft, order, status } = props
+  const { nft, order, status, isPreventClick, onClickCard } = props
 
   const genes = nft.data.kryptomon?.genes
   const coin =
@@ -73,12 +73,22 @@ const NFTCard = (props: Props) => {
     element => element.title === nft.data.kryptomon?.elementType
   )
 
+  const handleClickCard = useCallback((e: any) => {
+    if (isPreventClick) {
+      e.preventDefault()
+      if (onClickCard) {
+        onClickCard(nft)
+      }
+    }
+  }, [isPreventClick, onClickCard, nft])
+
   return (
     <Card
       className="NFTCard"
       link
       as={Link}
       to={locations.nft(nft.contractAddress, nft.tokenId)}
+      onClick={handleClickCard}
     >
       <div className="card-image-container">
         <div className="card-image">
