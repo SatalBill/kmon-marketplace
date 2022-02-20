@@ -67,7 +67,7 @@ const Actions = (props: Props) => {
   return (
     <>
       {
-        isOwner && (
+        isOwner && nft.data.kryptomon!.timeCanBreed * 1000 > Date.now() && (
           <Button
             onClick={handleClickBreed}
             primary
