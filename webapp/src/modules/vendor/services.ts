@@ -7,6 +7,7 @@ import { OrderStatus, Order } from '../order/types'
 import { NFTsFetchFilters } from './nft/types'
 import { VendorName, TransferType } from './types'
 import { Address } from 'web3x-es/address'
+import { BreedingOrder } from '../breedingOrder/types'
 
 export type Contract = Omit<BaseContract, 'category'> & {
   category: NFTCategory | 'art' | 'wearable' | 'estate' | null
@@ -17,7 +18,7 @@ export interface NFTService<V extends VendorName> {
   fetch: (
     params: NFTsFetchParams,
     filters?: NFTsFetchFilters<V>
-  ) => Promise<readonly [NFT<V>[], Account[], Order[], number]>
+  ) => Promise<readonly [NFT<V>[], Account[], Order[], BreedingOrder[], number]>
   count: (
     params: NFTsCountParams,
     filters?: NFTsFetchFilters<V>
@@ -25,7 +26,7 @@ export interface NFTService<V extends VendorName> {
   fetchOne: (
     contractAddress: string,
     tokenId: string
-  ) => Promise<readonly [NFT<V>, Order | undefined]>
+  ) => Promise<readonly [NFT<V>, Order | undefined, BreedingOrder | undefined]>
   transfer: (
     wallet: Wallet | null,
     toAddress: string,

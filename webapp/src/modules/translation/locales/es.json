@@ -35,7 +35,8 @@
     "my_assets": "Mi Inventario",
     "my_bids": "Mis Ofertas",
     "activity": "Actividad",
-    "lootboxes": "Cajas botín"
+    "lootboxes": "Cajas botín",
+    "breeding_center": ""
   },
   "menu": {
     "all": "Todos",
@@ -126,6 +127,7 @@
     "cancel_sale": "Borrar publicación",
     "buy": "Comprar",
     "sell": "Vender",
+    "breed": "",
     "see_listing": "Ver publicación",
     "bid": "Ofertar",
     "update": "Actualizar precio",

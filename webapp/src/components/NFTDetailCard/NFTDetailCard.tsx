@@ -38,15 +38,18 @@ const NFTDetailCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <Row>
-            <p className="product-info-number">No. {nft.name}</p>
+            <p className="product-info-number">{nft.metadata?.name}</p>
             <div className="product-verified" />
           </Row>
           <p className="product-description-left-item">
-            Gen: {nft.data.kryptomon?.genes.generation}
+            Number: {nft.tokenId}
           </p>
           <p className="product-description-left-item">Laid: {laid}</p>
         </div>
-        <div className="product-description-right">ERC-721</div>
+        <div className="product-description-right">
+          <span className='product-type-price'>Gen: {nft.data.kryptomon?.genes.generation}</span>
+          <span>ERC-721</span>
+        </div>
       </div>
     </div>
   )

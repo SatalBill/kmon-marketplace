@@ -10,13 +10,13 @@ import { IndexingDelay } from '../IndexingDelayCard'
 import { useIndexingDelay } from '../../hooks'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, onBrowse } = props
+  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, isPreventClick, onBrowse, onClickCard } = props
   const { showIndexingDelay } = useIndexingDelay(subgraphBlockNumber, isSignedIn)
 
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
     onBrowse({ page: newPage })
-    getAnalytics().track('Load more', { page: newPage })
+    // getAnalytics().track('Load more', { page: newPage })
   }, [onBrowse, page])
 
   const maxQuerySize = getMaxQuerySize(vendor)
@@ -36,6 +36,8 @@ const NFTList = (props: Props) => {
               key={nft.id + '-' + index}
               nft={nft}
               status={{ showPrice: true }}
+              isPreventClick={isPreventClick}
+              onClickCard={onClickCard}
             />
           ))
           : null}

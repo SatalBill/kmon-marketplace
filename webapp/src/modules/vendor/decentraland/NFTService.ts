@@ -13,6 +13,7 @@ import { KryptomonMetadataResponse, NFTsFetchFilters } from './nft/types'
 import { VendorName } from '../types'
 import { nftAPI } from './nft/api'
 import { Order } from '../../order/types'
+import { BreedingOrder } from '../../breedingOrder/types'
 
 export class NFTService
   implements NFTServiceInterface<VendorName.DECENTRALAND> {
@@ -22,6 +23,7 @@ export class NFTService
     const accounts: Account[] = []
     const nfts: NFT[] = []
     const orders: Order[] = []
+    const breedingOrders: BreedingOrder[] = []
     for (const result of results) {
       const address = result.nft.owner
       let account = accounts.find(account => account.id === address)
@@ -42,7 +44,7 @@ export class NFTService
       }
     }
 
-    return [nfts, accounts, orders, total] as const
+    return [nfts, accounts, orders, breedingOrders, total] as const
   }
 
   async count(countParams: NFTsCountParams, filters?: NFTsFetchFilters) {
@@ -63,7 +65,7 @@ export class NFTService
     response.nft.metadata = metadata
 
     const nft: NFT = { ...response.nft, vendor: VendorName.KRYPTOMON }
-    return [nft, response.order || undefined] as const
+    return [nft, response.order || undefined, undefined] as const
   }
 
   async transfer(wallet: Wallet | null, toAddress: string, nft: NFT) {

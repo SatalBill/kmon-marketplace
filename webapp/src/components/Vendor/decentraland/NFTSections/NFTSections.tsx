@@ -71,7 +71,8 @@ const NFTSections = (props: Props) => {
     price = [],
     priceToken = [],
     kryptomonStatus = [],
-    unfreezable = []
+    unfreezable = [],
+    owner = undefined
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -119,12 +120,22 @@ const NFTSections = (props: Props) => {
     price,
     priceToken,
     kryptomonStatus,
-    unfreezable
+    unfreezable,
+    owner
   })
 
   useEffect(() => {
     onMultiItemClick(state)
   }, [state])
+
+  useEffect(() => {
+    if (owner) {
+      setState({
+        ...state,
+        owner
+      })
+    }
+  }, [owner])
 
   const handleStateChange = (
     min: number,
@@ -197,7 +208,8 @@ const NFTSections = (props: Props) => {
               price: [],
               priceToken: [],
               kryptomonStatus: [],
-              unfreezable: []
+              unfreezable: [],
+              owner: undefined
             })
           }}
         >

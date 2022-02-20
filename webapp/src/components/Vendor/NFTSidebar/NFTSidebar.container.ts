@@ -36,6 +36,7 @@ import {
 } from './NFTSidebar.types'
 import NFTSidebar from './NFTSidebar'
 import { MultipleFilters } from './NFTSidebar'
+import { getMyNFT } from '../../../modules/breed/selectors'
 
 const mapState = (state: RootState): MapStateProps => ({
   vendor: getVendor(state),
@@ -86,7 +87,8 @@ const mapState = (state: RootState): MapStateProps => ({
   price: getArrayByType('price')(state),
   priceToken: getArrayByType('priceToken')(state),
   kryptomonStatus: getKryptomonStatus(state),
-  unfreezable: getArrayByType('unfreezable')(state)
+  unfreezable: getArrayByType('unfreezable')(state),
+  myNFT: getMyNFT(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({

@@ -53,7 +53,9 @@ export type MultipleFilters = {
   price?: string[]
   priceToken?: string[]
   kryptomonStatus?: string[]
-  unfreezable?: string[]
+  unfreezable?: string[],
+  isInBreedingCenter?: boolean,
+  owner?: string
 }
 
 const NFTSidebar = (props: Props) => {
@@ -107,7 +109,8 @@ const NFTSidebar = (props: Props) => {
     price,
     priceToken,
     kryptomonStatus,
-    unfreezable
+    unfreezable,
+    myNFT
   } = props
 
   const handleOnBrowse = useCallback(
@@ -125,9 +128,16 @@ const NFTSidebar = (props: Props) => {
 
   const handleOnBrowseMultiple = useCallback(
     (data: MultipleFilters) => {
+      console.log(onBrowse, myNFT)
       if (pathname === '/account') {
         onBrowse({
           ...data
+        })
+      } else if (/^\/breed/gi.test(pathname)) {
+        onBrowse({
+          ...data,
+          isInBreedingCentre: true,
+          view: 'load_more',
         })
       } else {
         onBrowse({
@@ -204,6 +214,7 @@ const NFTSidebar = (props: Props) => {
           priceToken={priceToken}
           kryptomonStatus={kryptomonStatus}
           unfreezable={unfreezable}
+          owner={myNFT?.owner}
         />
       )
   }
