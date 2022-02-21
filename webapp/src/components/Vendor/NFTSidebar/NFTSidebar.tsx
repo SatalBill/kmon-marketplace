@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { Section } from '../../../modules/vendor/routing/types'
 import { Section as DecentralandSection } from '../../../modules/vendor/decentraland/routing/types'
@@ -113,6 +113,20 @@ const NFTSidebar = (props: Props) => {
     myNFT
   } = props
 
+  const [isLoadingMyNFT, setIsLoadingMyNFT] = useState(true)
+  const [multipleFilters, setMultipleFilters] = useState<MultipleFilters>({})
+  useEffect(() => {
+    if (/^\/breed/gi.test(pathname) && myNFT === null && !isLoadingMyNFT) {
+      onBrowse({
+        ...multipleFilters,
+        isInBreedingCentre: true,
+        sex: [],
+        view: 'load_more',
+        owner: undefined
+      })
+    }
+  }, [myNFT, pathname])
+
   const handleOnBrowse = useCallback(
     (section: Section) => {
       if (pathname === '/account') {
@@ -151,6 +165,8 @@ const NFTSidebar = (props: Props) => {
           sex: myNFT ? newSex : data.sex,
           view: 'load_more',
         })
+        setIsLoadingMyNFT(false)
+        setMultipleFilters(data)
       } else {
         onBrowse({
           ...data
