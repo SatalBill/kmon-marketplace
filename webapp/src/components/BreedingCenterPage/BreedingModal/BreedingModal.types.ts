@@ -8,6 +8,8 @@ import {
 import { GenesV2 } from '../../../modules/breed/types'
 import { BreedingOrder } from '../../../modules/breedingOrder/types'
 import { NFT } from '../../../modules/nft/types'
+import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 
 export type Props = {
   myNFT: NFT | null,
@@ -19,12 +21,14 @@ export type Props = {
   isBreeding: boolean
   mutationFactor: number | null
   breedingPrice: string | null
+  authorizations: Authorization[]
+  wallet: Wallet | null
   onClose: () => void
   onSimulateBreeding: typeof simulateBreedingRequest
   onBreed: typeof breedRequest
 }
 
-export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breedingPrice'>
+export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breedingPrice' | 'authorizations'>
 export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed'>
 export type MapDispatch = Dispatch<
   SimulateBreedingRequestAction |

@@ -4,16 +4,51 @@ import { Close, Modal, Grid } from '@kmon/ui'
 import { Props } from './BreedingModal.types'
 import './BreedingModal.css'
 import { NFTDetail } from './NFTDetail'
+import { ContractName } from '@kmon/transactions'
 import { Fee } from './Fee'
 import { Probability } from './Probability'
+import { Authorization, AuthorizationType } from '@kmon/dapps/dist/modules/authorization/types'
+import { getContract } from '../../../modules/contract/utils'
+import { getContractNames } from '../../../modules/vendor'
+import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
+import { AuthorizationModal } from '../../AuthorizationModal'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, breedingPrice, onClose, onSimulateBreeding, onBreed } = props
+  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, breedingPrice, onClose, onSimulateBreeding, onBreed, authorizations, wallet } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
   const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
+  const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
   const classes = ["kryptomon", "breeding-modal"]
+
+  const contractNames = getContractNames();
+  const kmon = getContract({
+    name: contractNames.KMONToken
+  })
+
+  const kmonftV2 = getContract({
+    name: contractNames.KMONFTV2
+  })
+
+  const authorization: Authorization = {
+    address: wallet!.address,
+    authorizedAddress: kmonftV2.address,
+    contractAddress: kmon.address,
+    contractName: ContractName.KMONToken,
+    chainId: kmon.chainId,
+    type: AuthorizationType.ALLOWANCE
+  }
+
+  const handleSubmit = () => {
+    if (hasAuthorization(authorizations, authorization)) {
+      handleBreed()
+    } else {
+      setShowAuthorizationModal(true)
+    }
+  }
+
+  const handleClose = () => setShowAuthorizationModal(false)
 
   const handleBreed = async () => {
     if (femaleTokenId && maleTokenId) {
@@ -27,7 +62,7 @@ const BreedingModal = (props: Props) => {
         onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
         setFemaleTokenId(myNFT.tokenId)
         setMaleTokenId(selectedNFT.tokenId)
-      } else if (myNFT.data.kryptomon?.genes.sex <=5 && selectedNFT.data.kryptomon?.genes.sex > 5) {
+      } else if (myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5) {
         onSimulateBreeding(selectedNFT.tokenId, myNFT.tokenId)
         setFemaleTokenId(selectedNFT.tokenId)
         setMaleTokenId(myNFT.tokenId)
@@ -43,8 +78,8 @@ const BreedingModal = (props: Props) => {
 
   useEffect(() => {
     if (simulatedGenes) {
-      const [,,,,,,,,,,,,,,,,,,,,,,,,constitution,,,affections,crazyness,instinct,hunger,laziness,brave,smart,,,,] = simulatedGenes
-      setGenes([constitution,affections,crazyness,instinct,hunger,laziness,brave,smart])
+      const [, , , , , , , , , , , , , , , , , , , , , , , , constitution, , , affections, crazyness, instinct, hunger, laziness, brave, smart, , , ,] = simulatedGenes
+      setGenes([constitution, affections, crazyness, instinct, hunger, laziness, brave, smart])
     }
   }, [simulatedGenes])
 
@@ -63,7 +98,7 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleBreed} onCancel={() => onClose()} isBreeding={isBreeding} breedingPrice={breedingPrice} selectedBreedingOrder={selectedBreedingOrder} />}
+              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleSubmit} onCancel={() => onClose()} isBreeding={isBreeding} breedingPrice={breedingPrice} selectedBreedingOrder={selectedBreedingOrder} />}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -73,6 +108,12 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
         </Grid>
       </Modal.Content>
+      <AuthorizationModal
+        open={showAuthorizationModal}
+        authorization={authorization}
+        onProceed={handleBreed}
+        onCancel={handleClose}
+      />
     </Modal>
   )
 }

@@ -1,3 +1,4 @@
+import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { Dispatch } from 'redux'
 import {
@@ -12,16 +13,17 @@ export type Props = {
   myNFT: NFT | null,
   selectedNFT: NFT | null,
   mutationFactor: number | null
+  authorizations: Authorization[]
   onNavigate: (path: string) => void
   onResetMyNFT: typeof resetNFTForBreedingRequest
   onResetSelectedNFT: typeof resetSelectedNFTForBreedingRequest
   onCompare: () => void
 }
 
-export type MapStateProps = void
+export type MapStateProps = Pick<Props, 'authorizations'>
 export type MapDispatchProps = Pick<Props, 'onNavigate' | 'onResetMyNFT' | 'onResetSelectedNFT'>
 export type MapDispatch = Dispatch<
-  CallHistoryMethodAction | 
+  CallHistoryMethodAction |
   ResetNFTForBreedingRequestAction |
   ResetSelectedNFTForBreedingRequestAction
 >

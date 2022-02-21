@@ -48,4 +48,5 @@
 .kryptomon.choose-pair .compare-button {
   background: linear-gradient(#D7B731, #F25F31) !important;
   color: var(--background) !important;
+  margin: 15px;
 }

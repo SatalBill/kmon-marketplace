@@ -14,6 +14,7 @@ import { NFTList } from '../NFTList'
 import { NFTFilters } from '../Vendor/NFTFilters'
 import { NFT } from "../../modules/nft/types"
 import { BreedingModal } from './BreedingModal'
+import { Wallet } from '../Wallet'
 
 const BreedingCenterPage = (props: Props) => {
   const {
@@ -74,15 +75,20 @@ const BreedingCenterPage = (props: Props) => {
         </Row>
       </Page>
       <Footer />
-      <BreedingModal
-        myNFT={myNFT}
-        selectedNFT={selectedNFT}
-        myBreedingOrder={myBreedingOrder}
-        selectedBreedingOrder={selectedBreedingOrder}
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        mutationFactor={mutationFactor}
-      />
+      <Wallet>
+        {wallet => (
+          <BreedingModal
+            myNFT={myNFT}
+            selectedNFT={selectedNFT}
+            myBreedingOrder={myBreedingOrder}
+            selectedBreedingOrder={selectedBreedingOrder}
+            open={showModal}
+            onClose={() => setShowModal(false)}
+            mutationFactor={mutationFactor}
+            wallet={wallet}
+          />
+        )}
+      </Wallet>
     </>
   )
 }

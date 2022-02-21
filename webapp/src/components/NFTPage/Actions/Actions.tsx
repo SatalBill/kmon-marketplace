@@ -23,8 +23,8 @@ const Actions = (props: Props) => {
   const isBiddable = bidService !== undefined
 
   const isOwner = isOwnedBy(nft, wallet)
-
-  if (!isOwner) {
+  const canBreed = isOwner && nft.data.kryptomon!.timeCanBreed && nft.data.kryptomon!.timeCanBreed * 1000 < Date.now();
+  if (!isOwner || !canBreed) {
     onResetMyNFT();
   }
 
@@ -67,7 +67,7 @@ const Actions = (props: Props) => {
   return (
     <>
       {
-        isOwner && nft.data.kryptomon!.timeCanBreed * 1000 > Date.now() && (
+        canBreed && (
           <Button
             onClick={handleClickBreed}
             primary
@@ -77,7 +77,7 @@ const Actions = (props: Props) => {
         )
       }
       {
-        isOwner && (
+        canBreed && (
           <Button
             onClick={handleClickListForBreeding}
             primary

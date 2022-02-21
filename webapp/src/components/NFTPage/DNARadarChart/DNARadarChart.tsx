@@ -35,12 +35,13 @@ const DNARadarChart = (props: Props) => {
   const DNAValues = isV2
     ? genesV2Values
     : sortedDNAParams?.map(elem => {
-        return elem?.value
-      })
+      return elem?.value
+    })
 
   const DNAGeneration = nft.data.kryptomon?.genes.generation
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable
 
+  const isV2New = nft.contractAddress.toUpperCase() == '0x04b0f7d5cb2ce4688497f2525748fb7a9affa394'.toUpperCase() || nft.contractAddress.toUpperCase() == '0x5eA74A7105f9c2628AbE80D3Af22Afb1d7CE9A46'.toUpperCase();
   /*
   const data = {
     labels: ['Constitution', 'Affections', 'Crazyness', 'Instinct', 'Hunger', 'Laziness', 'Brave', 'Smart'],
@@ -71,7 +72,7 @@ const DNARadarChart = (props: Props) => {
     labels: DNALabels,
     datasets: [
       {
-        label: isV2 ? 'V2' : 'V1',
+        label: isV2New ? 'V2' : isV2 ? 'V2' : 'V1',
         data: DNAValues,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -106,7 +107,7 @@ const DNARadarChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <Radar className="dna-chart" data={data} options={options}/>
+      <Radar className="dna-chart" data={data} options={options} />
     </div>
   )
 }
