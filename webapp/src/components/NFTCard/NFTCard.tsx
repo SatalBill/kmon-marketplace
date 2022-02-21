@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 import { Address } from 'web3x-es/address'
-
+import { BigNumber, utils } from 'ethers'
 import { formatCoin } from '../../lib/kmon'
 import { locations } from '../../modules/routing/locations'
 import { NFTImage } from '../NFTImage'
@@ -18,11 +18,15 @@ import Water from '../../images/egg/elem-water.svg'
 import Fire from '../../images/egg/elem-fire.svg'
 import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
+import { fromWei } from 'web3x-es/utils'
 
 const NFTCard = (props: Props) => {
-  const { nft, order, status, isPreventClick, onClickCard } = props
+  const { nft, order, status, breedingOrder, isPreventClick, onClickCard } = props
 
   const genes = nft.data.kryptomon?.genes
+  const priceInWei = breedingOrder?.price;
+  const breedingCount = nft.data.kryptomon?.breedingCount ? nft.data.kryptomon?.breedingCount : 0;
+  const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase ? nft.data.kryptomon?.maxBreedingsDuringLifePhase : 0;
   const coin =
     order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
@@ -138,16 +142,24 @@ const NFTCard = (props: Props) => {
       </div>
       <div className="product-description">
         <div className="product-description-left">
-          <p className="product-description-left-item">
-            Gen: {nft.data.kryptomon?.genes.generation}
-          </p>
-          <p className="product-description-left-item">
-            Element: {elementType?.title}
-          </p>
+          {
+            priceInWei && (
+              < p className="product-description-left-item">
+                Breed price: {utils.formatEther(priceInWei)} KMON
+              </p>
+            )
+          }
+          {
+            nft.data.kryptomon?.maxBreedingsDuringLifePhase && (
+              < p className="product-description-left-item">
+                Breed Amount: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
+              </p>
+            )
+          }
         </div>
-        <div className="product-description-right">ERC-721</div>
+        <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
       </div>
-    </Card>
+    </Card >
   )
 }
 
