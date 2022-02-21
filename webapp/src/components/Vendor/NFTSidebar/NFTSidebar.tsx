@@ -113,6 +113,22 @@ const NFTSidebar = (props: Props) => {
     myNFT
   } = props
 
+  let newSex: string[] | undefined;
+  if (myNFT) {
+    newSex = [];
+    if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+      newSex.push("0")
+      newSex.push("5")
+    }
+    else { //male
+      newSex.push("6")
+      newSex.push("10")
+    }
+  }
+  else {
+    newSex = sex
+  }
+
   const handleOnBrowse = useCallback(
     (section: Section) => {
       if (pathname === '/account') {
@@ -185,7 +201,7 @@ const NFTSidebar = (props: Props) => {
           ego={ego}
           speed={speed}
           healthPoints={healthPoints}
-          sex={sex}
+          sex={newSex}
           skinType={skinType}
           water={water}
           waterTalent={waterTalent}
