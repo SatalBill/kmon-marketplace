@@ -3,6 +3,6 @@ import { NFT } from '../../../../modules/nft/types'
 
 export type Props = {
   nft: NFT,
-  breedingOrder: BreedingOrder,
+  breedingOrder?: BreedingOrder | null,
   view?: string
 }

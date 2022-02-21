@@ -90,7 +90,7 @@ const BreedingModal = (props: Props) => {
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column width={8}>
-              {myNFT && myBreedingOrder && <NFTDetail nft={myNFT} breedingOrder={myBreedingOrder} />}
+              {myNFT && <NFTDetail nft={myNFT} breedingOrder={myBreedingOrder} />}
             </Grid.Column>
             <Grid.Column width={8}>
               {selectedNFT && selectedBreedingOrder && <NFTDetail nft={selectedNFT} view="right" breedingOrder={selectedBreedingOrder} />}

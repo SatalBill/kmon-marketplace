@@ -89,13 +89,15 @@ const NFTDetail = (props: Props) => {
             <Grid.Column>GENERATION:</Grid.Column>
             <Grid.Column>{nft.data.kryptomon?.genes.generation}</Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>BREED PRICE:</Grid.Column>
-            <Grid.Column>{fromWei(breedingOrder.price, "ether")} KMON</Grid.Column>
-          </Grid.Row>
+          {breedingOrder && (
+            <Grid.Row>
+              <Grid.Column>BREED PRICE:</Grid.Column>
+              <Grid.Column>{fromWei(breedingOrder.price, "ether")} KMON</Grid.Column>
+            </Grid.Row>
+          )}
           <Grid.Row>
             <Grid.Column>BREED AMOUNT:</Grid.Column>
-            <Grid.Column>{nft.data.kryptomon?.totalBreedingCount}/{nft.data.kryptomon?.maxBreedingsDuringLifePhase}</Grid.Column>
+            <Grid.Column>{nft.data.kryptomon?.totalBreedingCount ? nft.data.kryptomon?.totalBreedingCount : 0}/{nft.data.kryptomon?.maxBreedingsDuringLifePhase}</Grid.Column>
           </Grid.Row>
         </Grid>
       </div>
