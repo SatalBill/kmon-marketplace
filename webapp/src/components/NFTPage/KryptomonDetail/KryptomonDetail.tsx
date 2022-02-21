@@ -180,11 +180,11 @@ const KryptomonDetail = (props: Props) => {
           <Row className="Row-space-between">
             <Details nft={nft} order={order} />
           </Row>
-          <Row className="Row-space-between">
+          {/* <Row className="Row-space-between">
             <TitleBlock title="DNA Radar Chart">
               <DNARadarChart nft={nft} isV2={isV2} />
             </TitleBlock>
-          </Row>
+          </Row> */}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />
