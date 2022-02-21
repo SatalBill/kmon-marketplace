@@ -114,7 +114,7 @@ const NFTSidebar = (props: Props) => {
   } = props
 
   let newSex: string[] | undefined;
-  if (myNFT) {
+  if (/^\/breed/gi.test(pathname) && myNFT) {
     newSex = [];
     if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
       newSex.push("0")
@@ -144,7 +144,6 @@ const NFTSidebar = (props: Props) => {
 
   const handleOnBrowseMultiple = useCallback(
     (data: MultipleFilters) => {
-      console.log(onBrowse, myNFT)
       if (pathname === '/account') {
         onBrowse({
           ...data
