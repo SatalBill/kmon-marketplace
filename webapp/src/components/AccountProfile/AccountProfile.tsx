@@ -18,13 +18,13 @@ const AccountProfile = (props: Props) => {
 
   return (
     <div className="AccountProfile">
-      <Profile
+      {/* <Profile
         size={'massive'}
         address={wallet.address}
         imageOnly
         inline={false}
-      />
-      <div className="profile-account-name">{wallet.network}</div>
+      /> */}
+      <div className="profile-account-name">My Wallet</div>
       <div className="profile-address">
         <div
           className={`profile-address-hash ${hasCopiedAddress &&

@@ -300,7 +300,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   let kryptomonIdV2 = event.params._v2TokenId.toString();
 
   let idV1 = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonIdV1)
-  let idV2 = getNFTId(categories.KRYPTOMON, event.address.toHexString(), kryptomonIdV1)
+  let idV2 = getNFTId(categories.KRYPTOMON, event.address.toHexString(), kryptomonIdV2)
 
   let kryptomonV1 = Kryptomon.load(idV1);
 

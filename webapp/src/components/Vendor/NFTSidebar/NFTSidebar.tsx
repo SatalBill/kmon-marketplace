@@ -113,22 +113,6 @@ const NFTSidebar = (props: Props) => {
     myNFT
   } = props
 
-  let newSex: string[] | undefined;
-  if (/^\/breed/gi.test(pathname) && myNFT) {
-    newSex = [];
-    if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
-      newSex.push("0")
-      newSex.push("5")
-    }
-    else { //male
-      newSex.push("6")
-      newSex.push("10")
-    }
-  }
-  else {
-    newSex = sex
-  }
-
   const handleOnBrowse = useCallback(
     (section: Section) => {
       if (pathname === '/account') {
@@ -149,9 +133,22 @@ const NFTSidebar = (props: Props) => {
           ...data
         })
       } else if (/^\/breed/gi.test(pathname)) {
+        let newSex: string[] | undefined;
+        newSex = [];
+        if (myNFT) {
+          if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+            newSex.push("0")
+            newSex.push("5")
+          }
+          else { //male
+            newSex.push("6")
+            newSex.push("10")
+          }
+        }
         onBrowse({
           ...data,
           isInBreedingCentre: true,
+          sex: myNFT ? newSex : data.sex,
           view: 'load_more',
         })
       } else {
@@ -200,7 +197,7 @@ const NFTSidebar = (props: Props) => {
           ego={ego}
           speed={speed}
           healthPoints={healthPoints}
-          sex={newSex}
+          sex={myNFT ? undefined : sex}
           skinType={skinType}
           water={water}
           waterTalent={waterTalent}
