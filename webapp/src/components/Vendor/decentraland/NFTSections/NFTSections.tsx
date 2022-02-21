@@ -128,15 +128,6 @@ const NFTSections = (props: Props) => {
     onMultiItemClick(state)
   }, [state])
 
-  useEffect(() => {
-    if (owner) {
-      setState({
-        ...state,
-        owner
-      })
-    }
-  }, [owner])
-
   const handleStateChange = (
     min: number,
     max: number,
