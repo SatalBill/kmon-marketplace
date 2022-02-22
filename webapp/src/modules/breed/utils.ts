@@ -60,7 +60,7 @@ export async function simulateBreeding(matronId: string, sireId: string): Promis
     genes[35] = result[35].toNumber()
     genes[36] = result[36].toNumber()
     genes[37] = result[37].toNumber()
-  } catch (e) {}
+  } catch (e) { }
   return genes
 }
 
@@ -86,7 +86,7 @@ export function calcMutationFactor(myNFT: NFT | null, selectedNFT: NFT | null) {
     const selectedGen = selectedNFT.data.kryptomon?.genes.generation
     if (myGen && selectedGen) {
       const gen = Math.min(Number(myGen), Number(selectedGen))
-      return 2.0 / Math.pow(2.78, -0.033 * gen) - 1
+      return 2.0 / (1 + Math.pow(2.78, -0.033 * gen)) - 1
     }
     return null
   }
@@ -98,9 +98,9 @@ export function calcBreedingPrice(myNFT: NFT | null, selectedNFT: NFT | null, br
   if (myNFT && selectedNFT && breedingFee) {
     if (myNFT.data.kryptomon?.genes !== undefined && selectedNFT.data.kryptomon?.genes !== undefined &&
       (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5 || myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5)) {
-        const breedingCount = Number(myNFT.data.kryptomon.breedingCount) + Number(selectedNFT.data.kryptomon.breedingCount)
-        return BigNumber.from(breedingFee).mul(BigNumber.from(breedingCount)).div(BigNumber.from(10)).add(BigNumber.from(breedingFee)).toString()
-      }
+      const breedingCount = Number(myNFT.data.kryptomon.breedingCount) + Number(selectedNFT.data.kryptomon.breedingCount)
+      return BigNumber.from(breedingFee).mul(BigNumber.from(breedingCount)).div(BigNumber.from(10)).add(BigNumber.from(breedingFee)).toString()
+    }
     return null
   }
 
