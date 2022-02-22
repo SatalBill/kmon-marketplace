@@ -8,6 +8,85 @@ import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 const Probability = (props: Props) => {
   const { myNFT, selectedNFT, simulatedGenes, mutationFactor } = props
 
+  const parLimits = {
+    'attack': { 'max': 100, 'min': 25 },
+    'defense': { 'max': 100, 'min': 25 },
+    'crazyness': { 'max': 100, 'min': 35 },
+    'constitution': { 'max': 100, 'min': 35 },
+    'healthPoints': { 'max': 100, 'min': 35 },
+    'instinct': { 'max': 100, 'min': 35 },
+    'speed': { 'max': 100, 'min': 25 },
+    'color': { 'max': 10000, 'min': 0 },
+    'sex': { 'max': 10, 'min': 1 },
+    'special': { 'max': 10, 'min': 1 },
+    'generalTalent': { 'max': 100, 'min': 0 },
+    'growthTalentFactor': { 'max': 100, 'min': 0 },
+    'affections': { 'max': 100, 'min': 20 },
+    'ego': { 'max': 100, 'min': 20 },
+    'hunger': { 'max': 100, 'min': 20 },
+    'laziness': { 'max': 100, 'min': 0 },
+    'smart': { 'max': 100, 'min': 0 },
+    'brave': { 'max': 100, 'min': 0 },
+    'bodySize': { 'max': 100, 'min': 0 },
+    'skinType': { 'max': 4, 'min': 0 },
+    'element': { 'max': 100, 'min': 0 }
+  }
+
+  const mutation = mutationFactor! / 100;
+  const getBreedingRange = (parent1Gen: number, parent2Gen: number, parMin: number, parMax: number) => {
+    const minGenome = Math.min(parent1Gen, parent2Gen);
+    const min = Math.max(minGenome * (1 - mutation), parMin);
+    const maxGenome = Math.max(parent1Gen, parent2Gen);
+    const max = Math.min(Math.max(maxGenome * (1 + mutation), maxGenome + 5), parMax);
+    return {
+      min,
+      max
+    }
+  }
+
+  const genomeRanges: any = Object.fromEntries(DNA_CONSTANTS.map((gen) => {
+    gen = gen.toLowerCase();
+    const arr = gen.split(" ");
+    for (var i = 0; i < arr.length; i++) {
+      if (i > 0)
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+    gen = arr.join("");
+    //@ts-ignore
+    const range = getBreedingRange(myNFT.data.kryptomon!.genes[gen], selectedNFT.data.kryptomon!.genes[gen], parLimits[gen].min, parLimits[gen].max);
+    return [gen, range];
+  }));
+
+  const lowerRange = [
+    genomeRanges.attack.min,
+    genomeRanges.defense.min,
+    genomeRanges.speed.min,
+    genomeRanges.ego.min,
+    genomeRanges.healthPoints.min,
+    genomeRanges.constitution.min,
+    genomeRanges.affections.min,
+    genomeRanges.crazyness.min,
+    genomeRanges.instinct.min,
+    genomeRanges.hunger.min,
+    genomeRanges.brave.min,
+    genomeRanges.smart.min
+  ]
+
+  const higherRange = [
+    genomeRanges.attack.max,
+    genomeRanges.defense.max,
+    genomeRanges.speed.max,
+    genomeRanges.ego.max,
+    genomeRanges.healthPoints.max,
+    genomeRanges.constitution.max,
+    genomeRanges.affections.max,
+    genomeRanges.crazyness.max,
+    genomeRanges.instinct.max,
+    genomeRanges.hunger.max,
+    genomeRanges.brave.max,
+    genomeRanges.smart.max
+  ]
+
   const data = {
     labels: DNA_CONSTANTS,
     datasets: [
@@ -32,7 +111,9 @@ const Probability = (props: Props) => {
         pointBackgroundColor: 'rgb(255, 99, 132)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(255, 99, 132)'
+        pointHoverBorderColor: 'rgb(255, 99, 132)',
+        fill: false,
+        borderWidth: 1.5
       },
       {
         label: selectedNFT.metadata.name,
@@ -55,7 +136,9 @@ const Probability = (props: Props) => {
         pointBackgroundColor: 'rgb(54, 162, 235)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(54, 162, 235)'
+        pointHoverBorderColor: 'rgb(54, 162, 235)',
+        fill: false,
+        borderWidth: 1.5
       },
       {
         label: 'Simulated',
@@ -65,7 +148,33 @@ const Probability = (props: Props) => {
         pointBackgroundColor: 'rgb(217, 225, 160)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(217, 225, 160)'
+        pointHoverBorderColor: 'rgb(217, 225, 160)',
+        fill: false,
+        borderDash: [5]
+      },
+      {
+        label: 'Lower Limit',
+        data: lowerRange,
+        fill: "+1",
+        backgroundColor: 'rgba(217, 225, 160, 0.2)',
+        borderColor: 'rgb(217, 225, 160)',
+        pointBackgroundColor: 'rgb(217, 225, 160)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(217, 225, 160)',
+        borderWidth: 0
+      },
+      {
+        label: 'Higher Limit',
+        data: higherRange,
+        backgroundColor: 'rgba(217, 225, 160, 0.2)',
+        borderColor: 'rgb(217, 225, 160)',
+        pointBackgroundColor: 'rgb(217, 225, 160)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(217, 225, 160)',
+        fill: false,
+        borderWidth: 0
       }
     ]
   }

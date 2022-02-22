@@ -16,11 +16,11 @@ export const DNA_CONSTANTS = [
   'Ego',
   'Health Points',
   'Constitution',
-  'Affection',
-  'Craziness',
+  'Affections',
+  'Crazyness',
   'Instinct',
   'Hunger',
-  'Braveness',
+  'Brave',
   'Smart'
 ]
 export const DNA_COLORS = [
