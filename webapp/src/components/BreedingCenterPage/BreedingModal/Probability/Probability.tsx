@@ -8,31 +8,22 @@ import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 const Probability = (props: Props) => {
   const { myNFT, selectedNFT, simulatedGenes, mutationFactor } = props
 
-  const DNAParams = myNFT.metadata.attributes?.filter(elem =>
-    DNA_CONSTANTS.includes(elem.trait_type)
-  )
-  const sortedDNAParams = DNA_CONSTANTS.map(title => {
-    return DNAParams?.find(elem => {
-      return elem.trait_type === title
-    })
-  })
-
-  const DNALabels = sortedDNAParams?.map(elem => {
-    return elem?.trait_type
-  })
-
   const data = {
-    labels: DNALabels,
+    labels: DNA_CONSTANTS,
     datasets: [
       {
         label: myNFT.metadata.name,
         data: [
+          myNFT.data.kryptomon?.genes.attack,
+          myNFT.data.kryptomon?.genes.defense,
+          myNFT.data.kryptomon?.genes.speed,
+          myNFT.data.kryptomon?.genes.ego,
+          myNFT.data.kryptomon?.genes.healthPoints,
           myNFT.data.kryptomon?.genes.constitution,
           myNFT.data.kryptomon?.genes.affections,
           myNFT.data.kryptomon?.genes.crazyness,
           myNFT.data.kryptomon?.genes.instinct,
           myNFT.data.kryptomon?.genes.hunger,
-          myNFT.data.kryptomon?.genes.laziness,
           myNFT.data.kryptomon?.genes.brave,
           myNFT.data.kryptomon?.genes.smart
         ],
@@ -46,12 +37,16 @@ const Probability = (props: Props) => {
       {
         label: selectedNFT.metadata.name,
         data: [
+          selectedNFT.data.kryptomon?.genes.attack,
+          selectedNFT.data.kryptomon?.genes.defense,
+          selectedNFT.data.kryptomon?.genes.speed,
+          selectedNFT.data.kryptomon?.genes.ego,
+          selectedNFT.data.kryptomon?.genes.healthPoints,
           selectedNFT.data.kryptomon?.genes.constitution,
           selectedNFT.data.kryptomon?.genes.affections,
           selectedNFT.data.kryptomon?.genes.crazyness,
           selectedNFT.data.kryptomon?.genes.instinct,
           selectedNFT.data.kryptomon?.genes.hunger,
-          selectedNFT.data.kryptomon?.genes.laziness,
           selectedNFT.data.kryptomon?.genes.brave,
           selectedNFT.data.kryptomon?.genes.smart
         ],
@@ -98,7 +93,7 @@ const Probability = (props: Props) => {
       </div>
       <div className="probability-chart-box">
         <div className="probability-chart">
-          <Radar data={data} options={options}/>
+          <Radar data={data} options={options} />
         </div>
       </div>
     </div>

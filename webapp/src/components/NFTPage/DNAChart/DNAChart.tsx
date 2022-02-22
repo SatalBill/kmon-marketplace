@@ -11,39 +11,45 @@ import { isMobile } from '@kmon/dapps/dist/lib/utils'
 const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const genesV2Values = [
+    nft.genesV2?.attack,
+    nft.genesV2?.defense,
+    nft.genesV2?.speed,
+    nft.genesV2?.ego,
+    nft.genesV2?.healthPoints,
     nft.genesV2?.constitution,
     nft.genesV2?.affections,
     nft.genesV2?.crazyness,
     nft.genesV2?.instinct,
     nft.genesV2?.hunger,
-    nft.genesV2?.laziness,
     nft.genesV2?.brave,
     nft.genesV2?.smart
   ]
 
-  const DNAParams = nft.metadata.attributes?.filter(elem =>
-    DNA_CONSTANTS.includes(elem.trait_type)
-  )
-  const sortedDNAParams = DNA_CONSTANTS.map(title => {
-    return DNAParams?.find(elem => {
-      return elem.trait_type === title
-    })
-  })
+  const genesValues = [
+    nft.data.kryptomon!.genes.attack,
+    nft.data.kryptomon!.genes.defense,
+    nft.data.kryptomon!.genes.speed,
+    nft.data.kryptomon!.genes.ego,
+    nft.data.kryptomon!.genes.healthPoints,
+    nft.data.kryptomon!.genes.constitution,
+    nft.data.kryptomon!.genes.affections,
+    nft.data.kryptomon!.genes.crazyness,
+    nft.data.kryptomon!.genes.instinct,
+    nft.data.kryptomon!.genes.hunger,
+    nft.data.kryptomon!.genes.laziness,
+    nft.data.kryptomon!.genes.brave,
+    nft.data.kryptomon!.genes.smart
+  ]
 
-  const DNALabels = sortedDNAParams?.map(elem => {
-    return elem?.trait_type
-  })
   const DNAValues = isV2
     ? genesV2Values
-    : sortedDNAParams?.map(elem => {
-        return elem?.value
-      })
+    : genesValues
 
   const DNAGeneration = nft.data.kryptomon?.genes.generation
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable
 
   const data = {
-    labels: DNALabels,
+    labels: DNA_CONSTANTS,
     datasets: [
       {
         data: DNAValues,
@@ -52,8 +58,8 @@ const DNAChart = (props: Props) => {
         borderRadius: 5,
         width: 678,
         barPercentage: 0.65,
-        categoryPercentage: 0.65,
-        fill: 10
+        categoryPercentage: 0.5,
+        fill: 10,
       }
     ]
   }
@@ -87,7 +93,7 @@ const DNAChart = (props: Props) => {
           maxRotation: -90,
           minRotation: -90,
           padding: -10,
-          labelOffset: 43,
+          labelOffset: 25,
           color: '#676370',
           align: 'start',
           font: {
