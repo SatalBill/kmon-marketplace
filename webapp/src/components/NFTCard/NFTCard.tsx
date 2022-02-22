@@ -145,7 +145,7 @@ const NFTCard = (props: Props) => {
           {
             priceInWei && (
               < p className="product-description-left-item">
-                Breed price: {utils.formatEther(priceInWei)} KMON
+                Breed: {parseInt(utils.formatEther(priceInWei))} KMON
               </p>
             )
           }

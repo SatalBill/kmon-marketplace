@@ -86,7 +86,7 @@ export function calcMutationFactor(myNFT: NFT | null, selectedNFT: NFT | null) {
     const selectedGen = selectedNFT.data.kryptomon?.genes.generation
     if (myGen && selectedGen) {
       const gen = Math.min(Number(myGen), Number(selectedGen))
-      return 2.0 / (1 + Math.pow(2.78, -0.033 * gen)) - 1
+      return (2.0 / (1 + Math.pow(2.78, -0.033 * gen)) - 1) * 100;
     }
     return null
   }
