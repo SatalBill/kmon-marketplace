@@ -9,7 +9,7 @@ import './Fee.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
 
 const Fee = (props: Props) => {
-  const { myNFT, selectedNFT, isBreeding, breedingPrice, selectedBreedingOrder, onBreed, onCancel } = props
+  const { myNFT, selectedNFT, isBreeding, breedingPrice, selectedBreedingOrder, isCanceling, onBreed, onCancel } = props
   const [totalBreedingPrice, setTotalBreedingPrice] = useState<string | null>(null)
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const Fee = (props: Props) => {
           Total Cost: {totalBreedingPrice ? fromWei(totalBreedingPrice, 'ether') : ''} KMON
         </div>
         <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>BREED</Button>
-        <Button onClick={onCancel}>CANCEL</Button>
+        <Button loading={isCanceling} disabled={isCanceling} onClick={onCancel}>CANCEL</Button>
       </div>
       <div className="selected-kryptomon">
         <Radar data={selectedNFTData} options={selectedNFTOptions}/>

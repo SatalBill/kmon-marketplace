@@ -5,12 +5,16 @@ import {
   BreedRequestAction,
   breedSuccess,
   BREED_REQUEST,
+  cancelBreedFailure,
+  CancelBreedRequestAction,
+  cancelBreedSuccess,
+  CANCEL_BREED_REQUEST,
   simulateBreedingFailure,
   SimulateBreedingRequestAction,
   simulateBreedingSuccess,
   SIMULATE_BREEDING_REQUEST,
 } from "./actions"
-import { breed, simulateBreeding } from "./utils"
+import { breed, cancelBreed, simulateBreeding } from "./utils"
 import { push } from "connected-react-router"
 import { locations } from "../routing/locations"
 import { GenesV2 } from "./types"
@@ -18,6 +22,7 @@ import { GenesV2 } from "./types"
 export function* breedSaga() {
   yield takeEvery(SIMULATE_BREEDING_REQUEST, handleSimulateBreeding)
   yield takeEvery(BREED_REQUEST, handleBreedRequest)
+  yield takeEvery(CANCEL_BREED_REQUEST, handleCancelBreedRequest)
 }
 
 function* handleSimulateBreeding(action: SimulateBreedingRequestAction) {
@@ -42,5 +47,18 @@ function* handleBreedRequest(action: BreedRequestAction) {
   } catch (error) {
     // @ts-ignore
     yield put(breedFailure(femaleTokenId, maleTokenId, error.message))
+  }
+}
+
+function* handleCancelBreedRequest(action: CancelBreedRequestAction) {
+  const { contractAddress, tokenId } = action.payload
+
+  try {
+    yield call(cancelBreed, tokenId)
+    yield put(cancelBreedSuccess())
+    yield put(push(locations.nft(contractAddress, tokenId)))
+  } catch (error) {
+    // @ts-ignore
+    yield put(cancelBreedFailure(error.message))
   }
 }

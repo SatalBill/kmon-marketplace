@@ -12,6 +12,12 @@ import {
   BREED_FAILURE,
   BREED_REQUEST,
   BREED_SUCCESS,
+  CancelBreedFailureAction,
+  CancelBreedRequestAction,
+  CancelBreedSuccessAction,
+  CANCEL_BREED_FAILURE,
+  CANCEL_BREED_REQUEST,
+  CANCEL_BREED_SUCCESS,
   ResetNFTForBreedingRequestAction,
   ResetSelectedNFTForBreedingRequestAction,
   RESET_NFT_FOR_BREEDING_REQUEST,
@@ -60,6 +66,9 @@ type NFTReducerAction =
   | BreedRequestAction
   | BreedSuccessAction
   | BreedFailureAction
+  | CancelBreedRequestAction
+  | CancelBreedSuccessAction
+  | CancelBreedFailureAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -68,7 +77,8 @@ export function breedReducer(
   switch (action.type) {
     case FETCH_NFT_REQUEST:
     case SIMULATE_BREEDING_REQUEST:
-    case BREED_REQUEST: {
+    case BREED_REQUEST:
+    case CANCEL_BREED_REQUEST: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
@@ -76,7 +86,8 @@ export function breedReducer(
     }
     case FETCH_NFT_FAILURE:
     case SIMULATE_BREEDING_FAILURE:
-    case BREED_FAILURE: {
+    case BREED_FAILURE:
+    case CANCEL_BREED_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
@@ -133,11 +144,13 @@ export function breedReducer(
         error: null
       }
     case BREED_SUCCESS:
+    case CANCEL_BREED_SUCCESS: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
         error: null
       }
+    }
     default:
       return state
   }

@@ -2,6 +2,8 @@ import { Dispatch } from 'redux'
 import {
   breedRequest,
   BreedRequestAction,
+  cancelBreedRequest,
+  CancelBreedRequestAction,
   simulateBreedingRequest,
   SimulateBreedingRequestAction
 } from '../../../modules/breed/actions'
@@ -23,14 +25,17 @@ export type Props = {
   breedingPrice: string | null
   authorizations: Authorization[]
   wallet: Wallet | null
+  isCanceling: boolean
   onClose: () => void
   onSimulateBreeding: typeof simulateBreedingRequest
   onBreed: typeof breedRequest
+  onCancelBreed: typeof cancelBreedRequest
 }
 
-export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breedingPrice' | 'authorizations'>
-export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed'>
+export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breedingPrice' | 'authorizations' | 'isCanceling'>
+export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed' | 'onCancelBreed'>
 export type MapDispatch = Dispatch<
   SimulateBreedingRequestAction |
-  BreedRequestAction
+  BreedRequestAction |
+  CancelBreedRequestAction
 >

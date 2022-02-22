@@ -14,7 +14,24 @@ import { hasAuthorization } from '@kmon/dapps/dist/modules/authorization/utils'
 import { AuthorizationModal } from '../../AuthorizationModal'
 
 const BreedingModal = (props: Props) => {
-  const { myNFT, selectedNFT, myBreedingOrder, selectedBreedingOrder, open, simulatedGenes, isBreeding, mutationFactor, breedingPrice, onClose, onSimulateBreeding, onBreed, authorizations, wallet } = props
+  const {
+    myNFT,
+    selectedNFT,
+    myBreedingOrder,
+    selectedBreedingOrder,
+    open,
+    simulatedGenes,
+    isBreeding,
+    mutationFactor,
+    breedingPrice,
+    authorizations,
+    wallet,
+    isCanceling,
+    onClose,
+    onSimulateBreeding,
+    onBreed,
+    onCancelBreed
+  } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
   const [maleTokenId, setMaleTokenId] = useState<string | null>(null)
@@ -70,6 +87,12 @@ const BreedingModal = (props: Props) => {
     }
   }
 
+  const handleCancel = () => {
+    if (myNFT) {
+      onCancelBreed(myNFT.contractAddress, myNFT.tokenId)
+    }
+  }
+
   useEffect(() => {
     if (myNFT && selectedNFT) {
       simulate()
@@ -98,7 +121,18 @@ const BreedingModal = (props: Props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              {myNFT && selectedNFT && <Fee myNFT={myNFT} selectedNFT={selectedNFT} onBreed={handleSubmit} onCancel={() => onClose()} isBreeding={isBreeding} breedingPrice={breedingPrice} selectedBreedingOrder={selectedBreedingOrder} />}
+              {myNFT && selectedNFT && (
+                <Fee
+                  myNFT={myNFT}
+                  selectedNFT={selectedNFT}
+                  onBreed={handleSubmit}
+                  onCancel={handleCancel}
+                  isBreeding={isBreeding}
+                  breedingPrice={breedingPrice}
+                  selectedBreedingOrder={selectedBreedingOrder}
+                  isCanceling={isCanceling}
+                />
+              )}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

@@ -7,6 +7,7 @@ export type Props = {
   isBreeding: boolean
   breedingPrice: string | null
   selectedBreedingOrder: BreedingOrder | null
+  isCanceling: boolean
   onBreed: () => void
   onCancel: () => void
 }
