@@ -16,6 +16,8 @@ import { uiSaga } from './ui/sagas'
 import { walletSaga } from './wallet/sagas'
 import { itemSaga } from './item/sagas'
 import { subgraphSaga } from './subgraph/sagas'
+import { breedSaga } from './breed/sagas'
+import { breedingOrderSaga } from './breedingOrder/sagas'
 
 const analyticsSaga = createAnalyticsSaga()
 // const profileSaga = createProfileSaga({
@@ -41,5 +43,7 @@ export function* rootSaga() {
     walletSaga(),
     itemSaga(),
     subgraphSaga(),
+    breedSaga(),
+    breedingOrderSaga()
   ])
 }

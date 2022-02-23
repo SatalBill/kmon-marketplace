@@ -1,16 +1,24 @@
 .details-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
   flex-direction: row;
   /* width: calc(100% - 272px); */
   width: 100%;
 }
 
+.details-container .button {
+  margin-left: 15px!important;
+}
+
 @media (max-width: 768px) {
   .details-container {
     margin: 16px 0;
     flex-direction: column;
+  }
+
+  .details-container .button {
+    margin-left: 0px!important;
   }
 }
 .profile-container {

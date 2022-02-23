@@ -35,7 +35,8 @@
     "my_assets": "我的资产",
     "my_bids": "我的出价",
     "activity": "活动",
-    "lootboxes": "战利品箱"
+    "lootboxes": "战利品箱",
+    "breeding_center": ""
   },
   "menu": {
     "all": "所有资产",
@@ -126,6 +127,8 @@
     "cancel_sale": "删除列表",
     "buy": "购买",
     "sell": "出售",
+    "breed": "",
+    "list_for_breeding": "",
     "see_listing": "查看清单",
     "bid": "出价",
     "update": "更新价格",

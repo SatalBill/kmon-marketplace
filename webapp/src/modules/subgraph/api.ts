@@ -1,5 +1,5 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
-import { BlockNumberType } from './types';
+import { BlockNumberType, BreedingFeeType } from './types';
 
 const API_URL = process.env.REACT_APP_SUBGRAPH_URL as string
 
@@ -27,6 +27,20 @@ class SubgraphAPI {
 
     return client.query<BlockNumberType>({
       query,
+    })
+  }
+
+  getBredingFee = async () => {
+    const query = gql`
+      {
+        breedingCentres {
+            breedingFee
+        }
+      }
+    `
+
+    return client.query<BreedingFeeType>({
+      query
     })
   }
 }

@@ -6,6 +6,7 @@ import { Order } from '../order/types'
 import { Account } from '../account/types'
 import { getNFTName } from './utils'
 import { NFT, NFTSortBy, NFTsFetchOptions, NFTsFetchParams } from './types'
+import { BreedingOrder } from '../breedingOrder/types'
 
 // Fetch NFTs
 
@@ -32,6 +33,7 @@ export const fetchNFTsSuccess = (
   nfts: NFT[],
   accounts: Account[],
   orders: Order[],
+  breedingOrders: BreedingOrder[],
   count: number,
   timestamp: number
 ) =>
@@ -40,6 +42,7 @@ export const fetchNFTsSuccess = (
     nfts,
     accounts,
     orders,
+    breedingOrders,
     count,
     timestamp
   })
@@ -61,8 +64,8 @@ export const FETCH_NFT_FAILURE = '[Failure] Fetch NFT'
 
 export const fetchNFTRequest = (contractAddress: string, tokenId: string) =>
   action(FETCH_NFT_REQUEST, { contractAddress, tokenId })
-export const fetchNFTSuccess = (nft: NFT, order?: Order) =>
-  action(FETCH_NFT_SUCCESS, { nft, order })
+export const fetchNFTSuccess = (nft: NFT, order?: Order, breedingOrder?: BreedingOrder) =>
+  action(FETCH_NFT_SUCCESS, { nft, order, breedingOrder })
 export const fetchNFTFailure = (
   contractAddress: string,
   tokenId: string,

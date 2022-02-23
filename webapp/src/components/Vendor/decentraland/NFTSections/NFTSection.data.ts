@@ -25,5 +25,5 @@ export const SKIN_TYPES = [
 
 export const SEXES = ['Male', 'Female']
 export const PRICE_TOKENS = ['BNB', 'KMON']
-export const STATUSES = ['Egg', 'Hatched']
+export const STATUSES = ['Egg', 'Hatched', 'Junior']
 export const UNFREEZABLE = ['Yes', 'No']

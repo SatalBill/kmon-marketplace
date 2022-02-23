@@ -6,15 +6,22 @@ import {
   GetBlockNumberFailureAction,
   GetBlockNumberRequestAction,
   GetBlockNumberSuccessAction,
+  GetBreedingFeeFailureAction,
+  GetBreedingFeeRequestAction,
+  GetBreedingFeeSuccessAction,
   GET_BLOCK_NUMBER_FAILURE,
   GET_BLOCK_NUMBER_REQUEST,
-  GET_BLOCK_NUMBER_SUCCESS
+  GET_BLOCK_NUMBER_SUCCESS,
+  GET_BREEDING_FEE_FAILURE,
+  GET_BREEDING_FEE_REQUEST,
+  GET_BREEDING_FEE_SUCCESS
 } from './actions'
 
 export type SubgraphState = {
   loading: LoadingState
   data: {
-    blockNumber?: number
+    blockNumber?: number,
+    breedingFee: string | null
   }
   error: string | null
 }
@@ -22,7 +29,8 @@ export type SubgraphState = {
 const INITIAL_STATE = {
   loading: [],
   data: {
-    blockNumber: undefined
+    blockNumber: undefined,
+    breedingFee: null
   },
   error: null
 }
@@ -31,6 +39,9 @@ type SubgraphReducerAction =
   | GetBlockNumberRequestAction
   | GetBlockNumberSuccessAction
   | GetBlockNumberFailureAction
+  | GetBreedingFeeRequestAction
+  | GetBreedingFeeSuccessAction
+  | GetBreedingFeeFailureAction
 
 export function subgraphReducer(
   state: SubgraphState = INITIAL_STATE,
@@ -38,11 +49,13 @@ export function subgraphReducer(
 ): SubgraphState {
   switch (action.type) {
     case GET_BLOCK_NUMBER_REQUEST:
+    case GET_BREEDING_FEE_REQUEST: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action)
       }
-    case GET_BLOCK_NUMBER_SUCCESS:
+    }
+    case GET_BLOCK_NUMBER_SUCCESS: {
       return {
         ...state,
         data: {
@@ -52,12 +65,26 @@ export function subgraphReducer(
         loading: loadingReducer(state.loading, action),
         error: null
       }
+    }
+    case GET_BREEDING_FEE_SUCCESS: {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          breedingFee: action.payload.breedingFee
+        },
+        loading: loadingReducer(state.loading, action),
+        error: null
+      }
+    }
     case GET_BLOCK_NUMBER_FAILURE:
+    case GET_BREEDING_FEE_FAILURE: {
       return {
         ...state,
         loading: loadingReducer(state.loading, action),
         error: action.payload.error
       }
+    }
     default:
       return state
   }

@@ -71,7 +71,8 @@ const NFTSections = (props: Props) => {
     price = [],
     priceToken = [],
     kryptomonStatus = [],
-    unfreezable = []
+    unfreezable = [],
+    owner = undefined
   } = props
   const [state, setState] = useState({
     elemTypes,
@@ -119,7 +120,8 @@ const NFTSections = (props: Props) => {
     price,
     priceToken,
     kryptomonStatus,
-    unfreezable
+    unfreezable,
+    owner
   })
 
   useEffect(() => {
@@ -197,7 +199,8 @@ const NFTSections = (props: Props) => {
               price: [],
               priceToken: [],
               kryptomonStatus: [],
-              unfreezable: []
+              unfreezable: [],
+              owner: undefined
             })
           }}
         >

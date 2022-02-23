@@ -24,3 +24,13 @@ export function getMetaTransactionFailureToast() {
     closable: true
   }
 }
+
+export function getBreedFailureToast(message: string) {
+  return {
+    type: ToastType.ERROR,
+    title: 'Breed',
+    body: message,
+    timeout: 6000,
+    closable: true
+  }
+}

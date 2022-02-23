@@ -23,6 +23,7 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
+import { DNARadarChart } from '../DNARadarChart'
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order } = props
@@ -148,68 +149,53 @@ const KryptomonDetail = (props: Props) => {
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
-        <NFTDetailCard
-          elementType={elementType}
-          nft={nft}
-          isV2={isV2}
-          toogleV2={toogleV2Change}
-        />
         <Column>
-          <Details nft={nft} order={order} />
-          <TitleBlock title={t('nft_page.dna_chart.title')}>
-            <DNAChart nft={nft} isV2={isV2} />
-          </TitleBlock>
+          <Row className="Row-space-between">
+            <NFTDetailCard
+              elementType={elementType}
+              nft={nft}
+              isV2={isV2}
+              toogleV2={toogleV2Change}
+            />
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.elements.title')}>
+              <Elements
+                elementTypes={elementTypes}
+                maxElementType={maxElementType}
+                nft={nft}
+              />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.description')}>
+              <DescriptionBlock nft={nft} />
+            </TitleBlock>
+            {/* <TitleBlock title={t('nft_page.trade_history.title')}>
+              <TradeHistory nft={nft} />
+            </TitleBlock> */}
+          </Row>
         </Column>
-      </Row>
-      <Row className="Row-space-between">
-        <TitleBlock title={t('nft_page.elements.title')}>
-          <Elements
-            elementTypes={elementTypes}
-            maxElementType={maxElementType}
-            nft={nft}
-          />
-        </TitleBlock>
-        <TitleBlock title={t('nft_page.metadata')}>
-          <ElemData nft={nft} isV2={isV2} />
-        </TitleBlock>
-        {/* <TitleBlock
-          title={t('nft_page.price_chart.title')}
-          right={
-            <Dropdown
-              text={currentPriceFilter}
-              className="ui dropdown price-dropdown"
-            >
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={onChangeCurrentPriceFilter}
-                  text={PRICE_DROPDOWN_VALUES.MONTH}
-                />
-                <Dropdown.Item
-                  onClick={onChangeCurrentPriceFilter}
-                  text={PRICE_DROPDOWN_VALUES.WEEK}
-                />
-                <Dropdown.Item
-                  onClick={onChangeCurrentPriceFilter}
-                  text={PRICE_DROPDOWN_VALUES.DAY}
-                />
-              </Dropdown.Menu>
-            </Dropdown>
-          }
-        >
-          <PriceChart
-            nft={nft}
-            values={PRICE_CHART[currentPriceFilter].values}
-            labels={PRICE_CHART[currentPriceFilter].labels}
-          />
-        </TitleBlock> */}
-      </Row>
-      <Row className="Row-space-between">
-        <TitleBlock title={t('nft_page.description')}>
-          <DescriptionBlock nft={nft} />
-        </TitleBlock>
-        {/* <TitleBlock title={t('nft_page.trade_history.title')}>
-          <TradeHistory nft={nft} />
-        </TitleBlock> */}
+        <Column>
+          <Row className="Row-space-between">
+            <Details nft={nft} order={order} />
+          </Row>
+          {/* <Row className="Row-space-between">
+            <TitleBlock title="DNA Radar Chart">
+              <DNARadarChart nft={nft} isV2={isV2} />
+            </TitleBlock>
+          </Row> */}
+          <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.dna_chart.title')}>
+              <DNAChart nft={nft} isV2={isV2} />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.metadata')}>
+              <ElemData nft={nft} isV2={isV2} />
+            </TitleBlock>
+          </Row>
+        </Column>
       </Row>
     </Container>
   )

@@ -14,3 +14,18 @@ export const getBlockNumberFailure = (error: string) =>
 export type GetBlockNumberRequestAction = ReturnType<typeof getBlockNumberRequest>
 export type GetBlockNumberSuccessAction = ReturnType<typeof getBlockNumberSuccess>
 export type GetBlockNumberFailureAction = ReturnType<typeof getBlockNumberFailure>
+
+export const GET_BREEDING_FEE_REQUEST = '[Request] Get Breeding Fee'
+export const GET_BREEDING_FEE_SUCCESS = '[Success] Get Breeding Fee'
+export const GET_BREEDING_FEE_FAILURE = '[Failure] Get Breeding Fee'
+
+export const getBreedingFeeRequest = () =>
+  action(GET_BREEDING_FEE_REQUEST)
+export const getBreedingFeeSuccess = (breedingFee: string) =>
+  action(GET_BREEDING_FEE_SUCCESS, { breedingFee })
+export const getBreedingFeeFailure = (error: string) =>
+  action(GET_BREEDING_FEE_FAILURE, { error })
+
+export type GetBreedingFeeRequestAction = ReturnType<typeof getBreedingFeeRequest>
+export type GetBreedingFeeSuccessAction = ReturnType<typeof getBreedingFeeSuccess>
+export type GetBreedingFeeFailureAction = ReturnType<typeof getBreedingFeeFailure>

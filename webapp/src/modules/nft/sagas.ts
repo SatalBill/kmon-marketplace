@@ -44,6 +44,7 @@ function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
       nfts,
       accounts,
       orders,
+      breedingOrders,
       count
     ]: AwaitFn<typeof nftService.fetch> = yield call(() => {
       // TODO: This `as any` is here because Typescript joins (&) filter types instead of adding them as an or (|)
@@ -55,6 +56,7 @@ function* handleFetchNFTsRequest(action: FetchNFTsRequestAction) {
         nfts as NFT[],
         accounts,
         orders,
+        breedingOrders,
         count,
         timestamp
       )
@@ -78,11 +80,11 @@ function* handleFetchNFTRequest(action: FetchNFTRequestAction) {
 
     const { nftService } = VendorFactory.build(contract.vendor)
 
-    const [nft, order]: AwaitFn<typeof nftService.fetchOne> = yield call(() =>
+    const [nft, order, breedingOrder]: AwaitFn<typeof nftService.fetchOne> = yield call(() =>
       nftService.fetchOne(contractAddress, tokenId)
     )
 
-    yield put(fetchNFTSuccess(nft as NFT, order))
+    yield put(fetchNFTSuccess(nft as NFT, order, breedingOrder))
   } catch (error) {
     console.log(error)
 

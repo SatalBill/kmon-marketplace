@@ -4,6 +4,7 @@ import {
   WearableCategory,
   NFT as BaseNFT
 } from '@kmon/schemas'
+import { BreedingOrder } from '../../../breedingOrder/types'
 import { NFT } from '../../../nft/types'
 import { Order } from '../../../order/types'
 import { VendorName } from '../../types'
@@ -26,6 +27,7 @@ export type NFTsFetchFilters = {
 export type NFTResult = {
   nft: Omit<NFT<VendorName.KRYPTOMON>, 'vendor'>
   order: Order | null
+  breedingOrder: BreedingOrder | null
 }
 
 export type NFTResponse = {
