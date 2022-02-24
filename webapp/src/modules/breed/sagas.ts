@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects"
+import { push, replace } from "connected-react-router"
 
 import {
   breedFailure,
@@ -15,9 +16,10 @@ import {
   SIMULATE_BREEDING_REQUEST,
 } from "./actions"
 import { breed, cancelBreed, simulateBreeding } from "./utils"
-import { push } from "connected-react-router"
 import { locations } from "../routing/locations"
 import { GenesV2 } from "./types"
+import { showBreedPriceModal } from "../ui/actions"
+import { fetchNFTRequest } from "../nft/actions"
 
 export function* breedSaga() {
   yield takeEvery(SIMULATE_BREEDING_REQUEST, handleSimulateBreeding)
@@ -43,7 +45,7 @@ function* handleBreedRequest(action: BreedRequestAction) {
   try {
     yield call(breed, femaleTokenId, maleTokenId)
     yield put(breedSuccess())
-    yield put(push(locations.currentAccount()))
+    yield put(replace(locations.currentAccount()))
   } catch (error) {
     // @ts-ignore
     yield put(breedFailure(femaleTokenId, maleTokenId, error.message))
@@ -56,7 +58,8 @@ function* handleCancelBreedRequest(action: CancelBreedRequestAction) {
   try {
     yield call(cancelBreed, tokenId)
     yield put(cancelBreedSuccess())
-    yield put(push(locations.nft(contractAddress, tokenId)))
+    yield put(showBreedPriceModal(false))
+    yield put(fetchNFTRequest(contractAddress, tokenId))
   } catch (error) {
     // @ts-ignore
     yield put(cancelBreedFailure(error.message))

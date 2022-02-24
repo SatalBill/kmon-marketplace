@@ -14,16 +14,23 @@ import {
   addToBreedigCentreRequest,
   ADD_TO_BREEDING_CENTRE_REQUEST
 } from '../../../modules/breedingOrder/actions'
-import { getLoading } from '../../../modules/breed/selectors'
+import { getLoading as getLoadingAddToBreeding } from '../../../modules/breedingOrder/selectors'
+import { getLoading as getLoadingCancelBreed } from '../../../modules/breed/selectors'
 import { replace } from 'connected-react-router'
-import { resetNFTForBreedingRequest } from '../../../modules/breed/actions'
+import { cancelBreedRequest, CANCEL_BREED_REQUEST, resetNFTForBreedingRequest } from '../../../modules/breed/actions'
+import { getCurrentNFTBreedingOrder } from '../../../modules/breedingOrder/selectors'
+import { getShowBreedPriceModal } from '../../../modules/ui/nft/breed/selectors'
+import { showBreedPriceModal } from '../../../modules/ui/actions'
 
 const mapState = (state: RootState): MapStateProps => ({
   wallet: getWallet(state),
   authorizations: getAuthorizations(state),
   order: getCurrentOrder(state),
   bids: getNFTBids(state),
-  isAddingToBreedingCentre: isLoadingType(getLoading(state), ADD_TO_BREEDING_CENTRE_REQUEST)
+  isAddingToBreedingCentre: isLoadingType(getLoadingAddToBreeding(state), ADD_TO_BREEDING_CENTRE_REQUEST),
+  currentNFTBreedingOrder: getCurrentNFTBreedingOrder(state),
+  isCancelingBreed: isLoadingType(getLoadingCancelBreed(state), CANCEL_BREED_REQUEST),
+  showBreedPriceModal: getShowBreedPriceModal(state)
 })
 
 const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
@@ -31,6 +38,8 @@ const mapDispatch = (dispatch: MapDispatch): MapDispatchProps => ({
     dispatch(addToBreedigCentreRequest(contractAddress, tokenId, price)),
   onNavigate: (path) => dispatch(replace(path)),
   onResetMyNFT: () => dispatch(resetNFTForBreedingRequest()),
+  onCancelListing: (contractAddress, tokenId) => dispatch(cancelBreedRequest(contractAddress, tokenId)),
+  onShowBreedPriceModal: (show: boolean) => dispatch(showBreedPriceModal(show))
 })
 
 export default connect(mapState, mapDispatch)(Actions)
