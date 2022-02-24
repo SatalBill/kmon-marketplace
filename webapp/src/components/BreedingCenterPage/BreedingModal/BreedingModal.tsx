@@ -26,11 +26,9 @@ const BreedingModal = (props: Props) => {
     breedingPrice,
     authorizations,
     wallet,
-    isCanceling,
     onClose,
     onSimulateBreeding,
-    onBreed,
-    onCancelBreed
+    onBreed
   } = props
   const [genes, setGenes] = useState<number[]>([])
   const [femaleTokenId, setFemaleTokenId] = useState<string | null>(null)
@@ -87,12 +85,6 @@ const BreedingModal = (props: Props) => {
     }
   }
 
-  const handleCancel = () => {
-    if (myNFT) {
-      onCancelBreed(myNFT.contractAddress, myNFT.tokenId)
-    }
-  }
-
   useEffect(() => {
     if (myNFT && selectedNFT) {
       simulate()
@@ -126,11 +118,10 @@ const BreedingModal = (props: Props) => {
                   myNFT={myNFT}
                   selectedNFT={selectedNFT}
                   onBreed={handleSubmit}
-                  onCancel={handleCancel}
+                  onCancel={() => onClose()}
                   isBreeding={isBreeding}
                   breedingPrice={breedingPrice}
                   selectedBreedingOrder={selectedBreedingOrder}
-                  isCanceling={isCanceling}
                 />
               )}
             </Grid.Column>
