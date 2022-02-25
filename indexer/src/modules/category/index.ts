@@ -7,7 +7,11 @@ export function getCategory(contractAddress: string): string {
 
   if (contractAddress == addresses.KMONFT) {
     category = categories.KRYPTOMON
-  } else {
+  }
+  else if (contractAddress == addresses.KMONFTV2) {
+    category = categories.KRYPTOMON
+  }
+  else {
     log.warning('Contract address {} not being monitored', [contractAddress])
     category = contractAddress
   }
