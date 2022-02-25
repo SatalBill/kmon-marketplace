@@ -12,7 +12,6 @@ import { getSimulatedGenes, getLoading, getBreedingPrice } from '../../../module
 import { RootState } from '../../../modules/reducer'
 import {
   getData as getAuthorizations,
-  getLoading as getLoadingAuthorizations
 } from '@kmon/dapps/dist/modules/authorization/selectors'
 
 const mapState = (state: RootState): MapStateProps => {
@@ -24,7 +23,7 @@ const mapState = (state: RootState): MapStateProps => {
     simulatedGenes,
     isBreeding,
     breedingPrice,
-    authorizations: getAuthorizations(state),
+    authorizations: getAuthorizations(state)
   }
 }
 

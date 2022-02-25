@@ -80,6 +80,22 @@ export async function breed(femaleTokenId: string, maleTokenId: string) {
   console.log(txReceipt)
 }
 
+export async function cancelBreed(tokenId: string) {
+  const connectedProvider = await getConnectedProvider()
+  if (!connectedProvider) {
+    throw new Error('Provider not connected')
+  }
+
+  const kmonftV2Factory = getContract(CN.KMONFTV2, Number(getConnectedProviderChainId()))
+  const provider = await new providers.Web3Provider(connectedProvider)
+
+  const kmonftV2 = new ethers.Contract(kmonftV2Factory.address, kmonftV2Factory.abi, provider.getSigner())
+  const tx = await kmonftV2.removeFromBreedingCentre(tokenId)
+  const txReceipt = await tx.wait()
+
+  console.log(txReceipt)
+}
+
 export function calcMutationFactor(myNFT: NFT | null, selectedNFT: NFT | null) {
   if (myNFT && selectedNFT) {
     const myGen = myNFT.data.kryptomon?.genes.generation

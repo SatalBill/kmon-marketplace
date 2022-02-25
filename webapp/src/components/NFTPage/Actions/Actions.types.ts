@@ -10,7 +10,9 @@ import {
   addToBreedigCentreRequest,
   AddToBreedingCentreRequestAction,
 } from '../../../modules/breedingOrder/actions'
-import { resetNFTForBreedingRequest, ResetNFTForBreedingRequestAction } from '../../../modules/breed/actions'
+import { cancelBreedRequest, CancelBreedRequestAction, resetNFTForBreedingRequest, ResetNFTForBreedingRequestAction } from '../../../modules/breed/actions'
+import { BreedingOrder } from '../../../modules/breedingOrder/types'
+import { showBreedPriceModal, ShowBreedPriceModalAction } from '../../../modules/ui/actions'
 
 export type Props = {
   wallet: Wallet | null
@@ -19,12 +21,33 @@ export type Props = {
   order: Order | null
   bids: Bid[]
   isAddingToBreedingCentre: boolean
+  currentNFTBreedingOrder: BreedingOrder | null
+  isCancelingBreed: boolean
+  showBreedPriceModal: boolean
   onAddToBreedingCentre: typeof addToBreedigCentreRequest
   onResetMyNFT: typeof resetNFTForBreedingRequest
   onNavigate: (path: string) => void
+  onCancelListing: typeof cancelBreedRequest
+  onShowBreedPriceModal: typeof showBreedPriceModal
 }
 
-export type MapStateProps = Pick<Props, 'wallet' | 'authorizations' | 'order' | 'bids' | 'isAddingToBreedingCentre'>
-export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre' | 'onNavigate' | 'onResetMyNFT'>
-export type MapDispatch = Dispatch<AddToBreedingCentreRequestAction | CallHistoryMethodAction | ResetNFTForBreedingRequestAction>
+export type MapStateProps = Pick<
+  Props,
+  'wallet' |
+  'authorizations' |
+  'order' |
+  'bids' |
+  'isAddingToBreedingCentre' |
+  'currentNFTBreedingOrder' |
+  'isCancelingBreed' |
+  'showBreedPriceModal'
+>
+export type MapDispatchProps = Pick<Props, 'onAddToBreedingCentre' | 'onNavigate' | 'onResetMyNFT' | 'onCancelListing' | 'onShowBreedPriceModal'>
+export type MapDispatch = Dispatch<
+  AddToBreedingCentreRequestAction |
+  CallHistoryMethodAction |
+  ResetNFTForBreedingRequestAction |
+  CancelBreedRequestAction |
+  ShowBreedPriceModalAction
+>
 export type OwnProps = Pick<Props, 'nft'>

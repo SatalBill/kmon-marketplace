@@ -5,6 +5,7 @@ import { BreedingOrder } from './types'
 import { BreedingOrderState } from './reducer'
 import { getActiveBreedingOrder } from './utils'
 import { getMyNFT, getSelectedNFT } from '../breed/selectors'
+import { getCurrentNFT } from '../nft/selectors'
 
 export const getState = (state: RootState) => state.breedingOrder
 export const getData = (state: RootState) => getState(state).data
@@ -27,6 +28,16 @@ export const getSelectedBreedingOrder = createSelector<
   BreedingOrder | null
 >(
   state => getSelectedNFT(state),
+  state => getData(state),
+  (nft, breedingOrders) => getActiveBreedingOrder(nft, breedingOrders)
+)
+export const getCurrentNFTBreedingOrder = createSelector<
+  RootState,
+  NFT | null,
+  BreedingOrderState["data"],
+  BreedingOrder | null
+>(
+  state => getCurrentNFT(state),
   state => getData(state),
   (nft, breedingOrders) => getActiveBreedingOrder(nft, breedingOrders)
 )

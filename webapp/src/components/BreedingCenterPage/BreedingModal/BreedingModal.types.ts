@@ -2,6 +2,8 @@ import { Dispatch } from 'redux'
 import {
   breedRequest,
   BreedRequestAction,
+  cancelBreedRequest,
+  CancelBreedRequestAction,
   simulateBreedingRequest,
   SimulateBreedingRequestAction
 } from '../../../modules/breed/actions'
@@ -32,5 +34,6 @@ export type MapStateProps = Pick<Props, 'simulatedGenes' | 'isBreeding' | 'breed
 export type MapDispatchProps = Pick<Props, 'onSimulateBreeding' | 'onBreed'>
 export type MapDispatch = Dispatch<
   SimulateBreedingRequestAction |
-  BreedRequestAction
+  BreedRequestAction |
+  CancelBreedRequestAction
 >

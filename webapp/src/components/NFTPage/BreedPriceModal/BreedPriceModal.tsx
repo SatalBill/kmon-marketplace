@@ -13,14 +13,29 @@ import { getContractNames } from "../../../modules/vendor"
 import { AuthorizationModal } from "../../AuthorizationModal"
 import { CoinField } from "../../CoinField"
 import { Props } from "./BreedPriceModal.types"
+import "./BreedPriceModal.css"
 
 const BreedPriceModal = (props: Props) => {
-  const { wallet, authorizations, show, nft, isOwner, isLoading, onSubmitBreedPrice, onCancel } = props
+  const {
+    wallet,
+    authorizations,
+    show,
+    nft,
+    isOwner,
+    isAddingToBreedingCentre,
+    currentNFTBreedingOrder,
+    isCancelingBreed,
+    onSubmitBreedPrice,
+    onCancel,
+    onCancelListing
+  } = props
   const [price, setPrice] = useState('')
   const [showAuthorizationModal, setShowAuthorizationModal] = useState(false)
 
   const handleExecuteBreed = useCallback(() => {
-    onSubmitBreedPrice(price)
+    if (price) {
+      onSubmitBreedPrice(price)
+    }
   }, [price, onSubmitBreedPrice])
 
   if (!wallet) {
@@ -52,61 +67,74 @@ const BreedPriceModal = (props: Props) => {
     }
   }
 
+  const handleCancelListing = () => {
+    onCancelListing()
+  }
+
   const handleClose = () => setShowAuthorizationModal(false)
 
   return (
     <>
-      <Modal size="small" open={show} className="ConfirmPriceModal">
+      <Modal size="small" open={show} className="BreedPriceModal">
         <Modal.Header>{t('nft_page.breed_price_modal.title')}</Modal.Header>
-        <Form onSubmit={handleSubmit}>
-          <Modal.Content>
-            <T
-              id="nft_page.breed_price_modal.line_one"
-              values={{
-                name: <b>{getNFTName(nft)}</b>,
-                amount: 1000
-              }}
-            />
-            <br />
-            <T id="nft_page.breed_price_modal.line_two" />
-            <CoinField
-              className="mana-input"
-              label={t('nft_page.breed_price_modal.price')}
-              coin={Coin.KMON}
-              placeholder={toCoin(1000)}
-              value={price}
-              onChange={(_event, props) => {
-                const newPrice = fromCoin(props.value, Coin.KMON)
-                setPrice(toCoin(newPrice))
-              }}
-            />
-          </Modal.Content>
-          <Modal.Actions>
-            <div
-              className="ui button"
-              onClick={() => {
-                setPrice('')
-                onCancel()
-              }}
-            >
-              {t('global.cancel')}
-            </div>
+        <Modal.Content>
+          <T
+            id="nft_page.breed_price_modal.line_one"
+            values={{
+              name: <b>{getNFTName(nft)}</b>,
+              amount: 1000
+            }}
+          />
+          <br />
+          <T id="nft_page.breed_price_modal.line_two" />
+          <CoinField
+            className="mana-input"
+            label={t('nft_page.breed_price_modal.price')}
+            coin={Coin.KMON}
+            placeholder={toCoin(1000)}
+            value={price}
+            onChange={(_event, props) => {
+              const newPrice = fromCoin(props.value, Coin.KMON)
+              setPrice(toCoin(newPrice))
+            }}
+          />
+        </Modal.Content>
+        <Modal.Actions>
+          <div
+            className="ui button"
+            onClick={() => {
+              setPrice('')
+              onCancel()
+            }}
+          >
+            {t('global.cancel')}
+          </div>
+          {currentNFTBreedingOrder && (
             <Button
-              type="submit"
               primary
-              disabled={isDisabled || isLoading}
-              loading={isLoading}
+              disabled={!nft || !isOwner}
+              loading={isCancelingBreed}
+              className="cancel_listing_button"
+              onClick={handleCancelListing}
             >
-              {t('global.proceed')}
+              {t('nft_page.cancel_listing')}
             </Button>
-          </Modal.Actions>
-        </Form>
+          )}
+          <Button
+            primary
+            disabled={isDisabled || isAddingToBreedingCentre}
+            loading={isAddingToBreedingCentre}
+            onClick={handleSubmit}
+          >
+            {t('global.proceed')}
+          </Button>
+        </Modal.Actions>
       </Modal>
       <AuthorizationModal
         open={showAuthorizationModal}
         authorization={authorization}
         onProceed={handleExecuteBreed}
-        isLoading={isLoading}
+        isLoading={isAddingToBreedingCentre}
         onCancel={handleClose}
       />
     </>

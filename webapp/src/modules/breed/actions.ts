@@ -43,3 +43,16 @@ export const breedFailure = (femaleTokenId: string, maleTokenId: string, error: 
 export type BreedRequestAction = ReturnType<typeof breedRequest>
 export type BreedSuccessAction = ReturnType<typeof breedSuccess>
 export type BreedFailureAction = ReturnType<typeof breedFailure>
+
+export const CANCEL_BREED_REQUEST = '[Request] Cancel Breed'
+export const CANCEL_BREED_SUCCESS = '[Success] Cancel Breed'
+export const CANCEL_BREED_FAILURE = '[Failure] Cancel Breed'
+
+export const cancelBreedRequest = (contractAddress: string, tokenId: string) =>
+  action(CANCEL_BREED_REQUEST, { contractAddress, tokenId })
+export const cancelBreedSuccess = () => action(CANCEL_BREED_SUCCESS)
+export const cancelBreedFailure = (error: string) => action(CANCEL_BREED_FAILURE, { error })
+
+export type CancelBreedRequestAction = ReturnType<typeof cancelBreedRequest>
+export type CancelBreedSuccessAction = ReturnType<typeof cancelBreedSuccess>
+export type CancelBreedFailureAction = ReturnType<typeof cancelBreedFailure>
