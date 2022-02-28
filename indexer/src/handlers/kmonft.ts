@@ -567,6 +567,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   sireKryptomon.totalBreedingCount = sireKryptomon.totalBreedingCount.plus(count);
   sireKryptomon.breedingCount = sireKryptomon.breedingCount.plus(count);
   sireKryptomon.timeCanBreed = event.params._sireCanBreedNext;
+  sireKryptomon.lastTimeBred = event.block.timestamp;
 
   sireKryptomon.save();
 
@@ -575,6 +576,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   matronKryptomon.totalBreedingCount = matronKryptomon.totalBreedingCount.plus(count);
   matronKryptomon.breedingCount = matronKryptomon.breedingCount.plus(count);
   matronKryptomon.timeCanBreed = event.params._matronCanBreedNext;
+  matronKryptomon.lastTimeBred = event.block.timestamp;
 
   matronKryptomon.save();
 }
