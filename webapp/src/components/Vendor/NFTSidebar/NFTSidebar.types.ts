@@ -9,6 +9,7 @@ export type Props = {
   vendor?: string
   section: Section
   myNFT: NFT | null
+  address: string | undefined
   onBrowse: typeof browseNFTs
   pathname: string
 } & MultipleFilters
@@ -65,6 +66,7 @@ export type MapStateProps = Pick<
   | 'kryptomonStatus'
   | 'unfreezable'
   | 'myNFT'
+  | 'address'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

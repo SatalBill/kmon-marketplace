@@ -2,6 +2,7 @@ import {
   LoadingState,
   loadingReducer
 } from '@kmon/dapps/dist/modules/loading/reducer'
+import { ChangeAccountAction, CHANGE_ACCOUNT } from '@kmon/dapps/dist/modules/wallet/actions'
 import { FetchNFTFailureAction, FetchNFTRequestAction, FetchNFTSuccessAction, FETCH_NFT_FAILURE, FETCH_NFT_REQUEST, FETCH_NFT_SUCCESS } from '../nft/actions'
 
 import { NFT } from '../nft/types'
@@ -69,6 +70,7 @@ type NFTReducerAction =
   | CancelBreedRequestAction
   | CancelBreedSuccessAction
   | CancelBreedFailureAction
+  | ChangeAccountAction
 
 export function breedReducer(
   state: BreedState = INITIAL_STATE,
@@ -150,6 +152,9 @@ export function breedReducer(
         loading: loadingReducer(state.loading, action),
         error: null
       }
+    }
+    case CHANGE_ACCOUNT: {
+      return INITIAL_STATE
     }
     default:
       return state
