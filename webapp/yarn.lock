@@ -2490,6 +2490,19 @@
     semantic-ui-css "^2.4.1"
     semantic-ui-react "^0.88.0"
 
+"@kmon/ui@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@kmon/ui/-/ui-0.0.19.tgz#714c70e9723ed690a52d96c7a347a7de26c65a5c"
+  integrity sha512-PVLkzccDXSa1YyVtjPCJBidTUS7Vej0zFbs3B5LIXXe1ZaNP6RMIMPScjzNQvqRaqslek8StQdj7gXrbPaigrA==
+  dependencies:
+    "@kmon/schemas" "^0.0.17"
+    balloon-css "^0.5.0"
+    ethereum-blockies "^0.1.1"
+    parallax-js "^3.1.0"
+    react-tile-map "^0.3.2"
+    semantic-ui-css "^2.4.1"
+    semantic-ui-react "^0.88.0"
+
 "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"

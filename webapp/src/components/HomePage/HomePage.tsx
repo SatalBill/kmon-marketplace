@@ -63,34 +63,40 @@ const HomePage = (props: Props) => {
   return (
     <>
       <Navbar isFullscreen isOverlay />
-      <Hero centered={isMobile()} className="HomePageHero">
-        <Hero.Header>{t('home_page.title')}</Hero.Header>
-        <Hero.Description>{t('home_page.subtitle')}</Hero.Description>
+      <Hero centered className="HomePageHero">
+        <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
-          <div className="hero-image" />{' '}
+          <div className="hero-image" />
+          <div className="grid-top" />
+          <div className="dragons" />
         </Hero.Content>
         <Hero.Actions>
-          <Button primary onClick={handleGetStarted}>
+          <Button primary onClick={handleGetStarted} className="button-secondary">
             {t('home_page.get_started')}
           </Button>
         </Hero.Actions>
       </Hero>
-      <Page className="HomePage">
-        {views.map((view, index) => {
-          return (
-            <>
-              <Slideshow
-                key={`${view}-${index}`}
-                title={t(`home_page.${view}`)}
-                nfts={homepage[view]}
-                isLoading={homepageLoading[view]}
-                onViewAll={() => handleViewAll(sections[view])}
-              />
-            </>
-          )
-        })}
-      </Page>
-      <Footer />
+      <div className="HomePageContent">
+        <Page className="HomePage">
+          {views.map((view, index) => {
+            return (
+              <>
+                <Slideshow
+                  key={`${view}-${index}`}
+                  title={t(`home_page.${view}`)}
+                  nfts={homepage[view]}
+                  isLoading={homepageLoading[view]}
+                  onViewAll={() => handleViewAll(sections[view])}
+                />
+              </>
+            )
+          })}
+        </Page>
+        <div className="bottom-bg">
+          <div className="bottom-bg-image"></div>
+        </div>
+        <Footer className="Footer" />
+      </div>
     </>
   )
 }

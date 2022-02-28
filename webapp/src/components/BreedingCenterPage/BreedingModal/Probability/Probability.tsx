@@ -13,7 +13,7 @@ const Probability = (props: Props) => {
     'defense': { 'max': 100, 'min': 25 },
     'crazyness': { 'max': 100, 'min': 35 },
     'constitution': { 'max': 100, 'min': 35 },
-    'healthPoints': { 'max': 100, 'min': 35 },
+    'healthPoints': { 'max': 100, 'min': 25 },
     'instinct': { 'max': 100, 'min': 35 },
     'speed': { 'max': 100, 'min': 25 },
     'color': { 'max': 10000, 'min': 0 },

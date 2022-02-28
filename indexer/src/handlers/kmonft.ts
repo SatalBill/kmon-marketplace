@@ -312,6 +312,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   kryptomonV2.sireId = kryptomonV1.sireId;
   kryptomonV2.status = kryptomonV1.status;
   kryptomonV2.timeBorn = kryptomonV1.timeBorn;
+  kryptomonV2.timeHatched = kryptomonV1.timeHatched;
 
   let genes = new KryptomonGenes(idV2)
   let paramsGenes = event.params.genes
