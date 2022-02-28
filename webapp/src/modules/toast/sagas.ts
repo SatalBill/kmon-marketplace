@@ -74,11 +74,11 @@ function isUserDeniedSignature(message: string) {
 
 function* handleBreedFailure(action: BreedFailureAction) {
   const { error } = action.payload
-  if (String(error).length > 120) {
-    if (/KryptomonGameFacet: No breedings left/gi.test(String(error))) {
-      yield put(showToast(getBreedFailureToast("KryptomonGameFacet: No breedings left")))
-    } else {
-      yield put(showToast(getBreedFailureToast("Something went wrong")))
-    }
+  // @ts-ignore
+  if (error && error.message) {
+    // @ts-ignore
+    yield put(showToast(getBreedFailureToast(error.message)))
+  } else {
+    yield put(showToast(getBreedFailureToast("Something went wrong")))
   }
 }
