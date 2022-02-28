@@ -77,6 +77,9 @@ export async function breed(femaleTokenId: string, maleTokenId: string) {
   const tx = await kmonftV2.breedKryptomons(femaleTokenId, maleTokenId)
   const txReceipt = await tx.wait()
 
+  // forward to the dashboard
+  window.location.href = "https://app-git-v2migration-kryptomon.vercel.app/eggsV2";
+
   console.log(txReceipt)
 }
 
