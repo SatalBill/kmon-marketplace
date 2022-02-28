@@ -30,7 +30,7 @@ const NFTImage = (props: Props) => {
   if (isSmall) {
     // very dirty but have not time to do it properly
     if (nft.metadata.image.indexOf(".gif") > -1)
-      src = "https://kryptomon-images.ams3.digitaloceanspaces.com/images/kryptomons/png/kmon_" + nft.tokenId + "_png.png"
+      src = nft.metadata.image.split("gif").join("png");
     else
       src = nft.metadata.image;
   } else {
