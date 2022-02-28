@@ -36,7 +36,6 @@ const DNAChart = (props: Props) => {
     nft.data.kryptomon!.genes.crazyness,
     nft.data.kryptomon!.genes.instinct,
     nft.data.kryptomon!.genes.hunger,
-    nft.data.kryptomon!.genes.laziness,
     nft.data.kryptomon!.genes.brave,
     nft.data.kryptomon!.genes.smart
   ]
