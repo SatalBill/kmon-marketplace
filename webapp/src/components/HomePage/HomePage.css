@@ -34,7 +34,7 @@
   bottom: 0px;
   right: 0px;
   background-image: url(../../images/kryptomon-hero.jpg);
-  opacity: 57%;
+  opacity: 0.57;
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -2;

@@ -93,8 +93,8 @@ const BreedingModal = (props: Props) => {
 
   useEffect(() => {
     if (simulatedGenes) {
-      const [, , , , , , , , , , , , , , , , , , , , , , , , constitution, , , affections, crazyness, instinct, hunger, laziness, brave, smart, , , ,] = simulatedGenes
-      setGenes([constitution, affections, crazyness, instinct, hunger, laziness, brave, smart])
+      const [, , , , , , , , , , , , , , , , , , , attack, defense, , , , constitution, healthPoints, speed, affections, crazyness, instinct, hunger, , brave, smart, , ego, ,] = simulatedGenes
+      setGenes([attack, defense, speed, ego, healthPoints, constitution, affections, crazyness, instinct, hunger, brave, smart])
     }
   }, [simulatedGenes])
 

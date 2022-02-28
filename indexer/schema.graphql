@@ -88,6 +88,7 @@ type Kryptomon @entity {
   breedingCount: BigInt
   totalBreedingCount: BigInt
   timeCanBreed: BigInt
+  lastTimeBred: BigInt
   lastEvolved: BigInt
   lastInteracted: BigInt
   interactionCount: BigInt

@@ -312,6 +312,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   kryptomonV2.sireId = kryptomonV1.sireId;
   kryptomonV2.status = kryptomonV1.status;
   kryptomonV2.timeBorn = kryptomonV1.timeBorn;
+  kryptomonV2.timeHatched = kryptomonV1.timeHatched;
 
   let genes = new KryptomonGenes(idV2)
   let paramsGenes = event.params.genes
@@ -566,6 +567,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   sireKryptomon.totalBreedingCount = sireKryptomon.totalBreedingCount.plus(count);
   sireKryptomon.breedingCount = sireKryptomon.breedingCount.plus(count);
   sireKryptomon.timeCanBreed = event.params._sireCanBreedNext;
+  sireKryptomon.lastTimeBred = event.block.timestamp;
 
   sireKryptomon.save();
 
@@ -574,6 +576,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   matronKryptomon.totalBreedingCount = matronKryptomon.totalBreedingCount.plus(count);
   matronKryptomon.breedingCount = matronKryptomon.breedingCount.plus(count);
   matronKryptomon.timeCanBreed = event.params._matronCanBreedNext;
+  matronKryptomon.lastTimeBred = event.block.timestamp;
 
   matronKryptomon.save();
 }
