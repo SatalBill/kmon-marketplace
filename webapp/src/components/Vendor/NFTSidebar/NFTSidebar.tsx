@@ -110,13 +110,14 @@ const NFTSidebar = (props: Props) => {
     priceToken,
     kryptomonStatus,
     unfreezable,
-    myNFT
+    myNFT,
+    address
   } = props
 
   const [isLoadingMyNFT, setIsLoadingMyNFT] = useState(true)
   const [multipleFilters, setMultipleFilters] = useState<MultipleFilters>({})
   useEffect(() => {
-    if (/^\/breed/gi.test(pathname) && myNFT === null && !isLoadingMyNFT) {
+    if (/^\/breed/gi.test(pathname) && myNFT === null && !isLoadingMyNFT && address !== undefined) {
       onBrowse({
         ...multipleFilters,
         isInBreedingCentre: true,
@@ -125,7 +126,7 @@ const NFTSidebar = (props: Props) => {
         owner: undefined
       })
     }
-  }, [myNFT, pathname])
+  }, [myNFT, pathname, address])
 
   const handleOnBrowse = useCallback(
     (section: Section) => {
@@ -242,7 +243,7 @@ const NFTSidebar = (props: Props) => {
           priceToken={priceToken}
           kryptomonStatus={kryptomonStatus}
           unfreezable={unfreezable}
-          owner={myNFT?.owner}
+          owner={address}
         />
       )
   }
