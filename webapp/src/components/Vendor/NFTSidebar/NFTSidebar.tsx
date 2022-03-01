@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { Section } from '../../../modules/vendor/routing/types'
 import { Section as DecentralandSection } from '../../../modules/vendor/decentraland/routing/types'
@@ -53,7 +53,9 @@ export type MultipleFilters = {
   price?: string[]
   priceToken?: string[]
   kryptomonStatus?: string[]
-  unfreezable?: string[]
+  unfreezable?: string[],
+  isInBreedingCenter?: boolean,
+  owner?: string
 }
 
 const NFTSidebar = (props: Props) => {
@@ -107,8 +109,24 @@ const NFTSidebar = (props: Props) => {
     price,
     priceToken,
     kryptomonStatus,
-    unfreezable
+    unfreezable,
+    myNFT,
+    address
   } = props
+
+  const [isLoadingMyNFT, setIsLoadingMyNFT] = useState(true)
+  const [multipleFilters, setMultipleFilters] = useState<MultipleFilters>({})
+  useEffect(() => {
+    if (/^\/breed/gi.test(pathname) && myNFT === null && !isLoadingMyNFT && address !== undefined) {
+      onBrowse({
+        ...multipleFilters,
+        isInBreedingCentre: true,
+        sex: [],
+        view: 'load_more',
+        owner: undefined
+      })
+    }
+  }, [myNFT, pathname, address])
 
   const handleOnBrowse = useCallback(
     (section: Section) => {
@@ -129,6 +147,27 @@ const NFTSidebar = (props: Props) => {
         onBrowse({
           ...data
         })
+      } else if (/^\/breed/gi.test(pathname)) {
+        let newSex: string[] | undefined;
+        newSex = [];
+        if (myNFT) {
+          if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+            newSex.push("0")
+            newSex.push("5")
+          }
+          else { //male
+            newSex.push("6")
+            newSex.push("10")
+          }
+        }
+        onBrowse({
+          ...data,
+          isInBreedingCentre: true,
+          sex: myNFT ? newSex : data.sex,
+          view: 'load_more',
+        })
+        setIsLoadingMyNFT(false)
+        setMultipleFilters(data)
       } else {
         onBrowse({
           ...data
@@ -175,7 +214,7 @@ const NFTSidebar = (props: Props) => {
           ego={ego}
           speed={speed}
           healthPoints={healthPoints}
-          sex={sex}
+          sex={myNFT ? undefined : sex}
           skinType={skinType}
           water={water}
           waterTalent={waterTalent}
@@ -204,6 +243,7 @@ const NFTSidebar = (props: Props) => {
           priceToken={priceToken}
           kryptomonStatus={kryptomonStatus}
           unfreezable={unfreezable}
+          owner={address}
         />
       )
   }

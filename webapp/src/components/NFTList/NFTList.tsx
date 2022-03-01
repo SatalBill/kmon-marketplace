@@ -10,14 +10,27 @@ import { IndexingDelay } from '../IndexingDelayCard'
 import { useIndexingDelay } from '../../hooks'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, onBrowse } = props
+  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, isPreventClick, myNFT, pathname, onBrowse, onClickCard } = props
   const { showIndexingDelay } = useIndexingDelay(subgraphBlockNumber, isSignedIn)
 
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
-    onBrowse({ page: newPage })
-    getAnalytics().track('Load more', { page: newPage })
-  }, [onBrowse, page])
+    if (/^\/breed/gi.test(pathname) && myNFT) {
+      const newSex = [];
+      if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+        newSex.push("0")
+        newSex.push("5")
+      }
+      else { //male
+        newSex.push("6")
+        newSex.push("10")
+      }
+      onBrowse({ page: newPage, isInBreedingCentre: true, sex: newSex, owner: myNFT.owner })
+    }
+    else {
+      onBrowse({ page: newPage })
+    }
+  }, [onBrowse, page, myNFT, pathname])
 
   const maxQuerySize = getMaxQuerySize(vendor)
 
@@ -36,6 +49,8 @@ const NFTList = (props: Props) => {
               key={nft.id + '-' + index}
               nft={nft}
               status={{ showPrice: true }}
+              isPreventClick={isPreventClick}
+              onClickCard={onClickCard}
             />
           ))
           : null}

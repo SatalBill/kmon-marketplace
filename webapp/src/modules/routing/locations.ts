@@ -56,4 +56,8 @@ export const locations = {
   activity: () => `/activity`,
   items: () => `/items`,
   item: (id: string = ':id') => `/items/${id}`,
+  breed: (
+    contractAddress: string = ':contractAddress',
+    tokenId: string = ':tokenId'
+  ) => `/breed/contracts/${contractAddress}/tokens/${tokenId}`
 }

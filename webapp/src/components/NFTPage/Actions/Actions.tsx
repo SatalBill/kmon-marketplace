@@ -9,9 +9,26 @@ import { locations } from '../../../modules/routing/locations'
 import { VendorFactory } from '../../../modules/vendor'
 import { Props } from './Actions.types'
 import './Actions.css'
+import { toWei } from 'web3x-es/utils'
+import { BreedPriceModal } from '../BreedPriceModal'
 
 const Actions = (props: Props) => {
-  const { wallet, nft, order, bids } = props
+  const {
+    wallet,
+    authorizations,
+    nft,
+    order,
+    bids,
+    isAddingToBreedingCentre,
+    currentNFTBreedingOrder,
+    isCancelingBreed,
+    showBreedPriceModal,
+    onAddToBreedingCentre,
+    onNavigate,
+    onResetMyNFT,
+    onCancelListing,
+    onShowBreedPriceModal
+  } = props
   const { vendor, contractAddress, tokenId } = nft
 
   const [showLeavingSiteModal, setShowLeavingSiteModal] = useState(false)
@@ -20,6 +37,10 @@ const Actions = (props: Props) => {
   const isBiddable = bidService !== undefined
 
   const isOwner = isOwnedBy(nft, wallet)
+  const canBreed = isOwner && nft.data.kryptomon!.timeCanBreed && nft.data.kryptomon!.timeCanBreed * 1000 < Date.now();
+  if (!isOwner || !canBreed) {
+    onResetMyNFT();
+  }
 
   const canSell = orderService.canSell()
   const canBid =
@@ -40,8 +61,44 @@ const Actions = (props: Props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
 
+  const handleClickBreedingOrder = () => {
+    onShowBreedPriceModal(true)
+  }
+
+  const handleClickBreed = () => {
+    onNavigate(locations.breed(nft.contractAddress, nft.tokenId))
+  }
+
+  const handleSubmitBreedPrice = (breedPrice: string) => {
+    onAddToBreedingCentre(nft.contractAddress, nft.tokenId, toWei(breedPrice, 'ether'))
+  }
+
+  const handleCancelListing = () => {
+    onCancelListing(nft.contractAddress, nft.tokenId)
+  }
+
   return (
     <>
+      {
+        canBreed && (
+          <Button
+            onClick={handleClickBreed}
+            primary
+          >
+            {t('nft_page.breed')}
+          </Button>
+        )
+      }
+      {
+        canBreed && (
+          <Button
+            onClick={handleClickBreedingOrder}
+            primary
+          >
+            {t('nft_page.breeding_order')}
+          </Button>
+        )
+      }
       {order ? (
         isOwner && canSell ? (
           <>
@@ -50,6 +107,7 @@ const Actions = (props: Props) => {
                 as={Link}
                 to={locations.sell(contractAddress, tokenId)}
                 primary
+                className='update-button'
               >
                 {t('nft_page.update')}
               </Button>
@@ -98,7 +156,7 @@ const Actions = (props: Props) => {
           </Button>
         )
       ) : isOwner && canSell ? (
-        <Button as={Link} to={locations.sell(contractAddress, tokenId)} primary>
+        <Button as={Link} to={locations.sell(contractAddress, tokenId)} primary className='update-button'>
           {t('nft_page.sell')}
         </Button>
       ) : isOwner && !canSell ? (
@@ -161,6 +219,20 @@ const Actions = (props: Props) => {
           </Button>
         </Modal.Actions>
       </Modal>
+
+      <BreedPriceModal
+        wallet={wallet}
+        authorizations={authorizations}
+        show={showBreedPriceModal}
+        nft={nft}
+        isOwner={isOwner}
+        isAddingToBreedingCentre={isAddingToBreedingCentre}
+        currentNFTBreedingOrder={currentNFTBreedingOrder}
+        isCancelingBreed={isCancelingBreed}
+        onSubmitBreedPrice={handleSubmitBreedPrice}
+        onCancel={() => onShowBreedPriceModal(false)}
+        onCancelListing={handleCancelListing}
+      />
     </>
   )
 }

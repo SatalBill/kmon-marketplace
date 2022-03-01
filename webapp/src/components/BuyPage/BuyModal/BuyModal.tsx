@@ -85,7 +85,7 @@ const BuyPage = (props: Props) => {
     !order ||
     isOwner ||
     hasInsufficientCoin
-    // || (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
+  // || (!fingerprint && nft.category === NFTCategory.KRYPTOMON)
 
   const name = <Name nft={nft} />
 

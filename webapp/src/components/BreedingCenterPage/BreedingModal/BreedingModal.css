@@ -1,0 +1,33 @@
+.kryptomon.breeding-modal .ui.grid>.row {
+  padding: 0 !important;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.left {
+  display: flex;
+  padding-right: 82px;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.left > div {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.left .NFTImage {
+  width: 150px;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.left .detail {
+  flex-direction: column;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.right {
+  display: flex;
+  padding-left: 82px;
+}
+
+.kryptomon.breeding-modal .kryptomon-box.right > div {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+}

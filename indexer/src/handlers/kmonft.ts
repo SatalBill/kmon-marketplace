@@ -1,6 +1,6 @@
 import { BigInt, log } from "@graphprotocol/graph-ts"
 
-import { cancelActiveOrder, clearNFTBreedingOrderProperties, clearNFTOrderProperties, clearNFTProperties, getNFTId, updateNFTBreedingOrderProperties, updateNFTOrderProperties } from "../modules/nft"
+import { cancelActiveBreedingOrder, cancelActiveOrder, clearNFTBreedingOrderProperties, clearNFTOrderProperties, clearNFTProperties, getNFTId, updateNFTBreedingOrderProperties, updateNFTOrderProperties } from "../modules/nft"
 import * as categories from '../modules/category/categories'
 import * as addresses from '../data/addresses'
 import { Birth, EggHatched, Transfer } from "../entities/KMONFT/KMONFT"
@@ -247,6 +247,9 @@ export function handleTransfer(event: Transfer): void {
     if (cancelActiveOrder(oldNFT!, event.block.timestamp)) {
       nft = clearNFTOrderProperties(nft!)
     }
+    if (cancelActiveBreedingOrder(oldNFT!, event.block.timestamp)) {
+      nft = clearNFTBreedingOrderProperties(nft!)
+    }
   }
 
   if (category == categories.KRYPTOMON) {
@@ -297,7 +300,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   let kryptomonIdV2 = event.params._v2TokenId.toString();
 
   let idV1 = getNFTId(categories.KRYPTOMON, addresses.KMONFT, kryptomonIdV1)
-  let idV2 = getNFTId(categories.KRYPTOMON, event.address.toHexString(), kryptomonIdV1)
+  let idV2 = getNFTId(categories.KRYPTOMON, event.address.toHexString(), kryptomonIdV2)
 
   let kryptomonV1 = Kryptomon.load(idV1);
 
@@ -309,6 +312,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   kryptomonV2.sireId = kryptomonV1.sireId;
   kryptomonV2.status = kryptomonV1.status;
   kryptomonV2.timeBorn = kryptomonV1.timeBorn;
+  kryptomonV2.timeHatched = kryptomonV1.timeHatched;
 
   let genes = new KryptomonGenes(idV2)
   let paramsGenes = event.params.genes
@@ -563,6 +567,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   sireKryptomon.totalBreedingCount = sireKryptomon.totalBreedingCount.plus(count);
   sireKryptomon.breedingCount = sireKryptomon.breedingCount.plus(count);
   sireKryptomon.timeCanBreed = event.params._sireCanBreedNext;
+  sireKryptomon.lastTimeBred = event.block.timestamp;
 
   sireKryptomon.save();
 
@@ -571,6 +576,7 @@ export function handleBreedKryptomon(event: BreedKryptomon): void {
   matronKryptomon.totalBreedingCount = matronKryptomon.totalBreedingCount.plus(count);
   matronKryptomon.breedingCount = matronKryptomon.breedingCount.plus(count);
   matronKryptomon.timeCanBreed = event.params._matronCanBreedNext;
+  matronKryptomon.lastTimeBred = event.block.timestamp;
 
   matronKryptomon.save();
 }

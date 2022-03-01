@@ -1,9 +1,13 @@
 import { Order } from '../../modules/order/types'
 import { NFT } from '../../modules/nft/types'
+import { BreedingOrder } from '../../modules/breedingOrder/types'
 
 export type Props = {
   nft: NFT
   order?: Order
+  breedingOrder?: BreedingOrder
+  isPreventClick?: boolean
+  onClickCard?: (nft: NFT) => void
   status?: {
     showPrice?: boolean
     showPriceBottom?: boolean
@@ -11,6 +15,6 @@ export type Props = {
   }
 }
 
-export type MapStateProps = Pick<Props, 'order'>
+export type MapStateProps = Pick<Props, 'order' | 'breedingOrder'>
 export type MapDispatchProps = {}
-export type OwnProps = Pick<Props, 'nft' | 'order'>
+export type OwnProps = Pick<Props, 'nft' | 'order' | 'breedingOrder'>

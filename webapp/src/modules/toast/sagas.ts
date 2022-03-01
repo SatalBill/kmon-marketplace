@@ -2,7 +2,7 @@ import { all, takeEvery, put } from 'redux-saga/effects'
 import { toastSaga as baseToastSaga } from '@kmon/dapps/dist/modules/toast/sagas'
 import { showToast } from '@kmon/dapps/dist/modules/toast/actions'
 import { getChainConfiguration } from '@kmon/dapps/dist/lib/chainConfiguration'
-import { getMetaTransactionFailureToast } from './toasts'
+import { getBreedFailureToast, getMetaTransactionFailureToast } from './toasts'
 import { TransferNFTFailureAction, TRANSFER_NFT_FAILURE } from '../nft/actions'
 import { Network } from '@kmon/schemas'
 import {
@@ -19,6 +19,7 @@ import {
   RevokeTokenFailureAction,
   REVOKE_TOKEN_FAILURE
 } from '@kmon/dapps/dist/modules/authorization/actions'
+import { BreedFailureAction, BREED_FAILURE } from '../breed/actions'
 
 export function* toastSaga() {
   yield all([baseToastSaga(), customToastSaga()])
@@ -38,6 +39,8 @@ function* customToastSaga() {
     REVOKE_TOKEN_FAILURE,
     handleAuthorizationMetaTransactionFailure
   )
+
+  yield takeEvery(BREED_FAILURE, handleBreedFailure)
 }
 
 function* handleNFTMetaTransactionFailure(
@@ -67,4 +70,15 @@ function* handleAuthorizationMetaTransactionFailure(
 
 function isUserDeniedSignature(message: string) {
   return message.indexOf('User denied message signature') !== -1
+}
+
+function* handleBreedFailure(action: BreedFailureAction) {
+  const { error } = action.payload
+  // @ts-ignore
+  if (error && error.message) {
+    // @ts-ignore
+    yield put(showToast(getBreedFailureToast(error.message)))
+  } else {
+    yield put(showToast(getBreedFailureToast("Something went wrong")))
+  }
 }

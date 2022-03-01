@@ -3,10 +3,13 @@ import { Dispatch } from 'redux'
 import { Section } from '../../../modules/vendor/routing/types'
 import { browseNFTs, BrowseNFTsAction } from '../../../modules/routing/actions'
 import { MultipleFilters } from './NFTSidebar'
+import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
   vendor?: string
   section: Section
+  myNFT: NFT | null
+  address: string | undefined
   onBrowse: typeof browseNFTs
   pathname: string
 } & MultipleFilters
@@ -62,6 +65,8 @@ export type MapStateProps = Pick<
   | 'priceToken'
   | 'kryptomonStatus'
   | 'unfreezable'
+  | 'myNFT'
+  | 'address'
 >
 export type MapDispatchProps = Pick<Props, 'onBrowse'>
 export type MapDispatch = Dispatch<BrowseNFTsAction>

@@ -14,7 +14,7 @@ const Details = (props: Props) => {
   return (
     <div className="details-container">
       <div className="profile-container">
-        <Profile
+        {/* <Profile
           size={'huge'}
           address={nft.owner}
           imageOnly
@@ -23,12 +23,12 @@ const Details = (props: Props) => {
         />
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
-        </DetailItem>
-        <DetailItem title="Name">
+        </DetailItem> */}
+        {/* <DetailItem title="Name">
           <p className="detail-medium-text">
             <span className="detail-nft-name">{nft.metadata?.name}</span>
           </p>
-        </DetailItem>
+        </DetailItem> */}
         {nft.activeOrderId !== null && (
           <DetailItem title="Price">
             <p className="detail-medium-text">
@@ -38,9 +38,9 @@ const Details = (props: Props) => {
           </DetailItem>
         )}
       </div>
-      <DetailItem title="Network">
+      {/* <DetailItem title="Network">
         <p className="detail-medium-text">{nft.network}</p>
-      </DetailItem>
+      </DetailItem> */}
       <Actions nft={nft} />
     </div>
   )
