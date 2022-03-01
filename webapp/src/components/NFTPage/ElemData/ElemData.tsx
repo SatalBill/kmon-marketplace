@@ -20,6 +20,8 @@ const ElemData = (props: Props) => {
     .join('-')
 
   const age = new Date(Date.now() - timeBorn! * 1000).getMonth()
+  const lastEvolved = new Date(Date.now() - nft.data.kryptomon?.lastEvolved! * 1000).toLocaleDateString();
+  const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
 
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return 'Male'
@@ -53,8 +55,12 @@ const ElemData = (props: Props) => {
     { title: 'Skin type', value: skinTypeToString[data?.skinType || 0] },
     { title: 'Special', value: data?.special },
     { title: 'Speed', value: data?.speed },
-    { title: 'Age(months)', value: age }
+    { title: 'Age(months)', value: age },
   ]
+
+  if (lastEvolvedTitle) {
+    arr.push({ title: lastEvolvedTitle, value: lastEvolved });
+  }
 
   return (
     <div className="elems-container">
