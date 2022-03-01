@@ -49,9 +49,11 @@ const MyBidsPage = (props: Props) => {
 
   return (
     <div className="MyBidsPage">
-      <Navbar isFullscreen />
-      <Navigation activeTab={NavigationTab.MY_BIDS} />
-      <Page>
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation activeTab={NavigationTab.MY_BIDS} />
+      </div>
+      <Page className="NFTBrowse">
         {isConnecting || !wallet ? (
           <Loader size="massive" active />
         ) : (
