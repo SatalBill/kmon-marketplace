@@ -15,17 +15,21 @@ const NFTList = (props: Props) => {
 
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
-    if (/^\/breed/gi.test(pathname) && myNFT) {
-      const newSex = [];
-      if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
-        newSex.push("0")
-        newSex.push("5")
+    if (/^\/breed/gi.test(pathname)) {
+      if (myNFT) {
+        const newSex = [];
+        if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+          newSex.push("0")
+          newSex.push("5")
+        }
+        else { //male
+          newSex.push("6")
+          newSex.push("10")
+        }
+        onBrowse({ page: newPage, isInBreedingCentre: true, sex: newSex, owner: myNFT.owner })
+      } else {
+        onBrowse({ page: newPage, isInBreedingCentre: true })
       }
-      else { //male
-        newSex.push("6")
-        newSex.push("10")
-      }
-      onBrowse({ page: newPage, isInBreedingCentre: true, sex: newSex, owner: myNFT.owner })
     }
     else {
       onBrowse({ page: newPage })
