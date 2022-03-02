@@ -313,6 +313,7 @@ export function handleKmonftV1Migration(event: KmonftV1Migration): void {
   kryptomonV2.status = kryptomonV1.status;
   kryptomonV2.timeBorn = kryptomonV1.timeBorn;
   kryptomonV2.timeHatched = kryptomonV1.timeHatched;
+  kryptomonV2.lastEvolved = kryptomonV2.status == BigInt.fromString("0") ? kryptomonV1.timeBorn : kryptomonV1.timeHatched;
 
   let genes = new KryptomonGenes(idV2)
   let paramsGenes = event.params.genes

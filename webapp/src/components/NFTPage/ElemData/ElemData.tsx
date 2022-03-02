@@ -20,7 +20,8 @@ const ElemData = (props: Props) => {
     .join('-')
 
   const age = new Date(Date.now() - timeBorn! * 1000).getMonth()
-  const lastEvolved = new Date(Date.now() - nft.data.kryptomon?.lastEvolved! * 1000).toLocaleDateString();
+  const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
+  const lastEvolved = new Date(lastEvolvedTime! * 1000).toLocaleDateString();
   const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
 
   const whatTheSex = (value?: string | number) => {
