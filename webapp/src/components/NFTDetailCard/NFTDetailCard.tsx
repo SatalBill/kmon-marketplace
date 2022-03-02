@@ -13,9 +13,10 @@ const NFTDetailCard = (props: Props) => {
     month: 'long',
     day: 'numeric'
   }
+  const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
   const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
   const isV2New = nft.contractAddress.toUpperCase() == '0x04b0f7d5cb2ce4688497f2525748fb7a9affa394'.toUpperCase() || nft.contractAddress.toUpperCase() == '0x5eA74A7105f9c2628AbE80D3Af22Afb1d7CE9A46'.toUpperCase();
-  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(Date.now() - nft.data.kryptomon?.lastEvolved! * 1000).toLocaleDateString(undefined, options);
+  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(undefined, options);
   const lastEvolvedTitle = nft.data.kryptomon?.status == "0" ? 'Laid' : nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
   return (
     <div className="card">
