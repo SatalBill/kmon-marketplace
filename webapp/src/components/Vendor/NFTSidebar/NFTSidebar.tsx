@@ -170,7 +170,8 @@ const NFTSidebar = (props: Props) => {
         setMultipleFilters(data)
       } else {
         onBrowse({
-          ...data
+          ...data,
+          owner: undefined
         })
       }
     },
