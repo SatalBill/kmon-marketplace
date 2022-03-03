@@ -29,8 +29,37 @@
   .dna-container {
     width: 100%;
     padding: 25px 5px 5px 5px;
+    height: auto;
+  }
+  .block-container{
+    width: 100%;
   }
 }
+
+@media (max-width: 425px) {
+  .dna-container {
+    width: 390px;
+    padding: 25px 5px 5px 5px;
+    height: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .dna-container {
+    width: 350px;
+    padding: 25px 5px 5px 5px;
+    height: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .dna-container {
+    width: 290px;
+    padding: 25px 5px 5px 5px;
+    height: auto;
+  }
+}
+
 .dna-info {
   display: flex;
   flex-direction: row;
