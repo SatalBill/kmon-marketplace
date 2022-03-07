@@ -102,12 +102,12 @@ const BreedingModal = (props: Props) => {
     <Modal size="large" open={open} closeIcon={<Close onClick={() => onClose()} />} className={classes.join(' ')}>
       <Modal.Header>&nbsp;</Modal.Header>
       <Modal.Content>
-        <Grid columns={2} divided>
+        <Grid columns={2} container divided stackable>
           <Grid.Row>
-            <Grid.Column width={8}>
+            <Grid.Column>
               {myNFT && <NFTDetail nft={myNFT} breedingOrder={myBreedingOrder} />}
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column>
               {selectedNFT && selectedBreedingOrder && <NFTDetail nft={selectedNFT} view="right" breedingOrder={selectedBreedingOrder} />}
             </Grid.Column>
           </Grid.Row>

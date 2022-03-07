@@ -84,7 +84,7 @@ const NFTDetail = (props: Props) => {
             alt="icon"
           />
         </div>
-        <Grid columns={2} className="detail-content">
+        <Grid columns={2} stackable className="detail-content">
           <Grid.Row>
             <Grid.Column>GENERATION:</Grid.Column>
             <Grid.Column>{nft.data.kryptomon?.genes.generation}</Grid.Column>
