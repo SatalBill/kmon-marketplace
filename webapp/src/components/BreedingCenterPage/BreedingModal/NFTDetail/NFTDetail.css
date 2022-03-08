@@ -84,6 +84,14 @@
 }
 
 @media (max-width: 768px) {
+  .kryptomon.breeding-modal-nft-detail {
+    padding-right: 10px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail.right {
+    padding-left: 10px;
+  }
+
   .kryptomon.breeding-modal-nft-detail .detail .detail-content {
     font-size: 15px;
   }

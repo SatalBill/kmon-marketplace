@@ -101,7 +101,7 @@ const BreedingModal = (props: Props) => {
   return (
     <Modal size="large" open={open} closeIcon={<Close onClick={() => onClose()} />} className={classes.join(' ')}>
       <Modal.Header>&nbsp;</Modal.Header>
-      <Modal.Content>
+      <Modal.Content className="modal-content">
         <Grid columns={2} container divided stackable>
           <Grid.Row>
             <Grid.Column>

@@ -26,6 +26,14 @@
   .Slideshow:after {
     width: auto;
   }
+
+  .Slideshow .dcl.header-menu {
+    padding-left: 20px;
+  }
+
+  .Slideshow .nfts {
+    padding-left: 20px;
+  }
 }
 
 .Slideshow .nfts {
