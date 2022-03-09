@@ -32,3 +32,45 @@
   background: linear-gradient(#D7B731, #F25F31) !important;
   color: var(--background) !important;
 }
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .kryptomon.breeding-modal-fee {
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee .my-kryptomon {
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee > div {
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee .fee-detail .fee-detail-info {
+    font-size: 17px;
+    line-height: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kryptomon.breeding-modal-fee {
+    display: block;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee .my-kryptomon {
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee > div {
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-fee .fee-detail .fee-detail-info {
+    font-size: 17px;
+    line-height: 25px;
+  }
+}
