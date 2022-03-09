@@ -55,3 +55,32 @@
 .dcl.navbar .ui.menu.secondary {
     transform: translateY(28px);
 }
+
+@media (max-width: 768px) {
+    .kryptomon.logo  {
+        margin-right: 20px !important;
+        width: 82px !important;
+        height: 32px !important;
+        background-repeat: no-repeat;
+    }
+
+    .dcl.navbar .navbar-mobile-menu .ui.header {
+        margin-left: 60px !important;
+    }
+
+    .dcl.navbar .mobile-menu {
+        padding-left: 70px !important;
+    }
+
+    .dcl.navbar .mobile-menu .item {
+        padding-top: 0px !important;
+        padding-bottom: 10px !important;
+        padding-left: 20px !important;
+    }
+
+    .marketplace-sub-logo {
+        display: block !important;
+        width: 58px !important;
+        height: 28px !important;
+    }
+}

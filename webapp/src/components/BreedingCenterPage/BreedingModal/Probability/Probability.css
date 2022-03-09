@@ -22,3 +22,25 @@
   margin-top: 20px;
   width: 60%;
 }
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .kryptomon.breeding-modal-probability .probability-chart-box .probability-chart {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-probability .value {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kryptomon.breeding-modal-probability .probability-chart-box .probability-chart {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .kryptomon.breeding-modal-probability .value {
+    font-size: 17px;
+  }
+}

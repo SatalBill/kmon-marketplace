@@ -54,6 +54,7 @@
 .kryptomon.breeding-modal-nft-detail.right .detail .detail-title .product-type-icon {
   margin-left: 0px;
   margin-right: 15px;
+  align-self: center;
 }
 
 .kryptomon.breeding-modal-nft-detail .detail .detail-content {
@@ -66,4 +67,40 @@
   font-size: 10px;
   text-align: left;
   margin-top: 18px;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .kryptomon.breeding-modal-nft-detail .detail .detail-content {
+    font-size: 15px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail.right .detail .detail-content {
+    font-size: 15px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail .detail .detail-title {
+    font-size: 22.17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kryptomon.breeding-modal-nft-detail {
+    padding-right: 10px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail.right {
+    padding-left: 10px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail .detail .detail-content {
+    font-size: 15px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail.right .detail .detail-content {
+    font-size: 15px;
+  }
+
+  .kryptomon.breeding-modal-nft-detail .detail .detail-title {
+    font-size: 22.17px;
+  }
 }
