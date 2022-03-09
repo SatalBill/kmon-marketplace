@@ -13,7 +13,7 @@
   text-align: center;
   display: flex;
   z-index: 15;
-  font-size: 70px;
+  font-size: 5vmax;
   color: #E7E3D7;
   letter-spacing: -1.56px;
   line-height: 62.19px;
@@ -114,9 +114,86 @@
   }
 }
 
+@media (max-width: 919px) {
+  .HomePageHero .hero-title-text{
+    width: 100%;
+    font-size: 4vmax;
+    display: flex;
+    justify-content: center;
+    letter-spacing: normal;
+  }
+}
+
 @media (max-width: 768px) {
   .HomePageHero.dcl.hero .ui.header.hero-subtitle {
     margin-top: 20px;
     max-width: 100%;
+  }
+  .Slideshow .nfts {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+    overflow-x: scroll;
+    min-height: 336px;
+    white-space: nowrap;
+    width: 700px;
+  }
+}
+
+@media (max-width: 425px) {
+  .HomePageHero .hero-title-text{
+    width: 100%;
+    font-size: 3vmax;
+    display: flex;
+    justify-content: center;
+  }
+  .Slideshow .nfts {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+    overflow-x: scroll;
+    min-height: 336px;
+    white-space: nowrap;
+    width: 390px;
+  }
+}
+
+@media (max-width: 375px) {
+  .HomePageHero .hero-title-text{
+    width: 100%;
+    font-size: 2.5vmax;
+    display: flex;
+    justify-content: center;
+  }
+  .Slideshow .nfts {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+    overflow-x: scroll;
+    min-height: 336px;
+    white-space: nowrap;
+    width: 350px;
+  }
+}
+
+@media (max-width: 320px) {
+  .HomePageHero .hero-title-text{
+    width: 100%;
+    font-size: 2vmax;
+    display: flex;
+    justify-content: center;
+  }
+  .Slideshow .nfts {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    position: relative;
+    overflow-x: scroll;
+    min-height: 336px;
+    white-space: nowrap;
+    width: 290px;
   }
 }

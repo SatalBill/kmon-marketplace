@@ -50,3 +50,29 @@
   color: var(--background) !important;
   margin: 15px;
 }
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .kryptomon.choose-pair .card-area {
+    display: block;
+  }
+
+  .kryptomon.choose-pair .card-area .vertical-line {
+    border-top: 1px solid rgba(151, 151, 151, 0.21);
+    border-left: 0px;
+    margin-top: 44px;
+    padding-top: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kryptomon.choose-pair .card-area {
+    display: block;
+  }
+
+  .kryptomon.choose-pair .card-area .vertical-line {
+    border-top: 1px solid rgba(151, 151, 151, 0.21);
+    border-left: 0px;
+    margin-top: 44px;
+    padding-top: 44px;
+  }
+}

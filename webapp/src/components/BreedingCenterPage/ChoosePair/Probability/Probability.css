@@ -1,6 +1,6 @@
 .kryptomon.probability {
   display: flex;
-  width: 203px;
+  /* width: 203px; */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -39,4 +39,18 @@
 .kryptomon.svg {
   width: 38px;
   height: 35px;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .kryptomon.probability {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kryptomon.probability {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
