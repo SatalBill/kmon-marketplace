@@ -15,6 +15,7 @@ import { NFTFilters } from '../Vendor/NFTFilters'
 import { NFT } from "../../modules/nft/types"
 import { BreedingModal } from './BreedingModal'
 import { Wallet } from '../Wallet'
+import './BreedingCenterPage.style.css'
 
 const BreedingCenterPage = (props: Props) => {
   const {
@@ -58,9 +59,7 @@ const BreedingCenterPage = (props: Props) => {
       <Page className="NFTBrowse">
         <Row>
           <Column align="left" className="sidebar">
-            <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-              <NFTSidebar />
-            </Responsive>
+            <NFTSidebar />
           </Column>
           <Column align="right" grow={true}>
             <ChoosePair
