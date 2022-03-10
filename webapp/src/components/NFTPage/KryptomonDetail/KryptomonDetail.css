@@ -140,3 +140,47 @@
   content: url(../../../images/egg/calendar.svg);
   margin-right: 7px;
 }
+
+.next-breeding {
+  width: 720px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1201px) {
+  .next-breeding {
+    width: 660px;
+  }
+}
+
+@media (max-width: 991px) {
+  .next-breeding {
+    width: 435px;
+  }
+}
+
+@media (max-width: 768px) {
+  .next-breeding {
+    width: 100%;
+  }
+  .block-container{
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .next-breeding {
+    width: 358px;
+  }
+}
+
+@media (max-width: 375px) {
+  .next-breeding {
+    width: 350px;
+  }
+}
+
+@media (max-width: 320px) {
+  .next-breeding {
+    width: 290px;
+  }
+}

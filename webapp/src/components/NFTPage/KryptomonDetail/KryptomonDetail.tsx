@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react'
 import { Container } from '@kmon/ui'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Progress } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
@@ -66,6 +66,12 @@ const KryptomonDetail = (props: Props) => {
     }
   }
   const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
+  const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
+  const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
+
+
+  // const { timeCanBreed, lastTimeBred } = nft?.data?.kryptomon
+
 
   const genesArray = Object.values(genes!)
   let totalGenes = 0
@@ -146,6 +152,7 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
+  console.log('DDDD___>',(lastTimeBred * 100) / timeCanBreed);
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
@@ -185,6 +192,13 @@ const KryptomonDetail = (props: Props) => {
               <DNARadarChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row> */}
+          {lastTimeBred ? <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.dna_chart.breeding')}>
+              <div className="next-breeding">
+                <Progress className="next-breeding-progress" total={timeCanBreed} value={lastTimeBred} precision={1} inverted color='red' indicating progress/>
+              </div>
+            </TitleBlock>
+          </Row> : null}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />

@@ -246,7 +246,8 @@
       "hunger": "Hunger",
       "laziness": "Laziness",
       "braveness": "Braveness",
-      "smart": "Smart"
+      "smart": "Smart",
+      "breeding": "Next Breeding"
     },
     "trade_history": {
       "title": "Trade history",
