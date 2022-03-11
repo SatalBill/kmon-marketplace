@@ -68,10 +68,7 @@ const KryptomonDetail = (props: Props) => {
   const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
   const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
-
-
-  // const { timeCanBreed, lastTimeBred } = nft?.data?.kryptomon
-
+  const today = new Date().getTime() / 1000;
 
   const genesArray = Object.values(genes!)
   let totalGenes = 0
@@ -140,6 +137,33 @@ const KryptomonDetail = (props: Props) => {
     element => element.title === nft.data.kryptomon?.elementType
   )
 
+  const getPercentage = () => {
+    if (timeCanBreed < today) {
+      return 0;
+    }
+  
+    const diffCanToLast = Math.abs(timeCanBreed - lastTimeBred);
+    const diffTodayToLast = Math.abs(today - lastTimeBred);
+  
+    const total = Math.floor(diffCanToLast / 86400);
+    const value = Math.floor(diffTodayToLast / 86400);
+  
+    const percentage = (value / total) * 100;
+
+    return percentage;
+  }
+  
+  const formatedDate = (timeInSeconds: number) => {
+    const laidTimestamp = timeInSeconds * 1000
+    var options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+    const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
+    return laid;
+  }
+
   const maxElementType = elementTypes.reduce((prev, current) => {
     return ((prev &&
       typeof prev.value === 'string' &&
@@ -152,7 +176,6 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
-  console.log('DDDD___>',(lastTimeBred * 100) / timeCanBreed);
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
@@ -195,7 +218,19 @@ const KryptomonDetail = (props: Props) => {
           {lastTimeBred ? <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.breeding')}>
               <div className="next-breeding">
-                <Progress className="next-breeding-progress" total={timeCanBreed} value={lastTimeBred} precision={1} inverted color='red' indicating progress/>
+                <Row className="Row-space-between">
+                  <div className="progress-last-bred-box">{t('nft_page.dna_chart.last')}</div>
+                  <div className="progress-can-breed-box">{t('nft_page.dna_chart.next')}</div>
+                </Row>
+                <Row className="Row-space-between">
+                  <div className="progress-last-bred">{formatedDate(lastTimeBred)}</div>
+                  <div className="progress-can-breed">{formatedDate(timeCanBreed)}</div>
+                </Row>
+                <div className="ui red active indicating inverted progress next-breeding-progress" data-percent={getPercentage()}>
+                  <div className="bar" style={{ width: `${getPercentage()}%` }}>
+                    <div className={getPercentage() > 15 ? "progress" : "progress-low"}>{formatedDate(today)}</div>
+                  </div>
+                </div>
               </div>
             </TitleBlock>
           </Row> : null}

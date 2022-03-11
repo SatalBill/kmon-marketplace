@@ -247,7 +247,9 @@
       "laziness": "Laziness",
       "braveness": "Braveness",
       "smart": "Smart",
-      "breeding": "Next Breeding"
+      "breeding": "Next Breeding",
+      "last": "Last Time Bred",
+      "next": "Time Can Breed"
     },
     "trade_history": {
       "title": "Trade history",

@@ -22,8 +22,8 @@ const ElemData = (props: Props) => {
   const age = new Date(Date.now() - timeBorn! * 1000).getMonth()
 
   const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Male'
-    else return 'Female'
+    if (value && +value > 5) return 'Female'
+    else return 'Male'
   }
   const skinTypeToString: Record<string, string> = {
     '0': 'Feather',

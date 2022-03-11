@@ -20,8 +20,9 @@ export const SKIN_TYPE_TO_REQ: Record<string, string> = {
 }
 
 export const SEX_TO_REQ: Record<string, string> = {
-  Female: '5',
-  Male: '6'
+  Female: '6_10',
+  Male: '0_5',
+  Male_Female: '0_10'
 }
 
 export const STATUS_TO_REQ: Record<string, string> = {
