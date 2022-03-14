@@ -78,7 +78,7 @@ export async function breed(femaleTokenId: string, maleTokenId: string) {
   const txReceipt = await tx.wait()
 
   // forward to the dashboard
-  window.location.href = "https://app-git-v2migration-kryptomon.vercel.app/eggsV2";
+  window.location.href = "https://app.kryptomon.co/eggsV2";
 
   console.log(txReceipt)
 }
