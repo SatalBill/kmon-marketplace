@@ -290,6 +290,7 @@ export function handleEvoleKryptomon(event: EvolveKryptomon): void {
   kryptomon.maxBreedingsDuringLifePhase = event.params.maxBreedingsDuringLifePhase;
   kryptomon.breedingsLeft = event.params.maxBreedingsDuringLifePhase;
   kryptomon.timeCanBreed = event.block.timestamp;
+  kryptomon.lastEvolved = event.block.timestamp;
   kryptomon.save();
 }
 
