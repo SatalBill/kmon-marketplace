@@ -1,6 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react'
 import { Container } from '@kmon/ui'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Progress } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
@@ -66,6 +66,9 @@ const KryptomonDetail = (props: Props) => {
     }
   }
   const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
+  const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
+  const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
+  const today = new Date().getTime() / 1000;
 
   const genesArray = Object.values(genes!)
   let totalGenes = 0
@@ -134,6 +137,33 @@ const KryptomonDetail = (props: Props) => {
     element => element.title === nft.data.kryptomon?.elementType
   )
 
+  const getPercentage = () => {
+    if (timeCanBreed < today) {
+      return 0;
+    }
+  
+    const diffCanToLast = Math.abs(timeCanBreed - lastTimeBred);
+    const diffTodayToLast = Math.abs(today - lastTimeBred);
+  
+    const total = Math.floor(diffCanToLast / 86400);
+    const value = Math.floor(diffTodayToLast / 86400);
+  
+    const percentage = (value / total) * 100;
+
+    return percentage;
+  }
+  
+  const formatedDate = (timeInSeconds: number) => {
+    const laidTimestamp = timeInSeconds * 1000
+    var options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+    const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
+    return laid;
+  }
+
   const maxElementType = elementTypes.reduce((prev, current) => {
     return ((prev &&
       typeof prev.value === 'string' &&
@@ -185,6 +215,25 @@ const KryptomonDetail = (props: Props) => {
               <DNARadarChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row> */}
+          {lastTimeBred ? <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.dna_chart.breeding')}>
+              <div className="next-breeding">
+                <Row className="Row-space-between">
+                  <div className="progress-last-bred-box">{t('nft_page.dna_chart.last')}</div>
+                  <div className="progress-can-breed-box">{t('nft_page.dna_chart.next')}</div>
+                </Row>
+                <Row className="Row-space-between">
+                  <div className="progress-last-bred">{formatedDate(lastTimeBred)}</div>
+                  <div className="progress-can-breed">{formatedDate(timeCanBreed)}</div>
+                </Row>
+                <div className="ui red active indicating inverted progress next-breeding-progress" data-percent={getPercentage()}>
+                  <div className="bar" style={{ width: `${getPercentage()}%` }}>
+                    <div className={getPercentage() > 15 ? "progress" : "progress-low"}>{formatedDate(today)}</div>
+                  </div>
+                </div>
+              </div>
+            </TitleBlock>
+          </Row> : null}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />

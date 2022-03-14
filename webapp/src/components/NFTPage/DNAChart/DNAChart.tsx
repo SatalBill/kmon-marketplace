@@ -10,6 +10,8 @@ import { isMobile } from '@kmon/dapps/dist/lib/utils'
 
 const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
+  const [windowWidth, setWindowWidth] = useState(0);
+
   const genesV2Values = [
     nft.genesV2?.attack,
     nft.genesV2?.defense,
@@ -88,6 +90,7 @@ const DNAChart = (props: Props) => {
           drawBorder: false
         },
         ticks: {
+          display: isMobile() ? false : true,
           autoSkip: true,
           maxRotation: -90,
           minRotation: -90,
@@ -96,7 +99,7 @@ const DNAChart = (props: Props) => {
           color: '#676370',
           align: 'start',
           font: {
-            size: isMobile() ? 0 : 13,
+            size: isMobile() ?  windowWidth < 480 ? 0 : 0 : windowWidth < 480 ? 0 : 13,
             family: 'PT Mono'
           }
         },
@@ -135,6 +138,7 @@ const DNAChart = (props: Props) => {
     window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
     function handleResize() {
       window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
+      setWindowWidth(window.innerWidth);
     }
 
     window.addEventListener('resize', handleResize);
