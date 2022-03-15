@@ -151,7 +151,7 @@ const NFTSidebar = (props: Props) => {
         let newSex: string[] | undefined;
         newSex = [];
         if (myNFT) {
-          if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+          if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) {
             newSex.push("0")
             newSex.push("5")
           }

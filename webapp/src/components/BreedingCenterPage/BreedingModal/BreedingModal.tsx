@@ -74,13 +74,13 @@ const BreedingModal = (props: Props) => {
   const simulate = async () => {
     if (myNFT && selectedNFT && myNFT.data.kryptomon?.genes && selectedNFT.data.kryptomon?.genes) {
       if (myNFT.data.kryptomon?.genes.sex > 5 && selectedNFT.data.kryptomon?.genes.sex <= 5) {
-        onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
-        setFemaleTokenId(myNFT.tokenId)
-        setMaleTokenId(selectedNFT.tokenId)
-      } else if (myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5) {
         onSimulateBreeding(selectedNFT.tokenId, myNFT.tokenId)
         setFemaleTokenId(selectedNFT.tokenId)
         setMaleTokenId(myNFT.tokenId)
+      } else if (myNFT.data.kryptomon?.genes.sex <= 5 && selectedNFT.data.kryptomon?.genes.sex > 5) {
+        onSimulateBreeding(myNFT.tokenId, selectedNFT.tokenId)
+        setFemaleTokenId(myNFT.tokenId)
+        setMaleTokenId(selectedNFT.tokenId)
       }
     }
   }
