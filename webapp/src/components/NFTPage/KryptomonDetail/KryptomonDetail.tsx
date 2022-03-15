@@ -28,6 +28,7 @@ import { DNARadarChart } from '../DNARadarChart'
 const KryptomonDetail = (props: Props) => {
   const { nft, order } = props
   const [isV2, setIsV2] = useState(false)
+
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
     WEEK: t('nft_page.price_chart.week'),
@@ -152,6 +153,14 @@ const KryptomonDetail = (props: Props) => {
 
     return percentage;
   }
+
+  const getIfCanBreed = () => {
+    if (timeCanBreed < today) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   
   const formatedDate = (timeInSeconds: number) => {
     const laidTimestamp = timeInSeconds * 1000
@@ -186,6 +195,7 @@ const KryptomonDetail = (props: Props) => {
               nft={nft}
               isV2={isV2}
               toogleV2={toogleV2Change}
+              canBreed={getIfCanBreed()}
             />
           </Row>
           <Row className="Row-space-between">
@@ -215,7 +225,7 @@ const KryptomonDetail = (props: Props) => {
               <DNARadarChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row> */}
-          {lastTimeBred ? <Row className="Row-space-between">
+          {(lastTimeBred && !getIfCanBreed()) ? <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.breeding')}>
               <div className="next-breeding">
                 <Row className="Row-space-between">
