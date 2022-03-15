@@ -2462,10 +2462,10 @@
   dependencies:
     ajv "^7.1.0"
 
-"@kmon/schemas@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.18.tgz#734c54a7118ef5a7b269fa36b0fdbf5a008a52c5"
-  integrity sha512-vcqzOx45Wl4dKkXIkfZAmqPMhQp1Dq2sDY60lYWkBZT9cLVecdFPFktcnm8rJisQyzgfxYcyyWK9qbRAKlguUQ==
+"@kmon/schemas@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@kmon/schemas/-/schemas-0.0.19.tgz#5e589af1aec27ec95fb765081cc32364284511c4"
+  integrity sha512-L9OHT5G5AAl5C8dzlcDrxlHLKNDM3uXucllWKUVwMbqggDFbzn3GshSkF+1GrTzAQwdfdrIR01XQeWkPWE37tg==
   dependencies:
     ajv "^7.1.0"
 
