@@ -6,13 +6,13 @@ import { View } from '../../types'
 
 export type HomepageUIState = {
   [View.KRYPTOMONS]: string[]
-  [View.LATEST_SOLD]: string[]
+  // [View.LATEST_SOLD]: string[]
   // [View.ALL_ASSETS]: string[]
 }
 
 const INITIAL_STATE: HomepageUIState = {
   [View.KRYPTOMONS]: [],
-  [View.LATEST_SOLD]: [],
+  // [View.LATEST_SOLD]: [],
   // [View.ALL_ASSETS]: []
 }
 
@@ -38,12 +38,12 @@ export function homepageReducer(
         //     [View.ALL_ASSETS]: nftIds
         //   }
         // }
-        case View.LATEST_SOLD: {
-          return {
-            ...state,
-            [View.LATEST_SOLD]: nftIds
-          }
-        }
+        // case View.LATEST_SOLD: {
+        //   return {
+        //     ...state,
+        //     [View.LATEST_SOLD]: nftIds
+        //   }
+        // }
         default: {
           return {
             ...state
