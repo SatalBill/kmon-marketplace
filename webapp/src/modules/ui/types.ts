@@ -10,8 +10,8 @@ export const View = {
   PARTNERS_KNOWN_ORIGIN: 'known_origin',
   LOAD_MORE: 'load_more',
   ATLAS: 'atlas',
-  ALL_ASSETS: 'all_assets'
-  // LATEST_SOLD: 'latest_sold'
+  // ALL_ASSETS: 'all_assets',
+  LATEST_SOLD: 'latest_sold'
 } as const
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare -- Intentionally naming the variable the same as the type

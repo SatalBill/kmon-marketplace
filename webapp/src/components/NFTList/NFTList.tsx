@@ -18,7 +18,7 @@ const NFTList = (props: Props) => {
     if (/^\/breed/gi.test(pathname)) {
       if (myNFT) {
         const newSex = [];
-        if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) { // female
+        if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) {
           newSex.push("0")
           newSex.push("5")
         }
