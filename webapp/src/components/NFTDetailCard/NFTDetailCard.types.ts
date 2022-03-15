@@ -6,6 +6,7 @@ export type Props = {
   elementType: any
   order?: Order
   isV2: boolean
+  canBreed: boolean
   toogleV2: () => void
 }
 
