@@ -184,7 +184,7 @@ a.ui.card.link:hover .meta {
 }
 
 .product-verified {
-  width: 16px;
+  width: 17px;
   height: 16px;
   background-image: url(../../images/egg/certified-badge.svg);
   margin: 8px;
@@ -213,7 +213,7 @@ a.ui.card.link:hover .meta {
 
 .product-info-name-container .Row {
   align-items: center;
-  width: auto;
+  width: 80%;
 }
 
 .product-description-container .product-description {
