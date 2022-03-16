@@ -139,7 +139,7 @@ const KryptomonDetail = (props: Props) => {
   )
 
   const getPercentage = () => {
-    if (timeCanBreed < today) {
+    if (timeCanBreed > 0 && timeCanBreed < today) {
       return 0;
     }
   

@@ -16,7 +16,7 @@
   font-size: 5vmax;
   color: #E7E3D7;
   letter-spacing: -1.56px;
-  line-height: 62.19px;
+  line-height: 75px;
   width: 648px;
 }
 
@@ -75,7 +75,7 @@
 
 .HomePageContent {
   width: 100%;
-  height: 1486px;
+  height: auto;
   display: flex;
   justify-content: flex-start;
   position: relative;
