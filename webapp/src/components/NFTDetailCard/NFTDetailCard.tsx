@@ -6,7 +6,7 @@ import { Row } from '../Layout/Row'
 import { Radio } from '@kmon/ui'
 
 const NFTDetailCard = (props: Props) => {
-  const { nft, elementType, isV2, toogleV2 } = props
+  const { nft, elementType, isV2, toogleV2, canBreed } = props
   const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000
   var options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -47,6 +47,7 @@ const NFTDetailCard = (props: Props) => {
           <Row>
             <p className="product-info-number">{nft.metadata?.name}</p>
             <div className="product-verified" />
+            {canBreed ? <i className="product-description-mid-heart"></i> : null}
           </Row>
           <p className="product-description-left-item">
             Number: {nft.tokenId}

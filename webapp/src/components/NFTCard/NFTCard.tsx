@@ -26,7 +26,9 @@ const NFTCard = (props: Props) => {
   const genes = nft.data.kryptomon?.genes
   const priceInWei = breedingOrder?.price;
   const breedingCount = nft.data.kryptomon?.breedingCount ? nft.data.kryptomon?.breedingCount : 0;
+  const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0;
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase ? nft.data.kryptomon?.maxBreedingsDuringLifePhase : 0;
+  const today = new Date().getTime() / 1000;
   const coin =
     order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
 
@@ -86,6 +88,14 @@ const NFTCard = (props: Props) => {
     }
   }, [isPreventClick, onClickCard, nft])
 
+  const getIfCanBreed = () => {
+    if (timeCanBreed > 0 && timeCanBreed < today) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <Card
       className="NFTCard"
@@ -120,6 +130,9 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
+        </div>
+      </div>
+      <div className="product-description-container">
           <div className="product-info">
             <div className="product-info-value">
               {status && status.showPriceBottom && (
@@ -133,31 +146,42 @@ const NFTCard = (props: Props) => {
                 </div>
               )}
             </div>
-            <Row>
-              <p className="product-info-number-card">No. {nft.name}</p>
-              <div className="product-verified" />
-            </Row>
+            <div className="product-info-name-container">
+              <Row>
+                <p className="product-info-number-card">No. {nft.name}</p>
+                <div className="product-verified" />
+                {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
+                : <i className="product-description-mid-heart-empty"></i>}
+              </Row>
+              <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
+            </div>
+          </div>
+        <div className="product-description">
+          <div className="product-description-left">
+            {
+              priceInWei ? (
+                < p className="product-description-left-item">
+                  Breed Price: {parseInt(utils.formatEther(priceInWei))} KMON
+                </p>
+              ) : (
+                < p className="product-description-left-item-empty">
+                  Breed Price: 0 KMON
+                </p>
+              )
+            }
+            {
+              nft.data.kryptomon?.maxBreedingsDuringLifePhase ? (
+                < p className="product-description-left-item">
+                  Breed Amount: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
+                </p>
+              ) : (
+                < p className="product-description-left-item-empty">
+                  Breed Amount: 0/0
+                </p>
+              )
+            }
           </div>
         </div>
-      </div>
-      <div className="product-description">
-        <div className="product-description-left">
-          {
-            priceInWei && (
-              < p className="product-description-left-item">
-                Breed: {parseInt(utils.formatEther(priceInWei))} KMON
-              </p>
-            )
-          }
-          {
-            nft.data.kryptomon?.maxBreedingsDuringLifePhase && (
-              < p className="product-description-left-item">
-                Breed Amount: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
-              </p>
-            )
-          }
-        </div>
-        <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
       </div>
     </Card >
   )

@@ -10,7 +10,7 @@ export const View = {
   PARTNERS_KNOWN_ORIGIN: 'known_origin',
   LOAD_MORE: 'load_more',
   ATLAS: 'atlas',
-  ALL_ASSETS: 'all_assets'
+  // ALL_ASSETS: 'all_assets',
   // LATEST_SOLD: 'latest_sold'
 } as const
 

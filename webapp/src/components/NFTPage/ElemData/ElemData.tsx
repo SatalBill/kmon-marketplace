@@ -25,8 +25,8 @@ const ElemData = (props: Props) => {
   const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
 
   const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Female'
-    else return 'Male'
+    if (value && +value > 5) return 'Male'
+    else return 'Female'
   }
   const skinTypeToString: Record<string, string> = {
     '0': 'Feather',

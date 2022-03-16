@@ -204,7 +204,7 @@ a.ui.card.link:hover .meta {
   width: 16px;
   height: 16px;
   background-image: url(../../images/egg/certified-badge.svg);
-  margin: 8px;
+  margin: 4px;
 }
 
 .product-title {
@@ -217,13 +217,18 @@ a.ui.card.link:hover .meta {
   background-color: #e7e3d7;
   flex-direction: row;
   width: 100%;
-  padding: 11px 16px;
+  padding: 11px 10px;
 }
 
 .product-description-left {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+}
+
+.product-description-left .Row {
+  align-items: center;
+  width: auto;
 }
 
 .product-description-left-item {
@@ -233,6 +238,17 @@ a.ui.card.link:hover .meta {
   text-transform: uppercase;
 }
 
+.product-description-mid-heart {
+  width: 40px;
+  height: 36px;
+  background-image: url(../../images/heart.svg);
+}
+
+.product-description-mid-heart-empty {
+  width: 40px;
+  height: 36px;
+}
+
 .product-description-right {
   display: flex;
   flex-direction: column;
@@ -240,6 +256,7 @@ a.ui.card.link:hover .meta {
   align-items: center;
   color: #000000;
   font-size: 8px;
+  margin-bottom: 5px;
 }
 
 .card-container {
