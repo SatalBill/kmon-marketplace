@@ -89,7 +89,7 @@ const NFTCard = (props: Props) => {
   }, [isPreventClick, onClickCard, nft])
 
   const getIfCanBreed = () => {
-    if (timeCanBreed < today) {
+    if (timeCanBreed > 0 && timeCanBreed < today) {
       return true;
     } else {
       return false;
