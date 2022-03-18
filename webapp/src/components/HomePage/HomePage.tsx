@@ -7,6 +7,7 @@ import { View } from '../../modules/ui/types'
 import { HomepageView } from '../../modules/ui/nft/homepage/types'
 import { Section } from '../../modules/vendor/decentraland/routing/types'
 import { Navbar } from '../Navbar'
+import { Navigation } from '../Navigation'
 import { Footer } from '../Footer'
 import { Slideshow } from './Slideshow'
 import { Props } from './HomePage.types'
@@ -61,7 +62,7 @@ const HomePage = (props: Props) => {
   const views = Object.keys(homepage) as HomepageView[]
 
   return (
-    <>
+    <div className="HomePage">
       <Navbar isFullscreen isOverlay />
       <Hero centered className="HomePageHero">
         <div className="hero-title-text">{t('home_page.title')}</div>
@@ -76,6 +77,7 @@ const HomePage = (props: Props) => {
           </Button>
         </Hero.Actions>
       </Hero>
+      <Navigation />
       <div className="HomePageContent">
         <Page className="HomePage">
           {views.map((view, index) => {
@@ -97,7 +99,7 @@ const HomePage = (props: Props) => {
         </div>
         <Footer className="Footer" />
       </div>
-    </>
+    </div>
   )
 }
 
