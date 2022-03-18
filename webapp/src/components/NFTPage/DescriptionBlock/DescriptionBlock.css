@@ -13,7 +13,7 @@
 }
 
 .show-text {
-  font-size: 12px;
+  font-size: 14px;
   color: #676370;
   font-weight: 400;
   font-family: var(--font-monospace);
@@ -39,7 +39,7 @@
   background-color: #676370;
   border-radius: 10px;
   font-family: var(--font-family);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   color: #232123;
