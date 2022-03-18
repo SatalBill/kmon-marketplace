@@ -1,6 +1,7 @@
 .HomePageHero.dcl.hero {
   height: var(--page-header-height);
   padding: 64px 64px 30px;
+  margin-bottom: 0px;
 }
 
 .HomePageHero {
@@ -71,6 +72,10 @@
   margin-bottom: 24px;
   color: var(--secondary-text);
   max-width: 55%;
+}
+
+.HomePage .dcl.tabs {
+  font-family: var(--font-family);
 }
 
 .HomePageContent {
