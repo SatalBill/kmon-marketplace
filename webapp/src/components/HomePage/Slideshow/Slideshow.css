@@ -1,16 +1,16 @@
 .Slideshow {
   margin-bottom: 70px;
   position: relative;
-  width: 100%;
+  width: 99%;
 }
 
 /* shadow */
 .Slideshow:after {
   background: linear-gradient(
     to left,
-    rgba(15, 15, 15, 1) 10%,
-    rgba(15, 15, 15, 0.9) 30%,
-    rgba(15, 15, 15, 0.3) 80%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(15, 15, 15, 0) 80%,
     rgba(15, 15, 15, 0)
   );
   content: '';
@@ -54,7 +54,7 @@
 }
 
 .Slideshow .dcl.header-menu {
-  margin-bottom: 12px;
+  margin-bottom: -23px;
 }
 
 .Slideshow i.caret {
@@ -76,6 +76,7 @@
 .Slideshow .ui.button.basic,
 .Slideshow .ui.button.basic:hover {
   color: var(--text) !important;
+  font-family: var(--font-monospace);
 }
 
 .Slideshow .header-menu-right {
