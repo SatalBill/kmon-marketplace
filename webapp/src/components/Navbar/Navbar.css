@@ -40,7 +40,7 @@
 .dcl.navbar .ui.menu .item.sign-in-button:focus {
   background: linear-gradient(#d7b731, #f25f31);
   border-radius: var(--button-border-radius);
-  color: var(--background);
+  color: #232123;
   justify-content: center;
   height: var(--button-height);
   font-size: var(--font-size-medium);
