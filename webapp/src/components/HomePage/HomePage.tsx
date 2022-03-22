@@ -20,7 +20,7 @@ const HomePage = (props: Props) => {
   const sections = {
     [View.KRYPTOMONS]: Section.KRYPTOMONS,
     // [View.LATEST_SOLD]: Section.LATEST_SOLD,
-    // [View.ALL_ASSETS]: Section.ALL
+    [View.ALL_ASSETS]: Section.ALL
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
@@ -67,6 +67,9 @@ const HomePage = (props: Props) => {
         <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
           <div className="hero-image" />
+          <div className="hero-fade" />
+          <div className="hero-logo" />
+          <div className="hero-market" />
           <div className="grid-top" />
           <div className="dragons" />
         </Hero.Content>
@@ -95,7 +98,7 @@ const HomePage = (props: Props) => {
         <div className="bottom-bg">
           <div className="bottom-bg-image"></div>
         </div>
-        <Footer className="Footer" />
+        <Footer className="Footer" /> 
       </div>
     </>
   )
