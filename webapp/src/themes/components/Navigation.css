@@ -6,4 +6,8 @@
   background-image: url('../../images/kryptomon-logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 0px;
+  width: 111px;
+  height: 48px;
+  margin-top: -10px;
 }
