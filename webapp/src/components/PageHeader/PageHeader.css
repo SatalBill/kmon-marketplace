@@ -13,3 +13,7 @@
   font-family: var(--font-family);
   margin-top: 50px;
 }
+
+.ui.secondary.stackable.menu {
+  display: flex;
+}
