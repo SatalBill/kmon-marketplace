@@ -12,8 +12,12 @@
 }
 
 .ui.primary.button {
-  background: linear-gradient(#D7319E, #6331F2);
+  background: linear-gradient(#d7319e, #6331f2);
   border-radius: var(--button-border-radius);
-  font-size: var(--font-size-medium);
+  font-family: var(--font-poppins);
   text-transform: initial;
+  width: 220px;
+  height: 60px;
+  font-size: 21px;
+  font-weight: 900;
 }
