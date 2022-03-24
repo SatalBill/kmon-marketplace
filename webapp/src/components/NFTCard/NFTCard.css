@@ -176,7 +176,7 @@ a.ui.card.link:hover .meta {
   font-size: 17px;
   font-family: var(--font-family);
   color: #000000;
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   flex-direction: row;
   align-items: center;
