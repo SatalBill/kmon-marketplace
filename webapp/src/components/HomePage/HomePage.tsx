@@ -21,7 +21,7 @@ const HomePage = (props: Props) => {
   const sections = {
     [View.KRYPTOMONS]: Section.KRYPTOMONS,
     // [View.LATEST_SOLD]: Section.LATEST_SOLD,
-    [View.ALL_ASSETS]: Section.ALL
+    // [View.ALL_ASSETS]: Section.ALL
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
