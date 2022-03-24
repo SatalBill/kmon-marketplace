@@ -76,7 +76,7 @@
 .Slideshow .ui.button.basic,
 .Slideshow .ui.button.basic:hover {
   color: var(--text) !important;
-  font-family: var(--font-monospace);
+  font-family: var(--font-poppins);
 }
 
 .Slideshow .header-menu-right {
