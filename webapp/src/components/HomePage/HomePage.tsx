@@ -15,7 +15,6 @@ import './HomePage.css'
 import { SearchOptions } from '../../modules/routing/types'
 import { OrderStatus } from '../../modules/order/types'
 
-
 const HomePage = (props: Props) => {
   const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
 
