@@ -11,3 +11,13 @@
   height: 48px;
   margin-top: -10px;
 }
+
+.dcl.tabs {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+}
+
+.dcl.tab.active {
+  font-family: var(--font-poppins) !important;
+  font-weight: 500;
+}
