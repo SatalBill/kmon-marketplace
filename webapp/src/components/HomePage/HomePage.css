@@ -1,4 +1,15 @@
 .HomePage .dcl.tabs {
+  font-family: var(--font-family);
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .HomePage .dcl.tabs {
+    display: none;
+  }
+}
+
+.HomePage .ui.secondary.stackable.menu {
   display: none;
 }
 
@@ -10,6 +21,7 @@
 .HomePageHero.dcl.hero {
   height: var(--page-header-height);
   padding: 64px 64px 30px;
+  margin-bottom: 0px;
 }
 
 .HomePageHero {
@@ -72,7 +84,6 @@
   margin-top: 20px;
   text-transform: uppercase !important;
 }
-
 
 .hero-logo {
   background-image: url(../../images/kryptomon-logo.svg);
@@ -154,6 +165,10 @@
   margin-bottom: 24px;
   color: var(--secondary-text);
   max-width: 55%;
+}
+
+.HomePage .dcl.tabs {
+  font-family: var(--font-family);
 }
 
 .HomePageContent {
