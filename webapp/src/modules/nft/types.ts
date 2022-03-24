@@ -79,6 +79,20 @@ export type NFTGenesV2 = {
   generation: number
 }
 
+export type NFTGameMetaDataV2 = {
+  constitution: number
+  defense: number
+  feedingGaugeAmount: number
+  hapinessGaugeAmount: number
+  healingGaugeAmount: number
+  isFreezed: number
+  loveGaugeAmount: number
+  mainElementType: number
+  mainFamilyTalentPropertyName: number
+  secondaryElementType: number
+  secondaryFamilyTalentPropertyName: number
+}
+
 export type NFT<V extends VendorName = VendorName.KRYPTOMON> = Omit<
   BaseNFT,
   'category' | 'data'
@@ -88,6 +102,7 @@ export type NFT<V extends VendorName = VendorName.KRYPTOMON> = Omit<
   metadata: KryptomonMetadataResponse
   data: Data<V>
   genesV2?: NFTGenesV2
+  gameMetadata: NFTGameMetaDataV2
 }
 
 export type NFTsFetchParams = {
