@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from 'react'
+import React, { useState, SyntheticEvent, useEffect } from 'react'
 import { Container } from '@kmon/ui'
 import { Dropdown, Progress } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
@@ -8,6 +8,7 @@ import { Props } from './KryptomonDetail.types'
 import './KryptomonDetail.css'
 import { NFTDetailCard } from '../../NFTDetailCard'
 import { Elements } from '../Elements'
+import { BreedingInfo } from "../BreedingInfo";
 import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
@@ -26,8 +27,13 @@ import Fire from '../../../images/egg/elem-fire.svg'
 import { DNARadarChart } from '../DNARadarChart'
 
 const KryptomonDetail = (props: Props) => {
-  const { nft, order } = props
+  const { nft, order, breedingOrder } = props
   const [isV2, setIsV2] = useState(false)
+  const [cooldownTimePercent, setCooldownTimePercent] = useState(0)
+  const [breedAmountStartValue, setBreedAmountStartValue] = useState(0)
+  const [breedAmountEndValue, setBreedAmountEndValue] = useState(0)
+  const [cooldownTimeDay, setCooldownTimeDay] = useState(0)
+  const [breedPrice, setBreedPrice] = useState('')
 
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
@@ -69,6 +75,11 @@ const KryptomonDetail = (props: Props) => {
   const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
   const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
+  const timeHatched = nft.data.kryptomon?.timeHatched || 0
+  const isJunior = nft.data.kryptomon?.status === "2"
+  const breedingCount = nft.data.kryptomon?.breedingCount || 0
+  const breedingPrice = breedingOrder?.price || ''
+  const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase || 0
   const today = new Date().getTime() / 1000;
 
   const genesArray = Object.values(genes!)
@@ -142,13 +153,13 @@ const KryptomonDetail = (props: Props) => {
     if (timeCanBreed < today) {
       return 0;
     }
-  
+
     const diffCanToLast = Math.abs(timeCanBreed - lastTimeBred);
     const diffTodayToLast = Math.abs(today - lastTimeBred);
-  
+
     const total = Math.floor(diffCanToLast / 86400);
     const value = Math.floor(diffTodayToLast / 86400);
-  
+
     const percentage = (value / total) * 100;
 
     return percentage;
@@ -161,7 +172,7 @@ const KryptomonDetail = (props: Props) => {
       return false;
     }
   }
-  
+
   const formatedDate = (timeInSeconds: number) => {
     const laidTimestamp = timeInSeconds * 1000
     var options: Intl.DateTimeFormatOptions = {
@@ -185,6 +196,21 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
+
+  useEffect(() => {
+    setBreedAmountStartValue(breedingCount)
+    setBreedAmountEndValue(maxBreedingsDuringLifePhase)
+    setBreedPrice(breedingPrice)
+    if (timeCanBreed && timeCanBreed > today) {
+      const percentDiff: number | undefined = timeCanBreed - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
+      const currentPercent: number | undefined = Math.floor(today) - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
+      const percentTemp = currentPercent * 100 / percentDiff
+      const leftDay = Math.ceil((timeCanBreed - today) / 3600 / 24)
+      setCooldownTimeDay(leftDay)
+      setCooldownTimePercent(percentTemp)
+    }
+  }, [])
+
   return (
     <Container className="product-container">
       <Row className="Row-space-between">
@@ -198,6 +224,20 @@ const KryptomonDetail = (props: Props) => {
               canBreed={getIfCanBreed()}
             />
           </Row>
+          {isJunior &&
+            <Row className="Row-space-between ">
+              <TitleBlock title={t('nft_page.breeding_info.title')}>
+                <BreedingInfo
+                  nft={nft}
+                  cooldownTimePercent={cooldownTimePercent}
+                  cooldownTimeDay={cooldownTimeDay}
+                  breedAmountStartValue={breedAmountStartValue}
+                  breedAmountEndValue={breedAmountEndValue}
+                  breedPrice={breedPrice}
+                />
+              </TitleBlock>
+            </Row>
+          }
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.elements.title')}>
               <Elements
