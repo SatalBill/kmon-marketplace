@@ -12,9 +12,11 @@ const BreedingInfo = (props: Props) => {
     cooldownTimeDay,
     breedAmountStartValue,
     breedAmountEndValue,
-    breedPrice
+    breedPrice,
+    account
   } = props
   const showCooldownTime = nft.activeBreedingOrderId
+  const isMyKryptomon = nft.owner === account
 
   const handleSetPrice = () => {
     alert(`Set Price of ${nft.metadata.name}`)
@@ -49,7 +51,7 @@ const BreedingInfo = (props: Props) => {
           <Row className="Row-space-between margin-vertical">
             <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>
             <h5 className="cooldown-time">{`${parseInt(utils.formatEther(breedPrice))} KMON`}</h5>
-            <p onClick={handleSetPrice}>Set price</p>
+            {isMyKryptomon && <p onClick={handleSetPrice}>Set price</p>}
           </Row>
         }
       </div>

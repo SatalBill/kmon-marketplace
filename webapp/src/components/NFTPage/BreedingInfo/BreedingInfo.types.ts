@@ -8,6 +8,7 @@ export type Props = {
   breedAmountStartValue: number
   breedAmountEndValue: number
   breedPrice: string
+  account: string
   order?: Order
 }
 

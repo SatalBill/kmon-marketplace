@@ -2,6 +2,7 @@ import React, { useState, SyntheticEvent, useEffect } from 'react'
 import { Container } from '@kmon/ui'
 import { Dropdown, Progress } from 'semantic-ui-react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import Web3 from 'web3'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
 import { Props } from './KryptomonDetail.types'
@@ -26,6 +27,8 @@ import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
 import { DNARadarChart } from '../DNARadarChart'
 
+declare var window: any
+
 const KryptomonDetail = (props: Props) => {
   const { nft, order, breedingOrder } = props
   const [isV2, setIsV2] = useState(false)
@@ -34,6 +37,7 @@ const KryptomonDetail = (props: Props) => {
   const [breedAmountEndValue, setBreedAmountEndValue] = useState(0)
   const [cooldownTimeDay, setCooldownTimeDay] = useState(0)
   const [breedPrice, setBreedPrice] = useState('')
+  const [account, setAccount] = useState('')
 
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
@@ -198,17 +202,26 @@ const KryptomonDetail = (props: Props) => {
   })
 
   useEffect(() => {
-    setBreedAmountStartValue(breedingCount)
-    setBreedAmountEndValue(maxBreedingsDuringLifePhase)
-    setBreedPrice(breedingPrice)
-    if (timeCanBreed && timeCanBreed > today) {
-      const percentDiff: number | undefined = timeCanBreed - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
-      const currentPercent: number | undefined = Math.floor(today) - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
-      const percentTemp = currentPercent * 100 / percentDiff
-      const leftDay = Math.ceil((timeCanBreed - today) / 3600 / 24)
-      setCooldownTimeDay(leftDay)
-      setCooldownTimePercent(percentTemp)
+    const start = async () => {
+      console.log('nft=>', nft.owner)
+      setBreedAmountStartValue(breedingCount)
+      setBreedAmountEndValue(maxBreedingsDuringLifePhase)
+      setBreedPrice(breedingPrice)
+      if (timeCanBreed && timeCanBreed > today) {
+        const percentDiff: number | undefined = timeCanBreed - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
+        const currentPercent: number | undefined = Math.floor(today) - (lastTimeBred == 0 ? timeHatched : lastTimeBred)
+        const percentTemp = currentPercent * 100 / percentDiff
+        const leftDay = Math.ceil((timeCanBreed - today) / 3600 / 24)
+        setCooldownTimeDay(leftDay)
+        setCooldownTimePercent(percentTemp)
+      }
+
+      let web3 = new Web3(window?.ethereum)
+      const accounts = await web3.eth.getAccounts()
+      console.log('account=>', accounts)
+      setAccount(accounts[0])
     }
+    start()
   }, [])
 
   return (
@@ -234,6 +247,7 @@ const KryptomonDetail = (props: Props) => {
                   breedAmountStartValue={breedAmountStartValue}
                   breedAmountEndValue={breedAmountEndValue}
                   breedPrice={breedPrice}
+                  account={account}
                 />
               </TitleBlock>
             </Row>
