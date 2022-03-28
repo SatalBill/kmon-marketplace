@@ -14,6 +14,7 @@ import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
 import { ElemData } from '../ElemData'
+import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
 import Ice from '../../../images/egg/elem-ice.svg'
@@ -292,6 +293,11 @@ const KryptomonDetail = (props: Props) => {
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.metadata')}>
               <ElemData nft={nft} isV2={isV2} />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.gamestats')}>
+              <GameData nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row>
         </Column>

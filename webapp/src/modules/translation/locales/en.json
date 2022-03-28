@@ -231,6 +231,7 @@
       "air": "Air"
     },
     "metadata": "Metadata",
+    "gamestats": "Game Stats",
     "price_chart": {
       "title": "Price chart",
       "day": "Day",

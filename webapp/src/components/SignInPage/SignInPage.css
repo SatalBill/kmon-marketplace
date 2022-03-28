@@ -6,3 +6,13 @@
 .SignInPage .SignIn.center {
   position: relative;
 }
+
+.dcl.login-modal .dcl.option {
+  height: 100px !important;
+}
+
+@media (max-width: 768px) {
+  .dcl.login-modal {
+    width: 400px !important;
+  }
+}
