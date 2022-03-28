@@ -12,6 +12,7 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
+import { DNAChartDefault} from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
@@ -248,6 +249,7 @@ const KryptomonDetail = (props: Props) => {
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />
+              <DNAChartDefault nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">

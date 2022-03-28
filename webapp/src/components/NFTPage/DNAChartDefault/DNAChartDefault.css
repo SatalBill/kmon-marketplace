@@ -1,4 +1,4 @@
-.dna-container {
+.dna-container-1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,17 @@
   position: relative;
   align-self: flex-end;
 }
+
+.dna-chart-1 {
+  width: 662px;
+  position: absolute;
+  top: -695px;
+}
+
+.dna-chart-1 {
+  width: 662px;
+}
+
 
 @media (max-width: 1201px) {
   .dna-container {
@@ -34,6 +45,11 @@
   }
   .block-container{
     width: 100%;
+  }
+  .dna-chart-1 {
+    height: 343px;
+    width: 346px;
+    top: -365px;
   }
 }
 
@@ -89,12 +105,4 @@
 
 .dna-info-start {
   margin-left: 9px;
-}
-
-.dna-chart {
-  width: 678;
-}
-
-.dna-chart-1 {
-  width: 678;
 }

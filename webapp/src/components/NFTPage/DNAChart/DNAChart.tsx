@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Bar } from 'react-chartjs-2'
+import {Chart} from 'chart.js';
+import { Bar, Radar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
 import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
@@ -7,7 +8,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
-
+Chart.register(ChartDataLabels);
 const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(0);
@@ -53,81 +54,79 @@ const DNAChart = (props: Props) => {
     labels: DNA_CONSTANTS,
     datasets: [
       {
+        label: '',
         data: DNAValues,
-        backgroundColor: DNA_COLORS,
-        borderSkipped: false,
-        borderRadius: 5,
-        width: 678,
-        barPercentage: 0.65,
-        categoryPercentage: 0.5,
-        fill: 10,
+        fillColor: "rgb(54, 162, 235)",
+        strokeColor: "rgb(54, 162, 235)",
+        pointColor: "rgb(54, 162, 235)",
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointHoverBorderColor: 'rgb(54, 162, 235)',
       }
     ]
   }
 
   const options = {
+    scale: {
+      beginAtZero: true,
+      max: 100,
+      min: 0,
+      stepSize: 20,
+      gridLines: {
+        lineWidth: 10,
+        color: ['black', 'red', 'orange', 'yellow']
+      }
+    },
     plugins: {
       legend: {
-        display: false
-      },
-      tooltip: {
-        enabled: true
-      },
-      datalabels: {
-        anchor: 'end',
-        align: 'top',
-        formatter: Math.round,
-        font: {
-          weight: 'bold',
-          family: 'PT Mono'
-        }
+        display: false,
+        position: 'top'
       }
     },
     scales: {
-      x: {
-        grid: {
-          display: false,
-          drawBorder: false
-        },
+      r: {
         ticks: {
-          display: isMobile() ? false : true,
           autoSkip: true,
           maxRotation: -90,
           minRotation: -90,
           padding: -10,
           labelOffset: 25,
-          color: '#676370',
+          color: '#F231AF',
           align: 'start',
+          backgroundColor: '#FF0000',
+          // color: '#fff',
           font: {
-            size: isMobile() ?  windowWidth < 480 ? 0 : 0 : windowWidth < 480 ? 0 : 13,
-            family: 'PT Mono'
+            size: 11,
+            color: '#ffff',
+            family: 'Poppins'
           }
         },
-        legend: {
-          display: false
-        }
-      },
-      y: {
         grid: {
-          display: false,
-          drawBorder: false
+          color: ['#D8D8D8', '#D8D8D8', '#D8D8D8', '#D8D8D8'],
+          backgroundColor: ['black', 'red', 'orange', '#D8D8D8'],
+          lineWidth: [1, 1, 1, 1, 1]
         },
-        ticks: {
-          autoSkip: true,
-          beginAtZero: true,
-          min: 0,
-          max: 100,
-          precision: 0,
-          stepSize: 25,
-          callback: (value: number) => {
-            return value + '%'
-          },
-          color: '#676370',
+        pointLabels: {
+          padding: 40,
+          paddingLeft: 60,
+          color: '#fff',
           font: {
-            size: 10,
-            family: 'PT-Mono'
-          }
+            size: 12,
+            family: 'Poppins'
+          },
         }
+      }
+    },
+    plugin: {
+      id: 'custom_canvas_background_color',
+      beforeDraw: (chart: any) => {
+        const ctx = chart.canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = 'lightGreen';
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
       }
     }
   }
@@ -154,7 +153,7 @@ const DNAChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <Bar
+      <Radar
         className="dna-chart"
         width={screen == 0 ? 678 : 400}
         height={isMobile() ? 400 : 210}
