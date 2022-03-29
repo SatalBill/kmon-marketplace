@@ -206,7 +206,6 @@ const KryptomonDetail = (props: Props) => {
 
   useEffect(() => {
     const start = async () => {
-      console.log('nft=>', nft.owner)
       setBreedAmountStartValue(breedingCount)
       setBreedAmountEndValue(maxBreedingsDuringLifePhase)
       setBreedPrice(breedingPrice)
@@ -283,7 +282,7 @@ const KryptomonDetail = (props: Props) => {
               <DNARadarChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row> */}
-          {(lastTimeBred && !getIfCanBreed()) ? <Row className="Row-space-between">
+          {/* {(lastTimeBred && !getIfCanBreed()) ? <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.breeding')}>
               <div className="next-breeding">
                 <Row className="Row-space-between">
@@ -301,7 +300,7 @@ const KryptomonDetail = (props: Props) => {
                 </div>
               </div>
             </TitleBlock>
-          </Row> : null}
+          </Row> : null} */}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />

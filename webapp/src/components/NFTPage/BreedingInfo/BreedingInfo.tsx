@@ -17,7 +17,7 @@ const BreedingInfo = (props: Props) => {
     account
   } = props
   // const showCooldownTime = nft.activeBreedingOrderId
-  const isMyKryptomon = nft.owner.toLowerCase() == account.toLowerCase() ? true : false
+  const isMyKryptomon = nft.owner.toLowerCase() == account?.toLowerCase() ? true : false
 
   const handleSetPrice = () => {
     alert(`Set Price of ${nft.metadata.name}`)
@@ -47,14 +47,14 @@ const BreedingInfo = (props: Props) => {
             bgColor="rgb(0, 208, 103)"
             isLabelVisible={false} />
         </Row>
-        {
-          breedPrice !== "" &&
-          <Row className="Row-space-between margin-vertical">
-            <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>
-            <h5 className="cooldown-time">{`${parseInt(utils.formatEther(breedPrice))} KMON`}</h5>
-            {isMyKryptomon && <p onClick={handleSetPrice}>Set price</p>}
-          </Row>
-        }
+        <p>{breedPrice}</p>
+
+        <Row className="Row-space-between margin-vertical">
+          {breedPrice !== "" && <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>}
+          {breedPrice !== "" && <h5 className="cooldown-time">{`${parseInt(utils.formatEther(breedPrice))} KMON`}</h5>}
+          {isMyKryptomon && <p onClick={handleSetPrice}>Set price</p>}
+        </Row>
+
       </div>
     </div>
   )
