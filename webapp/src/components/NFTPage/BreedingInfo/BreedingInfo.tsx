@@ -8,6 +8,7 @@ import './BreedingInfo.css'
 
 const BreedingInfo = (props: Props) => {
   const { nft,
+    showCooldownTime,
     cooldownTimePercent,
     cooldownTimeDay,
     breedAmountStartValue,
@@ -15,7 +16,7 @@ const BreedingInfo = (props: Props) => {
     breedPrice,
     account
   } = props
-  const showCooldownTime = nft.activeBreedingOrderId
+  // const showCooldownTime = nft.activeBreedingOrderId
   const isMyKryptomon = nft.owner.toLowerCase() == account.toLowerCase() ? true : false
 
   const handleSetPrice = () => {

@@ -76,6 +76,15 @@ const KryptomonDetail = (props: Props) => {
       values: [1625, 1332, 2322, 1239, 2223, 2578]
     }
   }
+
+  const getIfCanBreed = () => {
+    if (timeCanBreed > 0 && timeCanBreed < today) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const genes = isV2 ? nft.genesV2 : nft.data.kryptomon?.genes
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
   const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
@@ -85,6 +94,8 @@ const KryptomonDetail = (props: Props) => {
   const breedingPrice = breedingOrder?.price || ''
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase || 0
   const today = new Date().getTime() / 1000;
+  const showCooldownTimeTemp = lastTimeBred > 0 && !getIfCanBreed()
+  console.log('showCooldownTimeTemp==', showCooldownTimeTemp)
 
   const genesArray = Object.values(genes!)
   let totalGenes = 0
@@ -169,14 +180,6 @@ const KryptomonDetail = (props: Props) => {
     return percentage;
   }
 
-  const getIfCanBreed = () => {
-    if (timeCanBreed > 0 && timeCanBreed < today) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   const formatedDate = (timeInSeconds: number) => {
     const laidTimestamp = timeInSeconds * 1000
     var options: Intl.DateTimeFormatOptions = {
@@ -242,6 +245,7 @@ const KryptomonDetail = (props: Props) => {
               <TitleBlock title={t('nft_page.breeding_info.title')}>
                 <BreedingInfo
                   nft={nft}
+                  showCooldownTime={showCooldownTimeTemp}
                   cooldownTimePercent={cooldownTimePercent}
                   cooldownTimeDay={cooldownTimeDay}
                   breedAmountStartValue={breedAmountStartValue}

@@ -3,6 +3,7 @@ import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
   nft: NFT
+  showCooldownTime: boolean
   cooldownTimePercent: number
   cooldownTimeDay: number
   breedAmountStartValue: number
