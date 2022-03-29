@@ -8,7 +8,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
-Chart.register(ChartDataLabels);
+// Chart.register(ChartDataLabels);
 const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(0);
@@ -63,6 +63,9 @@ const DNAChart = (props: Props) => {
         borderColor: 'rgb(54, 162, 235)',
         pointBackgroundColor: 'rgb(54, 162, 235)',
         pointHoverBorderColor: 'rgb(54, 162, 235)',
+        dataLabels: {
+          display: false
+        },
       }
     ]
   }
@@ -72,40 +75,40 @@ const DNAChart = (props: Props) => {
       beginAtZero: true,
       max: 100,
       min: 0,
-      stepSize: 20,
-      gridLines: {
-        lineWidth: 10,
-        color: ['black', 'red', 'orange', 'yellow']
-      }
+      stepSize: 20
     },
     plugins: {
       legend: {
         display: false,
         position: 'top'
+      },
+      datalabels: {
+        formatter: function(value: any, context: any) {
+          console.log('Formatter--->', value, context)
+          return '';
+        }
       }
     },
     scales: {
       r: {
         ticks: {
-          autoSkip: true,
-          maxRotation: -90,
-          minRotation: -90,
-          padding: -10,
-          labelOffset: 25,
-          color: '#F231AF',
-          align: 'start',
-          backgroundColor: '#FF0000',
-          // color: '#fff',
+          color: '#ffff',
+          backdropColor: '#ffffff00',
+          opacity: 0.5,
           font: {
-            size: 11,
+            size: 10,
+            weight: 'bold',
             color: '#ffff',
             family: 'Poppins'
           }
         },
+        angleLines: {
+          display: false
+        },
         grid: {
-          color: ['#D8D8D8', '#D8D8D8', '#D8D8D8', '#D8D8D8'],
+          color: ['#393838', '#2F2F2E', '#232223', '#151515', '#060606'],
           backgroundColor: ['black', 'red', 'orange', '#D8D8D8'],
-          lineWidth: [1, 1, 1, 1, 1]
+          lineWidth: [100, 50, 50, 50, 0]
         },
         pointLabels: {
           padding: 40,
@@ -115,6 +118,10 @@ const DNAChart = (props: Props) => {
             size: 12,
             family: 'Poppins'
           },
+          callback: (label: any, b: any, c: any) => {
+            console.log('Point callback--->', label, b, c)
+            return ``
+          }
         }
       }
     },
@@ -147,12 +154,6 @@ const DNAChart = (props: Props) => {
 
   return (
     <div className="dna-container">
-      <div className="dna-info">
-        <div className="dna-info-generation">Generation: {DNAGeneration}</div>
-        {isDNAUnfreezable && (
-          <img src={Star} alt="star-icon" className="dna-info-start" />
-        )}
-      </div>
       <Radar
         className="dna-chart"
         width={screen == 0 ? 678 : 400}

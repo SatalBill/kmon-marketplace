@@ -2,15 +2,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 50px 45px 20px 15px;
+  width: 620px;
+  /* padding: 50px 45px 20px 15px; */
   /* background-color: #323132; */
   border-radius: 8px;
   position: relative;
   align-self: flex-end;
+  position: absolute;
+  left: 45px;
+  top: 85px;
+  right: 0px;
+  bottom: 0px;
 }
 
-@media (max-width: 1201px) {
+.dna-chart {
+  width: 620px;
+  /* position: 'absolute'; */
+}
+
+/* @media (max-width: 1201px) {
   .dna-container {
     width: 660px;
     height: 270px;
@@ -59,7 +69,7 @@
     padding: 25px 5px 5px 5px;
     height: auto;
   }
-}
+} */
 
 .dna-info {
   display: flex;
@@ -89,12 +99,4 @@
 
 .dna-info-start {
   margin-left: 9px;
-}
-
-.dna-chart {
-  width: 678;
-}
-
-.dna-chart-1 {
-  width: 678;
 }

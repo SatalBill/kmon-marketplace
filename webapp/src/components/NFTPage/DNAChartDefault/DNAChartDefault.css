@@ -11,15 +11,10 @@
 }
 
 .dna-chart-1 {
-  width: 662px;
-  position: absolute;
-  top: -695px;
+  width: 678px;
+  /* position: absolute;
+  top: -695px; */
 }
-
-.dna-chart-1 {
-  width: 662px;
-}
-
 
 @media (max-width: 1201px) {
   .dna-container {

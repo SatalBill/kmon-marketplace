@@ -8,7 +8,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
-Chart.register(ChartDataLabels);
+// Chart.register(ChartDataLabels);
 const DNAChartDefault = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(0);
@@ -91,16 +91,13 @@ const DNAChartDefault = (props: Props) => {
         color: '#000',
         font: {
           size: 11,
+          weight: 'bold',
           color: '#000',
           family: 'PT Mono'
         },
         formatter: function(value: any, context: any) {
           console.log('Formatter--->', value, context)
           return DNAValues[context.dataIndex];
-        },
-        rotation: (ctx: any) => {
-          console.log('Ctx--->', ctx)
-          return 0
         },
         anchor: function (context: any) {
           var value = context.dataset.data[context.dataIndex];
@@ -117,9 +114,15 @@ const DNAChartDefault = (props: Props) => {
           var value = context.dataset.data[context.dataIndex];
           return DNA_COLORS[context.dataIndex];
         },
+        borderRadius: 2,
         textAlign: 'center',
         offset: -100,
-        padding: 4
+        padding: {
+          top: 4,
+          left: 6,
+          bottom: 4,
+          right: 6
+        }
       }
     },
     scales: {
@@ -135,7 +138,6 @@ const DNAChartDefault = (props: Props) => {
           align: 'start',
           backgroundColor: '#FF0000',
           backdropColor: 'red',
-          // color: '#fff',
           font: {
             size: 11,
             color: '#ffff',
@@ -151,116 +153,15 @@ const DNAChartDefault = (props: Props) => {
           lineWidth: 0
         },
         pointLabels: {
-          padding: 40,
+          padding: 20,
           color: '#fff',
           font: {
             size: 12,
             family: 'Poppins'
-          },
-          callback: (label: any, b: any, c: any) => {
-            console.log('Point callback--->', label, b, c)
-            return ``
           }
         }
       }
-    },
-    plugin: {
-      id: 'custom_canvas_background_color',
-      beforeDraw: (chart: any) => {
-        const ctx = chart.canvas.getContext('2d');
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = 'lightGreen';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.restore();
-      }
-    },
-  }
-
-  const options = {
-    scale: {
-      beginAtZero: true,
-      max: 100,
-      min: 0,
-      stepSize: 20,
-      gridLines: {
-        lineWidth: 10,
-        color: ['black', 'red', 'orange', 'yellow']
-      }
-    },
-    plugins: {
-      legend: {
-        display: true,
-        position: 'top'
-      },
-      datalabels: {
-        borderWidth: 1,
-        color: '#000',
-        font: {
-          size: 11,
-          color: '#000',
-          family: 'PT Mono'
-        },
-        // formatter: function(value: any, context: any) {
-        //   console.log('Formatter--->', value, context)
-        //   return value;
-        // },
-        rotation: (ctx: any) => {
-          console.log('Ctx--->', ctx)
-          return 0
-        },
-        anchor: function (context: any) {
-          var value = context.dataset.data[context.dataIndex];
-          return value.x < 1000 ? 'end' : 'center';
-        },
-        align: function (context: any) {
-          var value = context.dataset.data[context.dataIndex];
-          return value.x < 1000 ? 'end' : 'center';
-        },
-        borderColor: function (context: any) {
-          return DNA_COLORS[context.dataIndex];
-        },
-        backgroundColor: function (context: any) {
-          var value = context.dataset.data[context.dataIndex];
-          return DNA_COLORS[context.dataIndex];
-        },
-        textAlign: 'center',
-        offset: -100,
-        padding: 5
-      }
-    },
-    scales: {
-      r: {
-        grid: {
-          color: ['#D8D8D8', '#D8D8D8', '#D8D8D8', '#D8D8D8'],
-          backgroundColor: ['black', 'red', 'orange', '#D8D8D8'],
-          lineWidth: 0
-        },
-        pointLabels: {
-          padding: 40,
-          color: '#fff',
-          font: {
-            size: 12,
-            family: 'Poppins'
-          },
-          callback: (label: any, b: any, c: any) => {
-            console.log('Point callback--->', label, b, c)
-            return `${label + '\n'}`
-          }
-        }
-      }
-    },
-    plugin: {
-      id: 'custom_canvas_background_color',
-      beforeDraw: (chart: any) => {
-        const ctx = chart.canvas.getContext('2d');
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = 'lightGreen';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.restore();
-     }
-    },
+    }
   }
 
   const [screen, setScreen] = useState(0);
@@ -279,6 +180,12 @@ const DNAChartDefault = (props: Props) => {
 
   return (
     <div className="dna-container-1">
+      <div className="dna-info">
+        <div className="dna-info-generation">Generation: {DNAGeneration}</div>
+        {isDNAUnfreezable && (
+          <img src={Star} alt="star-icon" className="dna-info-start" />
+        )}
+      </div>
       <Radar
         className="dna-chart-1"
         width={screen == 0 ? 678 : 400}
