@@ -16,7 +16,7 @@ const BreedingInfo = (props: Props) => {
     account
   } = props
   const showCooldownTime = nft.activeBreedingOrderId
-  const isMyKryptomon = nft.owner === account
+  const isMyKryptomon = nft.owner.toLowerCase() == account.toLowerCase() ? true : false
 
   const handleSetPrice = () => {
     alert(`Set Price of ${nft.metadata.name}`)
