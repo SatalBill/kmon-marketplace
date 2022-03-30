@@ -87,7 +87,11 @@ function* handleBreedFailure(action: BreedFailureAction) {
     // @ts-ignore
     yield put(showToast(getBreedFailureToast(error.message)))
   // @ts-ignore
-  } else {
+  } else if (error && error.error && error.error.message) {
+    // @ts-ignore
+    yield put(showToast(getBreedFailureToast(error.error.message)))
+  }
+  else {
     yield put(showToast(getBreedFailureToast("Something went wrong")))
   }
 }

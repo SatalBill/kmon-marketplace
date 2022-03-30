@@ -80,7 +80,6 @@ const HomePage = (props: Props) => {
           </Button>
         </Hero.Actions>
       </Hero>
-      
       <div className="HomePageContent">
       <Navigation />
         <Page className="HomePage">
