@@ -1,3 +1,19 @@
+.HomePage .dcl.tabs {
+  text-align: center;
+  font-family: var(--font-poppins);
+  border: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .HomePage .dcl.tabs {
+    display: none;
+  }
+}
+
+.HomePage .ui.secondary.stackable.menu {
+  display: none;
+}
+
 .dcl.hero.centered {
   align-items: center;
   border: 0px;
@@ -29,13 +45,13 @@
 
 .dcl.header-menu .ui.header {
   margin-bottom: 0px;
-  font-family: var(--font-family) !important;
+  font-family: var(--font-poppins) !important;
   font-weight: 500;
 }
 
 @media only screen and (min-width: 1200px) {
   .ui.container {
-    width: 1200px;
+    width: 1064px;
   }
 }
 
@@ -69,7 +85,6 @@
   margin-top: 20px;
   text-transform: uppercase !important;
 }
-
 
 .hero-logo {
   background-image: url(../../images/kryptomon-logo.svg);
@@ -244,7 +259,7 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    margin-top: -515px;
+    margin-top: -432px;
   }
 }
 

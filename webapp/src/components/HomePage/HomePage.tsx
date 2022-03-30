@@ -69,7 +69,7 @@ const HomePage = (props: Props) => {
         <Hero.Content>
           <div className="hero-image" />
           <div className="hero-fade" />
-          <div className="hero-logo" />
+          <a className="hero-logo" href="https://kryptomon.co"/>
           <div className="hero-market" />
           <div className="grid-top" />
           <div className="dragons" />
@@ -80,8 +80,11 @@ const HomePage = (props: Props) => {
           </Button>
         </Hero.Actions>
       </Hero>
+      
       <div className="HomePageContent">
+      <Navigation />
         <Page className="HomePage">
+        
           {views.map((view, index) => {
             return (
               <>
