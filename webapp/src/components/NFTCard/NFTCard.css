@@ -147,8 +147,9 @@ a.ui.card.link:hover .meta {
   width: fit-content;
   border-radius: 10px;
   font-weight: 700;
-  font-family: var(--font-family);
+  font-family: var(--font-monospace);
   font-size: 8px;
+  line-height: 20px;
 }
 
 .product-type-icon {
@@ -213,7 +214,7 @@ a.ui.card.link:hover .meta {
 
 .product-info-name-container .Row {
   align-items: center;
-  width: 80%;
+  width: 74%;
 }
 
 .product-description-container .product-description {

@@ -48,7 +48,7 @@ function* handleBreedRequest(action: BreedRequestAction) {
     yield put(replace(locations.currentAccount()))
   } catch (error) {
     // @ts-ignore
-    yield put(breedFailure(femaleTokenId, maleTokenId, error.error))
+    yield put(breedFailure(femaleTokenId, maleTokenId, error))
   }
 }
 

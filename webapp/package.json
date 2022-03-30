@@ -8,6 +8,7 @@
     "@kmon/schemas": "^0.0.19",
     "@kmon/transactions": "^0.0.34",
     "@kmon/ui": "^0.0.19",
+    "@ramonak/react-progress-bar": "^4.4.0",
     "apollo-boost": "^0.4.7",
     "chart.js": "^3.5.1",
     "chartjs-plugin-datalabels": "^2.0.0",
@@ -16,6 +17,7 @@
     "connected-react-router": "^6.6.1",
     "date-fns": "^2.8.1",
     "dotenv": "^8.2.0",
+    "ethers": "^5.6.2",
     "graphql": "^14.5.8",
     "history": "^4.10.1",
     "react": "^16.12.0",
@@ -32,6 +34,7 @@
     "reselect": "^4.0.0",
     "semantic-ui-react": "^2.0.3",
     "typesafe-actions": "^5.1.0",
+    "web3": "^1.7.1",
     "web3x-es": "^4.0.6"
   },
   "devDependencies": {

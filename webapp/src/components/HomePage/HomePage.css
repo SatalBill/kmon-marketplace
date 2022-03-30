@@ -1,6 +1,28 @@
+.HomePage .dcl.tabs {
+  text-align: center;
+  font-family: var(--font-poppins);
+  border: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  .HomePage .dcl.tabs {
+    display: none;
+  }
+}
+
+.HomePage .ui.secondary.stackable.menu {
+  display: none;
+}
+
+.dcl.hero.centered {
+  align-items: center;
+  border: 0px;
+}
+
 .HomePageHero.dcl.hero {
   height: var(--page-header-height);
   padding: 64px 64px 30px;
+  margin-bottom: 0px;
 }
 
 .HomePageHero {
@@ -13,31 +35,104 @@
   text-align: center;
   display: flex;
   z-index: 15;
-  font-size: 5vmax;
-  color: #E7E3D7;
+  font-size: 70px;
+  color: #e7e3d7;
   letter-spacing: -1.56px;
-  line-height: 75px;
+  line-height: 65px;
   width: 648px;
+  margin-top: -332px;
+}
+
+.dcl.header-menu .ui.header {
+  margin-bottom: 0px;
+  font-family: var(--font-poppins) !important;
+  font-weight: 500;
+}
+
+@media only screen and (min-width: 1200px) {
+  .ui.container {
+    width: 1064px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .ui.container {
+    width: 953px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+.dcl.hero .hero-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .HomePageHero .hero-actions .button-secondary {
-  background-image: linear-gradient(180deg, #D7B731 0%, #F25F31 100%) !important;
+  background-image: linear-gradient(
+    180deg,
+    #d7b731 0%,
+    #f25f31 100%
+  ) !important;
   color: #232123 !important;
   margin-top: 20px;
   text-transform: uppercase !important;
 }
 
+.hero-logo {
+  background-image: url(../../images/kryptomon-logo.svg);
+  position: absolute;
+  height: 140px;
+  width: 343px;
+  margin-top: 69px;
+  background-size: 362px 122px;
+}
+
+.hero-market {
+  background-image: url(../../images/kryptomon-market.svg);
+  position: absolute;
+  height: 107px;
+  width: 301px;
+  margin-top: 161px;
+  background-size: 300px 100px;
+}
+
+.hero-fade {
+  background-image: url(../../images/kryptomon-fadeMount.png);
+  position: absolute;
+  top: 212px;
+  left: auto;
+  bottom: 0px;
+  right: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0px auto -25px;
+  width: 116vw;
+}
+
 .HomePageHero .hero-image {
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: auto;
   bottom: 0px;
-  right: 0px;
+  right: auto;
   background-image: url(../../images/kryptomon-hero.jpg);
-  opacity: 0.57;
-  background-size: cover;
+  opacity: 0.4;
+  background-size: contain;
   background-repeat: no-repeat;
   z-index: -2;
+  background-position: center;
+  margin: -345px auto 0px;
+  min-width: 1664px;
+  width: 100vw;
 }
 
 .HomePageHero .grid-top {
@@ -53,10 +148,10 @@
 
 .HomePageHero .dragons {
   position: absolute;
-  top: 50%;
+  top: 36%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 525px;
   height: 60%;
   background-image: url(../../images/dragons.png);
   background-size: contain;
@@ -73,14 +168,19 @@
   max-width: 55%;
 }
 
+.HomePage .dcl.tabs {
+  font-family: var(--font-family);
+}
+
 .HomePageContent {
   width: 100%;
-  height: auto;
+  height: 1282px;
   display: flex;
   justify-content: flex-start;
   position: relative;
   flex-direction: column;
   align-items: center;
+  margin-top: -296px;
 }
 
 .HomePageContent .bottom-bg {
@@ -101,6 +201,8 @@
   background-image: url(../../images/bottom-bg.jpg);
   background-size: cover;
   height: 900px;
+  background-position: center;
+  margin: 0px auto;
 }
 
 .HomePageContent .Footer {
@@ -110,17 +212,83 @@
 
 @media (min-width: 1440px) {
   .HomePageHero.dcl.hero {
-    height: 520px;
+    height: 1147px;
+    border: 0px;
+  }
+
+  .HomePageContent {
+    width: 100%;
+    height: 1275px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -448px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .HomePageHero.dcl.hero {
+    height: 988px;
+  }
+
+  .hero-fade {
+    top: -73px;
+  }
+
+  .hero-logo {
+    margin-top: 30px;
+  }
+
+  .hero-market {
+    margin-top: 121px;
+  }
+
+  .HomePageHero .hero-image {
+    margin: -611px auto 0px;
+    min-width: 1442px;
+    width: 100vw;
+  }
+
+  .HomePageContent {
+    width: 100%;
+    height: 1100px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -432px;
   }
 }
 
 @media (max-width: 919px) {
-  .HomePageHero .hero-title-text{
+  .HomePageHero .hero-title-text {
     width: 100%;
-    font-size: 4vmax;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 55px;
     display: flex;
     justify-content: center;
     letter-spacing: normal;
+  }
+
+  .HomePageHero .hero-image {
+    margin: -795px auto 0px;
+    min-width: 1150px;
+  }
+
+  .hero-fade {
+    top: -456px;
+    width: 1000px;
+    background-size: contain;
+  }
+
+  .HomePageHero .dragons {
+    position: absolute;
+    top: 33%;
+    width: 380px;
   }
 }
 
@@ -130,24 +298,63 @@
     max-width: 100%;
   }
   .Slideshow .nfts {
-    display: flex;
+    display: grid;
     flex-wrap: nowrap;
     overflow: auto;
     position: relative;
     overflow-x: scroll;
     min-height: 336px;
     white-space: nowrap;
-    width: 700px;
+    width: 92vw;
+    grid-auto-flow: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .HomePageHero .hero-title-text {
+    width: 100%;
+    font-size: 55px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-logo {
+    margin-top: 75px;
+    position: absolute;
+    height: 75px;
+    width: 329px;
+    margin-top: 69px;
+    background-size: 329px 80px;
+  }
+
+  .hero-market {
+    margin-top: 135px;
+    position: absolute;
+    height: 60px;
+    width: 250px;
+    margin-top: 131px;
+    background-size: 250px 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo {
+    margin-top: 108px;
+  }
+
+  .HomePageHero .dragons {
+    position: absolute;
+    top: 37%;
+    width: 328px;
+  }
+
+  .hero-market {
+    margin-top: 168px;
   }
 }
 
 @media (max-width: 425px) {
-  .HomePageHero .hero-title-text{
-    width: 100%;
-    font-size: 3vmax;
-    display: flex;
-    justify-content: center;
-  }
   .Slideshow .nfts {
     display: flex;
     flex-wrap: nowrap;
@@ -156,17 +363,21 @@
     overflow-x: scroll;
     min-height: 336px;
     white-space: nowrap;
-    width: 390px;
+    width: 335px;
+  }
+}
+
+@media (max-width: 479px) {
+  .HomePageHero .hero-title-text {
+    width: 100%;
+    font-size: 40px;
+    line-height: 37px;
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media (max-width: 375px) {
-  .HomePageHero .hero-title-text{
-    width: 100%;
-    font-size: 2.5vmax;
-    display: flex;
-    justify-content: center;
-  }
   .Slideshow .nfts {
     display: flex;
     flex-wrap: nowrap;
@@ -175,14 +386,15 @@
     overflow-x: scroll;
     min-height: 336px;
     white-space: nowrap;
-    width: 350px;
+    width: 320px;
   }
 }
 
 @media (max-width: 320px) {
-  .HomePageHero .hero-title-text{
+  .HomePageHero .hero-title-text {
     width: 100%;
-    font-size: 2vmax;
+    font-size: 40px;
+    line-height: 37px;
     display: flex;
     justify-content: center;
   }

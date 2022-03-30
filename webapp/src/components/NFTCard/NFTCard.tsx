@@ -133,29 +133,29 @@ const NFTCard = (props: Props) => {
         </div>
       </div>
       <div className="product-description-container">
-          <div className="product-info">
-            <div className="product-info-value">
-              {status && status.showPriceBottom && (
-                <div className="product-type-price-container">
-                  {status.showPriceBottom && order?.price ? (
-                    <div className="product-type-price">
-                      {order.price && formatCoin(order.price)} {coin}
-                      {order.priceUSD && ` ($${order.priceUSD})`}
-                    </div>
-                  ) : null}
-                </div>
-              )}
-            </div>
-            <div className="product-info-name-container">
-              <Row>
-                <p className="product-info-number-card">No. {nft.name}</p>
-                <div className="product-verified" />
-                {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
-                : <i className="product-description-mid-heart-empty"></i>}
-              </Row>
-              <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
-            </div>
+        <div className="product-info">
+          <div className="product-info-value">
+            {status && status.showPriceBottom && (
+              <div className="product-type-price-container">
+                {status.showPriceBottom && order?.price ? (
+                  <div className="product-type-price">
+                    {order.price && formatCoin(order.price)} {coin}
+                    {order.priceUSD && ` ($${order.priceUSD})`}
+                  </div>
+                ) : null}
+              </div>
+            )}
           </div>
+          <div className="product-info-name-container">
+            <Row>
+              <p className="product-info-number-card">No. {nft.name}</p>
+              <div className="product-verified" />
+              {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
+                : <i className="product-description-mid-heart-empty"></i>}
+            </Row>
+            <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
+          </div>
+        </div>
         <div className="product-description">
           <div className="product-description-left">
             {

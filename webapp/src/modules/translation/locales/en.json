@@ -231,6 +231,7 @@
       "air": "Air"
     },
     "metadata": "Metadata",
+    "gamestats": "Game Stats",
     "price_chart": {
       "title": "Price chart",
       "day": "Day",
@@ -250,6 +251,14 @@
       "breeding": "Next Breeding",
       "last": "Last Time Bred",
       "next": "Time Can Breed"
+    },
+    "breeding_info": {
+      "title": "Breeding info",
+      "cooldown_time": "COOLDOWN TIME",
+      "breed_amount": "BREED AMOUNT",
+      "breed_price": "BREED PRICE",
+      "breed_info_on": "ON",
+      "breed_info_off": "OFF"
     },
     "trade_history": {
       "title": "Trade history",

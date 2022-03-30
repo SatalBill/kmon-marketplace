@@ -7,6 +7,7 @@ import { View } from '../../modules/ui/types'
 import { HomepageView } from '../../modules/ui/nft/homepage/types'
 import { Section } from '../../modules/vendor/decentraland/routing/types'
 import { Navbar } from '../Navbar'
+import { Navigation } from '../Navigation'
 import { Footer } from '../Footer'
 import { Slideshow } from './Slideshow'
 import { Props } from './HomePage.types'
@@ -61,12 +62,15 @@ const HomePage = (props: Props) => {
   const views = Object.keys(homepage) as HomepageView[]
 
   return (
-    <>
+    <div className="HomePage">
       <Navbar isFullscreen isOverlay />
       <Hero centered className="HomePageHero">
         <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
           <div className="hero-image" />
+          <div className="hero-fade" />
+          <a className="hero-logo" href="https://kryptomon.co"/>
+          <div className="hero-market" />
           <div className="grid-top" />
           <div className="dragons" />
         </Hero.Content>
@@ -76,8 +80,11 @@ const HomePage = (props: Props) => {
           </Button>
         </Hero.Actions>
       </Hero>
+      
       <div className="HomePageContent">
+      <Navigation />
         <Page className="HomePage">
+        
           {views.map((view, index) => {
             return (
               <>
@@ -95,10 +102,11 @@ const HomePage = (props: Props) => {
         <div className="bottom-bg">
           <div className="bottom-bg-image"></div>
         </div>
-        <Footer className="Footer" />
+        <Footer className="Footer" /> 
       </div>
-    </>
+    </div>
   )
 }
+
 
 export default React.memo(HomePage)

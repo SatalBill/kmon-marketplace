@@ -4,7 +4,7 @@ import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { ContractData, ContractName, getContract } from '@kmon/transactions'
 import { ERC721 } from '../../../contracts/ERC721'
 import { ContractFactory } from '../../contract/ContractFactory'
-import { NFT, NFTsFetchParams, NFTsCountParams, NFTGenesV2 } from '../../nft/types'
+import { NFT, NFTsFetchParams, NFTsCountParams, NFTGenesV2, NFTGameMetaDataV2 } from '../../nft/types'
 import { sendTransaction } from '../../wallet/utils'
 import { Account } from '../../account/types'
 import ERC721Abi from '../../../contracts/ERC721Abi'
@@ -69,6 +69,7 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
     const response = await nftAPI.fetchOne(contractAddress, tokenId)
     const responseV2 = await nftAPI.fetchOneV2(tokenId)
     response.nft.genesV2 = this.getReorderedGenes(responseV2?.genes);
+    response.nft.gameMetadata = this.getGameMetaData(responseV2?.gameMetadata)
 
     // setting metadata
     const metadata: KryptomonMetadataResponse = await fetch(
@@ -106,6 +107,23 @@ export class NFTService implements NFTServiceInterface<VendorName.KRYPTOMON> {
       address,
       nftIds: []
     }
+  }
+
+  getGameMetaData(newGameMetaData?: NFTGameMetaDataV2) {
+    const gameMetaData: NFTGameMetaDataV2 = {
+      constitution: 0,
+      defense: 0,
+      feedingGaugeAmount: 0,
+      hapinessGaugeAmount: 0,
+      healingGaugeAmount: 0,
+      isFreezed: 0,
+      loveGaugeAmount: 0,
+      mainElementType: 0,
+      mainFamilyTalentPropertyName: 0,
+      secondaryElementType: 0,
+      secondaryFamilyTalentPropertyName: 0
+    };
+    return Object.assign(gameMetaData, newGameMetaData);
   }
 
   getReorderedGenes(newGenes?: NFTGenesV2) {
