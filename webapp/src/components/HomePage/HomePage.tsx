@@ -80,7 +80,6 @@ const HomePage = (props: Props) => {
           </Button>
         </Hero.Actions>
       </Hero>
-      <Navigation />
       <div className="HomePageContent">
         <Page className="HomePage">
           {views.map((view, index) => {
