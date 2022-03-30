@@ -205,6 +205,7 @@ const KryptomonDetail = (props: Props) => {
   })
 
   useEffect(() => {
+    console.log('nft=>', nft)
     const start = async () => {
       setBreedAmountStartValue(breedingCount)
       setBreedAmountEndValue(maxBreedingsDuringLifePhase)

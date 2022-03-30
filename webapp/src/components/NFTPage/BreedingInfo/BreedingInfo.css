@@ -37,14 +37,18 @@
   margin: 0;
 }
 
-.margin-vertical {
-  margin: 10px 0;
-}
-
-.margin-vertical p {
+.set-price-text {
   font-size: 12px;
   color: rgb(180, 42, 120);
   margin: 0;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.set-price-text:hover {
+  text-shadow: 0 0 3px #fff9, 0 0 5px #00f4;
+}
+
+.margin-vertical {
+  margin: 10px 0;
 }

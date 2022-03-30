@@ -74,7 +74,7 @@ const BreedingInfo = (props: Props) => {
         <Row className="Row-space-between margin-vertical">
           {breedPrice !== "" && <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>}
           {breedPrice !== "" && <h5 className="cooldown-time">{`${parseInt(utils.formatEther(breedPrice))} KMON`}</h5>}
-          {isMyKryptomon && <p onClick={handleSetPrice}>Set price</p>}
+          {isMyKryptomon && <h5 className="set-price-text" onClick={handleSetPrice}>Set price</h5>}
         </Row>
 
       </div>

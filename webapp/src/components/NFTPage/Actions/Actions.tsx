@@ -89,7 +89,7 @@ const Actions = (props: Props) => {
           </Button>
         )
       }
-      {
+      {/* {
         canBreed && (
           <Button
             onClick={handleClickBreedingOrder}
@@ -98,7 +98,7 @@ const Actions = (props: Props) => {
             {t('nft_page.breeding_order')}
           </Button>
         )
-      }
+      } */}
       {order ? (
         isOwner && canSell ? (
           <>
