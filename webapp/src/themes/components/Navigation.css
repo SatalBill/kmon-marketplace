@@ -6,4 +6,18 @@
   background-image: url('../../images/kryptomon-logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 0px;
+  width: 111px;
+  height: 48px;
+  margin-top: -10px;
+}
+
+.dcl.tabs {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+}
+
+.dcl.tab.active {
+  font-family: var(--font-poppins) !important;
+  font-weight: 500;
 }

@@ -75,7 +75,15 @@ function isUserDeniedSignature(message: string) {
 function* handleBreedFailure(action: BreedFailureAction) {
   const { error } = action.payload
   // @ts-ignore
-  if (error && error.message) {
+  if (error && error.data && error.data.message) {
+    // @ts-ignore
+    yield put(showToast(getBreedFailureToast(error.data.message)))
+    // @ts-ignore
+  } else if (error && error.error && error.error.message) {
+    // @ts-ignore
+    yield put(showToast(getBreedFailureToast(error.error.message)))
+    // @ts-ignore
+  } else if (error && error.message) {
     // @ts-ignore
     yield put(showToast(getBreedFailureToast(error.message)))
   // @ts-ignore

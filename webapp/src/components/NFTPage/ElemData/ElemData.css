@@ -40,11 +40,11 @@
 }
 .elem-row-text {
   color: #eb2f96;
-  font-family: var(--font-family);
+  font-family: var(--font-poppins);
   padding-right: 8px;
 }
 
 .elem-row-value {
   color: #fff;
-  font-family: var(--font-family);
+  font-family: var(--font-poppins);
 }

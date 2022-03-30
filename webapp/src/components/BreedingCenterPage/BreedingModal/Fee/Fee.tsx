@@ -120,8 +120,8 @@ const Fee = (props: Props) => {
       </div>
       <div className="fee-detail">
         <div className="fee-detail-info">
-          Breeding Fee: {breedingPrice ? fromWei(breedingPrice, 'ether') : ''} KMON<br />
-          Total Cost: {totalBreedingPrice ? fromWei(totalBreedingPrice, 'ether') : ''} KMON
+          Breeding Fee: {breedingPrice ? Math.round((parseFloat(fromWei(breedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON<br />
+          Total Cost: {totalBreedingPrice ? Math.round((parseFloat(fromWei(totalBreedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON
         </div>
         <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>BREED</Button>
         <Button onClick={onCancel}>CANCEL</Button>

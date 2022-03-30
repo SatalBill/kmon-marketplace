@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { Wallet } from '@kmon/dapps/dist/modules//wallet/types'
+import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
 import { CallHistoryMethodAction } from 'connected-react-router'
 import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
 
