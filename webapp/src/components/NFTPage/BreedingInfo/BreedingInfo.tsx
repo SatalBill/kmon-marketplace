@@ -1,26 +1,49 @@
 import React from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
+import { toWei } from 'web3x-es/utils'
 import { utils } from 'ethers'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Row } from '../../Layout/Row'
+import { isOwnedBy } from '../../../modules/nft/utils'
 import { Props } from './BreedingInfo.types'
 import './BreedingInfo.css'
+import { BreedPriceModal } from '../BreedPriceModal'
 
 const BreedingInfo = (props: Props) => {
   const { nft,
+    wallet,
+    authorizations,
+    order,
+    bids,
+    isAddingToBreedingCentre,
+    currentNFTBreedingOrder,
+    isCancelingBreed,
+    showBreedPriceModal,
+    onAddToBreedingCentre,
+    onNavigate,
+    onResetMyNFT,
+    onCancelListing,
     showCooldownTime,
     cooldownTimePercent,
     cooldownTimeDay,
     breedAmountStartValue,
     breedAmountEndValue,
     breedPrice,
-    account
+    account,
+    onShowBreedPriceModal
   } = props
   // const showCooldownTime = nft.activeBreedingOrderId
   const isMyKryptomon = nft.owner.toLowerCase() == account?.toLowerCase() ? true : false
+  const isOwner = isOwnedBy(nft, wallet)
 
   const handleSetPrice = () => {
-    alert(`Set Price of ${nft.metadata.name}`)
+    onShowBreedPriceModal(true)
+  }
+  const handleSubmitBreedPrice = (breedPrice: string) => {
+    onAddToBreedingCentre(nft.contractAddress, nft.tokenId, toWei(breedPrice, 'ether'))
+  }
+  const handleCancelListing = () => {
+    onCancelListing(nft.contractAddress, nft.tokenId)
   }
   return (
     <div className="breeding-container">
@@ -47,7 +70,6 @@ const BreedingInfo = (props: Props) => {
             bgColor="rgb(0, 208, 103)"
             isLabelVisible={false} />
         </Row>
-        <p>{breedPrice}</p>
 
         <Row className="Row-space-between margin-vertical">
           {breedPrice !== "" && <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>}
@@ -56,6 +78,20 @@ const BreedingInfo = (props: Props) => {
         </Row>
 
       </div>
+
+      <BreedPriceModal
+        wallet={wallet}
+        authorizations={authorizations}
+        show={showBreedPriceModal}
+        nft={nft}
+        isOwner={isOwner}
+        isAddingToBreedingCentre={isAddingToBreedingCentre}
+        currentNFTBreedingOrder={currentNFTBreedingOrder}
+        isCancelingBreed={isCancelingBreed}
+        onSubmitBreedPrice={handleSubmitBreedPrice}
+        onCancel={() => onShowBreedPriceModal(false)}
+        onCancelListing={handleCancelListing}
+      />
     </div>
   )
 }
