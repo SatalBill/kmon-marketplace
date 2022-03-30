@@ -89,7 +89,7 @@ const KryptomonDetail = (props: Props) => {
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0
   const lastTimeBred = nft.data.kryptomon?.lastTimeBred || 0
   const timeHatched = nft.data.kryptomon?.timeHatched || 0
-  const isJunior = nft.data.kryptomon?.status === "2"
+  const isJunior = nft.data.kryptomon?.status && parseInt(nft.data.kryptomon?.status) >= 2
   const breedingCount = nft.data.kryptomon?.breedingCount || 0
   const breedingPrice = breedingOrder?.price || ''
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase || 0
