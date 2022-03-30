@@ -206,6 +206,7 @@ a.ui.card.link:hover .meta {
   height: 16px;
   background: url(../../images/egg/certified-badge.svg) center center no-repeat;
   margin: 4px;
+  display: none;
 }
 
 .product-title {

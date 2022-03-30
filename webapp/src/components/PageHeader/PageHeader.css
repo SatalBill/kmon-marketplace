@@ -4,12 +4,16 @@
 }
 
 .PageCustomHeader {
-  background-image: url(../../images/kryptomon-hero.jpg);
+  background-image: url(../../images/grid_top.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .PageCustomHeader .dcl.tabs {
-  font-family: var(--font-family);
+  font-family: var(--font-poppins);
   margin-top: 50px;
+}
+
+.ui.secondary.stackable.menu {
+  display: flex;
 }

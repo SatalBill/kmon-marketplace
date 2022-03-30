@@ -1,4 +1,4 @@
-import { NFTsFetchParams, NFTGenesV2 } from '../../../nft/types'
+import { NFTsFetchParams, NFTGenesV2, NFTGameMetaDataV2 } from '../../../nft/types'
 import { NFTsFetchFilters, NFTResponse } from './types'
 import { Contract } from '../../services'
 import { contracts } from '../../../contract/utils'
@@ -39,7 +39,7 @@ class NFTAPI {
 
   async fetchOneV2(tokenId: string) {
     try {
-      const response: { genes: NFTGenesV2 } = await fetch(
+      const response: { genes: NFTGenesV2, gameMetadata: NFTGameMetaDataV2 } = await fetch(
         `https://api-yt9bz.ondigitalocean.app/kryptomon/${tokenId}`
       ).then(resp => resp.json())
 

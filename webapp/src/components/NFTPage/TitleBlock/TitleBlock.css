@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 }
 
 .title-container {
@@ -14,8 +15,8 @@
 }
 
 .title {
-  font-family: var(--font-family);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 500;
   font-size: 17px;
   margin: 20px 0;
 }

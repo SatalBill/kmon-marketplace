@@ -163,6 +163,19 @@ export class NFTService implements NFTServiceInterface<VendorName.SUPER_RARE> {
       data: {
         description: asset.description
       },
+      gameMetadata: {
+        constitution: 0,
+        defense: 0,
+        feedingGaugeAmount: 0,
+        hapinessGaugeAmount: 0,
+        healingGaugeAmount: 0,
+        isFreezed: 0,
+        loveGaugeAmount: 0,
+        mainElementType: 0,
+        mainFamilyTalentPropertyName: 0,
+        secondaryElementType: 0,
+        secondaryFamilyTalentPropertyName: 0
+      },
       category: 'art',
       vendor: VendorName.SUPER_RARE,
       chainId: Number(process.env.REACT_APP_CHAIN_ID),
