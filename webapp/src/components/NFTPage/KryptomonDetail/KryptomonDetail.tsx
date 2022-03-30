@@ -228,6 +228,41 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
+  const removedMax = elementTypes.filter(item => item.title != maxElementType.title);
+  const secondElementType = removedMax.reduce((prev, current) => {
+    return ((prev &&
+      typeof prev.value === 'string' &&
+      Number.parseInt(prev.value)) ||
+      0) >
+      ((current &&
+        typeof current.value === 'string' &&
+        Number.parseInt(current.value)) ||
+        0)
+      ? prev
+      : current
+  })
+
+  let maxValue;
+  let maxValueTalent;
+  let secondValue;
+  let secondValueTalent;
+
+  const genesArr = genes && Object.entries(genes)
+  genesArr?.map((gen: any) => {
+    if (maxElementType.title.toLowerCase() === gen[0]) {
+      maxValue = gen[1];
+    }
+    if (secondElementType.title.toLowerCase() === gen[0]) {
+      secondValue = gen[1];
+    }
+    if ((maxElementType.title.toLowerCase() + "Talent") === gen[0]) {
+      maxValueTalent = gen[1];
+    }
+    if ((secondElementType.title.toLowerCase() + "Talent") === gen[0]) {
+      secondValueTalent = gen[1];
+    }
+  })
+
 
   const GeneralTypes = [
     {
@@ -280,21 +315,21 @@ const KryptomonDetail = (props: Props) => {
     }
   ]
 
-  const AffinityTypes = [
+  const AffinityTypes = genes && [
     {
       title: 'element main',
       value: maxElementType,
       icon: Elementmain
     },
     {
-      title: 'water',
-      value: [genes?.water, genes?.waterTalent],
-      icon: Water
+      title: maxElementType.title,
+      value: [maxValue, maxValueTalent],
+      icon: maxElementType.icon
     },
     {
-      title: 'ghost',
-      value: [genes?.ghost, genes?.ghostTalent],
-      icon: Ghostimage
+      title: secondElementType.title,
+      value: [secondValue, secondValueTalent],
+      icon: secondElementType.icon
     }
   ]
 

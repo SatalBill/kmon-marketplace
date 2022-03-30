@@ -71,7 +71,7 @@ const MetaData = (props: Props) => {
         <div className="meta-container">
             <div className="general-stats">
                 <p className="top-element-text">General</p>
-                <p className="stats-description-text">Basic information about your Cryptomon</p>
+                <p className="stats-description-text">Basic information about your Kryptomon.</p>
                 {
                     elements.generalType.map((item: any, index: number) => (
                         <div key={index} className="flex-direction-row stats-item">
@@ -86,8 +86,8 @@ const MetaData = (props: Props) => {
             </div>
             <div className="general-stats">
                 <div className="general-stats">
-                    <p className="top-element-text">General</p>
-                    <p className="stats-description-text">Basic information about your Cryptomon</p>
+                    <p className="top-element-text">Appearance</p>
+                    <p className="stats-description-text">Attributes that will affect the appearance of your kryptomon.</p>
                     {
                         elements.appearanceType.map((item: any, index: number) => (
                             <div key={index} className="flex-direction-row stats-item">
@@ -101,8 +101,8 @@ const MetaData = (props: Props) => {
                     }
                 </div>
                 <div className="general-stats">
-                    <p className="top-element-text">General</p>
-                    <p className="stats-description-text">Basic information about your Cryptomon</p>
+                    <p className="top-element-text">Elemental Affinity</p>
+                    <p className="stats-description-text">Attributes that will affect Kryptomon's type and his affinities.</p>
                     {
                         elements.affinityType.map((item: any, index: number) => (
                             <div key={index} className="flex-direction-row stats-item">
