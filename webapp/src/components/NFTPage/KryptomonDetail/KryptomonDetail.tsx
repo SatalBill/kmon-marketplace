@@ -15,6 +15,7 @@ import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
 import { ElemData } from '../ElemData'
+import { MetaData } from '../MetaData'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
@@ -26,6 +27,17 @@ import Grass from '../../../images/egg/elem-grass.svg'
 import Ground from '../../../images/egg/elem-ground.svg'
 import Water from '../../../images/egg/elem-water.svg'
 import Fire from '../../../images/egg/elem-fire.svg'
+import Ghostimage from '../../../images/metadata/ghostimage.svg'
+import Elementmain from '../../../images/metadata/elementmain.svg'
+import Bodysize from '../../../images/metadata/bodysize.svg'
+import Colorimage from '../../../images/metadata/color.svg'
+import Gender from '../../../images/metadata/gender.svg'
+import Unfreezable from '../../../images/metadata/unfreezable.svg'
+import Laid from '../../../images/metadata/laid.svg'
+import Speciality from '../../../images/metadata/speciality.svg'
+import GeneralType from '../../../images/metadata/generaltype.svg'
+import Generation from '../../../images/metadata/generation.svg'
+import Egg from '../../../images/metadata/egg.svg'
 import { DNARadarChart } from '../DNARadarChart'
 
 declare var window: any
@@ -39,6 +51,11 @@ const KryptomonDetail = (props: Props) => {
   const [cooldownTimeDay, setCooldownTimeDay] = useState(0)
   const [breedPrice, setBreedPrice] = useState('')
   const [account, setAccount] = useState('')
+
+  const whatTheSex = (value?: string | number) => {
+    if (value && +value > 5) return 'Male'
+    else return 'Female'
+  }
 
   const PRICE_DROPDOWN_VALUES = {
     DAY: t('nft_page.price_chart.day'),
@@ -96,8 +113,15 @@ const KryptomonDetail = (props: Props) => {
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase || 0
   const today = new Date().getTime() / 1000;
   const showCooldownTimeTemp = lastTimeBred > 0 && !getIfCanBreed()
-  console.log('showCooldownTimeTemp==', showCooldownTimeTemp)
-
+  var options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }
+  const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
+  const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000
+  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
+  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(undefined, options);
   const genesArray = Object.values(genes!)
   let totalGenes = 0
   for (let i = 0; i < 16; i++) {
@@ -204,6 +228,116 @@ const KryptomonDetail = (props: Props) => {
       ? prev
       : current
   })
+  const removedMax = elementTypes.filter(item => item.title != maxElementType.title);
+  const secondElementType = removedMax.reduce((prev, current) => {
+    return ((prev &&
+      typeof prev.value === 'string' &&
+      Number.parseInt(prev.value)) ||
+      0) >
+      ((current &&
+        typeof current.value === 'string' &&
+        Number.parseInt(current.value)) ||
+        0)
+      ? prev
+      : current
+  })
+
+  let maxValue;
+  let maxValueTalent;
+  let secondValue;
+  let secondValueTalent;
+
+  const genesArr = genes && Object.entries(genes)
+  genesArr?.map((gen: any) => {
+    if (maxElementType.title.toLowerCase() === gen[0]) {
+      maxValue = gen[1];
+    }
+    if (secondElementType.title.toLowerCase() === gen[0]) {
+      secondValue = gen[1];
+    }
+    if ((maxElementType.title.toLowerCase() + "Talent") === gen[0]) {
+      maxValueTalent = gen[1];
+    }
+    if ((secondElementType.title.toLowerCase() + "Talent") === gen[0]) {
+      secondValueTalent = gen[1];
+    }
+  })
+
+
+  const GeneralTypes = [
+    {
+      title: 'egg id',
+      value: nft?.tokenId,
+      icon: Egg
+    },
+    {
+      title: 'generation',
+      value: genes?.generation,
+      icon: Generation
+    },
+    {
+      title: 'Type',
+      value: nft.data.kryptomon?.elementType,
+      icon: GeneralType
+    },
+    {
+      title: 'speciality',
+      value: nft.data?.kryptomon?.speciality,
+      icon: Speciality
+    },
+    {
+      title: 'laid',
+      value: lastEvolved,
+      icon: Laid
+    },
+    {
+      title: 'UNFREEZABLE',
+      value: nft?.data?.kryptomon?.extraData?.unfreezable === 0 ? "No" : "Yes",
+      icon: Unfreezable
+    },
+  ]
+
+  const AppearanceTypes = [
+    {
+      title: 'Gender',
+      value: whatTheSex(genes?.sex),
+      icon: Gender
+    },
+    {
+      title: 'Color',
+      value: genes?.color,
+      icon: Colorimage
+    },
+    {
+      title: 'body size',
+      value: genes?.bodySize,
+      icon: Bodysize
+    }
+  ]
+
+  const AffinityTypes = genes && [
+    {
+      title: 'element main',
+      value: maxElementType,
+      icon: Elementmain
+    },
+    {
+      title: maxElementType.title,
+      value: [maxValue, maxValueTalent],
+      icon: maxElementType.icon
+    },
+    {
+      title: secondElementType.title,
+      value: [secondValue, secondValueTalent],
+      icon: secondElementType.icon
+    }
+  ]
+
+  const MetaDataelemtns = {
+    generalType: GeneralTypes,
+    appearanceType: AppearanceTypes,
+    affinityType: AffinityTypes,
+  }
 
   useEffect(() => {
     console.log('nft=>', nft)
@@ -306,6 +440,11 @@ const KryptomonDetail = (props: Props) => {
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
               <DNAChart nft={nft} isV2={isV2} />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title="">
+              <MetaData nft={nft} isV2={isV2} elements={MetaDataelemtns} />
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
