@@ -443,6 +443,11 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
+            <TitleBlock title="">
+              <MetaData nft={nft} isV2={isV2} elements={MetaDataelemtns} />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.metadata')}>
               <ElemData nft={nft} isV2={isV2} />
             </TitleBlock>
@@ -450,11 +455,6 @@ const KryptomonDetail = (props: Props) => {
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.gamestats')}>
               <GameData nft={nft} isV2={isV2} />
-            </TitleBlock>
-          </Row>
-          <Row className="Row-space-between">
-            <TitleBlock title="">
-              <MetaData nft={nft} isV2={isV2} elements={MetaDataelemtns} />
             </TitleBlock>
           </Row>
         </Column>
