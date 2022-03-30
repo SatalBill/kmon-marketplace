@@ -1,2 +1,2 @@
-import BreedingInfo from './BreedingInfo'
+import BreedingInfo from './BreedingInfo.container'
 export { BreedingInfo }
