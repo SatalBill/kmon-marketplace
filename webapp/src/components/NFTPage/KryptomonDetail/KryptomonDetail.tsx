@@ -248,7 +248,7 @@ const KryptomonDetail = (props: Props) => {
           </Row> : null}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
-              <DNAChartDefault nft={nft} isV2={isV2} />
+              {/* <DNAChartDefault nft={nft} isV2={isV2} /> */}
               <DNAChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row>

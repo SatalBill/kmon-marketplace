@@ -90,7 +90,7 @@ const DNAChartDefault = (props: Props) => {
         borderWidth: 1,
         color: '#000',
         font: {
-          size: 11,
+          size: windowWidth > 480 ? 11 : 8,
           weight: 'bold',
           color: '#000',
           family: 'PT Mono'
@@ -156,7 +156,8 @@ const DNAChartDefault = (props: Props) => {
           padding: 20,
           color: '#fff',
           font: {
-            size: 12,
+            size: windowWidth > 480 ? 12 : 9,
+            weight: windowWidth > 480 ? 'bold' : '400',
             family: 'Poppins'
           }
         }
@@ -180,12 +181,6 @@ const DNAChartDefault = (props: Props) => {
 
   return (
     <div className="dna-container-1">
-      <div className="dna-info">
-        <div className="dna-info-generation">Generation: {DNAGeneration}</div>
-        {isDNAUnfreezable && (
-          <img src={Star} alt="star-icon" className="dna-info-start" />
-        )}
-      </div>
       <Radar
         className="dna-chart-1"
         width={screen == 0 ? 678 : 400}

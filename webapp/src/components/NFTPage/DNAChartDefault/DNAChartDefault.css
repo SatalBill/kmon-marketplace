@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 760px;
   padding: 50px 45px 20px 15px;
   /* background-color: #323132; */
   border-radius: 8px;
@@ -17,23 +17,23 @@
 }
 
 @media (max-width: 1201px) {
-  .dna-container {
-    width: 660px;
-    height: 270px;
-    padding: 25px 5px 5px 5px;
+  .dna-container-1 {
+    width: 622px;
+    /* height: 270px; */
+    padding: 25px 5px 1px 0px;
   }
 }
 
-@media (max-width: 991px) {
-  .dna-container {
+/* @media (max-width: 991px) {
+  .dna-container-1 {
     width: 435px;
     height: 270px;
     padding: 25px 5px 5px 5px;
   }
-}
+} */
 
 @media (max-width: 768px) {
-  .dna-container {
+  .dna-container-1 {
     width: 100%;
     padding: 25px 5px 5px 5px;
     height: auto;
@@ -48,8 +48,8 @@
   }
 }
 
-@media (max-width: 425px) {
-  .dna-container {
+/* @media (max-width: 425px) {
+  .dna-container-1 {
     width: 390px;
     padding: 25px 5px 5px 5px;
     height: auto;
@@ -57,7 +57,7 @@
 }
 
 @media (max-width: 375px) {
-  .dna-container {
+  .dna-container-1 {
     width: 350px;
     padding: 25px 5px 5px 5px;
     height: auto;
@@ -65,12 +65,12 @@
 }
 
 @media (max-width: 320px) {
-  .dna-container {
+  .dna-container-1 {
     width: 290px;
     padding: 25px 5px 5px 5px;
     height: auto;
   }
-}
+} */
 
 .dna-info {
   display: flex;

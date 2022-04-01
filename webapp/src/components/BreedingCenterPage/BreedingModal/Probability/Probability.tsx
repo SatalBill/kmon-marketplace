@@ -186,6 +186,37 @@ const Probability = (props: Props) => {
       min: 0,
       stepSize: 20
     },
+    scales: {
+      r: {
+        ticks: {
+          color: '#ffff',
+          backdropColor: '#ffffff00',
+          opacity: 0.5,
+          font: {
+            size: 10,
+            weight: 'bold',
+            color: '#ffff',
+            family: 'Poppins'
+          }
+        },
+        angleLines: {
+          display: false
+        },
+        grid: {
+          color: ['#393838', '#2F2F2E', '#232223', '#141514', '#242129'],
+          lineWidth: [100, 50, 50, 50, 0]
+        },
+        pointLabels: {
+          padding: 40,
+          color: '#fff',
+          font: {
+            size: 12,
+            weight: 'bold',
+            family: 'Poppins'
+          }
+        }
+      }
+    },
     plugins: {
       legend: {
         display: true,
@@ -193,6 +224,7 @@ const Probability = (props: Props) => {
       }
     }
   }
+  
 
   const classes = ['kryptomon', 'breeding-modal-probability']
   return (
