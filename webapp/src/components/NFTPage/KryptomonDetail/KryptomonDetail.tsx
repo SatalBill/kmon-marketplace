@@ -292,7 +292,7 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: 'UNFREEZABLE',
-      value: nft?.data?.kryptomon?.extraData?.unfreezable === 0 ? "No" : "Yes",
+      value: nft?.data?.kryptomon?.extraData?.unfreezable.toString() === "0" ? "No" : "Yes",
       icon: Unfreezable
     },
   ]
