@@ -1,10 +1,10 @@
 import { Dispatch } from 'redux'
 import { Wallet } from '@kmon/dapps/dist/modules/wallet/types'
-import { CallHistoryMethodAction } from 'connected-react-router'
 import { Authorization } from '@kmon/dapps/dist/modules/authorization/types'
-
-import { NFT } from '../../../modules/nft/types'
+import { CallHistoryMethodAction } from 'connected-react-router'
 import { Order } from '../../../modules/order/types'
+import { NFT } from '../../../modules/nft/types'
+import { showBreedPriceModal, ShowBreedPriceModalAction } from '../../../modules/ui/actions'
 import { Bid } from '../../../modules/bid/types'
 import {
   addToBreedigCentreRequest,
@@ -12,12 +12,20 @@ import {
 } from '../../../modules/breedingOrder/actions'
 import { cancelBreedRequest, CancelBreedRequestAction, resetNFTForBreedingRequest, ResetNFTForBreedingRequestAction } from '../../../modules/breed/actions'
 import { BreedingOrder } from '../../../modules/breedingOrder/types'
-import { showBreedPriceModal, ShowBreedPriceModalAction } from '../../../modules/ui/actions'
+
 
 export type Props = {
-  wallet: Wallet | null
-  authorizations: Authorization[]
   nft: NFT
+  showCooldownTime: boolean
+  cooldownTimePercent: number
+  cooldownTimeDay: number
+  breedAmountStartValue: number
+  breedAmountEndValue: number
+  breedPrice: string
+  account: string
+  authorizations: Authorization[]
+  wallet: Wallet | null
+  onShowBreedPriceModal: typeof showBreedPriceModal
   order: Order | null
   bids: Bid[]
   isAddingToBreedingCentre: boolean
@@ -28,11 +36,9 @@ export type Props = {
   onResetMyNFT: typeof resetNFTForBreedingRequest
   onNavigate: (path: string) => void
   onCancelListing: typeof cancelBreedRequest
-  onShowBreedPriceModal: typeof showBreedPriceModal
 }
 
-export type MapStateProps = Pick<
-  Props,
+export type MapStateProps = Pick<Props,
   'wallet' |
   'authorizations' |
   'order' |
@@ -50,4 +56,4 @@ export type MapDispatch = Dispatch<
   CancelBreedRequestAction |
   ShowBreedPriceModalAction
 >
-export type OwnProps = Pick<Props, 'nft'>
+export type OwnProps = Pick<Props, 'nft' | 'order'>
