@@ -81,28 +81,28 @@ const KryptomonDetail = (props: Props) => {
   }
   const elementTypes = [
     {
-      title: t('nft_page.elements.water'),
+      title: 'Water',
       value: (((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Water
     },
     {
-      title: t('nft_page.elements.grass'),
+      title: 'Grass',
       value: (((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Grass
     },
     {
-      title: t('nft_page.elements.fire'),
+      title: 'Fire',
       value: (((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Fire
     },
     {
-      title: t('nft_page.elements.electro'),
+      title: 'Electro',
       value: (
         ((genes!.electro * genes!.electroTalent) / totalGenes) *
         100
@@ -110,7 +110,7 @@ const KryptomonDetail = (props: Props) => {
       icon: Electro
     },
     {
-      title: t('nft_page.elements.ground'),
+      title: 'Ground',
       value: (
         ((genes!.ground * genes!.groundTalent) / totalGenes) *
         100
@@ -118,19 +118,19 @@ const KryptomonDetail = (props: Props) => {
       icon: Ground
     },
     {
-      title: t('nft_page.elements.ghost'),
+      title: 'Ghost',
       value: (((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Ghost
     },
     {
-      title: t('nft_page.elements.ice'),
+      title: 'Ghost',
       value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
       icon: Ice
     },
     {
-      title: t('nft_page.elements.air'),
+      title: 'Air',
       value: (((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2),
       icon: Air
     }

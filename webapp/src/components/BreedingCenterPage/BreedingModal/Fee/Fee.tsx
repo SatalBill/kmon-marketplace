@@ -7,6 +7,7 @@ import { fromWei } from 'web3x-es/utils'
 import { Props } from './Fee.types'
 import './Fee.css'
 import { DNA_CONSTANTS, DNA_COLORS } from '../../../../modules/nft/constants'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Fee = (props: Props) => {
   const { myNFT, selectedNFT, isBreeding, breedingPrice, selectedBreedingOrder, onBreed, onCancel } = props
@@ -189,7 +190,7 @@ const Fee = (props: Props) => {
 
         ctx.font = windowWidth < 480 ? "12px Poppins" : "lighter 8px Poppins";
         ctx.fillStyle = "#ffff";
-        ctx.fillText(DNA_CONSTANTS[index], dataX, dataY);
+        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`), dataX, dataY);
         ctx.lineWidth = 1;
         ctx.strokeStyle = DNA_COLORS[index];
         ctx.fillStyle = DNA_COLORS[index];
@@ -360,7 +361,7 @@ const Fee = (props: Props) => {
 
         ctx.font = windowWidth < 480 ? "12px Poppins" : "lighter 8px Poppins";
         ctx.fillStyle = "#ffff";
-        ctx.fillText(DNA_CONSTANTS[index], dataX, dataY);
+        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`), dataX, dataY);
         ctx.lineWidth = 1;
         ctx.strokeStyle = DNA_COLORS[index];
         ctx.fillStyle = DNA_COLORS[index];
@@ -396,11 +397,11 @@ const Fee = (props: Props) => {
       </div>
       <div className="fee-detail">
         <div className="fee-detail-info">
-          Breeding Fee: {breedingPrice ? Math.round((parseFloat(fromWei(breedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON<br />
-          Total Cost: {totalBreedingPrice ? Math.round((parseFloat(fromWei(totalBreedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON
+          {t('nft_page.breeding_modal.breeding_fee')}: {breedingPrice ? Math.round((parseFloat(fromWei(breedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON<br />
+          {t('nft_page.breeding_modal.total_cost')}: {totalBreedingPrice ? Math.round((parseFloat(fromWei(totalBreedingPrice, 'ether')) + Number.EPSILON) * 100) / 100 : ''} KMON
         </div>
-        <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>BREED</Button>
-        <Button onClick={onCancel}>CANCEL</Button>
+        <Button primary className="breed-button" onClick={onBreed} loading={isBreeding} disabled={isBreeding}>{t('nft_page.breeding_modal.breed')}</Button>
+        <Button onClick={onCancel}>{t('nft_page.breeding_modal.cancel')}</Button>
       </div>
       <div className="selected-kryptomon">
         <Radar

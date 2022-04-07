@@ -4,6 +4,7 @@ import { Props } from './NFTDetailCard.types'
 import './NFTDetailCard.css'
 import { Row } from '../Layout/Row'
 import { Radio } from '@kmon/ui'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const NFTDetailCard = (props: Props) => {
   const { nft, elementType, isV2, toogleV2, canBreed } = props
@@ -17,7 +18,7 @@ const NFTDetailCard = (props: Props) => {
   const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
   const isV2New = nft.contractAddress.toUpperCase() == '0x04b0f7d5cb2ce4688497f2525748fb7a9affa394'.toUpperCase() || nft.contractAddress.toUpperCase() == '0x5eA74A7105f9c2628AbE80D3Af22Afb1d7CE9A46'.toUpperCase();
   const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(undefined, options);
-  const lastEvolvedTitle = nft.data.kryptomon?.status == "0" ? 'Laid' : nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
+  const lastEvolvedTitle = nft.data.kryptomon?.status == "0" ? t('menu.keys.laid') : nft.data.kryptomon?.status == "1" ? t('menu.keys.hatched') : parseInt(nft.data.kryptomon!.status) > 1 ? t('menu.keys.last_evolved') : undefined
   return (
     <div className="card">
       <div className="card-image-container">
@@ -50,7 +51,7 @@ const NFTDetailCard = (props: Props) => {
             {canBreed ? <i className="product-description-mid-heart"></i> : null}
           </Row>
           <p className="product-description-left-item">
-            Number: {nft.tokenId}
+            {t('menu.keys.number')}: {nft.tokenId}
           </p>
           <p className="product-description-left-item">{lastEvolvedTitle}: {lastEvolved}</p>
         </div>

@@ -24,6 +24,7 @@ const Navbar = (props: Props) => {
   return (
     <BaseNavbar
       {...props}
+      hasTranslations
       activePage=""
       isFullscreen={props.isFullscreen}
       isSignIn={pathname === locations.signIn()}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Props } from './ElemData.types'
 import './ElemData.css'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const ElemData = (props: Props) => {
   const { nft, isV2 } = props
@@ -22,7 +23,7 @@ const ElemData = (props: Props) => {
   const age = new Date(Date.now() - timeBorn! * 1000).getMonth()
   const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
   const lastEvolved = new Date(lastEvolvedTime! * 1000).toLocaleDateString();
-  const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
+  const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? t('menu.keys.hatched') : parseInt(nft.data.kryptomon!.status) > 1 ? t('menu.keys.last_evolved') : undefined
 
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return 'Male'
@@ -36,27 +37,27 @@ const ElemData = (props: Props) => {
     '4': 'Long hairs'
   }
   const arr = [
-    { title: 'Water talent', value: data?.waterTalent },
-    { title: 'Fire talent', value: data?.fireTalent },
-    { title: 'Ground talent', value: data?.groundTalent },
-    { title: 'Ice talent', value: data?.iceTalent },
-    { title: 'Grass talent', value: data?.grassTalent },
-    { title: 'Electro talent', value: data?.electroTalent },
-    { title: 'Ghost talent', value: data?.ghostTalent },
-    { title: 'Air talent', value: data?.airTalent },
-    { title: 'Body size', value: data?.bodySize },
-    { title: 'Attack', value: data?.attack },
-    { title: 'Defence', value: data?.defense },
-    { title: 'Ego', value: data?.ego },
-    { title: 'General talent', value: data?.generalTalent },
+    { title: t('menu.water_talent'), value: data?.waterTalent },
+    { title: t('menu.fire_talent'), value: data?.fireTalent },
+    { title: t('menu.ground_talent'), value: data?.groundTalent },
+    { title: t('menu.ice_talent'), value: data?.iceTalent },
+    { title: t('menu.grass_talent'), value: data?.grassTalent },
+    { title: t('menu.electro_talent'), value: data?.electroTalent },
+    { title: t('menu.ghost_talent'), value: data?.ghostTalent },
+    { title: t('menu.air_talent'), value: data?.airTalent },
+    { title: t('menu.body_size'), value: data?.bodySize },
+    { title: t('menu.attack'), value: data?.attack },
+    { title: t('menu.defense'), value: data?.defense },
+    { title: t('menu.ego'), value: data?.ego },
+    { title: t('menu.general_talent'), value: data?.generalTalent },
     { title: 'xFactor', value: data?.xFactor },
-    { title: 'Growth talent factor', value: data?.growthTalentFactor },
-    { title: 'Health points', value: data?.healthPoints },
-    { title: 'Sex', value: whatTheSex(data?.sex) },
-    { title: 'Skin type', value: skinTypeToString[data?.skinType || 0] },
-    { title: 'Special', value: data?.special },
-    { title: 'Speed', value: data?.speed },
-    { title: 'Age(months)', value: age },
+    { title: t('menu.growth_talent_factor'), value: data?.growthTalentFactor },
+    { title: t('menu.health_points'), value: data?.healthPoints },
+    { title: t('menu.sex'), value: whatTheSex(data?.sex) },
+    { title: t('menu.skin_type'), value: skinTypeToString[data?.skinType || 0] },
+    { title: t('menu.special'), value: data?.special },
+    { title: t('menu.speed'), value: data?.speed },
+    { title: t('menu.age_months'), value: age },
   ]
 
   if (lastEvolvedTitle) {

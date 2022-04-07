@@ -4,6 +4,7 @@ import { Radar } from 'react-chartjs-2'
 import { Props } from './Probability.types'
 import './Probability.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Probability = (props: Props) => {
   const { myNFT, selectedNFT, simulatedGenes, mutationFactor } = props
@@ -141,7 +142,7 @@ const Probability = (props: Props) => {
         borderWidth: 1.5
       },
       {
-        label: 'Simulated',
+        label: t('nft_page.breeding_modal.simulated'),
         data: simulatedGenes,
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
         borderColor: 'rgb(217, 225, 160)',
@@ -153,7 +154,7 @@ const Probability = (props: Props) => {
         borderDash: [5]
       },
       {
-        label: 'Lower Limit',
+        label: t('nft_page.breeding_modal.lower_limit'),
         data: lowerRange,
         fill: "+1",
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
@@ -165,7 +166,7 @@ const Probability = (props: Props) => {
         borderWidth: 0
       },
       {
-        label: 'Higher Limit',
+        label: t('nft_page.breeding_modal.higher_limit'),
         data: higherRange,
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
         borderColor: 'rgb(217, 225, 160)',
@@ -209,11 +210,15 @@ const Probability = (props: Props) => {
         pointLabels: {
           padding: 40,
           color: '#fff',
-          font: {
+          font: { 
             size: 12,
             weight: 'bold',
             family: 'Poppins'
-          }
+          },
+          callback: function(value: any, index: any) {
+            console.log(value)
+            return t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`);
+          },
         }
       }
     },
@@ -230,7 +235,7 @@ const Probability = (props: Props) => {
   return (
     <div className={classes.join(" ")}>
       <div className="value">
-        Mutation factor {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
+        {t('nft_page.breeding_modal.mutation_factor')} {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
       </div>
       <div className="probability-chart-box">
         <div className="probability-chart">

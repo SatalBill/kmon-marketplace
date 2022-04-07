@@ -8,6 +8,8 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
+
 // Chart.register(ChartDataLabels);
 const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
@@ -243,7 +245,7 @@ const DNAChart = (props: Props) => {
 
         ctx.font = windowWidth > 480 ? "12px Poppins" : "lighter 10px Poppins";
         ctx.fillStyle = "#ffff";
-        ctx.fillText(DNA_CONSTANTS[index], dataX, dataY);
+        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`), dataX, dataY);
         ctx.lineWidth = 1;
         ctx.strokeStyle = DNA_COLORS[index];
         ctx.fillStyle = DNA_COLORS[index];

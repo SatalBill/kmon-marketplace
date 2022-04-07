@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
 import { MenuItem } from '../../../Menu/MenuItem'
@@ -204,7 +204,7 @@ const NFTSections = (props: Props) => {
             })
           }}
         >
-          Clear filters
+          {t(`menu.keys.clear_filters`)}
         </Button>
       </div>
       {[Section.ALL].map(menuSection => (
@@ -230,7 +230,7 @@ const NFTSections = (props: Props) => {
       <Dropdown value={Section.GENERATIONS} open={state.generation.length > 0}>
         <MultiRangeSlider
           min={0}
-          max={10}
+          max={11}
           minValue={+state.generation[0]}
           maxValue={+state.generation[1]}
           onChange={({ min, max }) => {
@@ -248,7 +248,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.kryptomonStatus.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.kryptomonStatus.indexOf(elem) > -1) {
                   const newArr = [...state.kryptomonStatus]
@@ -269,7 +269,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.unfreezable.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.unfreezable.indexOf(elem) > -1) {
                   const newArr = [...state.unfreezable]
@@ -316,7 +316,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.elemTypes.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.elemTypes.indexOf(elem) > -1) {
                   const newArr = [...state.elemTypes]
@@ -539,7 +539,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.specialties.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.specialties.indexOf(elem) > -1) {
                   const newArr = [...state.specialties]
@@ -560,7 +560,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.skinType.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.skinType.indexOf(elem) > -1) {
                   const newArr = [...state.skinType]
@@ -581,7 +581,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.sex.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.sex.indexOf(elem) > -1) {
                   const newArr = [...state.sex]
@@ -602,7 +602,7 @@ const NFTSections = (props: Props) => {
             <Checkbox
               key={elem}
               checked={state.supers.indexOf(elem) > -1}
-              label={elem}
+              label={t(`menu.keys.${elem}`)}
               onChange={() => {
                 if (state.supers.indexOf(elem) > -1) {
                   const newArr = [...state.supers]
