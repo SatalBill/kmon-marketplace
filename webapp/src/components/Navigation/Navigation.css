@@ -1,0 +1,14 @@
+.dcl.tabs {
+  font-family: var(--font-poppins);
+  text-align: center;
+}
+
+.HomePage .dcl.tabs {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .HomePage .dcl.tabs {
+    display: none;
+  }
+}
