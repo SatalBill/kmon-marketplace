@@ -6,6 +6,7 @@ import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Actions } from '../Actions'
 import { formatCoin } from '../../../lib/kmon'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Details = (props: Props) => {
   const { nft, order } = props
@@ -30,7 +31,7 @@ const Details = (props: Props) => {
           </p>
         </DetailItem> */}
         {nft.activeOrderId !== null && (
-          <DetailItem title="Price">
+          <DetailItem title={t('sell_page.price')}>
             <p className="detail-medium-text">
               {order?.price && formatCoin(order.price)} {coin}
               {order?.priceUSD && ` ($${order.priceUSD})`}

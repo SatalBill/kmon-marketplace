@@ -21,7 +21,9 @@
     "update": "Update",
     "search": "Search",
     "apply": "Apply",
-    "network": "Network"
+    "network": "Network",
+    "min": "Min",
+    "max": "Max"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -280,7 +282,8 @@
       "Ground": "Ground",
       "Ghost": "Ghost",
       "Ice": "Ice",
-      "Air": "Air"
+      "Air": "Air",
+      "element main": "element main"
     },
     "more": "More",
     "metadata": "Metadata",
@@ -315,7 +318,10 @@
       "breed_amount": "BREED AMOUNT",
       "breed_price": "BREED PRICE",
       "breed_info_on": "ON",
-      "breed_info_off": "OFF"
+      "breed_info_off": "OFF",
+      "set_price": "Set price",
+      "day": "day",
+      "days": "days"
     },
     "trade_history": {
       "title": "Trade history",
@@ -352,6 +358,32 @@
       "simulated": "Simulated",
       "lower_limit": "Lower Limit",
       "higher_limit": "Higher Limit"
+    },
+    "meta_data": {
+      "general": {
+        "title": "General",
+        "description": "Basic information about your Kryptomon.",
+        "egg_id": "Egg Id",
+        "generation": "Generation",
+        "Type": "Type",
+        "speciality": "Speciality",
+        "laid": "Laid",
+        "UNFREEZABLE": "UNFREEZABLE"
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Attributes that will affect the appearance of your kryptomon.",
+        "Gender": "Gender",
+        "Color": "Color",
+        "body_size": "Body Size"
+      },
+      "affinity": {
+        "title": "Elemental Affinity",
+        "description": "Attributes that will affect Kryptomon's type and his affinities.",
+        "element main": "element main",
+        "gens": "GENES",
+        "talent": "TALENT"
+      }
     }
   },
   "lootbox_page": {
@@ -569,6 +601,14 @@
       "accept_bid": "You accepted a bid of {price} on {name}.",
       "cancel_bid": "You cancelled a bid of {price} on {name}.",
       "buy_item": "You purchased {count} {name} for {price}."
+    },
+    "status": {
+      "queued": "Queued",
+      "dropped": "Dropped",
+      "replaced": "Replaced",
+      "pending": "Pending",
+      "reverted": "Reverted",
+      "confirmed": "Confirmed"
     }
   },
   "coin": {

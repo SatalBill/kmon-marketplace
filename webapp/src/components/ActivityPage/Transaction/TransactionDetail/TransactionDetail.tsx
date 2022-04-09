@@ -63,7 +63,7 @@ const TransactionDetail = (props: Props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="description">{tx.status || t('global.loading')}</div>
+          <div className="description">{t(`transaction.status.${tx.status}`) || t('global.loading')}</div>
           {isPending(tx.status) ? (
             <div className="spinner">
               <Loader active size="mini" />

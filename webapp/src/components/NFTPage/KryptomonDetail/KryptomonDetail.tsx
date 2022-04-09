@@ -1,7 +1,7 @@
 import React, { useState, SyntheticEvent, useEffect } from 'react'
 import { Container } from '@kmon/ui'
 import { Dropdown, Progress } from 'semantic-ui-react'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { t, getCurrentLocale } from '@kmon/dapps/dist/modules/translation/utils'
 import Web3 from 'web3'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
@@ -54,8 +54,8 @@ const KryptomonDetail = (props: Props) => {
   const [account, setAccount] = useState('')
 
   const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Male'
-    else return 'Female'
+    if (value && +value > 5) return t('menu.keys.Male')
+    else return t('menu.keys.Female')
   }
 
   const PRICE_DROPDOWN_VALUES = {
@@ -121,8 +121,8 @@ const KryptomonDetail = (props: Props) => {
   }
   const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
   const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000
-  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
-  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(undefined, options);
+  const laid = new Date(laidTimestamp).toLocaleDateString(getCurrentLocale().locale, options)
+  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(getCurrentLocale().locale, options);
   const genesArray = Object.values(genes!)
   let totalGenes = 0
   for (let i = 0; i < 16; i++) {
@@ -267,32 +267,32 @@ const KryptomonDetail = (props: Props) => {
 
   const GeneralTypes = [
     {
-      title: 'egg id',
+      title: t('nft_page.meta_data.general.egg_id'),
       value: nft?.tokenId,
       icon: Egg
     },
     {
-      title: 'generation',
+      title: t('nft_page.meta_data.general.generation'),
       value: genes?.generation,
       icon: Generation
     },
     {
-      title: 'Type',
+      title: t('nft_page.meta_data.general.Type'),
       value: nft.data.kryptomon?.elementType,
       icon: GeneralType
     },
     {
-      title: 'speciality',
+      title: t('nft_page.meta_data.general.speciality'),
       value: nft.data?.kryptomon?.speciality,
       icon: Speciality
     },
     {
-      title: 'laid',
+      title: t('nft_page.meta_data.general.laid'),
       value: lastEvolved,
       icon: Laid
     },
     {
-      title: 'UNFREEZABLE',
+      title: t('nft_page.meta_data.general.UNFREEZABLE'),
       value: nft?.data?.kryptomon?.extraData?.unfreezable === 0 ? "No" : "Yes",
       icon: Unfreezable
     },
@@ -300,17 +300,17 @@ const KryptomonDetail = (props: Props) => {
 
   const AppearanceTypes = [
     {
-      title: 'Gender',
+      title: t('nft_page.meta_data.appearance.Gender'),
       value: whatTheSex(genes?.sex),
       icon: Gender
     },
     {
-      title: 'Color',
+      title: t('nft_page.meta_data.appearance.Color'),
       value: genes?.color,
       icon: Colorimage
     },
     {
-      title: 'body size',
+      title: t('nft_page.meta_data.appearance.body_size'),
       value: genes?.bodySize,
       icon: Bodysize
     }

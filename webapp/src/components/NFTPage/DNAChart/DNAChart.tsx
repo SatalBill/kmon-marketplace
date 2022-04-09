@@ -269,7 +269,7 @@ const DNAChart = (props: Props) => {
   return (
     <div className="dna-container">
       <div className="dna-info">
-        <div className="dna-info-generation">Generation: {DNAGeneration}</div>
+        <div className="dna-info-generation">{t(`nft_page.breeding_modal.generation`)}: {DNAGeneration}</div>
         {isDNAUnfreezable && (
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}

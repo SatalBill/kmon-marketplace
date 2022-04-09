@@ -26,15 +26,15 @@ const ElemData = (props: Props) => {
   const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? t('menu.keys.hatched') : parseInt(nft.data.kryptomon!.status) > 1 ? t('menu.keys.last_evolved') : undefined
 
   const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Male'
-    else return 'Female'
+    if (value && +value > 5) return t('menu.keys.Male')
+    else return t('menu.keys.Female')
   }
   const skinTypeToString: Record<string, string> = {
-    '0': 'Feather',
-    '1': 'Skin',
-    '2': 'Scale',
-    '3': 'Short hairs',
-    '4': 'Long hairs'
+    '0': t('menu.keys.Feather'),
+    '1': t('menu.keys.Skin'),
+    '2': t('menu.keys.Scale'),
+    '3': t('menu.keys.Short hairs'),
+    '4': t('menu.keys.Long hairs')
   }
   const arr = [
     { title: t('menu.water_talent'), value: data?.waterTalent },

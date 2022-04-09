@@ -20,7 +20,9 @@
     "update": "更新",
     "search": "搜寻",
     "apply": "应用",
-    "network": "网络"
+    "network": "网络",
+    "min": "最小",
+    "max": "最大"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -30,6 +32,7 @@
     "kryptomon": "Kryptomon"
   },
   "navigation": {
+    "home": "主页",
     "collectibles": "藏品",
     "kryptomons": "Kryptomons",
     "items": "物品",
@@ -188,7 +191,7 @@
     "kmon": "KMON"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
+    "title": "活跃的NFT市场",
     "subtitle": "欢迎来到虚拟世界的一站式商店，获取最好的数字资产。",
     "get_started": "开始浏览",
     "learn_more": "学习更多",
@@ -265,7 +268,8 @@
       "Ground": "地",
       "Ghost": "鬼",
       "Ice": "冰",
-      "Air": "空气"
+      "Air": "空气",
+      "element main": "元素主"
     },
     "more": "更多",
     "metadata": "元数据",
@@ -293,6 +297,17 @@
       "breeding": "下一个育种",
       "last": "最后一次繁殖",
       "next": "“时间可以孕育"
+    },
+    "breeding_info": {
+      "title": "培育信息",
+      "cooldown_time": "冷却时间",
+      "breed_amount": "培育数量",
+      "breed_price": "培育价格",
+      "breed_info_on": "开",
+      "breed_info_off": "关闭",
+      "set_price": "定价",
+      "day": "天",
+      "days": "天"
     },
     "trade_history": {
       "title": "交易历史",
@@ -329,6 +344,32 @@
       "simulated": "模拟",
       "lower_limit": "下限",
       "higher_limit": "上限"
+    },
+    "meta_data": {
+      "general": {
+        "title": "一般",
+        "description": "你的氪兽的基本信息.",
+        "egg_id": "蛋号",
+        "generation": "世代",
+        "Type": "类型",
+        "speciality": "专业",
+        "laid": "铺设",
+        "UNFREEZABLE": "不可冻结"
+      },
+      "appearance": {
+        "title": "外观",
+        "description": "会影响你的氪兽外观的属性.",
+        "Gender": "性别",
+        "Color": "颜色",
+        "body_size": "体型"
+      },
+      "affinity": {
+        "title": "元素亲和力",
+        "description": "会影响氪星兽类型和亲和力的属性.",
+        "element main": "元素主",
+        "gens": "基因",
+        "talent": "人才"
+      }
     }
   },
   "lootbox_page": {
@@ -490,10 +531,14 @@
     "copied": "已复制 ✔",
     "authorization_error": "我们无法加载您的授权，请重试",
     "authorization_error_contact": "如果错误仍然存​​在，请随时与我们联系",
-    "for_buying": "购买",
-    "for_bidding": "出价",
+    "for_buying_nft": "购买",
+    "for_selling_or_approving": "用于出售或批准 NFT",
+    "for_bidding_with_kmon": "出价KMON",
+    "for_bidding_with_wbnb": "出价WBNB",
+    "for_buying_lootbox": "购买lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "出售",
+    "for_breeding": "培育",
     "pending_tx": "待处理的交易，请单击微调器以转到活动详细状态"
   },
   "authorization": {
@@ -541,6 +586,14 @@
       "accept_bid": "您接受了{name}的{price}出价。",
       "cancel_bid": "您取消了对{name}的{price}出价。",
       "buy_item": "您以 {price} 购买了 {name} 战利品箱。"
+    },
+    "status": {
+      "queued": "排队",
+      "dropped": "丢弃",
+      "replaced": "替换",
+      "pending": "待定”",
+      "reverted": "还原",
+      "confirmed": "确认"
     }
   },
   "kmon": {
@@ -567,7 +620,8 @@
   },
   "networks": {
     "ethereum": "Ethereum",
-    "matic": "Polygon"
+    "matic": "Polygon",
+    "bsc": "Binance智能链"
   },
   "intro_popup": {
     "title": "介绍Polygon KMON",
