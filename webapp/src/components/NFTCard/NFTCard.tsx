@@ -19,6 +19,7 @@ import Fire from '../../images/egg/elem-fire.svg'
 import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status, breedingOrder, isPreventClick, onClickCard } = props
@@ -161,22 +162,22 @@ const NFTCard = (props: Props) => {
             {
               priceInWei ? (
                 < p className="product-description-left-item">
-                  Breed Price: {parseInt(utils.formatEther(priceInWei))} KMON
+                  {t('nft_page.breeding_modal.breed_price')}: {parseInt(utils.formatEther(priceInWei))} KMON
                 </p>
               ) : (
                 < p className="product-description-left-item-empty">
-                  Breed Price: 0 KMON
+                  {t('nft_page.breeding_modal.breed_price')}: 0 KMON
                 </p>
               )
             }
             {
               nft.data.kryptomon?.maxBreedingsDuringLifePhase ? (
                 < p className="product-description-left-item">
-                  Breed Amount: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
+                  {t('nft_page.breeding_modal.breed_amount')}: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
                 </p>
               ) : (
                 < p className="product-description-left-item-empty">
-                  Breed Amount: 0/0
+                  {t('nft_page.breeding_modal.breed_amount')}: 0/0
                 </p>
               )
             }

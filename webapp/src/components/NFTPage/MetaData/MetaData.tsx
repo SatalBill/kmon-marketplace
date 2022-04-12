@@ -3,6 +3,7 @@ import { Props } from './MetaData.types'
 import './MetaData.css'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 import statsIconImg from '../../../images/egg/elem-ice.svg'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const MetaData = (props: Props) => {
     const { nft, isV2, elements } = props
@@ -26,8 +27,8 @@ const MetaData = (props: Props) => {
     const lastEvolvedTitle = nft.data.kryptomon?.status == "1" ? 'Hatched' : parseInt(nft.data.kryptomon!.status) > 1 ? 'Last Evolved' : undefined
 
     const whatTheSex = (value?: string | number) => {
-        if (value && +value > 5) return 'Male'
-        else return 'Female'
+        if (value && +value > 5) return t('menu.keys.Male')
+        else return t('menu.keys.Female')
     }
     const skinTypeToString: Record<string, string> = {
         '0': 'Feather',
@@ -70,8 +71,8 @@ const MetaData = (props: Props) => {
     return (
         <div className="meta-container">
             <div className="general-stats">
-                <p className="top-element-text">General</p>
-                <p className="stats-description-text">Basic information about your Kryptomon.</p>
+                <p className="top-element-text">{t('nft_page.meta_data.general.title')}</p>
+                <p className="stats-description-text">{t('nft_page.meta_data.general.description')}</p>
                 {
                     elements.generalType.map((item: any, index: number) => (
                         <div key={index} className="flex-direction-row stats-item">
@@ -86,8 +87,8 @@ const MetaData = (props: Props) => {
             </div>
             <div className="general-stats">
                 <div className="general-stats">
-                    <p className="top-element-text">Appearance</p>
-                    <p className="stats-description-text">Attributes that will affect the appearance of your kryptomon.</p>
+                    <p className="top-element-text">{t('nft_page.meta_data.appearance.title')}</p>
+                    <p className="stats-description-text">{t('nft_page.meta_data.appearance.description')}</p>
                     {
                         elements.appearanceType.map((item: any, index: number) => (
                             <div key={index} className="flex-direction-row stats-item">
@@ -101,22 +102,22 @@ const MetaData = (props: Props) => {
                     }
                 </div>
                 <div className="general-stats">
-                    <p className="top-element-text">Elemental Affinity</p>
-                    <p className="stats-description-text">Attributes that will affect Kryptomon's type and his affinities.</p>
+                    <p className="top-element-text">{t('nft_page.meta_data.affinity.title')}</p>
+                    <p className="stats-description-text">{t('nft_page.meta_data.affinity.description')}</p>
                     {
                         elements.affinityType.map((item: any, index: number) => (
                             <div key={index} className="flex-direction-row stats-item">
                                 <div className="img-title">
                                     <img className="stats-icon" src={item.icon} />
-                                    <p className="meta-row-text">{item.title}</p>
+                                    <p className="meta-row-text">{t(`nft_page.elements.${item.title}`)}</p>
                                 </div>
                                 {
                                     item.title !== "element main" ?
                                         // <p className="meta-row-text">GENES <p className="value-text">{item.value[0]}</p> TALENT <p className="value-text">{item.value[1]}</p> </p>
                                         <div className="flex-direction-row">
-                                            <h6 className="small-row-text">GENES</h6>
+                                            <h6 className="small-row-text">{t('nft_page.meta_data.affinity.gens')}</h6>
                                             <h6 className="value-text">{item.value[0]}</h6>
-                                            <h6 className="small-row-text">TALENT</h6>
+                                            <h6 className="small-row-text">{t('nft_page.meta_data.affinity.talent')}</h6>
                                             <h6 className="value-text">{item.value[1]}</h6>
                                         </div>
                                         :
