@@ -77,13 +77,9 @@
 }
 
 .HomePageHero .hero-actions .button-secondary {
-  background-image: linear-gradient(
-    180deg,
-    #d7b731 0%,
-    #f25f31 100%
-  ) !important;
+  background-image: linear-gradient(180deg, #d7b731 0%, #f25f31 100%) !important;
   color: #232123 !important;
-  margin-top: 20px;
+  margin-top: 100px;
   text-transform: uppercase !important;
 }
 
@@ -99,10 +95,11 @@
 .hero-market {
   background-image: url(../../images/kryptomon-market.svg);
   position: absolute;
-  height: 107px;
+  height: 120px;
   width: 301px;
-  margin-top: 161px;
-  background-size: 300px 100px;
+  margin-top: 340px;
+  background-size: 300px 120px;
+  z-index: 19;
 }
 
 .hero-fade {
@@ -243,7 +240,7 @@
   }
 
   .hero-market {
-    margin-top: 121px;
+    margin-top: 258px;
   }
 
   .HomePageHero .hero-image {
@@ -330,15 +327,18 @@
   }
 
   .hero-market {
-    margin-top: 135px;
     position: absolute;
-    height: 60px;
+    height: 110px;
     width: 250px;
-    margin-top: 131px;
-    background-size: 250px 60px;
+    margin-top: 255px;
+    background-size: 260px 105px;
   }
 }
-
+@media (max-width: 540px){
+  .hero-market{
+    margin-top: 280px;
+  }
+}
 @media (max-width: 480px) {
   .hero-logo {
     margin-top: 108px;
@@ -351,7 +351,9 @@
   }
 
   .hero-market {
-    margin-top: 168px;
+    margin-top: 272px;
+    background-size: 225px 90px;
+    height: 98px;
   }
 }
 
