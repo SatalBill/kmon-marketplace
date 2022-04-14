@@ -63,7 +63,7 @@ const HomePage = (props: Props) => {
 
   return (
     <div className="HomePage">
-      <Navbar isFullscreen isOverlay />
+      <Navbar isFullscreen  />
       <Hero centered className="HomePageHero">
         <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
