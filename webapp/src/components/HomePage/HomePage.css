@@ -34,6 +34,7 @@
   font-family: var(--font-family);
   text-align: center;
   display: flex;
+  justify-content: center;
   z-index: 15;
   font-size: 70px;
   color: #e7e3d7;
