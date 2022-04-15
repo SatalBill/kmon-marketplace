@@ -7,8 +7,13 @@
   text-align: center;
 }
 
+
 @media only screen and (max-width: 768px) {
   .HomePage .dcl.tabs {
     display: none;
   }
+  
+}
+.dcl.tabs-left.show{
+  display: block;
 }
