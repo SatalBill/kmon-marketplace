@@ -1,4 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
+import { locations } from '../../../../modules/routing/locations'
 import {
   Radio,
   CheckboxProps,
@@ -11,6 +14,7 @@ import {
 } from '@kmon/ui'
 import { Network, Rarity } from '@kmon/schemas'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { useLocation } from 'react-router-dom'
 
 import { SortBy, PriceToken } from '../../../../modules/routing/types'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
@@ -25,6 +29,9 @@ import { Props } from './NFTFilters.types'
 const isTest = process.env.REACT_APP_NETWORK === 'rinkeby'
 
 const NFTFilters = (props: Props) => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation()
+
   const {
     section,
     search,
@@ -34,7 +41,8 @@ const NFTFilters = (props: Props) => {
     wearableRarities,
     contracts,
     network,
-    onBrowse
+    onBrowse,
+    isNavBar
   } = props
 
   const [showFiltersMenu, setShowFiltersMenu] = useState(false)
@@ -133,6 +141,11 @@ const NFTFilters = (props: Props) => {
       if (search !== newSearch) {
         onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
       }
+      if(newSearch.length > 0) {
+        if(pathname !== "/account" && !pathname.includes('/breed/contracts')) {
+          dispatch(push(locations.browse()))
+        }
+      }
     },
     [search, onBrowse]
   )
@@ -169,7 +182,7 @@ const NFTFilters = (props: Props) => {
       })
 
   return (
-    <div className="NFTFilters">
+    !isNavBar ? <div className="NFTFilters">
       <div className="topbar">
         {isMap ? (
           <>
@@ -345,6 +358,24 @@ const NFTFilters = (props: Props) => {
           </Button>
         </Modal.Content>
       </Modal>
+    </div> : <div className="NFTFilters">
+        {isMap ? (
+          <>
+            <TextFilter
+              value={search}
+              placeholder={searchPlaceholder}
+              onChange={handleSearch}
+            />
+          </>
+        ) : (
+          <>
+            <TextFilter
+              value={search}
+              placeholder={t('nft_filters.global_search')}
+              onChange={handleSearch}
+            />
+          </>
+        )}
     </div>
   )
 }

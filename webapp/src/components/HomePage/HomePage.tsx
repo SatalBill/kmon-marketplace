@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
-import { Page, Hero, Button } from '@kmon/ui'
+import { Page, Hero, Button, Grid } from '@kmon/ui'
 import { locations } from '../../modules/routing/locations'
 import { View } from '../../modules/ui/types'
 import { HomepageView } from '../../modules/ui/nft/homepage/types'
@@ -81,6 +81,15 @@ const HomePage = (props: Props) => {
         </Hero.Actions>
       </Hero>
       <div className="HomePageContent">
+        <div className="flash-container">
+          <div className="play-game">
+            <div className="become-trainer">{t('home_page.become_trainer')}</div>
+            <Button primary onClick={() => window.open('https://app.kryptomon.co/play')} className="button-play">
+              {t('home_page.play')}
+            </Button>
+          </div>
+          <div className="flash" />
+        </div>
       <Navigation />
         <Page className="HomePage">
         

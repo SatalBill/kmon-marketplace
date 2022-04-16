@@ -209,7 +209,9 @@
     "home_ens": "Names",
     "kryptomons": "Latest Listing",
     "all_assets": "All assets",
-    "latest_sold": "Latest sold"
+    "latest_sold": "Latest sold",
+    "become_trainer": "Become a trainer",
+    "play": "Play"
   },
   "details_page": {},
   "partners_page": {
@@ -240,7 +242,8 @@
     "collection": "Collection",
     "all_collections": "All Collections",
     "network": "Network",
-    "all_networks": "All Networks"
+    "all_networks": "All Networks",
+    "global_search": "Search 50,000+ results"
   },
   "nft_card": {
     "expires_at": "Expires {date}"
@@ -655,7 +658,8 @@
   "@dapps": {
     "navbar": {
       "account": {
-        "signIn": "Connect"
+        "signIn": "Connect",
+        "game": "Start Game"
       },
       "menu": {
         "marketplace": "Market"
