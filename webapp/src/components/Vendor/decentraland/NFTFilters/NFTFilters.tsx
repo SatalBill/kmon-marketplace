@@ -141,13 +141,17 @@ const NFTFilters = (props: Props) => {
       if (search !== newSearch) {
         onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
       }
-      if(newSearch.length > 0) {
-        if(pathname !== "/account" && !pathname.includes('/breed/contracts')) {
-          dispatch(push(locations.browse()))
-        }
-      }
     },
     [search, onBrowse]
+  )
+
+  const handleFocus = useCallback(
+    () => {
+      if(pathname !== "/account" && !pathname.includes('/breed/contracts')) {
+        dispatch(push(locations.browse()))
+      }
+    },
+    []
   )
 
   const handleNetworkChange = useCallback(
@@ -190,6 +194,7 @@ const NFTFilters = (props: Props) => {
               value={search}
               placeholder={searchPlaceholder}
               onChange={handleSearch}
+              onFocus={handleFocus}
             />
             <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
@@ -209,6 +214,7 @@ const NFTFilters = (props: Props) => {
               value={search}
               placeholder={searchPlaceholder}
               onChange={handleSearch}
+              onFocus={handleFocus}
             />
             <Responsive
               minWidth={Responsive.onlyTablet.minWidth}
@@ -365,6 +371,7 @@ const NFTFilters = (props: Props) => {
               value={search}
               placeholder={searchPlaceholder}
               onChange={handleSearch}
+              onFocus={handleFocus}
             />
           </>
         ) : (
@@ -373,6 +380,7 @@ const NFTFilters = (props: Props) => {
               value={search}
               placeholder={t('nft_filters.global_search')}
               onChange={handleSearch}
+              onFocus={handleFocus}
             />
           </>
         )}

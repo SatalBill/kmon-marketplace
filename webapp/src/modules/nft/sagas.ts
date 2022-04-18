@@ -23,7 +23,7 @@ import { getContract } from '../contract/utils'
 import { NFT } from './types'
 
 export function* nftSaga() {
-  yield takeLatest(FETCH_NFTS_REQUEST, handleFetchNFTsRequest)
+  yield takeEvery(FETCH_NFTS_REQUEST, handleFetchNFTsRequest)
   yield takeEvery(FETCH_NFT_REQUEST, handleFetchNFTRequest)
   yield takeEvery(TRANSFER_NFT_REQUEST, handleTransferNFTRequest)
 }
