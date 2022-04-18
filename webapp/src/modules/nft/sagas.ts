@@ -1,4 +1,4 @@
-import { takeEvery, call, put, select } from 'redux-saga/effects'
+import { takeEvery, takeLatest, call, put, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 import {
   DEFAULT_BASE_NFT_PARAMS,
@@ -23,7 +23,7 @@ import { getContract } from '../contract/utils'
 import { NFT } from './types'
 
 export function* nftSaga() {
-  yield takeEvery(FETCH_NFTS_REQUEST, handleFetchNFTsRequest)
+  yield takeLatest(FETCH_NFTS_REQUEST, handleFetchNFTsRequest)
   yield takeEvery(FETCH_NFT_REQUEST, handleFetchNFTRequest)
   yield takeEvery(TRANSFER_NFT_REQUEST, handleTransferNFTRequest)
 }

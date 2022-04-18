@@ -180,6 +180,17 @@
   z-index: 100;
   border-radius: 10px;
   margin-left: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.HomePageContent .flash-container .starting-date {
+  font-family: 'Poppins';
+  font-size: 15px;
+  color: #F3BA2F;
+  position: absolute;
+    bottom: 30px;
+    left: 35%;
 }
 
 .HomePageHero .grid-top {

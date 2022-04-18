@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { t, getCurrentLocale } from '@kmon/dapps/dist/modules/translation/utils'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
 import { Page, Hero, Button, Grid } from '@kmon/ui'
 import { locations } from '../../modules/routing/locations'
@@ -17,11 +17,39 @@ import { OrderStatus } from '../../modules/order/types'
 
 const HomePage = (props: Props) => {
   const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
+  var options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit'
+  }
 
   const sections = {
     [View.KRYPTOMONS]: Section.KRYPTOMONS,
     // [View.LATEST_SOLD]: Section.LATEST_SOLD,
     // [View.ALL_ASSETS]: Section.ALL
+  }
+
+  const flashTime = new Date('April 16, 2022 15:00:00')
+
+  const formatAMPM = (date: any) => {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours +( minutes > 0 && ':') + (minutes > 0 && minutes) + '' + ampm;
+    return strTime;
+  
+  }
+
+  const formatDate = (date: any) => {
+    const newDate = date.toLocaleDateString(getCurrentLocale().locale, options)
+    const enDate = `${date.getDay()} ${date.toLocaleString('default', { month: 'short' })} ${formatAMPM(flashTime)}`
+    const value = getCurrentLocale().locale === 'zh-CN' ? newDate : enDate
+    return t('home_page.starting_date',
+      { date: value })
   }
 
   const handleGetStarted = useCallback(() => onNavigate(locations.browse()), [
@@ -88,7 +116,9 @@ const HomePage = (props: Props) => {
               {t('home_page.play')}
             </Button>
           </div>
-          <div className="flash" />
+          <div className="flash" onClick={() => window.open('https://www.kryptomon.co/treasure-hunt')}>
+            <div className="starting-date">{formatDate(flashTime)}</div>
+          </div>
         </div>
       <Navigation />
         <Page className="HomePage">
