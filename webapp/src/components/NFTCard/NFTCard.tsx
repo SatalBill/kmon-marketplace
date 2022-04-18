@@ -163,8 +163,9 @@ const NFTCard = (props: Props) => {
         </div>
         <div className="product-description">
           <div className="product-description-left">
-            <p className="product-description-left-item">Gender: {whatTheSex(nft.data.kryptomon?.genes.sex)}</p>
-          <p className="product-description-left-item">Speciality: {nft.data.kryptomon?.speciality}</p>
+            <div className="product-description-left-item"><p>Gender: </p><p>{whatTheSex(nft.data.kryptomon?.genes.sex)}</p></div>
+            
+            <div className="product-description-left-item"><p>Speciality:</p> <p>{nft.data.kryptomon?.speciality}</p></div>
             {/* {
               priceInWei ? (
                 < p className="product-description-left-item">
