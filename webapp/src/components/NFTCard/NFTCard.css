@@ -229,6 +229,7 @@ a.ui.card.link:hover .meta {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .product-description-left-item {
