@@ -157,8 +157,6 @@ const NFTCard = (props: Props) => {
               <div className="product-verified" />
             </Row>
             <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
-  
-            {console.log(nft.data.kryptomon)}
           </div>
         </div>
         <div className="product-description">
