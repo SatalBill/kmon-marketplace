@@ -209,7 +209,10 @@
     "home_ens": "Names",
     "kryptomons": "Latest Listing",
     "all_assets": "All assets",
-    "latest_sold": "Latest sold"
+    "latest_sold": "Latest sold",
+    "become_trainer": "Become a trainer",
+    "play": "Play",
+    "starting_date": "Starting {date} UTC"
   },
   "details_page": {},
   "partners_page": {
@@ -240,7 +243,8 @@
     "collection": "Collection",
     "all_collections": "All Collections",
     "network": "Network",
-    "all_networks": "All Networks"
+    "all_networks": "All Networks",
+    "global_search": "Search 50,000+ results"
   },
   "nft_card": {
     "expires_at": "Expires {date}"
@@ -398,7 +402,6 @@
         "medium": "In the mood for a treat? From tastier foods to better toys, this Silver Lootbox gives up and coming trainers all they need to treat their Kryptomon for a job well done.",
         "premium": "The ultimate level in Kryptomon care, Gold Lootboxes are for the very best trainers who understand that a happy Kryptomon is a strong one. Lavish your Kryptomon with the finest foods, state of the art medicine and watch it dominate the battlefield!",
         "potion": "Use the unfreeze potion to give your kryptomon a new life!"
-
       }
     },
     "confirm": {
@@ -655,7 +658,8 @@
   "@dapps": {
     "navbar": {
       "account": {
-        "signIn": "Connect"
+        "signIn": "Connect",
+        "game": "Start Game"
       },
       "menu": {
         "marketplace": "Market"

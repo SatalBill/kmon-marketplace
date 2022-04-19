@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 import { Navbar as BaseNavbar } from '@kmon/dapps/dist/containers'
-
 import { locations } from '../../modules/routing/locations'
 import UserMenu from '../UserMenu'
 import { Props } from './Navbar.types'
 import './Navbar.css'
+import { NFTFilters } from '../../components//Vendor/NFTFilters'
 
 const Navbar = (props: Props) => {
   const { pathname, onNavigate, isConnected } = props
@@ -30,6 +30,7 @@ const Navbar = (props: Props) => {
       isSignIn={pathname === locations.signIn()}
       onSignIn={handleOnSignIn}
       onClickAccount={handleOnClickAccount}
+      searchMenu={<NFTFilters isNavBar={true}/>}
     />
   )
 }
