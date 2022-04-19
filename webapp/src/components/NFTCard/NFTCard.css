@@ -152,6 +152,35 @@ a.ui.card.link:hover .meta {
   line-height: 20px;
 }
 
+.product-type-price-short {
+  height: fit-content;
+  background-color: #39c876;
+  padding: 2px 10px;
+  color: #232123;
+  width: 58px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: var(--font-monospace);
+  font-size: 8px;
+  line-height: 20px;
+}
+
+.nft-price {
+  text-align: center;
+  height: fit-content;
+  background-color: #39c876;
+  padding: 0px 8px;
+  color: #232123;
+  width: 350px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: var(--font-monospace);
+  font-size: 8px;
+  line-height: 20px;
+  margin-top: 7px;
+}
+
 .product-type-icon {
   width: 32px;
   height: 32px;
@@ -200,7 +229,7 @@ a.ui.card.link:hover .meta {
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 18px;
   background-color: #e7e3d7;
 }
 
@@ -237,6 +266,13 @@ a.ui.card.link:hover .meta {
   margin: 0;
 }
 
+.product-description-left-item-white {
+  font-size: 10px;
+  text-align: center;
+  width: 32px;
+  margin-top: 5px;
+}
+
 .product-description-left-item-empty {
   color: #e7e3d7;
   font-size: 10px;
@@ -249,4 +285,17 @@ a.ui.card.link:hover .meta {
   align-items: flex-end;
   color: #000000;
   font-size: 8px;
+}
+
+.product-type-breedable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.breedable-heart {
+  width: 32px;
+  height: 32px;
+  margin-top: 10px;
 }
