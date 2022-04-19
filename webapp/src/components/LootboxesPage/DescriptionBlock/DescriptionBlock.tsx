@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Props } from './DescriptionBlock.types'
 import classNames from 'classnames'
 import './DescriptionBlock.css'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const DescriptionBlock = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +20,7 @@ const DescriptionBlock = (props: Props) => {
       </div>
       {!isOpen && (
         <button onClick={onOpen} className="more-button">
-          More
+          {t('nft_page.more')}
         </button>
       )}
     </div>

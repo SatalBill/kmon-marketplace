@@ -15,6 +15,8 @@ export enum Section {
   GENERATIONS_7 = 'gen_7',
   GENERATIONS_8 = 'gen_8',
   GENERATIONS_9 = 'gen_9',
+  GENERATIONS_10 = 'gen_10',
+  GENERATIONS_11 = 'gen_11',
 
   LAND = 'land',
   PARCELS = 'parcels',

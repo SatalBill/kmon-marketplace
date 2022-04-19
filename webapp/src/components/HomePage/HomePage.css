@@ -2,6 +2,7 @@
   text-align: center;
   font-family: var(--font-poppins);
   border: 0px;
+  margin-top: 25px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -135,6 +136,63 @@
   width: 100vw;
 }
 
+.HomePageContent .flash-container {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.HomePageContent .flash-container .play-game .button-play {
+  margin-top: 10px;
+  height: 38px;
+  font-size: 16px;
+}
+
+.HomePageContent .play-game {
+  /* position: absolute; */
+  background: url(../../images/Play_Game.jpg) no-repeat center;
+  background-size: 100%;
+  width: 40%;
+  height: 168px;
+  z-index: 100;
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 40px;
+  padding-top: 30px;
+}
+
+.HomePageContent .flash-container .become-trainer {
+  width: 50%;
+  line-height: 30px;
+  font-family: var(--font-family);
+  font-size: 30px;
+  color: #e7e3d7;
+}
+
+.HomePageContent .flash {
+  /* position: absolute; */
+  background: url(../../images/Flash.jpg) no-repeat center;
+  background-size: 100%;
+  width: 40%;
+  height: 168px;
+  z-index: 100;
+  border-radius: 10px;
+  margin-left: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.HomePageContent .flash-container .starting-date {
+  font-family: 'Poppins';
+  font-size: 15px;
+  color: #F3BA2F;
+  position: absolute;
+    bottom: 30px;
+    left: 35%;
+}
+
 .HomePageHero .grid-top {
   position: absolute;
   width: 100%;
@@ -259,7 +317,7 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    margin-top: -432px;
+    margin-top: -480px;
   }
 }
 
@@ -308,6 +366,27 @@
     width: 92vw;
     grid-auto-flow: column;
   }
+  .HomePageContent .flash-container {
+    flex-direction: column;
+  }
+  .HomePageContent .play-game {
+    width: 100%;
+    border-radius: 30px;
+    margin-right: 0px;
+  }
+  .HomePageContent .flash {
+    width: 100%;
+    border-radius: 30px;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .HomePageContent .flash-container .become-trainer {
+    width: 50%;
+    line-height: 30px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    color: #e7e3d7;
+  }
 }
 
 @media (max-width: 767px) {
@@ -351,6 +430,16 @@
 
   .hero-market {
     margin-top: 168px;
+  }
+
+  .HomePageContent .play-game {
+    width: 100%;
+    height: 168px;
+  }
+  
+  .HomePageContent .flash {
+    width: 100%;
+    height: 168px;
   }
 }
 

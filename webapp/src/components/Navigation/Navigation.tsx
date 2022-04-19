@@ -11,6 +11,11 @@ const Navigation = (props: Props) => {
   return (
     <Tabs isFullscreen={isFullscreen}>
       <Tabs.Left>
+        <Link to={locations.root()}>
+          <Tabs.Tab active={activeTab === NavigationTab.HOME}>
+            {t('navigation.home')}
+          </Tabs.Tab>
+        </Link>
         <Link to={locations.browse()}>
           <Tabs.Tab active={activeTab === NavigationTab.BROWSE}>
             {t('navigation.kryptomons')}
