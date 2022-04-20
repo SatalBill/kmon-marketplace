@@ -292,8 +292,8 @@ const KryptomonDetail = (props: Props) => {
       icon: Laid
     },
     {
-      title: t('nft_page.meta_data.general.UNFREEZABLE'),
-      value: nft?.data?.kryptomon?.extraData?.unfreezable === 0 ? "No" : "Yes",
+      title: 'UNFREEZABLE',
+      value: nft?.data?.kryptomon?.extraData?.unfreezable.toString() === "0" ? "No" : "Yes",
       icon: Unfreezable
     },
   ]
