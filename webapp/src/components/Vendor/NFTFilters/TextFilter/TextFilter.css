@@ -1,19 +1,20 @@
 .TextFilter .text-input input {
   font-size: 17px;
   line-height: 20px;
-  background: none;
+  background: rgb(50, 50, 50);
   color: white;
   font-weight: 600;
   font-family: var(--font-monospace);
   border: none;
-  border-radius: 6px;
-  padding: 6px 6px 6px 36px;
+  border-radius: 20px;
+  padding-left: 45px;
   outline: none;
   width: 100%;
+  height: 40px;
   background-image: url(../../../../images/search.svg);
   background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 8px;
+  background-position-y: center !important;
+  background-position-x: 18px;
 }
 
 .TextFilter .text-input input::placeholder {
@@ -29,4 +30,55 @@
   .TextFilter .ui.sub.header.name {
     font-weight: normal;
   }
+}
+
+.search-results-area {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background: rgb(46, 45, 45);
+  margin-top: 10px;
+}
+
+.dropdown-item {
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid rgb(60, 59, 62);
+}
+
+.dropdown-item:hover {
+  background: rgb(60, 60, 60);
+  border-radius: 5px;
+}
+
+.dropdown-item-text {
+  font-size: 18px;
+  margin: auto 0;
+  padding-top: 5px;
+  font-family: var(--font-family);
+}
+
+.dropdown-item-image {
+  width: 50px;
+}
+
+.dropdown-item-gen {
+  background-color: #33d669;
+  color: black;
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.dropdown-item-heart {
+  width: 32px;
+  height: 32px;
 }

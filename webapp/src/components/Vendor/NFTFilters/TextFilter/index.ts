@@ -1,3 +1,3 @@
-import TextFilter from './TextFilter'
+import TextFilter from './TextFilter.container'
 
 export { TextFilter }
