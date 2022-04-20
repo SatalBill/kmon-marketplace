@@ -23,12 +23,13 @@
 }
 @media only screen and (max-width: 768px){
   .hamburgerBtn {
-    height: 30px;
+    height: 60px;
     min-width: 30px;
     display: block;
     background-image: url("../../images/hamburger-menu.png");
     background-repeat: no-repeat;
     background-color: transparent;
+    background-size: 30px 30px;
     border:none;
     cursor: pointer;
   }
