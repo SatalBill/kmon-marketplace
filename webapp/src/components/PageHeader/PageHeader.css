@@ -26,6 +26,7 @@
     height: 60px;
     min-width: 30px;
     display: block;
+    margin-left: 20px;
     background-image: url("../../images/hamburger-menu.png");
     background-repeat: no-repeat;
     background-color: transparent;
