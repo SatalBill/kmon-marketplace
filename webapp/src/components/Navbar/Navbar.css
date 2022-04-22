@@ -126,6 +126,8 @@
   }
 
   .dcl.navbar .mobile-menu {
+    z-index: 100000;
+    margin-top: -20px;
     padding-left: 70px !important;
   }
 
@@ -173,7 +175,7 @@
   }
 
   .dcl.navbar-account {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .PageCustomHeader .dcl.navbar .ui.menu.secondary {

@@ -385,6 +385,9 @@
     font-size: 20px;
     color: #e7e3d7;
   }
+  .HomePageContent .flash-container .play-game .button-play {
+    width: 40%;
+  }
 }
 
 @media (max-width: 767px) {
