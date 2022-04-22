@@ -69,7 +69,8 @@ const TextFilter = (props: Props) => {
 
   const [text, setText] = useInput(value, onChange)
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const [nftdata, setnftdata] = useState([] as NFT[])
+  const [nftdata, setNftdata] = useState([] as NFT[]);
+  const [nftTempData, setNftTempData] = useState([] as NFT[]);
 
   useEffect(() => {
     if (pathname === '/browse') {
@@ -90,12 +91,13 @@ const TextFilter = (props: Props) => {
         data.push(item);
       }
     })
-    setnftdata(data);
-    console.log("fewfeeffewef90909090909", nfts);
-    if (event.target.value == "electro") {
-      console.log("fewfeeffewef90909090909", nfts);
-    }
+    setNftdata(data);
+    setNftTempData(data.slice(0, 4));
     setText(event);
+  }
+
+  const handleShowMore = () => {
+    setNftTempData(nftdata);
   }
 
   return (
@@ -113,32 +115,37 @@ const TextFilter = (props: Props) => {
           placeholder={placeholder}
           onFocus={onFocus}
         />
-        <div className="search-results-area">
-          {
-            nftdata.length > 0 &&
-            nftdata.map((item) => (
-              <div onClick={() => handleDetail(item)} className="dropdown-item">
-                <img className="dropdown-item-image" src={item.metadata.image} />
-                <p className="dropdown-item-text">ID.{item.name}</p>
-                <div className="dropdown-item-gen">GEN:{item.data.kryptomon?.genes.generation}</div>
-                {getIfCanBreed(item.data.kryptomon?.timeCanBreed) ? <img src={breedableHeart} alt="breedableHeart" className="dropdown-item-heart" />
-                  : <i className="product-description-mid-heart-empty"></i>}
-                {
-                  elementTypes.map((elementType) => (
-                    elementType.title == item.data.kryptomon?.elementType ?
-                      <img
-                        src={elementType?.icon}
-                        alt="icon"
-                      />
-                      : null
-                  ))
-                }
-              </div>
-            ))
-          }
-        </div>
+        {
+          nftTempData.length > 0 &&
+          <div className="search-results-area">
+            <div className="search-results-items-area">
+              {
+                nftTempData.map((item) => (
+                  <div onClick={() => handleDetail(item)} className="dropdown-item">
+                    <img className="dropdown-item-image" src={item.metadata.image} />
+                    <p className="dropdown-item-text">ID.{item.name}</p>
+                    <div className="dropdown-item-gen">GEN:{item.data.kryptomon?.genes.generation}</div>
+                    {getIfCanBreed(item.data.kryptomon?.timeCanBreed) ? <img src={breedableHeart} alt="breedableHeart" className="dropdown-item-heart" />
+                      : <i className="product-description-mid-heart-empty"></i>}
+                    {
+                      elementTypes.map((elementType) => (
+                        elementType.title == item.data.kryptomon?.elementType ?
+                          <img
+                            src={elementType?.icon}
+                            alt="icon"
+                          />
+                          : null
+                      ))
+                    }
+                  </div>
+                ))
+              }
+            </div>
+            <button className="search-result-showmore-btn" onClick={() => handleShowMore()}>Show all</button>
+          </div>
+        }
       </div>
-    </div>
+    </div >
   )
 }
 
