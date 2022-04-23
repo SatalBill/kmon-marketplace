@@ -138,7 +138,7 @@ const NFTFilters = (props: Props) => {
 
   const handleSearch = useCallback(
     (newSearch: string) => {
-      if (search !== newSearch) {
+      if (search !== newSearch && parseInt(newSearch) >= 0 || newSearch == "") {
         onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
       }
     },
@@ -147,7 +147,7 @@ const NFTFilters = (props: Props) => {
 
   const handleFocus = useCallback(
     () => {
-      if(pathname !== "/account" && !pathname.includes('/breed/contracts')) {
+      if (pathname !== "/account" && !pathname.includes('/breed/contracts')) {
         dispatch(push(locations.browse()))
       }
     },
@@ -365,25 +365,25 @@ const NFTFilters = (props: Props) => {
         </Modal.Content>
       </Modal>
     </div> : <div className="NFTFilters">
-        {isMap ? (
-          <>
-            <TextFilter
-              value={search}
-              placeholder={searchPlaceholder}
-              onChange={handleSearch}
-              onFocus={handleFocus}
-            />
-          </>
-        ) : (
-          <>
-            <TextFilter
-              value={search}
-              placeholder={t('nft_filters.global_search')}
-              onChange={handleSearch}
-              onFocus={handleFocus}
-            />
-          </>
-        )}
+      {isMap ? (
+        <>
+          <TextFilter
+            value={search}
+            placeholder={searchPlaceholder}
+            onChange={handleSearch}
+            onFocus={handleFocus}
+          />
+        </>
+      ) : (
+        <>
+          <TextFilter
+            value={search}
+            placeholder={t('nft_filters.global_search')}
+            onChange={handleSearch}
+            onFocus={handleFocus}
+          />
+        </>
+      )}
     </div>
   )
 }
