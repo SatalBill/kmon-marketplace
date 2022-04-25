@@ -93,6 +93,10 @@ a.ui.card.link:hover .meta {
   .ui.cards > .NFTCard.card > .content {
     display: block;
   }
+  .ui.cards > .ui.card {
+    width: 46% !important;
+    margin-right: 5px !important;
+  }
 }
 
 .card {
@@ -214,7 +218,7 @@ a.ui.card.link:hover .meta {
 
 .product-info-name-container .Row {
   align-items: center;
-  width: 74%;
+  width: 60%;
 }
 
 .product-description-container .product-description {
