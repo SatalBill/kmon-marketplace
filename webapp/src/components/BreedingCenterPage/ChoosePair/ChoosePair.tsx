@@ -6,6 +6,7 @@ import { NFTCard } from '../../NFTCard'
 import { locations } from '../../../modules/routing/locations'
 import { Probability } from './Probability'
 import './ChoosePair.css'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const ChoosePair = (props: Props) => {
   const { myNFT, selectedNFT, mutationFactor, onNavigate, onResetMyNFT, onResetSelectedNFT, onCompare } = props
@@ -19,11 +20,11 @@ const ChoosePair = (props: Props) => {
     <div className={classes.join(' ')}>
       <div className="card-area">
         <div className='empty-card-box'>
-          <span className='card-title'>MY KRYPTOMON</span>
+          <span className='card-title'>{t('nft_page.breeding_modal.mykryptomon')}</span>
           <div className='card-content'>
             {!myNFT && (
               <EmptyCard
-                text='Select one of your kryptomon'
+                text={t('nft_page.breeding_modal.select_your_kryptomon')}
                 isPlus
                 onClickCard={() => onNavigate(locations.currentAccount())}
               />
@@ -32,25 +33,25 @@ const ChoosePair = (props: Props) => {
           </div>
           {myNFT && (
             <Button className="remove-button" onClick={() => onResetMyNFT()}>
-              <KIcon size="small" icon="close-small-gray">Remove</KIcon>
+              <KIcon size="small" icon="close-small-gray">{t('nft_page.breeding_modal.remove')}</KIcon>
             </Button>
           )}
         </div>
         {isMatch && <Probability mutationFactor={mutationFactor} />}
         <div className={`empty-card-box ${isMatch ? '' : 'vertical-line'}`}>
-          <span className='card-title'>SELECTED</span>
+          <span className='card-title'>{t('nft_page.breeding_modal.selected')}</span>
           <div className='card-content'>
-            {!selectedNFT && <EmptyCard text='Search a kryptomon in the marketplace' />}
+            {!selectedNFT && <EmptyCard text={t('nft_page.breeding_modal.search_kryptomon')} />}
             {selectedNFT && <NFTCard nft={selectedNFT} isPreventClick />}
           </div>
           {selectedNFT && (
             <Button className="remove-button" onClick={() => onResetSelectedNFT()}>
-              <KIcon size="small" icon="close-small-gray">Remove</KIcon>
+              <KIcon size="small" icon="close-small-gray">{t('nft_page.breeding_modal.remove')}</KIcon>
             </Button>
           )}
         </div>
       </div>
-      {isMatch && <Button primary className="compare-button" onClick={() => onCompare()}>Compare</Button>}
+      {isMatch && <Button primary className="compare-button" onClick={() => onCompare()}>{t('nft_page.breeding_modal.compare')}</Button>}
     </div>
   )
 }

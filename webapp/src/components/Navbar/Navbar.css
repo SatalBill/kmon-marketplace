@@ -1,6 +1,22 @@
+.PageCustomHeader .dcl.navbar .ui.container {
+  align-items: baseline;
+}
+
+.dcl.navbar .ui.container {
+  align-items: baseline !important;
+}
+
 .dcl.navbar .ui.menu .item.item {
   font-size: 20px;
   margin-left: 80px;
+}
+
+.PageCustomHeader .dcl.navbar .ui.menu.secondary {
+  transform: translateY(14px);
+}
+
+.dcl.navbar .ui.menu.secondary {
+  transform: translateY(14px) !important;
 }
 
 .dcl.navbar-logo.navbar-logo {
@@ -38,9 +54,9 @@
 .dcl.navbar .ui.menu .item.sign-in-button:hover,
 .dcl.navbar .ui.menu .item.sign-in-button:active,
 .dcl.navbar .ui.menu .item.sign-in-button:focus {
-  background: linear-gradient(#d7b731, #f25f31);
+  background: linear-gradient(#d7319e, #6331f2);
   border-radius: var(--button-border-radius);
-  color: #232123;
+  color: #ffff;
   justify-content: center;
   height: var(--button-height);
   font-size: var(--font-size-medium);
@@ -53,11 +69,51 @@
   transform: translateY(-10px);
 }
 
+.dcl.navbar .ui.menu .item.start-game-button {
+  transform: translateY(-8px);
+  margin-left: 10px;
+}
+
+.dcl.navbar .ui.menu .item.start-game-button,
+.dcl.navbar .ui.menu .item.start-game-button:hover,
+.dcl.navbar .ui.menu .item.start-game-button:active,
+.dcl.navbar .ui.menu .item.start-game-button:focus {
+  background: linear-gradient(#d7b731, #f25f31);
+  border-radius: var(--button-border-radius);
+  color: #232123;
+  justify-content: center;
+  height: var(--button-height);
+  font-size: var(--font-size-medium);
+  text-transform: initial;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  width: var(--button-width);
+  margin-left: 10px;
+}
+
+.dcl.navbar .ui.menu .item.start-game-button:hover {
+  transform: translateY(-10px);
+}
+
 .dcl.navbar .ui.menu.secondary {
   transform: translateY(28px);
 }
 
+.dcl.navbar .TextFilter .text-input {
+  background-color: #323132;
+  border-radius: 17px;
+  padding-left: 5px;
+  padding-right: 70px;
+}
+
+.dcl.navbar .TextFilter .text-input input {
+  font-size: 15px;
+}
+
 @media (max-width: 768px) {
+  .dcl.navbar .ui.container {
+    display: block !important;
+    align-items: baseline !important;
+  }
   .kryptomon.logo {
     margin-right: 20px !important;
     width: 82px !important;
@@ -70,6 +126,8 @@
   }
 
   .dcl.navbar .mobile-menu {
+    z-index: 100000;
+    margin-top: -20px;
     padding-left: 70px !important;
   }
 
@@ -92,5 +150,39 @@
     text-transform: initial;
     font-size: 21px;
     font-weight: 900;
+  }
+
+  .dcl.navbar .ui.menu .item.sign-in-button,
+  .dcl.navbar .ui.menu .item.sign-in-button:hover,
+  .dcl.navbar .ui.menu .item.sign-in-button:active,
+  .dcl.navbar .ui.menu .item.sign-in-button:focus {
+    height: var(--button-height);
+    font-size: 12px;
+    width: 75px;
+    height: 30px;
+    margin-left: 0px;
+  }
+
+  .dcl.navbar .ui.menu .item.start-game-button,
+  .dcl.navbar .ui.menu .item.start-game-button:hover,
+  .dcl.navbar .ui.menu .item.start-game-button:active,
+  .dcl.navbar .ui.menu .item.start-game-button:focus {
+    height: var(--button-height);
+    font-size: 12px !important;
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+  }
+
+  .dcl.navbar-account {
+    margin-top: 20px;
+  }
+
+  .PageCustomHeader .dcl.navbar .ui.menu.secondary {
+    transform: translateY(28px);
+  }
+
+  .dcl.navbar .ui.menu.secondary {
+    margin-top: -25px !important;
   }
 }

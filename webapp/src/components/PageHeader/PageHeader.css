@@ -12,8 +12,38 @@
 .PageCustomHeader .dcl.tabs {
   font-family: var(--font-poppins);
   margin-top: 50px;
+  
 }
 
 .ui.secondary.stackable.menu {
   display: flex;
 }
+.hamburgerBtn{
+  display: none;
+}
+@media only screen and (max-width: 768px){
+  .hamburgerBtn {
+    height: 60px;
+    min-width: 30px;
+    display: block;
+    margin-left: 20px;
+    background-image: url("../../images/hamburger-menu.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 30px 30px;
+    border:none;
+    cursor: pointer;
+  }
+  .PageCustomHeader{
+    background-size:contain;
+    
+  }
+  .PageCustomHeader .dcl.tabs-left {
+    display: none;
+  }
+}
+
+.dcl.tabs-left.show{
+  display: block;
+}
+

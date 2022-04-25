@@ -5,7 +5,7 @@ import * as tranlsations from '../../modules/translation/locales'
 
 // const locales = Object.keys(tranlsations)
 // English only at the moment
-const locales = [Object.keys(tranlsations)[0]]
+const locales = [Object.keys(tranlsations)[0], Object.keys(tranlsations)[2]]
 
 const Footer = (props: FooterProps) => (
   <BaseFooter locales={locales} {...props} />

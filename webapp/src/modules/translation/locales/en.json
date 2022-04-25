@@ -21,7 +21,9 @@
     "update": "Update",
     "search": "Search",
     "apply": "Apply",
-    "network": "Network"
+    "network": "Network",
+    "min": "Min",
+    "max": "Max"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -31,6 +33,7 @@
     "kryptomon": "Kryptomon"
   },
   "navigation": {
+    "home": "Home",
     "collectibles": "Eggs",
     "kryptomons": "Kryptomons",
     "items": "Items",
@@ -63,6 +66,8 @@
     "gen_7": "Gen 7",
     "gen_8": "Gen 8",
     "gen_9": "Gen 9",
+    "gen_10": "Gen 10",
+    "gen_11": "Gen 11",
     "land": "Land",
     "parcels": "Parcels",
     "estates": "Estates",
@@ -133,7 +138,51 @@
     "ghost": "Ghost",
     "ghost_talent": "Ghost talent",
     "air": "Air",
-    "air_talent": "Air talent"
+    "air_talent": "Air talent",
+    "age_months": "Age(months)",
+    "main_family_talent": "Main Family Talent",
+    "second_family_talent": "Second Family Talent",
+    "defense": "Defense",
+    "feeding": "Feeding",
+    "happiness": "Happiness",
+    "healing": "Healing",
+    "love": "Love",
+    "freeze": "Freeze",
+    "main_element": "Main Element",
+    "secondary_element": "Secondary Element",
+    "keys": {
+      "last_evolved": "Last Evolved",
+      "laid": "Laid",
+      "number": "Number",
+      "Egg": "Egg",
+      "Hatched": "Hatched",
+      "Junior": "Junior",
+      "Yes": "Yes",
+      "No": "No",
+      "from": "From",
+      "to": "To",
+      "air": "Air",
+      "electro": "Electro",
+      "water": "Water",
+      "grass": "Grass",
+      "fire": "Fire",
+      "ground": "Ground",
+      "ghost": "Ghost",
+      "ice": "Ice",
+      "Defence": "Defence",
+      "Attack": "Attack",
+      "Balance": "Balance",
+      "Super": "Super",
+      "Normal": "Normal",
+      "Feather": "Feather",
+      "Skin": "Skin",
+      "Scale": "Scale",
+      "Short hairs": "Short hairs",
+      "Long hairs": "Long hairs",
+      "Male": "Male",
+      "Female": "Female",
+      "clear_filters": "Clear filters"
+    }
   },
   "vendor_menu": {
     "no_assets": "No assets",
@@ -151,7 +200,7 @@
     "all": "All"
   },
   "home_page": {
-    "title": "THE LIVING NFT MARKETPLACE",
+    "title": "THE LIVING NFT",
     "subtitle": "Welcome to the virtual world’s one-stop-shop for the very best digital assets.",
     "get_started": "Browse",
     "learn_more": "Learn More",
@@ -160,12 +209,20 @@
     "home_ens": "Names",
     "kryptomons": "Latest Listing",
     "all_assets": "All assets",
-    "latest_sold": "Latest sold"
+    "latest_sold": "Latest sold",
+    "become_trainer": "Become a trainer",
+    "play": "Play",
+    "starting_date": "Starting {date} UTC"
   },
   "details_page": {},
   "partners_page": {
     "partners": "Partners",
     "latest_from": "Latest from {vendor}"
+  },
+  "item_page": {
+    "value": "VALUE",
+    "item_type": "Item type",
+    "candy": "CANDY"
   },
   "partner_sidebar": {
     "assets": "{count} {count, plural, one {asset} other {assets}}"
@@ -186,7 +243,8 @@
     "collection": "Collection",
     "all_collections": "All Collections",
     "network": "Network",
-    "all_networks": "All Networks"
+    "all_networks": "All Networks",
+    "global_search": "Search 50,000+ results"
   },
   "nft_card": {
     "expires_at": "Expires {date}"
@@ -221,15 +279,17 @@
     "part_of_estate": "Part of {estate_name}",
     "elements": {
       "title": "Elements",
-      "water": "Water",
-      "grass": "Grass",
-      "fire": "Fire",
-      "electro": "Electro",
-      "ground": "Ground",
-      "ghost": "Ghost",
-      "ice": "Ice",
-      "air": "Air"
+      "Water": "Water",
+      "Grass": "Grass",
+      "Fire": "Fire",
+      "Electro": "Electro",
+      "Ground": "Ground",
+      "Ghost": "Ghost",
+      "Ice": "Ice",
+      "Air": "Air",
+      "element main": "element main"
     },
+    "more": "More",
     "metadata": "Metadata",
     "gamestats": "Game Stats",
     "price_chart": {
@@ -240,14 +300,18 @@
     },
     "dna_chart": {
       "title": "DNA chart",
-      "constitution": "Constitution",
-      "affection": "Affection",
-      "craziness": "Craziness",
-      "instinct": "Instinct",
-      "hunger": "Hunger",
-      "laziness": "Laziness",
-      "braveness": "Braveness",
-      "smart": "Smart",
+      "Attack": "Attack",
+      "Defense": "Defense",
+      "Speed": "Speed",
+      "Ego": "Ego",
+      "Health Points": "Health Points",
+      "Constitution": "Constitution",
+      "Affections": "Affections",
+      "Crazyness": "Crazyness",
+      "Instinct": "Instinct",
+      "Hunger": "Hunger",
+      "Brave": "Brave",
+      "Smart": "Smart",
       "breeding": "Next Breeding",
       "last": "Last Time Bred",
       "next": "Time Can Breed"
@@ -258,7 +322,10 @@
       "breed_amount": "BREED AMOUNT",
       "breed_price": "BREED PRICE",
       "breed_info_on": "ON",
-      "breed_info_off": "OFF"
+      "breed_info_off": "OFF",
+      "set_price": "Set price",
+      "day": "day",
+      "days": "days"
     },
     "trade_history": {
       "title": "Trade history",
@@ -276,6 +343,51 @@
       "line_one": "You are about to add {name} to the breeding centre.",
       "line_two": "Please enter the price of how much you want to get paid.",
       "price": "Price"
+    },
+    "breeding_modal": {
+      "mykryptomon": "My Kryptomon",
+      "remove": "Remove",
+      "selected": "Selected",
+      "compare": "Compared",
+      "select_your_kryptomon": "Select one of your kryptomon",
+      "search_kryptomon": "Search a kryptomon in the marketplace",
+      "mutation_factor": "Mutation Factor",
+      "generation": "GENERATION",
+      "breed_price": "BREED PRICE",
+      "breed_amount": "BREED AMOUNT",
+      "breeding_fee": "Breeding Fee",
+      "total_cost": "Total Cost",
+      "breed": "BREED",
+      "cancel": "CANCEL",
+      "simulated": "Simulated",
+      "lower_limit": "Lower Limit",
+      "higher_limit": "Higher Limit"
+    },
+    "meta_data": {
+      "general": {
+        "title": "General",
+        "description": "Basic information about your Kryptomon.",
+        "egg_id": "Egg Id",
+        "generation": "Generation",
+        "Type": "Type",
+        "speciality": "Speciality",
+        "laid": "Laid",
+        "UNFREEZABLE": "UNFREEZABLE"
+      },
+      "appearance": {
+        "title": "Appearance",
+        "description": "Attributes that will affect the appearance of your kryptomon.",
+        "Gender": "Gender",
+        "Color": "Color",
+        "body_size": "Body Size"
+      },
+      "affinity": {
+        "title": "Elemental Affinity",
+        "description": "Attributes that will affect Kryptomon's type and his affinities.",
+        "element main": "element main",
+        "gens": "GENES",
+        "talent": "TALENT"
+      }
     }
   },
   "lootbox_page": {
@@ -285,7 +397,11 @@
         "lootbox_basic": "Packed with the basic essentials, this Standard Lootbox contains everything a new trainer needs to keep their Kryptomon alive.",
         "lootbox_medium": "In the mood for a treat? From tastier foods to better toys, this Silver Lootbox gives up and coming trainers all they need to treat their Kryptomon for a job well done.",
         "lootbox_premium": "The ultimate level in Kryptomon care, Gold Lootboxes are for the very best trainers who understand that a happy Kryptomon is a strong one. Lavish your Kryptomon with the finest foods, state of the art medicine and watch it dominate the battlefield!",
-        "unfreeze_potion": "Use the unfreeze potion to give your kryptomon a new life!"
+        "unfreeze_potion": "Use the unfreeze potion to give your kryptomon a new life!",
+        "basic": "Packed with the basic essentials, this Standard Lootbox contains everything a new trainer needs to keep their Kryptomon alive.",
+        "medium": "In the mood for a treat? From tastier foods to better toys, this Silver Lootbox gives up and coming trainers all they need to treat their Kryptomon for a job well done.",
+        "premium": "The ultimate level in Kryptomon care, Gold Lootboxes are for the very best trainers who understand that a happy Kryptomon is a strong one. Lavish your Kryptomon with the finest foods, state of the art medicine and watch it dominate the battlefield!",
+        "potion": "Use the unfreeze potion to give your kryptomon a new life!"
       }
     },
     "confirm": {
@@ -293,7 +409,11 @@
       "line_one": "You are about to buy {item}",
       "line_two": "Please re-enter the number of items",
       "field_label": "Number of items to buy"
-    }
+    },
+    "lootbox_type": "Lootbox",
+    "price_with_kmon": "Price with KMON",
+    "price_with_candy": "Price with Candy",
+    "buy": "Buy"
   },
   "proximity": {
     "adjacent": "Adjacent",
@@ -484,12 +604,21 @@
       "accept_bid": "You accepted a bid of {price} on {name}.",
       "cancel_bid": "You cancelled a bid of {price} on {name}.",
       "buy_item": "You purchased {count} {name} for {price}."
+    },
+    "status": {
+      "queued": "Queued",
+      "dropped": "Dropped",
+      "replaced": "Replaced",
+      "pending": "Pending",
+      "reverted": "Reverted",
+      "confirmed": "Confirmed"
     }
   },
   "coin": {
     "running_on": "This is {coin} running in the {network} Network"
   },
   "wallet": {
+    "my_wallet": "My Wallet",
     "sign_in_required": "You need to {sign_in} to access this page.",
     "sign_in": "Connect"
   },
@@ -529,7 +658,8 @@
   "@dapps": {
     "navbar": {
       "account": {
-        "signIn": "Connect"
+        "signIn": "Connect",
+        "game": "Start Game"
       },
       "menu": {
         "marketplace": "Market"
