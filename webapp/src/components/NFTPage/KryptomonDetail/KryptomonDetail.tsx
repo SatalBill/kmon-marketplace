@@ -287,7 +287,7 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: 'laid',
-      value: lastEvolved,
+      value: laid,
       icon: Laid
     },
     {
