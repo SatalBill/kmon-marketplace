@@ -2,23 +2,24 @@ import React from 'react'
 import { Props } from './GameData.types'
 import './GameData.css'
 import { isMobile } from '@kmon/dapps/dist/lib/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const GameData = (props: Props) => {
   const { nft } = props
   const data = nft.gameMetadata
 
   const arr = [
-    { title: 'Main Family Talent', value: data?.mainFamilyTalentPropertyName },
-    { title: 'Second Family Talent', value: data?.secondaryFamilyTalentPropertyName },
-    { title: 'Constitution', value: data?.constitution },
-    { title: 'Defense', value: data?.defense },
-    { title: 'Feeding', value: data?.feedingGaugeAmount },
-    { title: 'Happiness', value: data?.hapinessGaugeAmount },
-    { title: 'Healing', value: data?.healingGaugeAmount },
-    { title: 'Love', value: data?.loveGaugeAmount },
-    { title: 'Freeze', value: data?.isFreezed },
-    { title: 'Main Element', value: data?.mainElementType },
-    { title: 'Secondary Element', value: data?.secondaryElementType },
+    { title: t('menu.main_family_talent'), value: data?.mainFamilyTalentPropertyName },
+    { title: t('menu.second_family_talent'), value: data?.secondaryFamilyTalentPropertyName },
+    { title: t('menu.constitution'), value: data?.constitution },
+    { title: t('menu.defense'), value: data?.defense },
+    { title: t('menu.feeding'), value: data?.feedingGaugeAmount },
+    { title: t('menu.happiness'), value: data?.hapinessGaugeAmount },
+    { title: t('menu.healing'), value: data?.healingGaugeAmount },
+    { title: t('menu.love'), value: data?.loveGaugeAmount },
+    { title: t('menu.freeze'), value: data?.isFreezed },
+    { title: t('menu.main_element'), value: data?.mainElementType },
+    { title: t('menu.secondary_element'), value: data?.secondaryElementType },
   ]
 
   return (

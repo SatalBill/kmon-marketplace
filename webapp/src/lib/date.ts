@@ -18,7 +18,9 @@ export function formatDistanceToNow(
     locale?: Locale
   } = {}
 ) {
-  const locale = locales[getCurrentLocale().locale]
+  const locale = Object.values(locales).find(
+    (element: Locale) => element.code === getCurrentLocale().locale
+  )
 
   if (locale) {
     options.locale = locale

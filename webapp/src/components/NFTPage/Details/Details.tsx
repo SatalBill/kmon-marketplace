@@ -6,6 +6,7 @@ import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Actions } from '../Actions'
 import { formatCoin } from '../../../lib/kmon'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Details = (props: Props) => {
   const { nft, order } = props
@@ -14,7 +15,7 @@ const Details = (props: Props) => {
   return (
     <div className="details-container">
       <div className="profile-container">
-        {/* <Profile
+        <Profile
           size={'huge'}
           address={nft.owner}
           imageOnly
@@ -23,14 +24,9 @@ const Details = (props: Props) => {
         />
         <DetailItem title="Owner">
           <p className="detail-medium-text">{nft.owner}</p>
-        </DetailItem> */}
-        {/* <DetailItem title="Name">
-          <p className="detail-medium-text">
-            <span className="detail-nft-name">{nft.metadata?.name}</span>
-          </p>
-        </DetailItem> */}
+        </DetailItem>
         {nft.activeOrderId !== null && (
-          <DetailItem title="Price">
+          <DetailItem title={t('sell_page.price')}>
             <p className="detail-medium-text">
               {order?.price && formatCoin(order.price)} {coin}
               {order?.priceUSD && ` ($${order.priceUSD})`}
