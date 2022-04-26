@@ -207,6 +207,7 @@ export function handleHatching(event: EggHatched): void {
   kryptomon.status = status;
   kryptomon.isHatched = true;
   kryptomon.timeHatched = event.block.timestamp;
+  kryptomon.lastEvolved = event.block.timestamp;
   kryptomon.save();
 }
 

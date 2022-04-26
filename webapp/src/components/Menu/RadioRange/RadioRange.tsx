@@ -7,6 +7,7 @@ import {
   useRef
 } from 'react'
 import classnames from 'classnames'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Props } from './RadioRange.types'
 import './RadioRange.css'
 import { RadioContainer, Radio } from '../../Radio'
@@ -68,7 +69,7 @@ const RadioRange: FC<Props> = ({
         </RadioContainer> */}
         <div className="inputs">
           <div className="radio-input-container">
-            <label htmlFor="min">From</label>
+            <label htmlFor="min">{t('menu.keys.from')}</label>
             <input
               type="number"
               id="min"
@@ -80,7 +81,7 @@ const RadioRange: FC<Props> = ({
             />
           </div>
           <div className="radio-input-container">
-            <label htmlFor="max">To</label>
+            <label htmlFor="max">{t('menu.keys.to')}</label>
             <input
               type="number"
               id="max"

@@ -1,12 +1,12 @@
 export const ELEMENT_TYPES = {
-  AIR: 'Air',
-  ELECTRO: 'Electro',
-  WATER: 'Water',
-  GRASS: 'Grass',
-  FIRE: 'Fire',
-  GROUND: 'Ground',
-  GHOST: 'Ghost',
-  ICE: 'Ice'
+  AIR: 'air',
+  ELECTRO: 'electro',
+  WATER: 'water',
+  GRASS: 'grass',
+  FIRE: 'fire',
+  GROUND: 'ground',
+  GHOST: 'ghost',
+  ICE: 'ice'
 }
 
 export const DNA_CONSTANTS = [
