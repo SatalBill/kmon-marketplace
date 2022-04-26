@@ -288,7 +288,7 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: t('nft_page.meta_data.general.laid'),
-      value: lastEvolved,
+      value: laid,
       icon: Laid
     },
     {
