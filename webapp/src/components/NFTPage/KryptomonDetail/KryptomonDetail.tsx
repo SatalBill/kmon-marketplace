@@ -14,7 +14,7 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
-import { DNAChartDefault} from '../DNAChartDefault'
+import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
 import { GameData } from '../GameData'
@@ -175,7 +175,7 @@ const KryptomonDetail = (props: Props) => {
       icon: Ghost
     },
     {
-      title: 'Ghost',
+      title: 'Ice',
       value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
       icon: Ice
     },
