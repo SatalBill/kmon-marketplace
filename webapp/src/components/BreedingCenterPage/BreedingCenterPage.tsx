@@ -68,7 +68,7 @@ const BreedingCenterPage = (props: Props) => {
               onCompare={handleCompare}
               mutationFactor={mutationFactor}
             />
-            <NFTFilters isNavBar={false}/>
+            <NFTFilters />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
         </Row>

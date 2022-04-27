@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { locations } from '../../../modules/routing/locations'
 import { Props } from './LootboxCard.types'
@@ -34,7 +33,7 @@ const LootboxCard = (props: Props) => {
           </div>
           <div className="product-info">
             <p className="product-info-value">
-              {t('item_page.value')} {itemPrice}{' '}
+              VALUE {itemPrice}{' '}
               KMON
             </p>
           </div>
@@ -48,7 +47,7 @@ const LootboxCard = (props: Props) => {
       <div className="product-description">
         <div className="product-description-left">
           <p className="product-description-left-item">
-            {t('item_page.item_type')}: {itemName}
+            Item type: {itemName}
           </p>
         </div>
         <div className="product-description-right">{itemPrice} KMON</div>

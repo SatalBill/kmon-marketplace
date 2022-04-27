@@ -9,7 +9,6 @@ import {
 import classnames from 'classnames'
 import { Props } from './MultiRangeSlider.types'
 import './MultiRangeSlider.css'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const MultiRangeSlider: FC<Props> = ({
   min,
@@ -130,7 +129,7 @@ const MultiRangeSlider: FC<Props> = ({
         <div ref={range} className="slider__range"></div>
         <div className="inputs">
           <div className="input-container">
-            <label htmlFor="min">{t('global.min')}</label>
+            <label htmlFor="min">Min</label>
             <input
               type="number"
               id="min"
@@ -142,7 +141,7 @@ const MultiRangeSlider: FC<Props> = ({
             />
           </div>
           <div className="input-container">
-            <label htmlFor="max">{t('global.max')}</label>
+            <label htmlFor="max">Max</label>
             <input
               type="number"
               id="max"

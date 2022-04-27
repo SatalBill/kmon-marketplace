@@ -1,7 +1,6 @@
 import React from 'react'
 import { Grid } from '@kmon/ui'
 import { fromWei } from 'web3x-es/utils'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 import { Props } from './NFTDetail.types'
 import './NFTDetail.css'
@@ -87,17 +86,17 @@ const NFTDetail = (props: Props) => {
         </div>
         <Grid columns={2} stackable className="detail-content">
           <Grid.Row>
-            <Grid.Column>{t('nft_page.breeding_modal.generation')}:</Grid.Column>
+            <Grid.Column>GENERATION:</Grid.Column>
             <Grid.Column>{nft.data.kryptomon?.genes.generation}</Grid.Column>
           </Grid.Row>
           {breedingOrder && (
             <Grid.Row>
-              <Grid.Column>{t('nft_page.breeding_modal.breed_price')}:</Grid.Column>
+              <Grid.Column>BREED PRICE:</Grid.Column>
               <Grid.Column>{fromWei(breedingOrder.price, "ether")} KMON</Grid.Column>
             </Grid.Row>
           )}
           <Grid.Row>
-            <Grid.Column>{t('nft_page.breeding_modal.breed_amount')}:</Grid.Column>
+            <Grid.Column>BREED AMOUNT:</Grid.Column>
             <Grid.Column>{nft.data.kryptomon?.totalBreedingCount ? nft.data.kryptomon?.totalBreedingCount : 0}/{nft.data.kryptomon?.maxBreedingsDuringLifePhase}</Grid.Column>
           </Grid.Row>
         </Grid>

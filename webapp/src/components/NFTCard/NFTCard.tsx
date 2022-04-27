@@ -19,7 +19,6 @@ import Fire from '../../images/egg/elem-fire.svg'
 import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status, breedingOrder, isPreventClick, onClickCard } = props
@@ -96,10 +95,7 @@ const NFTCard = (props: Props) => {
       return false;
     }
   }
-  const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Male'
-    else return 'Female'
-}
+
   return (
     <Card
       className="NFTCard"
@@ -134,8 +130,6 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
-          {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
-                : <i className="product-description-mid-heart-empty"></i>}
         </div>
       </div>
       <div className="product-description-container">
@@ -154,39 +148,38 @@ const NFTCard = (props: Props) => {
           </div>
           <div className="product-info-name-container">
             <Row>
-              <p className="product-info-number-card">ID. {nft.name}</p>
+              <p className="product-info-number-card">No. {nft.name}</p>
               <div className="product-verified" />
+              {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
+                : <i className="product-description-mid-heart-empty"></i>}
             </Row>
             <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
           </div>
         </div>
         <div className="product-description">
           <div className="product-description-left">
-            <div className="product-description-left-item"><p>Gender: </p><p>{whatTheSex(nft.data.kryptomon?.genes.sex)}</p></div>
-            
-            <div className="product-description-left-item"><p>Speciality:</p> <p>{nft.data.kryptomon?.speciality}</p></div>
-            {/* {
+            {
               priceInWei ? (
                 < p className="product-description-left-item">
-                  {t('nft_page.breeding_modal.breed_price')}: {parseInt(utils.formatEther(priceInWei))} KMON
+                  Breed Price: {parseInt(utils.formatEther(priceInWei))} KMON
                 </p>
               ) : (
                 < p className="product-description-left-item-empty">
-                  {t('nft_page.breeding_modal.breed_price')}: 0 KMON
+                  Breed Price: 0 KMON
                 </p>
               )
             }
             {
               nft.data.kryptomon?.maxBreedingsDuringLifePhase ? (
                 < p className="product-description-left-item">
-                  {t('nft_page.breeding_modal.breed_amount')}: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
+                  Breed Amount: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
                 </p>
               ) : (
                 < p className="product-description-left-item-empty">
-                  {t('nft_page.breeding_modal.breed_amount')}: 0/0
+                  Breed Amount: 0/0
                 </p>
               )
-            } */}
+            }
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const AccountProfile = (props: Props) => {
         imageOnly
         inline={false}
       /> */}
-      <div className="profile-account-name">{t('wallet.my_wallet')}</div>
+      <div className="profile-account-name">My Wallet</div>
       <div className="profile-address">
         <div
           className={`profile-address-hash ${hasCopiedAddress &&

@@ -5,7 +5,6 @@ import { browseNFTs, BrowseNFTsAction } from '../../../modules/routing/actions'
 export type Props = {
   vendor?: string
   onBrowse: typeof browseNFTs
-  isNavBar: boolean
 }
 
 export type MapStateProps = Pick<Props, 'vendor'>

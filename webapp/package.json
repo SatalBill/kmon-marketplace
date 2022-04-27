@@ -4,10 +4,10 @@
   "dependencies": {
     "@apollo/client": "^3.5.5",
     "@apollo/react-hooks": "^3.1.3",
-    "@kmon/dapps": "^0.0.36",
+    "@kmon/dapps": "^0.0.34",
     "@kmon/schemas": "^0.0.19",
     "@kmon/transactions": "^0.0.34",
-    "@kmon/ui": "^0.0.20",
+    "@kmon/ui": "^0.0.19",
     "@ramonak/react-progress-bar": "^4.4.0",
     "apollo-boost": "^0.4.7",
     "chart.js": "^3.5.1",

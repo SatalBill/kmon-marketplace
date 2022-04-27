@@ -1,7 +1,7 @@
 import React, { useState, SyntheticEvent, useEffect } from 'react'
 import { Container } from '@kmon/ui'
 import { Dropdown, Progress } from 'semantic-ui-react'
-import { t, getCurrentLocale } from '@kmon/dapps/dist/modules/translation/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import Web3 from 'web3'
 import { Row } from '../../Layout/Row'
 import { Column } from '../../Layout/Column'
@@ -14,7 +14,6 @@ import { TitleBlock } from '../TitleBlock'
 import { DescriptionBlock } from '../DescriptionBlock'
 import { Details } from '../Details'
 import { DNAChart } from '../DNAChart'
-import { DNAChartDefault} from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
 import { GameData } from '../GameData'
@@ -54,8 +53,8 @@ const KryptomonDetail = (props: Props) => {
   const [account, setAccount] = useState('')
 
   const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return t('menu.keys.Male')
-    else return t('menu.keys.Female')
+    if (value && +value > 5) return 'Male'
+    else return 'Female'
   }
 
   const PRICE_DROPDOWN_VALUES = {
@@ -121,8 +120,8 @@ const KryptomonDetail = (props: Props) => {
   }
   const lastEvolvedTime = nft.data.kryptomon?.lastEvolved != null ? nft.data.kryptomon?.lastEvolved : nft.data.kryptomon?.timeHatched;
   const laidTimestamp = nft.data.kryptomon!.timeBorn * 1000
-  const laid = new Date(laidTimestamp).toLocaleDateString(getCurrentLocale().locale, options)
-  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(getCurrentLocale().locale, options);
+  const laid = new Date(laidTimestamp).toLocaleDateString(undefined, options)
+  const lastEvolved = nft.data.kryptomon?.status == "0" ? laid : new Date(lastEvolvedTime! * 1000).toLocaleDateString(undefined, options);
   const genesArray = Object.values(genes!)
   let totalGenes = 0
   for (let i = 0; i < 16; i++) {
@@ -131,28 +130,28 @@ const KryptomonDetail = (props: Props) => {
   }
   const elementTypes = [
     {
-      title: 'Water',
+      title: t('nft_page.elements.water'),
       value: (((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Water
     },
     {
-      title: 'Grass',
+      title: t('nft_page.elements.grass'),
       value: (((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Grass
     },
     {
-      title: 'Fire',
+      title: t('nft_page.elements.fire'),
       value: (((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Fire
     },
     {
-      title: 'Electro',
+      title: t('nft_page.elements.electro'),
       value: (
         ((genes!.electro * genes!.electroTalent) / totalGenes) *
         100
@@ -160,7 +159,7 @@ const KryptomonDetail = (props: Props) => {
       icon: Electro
     },
     {
-      title: 'Ground',
+      title: t('nft_page.elements.ground'),
       value: (
         ((genes!.ground * genes!.groundTalent) / totalGenes) *
         100
@@ -168,19 +167,19 @@ const KryptomonDetail = (props: Props) => {
       icon: Ground
     },
     {
-      title: 'Ghost',
+      title: t('nft_page.elements.ghost'),
       value: (((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
         2
       ),
       icon: Ghost
     },
     {
-      title: 'Ghost',
+      title: t('nft_page.elements.ice'),
       value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
       icon: Ice
     },
     {
-      title: 'Air',
+      title: t('nft_page.elements.air'),
       value: (((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2),
       icon: Air
     }
@@ -267,50 +266,50 @@ const KryptomonDetail = (props: Props) => {
 
   const GeneralTypes = [
     {
-      title: t('nft_page.meta_data.general.egg_id'),
+      title: 'egg id',
       value: nft?.tokenId,
       icon: Egg
     },
     {
-      title: t('nft_page.meta_data.general.generation'),
+      title: 'generation',
       value: genes?.generation,
       icon: Generation
     },
     {
-      title: t('nft_page.meta_data.general.Type'),
+      title: 'Type',
       value: nft.data.kryptomon?.elementType,
       icon: GeneralType
     },
     {
-      title: t('nft_page.meta_data.general.speciality'),
+      title: 'speciality',
       value: nft.data?.kryptomon?.speciality,
       icon: Speciality
     },
     {
-      title: t('nft_page.meta_data.general.laid'),
-      value: laid,
+      title: 'laid',
+      value: lastEvolved,
       icon: Laid
     },
     {
       title: 'UNFREEZABLE',
-      value: nft?.data?.kryptomon?.extraData?.unfreezable.toString() === "0" ? "No" : "Yes",
+      value: nft?.data?.kryptomon?.extraData?.unfreezable === 0 ? "No" : "Yes",
       icon: Unfreezable
     },
   ]
 
   const AppearanceTypes = [
     {
-      title: t('nft_page.meta_data.appearance.Gender'),
+      title: 'Gender',
       value: whatTheSex(genes?.sex),
       icon: Gender
     },
     {
-      title: t('nft_page.meta_data.appearance.Color'),
+      title: 'Color',
       value: genes?.color,
       icon: Colorimage
     },
     {
-      title: t('nft_page.meta_data.appearance.body_size'),
+      title: 'body size',
       value: genes?.bodySize,
       icon: Bodysize
     }
@@ -440,7 +439,6 @@ const KryptomonDetail = (props: Props) => {
           </Row> : null} */}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.dna_chart.title')}>
-              {/* <DNAChartDefault nft={nft} isV2={isV2} /> */}
               <DNAChart nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row>
