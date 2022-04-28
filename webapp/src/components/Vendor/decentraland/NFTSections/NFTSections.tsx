@@ -218,14 +218,14 @@ const NFTSections = (props: Props) => {
 
       {[Section.LAND, Section.PARCELS, Section.ESTATES].includes(section!)
         ? [Section.PARCELS, Section.ESTATES].map(menuSection => (
-            <MenuItem
-              key={menuSection}
-              value={menuSection}
-              currentValue={section}
-              onClick={onSectionClick}
-              nestedLevel={1}
-            />
-          ))
+          <MenuItem
+            key={menuSection}
+            value={menuSection}
+            currentValue={section}
+            onClick={onSectionClick}
+            nestedLevel={1}
+          />
+        ))
         : null}
       <Dropdown value={Section.GENERATIONS} open={state.generation.length > 0}>
         <MultiRangeSlider
