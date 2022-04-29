@@ -14,6 +14,7 @@ export type Props = {
   contracts: string[]
   network?: Network
   onBrowse: typeof browseNFTs
+  isNavBar: boolean
 }
 
 export type MapStateProps = Pick<

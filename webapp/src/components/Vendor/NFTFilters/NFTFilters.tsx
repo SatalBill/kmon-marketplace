@@ -10,7 +10,7 @@ import './NFTFilters.css'
 
 // TODO: Code on each NFTFilters can be extracted
 const NFTFilters = (props: Props) => {
-  const { vendor, onBrowse } = props
+  const { vendor, onBrowse, isNavBar } = props
 
   switch (vendor) {
     case VendorName.SUPER_RARE:
@@ -22,7 +22,7 @@ const NFTFilters = (props: Props) => {
     case VendorName.DECENTRALAND:
     case VendorName.KRYPTOMON:
     default:
-      return <DecentralandNFTFilters onBrowse={onBrowse} />
+      return <DecentralandNFTFilters onBrowse={onBrowse} isNavBar={isNavBar}/>
   }
 }
 
