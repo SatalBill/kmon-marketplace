@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Chart} from 'chart.js';
+import { Chart } from 'chart.js';
 import { Bar, Radar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
@@ -19,31 +19,23 @@ const DNAChart = (props: Props) => {
   const genesV2Values = [
     nft.genesV2?.attack,
     nft.genesV2?.defense,
-    nft.genesV2?.speed,
-    nft.genesV2?.ego,
+    nft.genesV2?.instinct,
     nft.genesV2?.healthPoints,
     nft.genesV2?.constitution,
-    nft.genesV2?.affections,
-    nft.genesV2?.crazyness,
-    nft.genesV2?.instinct,
-    nft.genesV2?.hunger,
     nft.genesV2?.brave,
-    nft.genesV2?.smart
+    nft.genesV2?.speed,
+    nft.genesV2?.crazyness,
   ]
 
   const genesValues = [
     nft.data.kryptomon!.genes.attack,
     nft.data.kryptomon!.genes.defense,
-    nft.data.kryptomon!.genes.speed,
-    nft.data.kryptomon!.genes.ego,
+    nft.data.kryptomon!.genes.instinct,
     nft.data.kryptomon!.genes.healthPoints,
     nft.data.kryptomon!.genes.constitution,
-    nft.data.kryptomon!.genes.affections,
-    nft.data.kryptomon!.genes.crazyness,
-    nft.data.kryptomon!.genes.instinct,
-    nft.data.kryptomon!.genes.hunger,
     nft.data.kryptomon!.genes.brave,
-    nft.data.kryptomon!.genes.smart
+    nft.data.kryptomon!.genes.speed,
+    nft.data.kryptomon!.genes.crazyness,
   ]
 
   const DNAValues = isV2
@@ -73,13 +65,14 @@ const DNAChart = (props: Props) => {
         fillColor: "rgb(54, 162, 235)",
         strokeColor: "rgb(54, 162, 235)",
         pointColor: "rgb(54, 162, 235)",
-        pointRadius: windowWidth > 480 ? 2 : 1,
+        pointRadius: windowWidth > 480 ? 4 : 2,
         pointBorderWidth: windowWidth > 480 ? 2 : 1,
         borderWidth: windowWidth > 480 ? 2 : 1,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'transparent',
         borderColor: 'rgb(54, 162, 235)',
         pointBackgroundColor: 'rgb(54, 162, 235)',
         pointHoverBorderColor: 'rgb(54, 162, 235)',
+        pointBorderColor: 'white',
         dataLabels: {
           display: true
         },
@@ -108,7 +101,7 @@ const DNAChart = (props: Props) => {
           color: '#000',
           family: 'PT Mono'
         },
-        formatter: function(context: any) {
+        formatter: function (context: any) {
           return DNAValues[context.dataIndex];
         },
         anchor: function (context: any) {
@@ -178,13 +171,13 @@ const DNAChart = (props: Props) => {
 
   const plugin = {
     id: 'dna-chart',
-    beforeDraw: (chart : any) => {
+    beforeDraw: (chart: any) => {
       const ctx = chart.canvas.getContext('2d');
       ctx.save();
 
       //Draw rounded rect
       function roundRect(ctx: any, x: any, y: any, width: any, height: any, radius: any, fill: any, stroke: any) {
-        if (typeof stroke == "undefined" ) {
+        if (typeof stroke == "undefined") {
           stroke = true;
         }
         if (typeof radius === "undefined") {
@@ -206,10 +199,10 @@ const DNAChart = (props: Props) => {
         }
         if (fill) {
           ctx.fill();
-        }        
+        }
       }
 
-      chart.scales.r._pointLabelItems.forEach(function(data: any, index: any) {
+      chart.scales.r._pointLabelItems.forEach(function (data: any, index: any) {
         var dataX = data.x;
         var dataY = data.y;
         var roundRectX = data.x;
@@ -227,7 +220,7 @@ const DNAChart = (props: Props) => {
         } else if (index === 6) {
           roundRectX = data.x - 15;
           roundRectY = data.y - 20;
-          dataY = data.y + 10 ;
+          dataY = data.y + 10;
         } else if (index === 5) {
           roundRectX = data.x - 15;
           roundRectY = data.y - 5;
@@ -250,17 +243,17 @@ const DNAChart = (props: Props) => {
         ctx.strokeStyle = DNA_COLORS[index];
         ctx.fillStyle = DNA_COLORS[index];
 
-        roundRect(ctx, roundRectX, roundRectY, 25, 20, 3, 1, true);
+        roundRect(ctx, roundRectX, roundRectY, 45, 20, 3, 1, true);
         ctx.font = windowWidth > 480 ? "300 12px Poppins" : "lighter 10px Poppins";
-        ctx.textAlign = "center"; 
+        ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = "#000";
-        ctx.textAlign = "center"; 
+        ctx.textAlign = "center";
         var rectHeight = 20;
         var rectWidth = 25;
-        var rectX =  roundRectX;
+        var rectX = roundRectX;
         var rectY = roundRectY;
-        ctx.fillText(DNAValues[index], rectX+(rectWidth/2),rectY+(rectHeight/2)+2.5);
+        ctx.fillText(DNAValues[index], rectX + (rectWidth / 2), rectY + (rectHeight / 2) + 2.5);
       })
       ctx.restore();
     }
