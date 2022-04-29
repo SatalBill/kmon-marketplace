@@ -25,7 +25,7 @@ const NFTCard = (props: Props) => {
   const { nft, order, status, breedingOrder, isPreventClick, onClickCard } = props
 
   const genes = nft.data.kryptomon?.genes
-  const priceInWei = breedingOrder?.price;
+  // const priceInWei = breedingOrder?.price;
   const breedingCount = nft.data.kryptomon?.breedingCount ? nft.data.kryptomon?.breedingCount : 0;
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0;
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase ? nft.data.kryptomon?.maxBreedingsDuringLifePhase : 0;
