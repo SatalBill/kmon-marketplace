@@ -101,10 +101,7 @@ const NFTCard = (props: Props) => {
       return false;
     }
   }
-  const whatTheSex = (value?: string | number) => {
-    if (value && +value > 5) return 'Male'
-    else return 'Female'
-}
+
   return (
     <Card
       className="NFTCard"
