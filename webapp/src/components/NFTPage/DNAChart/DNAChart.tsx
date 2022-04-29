@@ -243,7 +243,7 @@ const DNAChart = (props: Props) => {
         ctx.strokeStyle = DNA_COLORS[index];
         ctx.fillStyle = DNA_COLORS[index];
 
-        roundRect(ctx, roundRectX, roundRectY, 45, 20, 3, 1, true);
+        roundRect(ctx, roundRectX, roundRectY, 25, 20, 3, 1, true);
         ctx.font = windowWidth > 480 ? "300 12px Poppins" : "lighter 10px Poppins";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
