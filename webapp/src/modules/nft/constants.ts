@@ -11,29 +11,22 @@ export const ELEMENT_TYPES = {
 
 export const DNA_CONSTANTS = [
   'Attack',
-  'Defense',
-  'Speed',
-  'Ego',
-  'Health Points',
-  'Constitution',
-  'Affections',
-  'Crazyness',
+  'Resistance',
   'Instinct',
-  'Hunger',
-  'Brave',
-  'Smart'
+  'Stamina',
+  'Constitution',
+  'Braveness',
+  'Speed',
+  'Crazyness',
 ]
+
 export const DNA_COLORS = [
-  '#33D669',
   '#F3BA2F',
-  '#FF7C44',
-  '#D84F3E',
   '#33D669',
-  '#F3BA2F',
-  '#FF7C44',
-  '#D84F3E',
   '#3898FF',
-  '#F231AF',
+  '#FF7C44',
   '#00D6DD',
-  '#FFFFFF'
+  '#FFFFFF',
+  '#F231AF',
+  '#D84F3E',
 ]
