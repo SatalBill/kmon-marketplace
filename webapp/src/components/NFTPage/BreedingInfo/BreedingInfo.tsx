@@ -51,7 +51,7 @@ const BreedingInfo = (props: Props) => {
         {showCooldownTime &&
           <Row className="Row-space-between margin-vertical">
             <h5 className="cooldown-time">{t('nft_page.breeding_info.cooldown_time')} :</h5>
-            <h5 className="cooldown-time">{`${cooldownTimeDay} ${cooldownTimeDay === 1 ? t('nft_page.breeding_info.day') : t('nft_page.breeding_info.days')}`}</h5>
+            <h5 className="cooldown-time">{`${cooldownTimeDay} ${cooldownTimeDay === 1 ? 'day' : 'days'}`}</h5>
             <ProgressBar
               completed={cooldownTimePercent}
               width="90px"
@@ -74,7 +74,7 @@ const BreedingInfo = (props: Props) => {
         <Row className="Row-space-between margin-vertical">
           {breedPrice !== "" && <h5 className="cooldown-time">{t('nft_page.breeding_info.breed_price')} :</h5>}
           {breedPrice !== "" && <h5 className="cooldown-time">{`${parseInt(utils.formatEther(breedPrice))} KMON`}</h5>}
-          {isMyKryptomon && <h5 className="set-price-text" onClick={handleSetPrice}>{t('nft_page.breeding_info.set_price')}</h5>}
+          {isMyKryptomon && <h5 className="set-price-text" onClick={handleSetPrice}>Set price</h5>}
         </Row>
 
       </div>

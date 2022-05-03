@@ -20,9 +20,7 @@
     "update": "更新",
     "search": "搜寻",
     "apply": "应用",
-    "network": "网络",
-    "min": "最小",
-    "max": "最大"
+    "network": "网络"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -32,35 +30,16 @@
     "kryptomon": "Kryptomon"
   },
   "navigation": {
-    "home": "主页",
     "collectibles": "藏品",
-    "kryptomons": "Kryptomons",
-    "items": "物品",
     "partners": "伙伴",
     "my_assets": "我的资产",
     "my_bids": "我的出价",
     "activity": "活动",
     "lootboxes": "战利品箱",
-    "breeding_center": "选育中心"
+    "breeding_center": ""
   },
   "menu": {
     "all": "所有资产",
-    "popular": "流行",
-    "newest": "最新",
-    "generations": "世代",
-    "price": "价格",
-    "gen_0": "Gen 0",
-    "gen_1": "Gen 1",
-    "gen_2": "Gen 2",
-    "gen_3": "Gen 3",
-    "gen_4": "Gen 4",
-    "gen_5": "Gen 5",
-    "gen_6": "Gen 6",
-    "gen_7": "Gen 7",
-    "gen_8": "Gen 8",
-    "gen_9": "Gen 9",
-    "gen_10": "Gen 10",
-    "gen_11": "Gen 11",
     "land": "土地",
     "parcels": "地块",
     "estates": "产业",
@@ -184,33 +163,20 @@
     "name": "名称",
     "newest": "最新",
     "recently_listed": "最新上市",
-    "cheapest": "最低价",
-    "all": "全部",
-    "dearest": "最贵的",
-    "bnb": "BNB",
-    "kmon": "KMON"
+    "cheapest": "最低价"
   },
   "home_page": {
-    "title": "活跃的NFT市场",
+    "title": "Decentraland Marketplace",
     "subtitle": "欢迎来到虚拟世界的一站式商店，获取最好的数字资产。",
     "get_started": "开始浏览",
     "learn_more": "学习更多",
     "home_wearables": "可穿戴",
     "home_land": "地块和产业",
-    "home_ens": "名称",
-    "kryptomons": "最新列表",
-    "become_trainer": "成为培训师",
-    "play": "玩",
-    "starting_date": "“UTC时间{date}开始”"
+    "home_ens": "名称"
   },
   "partners_page": {
     "partners": "伙伴",
     "latest_from": "来自{vendor}的最新消息"
-  },
-  "item_page": {
-    "value": "价值",
-    "item_type": "物品种类",
-    "candy": "糖果"
   },
   "partner_sidebar": {
     "assets": "{count} {count, plural, one {asset} other {assets}}"
@@ -222,8 +188,8 @@
     "on_sale": "特价中",
     "filter": "筛选",
     "order_by": "排序",
-    "results": "{count} {count, plural, one {结果} other {结果}}",
-    "more_than_results": "+{count} 结果",
+    "results": "{count} {count, plural, one {result} other {results}}",
+    "more_than_results": "+{count} results",
     "search": "搜寻 {suffix}...",
     "search_land": "搜寻...",
     "rarity": "稀有度",
@@ -231,8 +197,7 @@
     "collection": "珍藏",
     "all_collections": "所有珍藏",
     "network": "网络",
-    "all_networks": "所有网络",
-    "global_search": "搜寻50,000+结果"
+    "all_networks": "所有网络"
   },
   "nft_card": {
     "expires_at": "{date}到期"
@@ -249,9 +214,9 @@
     "cancel_sale": "删除列表",
     "buy": "购买",
     "sell": "出售",
-    "breed": "培育",
-    "breeding_order": "繁殖令",
-    "cancel_listing": "取消列表",
+    "breed": "",
+    "breeding_order": "",
+    "cancel_listing": "",
     "see_listing": "查看清单",
     "bid": "出价",
     "update": "更新价格",
@@ -378,28 +343,20 @@
   },
   "lootbox_page": {
     "description_block": {
-      "title": "描述",
+      "title": "",
       "description": {
-        "lootbox_basic": "这个标准战利品箱包含基本必备品, 包含新训练师保持Kryptomon生命所需的一切",
-        "lootbox_medium": "有心情享受美食吗？从更美味的食物到更好的玩具, 这款Silver Lootbox放弃了即将到来的训练师们对待氪星兽所需的一切, 以完成出色的工作。",
-        "lootbox_premium": "Kryptomon护理的终极水平,Gold Lootboxes 是为最优秀的训练师准备的!",
-        "unfreeze_potion": "用解冻药水给你的kryptomon一个新的生命!",
-        "basic": "这个标准战利品箱包含基本必备品, 包含新训练师保持Kryptomon生命所需的一切",
-        "medium": "有心情享受美食吗？从更美味的食物到更好的玩具, 这款Silver Lootbox放弃了即将到来的训练师们对待氪星兽所需的一切, 以完成出色的工作。",
-        "premium": "Kryptomon护理的终极水平,Gold Lootboxes 是为最优秀的训练师准备的!",
-        "potion": "用解冻药水给你的kryptomon一个新的生命!"
+        "lootbox_basic": "",
+        "lootbox_medium": "",
+        "lootbox_premium": "",
+        "unfreeze_potion": ""
       }
     },
     "confirm": {
-      "title": "请确认",
-      "line_one": "你即将购买{item}",
-      "line_two": "请重新输入商品数量",
-      "field_label": "要购买的物品数量"
-    },
-    "lootbox_type": "战利品箱",
-    "price_with_kmon": "价格KMON",
-    "price_with_candy": "价格Candy",
-    "buy": "购买"
+      "title": "",
+      "line_one": "",
+      "line_two": "",
+      "field_label": ""
+    }
   },
   "proximity": {
     "adjacent": "相邻",
@@ -535,14 +492,10 @@
     "copied": "已复制 ✔",
     "authorization_error": "我们无法加载您的授权，请重试",
     "authorization_error_contact": "如果错误仍然存​​在，请随时与我们联系",
-    "for_buying_nft": "购买",
-    "for_selling_or_approving": "用于出售或批准 NFT",
-    "for_bidding_with_kmon": "出价KMON",
-    "for_bidding_with_wbnb": "出价WBNB",
-    "for_buying_lootbox": "购买lootbox",
+    "for_buying": "购买",
+    "for_bidding": "出价",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "出售",
-    "for_breeding": "培育",
     "pending_tx": "待处理的交易，请单击微调器以转到活动详细状态"
   },
   "authorization": {
@@ -590,21 +543,12 @@
       "accept_bid": "您接受了{name}的{price}出价。",
       "cancel_bid": "您取消了对{name}的{price}出价。",
       "buy_item": "您以 {price} 购买了 {name} 战利品箱。"
-    },
-    "status": {
-      "queued": "排队",
-      "dropped": "丢弃",
-      "replaced": "替换",
-      "pending": "待定”",
-      "reverted": "还原",
-      "confirmed": "确认"
     }
   },
   "kmon": {
     "running_on": "这是{network}网络中运行的MANA"
   },
   "wallet": {
-    "my_wallet": "我的钱包",
     "sign_in_required": "您需要{sign_in}才能访问此页面。",
     "sign_in": "登入"
   },
@@ -624,8 +568,7 @@
   },
   "networks": {
     "ethereum": "Ethereum",
-    "matic": "Polygon",
-    "bsc": "Binance智能链"
+    "matic": "Polygon"
   },
   "intro_popup": {
     "title": "介绍Polygon KMON",

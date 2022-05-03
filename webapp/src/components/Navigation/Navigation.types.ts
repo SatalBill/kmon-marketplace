@@ -8,8 +8,7 @@ export enum NavigationTab {
   KRYPTOMONS = 'kryptomons',
   ITEMS = 'items',
   LOOTBOXES = 'lootboxes',
-  BREEDING_CENTER = 'breeding_center',
-  HOME = 'home',
+  BREEDING_CENTER = 'breeding_center'
 }
 
 export type Props = {

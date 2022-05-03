@@ -1,15 +1,6 @@
-import { NFT } from '../../../../modules/nft/types'
-
 export type Props = {
-  nfts: NFT[]
   name?: string
   placeholder?: string
   value: string
-  onChange: (newValue: string) => void,
-  onFocus?: () => void
+  onChange: (newValue: string) => void
 }
-
-export type MapStateProps = Pick<
-  Props,
-  'nfts'
->

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Props } from './Elements.types'
 import './Elements.css'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Elements = (props: Props) => {
   const { elementTypes, maxElementType } = props
@@ -15,7 +14,7 @@ const Elements = (props: Props) => {
           alt="icon"
         />
         <p className="top-element-text">
-          {t(`nft_page.elements.${maxElementType.title}`)}
+          {maxElementType.title}
           <br />
           {maxElementType.value}%
         </p>
@@ -30,7 +29,7 @@ const Elements = (props: Props) => {
                 alt="icon"
               />
               <p className="bottom-element-text">
-                {t(`nft_page.elements.${element.title}`)}
+                {element.title}
                 <br />
                 {element.value}%
               </p>

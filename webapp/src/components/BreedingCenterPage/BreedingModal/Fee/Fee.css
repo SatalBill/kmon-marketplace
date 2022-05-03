@@ -4,21 +4,7 @@
 }
 
 .kryptomon.breeding-modal-fee > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-  align-self: flex-end;
-  width: 40%;
-}
-.dna-chart-mynft {
-  width: 300px;
-}
-
-.dna-chart-selectednft {
-  width: 300px;
+  width: 33.33%;
 }
 
 .kryptomon.breeding-modal-fee .my-kryptomon {

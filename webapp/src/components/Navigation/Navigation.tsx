@@ -6,25 +6,11 @@ import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { locations } from '../../modules/routing/locations'
 import { Props, NavigationTab } from './Navigation.types'
 
-
-
 const Navigation = (props: Props) => {
-  const { activeTab, isFullscreen } = props;
-  const handleClick = () =>{
-    const dropdownBox = document.querySelector(".dcl.tabs-left");
-    console.log("click");
-    console.log(dropdownBox)
-    dropdownBox?.classList.contains("show") ? dropdownBox.classList.remove("show") : dropdownBox?.classList.add("show");
-  };
+  const { activeTab, isFullscreen } = props
   return (
     <Tabs isFullscreen={isFullscreen}>
-      <button className='hamburgerBtn' onClick={handleClick}></button>
       <Tabs.Left>
-        <Link to={locations.root()}>
-          <Tabs.Tab active={activeTab === NavigationTab.HOME}>
-            {t('navigation.home')}
-          </Tabs.Tab>
-        </Link>
         <Link to={locations.browse()}>
           <Tabs.Tab active={activeTab === NavigationTab.BROWSE}>
             {t('navigation.kryptomons')}

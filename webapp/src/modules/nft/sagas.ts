@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, call, put, select } from 'redux-saga/effects'
+import { takeEvery, call, put, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 import {
   DEFAULT_BASE_NFT_PARAMS,

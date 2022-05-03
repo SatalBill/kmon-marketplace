@@ -54,13 +54,6 @@ const NFTFilters = (props: Props) => {
     [search, onBrowse]
   )
 
-  const handleFocus = useCallback(
-    () => {
-      return
-    },
-    []
-  )
-
   const searchPlaceholder =
     count === undefined
       ? t('global.loading') + '...'
@@ -82,7 +75,6 @@ const NFTFilters = (props: Props) => {
           value={search}
           placeholder={searchPlaceholder}
           onChange={handleSearch}
-          onFocus={handleFocus}
         />
         {onlyOnSale ? (
           <Responsive
