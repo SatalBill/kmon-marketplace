@@ -17,6 +17,7 @@ import { DNAChart } from '../DNAChart'
 import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
+import { ElementalPower } from '../ElementalPower'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
@@ -375,6 +376,11 @@ const KryptomonDetail = (props: Props) => {
               toogleV2={toogleV2Change}
               canBreed={getIfCanBreed()}
             />
+          </Row>
+          <Row className="Row-space-between ">
+            <TitleBlock title={t('nft_page.elemental_power.title')}>
+              <ElementalPower nft={nft} isV2={isV2} elements={MetaDataelemtns} />
+            </TitleBlock>
           </Row>
           {isJunior &&
             <Row className="Row-space-between ">
