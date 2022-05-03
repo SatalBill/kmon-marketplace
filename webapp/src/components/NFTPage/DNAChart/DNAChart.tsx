@@ -3,7 +3,7 @@ import { Chart } from 'chart.js';
 import { Bar, Radar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
-import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
+import { DNA_CONSTANTS_NEW, DNA_COLORS_NEW } from '../../../modules/nft/constants'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
@@ -57,7 +57,7 @@ const DNAChart = (props: Props) => {
   }, [])
 
   const data = {
-    labels: DNA_CONSTANTS,
+    labels: DNA_CONSTANTS_NEW,
     datasets: [
       {
         label: '',
@@ -113,11 +113,11 @@ const DNAChart = (props: Props) => {
           return value.x < 1000 ? 'end' : 'center';
         },
         borderColor: function (context: any) {
-          return DNA_COLORS[context.dataIndex];
+          return DNA_COLORS_NEW[context.dataIndex];
         },
         backgroundColor: function (context: any) {
           var value = context.dataset.data[context.dataIndex];
-          return DNA_COLORS[context.dataIndex];
+          return DNA_COLORS_NEW[context.dataIndex];
         },
         borderRadius: 2,
         textAlign: 'center',
@@ -238,10 +238,10 @@ const DNAChart = (props: Props) => {
 
         ctx.font = windowWidth > 480 ? "12px Poppins" : "lighter 10px Poppins";
         ctx.fillStyle = "#ffff";
-        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`), dataX, dataY);
+        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS_NEW[index]}`), dataX, dataY);
         ctx.lineWidth = 1;
-        ctx.strokeStyle = DNA_COLORS[index];
-        ctx.fillStyle = DNA_COLORS[index];
+        ctx.strokeStyle = DNA_COLORS_NEW[index];
+        ctx.fillStyle = DNA_COLORS_NEW[index];
 
         roundRect(ctx, roundRectX, roundRectY, 25, 20, 3, 1, true);
         ctx.font = windowWidth > 480 ? "300 12px Poppins" : "lighter 10px Poppins";
