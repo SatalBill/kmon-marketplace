@@ -175,7 +175,7 @@ const KryptomonDetail = (props: Props) => {
       icon: Ghost
     },
     {
-      title: 'Ghost',
+      title: 'Ice',
       value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
       icon: Ice
     },
