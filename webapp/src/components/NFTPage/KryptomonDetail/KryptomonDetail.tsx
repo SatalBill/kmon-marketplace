@@ -41,6 +41,8 @@ import GeneralType from '../../../images/metadata/generaltype.svg'
 import Generation from '../../../images/metadata/generation.svg'
 import Egg from '../../../images/metadata/egg.svg'
 import { DNARadarChart } from '../DNARadarChart'
+import elementalPowerIcon from '../../../images/kmonDetail/elementalPower.jpg'
+import heartIcon from '../../../images/heart.png'
 
 declare var window: any
 
@@ -382,13 +384,13 @@ const KryptomonDetail = (props: Props) => {
             />
           </Row>
           <Row className="Row-space-between ">
-            <TitleBlock title={t('nft_page.elemental_power.title')}>
+            <TitleBlock title={t('nft_page.elemental_power.title')} icon={elementalPowerIcon}>
               <ElementalPower nft={nft} isV2={isV2} elements={MetaDataelemtns} />
             </TitleBlock>
           </Row>
           {isJunior &&
             <Row className="Row-space-between ">
-              <TitleBlock title={t('nft_page.breeding_info.title')}>
+              <TitleBlock title={t('nft_page.breeding_info.title')} icon={heartIcon}>
                 <BreedingInfo
                   nft={nft}
                   showCooldownTime={showCooldownTimeTemp}

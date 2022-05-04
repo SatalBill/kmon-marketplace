@@ -29,53 +29,14 @@ const ElementalPower = (props: Props) => {
         if (value && +value > 5) return t('menu.keys.Male')
         else return t('menu.keys.Female')
     }
-    const skinTypeToString: Record<string, string> = {
-        '0': 'Feather',
-        '1': 'Skin',
-        '2': 'Scale',
-        '3': 'Short hairs',
-        '4': 'Long hairs'
-    }
-    // const arr = [
-    //   { title: 'Water talent', value: data?.waterTalent },
-    //   { title: 'Fire talent', value: data?.fireTalent },
-    //   { title: 'Ground talent', value: data?.groundTalent },
-    //   { title: 'Ice talent', value: data?.iceTalent },
-    //   { title: 'Grass talent', value: data?.grassTalent },
-    //   { title: 'Electro talent', value: data?.electroTalent },
-    //   { title: 'Ghost talent', value: data?.ghostTalent },
-    //   { title: 'Air talent', value: data?.airTalent },
-    //   { title: 'Body size', value: data?.bodySize },
-    //   { title: 'Attack', value: data?.attack },
-    //   { title: 'Defence', value: data?.defense },
-    //   { title: 'Ego', value: data?.ego },
-    //   { title: 'General talent', value: data?.generalTalent },
-    //   { title: 'xFactor', value: data?.xFactor },
-    //   { title: 'Growth talent factor', value: data?.growthTalentFactor },
-    //   { title: 'Health points', value: data?.healthPoints },
-    //   { title: 'Sex', value: whatTheSex(data?.sex) },
-    //   { title: 'Skin type', value: skinTypeToString[data?.skinType || 0] },
-    //   { title: 'Special', value: data?.special },
-    //   { title: 'Speed', value: data?.speed },
-    //   { title: 'Age(months)', value: age },
-    // ]
-
-    // if (lastEvolvedTitle) {
-    //   arr.push({ title: lastEvolvedTitle, value: lastEvolved });
-    // }
-    const generalStats = ['EGG ID', 'GENERATION', 'TYPE', 'SPECIALITY', 'LAID', 'UNFREEZABLE']
-    const appearanceStats = ['GENDER', 'COLOR', 'BODY SIZE']
-    const affinityStats = ['ELEMENT MAIN', 'WATER', 'GHOST']
 
     return (
         <div className="meta-container">
 
             <div className="general-stats">
-
                 <div className="general-stats">
-                    <p className="top-element-text">{t('nft_page.meta_data.affinity.title')}</p>
                     {
-                        elements.affinityType.map((item: any, index: number) => (
+                        elements.affinityType.slice(1).map((item: any, index: number) => (
                             <div key={index} className="flex-direction-row stats-item">
                                 <div className="img-title">
                                     <img className="stats-icon" src={item.icon} />
