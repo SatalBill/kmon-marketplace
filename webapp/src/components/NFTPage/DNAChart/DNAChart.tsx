@@ -15,6 +15,7 @@ const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [screen, setScreen] = useState(0);
+  const [canvasWidth, setCanvasWidth] = useState(700)
 
   const genesV2Values = [
     nft.genesV2?.attack,
@@ -46,6 +47,7 @@ const DNAChart = (props: Props) => {
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable
 
   useEffect(() => {
+
     window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
     function handleResize() {
       window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
@@ -54,6 +56,12 @@ const DNAChart = (props: Props) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCanvasWidth(740)
+    }, 100);
   }, [])
 
   const data = {
@@ -151,7 +159,7 @@ const DNAChart = (props: Props) => {
           drawBorder: false,
           fillColor: "rgb(54, 162, 235)",
           strokeColor: "rgb(54, 162, 235)",
-          color: ['#393838', '#2F2F2E', '#232223', '#141514', '#070706'],
+          color: ['#3b3b3b', '#313131', '#262626', '#1a1a1a', '#0d0d0d'],
           lineWidth: windowWidth > 480 ? [120, 60, 60, 50, 0] : [50, 60, 30, 20, 0]
         },
         pointLabels: {
@@ -267,15 +275,17 @@ const DNAChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <Radar
-        id="dna-chart"
-        className="dna-chart"
-        width={screen == 0 ? 678 : 400}
-        height={isMobile() ? 400 : 210}
-        data={data}
-        options={options}
-        plugins={[plugin]}
-      />
+      <div>
+        <Radar
+          id="dna-chart"
+          className="dna-chart"
+          width={screen == 0 ? canvasWidth : 400}
+          height={isMobile() ? 400 : canvasWidth}
+          data={data}
+          options={options}
+          plugins={[plugin]}
+        />
+      </div>
     </div>
   )
 }

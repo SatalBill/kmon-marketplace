@@ -51,12 +51,12 @@ export const DNA_COLORS = [
 ]
 
 export const DNA_COLORS_NEW = [
-  '#F3BA2F',
-  '#33D669',
   '#3898FF',
-  '#FF7C44',
-  '#00D6DD',
-  '#FFFFFF',
-  '#F231AF',
-  '#D84F3E',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
 ]
