@@ -355,11 +355,15 @@ const KryptomonDetail = (props: Props) => {
         setCooldownTimeDay(leftDay)
         setCooldownTimePercent(percentTemp)
       }
+      try {
+        let web3 = new Web3(window?.ethereum)
+        const accounts = await web3.eth.getAccounts()
+        console.log('account=>', accounts)
+        if (accounts) setAccount(accounts[0])
+      } catch (error) {
+        console.log('no wallet=>', error)
+      }
 
-      let web3 = new Web3(window?.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      console.log('account=>', accounts)
-      setAccount(accounts[0])
     }
     start()
   }, [])
