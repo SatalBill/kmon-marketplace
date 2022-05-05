@@ -387,6 +387,13 @@
         "element main": "element main",
         "gens": "GENES",
         "talent": "TALENT"
+      },
+      "caretraining": {
+        "title": "Care & Training",
+        "description": "Attributes that will affect the appearance of your kryptomon.",
+        "Gender": "Gender",
+        "Color": "Color",
+        "body_size": "Body Size"
       }
     }
   },

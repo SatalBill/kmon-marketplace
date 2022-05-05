@@ -17,6 +17,7 @@ import { DNAChart } from '../DNAChart'
 import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
+import { MetaDataBottom } from '../MetaDataBottom'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
@@ -39,6 +40,10 @@ import Speciality from '../../../images/metadata/speciality.svg'
 import GeneralType from '../../../images/metadata/generaltype.svg'
 import Generation from '../../../images/metadata/generation.svg'
 import Egg from '../../../images/metadata/egg.svg'
+import Brain from '../../../images/metadata/brain.svg'
+import Hungry from '../../../images/metadata/hungry.svg'
+import Ego from '../../../images/metadata/ego.svg'
+import Selflove from '../../../images/metadata/self-love.svg'
 import { DNARadarChart } from '../DNARadarChart'
 
 declare var window: any
@@ -129,61 +134,86 @@ const KryptomonDetail = (props: Props) => {
     totalGenes += genesArray[i] * genesArray[i + 1]
     i++
   }
+
+
   const elementTypes = [
     {
       title: 'Water',
-      value: (((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.water, genes!.waterTalent],
       icon: Water
     },
     {
       title: 'Grass',
-      value: (((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.grass, genes!.grassTalent],
       icon: Grass
     },
     {
       title: 'Fire',
-      value: (((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.fire, genes!.fireTalent],
       icon: Fire
     },
     {
       title: 'Electro',
-      value: (
+      value: [(
         ((genes!.electro * genes!.electroTalent) / totalGenes) *
         100
-      ).toFixed(2),
+      ).toFixed(2), genes!.electro, genes!.electroTalent],
       icon: Electro
     },
     {
       title: 'Ground',
-      value: (
+      value: [(
         ((genes!.ground * genes!.groundTalent) / totalGenes) *
         100
-      ).toFixed(2),
+      ).toFixed(2), genes!.ground, genes!.groundTalent],
       icon: Ground
     },
     {
       title: 'Ghost',
-      value: (((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.ghost, genes!.ghostTalent],
       icon: Ghost
     },
     {
       title: 'Ice',
-      value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
+      value: [(((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2), genes!.ice, genes!.iceTalent],
       icon: Ice
     },
     {
       title: 'Air',
-      value: (((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2),
+      value: [(((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2), genes!.air, genes!.airTalent],
       icon: Air
     }
+  ]
+
+  const carTrainingTypes = [
+    {
+      title: 'Affection',
+      value: genes!.affections,
+      icon: Selflove
+    },
+    {
+      title: 'Hunger',
+      value: genes!.hunger,
+      icon: Hungry
+    },
+    {
+      title: 'Smartness',
+      value: genes!.smart,
+      icon: Brain
+    },
+    {
+      title: 'Ego',
+      value: genes!.ego,
+      icon: Ego
+    },
   ]
 
   const elementType = elementTypes.find(
@@ -338,10 +368,10 @@ const KryptomonDetail = (props: Props) => {
     generalType: GeneralTypes,
     appearanceType: AppearanceTypes,
     affinityType: AffinityTypes,
+    carTrainingTypes: carTrainingTypes
   }
 
   useEffect(() => {
-    console.log('nft=>', nft)
     const start = async () => {
       setBreedAmountStartValue(breedingCount)
       setBreedAmountEndValue(maxBreedingsDuringLifePhase)
@@ -401,14 +431,6 @@ const KryptomonDetail = (props: Props) => {
               />
             </TitleBlock>
           </Row>
-          <Row className="Row-space-between">
-            <TitleBlock title={t('nft_page.description')}>
-              <DescriptionBlock nft={nft} />
-            </TitleBlock>
-            {/* <TitleBlock title={t('nft_page.trade_history.title')}>
-              <TradeHistory nft={nft} />
-            </TitleBlock> */}
-          </Row>
         </Column>
         <Column>
           <Row className="Row-space-between">
@@ -445,19 +467,35 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.description')}>
+              <DescriptionBlock nft={nft} />
+            </TitleBlock>
+            {/* <TitleBlock title={t('nft_page.trade_history.title')}>
+              <TradeHistory nft={nft} />
+            </TitleBlock> */}
+          </Row>
+          <Row className="Row-space-between">
             <TitleBlock title="">
               <MetaData nft={nft} isV2={isV2} elements={MetaDataelemtns} />
             </TitleBlock>
           </Row>
-          <Row className="Row-space-between">
+          {/* <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.metadata')}>
               <ElemData nft={nft} isV2={isV2} />
             </TitleBlock>
-          </Row>
+          </Row> */}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.gamestats')}>
               <GameData nft={nft} isV2={isV2} />
             </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title="">
+              <MetaDataBottom nft={nft} isV2={isV2} elements={MetaDataelemtns} elementTypes={elementTypes} />
+            </TitleBlock>
+          </Row>
+          <Row className="Row-space-between">
+
           </Row>
         </Column>
       </Row>
