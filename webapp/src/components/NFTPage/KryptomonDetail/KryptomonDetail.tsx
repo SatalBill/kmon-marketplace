@@ -134,8 +134,6 @@ const KryptomonDetail = (props: Props) => {
     totalGenes += genesArray[i] * genesArray[i + 1]
     i++
   }
-
-
   const elementTypes = [
     {
       title: 'Water',
@@ -493,9 +491,6 @@ const KryptomonDetail = (props: Props) => {
             <TitleBlock title="">
               <MetaDataBottom nft={nft} isV2={isV2} elements={MetaDataelemtns} elementTypes={elementTypes} />
             </TitleBlock>
-          </Row>
-          <Row className="Row-space-between">
-
           </Row>
         </Column>
       </Row>
