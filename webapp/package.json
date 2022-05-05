@@ -7,7 +7,7 @@
     "@kmon/dapps": "^0.0.37",
     "@kmon/schemas": "^0.0.19",
     "@kmon/transactions": "^0.0.34",
-    "@kmon/ui": "^0.0.19",
+    "@kmon/ui": "^0.0.20",
     "@ramonak/react-progress-bar": "^4.4.0",
     "apollo-boost": "^0.4.7",
     "chart.js": "^3.5.1",
