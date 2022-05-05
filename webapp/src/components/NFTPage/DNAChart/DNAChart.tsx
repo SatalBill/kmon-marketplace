@@ -3,7 +3,7 @@ import { Chart } from 'chart.js';
 import { Bar, Radar } from 'react-chartjs-2'
 import { Props } from './DNAChart.types'
 import './DNAChart.css'
-import { DNA_CONSTANTS, DNA_COLORS } from '../../../modules/nft/constants'
+import { DNA_CONSTANTS_NEW, DNA_COLORS_NEW } from '../../../modules/nft/constants'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
 import Star from '../../../images/egg/star.svg'
@@ -15,6 +15,7 @@ const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [screen, setScreen] = useState(0);
+  const [canvasWidth, setCanvasWidth] = useState(700)
 
   const genesV2Values = [
     nft.genesV2?.attack,
@@ -46,6 +47,7 @@ const DNAChart = (props: Props) => {
   const isDNAUnfreezable = nft.data.kryptomon?.extraData.unfreezable
 
   useEffect(() => {
+
     window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
     function handleResize() {
       window.innerWidth > 1201 || window.innerWidth < 768 ? setScreen(0) : setScreen(1);
@@ -56,8 +58,14 @@ const DNAChart = (props: Props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setCanvasWidth(740)
+    }, 100);
+  }, [])
+
   const data = {
-    labels: DNA_CONSTANTS,
+    labels: DNA_CONSTANTS_NEW,
     datasets: [
       {
         label: '',
@@ -113,11 +121,11 @@ const DNAChart = (props: Props) => {
           return value.x < 1000 ? 'end' : 'center';
         },
         borderColor: function (context: any) {
-          return DNA_COLORS[context.dataIndex];
+          return DNA_COLORS_NEW[context.dataIndex];
         },
         backgroundColor: function (context: any) {
           var value = context.dataset.data[context.dataIndex];
-          return DNA_COLORS[context.dataIndex];
+          return DNA_COLORS_NEW[context.dataIndex];
         },
         borderRadius: 2,
         textAlign: 'center',
@@ -151,7 +159,7 @@ const DNAChart = (props: Props) => {
           drawBorder: false,
           fillColor: "rgb(54, 162, 235)",
           strokeColor: "rgb(54, 162, 235)",
-          color: ['#393838', '#2F2F2E', '#232223', '#141514', '#070706'],
+          color: ['#3b3b3b', '#313131', '#262626', '#1a1a1a', '#0d0d0d'],
           lineWidth: windowWidth > 480 ? [120, 60, 60, 50, 0] : [50, 60, 30, 20, 0]
         },
         pointLabels: {
@@ -238,10 +246,10 @@ const DNAChart = (props: Props) => {
 
         ctx.font = windowWidth > 480 ? "12px Poppins" : "lighter 10px Poppins";
         ctx.fillStyle = "#ffff";
-        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`), dataX, dataY);
+        ctx.fillText(t(`nft_page.dna_chart.${DNA_CONSTANTS_NEW[index]}`), dataX, dataY);
         ctx.lineWidth = 1;
-        ctx.strokeStyle = DNA_COLORS[index];
-        ctx.fillStyle = DNA_COLORS[index];
+        ctx.strokeStyle = DNA_COLORS_NEW[index];
+        ctx.fillStyle = DNA_COLORS_NEW[index];
 
         roundRect(ctx, roundRectX, roundRectY, 25, 20, 3, 1, true);
         ctx.font = windowWidth > 480 ? "300 12px Poppins" : "lighter 10px Poppins";
@@ -267,15 +275,17 @@ const DNAChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <Radar
-        id="dna-chart"
-        className="dna-chart"
-        width={screen == 0 ? 678 : 400}
-        height={isMobile() ? 400 : 210}
-        data={data}
-        options={options}
-        plugins={[plugin]}
-      />
+      <div>
+        <Radar
+          id="dna-chart"
+          className="dna-chart"
+          width={screen == 0 ? canvasWidth : 400}
+          height={isMobile() ? 400 : canvasWidth}
+          data={data}
+          options={options}
+          plugins={[plugin]}
+        />
+      </div>
     </div>
   )
 }
