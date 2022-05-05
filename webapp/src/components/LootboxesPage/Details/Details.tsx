@@ -2,23 +2,24 @@ import React from 'react'
 import { Props, ItemProps } from './Details.types'
 import './Details.css'
 import { Actions } from '../Actions'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Details = (props: Props) => {
   const { name, price, priceWithCandies, isTxPending, onBuyItem, onBuyItemWithCandies } = props
 
   return (
     <div className="LootboxDetails details-container grid-container">
-      <DetailItem title="Lootbox type">
+      <DetailItem title={t('lootbox_page.lootbox_type')}>
         <p className="detail-big-text">{name}</p>
       </DetailItem>
-      <DetailItem title="Price with KMON">
+      <DetailItem title={t('lootbox_page.price_with_kmon')}>
         <p className="detail-big-text">
           {price} KMON
         </p>
       </DetailItem>
       <Actions isTxPending={isTxPending} onBuy={onBuyItem} />
       <div />
-      <DetailItem title="Price with Candy">
+      <DetailItem title={t('lootbox_page.price_with_candy')}>
         <p className="detail-big-text">
           {priceWithCandies} CANDY
         </p>

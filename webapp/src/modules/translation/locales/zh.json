@@ -20,7 +20,9 @@
     "update": "更新",
     "search": "搜寻",
     "apply": "应用",
-    "network": "网络"
+    "network": "网络",
+    "min": "最小",
+    "max": "最大"
   },
   "vendors": {
     "decentraland": "Decentraland",
@@ -30,16 +32,35 @@
     "kryptomon": "Kryptomon"
   },
   "navigation": {
+    "home": "主页",
     "collectibles": "藏品",
+    "kryptomons": "Kryptomons",
+    "items": "物品",
     "partners": "伙伴",
     "my_assets": "我的资产",
     "my_bids": "我的出价",
     "activity": "活动",
     "lootboxes": "战利品箱",
-    "breeding_center": ""
+    "breeding_center": "选育中心"
   },
   "menu": {
     "all": "所有资产",
+    "popular": "流行",
+    "newest": "最新",
+    "generations": "世代",
+    "price": "价格",
+    "gen_0": "Gen 0",
+    "gen_1": "Gen 1",
+    "gen_2": "Gen 2",
+    "gen_3": "Gen 3",
+    "gen_4": "Gen 4",
+    "gen_5": "Gen 5",
+    "gen_6": "Gen 6",
+    "gen_7": "Gen 7",
+    "gen_8": "Gen 8",
+    "gen_9": "Gen 9",
+    "gen_10": "Gen 10",
+    "gen_11": "Gen 11",
     "land": "土地",
     "parcels": "地块",
     "estates": "产业",
@@ -65,7 +86,94 @@
     "decentraland": "Decentraland",
     "super_rare": "SuperRare",
     "known_origin": "KnownOrigin",
-    "makers_place": "MakersPlace"
+    "makers_place": "MakersPlace",
+    "element_type": "元素类型",
+    "specialty": "元素类型",
+    "super": "不可冻结",
+    "affection": "情",
+    "unfreezable": "不可冻结",
+    "craziness": "不可冻结",
+    "instinct": "本能",
+    "hunger": "本能",
+    "laziness": "懒惰",
+    "braveness": "勇敢",
+    "smart": "聪明",
+    "element_starting_talent": "元素起始天赋",
+    "constitution": "宪法",
+    "sex": "性",
+    "skin_type": "皮肤类型",
+    "body_size": "体型",
+    "ego": "自我",
+    "health_points": "健康点数",
+    "kryptomon_status": "状态",
+    "speed": "速度",
+    "color": "颜色",
+    "attack": "攻击",
+    "defence": "防御",
+    "general_talent": "一般人才",
+    "growth_talent_factor": "成长人才因素",
+    "element_percentage": "元素百分比",
+    "special": "特别",
+    "water": "水",
+    "water_talent": "水天赋",
+    "fire": "火",
+    "fire_talent": "火天赋",
+    "ground": "地",
+    "ground_talent": "地面天赋",
+    "ice": "冰",
+    "ice_talent": "冰天赋",
+    "grass": "草",
+    "grass_talent": "草人才",
+    "electro": "电",
+    "electro_talent": "电子天赋",
+    "ghost": "鬼",
+    "ghost_talent": "幽灵天赋",
+    "air": "空气",
+    "air_talent": "空气天赋",
+    "age_months": "年龄（月）",
+    "main_family_talent": "主要家族天赋",
+    "second_family_talent": "第二家族天赋",
+    "defense": "防御",
+    "feeding": "喂养",
+    "happiness": "幸福",
+    "healing": "治愈",
+    "love": "爱",
+    "freeze": "冻结",
+    "main_element": "主要元素",
+    "secondary_element": "次要元素",
+    "keys": {
+      "last_evolved": "最后进化",
+      "laid": "铺设",
+      "number": "编号",
+      "Egg": "蛋",
+      "Hatched": "孵化",
+      "Junior": "初级",
+      "Yes": "是",
+      "No": "不",
+      "from": "从",
+      "to": "到",
+      "Air": "空气",
+      "Electro": "电",
+      "Water": "水",
+      "Grass": "草",
+      "Fire": "水",
+      "Ground": "地",
+      "Ghost": "地",
+      "Ice": "冰",
+      "Defence": "防御",
+      "Attack": "攻击",
+      "Balance": "平衡",
+      "Super": "超级",
+      "Normal": "正常",
+      "Feather": "羽毛",
+      "Skin": "皮肤",
+      "Scale": "鳞片",
+      "Short hairs": "短毛",
+      "Long hairs": "长毛",
+      "Male": "男",
+      "Female": "女",
+      "clear_filters": "清除过滤器"
+    }
   },
   "vendor_menu": {
     "no_assets": "无资产",
@@ -76,20 +184,33 @@
     "name": "名称",
     "newest": "最新",
     "recently_listed": "最新上市",
-    "cheapest": "最低价"
+    "cheapest": "最低价",
+    "all": "全部",
+    "dearest": "最贵的",
+    "bnb": "BNB",
+    "kmon": "KMON"
   },
   "home_page": {
-    "title": "Decentraland Marketplace",
+    "title": "活跃的NFT市场",
     "subtitle": "欢迎来到虚拟世界的一站式商店，获取最好的数字资产。",
     "get_started": "开始浏览",
     "learn_more": "学习更多",
     "home_wearables": "可穿戴",
     "home_land": "地块和产业",
-    "home_ens": "名称"
+    "home_ens": "名称",
+    "kryptomons": "最新列表",
+    "become_trainer": "成为培训师",
+    "play": "玩",
+    "starting_date": "“UTC时间{date}开始”"
   },
   "partners_page": {
     "partners": "伙伴",
     "latest_from": "来自{vendor}的最新消息"
+  },
+  "item_page": {
+    "value": "价值",
+    "item_type": "物品种类",
+    "candy": "糖果"
   },
   "partner_sidebar": {
     "assets": "{count} {count, plural, one {asset} other {assets}}"
@@ -101,8 +222,8 @@
     "on_sale": "特价中",
     "filter": "筛选",
     "order_by": "排序",
-    "results": "{count} {count, plural, one {result} other {results}}",
-    "more_than_results": "+{count} results",
+    "results": "{count} {count, plural, one {结果} other {结果}}",
+    "more_than_results": "+{count} 结果",
     "search": "搜寻 {suffix}...",
     "search_land": "搜寻...",
     "rarity": "稀有度",
@@ -110,7 +231,8 @@
     "collection": "珍藏",
     "all_collections": "所有珍藏",
     "network": "网络",
-    "all_networks": "所有网络"
+    "all_networks": "所有网络",
+    "global_search": "搜寻50,000+结果"
   },
   "nft_card": {
     "expires_at": "{date}到期"
@@ -127,9 +249,9 @@
     "cancel_sale": "删除列表",
     "buy": "购买",
     "sell": "出售",
-    "breed": "",
-    "breeding_order": "",
-    "cancel_listing": "",
+    "breed": "培育",
+    "breeding_order": "繁殖令",
+    "cancel_listing": "取消列表",
     "see_listing": "查看清单",
     "bid": "出价",
     "update": "更新价格",
@@ -140,24 +262,147 @@
     "leaving_decentraland": "离开Decentraland",
     "leaving_decentraland_description": "您还无法将{vendor}资产发布或更新到Decentraland市场。您是否要继续{vendor_link}在此处发布？",
     "leaving_decentraland_disclaimer": "您的NFT仍将列在Decentraland市场中",
-    "part_of_estate": "{estate_name}一部分"
+    "part_of_estate": "{estate_name}一部分",
+    "elements": {
+      "title": "元素",
+      "Water": "水",
+      "Grass": "草",
+      "Fire": "火",
+      "Electro": "电",
+      "Ground": "地",
+      "Ghost": "鬼",
+      "Ice": "冰",
+      "Air": "空气",
+      "element main": "元素主"
+    },
+    "more": "更多",
+    "metadata": "元数据",
+    "gamestats": "游戏统计",
+    "price_chart": {
+      "title": "价格图表",
+      "day": "日",
+      "week": "周",
+      "month": "月"
+    },
+    "dna_chart": {
+      "title": "DNA图表",
+      "Attack": "攻击",
+      "Resistance": "防御",
+      "Defense": "防御",
+      "Speed": "速度",
+      "Stamina": "自我",
+      "Ego": "自我",
+      "Health Points": "健康点数",
+      "Constitution": "宪法",
+      "Affections": "情",
+      "Crazyness": "疯狂",
+      "Instinct": "本能",
+      "Hunger": "饥饿",
+      "Braveness": "勇敢",
+      "Brave": "勇敢",
+      "Smart": "聪明",
+      "breeding": "下一个育种",
+      "last": "最后一次繁殖",
+      "next": "“时间可以孕育"
+    },
+    "breeding_info": {
+      "title": "培育信息",
+      "cooldown_time": "冷却时间",
+      "breed_amount": "培育数量",
+      "breed_price": "培育价格",
+      "breed_info_on": "开",
+      "breed_info_off": "关闭",
+      "set_price": "定价",
+      "day": "天",
+      "days": "天"
+    },
+    "trade_history": {
+      "title": "交易历史",
+      "sale": "销售",
+      "transfer": "转让",
+      "minted": "铸造",
+      "event": "事件",
+      "price": "价格",
+      "from": "从",
+      "to": "到",
+      "date": "日期"
+    },
+    "breed_price_modal": {
+      "title": "输入价格",
+      "line_one": "你即将把 {name} 添加到繁殖中心",
+      "line_two": "请输入您希望获得多少报酬的价格.",
+      "price": "价格"
+    },
+    "breeding_modal": {
+      "mykryptomon": "我的Kryptomon",
+      "remove": "消除",
+      "selected": "选择",
+      "compare": "比较",
+      "select_your_kryptomon": "选择一个你的kryptomon",
+      "search_kryptomon": "在市场上搜索kryptomon",
+      "mutation_factor": "突变因子",
+      "generation": "世代",
+      "breed_price": "养殖价格",
+      "breed_amount": "养殖量",
+      "breeding_fee": "养殖费",
+      "total_cost": "总花费",
+      "breed": "培育",
+      "cancel": "取消",
+      "simulated": "模拟",
+      "lower_limit": "下限",
+      "higher_limit": "上限"
+    },
+    "meta_data": {
+      "general": {
+        "title": "一般",
+        "description": "你的氪兽的基本信息.",
+        "egg_id": "蛋号",
+        "generation": "世代",
+        "Type": "类型",
+        "speciality": "专业",
+        "laid": "铺设",
+        "UNFREEZABLE": "不可冻结"
+      },
+      "appearance": {
+        "title": "外观",
+        "description": "会影响你的氪兽外观的属性.",
+        "Gender": "性别",
+        "Color": "颜色",
+        "body_size": "体型"
+      },
+      "affinity": {
+        "title": "元素亲和力",
+        "description": "会影响氪星兽类型和亲和力的属性.",
+        "element main": "元素主",
+        "gens": "基因",
+        "talent": "人才"
+      }
+    }
   },
   "lootbox_page": {
     "description_block": {
-      "title": "",
+      "title": "描述",
       "description": {
-        "lootbox_basic": "",
-        "lootbox_medium": "",
-        "lootbox_premium": "",
-        "unfreeze_potion": ""
+        "lootbox_basic": "这个标准战利品箱包含基本必备品, 包含新训练师保持Kryptomon生命所需的一切",
+        "lootbox_medium": "有心情享受美食吗？从更美味的食物到更好的玩具, 这款Silver Lootbox放弃了即将到来的训练师们对待氪星兽所需的一切, 以完成出色的工作。",
+        "lootbox_premium": "Kryptomon护理的终极水平,Gold Lootboxes 是为最优秀的训练师准备的!",
+        "unfreeze_potion": "用解冻药水给你的kryptomon一个新的生命!",
+        "basic": "这个标准战利品箱包含基本必备品, 包含新训练师保持Kryptomon生命所需的一切",
+        "medium": "有心情享受美食吗？从更美味的食物到更好的玩具, 这款Silver Lootbox放弃了即将到来的训练师们对待氪星兽所需的一切, 以完成出色的工作。",
+        "premium": "Kryptomon护理的终极水平,Gold Lootboxes 是为最优秀的训练师准备的!",
+        "potion": "用解冻药水给你的kryptomon一个新的生命!"
       }
     },
     "confirm": {
-      "title": "",
-      "line_one": "",
-      "line_two": "",
-      "field_label": ""
-    }
+      "title": "请确认",
+      "line_one": "你即将购买{item}",
+      "line_two": "请重新输入商品数量",
+      "field_label": "要购买的物品数量"
+    },
+    "lootbox_type": "战利品箱",
+    "price_with_kmon": "价格KMON",
+    "price_with_candy": "价格Candy",
+    "buy": "购买"
   },
   "proximity": {
     "adjacent": "相邻",
@@ -293,10 +538,14 @@
     "copied": "已复制 ✔",
     "authorization_error": "我们无法加载您的授权，请重试",
     "authorization_error_contact": "如果错误仍然存​​在，请随时与我们联系",
-    "for_buying": "购买",
-    "for_bidding": "出价",
+    "for_buying_nft": "购买",
+    "for_selling_or_approving": "用于出售或批准 NFT",
+    "for_bidding_with_kmon": "出价KMON",
+    "for_bidding_with_wbnb": "出价WBNB",
+    "for_buying_lootbox": "购买lootbox",
     "authorization_Marketplace_MANAToken": "KMON",
     "for_selling": "出售",
+    "for_breeding": "培育",
     "pending_tx": "待处理的交易，请单击微调器以转到活动详细状态"
   },
   "authorization": {
@@ -344,12 +593,21 @@
       "accept_bid": "您接受了{name}的{price}出价。",
       "cancel_bid": "您取消了对{name}的{price}出价。",
       "buy_item": "您以 {price} 购买了 {name} 战利品箱。"
+    },
+    "status": {
+      "queued": "排队",
+      "dropped": "丢弃",
+      "replaced": "替换",
+      "pending": "待定”",
+      "reverted": "还原",
+      "confirmed": "确认"
     }
   },
   "kmon": {
     "running_on": "这是{network}网络中运行的MANA"
   },
   "wallet": {
+    "my_wallet": "我的钱包",
     "sign_in_required": "您需要{sign_in}才能访问此页面。",
     "sign_in": "登入"
   },
@@ -369,7 +627,8 @@
   },
   "networks": {
     "ethereum": "Ethereum",
-    "matic": "Polygon"
+    "matic": "Polygon",
+    "bsc": "Binance智能链"
   },
   "intro_popup": {
     "title": "介绍Polygon KMON",

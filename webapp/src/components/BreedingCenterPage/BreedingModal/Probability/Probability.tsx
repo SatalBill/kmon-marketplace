@@ -4,6 +4,7 @@ import { Radar } from 'react-chartjs-2'
 import { Props } from './Probability.types'
 import './Probability.css'
 import { DNA_CONSTANTS } from '../../../../modules/nft/constants'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const Probability = (props: Props) => {
   const { myNFT, selectedNFT, simulatedGenes, mutationFactor } = props
@@ -141,7 +142,7 @@ const Probability = (props: Props) => {
         borderWidth: 1.5
       },
       {
-        label: 'Simulated',
+        label: t('nft_page.breeding_modal.simulated'),
         data: simulatedGenes,
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
         borderColor: 'rgb(217, 225, 160)',
@@ -153,7 +154,7 @@ const Probability = (props: Props) => {
         borderDash: [5]
       },
       {
-        label: 'Lower Limit',
+        label: t('nft_page.breeding_modal.lower_limit'),
         data: lowerRange,
         fill: "+1",
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
@@ -165,7 +166,7 @@ const Probability = (props: Props) => {
         borderWidth: 0
       },
       {
-        label: 'Higher Limit',
+        label: t('nft_page.breeding_modal.higher_limit'),
         data: higherRange,
         backgroundColor: 'rgba(217, 225, 160, 0.2)',
         borderColor: 'rgb(217, 225, 160)',
@@ -186,6 +187,41 @@ const Probability = (props: Props) => {
       min: 0,
       stepSize: 20
     },
+    scales: {
+      r: {
+        ticks: {
+          color: '#ffff',
+          backdropColor: '#ffffff00',
+          opacity: 0.5,
+          font: {
+            size: 10,
+            weight: 'bold',
+            color: '#ffff',
+            family: 'Poppins'
+          }
+        },
+        angleLines: {
+          display: false
+        },
+        grid: {
+          color: ['#393838', '#2F2F2E', '#232223', '#141514', '#242129'],
+          lineWidth: [100, 50, 50, 50, 0]
+        },
+        pointLabels: {
+          padding: 40,
+          color: '#fff',
+          font: { 
+            size: 12,
+            weight: 'bold',
+            family: 'Poppins'
+          },
+          callback: function(value: any, index: any) {
+            console.log(value)
+            return t(`nft_page.dna_chart.${DNA_CONSTANTS[index]}`);
+          },
+        }
+      }
+    },
     plugins: {
       legend: {
         display: true,
@@ -193,12 +229,13 @@ const Probability = (props: Props) => {
       }
     }
   }
+  
 
   const classes = ['kryptomon', 'breeding-modal-probability']
   return (
     <div className={classes.join(" ")}>
       <div className="value">
-        Mutation factor {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
+        {t('nft_page.breeding_modal.mutation_factor')} {mutationFactor !== null ? mutationFactor.toFixed(2) : ''}%
       </div>
       <div className="probability-chart-box">
         <div className="probability-chart">

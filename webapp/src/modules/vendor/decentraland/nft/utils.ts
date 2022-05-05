@@ -28,7 +28,19 @@ export const SEX_TO_REQ: Record<string, string> = {
 export const STATUS_TO_REQ: Record<string, string> = {
   Egg: '0',
   Hatched: '1',
-  Junior: '2'
+  Junior: '2',
+  Egg_Hatched: '0_1',
+  Egg_Junior: '0_2',
+  Egg_Hatched_Junior: '0_1_2',
+  Egg_Junior_Hatched: '0_2_1',
+  Hatched_Egg: '1_0',
+  Hatched_Junior: '1_2',
+  Hatched_Egg_Junior: '1_0_2',
+  Hatched_Junior_Egg: '1_2_0',
+  Junior_Egg: '2_0',
+  Junior_Hatched: '2_1',
+  Junior_Egg_Hatched: '2_0_1',
+  Junior_Hatched_Egg: '2_1_0'
 }
 
 export const UNFREEZABLE_TO_REQ: Record<string, string> = {

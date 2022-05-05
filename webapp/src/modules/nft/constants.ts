@@ -23,6 +23,18 @@ export const DNA_CONSTANTS = [
   'Brave',
   'Smart'
 ]
+
+export const DNA_CONSTANTS_NEW = [
+  'Attack',
+  'Resistance',
+  'Instinct',
+  'Stamina',
+  'Constitution',
+  'Braveness',
+  'Speed',
+  'Crazyness',
+]
+
 export const DNA_COLORS = [
   '#33D669',
   '#F3BA2F',
@@ -36,4 +48,15 @@ export const DNA_COLORS = [
   '#F231AF',
   '#00D6DD',
   '#FFFFFF'
+]
+
+export const DNA_COLORS_NEW = [
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
+  '#3898FF',
 ]
