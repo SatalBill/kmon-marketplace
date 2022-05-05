@@ -1,7 +1,7 @@
 import { Network, Rarity } from '@kmon/schemas'
 import { Section, SortBy } from '../../../../modules/routing/types'
 import { browseNFTs } from '../../../../modules/routing/actions'
-
+import { NFT } from '../../../../modules/nft/types'
 export type Props = {
   count?: number
   section: Section
@@ -15,6 +15,7 @@ export type Props = {
   network?: Network
   onBrowse: typeof browseNFTs
   isNavBar: boolean
+  myNFT?: NFT | null
 }
 
 export type MapStateProps = Pick<
@@ -29,5 +30,6 @@ export type MapStateProps = Pick<
   | 'contracts'
   | 'network'
   | 'priceToken'
+  | 'myNFT'
 >
 export type OwnProps = Pick<Props, 'onBrowse'>
