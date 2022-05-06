@@ -13,6 +13,7 @@ import {
   getNetwork,
   getPriceToken
 } from '../../../../modules/routing/selectors'
+import { getMyNFT } from '../../../../modules/breed/selectors'
 import { MapStateProps } from './NFTFilters.types'
 import NFTFilters from './NFTFilters'
 
@@ -26,7 +27,8 @@ const mapState = (state: RootState): MapStateProps => ({
   isMap: getIsMap(state),
   wearableRarities: getWearableRarities(state),
   contracts: getContracts(state),
-  network: getNetwork(state)
+  network: getNetwork(state),
+  myNFT: getMyNFT(state)
 })
 
 const mapDispatch = () => ({})
