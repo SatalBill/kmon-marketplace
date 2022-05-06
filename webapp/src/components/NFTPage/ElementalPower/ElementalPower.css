@@ -1,11 +1,14 @@
-.meta-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding: 10px;
+.elem-power-container {
   width: 100%;
-  max-width: 738px;
-  flex-wrap: wrap;
+  max-width: 272px;
+  border-radius: 10px;  
+  overflow: hidden;
+}
+
+.elem-power-item {
+  background-color: #0E0E0E;
+  padding: 4px 15px 4px 4px;
+  border-bottom: 2px solid black;
 }
 
 @media (max-width: 768px) {
@@ -23,11 +26,27 @@
   font-family: var(--font-family);
   padding-right: 8px;
 }
+.elem-title {
+  font-family: var(--font-family);
+  margin: 0;
+}
 
 .small-row-text {
   color: #ddd;
   font-family: var(--font-family);
   font-size: 10px;
+}
+.elem-power-row-text {
+  color: #ddd;
+  font-family: var(--font-family);
+  font-size: 10px;
+  margin: 0 3px 0 0;
+  padding: 0;
+}
+
+.elem-power-percent {
+  font-family: var(--font-family);
+  height: 40px;
 }
 
 .elem-row-value {
@@ -79,5 +98,5 @@
 .value-text {
   font-size: 16px;
   color: rgb(243, 186, 47);
-  margin: 0 8px;
+  margin: 0 4px 0 0;
 }

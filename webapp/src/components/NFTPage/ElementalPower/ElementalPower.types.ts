@@ -2,7 +2,7 @@ import { Order } from '../../../modules/order/types'
 import { NFT } from '../../../modules/nft/types'
 
 export type Props = {
-    nft: NFT
+    nft?: NFT
     order?: Order
     isV2?: boolean
     elements?: any
