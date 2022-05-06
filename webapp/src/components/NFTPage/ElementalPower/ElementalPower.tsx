@@ -14,7 +14,11 @@ const ElementalPower = (props: Props) => {
                         <div className="flex-direction-row">
                             <img className="stats-icon" src={item.icon} />
                             <div>
-                                <p className="elem-title">{t(`nft_page.elements.${item.title}`)}</p>
+                                <div className="flex-direction-row">
+                                    <p className="elem-title">{t(`nft_page.elements.${item.title}`)}</p>
+                                    <p className="elem-power-row-text">{t(`nft_page.elemental_power.power`)}</p>
+                                    <h6 className="value-text">{item.value[0] * item.value[1]}</h6>
+                                </div>
                                 <div className="flex-direction-row">
                                     <h6 className="elem-power-row-text">{t('nft_page.meta_data.affinity.gens')}</h6>
                                     <h6 className="value-text">{item.value[0]}</h6>

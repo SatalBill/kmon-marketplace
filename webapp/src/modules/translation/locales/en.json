@@ -328,7 +328,8 @@
       "days": "days"
     },
     "elemental_power": {
-      "title": "Elemental power"
+      "title": "Elemental power",
+      "power": "power"
     },
     "trade_history": {
       "title": "Trade history",

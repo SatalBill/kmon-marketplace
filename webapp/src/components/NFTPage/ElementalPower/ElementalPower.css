@@ -28,7 +28,7 @@
 }
 .elem-title {
   font-family: var(--font-family);
-  margin: 0;
+  margin: 0 5px 0 0;
 }
 
 .small-row-text {
