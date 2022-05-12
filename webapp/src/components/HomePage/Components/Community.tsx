@@ -1,13 +1,6 @@
 import React from 'react'
 import './Community.css'
-import facebook from '../../../images/community/Facebook.svg'
-import medium from '../../../images/community/Medium.svg'
-import telegram from '../../../images/community/Telegram.svg'
-import linkedin from '../../../images/community/Linkedin.svg'
-import twitter from '../../../images/community/Twitter.svg'
-import discord from '../../../images/community/Discord.svg'
-import reddit from '../../../images/community/Reddit.svg'
-import instagram from '../../../images/community/Instagram.svg'
+import { facebook, medium, telegram, linkedin, twitter, discord, reddit, instagram } from '../../../images/community'
 
 // type Props = {}
 
