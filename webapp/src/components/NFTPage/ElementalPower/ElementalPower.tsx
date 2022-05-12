@@ -27,7 +27,7 @@ const ElementalPower = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                        <p className="elem-power-percent">{parseInt(item.value[2])}%</p>
+                        {/* <p className="elem-power-percent">{parseInt(item.value[2])}%</p> */}
                     </div>
                 ))
             }
