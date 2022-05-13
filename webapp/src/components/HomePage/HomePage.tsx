@@ -39,9 +39,9 @@ const HomePage = (props: Props) => {
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? '0' + minutes : minutes;
-    var strTime = hours +( minutes > 0 && ':') + (minutes > 0 && minutes) + '' + ampm;
+    var strTime = hours + (minutes > 0 && ':') + (minutes > 0 && minutes) + '' + ampm;
     return strTime;
-  
+
   }
 
   const formatDate = (date: any) => {
@@ -91,13 +91,16 @@ const HomePage = (props: Props) => {
 
   return (
     <div className="HomePage">
-      <Navbar isFullscreen  />
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation />
+      </div>
       <Hero centered className="HomePageHero">
         <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
           <div className="hero-image" />
           <div className="hero-fade" />
-          <a className="hero-logo" href="https://kryptomon.co"/>
+          <a className="hero-logo" href="https://kryptomon.co" />
           <div className="hero-market" />
           <div className="grid-top" />
           <div className="dragons" />
@@ -120,9 +123,9 @@ const HomePage = (props: Props) => {
             <div className="starting-date">{formatDate(flashTime)}</div>
           </div>
         </div>
-      <Navigation />
+        <Navigation />
         <Page className="HomePage">
-        
+
           {views.map((view, index) => {
             return (
               <>
@@ -140,7 +143,7 @@ const HomePage = (props: Props) => {
         <div className="bottom-bg">
           <div className="bottom-bg-image"></div>
         </div>
-        <Footer className="Footer" /> 
+        <Footer className="Footer" />
       </div>
     </div>
   )

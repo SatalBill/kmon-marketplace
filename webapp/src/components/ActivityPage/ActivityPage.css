@@ -1,3 +1,11 @@
+.ActivityPageMain {
+  position: relative;
+}
+
+.ActivityPageMain .dcl.tabs {
+  margin-top: 50px;
+}
+
 .ActivityPage .center {
   position: absolute;
   top: 0px;
