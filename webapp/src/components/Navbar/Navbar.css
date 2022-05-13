@@ -114,6 +114,7 @@
     display: block !important;
     align-items: baseline !important;
   }
+
   .kryptomon.logo {
     margin-right: 20px !important;
     width: 82px !important;
@@ -175,7 +176,28 @@
   }
 
   .dcl.navbar-account {
-    margin-top: 17px;
+    /* margin-top: 17px; */
+    position: absolute;
+    right: 5px;
+    top: calc(var(--navbar-margin-bottom) / 2) !important;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
+  .dcl.navbar-account .ui.secondary.menu {
+    flex-direction: column;
+  }
+
+  .dcl.navbar .ui.menu.secondary {
+    margin-top: 0px !important;
+  }
+
+  .dcl.navbar .ui.menu .item.start-game-button {
+    width: 75px;
+    height: 30px;
+    margin-left: 0px !important;
+    margin-top: 5px;
   }
 
   .PageCustomHeader .dcl.navbar .ui.menu.secondary {
@@ -183,6 +205,16 @@
   }
 
   .dcl.navbar .ui.menu.secondary {
-    margin-top: -25px !important;
+    margin-top: 0px !important;
+  }
+
+  .dcl.tabs-left {
+    background-color: #000;
+  }
+}
+
+@media (min-width: 768px) {
+  .PageCustomHeader .dcl.navbar .dcl.navbar-account {
+    margin-top: 25px;
   }
 }

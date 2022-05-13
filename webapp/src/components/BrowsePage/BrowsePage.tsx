@@ -18,8 +18,8 @@ const BrowsePage = (props: Props) => {
   const activeTab = isPartner(vendor)
     ? NavigationTab.PARTNER
     : isBrowseEggs
-    ? NavigationTab.BROWSE
-    : NavigationTab.KRYPTOMONS
+      ? NavigationTab.BROWSE
+      : NavigationTab.KRYPTOMONS
   return (
     <>
       <div className="PageCustomHeader">
