@@ -10,6 +10,7 @@ import { Navbar } from '../Navbar'
 import { Navigation } from '../Navigation'
 import { Footer } from '../Footer'
 import { Slideshow } from './Slideshow'
+import Community from './Components/Community'
 import { Props } from './HomePage.types'
 import './HomePage.css'
 import { SearchOptions } from '../../modules/routing/types'
@@ -140,6 +141,9 @@ const HomePage = (props: Props) => {
             )
           })}
         </Page>
+        <div className="flash-container">
+          <Community />
+        </div>
         <div className="bottom-bg">
           <div className="bottom-bg-image"></div>
         </div>

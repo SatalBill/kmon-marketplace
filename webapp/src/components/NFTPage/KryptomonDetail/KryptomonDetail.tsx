@@ -17,6 +17,7 @@ import { DNAChart } from '../DNAChart'
 import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
+import { ElementalPower } from '../ElementalPower'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
@@ -40,6 +41,8 @@ import GeneralType from '../../../images/metadata/generaltype.svg'
 import Generation from '../../../images/metadata/generation.svg'
 import Egg from '../../../images/metadata/egg.svg'
 import { DNARadarChart } from '../DNARadarChart'
+import elementalPowerIcon from '../../../images/kmonDetail/elementalPower.svg'
+import heartIcon from '../../../images/heart.png'
 
 declare var window: any
 
@@ -245,8 +248,10 @@ const KryptomonDetail = (props: Props) => {
 
   let maxValue;
   let maxValueTalent;
+  let maxPercent;
   let secondValue;
   let secondValueTalent;
+  let secondPercent;
 
   const genesArr = genes && Object.entries(genes)
   genesArr?.map((gen: any) => {
@@ -263,6 +268,13 @@ const KryptomonDetail = (props: Props) => {
       secondValueTalent = gen[1];
     }
   })
+
+  if (maxValue && maxValueTalent) {
+    maxPercent = (((maxValue * maxValueTalent) / totalGenes) * 100).toFixed(2)
+  }
+  if (secondValue && secondValueTalent) {
+    secondPercent = (((secondValue * secondValueTalent) / totalGenes) * 100).toFixed(2)
+  }
 
 
   const GeneralTypes = [
@@ -324,12 +336,12 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: maxElementType.title,
-      value: [maxValue, maxValueTalent],
+      value: [maxValue, maxValueTalent, maxPercent],
       icon: maxElementType.icon
     },
     {
       title: secondElementType.title,
-      value: [secondValue, secondValueTalent],
+      value: [secondValue, secondValueTalent, secondPercent],
       icon: secondElementType.icon
     }
   ]
@@ -354,11 +366,15 @@ const KryptomonDetail = (props: Props) => {
         setCooldownTimeDay(leftDay)
         setCooldownTimePercent(percentTemp)
       }
+      try {
+        let web3 = new Web3(window?.ethereum)
+        const accounts = await web3.eth.getAccounts()
+        console.log('account=>', accounts)
+        if (accounts) setAccount(accounts[0])
+      } catch (error) {
+        console.log('no wallet=>', error)
+      }
 
-      let web3 = new Web3(window?.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      console.log('account=>', accounts)
-      setAccount(accounts[0])
     }
     start()
   }, [])
@@ -376,9 +392,14 @@ const KryptomonDetail = (props: Props) => {
               canBreed={getIfCanBreed()}
             />
           </Row>
+          <Row className="Row-space-between ">
+            <TitleBlock title={t('nft_page.elemental_power.title')} icon={elementalPowerIcon}>
+              <ElementalPower elements={MetaDataelemtns} />
+            </TitleBlock>
+          </Row>
           {isJunior &&
             <Row className="Row-space-between ">
-              <TitleBlock title={t('nft_page.breeding_info.title')}>
+              <TitleBlock title={t('nft_page.breeding_info.title')} icon={heartIcon}>
                 <BreedingInfo
                   nft={nft}
                   showCooldownTime={showCooldownTimeTemp}

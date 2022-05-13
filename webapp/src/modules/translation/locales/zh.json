@@ -319,6 +319,10 @@
       "day": "天",
       "days": "天"
     },
+    "elemental_power": {
+      "title": "元素之力",
+      "power": "力量"
+    },
     "trade_history": {
       "title": "交易历史",
       "sale": "销售",
