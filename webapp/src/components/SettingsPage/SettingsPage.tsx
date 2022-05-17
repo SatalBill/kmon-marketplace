@@ -72,9 +72,11 @@ const SettingsPage = (props: Props) => {
   })
 
   return (
-    <>
-      <Navbar isFullscreen />
-      <Navigation />
+    <div className="SettingsPageMain">
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation />
+      </div>
       <Page className="SettingsPage">
         {isConnecting ? (
           <Loader size="massive" active />
@@ -279,7 +281,7 @@ const SettingsPage = (props: Props) => {
         ) : null}
       </Page>
       <Footer />
-    </>
+    </div>
   )
 }
 

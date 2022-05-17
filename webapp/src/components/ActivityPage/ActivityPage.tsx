@@ -80,9 +80,11 @@ const ActivityPage = (props: Props) => {
   }
 
   return (
-    <>
-      <Navbar isFullscreen />
-      <Navigation activeTab={NavigationTab.ACTIVITY} />
+    <div className="ActivityPageMain">
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation activeTab={NavigationTab.ACTIVITY} />
+      </div>
       <Page className="ActivityPage">{content}</Page>
       <Modal size="tiny" open={showConfirmation}>
         <Modal.Header>
@@ -99,7 +101,7 @@ const ActivityPage = (props: Props) => {
         </Modal.Actions>
       </Modal>
       <Footer />
-    </>
+    </div>
   )
 }
 
