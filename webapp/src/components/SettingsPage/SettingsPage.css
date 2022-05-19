@@ -1,3 +1,11 @@
+.SettingsPageMain {
+  position: relative;
+}
+
+.SettingsPageMain .dcl.tabs {
+  margin-top: 50px;
+}
+
 .SettingsPage .left-column {
   text-transform: uppercase;
   font-size: 13px;
@@ -46,7 +54,7 @@
   margin-left: 24px;
 }
 
-.SettingsPage .authorization-checks > label {
+.SettingsPage .authorization-checks>label {
   display: block;
   font-size: 17px;
   margin-bottom: 17px;
@@ -54,12 +62,12 @@
 }
 
 @media (max-width: 992px) {
-  .SettingsPage .ui.grid > .row {
+  .SettingsPage .ui.grid>.row {
     flex-direction: column;
     margin-bottom: 48px;
   }
 
-  .SettingsPage .ui.grid > .row > .column:first-child {
+  .SettingsPage .ui.grid>.row>.column:first-child {
     margin-bottom: 16px;
   }
 
