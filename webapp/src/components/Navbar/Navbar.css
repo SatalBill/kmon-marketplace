@@ -48,6 +48,7 @@
 
 .dcl.navbar .ui.menu .item.sign-in-button {
   transform: translateY(-8px);
+  font-family: var(--font-poppins);
 }
 
 .dcl.navbar .ui.menu .item.sign-in-button,
@@ -72,6 +73,7 @@
 .dcl.navbar .ui.menu .item.start-game-button {
   transform: translateY(-8px);
   margin-left: 10px;
+  font-family: var(--font-poppins);
 }
 
 .dcl.navbar .ui.menu .item.start-game-button,
