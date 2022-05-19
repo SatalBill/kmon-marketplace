@@ -13,6 +13,8 @@ import basicLootbox from '../../images/items/lootbox_basic.png'
 import mediumLootbox from '../../images/items/lootbox_medium.png'
 import premiumLootbox from '../../images/items/lootbox_premium.png'
 import unfreezePotion from '../../images/items/unfreeze_potion.png'
+import { FooterImage } from '../FooterImage'
+import './LootboxesPage.css'
 
 export const images: Record<string, string> = {
   'lootbox_basic': basicLootbox,
@@ -63,6 +65,8 @@ const LootboxesPage = (props: Props) => {
             />
           ))}
         </Card.Group>
+        <div className='lootbox-container'></div>
+        <FooterImage />
       </Page>
       <Footer isFullscreen={isFullscreen} />
     </>
