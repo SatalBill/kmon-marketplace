@@ -208,7 +208,7 @@ a.ui.card.link:hover .meta {
 .product-info-number-card {
   margin: 0;
   font-size: 17px;
-  font-family: var(--font-family);
+  font-family: var(--font-poppins);
   color: #000000;
   font-weight: 700;
   display: flex;
