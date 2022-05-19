@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.WearableDetail .Highlight .left > div {
+.WearableDetail .Highlight .left>div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px 30px;
@@ -90,17 +90,17 @@
   background-image: url(../../../images//wearables/UpperBodyIcon.svg);
 }
 
-.WearableDetail .Highlight .left > .BaseMale {
+.WearableDetail .Highlight .left>.BaseMale {
   background-image: url(../../../images//wearables/MaleIcon.svg);
   background-size: 24px 24px;
 }
 
-.WearableDetail .Highlight .left > .BaseFemale {
+.WearableDetail .Highlight .left>.BaseFemale {
   background-image: url(../../../images//wearables/FemaleIcon.svg);
   background-size: 24px 24px;
 }
 
-.WearableDetail .Highlight .left > .Unisex {
+.WearableDetail .Highlight .left>.Unisex {
   background-image: url(../../../images//wearables/UnisexIcon.svg);
   background-size: 24px 24px;
 }
@@ -122,7 +122,7 @@
   align-items: center;
 }
 
-.price-dropdown > .text {
+.price-dropdown>.text {
   color: #676370 !important;
   font-size: 12px !important;
   font-family: Poppins;
@@ -132,11 +132,12 @@
   flex-direction: row;
   align-items: flex-start;
 }
-.price-dropdown > .dropdown.icon {
+
+.price-dropdown>.dropdown.icon {
   color: #676370 !important;
 }
 
-.price-dropdown > .text::before {
+.price-dropdown>.text::before {
   content: url(../../../images/egg/calendar.svg);
   margin-right: 7px;
 }
@@ -177,19 +178,19 @@
 }
 
 .next-breeding-progress .bar .progress-low {
-    white-space: nowrap;
-    position: absolute;
-    width: auto;
-    font-size: .92857143em;
-    top: 150%;
-    right: -7em;
-    left: auto;
-    bottom: auto;
-    color: rgb(217, 225, 160);
-    text-shadow: none;
-    margin-top: -0.5em;
-    font-weight: 700;
-    text-align: left;
+  white-space: nowrap;
+  position: absolute;
+  width: auto;
+  font-size: .92857143em;
+  top: 150%;
+  right: -7em;
+  left: auto;
+  bottom: auto;
+  color: rgb(217, 225, 160);
+  text-shadow: none;
+  margin-top: -0.5em;
+  font-weight: 700;
+  text-align: left;
 }
 
 @media (max-width: 1201px) {
@@ -208,7 +209,8 @@
   .next-breeding {
     width: 100%;
   }
-  .block-container{
+
+  .block-container {
     width: 100%;
   }
 }
@@ -229,4 +231,49 @@
   .next-breeding {
     width: 290px;
   }
+}
+
+.kmon-detail-container {
+  padding-bottom: 300px;
+}
+
+.position-relative {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+}
+
+.kmon-detail-bottom-bg {
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+  z-index: -1;
+  width: 100%;
+  height: 400px;
+  position: absolute;
+}
+
+.kmon-detail-bottom-bg .kmon-detail-bottom-bg-image {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-image: url(../../../images/bottom-bg.jpg);
+  background-size: cover;
+  height: 100%;
+  background-position: center;
+}
+
+.kmon-detail-bottom-wave-image {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-image: url(../../../images/Blue_waves.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 100%;
+  margin-bottom: -1%;
 }

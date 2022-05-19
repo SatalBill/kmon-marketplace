@@ -43,6 +43,7 @@ import Egg from '../../../images/metadata/egg.svg'
 import { DNARadarChart } from '../DNARadarChart'
 import elementalPowerIcon from '../../../images/kmonDetail/elementalPower.svg'
 import heartIcon from '../../../images/heart.png'
+import { FooterImage } from '../../FooterImage'
 
 declare var window: any
 
@@ -381,7 +382,7 @@ const KryptomonDetail = (props: Props) => {
 
   return (
     <Container className="product-container">
-      <Row className="Row-space-between">
+      <Row className="Row-space-between kmon-detail-container">
         <Column>
           <Row className="Row-space-between">
             <NFTDetailCard
@@ -482,6 +483,7 @@ const KryptomonDetail = (props: Props) => {
           </Row>
         </Column>
       </Row>
+      <FooterImage />
     </Container>
   )
 }
