@@ -145,7 +145,9 @@ const HomePage = (props: Props) => {
           <Community />
         </div>
         <div className="bottom-bg">
-          <div className="bottom-bg-image"></div>
+          <div className="bottom-bg-image">
+            <div className="bottom-wave-image"></div>
+          </div>
         </div>
         <Footer className="Footer" />
       </div>

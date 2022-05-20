@@ -19,6 +19,7 @@ import { Props } from './AccountPage.types'
 import { Column } from '../Layout/Column'
 import { AccountProfile } from '../AccountProfile'
 import './AccountPage.css'
+import { FooterImage } from '../FooterImage'
 
 const AccountPage = (props: Props) => {
   const {
@@ -120,6 +121,8 @@ const AccountPage = (props: Props) => {
           <NFTBrowse vendor={vendor} address={address} view={View.ACCOUNT} />
         </>
       ) : null}
+      <div className='lootbox-container'></div>
+      <FooterImage />
       <Footer isFullscreen={isFullscreen} />
     </div>
   )
