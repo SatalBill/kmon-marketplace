@@ -1,9 +1,8 @@
 @font-face {
-  font-family: 'Mister-London-Sans';
+  font-family: "Mister-London-Sans";
   font-style: normal;
   font-weight: normal;
-  src: local('Mister-London-Sans'),
-    url('./fonts/Mister-London-Sans.otf') format('opentype');
+  src: local("Mister-London-Sans"), url("./fonts/Mister-London-Sans.otf") format("opentype");
 }
 
 :root {
@@ -13,9 +12,9 @@
   --button-height: 48px;
   --button-width: 150px;
 
-  --font-monospace: 'PT Mono';
-  --font-family: 'Mister-London-Sans';
-  --font-poppins: 'Poppins';
+  --font-monospace: "PT Mono";
+  --font-family: "Mister-London-Sans";
+  --font-poppins: "Poppins";
   --font-size-medium: 18px;
 
   --primary: #f231af;
@@ -24,16 +23,14 @@
 
 body {
   margin: 0;
-  font-family: var(--font-monospace), -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-monospace), -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .danger-text {
@@ -44,12 +41,28 @@ code {
   .dcl.navbar.overlay .ui.container {
     width: calc(100% - 32px) !important;
   }
-
   .ui.modal .actions {
     flex-direction: column-reverse;
+    align-items: center;
   }
 
   .ui.modal .actions .ui.button + .ui.button {
     margin-left: 0px;
+  }
+
+  .ui.small.modal > .header:not(.ui) {
+    text-align: center;
+  }
+  .ui.small.modal > .actions > .ui.button {
+    min-width: 60%;
+  }
+  .ui.modal > .ui.form > .actions {
+    align-items: center;
+  }
+  .dcl.page.fullscreen.NFTPage {
+    overflow-x: hidden;
+  }
+  .BreedPriceModal > .actions > .ui.button{
+    min-width: 250px;
   }
 }

@@ -24,3 +24,13 @@
 .TransferPage .form-fields {
   width: 420px;
 }
+
+@media only screen and (max-width: 767px){
+  .TransferPage .form-fields {
+    width: 100%;
+  }
+  .TransferPage .form-fields .dcl.field{
+    min-width: auto;
+    margin-top: 20px;
+  }
+}
