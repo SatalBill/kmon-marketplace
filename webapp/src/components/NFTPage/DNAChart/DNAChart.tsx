@@ -15,7 +15,6 @@ const DNAChart = (props: Props) => {
   const { nft, isV2 } = props
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [screen, setScreen] = useState(0);
-  const [canvasWidth, setCanvasWidth] = useState(700)
 
   const genesV2Values = [
     nft.genesV2?.attack,
@@ -56,12 +55,6 @@ const DNAChart = (props: Props) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setCanvasWidth(740)
-    }, 100);
   }, [])
 
   const data = {
@@ -239,6 +232,9 @@ const DNAChart = (props: Props) => {
           roundRectY = data.y - 5;
           dataX = data.x;
           dataY = data.y - 15;
+        } else if (index === 4) {
+          roundRectX = data.x - 15;
+          roundRectY = data.y - 30;
         } else {
           roundRectX = data.x - 15;
           roundRectY = data.y + 20;
@@ -275,17 +271,15 @@ const DNAChart = (props: Props) => {
           <img src={Star} alt="star-icon" className="dna-info-start" />
         )}
       </div>
-      <div>
-        <Radar
-          id="dna-chart"
-          className="dna-chart"
-          width={screen == 0 ? canvasWidth : 400}
-          height={isMobile() ? 400 : canvasWidth}
-          data={data}
-          options={options}
-          plugins={[plugin]}
-        />
-      </div>
+      <Radar
+        id="dna-chart"
+        className="dna-chart"
+        width={screen == 0 ? 678 : 400}
+        height={isMobile() ? 500 : 210}
+        data={data}
+        options={options}
+        plugins={[plugin]}
+      />
     </div>
   )
 }
