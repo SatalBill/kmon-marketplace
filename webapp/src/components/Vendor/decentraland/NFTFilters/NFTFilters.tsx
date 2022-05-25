@@ -161,7 +161,9 @@ const NFTFilters = (props: Props) => {
             isFullscreen: false
           })
         } else {
-          onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
+          if (newSearch !== '') {
+            onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
+          }
         }
       }
     },
