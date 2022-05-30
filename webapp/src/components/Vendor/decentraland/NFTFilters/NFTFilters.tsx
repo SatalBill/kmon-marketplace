@@ -153,13 +153,15 @@ const NFTFilters = (props: Props) => {
               newSex.push("10")
             }
           }
-          onBrowse({
-            search: newSearch,
-            isInBreedingCentre: true,
-            sex: myNFT ? newSex : ['0', '5'],
-            isMap: false,
-            isFullscreen: false
-          })
+          if (newSearch) {
+            onBrowse({
+              search: newSearch,
+              isInBreedingCentre: true,
+              sex: myNFT ? newSex : ['0', '5'],
+              isMap: false,
+              isFullscreen: false
+            })
+          }
         } else {
           if (newSearch !== '') {
             onBrowse({ search: newSearch, isMap: false, isFullscreen: false })

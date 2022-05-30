@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect, useRef } from 'react'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
 import { Section } from '../../../../modules/vendor/decentraland/routing/types'
 import { Menu } from '../../../Menu'
@@ -124,9 +124,19 @@ const NFTSections = (props: Props) => {
     owner
   })
 
-  useEffect(() => {
+  // Make it not work at the first, make it work when the component is updated
+  const firstUpdate = useRef(true);
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     onMultiItemClick(state)
-  }, [state])
+  }, [state]);
+
+  // useEffect(() => {
+  //   onMultiItemClick(state)
+  // }, [state])
 
   const handleStateChange = (
     min: number,
