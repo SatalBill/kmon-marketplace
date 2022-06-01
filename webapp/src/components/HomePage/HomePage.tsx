@@ -149,8 +149,8 @@ const HomePage = (props: Props) => {
             <div className="bottom-wave-image"></div>
           </div>
         </div>
-        <Footer className="Footer" />
       </div>
+      <Footer className="Footer" />
     </div>
   )
 }
