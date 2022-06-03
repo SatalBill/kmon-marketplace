@@ -146,6 +146,8 @@ export class NFTService
       gameMetadata: {
         constitution: 0,
         defense: 0,
+        attackLevel: 0,
+        hpLevel: 0,
         feedingGaugeAmount: 0,
         hapinessGaugeAmount: 0,
         healingGaugeAmount: 0,
