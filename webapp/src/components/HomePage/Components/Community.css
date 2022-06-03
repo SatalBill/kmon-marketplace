@@ -55,6 +55,10 @@
     flex-direction: column;
 }
 
+.community-card p {
+    font-family: 'PT Mono', sans-serif;
+}
+
 .community-followers {
     font-size: 18px;
     text-align: center;

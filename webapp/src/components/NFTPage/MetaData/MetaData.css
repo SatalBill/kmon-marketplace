@@ -74,6 +74,7 @@
 .stats-description-text {
   font-size: 14px;
   color: #888;
+  font-family: 'PT Mono', sans-serif;
 }
 
 .value-text {
