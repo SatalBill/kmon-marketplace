@@ -17,7 +17,7 @@ const ElementalPower = (props: Props) => {
                                 <div className="flex-direction-row">
                                     <p className="elem-title">{t(`nft_page.elements.${item.title}`)}</p>
                                     <p className="elem-power-row-text">{t(`nft_page.elemental_power.power`)}</p>
-                                    <h6 className="value-text">{item.value[0] * item.value[1]}</h6>
+                                    <h6 className="elemental-power-value-text">{item.value[0] * item.value[1]}</h6>
                                 </div>
                                 <div className="flex-direction-row">
                                     <div className="elem-power-display-flex">
