@@ -36,10 +36,10 @@ const GameData = (props: Props) => {
   ]
 
   const arr2 = [
-    { title: t('menu.love'), value: `${gameData?.loveGaugeAmount}%` },
-    { title: t('menu.feeding'), value: `${gameData?.feedingGaugeAmount}%` },
-    { title: t('menu.healing'), value: `${gameData?.healingGaugeAmount}%` },
-    { title: t('menu.happiness'), value: `${gameData?.hapinessGaugeAmount}%` },
+    { title: t('menu.love'), value: `${gameData?.loveGaugeAmount}` },
+    { title: t('menu.feeding'), value: `${gameData?.feedingGaugeAmount}` },
+    { title: t('menu.healing'), value: `${gameData?.healingGaugeAmount}` },
+    { title: t('menu.happiness'), value: `${gameData?.hapinessGaugeAmount}` },
     { title: t('menu.freeze'), value: gameData?.isFreezed == 1 ? t('menu.keys.Yes') : t('menu.keys.No') },
   ]
 

@@ -243,6 +243,12 @@
   left: 0;
 }
 
+.homepagedata .position-relative {
+  position: relative;
+  width: 100vw;
+  left: 0;
+}
+
 .kmon-detail-bottom-bg {
   left: 0px;
   bottom: 0px;
@@ -252,6 +258,17 @@
   width: 100%;
   height: 400px;
   position: absolute;
+}
+
+.homepagedata .kmon-detail-bottom-bg {
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+  z-index: -1;
+  width: 100%;
+  height: 400px;
+  position: relative;
 }
 
 .kmon-detail-bottom-bg .kmon-detail-bottom-bg-image {

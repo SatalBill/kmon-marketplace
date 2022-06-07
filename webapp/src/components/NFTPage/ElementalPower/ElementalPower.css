@@ -1,6 +1,5 @@
 .elem-power-container {
   width: 100%;
-  max-width: 272px;
   border-radius: 10px;  
   overflow: hidden;
 }
@@ -9,6 +8,12 @@
   background-color: #0E0E0E;
   padding: 4px 15px 4px 4px;
   border-bottom: 2px solid black;
+}
+
+@media (min-width: 768px) {
+  .elem-power-container {
+    max-width: 272px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -74,6 +79,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.elem-power-display-flex {
+  display: flex;
 }
 
 .stats-item {
