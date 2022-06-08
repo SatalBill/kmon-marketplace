@@ -8,7 +8,7 @@ export const SEARCH_ARRAY_PARAM_SEPARATOR = '_'
 
 export function getDefaultOptionsByView(view?: View): SearchOptions {
   return {
-    onlyOnSale: true,
+    onlyOnSale: false,
     sortBy: view === View.ACCOUNT ? SortBy.NEWEST : SortBy.NEWEST
   }
 }
@@ -76,6 +76,48 @@ export function getSearchParams(options?: SearchOptions) {
       params.set(
         'elemTypes',
         options.elemTypes.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.elemPower && options.elemPower.length > 0) {
+      params.set(
+        'elemPower',
+        options.elemPower.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.secondElemTypes && options.secondElemTypes.length > 0) {
+      params.set(
+        'secondElemTypes,',
+        options.secondElemTypes.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.secondElemPower && options.secondElemPower.length > 0) {
+      params.set(
+        'secondElemPower,',
+        options.secondElemPower.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.trainingTime && options.trainingTime.length > 0) {
+      params.set(
+        'trainingTime,',
+        options.trainingTime.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.cooldownTime && options.cooldownTime.length > 0) {
+      params.set(
+        'cooldownTime,',
+        options.cooldownTime.join(SEARCH_ARRAY_PARAM_SEPARATOR)
+      )
+    }
+
+    if (options.breedAmount && options.breedAmount.length > 0) {
+      params.set(
+        'breedAmount,',
+        options.breedAmount.join(SEARCH_ARRAY_PARAM_SEPARATOR)
       )
     }
     if (options.specialties && options.specialties.length > 0) {

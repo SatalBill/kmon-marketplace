@@ -3,4 +3,5 @@ export type Props = {
   // onChange: ({ min, max }: { min: number; max: number }) => void
   onChange: Function
   label: string
+  icon?: string
 }
