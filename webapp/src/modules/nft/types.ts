@@ -82,6 +82,8 @@ export type NFTGenesV2 = {
 export type NFTGameMetaDataV2 = {
   constitution: number
   defense: number
+  attackLevel: number
+  hpLevel: number
   feedingGaugeAmount: number
   hapinessGaugeAmount: number
   healingGaugeAmount: number
