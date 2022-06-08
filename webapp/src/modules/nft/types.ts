@@ -31,11 +31,11 @@ export type Data<V extends VendorName> = V extends VendorName.DECENTRALAND
   ? KryptomonData
   : V extends void
   ?
-      | DecentralandData
-      | SuperRareData
-      | MakersPlaceData
-      | KnownOriginData
-      | KryptomonData
+  | DecentralandData
+  | SuperRareData
+  | MakersPlaceData
+  | KnownOriginData
+  | KryptomonData
   : never
 
 export type NFTGenesV2 = {
@@ -119,6 +119,12 @@ export type NFTsFetchParams = {
   section?: string
   kryptomonStatus?: string
   elemTypes?: string
+  elemPower?: string
+  secondElemTypes?: string
+  secondElemPower?: string
+  trainingTime?: string
+  cooldownTime?: string
+  breedAmount?: string
   specialties?: string
   supers?: string
   unfreezable?: string

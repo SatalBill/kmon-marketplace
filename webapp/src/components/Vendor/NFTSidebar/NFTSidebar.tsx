@@ -8,7 +8,13 @@ import { PartnerSidebar } from '../PartnerSidebar'
 import { Props } from './NFTSidebar.types'
 
 export type MultipleFilters = {
-  elemTypes?: string[]
+  elemTypes?: string[],
+  elemPower?: string[],
+  secondElemTypes?: string[],
+  secondElemPower?: string[],
+  trainingTime?: string[],
+  cooldownTime?: string[],
+  breedAmount?: string[],
   specialties?: string[]
   supers?: string[]
   generation?: string[]
@@ -65,6 +71,12 @@ const NFTSidebar = (props: Props) => {
     onBrowse,
     pathname,
     elemTypes,
+    elemPower,
+    secondElemTypes,
+    secondElemPower,
+    trainingTime,
+    cooldownTime,
+    breedAmount,
     generation,
     affection,
     specialties,
@@ -199,6 +211,12 @@ const NFTSidebar = (props: Props) => {
           onMenuItemClick={handleOnBrowse}
           onMultiItemClick={handleOnBrowseMultiple}
           elemTypes={elemTypes}
+          elemPower={elemPower}
+          secondElemTypes={secondElemTypes}
+          secondElemPower={secondElemPower}
+          trainingTime={trainingTime}
+          cooldownTime={cooldownTime}
+          breedAmount={breedAmount}
           generation={generation}
           affection={affection}
           specialties={specialties}

@@ -11,7 +11,7 @@ import { Props } from './Checkbox.types'
 import Checkmark from './Checkmark.svg'
 import './Checkbox.css'
 
-const Checkbox: FC<Props> = ({ checked, label, onChange }) => {
+const Checkbox: FC<Props> = ({ checked, label, onChange, icon }) => {
   const handleCheckboxClick = () => {
     onChange({ checked: !checked, label })
   }
@@ -26,7 +26,14 @@ const Checkbox: FC<Props> = ({ checked, label, onChange }) => {
           <img src={Checkmark} />
         </div>
       </div>
-      <p className="label">{label}</p>
+      {icon ? <div className="labelContainer">
+        <p className="label">{label}</p>
+        <img
+          className="product-type-icon-details"
+          src={icon}
+          alt="icon"
+        />
+      </div> : <p className="label">{label}</p>}
     </div>
   )
 }
