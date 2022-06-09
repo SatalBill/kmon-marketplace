@@ -2,6 +2,11 @@
   overflow: hidden;
 }
 
+.pdp-related-card {
+  margin: 0 10px !important;
+  min-width: 192px;
+}
+
 .NFTCard .header,
 .NFTCard .dcl.mana.inline {
   font-size: 17px;

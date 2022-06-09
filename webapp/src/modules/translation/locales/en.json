@@ -322,8 +322,10 @@
     "dna_chart": {
       "title": "DNA chart",
       "Attack": "Attack",
+      "Resistance": "Resistance",
       "Defense": "Defense",
       "Speed": "Speed",
+      "Stamina": "Stamina",
       "Ego": "Ego",
       "Health Points": "Health Points",
       "Constitution": "Constitution",
@@ -331,6 +333,7 @@
       "Crazyness": "Crazyness",
       "Instinct": "Instinct",
       "Hunger": "Hunger",
+      "Braveness": "Braveness",
       "Brave": "Brave",
       "Smart": "Smart",
       "breeding": "Next Breeding",
@@ -347,6 +350,10 @@
       "set_price": "Set price",
       "day": "day",
       "days": "days"
+    },
+    "elemental_power": {
+      "title": "Elemental power",
+      "power": "power"
     },
     "trade_history": {
       "title": "Trade history",
@@ -408,6 +415,13 @@
         "element main": "element main",
         "gens": "GENES",
         "talent": "TALENT"
+      },
+      "caretraining": {
+        "title": "Care & Training",
+        "description": "Attributes that will affect the appearance of your kryptomon.",
+        "Gender": "Gender",
+        "Color": "Color",
+        "body_size": "Body Size"
       }
     }
   },

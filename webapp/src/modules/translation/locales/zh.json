@@ -405,6 +405,13 @@
         "element main": "元素主",
         "gens": "基因",
         "talent": "人才"
+      },
+      "caretraining": {
+        "title": "护理与培训",
+        "description": "会影响你的氪兽外观的属性.",
+        "Gender": "性别",
+        "Color": "颜色",
+        "body_size": "身体尺寸"
       }
     }
   },

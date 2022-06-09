@@ -10,6 +10,44 @@
   background-size: 30px 30px;
 }
 
+.horizontal-nft-scroll {
+  display: flex;
+  flex-direction: row;
+  /* max-width: 50%; */
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.horizontal-nft-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.horizontal-nft-scroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.horizontal-nft-scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #101010;
+}
+.horizontal-nft-scroll::-webkit-scrollbar-track { 
+  background-color: #313031; 
+  border-radius: 8px; 
+}
+
+.related-title-area {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.related-title-area h6:nth-child(2) {
+  cursor: pointer !important;
+}
+
 .WearableDetail .rarity {
   font-size: 13px;
   line-height: 18px;

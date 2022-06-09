@@ -17,10 +17,14 @@ import { DNAChart } from '../DNAChart'
 import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
+import { MetaDataBottom } from '../MetaDataBottom'
 import { ElementalPower } from '../ElementalPower'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
+import { NFTCard } from '../../NFTCard'
+import { KryptomonMetadataResponse } from '../../../modules/vendor/decentraland/nft/types'
+import { NFT } from '../../../modules/nft/types'
 import Ice from '../../../images/egg/elem-ice.svg'
 import Air from '../../../images/egg/elem-air.svg'
 import Electro from '../../../images/egg/elem-electro.svg'
@@ -40,12 +44,18 @@ import Speciality from '../../../images/metadata/speciality.svg'
 import GeneralType from '../../../images/metadata/generaltype.svg'
 import Generation from '../../../images/metadata/generation.svg'
 import Egg from '../../../images/metadata/egg.svg'
+import Brain from '../../../images/metadata/brain.svg'
+import Hungry from '../../../images/metadata/hungry.svg'
+import Ego from '../../../images/metadata/ego.svg'
+import Selflove from '../../../images/metadata/self-love.svg'
 import { DNARadarChart } from '../DNARadarChart'
+import { KMON_PRICE_CGC_URL } from '../../../modules/vendor/kryptomon/nft'
 import elementalPowerIcon from '../../../images/kmonDetail/elementalPower.svg'
 import heartIcon from '../../../images/heart.png'
 import { FooterImage } from '../../FooterImage'
 
 declare var window: any
+export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order, breedingOrder } = props
@@ -56,6 +66,8 @@ const KryptomonDetail = (props: Props) => {
   const [cooldownTimeDay, setCooldownTimeDay] = useState(0)
   const [breedPrice, setBreedPrice] = useState('')
   const [account, setAccount] = useState('')
+  const [relatedData, setRelatedData] = useState([])
+  const [kmonPriceUsd, setKmonPriceUsd] = useState(0)
 
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return t('menu.keys.Male')
@@ -136,58 +148,81 @@ const KryptomonDetail = (props: Props) => {
   const elementTypes = [
     {
       title: 'Water',
-      value: (((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.water * genes!.waterTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.water, genes!.waterTalent],
       icon: Water
     },
     {
       title: 'Grass',
-      value: (((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.grass * genes!.grassTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.grass, genes!.grassTalent],
       icon: Grass
     },
     {
       title: 'Fire',
-      value: (((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.fire * genes!.fireTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.fire, genes!.fireTalent],
       icon: Fire
     },
     {
       title: 'Electro',
-      value: (
+      value: [(
         ((genes!.electro * genes!.electroTalent) / totalGenes) *
         100
-      ).toFixed(2),
+      ).toFixed(2), genes!.electro, genes!.electroTalent],
       icon: Electro
     },
     {
       title: 'Ground',
-      value: (
+      value: [(
         ((genes!.ground * genes!.groundTalent) / totalGenes) *
         100
-      ).toFixed(2),
+      ).toFixed(2), genes!.ground, genes!.groundTalent],
       icon: Ground
     },
     {
       title: 'Ghost',
-      value: (((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
+      value: [(((genes!.ghost * genes!.ghostTalent) / totalGenes) * 100).toFixed(
         2
-      ),
+      ), genes!.ghost, genes!.ghostTalent],
       icon: Ghost
     },
     {
       title: 'Ice',
-      value: (((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2),
+      value: [(((genes!.ice * genes!.iceTalent) / totalGenes) * 100).toFixed(2), genes!.ice, genes!.iceTalent],
       icon: Ice
     },
     {
       title: 'Air',
-      value: (((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2),
+      value: [(((genes!.air * genes!.airTalent) / totalGenes) * 100).toFixed(2), genes!.air, genes!.airTalent],
       icon: Air
     }
+  ]
+
+  const carTrainingTypes = [
+    {
+      title: 'Affection',
+      value: genes!.affections,
+      icon: Selflove
+    },
+    {
+      title: 'Hunger',
+      value: genes!.hunger,
+      icon: Hungry
+    },
+    {
+      title: 'Smartness',
+      value: genes!.smart,
+      icon: Brain
+    },
+    {
+      title: 'Ego',
+      value: genes!.ego,
+      icon: Ego
+    },
   ]
 
   const elementType = elementTypes.find(
@@ -351,10 +386,10 @@ const KryptomonDetail = (props: Props) => {
     generalType: GeneralTypes,
     appearanceType: AppearanceTypes,
     affinityType: AffinityTypes,
+    carTrainingTypes: carTrainingTypes
   }
 
   useEffect(() => {
-    console.log('nft=>', nft)
     const start = async () => {
       setBreedAmountStartValue(breedingCount)
       setBreedAmountEndValue(maxBreedingsDuringLifePhase)
@@ -376,9 +411,59 @@ const KryptomonDetail = (props: Props) => {
         console.log('no wallet=>', error)
       }
 
+      let web3 = new Web3(window?.ethereum)
+      const accounts = await web3.eth.getAccounts()
+      console.log('account=>', accounts)
+      setAccount(accounts[0])
+
+      // get KMON price in USD
+      fetch(KMON_PRICE_CGC_URL)
+        .then(responseJson => responseJson.json())
+        .then(res => {
+          setKmonPriceUsd(res.kryptomon.usd)
+        })
     }
     start()
   }, [])
+
+  useEffect(() => {
+    const getRelatedNFTs = async () => {
+      // get related NFTs
+      const nfts: any = []
+      let priceRange = ""
+      const weiSuffix = "000000000000000000"
+      if (order) {
+        const lowPriceWei = parseInt(order.price) * 0.75
+        const highPriceWei = parseInt(order.price) * 1.25
+        const lowPriceKMON = lowPriceWei / 10 ** 18
+        const highPriceKMON = highPriceWei / 10 ** 18
+        const lowPriceUSD = parseInt((lowPriceKMON * kmonPriceUsd).toString())
+        const highPriceUSD = parseInt((highPriceKMON * kmonPriceUsd).toString())
+        priceRange = `&price=${lowPriceUSD}${weiSuffix}_${highPriceUSD > 1000 ? 1000 : highPriceUSD}${weiSuffix}`
+      }
+      try {
+        const nftList = await fetch(
+          `${NFT_SERVER_URL}/v1/nfts?first=70&sortBy=newest&onlyOnSale=false${priceRange}`
+        ).then(resp => resp.json())
+
+        for (const result of nftList.data) {
+          // setting metadata
+          const metadata: KryptomonMetadataResponse = await fetch(
+            result.nft.tokenURI
+          ).then(resp => resp.json())
+          result.nft.metadata = metadata
+          nfts.push(result)
+          // if (result.order) orders.push(result.order)
+        }
+        setRelatedData(nfts);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (kmonPriceUsd > 0) {
+      getRelatedNFTs()
+    }
+  }, [kmonPriceUsd])
 
   return (
     <Container className="product-container">
@@ -423,14 +508,6 @@ const KryptomonDetail = (props: Props) => {
               />
             </TitleBlock>
           </Row>
-          <Row className="Row-space-between">
-            <TitleBlock title={t('nft_page.description')}>
-              <DescriptionBlock nft={nft} />
-            </TitleBlock>
-            {/* <TitleBlock title={t('nft_page.trade_history.title')}>
-              <TradeHistory nft={nft} />
-            </TitleBlock> */}
-          </Row>
         </Column>
         <Column>
           <Row className="Row-space-between">
@@ -467,22 +544,53 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
+            <TitleBlock title={t('nft_page.description')}>
+              <DescriptionBlock nft={nft} />
+            </TitleBlock>
+            {/* <TitleBlock title={t('nft_page.trade_history.title')}>
+              <TradeHistory nft={nft} />
+            </TitleBlock> */}
+          </Row>
+          <Row className="Row-space-between">
             <TitleBlock title="">
               <MetaData nft={nft} isV2={isV2} elements={MetaDataelemtns} />
             </TitleBlock>
           </Row>
-          <Row className="Row-space-between">
+          {/* <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.metadata')}>
               <ElemData nft={nft} isV2={isV2} />
             </TitleBlock>
-          </Row>
+          </Row> */}
           <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.gamestats')}>
               <GameData nft={nft} isV2={isV2} />
             </TitleBlock>
           </Row>
+          <Row className="Row-space-between">
+            <TitleBlock title="">
+              <MetaDataBottom nft={nft} isV2={isV2} elements={MetaDataelemtns} elementTypes={elementTypes} />
+            </TitleBlock>
+          </Row>
         </Column>
       </Row>
+      <div className="related-title-area">
+        <h6 className="title">Related</h6>
+        <h6 className="title">Show more</h6>
+      </div>
+      <div className="horizontal-nft-scroll">
+        {relatedData.length > 0
+          ? relatedData.map((item: any, index) => (
+            <NFTCard
+              key={item.nft.id + '-' + index}
+              nft={item.nft}
+              status={{ showPrice: true }}
+              isRelated={true}
+            // isPreventClick={isPreventClick}
+            // onClickCard={onClickCard}
+            />
+          ))
+          : null}
+      </div>
       <FooterImage />
     </Container>
   )
