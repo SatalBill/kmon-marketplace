@@ -21,6 +21,9 @@ import { MetaDataBottom } from '../MetaDataBottom'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
+import { NFTCard } from '../../NFTCard'
+import { KryptomonMetadataResponse } from '../../../modules/vendor/decentraland/nft/types'
+import { NFT } from '../../../modules/nft/types'
 import Ice from '../../../images/egg/elem-ice.svg'
 import Air from '../../../images/egg/elem-air.svg'
 import Electro from '../../../images/egg/elem-electro.svg'
@@ -45,8 +48,10 @@ import Hungry from '../../../images/metadata/hungry.svg'
 import Ego from '../../../images/metadata/ego.svg'
 import Selflove from '../../../images/metadata/self-love.svg'
 import { DNARadarChart } from '../DNARadarChart'
+import { KMON_PRICE_CGC_URL } from '../../../modules/vendor/kryptomon/nft'
 
 declare var window: any
+export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 
 const KryptomonDetail = (props: Props) => {
   const { nft, order, breedingOrder } = props
@@ -57,6 +62,8 @@ const KryptomonDetail = (props: Props) => {
   const [cooldownTimeDay, setCooldownTimeDay] = useState(0)
   const [breedPrice, setBreedPrice] = useState('')
   const [account, setAccount] = useState('')
+  const [relatedData, setRelatedData] = useState([])
+  const [kmonPriceUsd, setKmonPriceUsd] = useState(0)
 
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return t('menu.keys.Male')
@@ -387,9 +394,55 @@ const KryptomonDetail = (props: Props) => {
       const accounts = await web3.eth.getAccounts()
       console.log('account=>', accounts)
       setAccount(accounts[0])
+
+      // get KMON price in USD
+      fetch(KMON_PRICE_CGC_URL)
+        .then(responseJson => responseJson.json())
+        .then(res => {
+          setKmonPriceUsd(res.kryptomon.usd)
+        })
     }
     start()
   }, [])
+
+  useEffect(() => {
+    const getRelatedNFTs = async () => {
+      // get related NFTs
+      const nfts: any = []
+      let priceRange = ""
+      const weiSuffix = "000000000000000000"
+      if (order) {
+        const lowPriceWei = parseInt(order.price) * 0.75
+        const highPriceWei = parseInt(order.price) * 1.25
+        const lowPriceKMON = lowPriceWei / 10 ** 18
+        const highPriceKMON = highPriceWei / 10 ** 18
+        const lowPriceUSD = parseInt((lowPriceKMON * kmonPriceUsd).toString())
+        const highPriceUSD = parseInt((highPriceKMON * kmonPriceUsd).toString())
+        priceRange = `&price=${lowPriceUSD}${weiSuffix}_${highPriceUSD > 1000 ? 1000 : highPriceUSD}${weiSuffix}`
+      }
+      try {
+        const nftList = await fetch(
+          `${NFT_SERVER_URL}/v1/nfts?first=70&sortBy=newest&onlyOnSale=false${priceRange}`
+        ).then(resp => resp.json())
+
+        for (const result of nftList.data) {
+          // setting metadata
+          const metadata: KryptomonMetadataResponse = await fetch(
+            result.nft.tokenURI
+          ).then(resp => resp.json())
+          result.nft.metadata = metadata
+          nfts.push(result)
+          // if (result.order) orders.push(result.order)
+        }
+        setRelatedData(nfts);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (kmonPriceUsd > 0) {
+      getRelatedNFTs()
+    }
+  }, [kmonPriceUsd])
 
   return (
     <Container className="product-container">
@@ -494,6 +547,24 @@ const KryptomonDetail = (props: Props) => {
           </Row>
         </Column>
       </Row>
+      <div className="related-title-area">
+        <h6 className="title">Related</h6>
+        <h6 className="title">Show more</h6>
+      </div>
+      <div className="horizontal-nft-scroll">
+        {relatedData.length > 0
+          ? relatedData.map((item: any, index) => (
+            <NFTCard
+              key={item.nft.id + '-' + index}
+              nft={item.nft}
+              status={{ showPrice: true }}
+              isRelated={true}
+            // isPreventClick={isPreventClick}
+            // onClickCard={onClickCard}
+            />
+          ))
+          : null}
+      </div>
     </Container>
   )
 }

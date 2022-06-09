@@ -18,7 +18,7 @@
     width: 50%;
   }
 }
-.meta-row-text {
+.top-meta-row-text {
   color: #ddd;
   font-family: var(--font-family);
   padding-right: 8px;
@@ -58,17 +58,31 @@
   align-items: center;
 }
 
-.stats-item {
+.stats-item:not(:last-child) {
   border-bottom: 1px solid #222;
   width: 100%;
 }
 
-.img-title {
+.top-meta-img-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.img-title img {
+.top-meta-text-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.top-meta-text-group p {
+  margin: 0 !important;
+}
+
+.top-meta-img-title img {
   margin: 1em;
 }
 

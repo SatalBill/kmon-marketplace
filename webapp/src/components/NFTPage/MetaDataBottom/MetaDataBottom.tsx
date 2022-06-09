@@ -81,8 +81,8 @@ const MetaDataBottom = (props: Props) => {
                     <div>
                         {
                             elementTypes.slice(0, 4).map((item: any, index: number) => (
-                                <div key={index} className="flex-direction-row stats-item">
-                                    <div className="img-title">
+                                <div key={index} className="flex-direction-row stats-item" style={{ margin: '0 16px 10px 0' }}>
+                                    <div className="bottom-meta-img-title">
                                         <div className="item-left">
                                             <img className="stats-icon" src={item.icon} />
                                             <div className="elementgens">
@@ -105,8 +105,8 @@ const MetaDataBottom = (props: Props) => {
                     <div className="bottom-data">
                         {
                             elementTypes.slice(4, 8).map((item: any, index: number) => (
-                                <div key={index} className="flex-direction-row stats-item">
-                                    <div className="img-title">
+                                <div key={index} className="flex-direction-row stats-item" style={{ margin: '0 16px 10px 0' }}>
+                                    <div className="bottom-meta-img-title">
                                         <div className="item-left">
                                             <img className="stats-icon" src={item.icon} />
                                             <div className="elementgens">

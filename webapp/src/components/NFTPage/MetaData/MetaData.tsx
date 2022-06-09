@@ -39,11 +39,13 @@ const MetaData = (props: Props) => {
                 {
                     elements.carTrainingTypes.map((item: any, index: number) => (
                         <div key={index} className="flex-direction-row stats-item">
-                            <div className="img-title">
+                            <div className="top-meta-img-title">
                                 <img className="stats-icon" src={item.icon} />
-                                <p className="meta-row-text">{item.title}</p>
+                                <div className="top-meta-text-group">
+                                    <p className="top-meta-row-text">{item.title}</p>
+                                    <p className="top-meta-row-text">{item.value}</p>
+                                </div>
                             </div>
-                            <p className="meta-row-text">{item.value}</p>
                         </div>
                     ))
                 }
@@ -54,11 +56,13 @@ const MetaData = (props: Props) => {
                 {
                     elements.generalType.map((item: any, index: number) => (
                         <div key={index} className="flex-direction-row stats-item">
-                            <div className="img-title">
+                            <div className="top-meta-img-title">
                                 <img className="stats-icon" src={item.icon} />
-                                <p className="meta-row-text">{item.title}</p>
+                                <div className="top-meta-text-group">
+                                    <p className="top-meta-row-text">{item.title}</p>
+                                    <p className="top-meta-row-text">{item.value}</p>
+                                </div>
                             </div>
-                            <p className="meta-row-text">{item.value}</p>
                         </div>
                     ))
                 }
@@ -69,11 +73,13 @@ const MetaData = (props: Props) => {
                 {
                     elements.appearanceType.map((item: any, index: number) => (
                         <div key={index} className="flex-direction-row stats-item">
-                            <div className="img-title">
+                            <div className="top-meta-img-title">
                                 <img className="stats-icon" src={item.icon} />
-                                <p className="meta-row-text">{item.title}</p>
+                                <div className="top-meta-text-group">
+                                    <p className="top-meta-row-text">{item.title}</p>
+                                    <p className="top-meta-row-text">{item.value}</p>
+                                </div>
                             </div>
-                            <p className="meta-row-text">{item.value}</p>
                         </div>
                     ))
                 }

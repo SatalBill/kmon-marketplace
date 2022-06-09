@@ -16,6 +16,7 @@ import { getSortBy } from '../../../nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 export const API_SERVER_URL = process.env.REACT_APP_API_SERVER_URL!
+export const KMON_PRICE_CGC_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=kryptomon&vs_currencies=usd'
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
