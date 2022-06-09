@@ -6,5 +6,6 @@ export type Props<T = string> = {
   image?: string
   nestedLevel?: number
   withCaret?: boolean
+  main?: boolean
   onClick: (value: T) => void
 }

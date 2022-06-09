@@ -9,6 +9,14 @@
   line-height: 24px;
 }
 
+.MenuItem .content-main {
+  display: inline-block;
+  flex: 1 1 auto;
+  align-self: center;
+  line-height: 24px;
+  font-weight: bold;
+}
+
 .MenuItem .ui.image {
   margin-right: 15px;
   vertical-align: middle;

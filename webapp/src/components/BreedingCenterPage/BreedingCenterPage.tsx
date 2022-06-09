@@ -16,6 +16,7 @@ import { NFT } from "../../modules/nft/types"
 import { BreedingModal } from './BreedingModal'
 import { Wallet } from '../Wallet'
 import './BreedingCenterPage.style.css'
+import { FooterImage } from '../FooterImage'
 
 const BreedingCenterPage = (props: Props) => {
   const {
@@ -68,11 +69,13 @@ const BreedingCenterPage = (props: Props) => {
               onCompare={handleCompare}
               mutationFactor={mutationFactor}
             />
-            <NFTFilters isNavBar={false}/>
+            <NFTFilters isNavBar={false} />
             <NFTList isPreventClick onClickCard={handleSelectCard} />
           </Column>
         </Row>
       </Page>
+      <div className='lootbox-container'></div>
+      <FooterImage />
       <Footer />
       <Wallet>
         {wallet => (

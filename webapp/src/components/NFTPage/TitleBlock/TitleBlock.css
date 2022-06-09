@@ -20,3 +20,16 @@
   font-size: 17px;
   margin: 20px 0;
 }
+
+.title-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.title-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 1em;
+}

@@ -30,7 +30,7 @@ const Navbar = (props: Props) => {
       isSignIn={pathname === locations.signIn()}
       onSignIn={handleOnSignIn}
       onClickAccount={handleOnClickAccount}
-      searchMenu={<NFTFilters isNavBar={true}/>}
+      searchMenu={<NFTFilters isNavBar={true} />}
     />
   )
 }

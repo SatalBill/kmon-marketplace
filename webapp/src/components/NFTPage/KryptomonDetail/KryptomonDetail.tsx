@@ -18,6 +18,7 @@ import { DNAChartDefault } from '../DNAChartDefault'
 import { ElemData } from '../ElemData'
 import { MetaData } from '../MetaData'
 import { MetaDataBottom } from '../MetaDataBottom'
+import { ElementalPower } from '../ElementalPower'
 import { GameData } from '../GameData'
 import { PriceChart } from '../PriceChart'
 import { TradeHistory } from '../TradeHistory'
@@ -49,6 +50,9 @@ import Ego from '../../../images/metadata/ego.svg'
 import Selflove from '../../../images/metadata/self-love.svg'
 import { DNARadarChart } from '../DNARadarChart'
 import { KMON_PRICE_CGC_URL } from '../../../modules/vendor/kryptomon/nft'
+import elementalPowerIcon from '../../../images/kmonDetail/elementalPower.svg'
+import heartIcon from '../../../images/heart.png'
+import { FooterImage } from '../../FooterImage'
 
 declare var window: any
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
@@ -280,8 +284,10 @@ const KryptomonDetail = (props: Props) => {
 
   let maxValue;
   let maxValueTalent;
+  let maxPercent;
   let secondValue;
   let secondValueTalent;
+  let secondPercent;
 
   const genesArr = genes && Object.entries(genes)
   genesArr?.map((gen: any) => {
@@ -298,6 +304,13 @@ const KryptomonDetail = (props: Props) => {
       secondValueTalent = gen[1];
     }
   })
+
+  if (maxValue && maxValueTalent) {
+    maxPercent = (((maxValue * maxValueTalent) / totalGenes) * 100).toFixed(2)
+  }
+  if (secondValue && secondValueTalent) {
+    secondPercent = (((secondValue * secondValueTalent) / totalGenes) * 100).toFixed(2)
+  }
 
 
   const GeneralTypes = [
@@ -359,12 +372,12 @@ const KryptomonDetail = (props: Props) => {
     },
     {
       title: maxElementType.title,
-      value: [maxValue, maxValueTalent],
+      value: [maxValue, maxValueTalent, maxPercent],
       icon: maxElementType.icon
     },
     {
       title: secondElementType.title,
-      value: [secondValue, secondValueTalent],
+      value: [secondValue, secondValueTalent, secondPercent],
       icon: secondElementType.icon
     }
   ]
@@ -388,6 +401,14 @@ const KryptomonDetail = (props: Props) => {
         const leftDay = Math.ceil((timeCanBreed - today) / 3600 / 24)
         setCooldownTimeDay(leftDay)
         setCooldownTimePercent(percentTemp)
+      }
+      try {
+        let web3 = new Web3(window?.ethereum)
+        const accounts = await web3.eth.getAccounts()
+        console.log('account=>', accounts)
+        if (accounts) setAccount(accounts[0])
+      } catch (error) {
+        console.log('no wallet=>', error)
       }
 
       let web3 = new Web3(window?.ethereum)
@@ -446,7 +467,7 @@ const KryptomonDetail = (props: Props) => {
 
   return (
     <Container className="product-container">
-      <Row className="Row-space-between">
+      <Row className="Row-space-between kmon-detail-container">
         <Column>
           <Row className="Row-space-between">
             <NFTDetailCard
@@ -457,9 +478,14 @@ const KryptomonDetail = (props: Props) => {
               canBreed={getIfCanBreed()}
             />
           </Row>
+          <Row className="Row-space-between ">
+            <TitleBlock title={t('nft_page.elemental_power.title')} icon={elementalPowerIcon}>
+              <ElementalPower elements={MetaDataelemtns} />
+            </TitleBlock>
+          </Row>
           {isJunior &&
             <Row className="Row-space-between ">
-              <TitleBlock title={t('nft_page.breeding_info.title')}>
+              <TitleBlock title={t('nft_page.breeding_info.title')} icon={heartIcon}>
                 <BreedingInfo
                   nft={nft}
                   showCooldownTime={showCooldownTimeTemp}
@@ -565,6 +591,7 @@ const KryptomonDetail = (props: Props) => {
           ))
           : null}
       </div>
+      <FooterImage />
     </Container>
   )
 }

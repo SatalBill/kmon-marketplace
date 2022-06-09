@@ -42,7 +42,8 @@ const NFTFilters = (props: Props) => {
     contracts,
     network,
     onBrowse,
-    isNavBar
+    isNavBar,
+    myNFT
   } = props
 
   const [showFiltersMenu, setShowFiltersMenu] = useState(false)
@@ -139,7 +140,33 @@ const NFTFilters = (props: Props) => {
   const handleSearch = useCallback(
     (newSearch: string) => {
       if (search !== newSearch && parseInt(newSearch) >= 0 || newSearch == "") {
-        onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
+        if (/^\/breed/gi.test(pathname)) {
+          let newSex: string[] | undefined;
+          newSex = [];
+          if (myNFT) {
+            if (parseInt(myNFT?.data.kryptomon!.genes.sex.toString()) > 5) {
+              newSex.push("0")
+              newSex.push("5")
+            }
+            else { //male
+              newSex.push("6")
+              newSex.push("10")
+            }
+          }
+          if (newSearch) {
+            onBrowse({
+              search: newSearch,
+              isInBreedingCentre: true,
+              sex: myNFT ? newSex : ['0', '5'],
+              isMap: false,
+              isFullscreen: false
+            })
+          }
+        } else {
+          if (newSearch !== '') {
+            onBrowse({ search: newSearch, isMap: false, isFullscreen: false })
+          }
+        }
       }
     },
     [search, onBrowse]

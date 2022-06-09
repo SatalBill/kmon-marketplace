@@ -115,6 +115,24 @@ class NFTAPI {
     if (params.elemTypes) {
       queryParams.set('elemTypes', params.elemTypes)
     }
+    if (params.elemPower) {
+      queryParams.set('elemPower', params.elemPower)
+    }
+    if (params.secondElemTypes) {
+      queryParams.set('secondElemTypes', params.secondElemTypes)
+    }
+    if (params.secondElemPower) {
+      queryParams.set('secondElemPower', params.secondElemPower)
+    }
+    if (params.trainingTime) {
+      queryParams.set('trainingTime', params.trainingTime)
+    }
+    if (params.cooldownTime) {
+      queryParams.set('cooldownTime', params.cooldownTime)
+    }
+    if (params.breedAmount) {
+      queryParams.set('breedAmount', params.breedAmount)
+    }
     if (params.specialties) {
       queryParams.set('specialties', params.specialties)
     }

@@ -16,22 +16,26 @@ import Grass from '../../images/egg/elem-grass.svg'
 import Ground from '../../images/egg/elem-ground.svg'
 import Water from '../../images/egg/elem-water.svg'
 import Fire from '../../images/egg/elem-fire.svg'
+import breedableHeart from '../../images/heart.png'
 import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
-import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const NFTCard = (props: Props) => {
   const { nft, order, status, breedingOrder, isPreventClick, onClickCard, isRelated } = props
 
   const genes = nft.data.kryptomon?.genes
-  const priceInWei = breedingOrder?.price;
+  // const priceInWei = breedingOrder?.price;
   const breedingCount = nft.data.kryptomon?.breedingCount ? nft.data.kryptomon?.breedingCount : 0;
   const timeCanBreed = nft.data.kryptomon?.timeCanBreed || 0;
   const maxBreedingsDuringLifePhase = nft.data.kryptomon?.maxBreedingsDuringLifePhase ? nft.data.kryptomon?.maxBreedingsDuringLifePhase : 0;
   const today = new Date().getTime() / 1000;
   const coin =
     order?.paymentToken === Address.ZERO.toString() ? Coin.BNB : Coin.KMON
+  const whatTheSex = (value?: string | number) => {
+    if (value && +value > 5) return 'Male'
+    else return 'Female'
+  }
 
   const elementTypes = [
     {
@@ -96,10 +100,12 @@ const NFTCard = (props: Props) => {
       return false;
     }
   }
+
   const whatTheSex = (value?: string | number) => {
     if (value && +value > 5) return 'Male'
     else return 'Female'
   }
+
   return (
     <Card
       className={`NFTCard ${isRelated ? 'pdp-related-card' : ''}`}
@@ -115,17 +121,31 @@ const NFTCard = (props: Props) => {
         <div className="card-image-text">
           {status && status.showPrice ? (
             <div className="product-type-price-container">
-              <img
-                className="product-type-icon"
-                src={elementType?.icon}
-                alt="icon"
-              />
               {order?.price ? (
-                <div className="product-type-price">
+                <div className="nft-price">
                   {order.price && formatCoin(order.price)} {coin}
                   {order.priceUSD && ` ($${order.priceUSD})`}
                 </div>
               ) : null}
+              <div className="product-type-breedable">
+                <img
+                  className="product-type-icon"
+                  src={elementType?.icon}
+                  alt="icon"
+                />
+                {getIfCanBreed() ?
+                  <img src={breedableHeart} alt="breedableHeart" className="breedable-heart" />
+                  : <i className="product-description-mid-heart-empty"></i>}
+                {
+                  nft.data.kryptomon?.maxBreedingsDuringLifePhase ? (
+                    <p className="product-description-left-item-white">
+                      {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
+                    </p>
+                  ) : (
+                    <p className="product-description-left-item-empty"></p>
+                  )
+                }
+              </div>
             </div>
           ) : (
             <img
@@ -134,8 +154,10 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
+
           {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
             : <i className="product-description-mid-heart-empty"></i>}
+
         </div>
       </div>
       <div className="product-description-container">
@@ -154,39 +176,41 @@ const NFTCard = (props: Props) => {
           </div>
           <div className="product-info-name-container">
             <Row>
-              <p className="product-info-number-card">ID. {nft.name}</p>
+              <p className="product-info-number-card">No. {nft.name}</p>
               <div className="product-verified" />
             </Row>
-            <div className="product-type-price">Gen: {nft.data.kryptomon?.genes.generation}</div>
+            <div className="product-type-price-short">Gen: {nft.data.kryptomon?.genes.generation}</div>
           </div>
         </div>
         <div className="product-description">
           <div className="product-description-left">
             <div className="product-description-left-item"><p>Gender: </p><p>{whatTheSex(nft.data.kryptomon?.genes.sex)}</p></div>
-
             <div className="product-description-left-item"><p>Speciality:</p> <p>{nft.data.kryptomon?.speciality}</p></div>
             {/* {
               priceInWei ? (
-                < p className="product-description-left-item">
-                  {t('nft_page.breeding_modal.breed_price')}: {parseInt(utils.formatEther(priceInWei))} KMON
+                <p className="product-description-left-item">
+                  Breed Price: {parseInt(utils.formatEther(priceInWei))} KMON
                 </p>
               ) : (
-                < p className="product-description-left-item-empty">
-                  {t('nft_page.breeding_modal.breed_price')}: 0 KMON
-                </p>
-              )
-            }
-            {
-              nft.data.kryptomon?.maxBreedingsDuringLifePhase ? (
-                < p className="product-description-left-item">
-                  {t('nft_page.breeding_modal.breed_amount')}: {`${breedingCount}/${maxBreedingsDuringLifePhase}`}
-                </p>
-              ) : (
-                < p className="product-description-left-item-empty">
-                  {t('nft_page.breeding_modal.breed_amount')}: 0/0
+                <p className="product-description-left-item-empty">
+                  Breed Price: 0 KMON
                 </p>
               )
             } */}
+            <p className="product-description-left-item">
+              GENDER:
+            </p>
+            <p className="product-description-left-item">
+              SPECIALITY
+            </p>
+          </div>
+          <div className="product-description-left">
+            <p className="product-description-left-item">
+              {whatTheSex(genes?.sex)}
+            </p>
+            <p className="product-description-left-item">
+              {nft.data.kryptomon?.speciality}
+            </p>
           </div>
         </div>
       </div>
