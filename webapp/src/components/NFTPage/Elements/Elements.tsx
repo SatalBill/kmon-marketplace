@@ -17,7 +17,7 @@ const Elements = (props: Props) => {
         <p className="top-element-text">
           {t(`nft_page.elements.${maxElementType.title}`)}
           <br />
-          {maxElementType.value}%
+          {parseFloat(maxElementType.value).toFixed(2)}%
         </p>
       </div>
       <div className="bottom-elements">
@@ -32,7 +32,7 @@ const Elements = (props: Props) => {
               <p className="bottom-element-text">
                 {t(`nft_page.elements.${element.title}`)}
                 <br />
-                {element.value}%
+                {parseFloat(element.value).toFixed(2)}%
               </p>
             </div>
           )

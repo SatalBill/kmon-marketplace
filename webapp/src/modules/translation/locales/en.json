@@ -322,8 +322,10 @@
     "dna_chart": {
       "title": "DNA chart",
       "Attack": "Attack",
+      "Resistance": "Resistance",
       "Defense": "Defense",
       "Speed": "Speed",
+      "Stamina": "Stamina",
       "Ego": "Ego",
       "Health Points": "Health Points",
       "Constitution": "Constitution",
@@ -331,6 +333,7 @@
       "Crazyness": "Crazyness",
       "Instinct": "Instinct",
       "Hunger": "Hunger",
+      "Braveness": "Braveness",
       "Brave": "Brave",
       "Smart": "Smart",
       "breeding": "Next Breeding",
