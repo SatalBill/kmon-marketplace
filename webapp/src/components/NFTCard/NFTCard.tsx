@@ -192,12 +192,6 @@ const NFTCard = (props: Props) => {
                 </p>
               )
             } */}
-            <p className="product-description-left-item">
-              GENDER:
-            </p>
-            <p className="product-description-left-item">
-              SPECIALITY
-            </p>
           </div>
           <div className="product-description-left">
             <p className="product-description-left-item">
