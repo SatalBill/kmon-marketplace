@@ -15,6 +15,8 @@ import { Props } from './HomePage.types'
 import './HomePage.css'
 import { SearchOptions } from '../../modules/routing/types'
 import { OrderStatus } from '../../modules/order/types'
+import { FooterImage } from '../FooterImage'
+
 
 const HomePage = (props: Props) => {
   const { homepage, homepageLoading, onNavigate, onFetchNFTsFromRoute } = props
@@ -92,7 +94,10 @@ const HomePage = (props: Props) => {
 
   return (
     <div className="HomePage">
-      <Navbar isFullscreen />
+      <div className="PageCustomHeader">
+        <Navbar isFullscreen />
+        <Navigation />
+      </div>
       <Hero centered className="HomePageHero">
         <div className="hero-title-text">{t('home_page.title')}</div>
         <Hero.Content>
@@ -141,11 +146,11 @@ const HomePage = (props: Props) => {
         <div className="flash-container">
           <Community />
         </div>
-        <div className="bottom-bg">
-          <div className="bottom-bg-image"></div>
-        </div>
       </div>
-      <Footer className="Footer" />
+      <div className='homepagedata'>
+        <FooterImage />
+        <Footer />
+      </div>
     </div>
   )
 }

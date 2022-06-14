@@ -12,6 +12,12 @@ const NFTSidebar = (props: Props) => {
     onMenuItemClick,
     onMultiItemClick,
     elemTypes,
+    elemPower,
+    secondElemTypes,
+    secondElemPower,
+    trainingTime,
+    cooldownTime,
+    breedAmount,
     specialties,
     supers,
     generation,
@@ -68,6 +74,12 @@ const NFTSidebar = (props: Props) => {
         onSectionClick={onMenuItemClick}
         onMultiItemClick={onMultiItemClick}
         elemTypes={elemTypes}
+        elemPower={elemPower}
+        secondElemTypes={secondElemTypes}
+        secondElemPower={secondElemPower}
+        trainingTime={trainingTime}
+        cooldownTime={cooldownTime}
+        breedAmount={breedAmount}
         specialties={specialties}
         supers={supers}
         generation={generation}

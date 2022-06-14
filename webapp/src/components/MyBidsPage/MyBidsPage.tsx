@@ -10,6 +10,7 @@ import { NavigationTab } from '../Navigation/Navigation.types'
 import { Props } from './MyBidsPage.types'
 import './MyBidsPage.css'
 import { t } from '@kmon/dapps/dist/modules/translation/utils'
+import { FooterImage } from '../FooterImage'
 
 const MyBidsPage = (props: Props) => {
   const {
@@ -125,6 +126,8 @@ const MyBidsPage = (props: Props) => {
             </div>
           </>
         )}
+        <div className='lootbox-container'></div>
+        <FooterImage />
       </Page>
       <Footer />
     </div>

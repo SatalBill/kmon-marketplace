@@ -7,14 +7,14 @@
   min-height: 150px;
 }
 
-.NFTBrowse .ui.cards + .empty {
+.NFTBrowse .ui.cards+.empty {
   margin-top: 40px;
   font-size: 16px;
   text-align: center;
   color: var(--secondary-text);
 }
 
-.NFTBrowse > .ui.container {
+.NFTBrowse>.ui.container {
   margin-top: 100px;
 }
 
@@ -69,8 +69,8 @@
   margin-bottom: 24px;
 }
 
-.NFTBrowse.fullscreen > .Row,
-.NFTBrowse.fullscreen > .Row > .Column,
+.NFTBrowse.fullscreen>.Row,
+.NFTBrowse.fullscreen>.Row>.Column,
 .NFTBrowse.fullscreen .Atlas {
   display: block;
   position: absolute;
@@ -81,6 +81,7 @@
   min-height: auto;
   margin-top: 0px;
 }
+
 .NFTBrowse.fullscreen .blur-background {
   position: relative;
   background: rgba(22, 20, 26, 0.75);
@@ -120,7 +121,7 @@
 }
 
 @media (max-width: 768px) {
-  .NFTBrowse .Layout .right.column > div {
+  .NFTBrowse .Layout .right.column>div {
     width: 100%;
   }
 
@@ -142,4 +143,8 @@
 .NFTBrowse.header .dcl.tabs {
   font-family: var(--font-family);
   margin-top: 50px;
+}
+
+.browse-nft-list {
+  margin-bottom: 400px;
 }

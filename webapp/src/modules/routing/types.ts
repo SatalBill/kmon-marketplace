@@ -42,6 +42,12 @@ export type SearchOptions = {
   kryptomonStatus?: string[]
 
   elemTypes?: string[]
+  elemPower?: string[],
+  secondElemTypes?: string[],
+  secondElemPower?: string[],
+  trainingTime?: string[],
+  cooldownTime?: string[],
+  breedAmount?: string[],
   specialties?: string[]
   supers?: string[]
   unfreezable?: string[]

@@ -74,7 +74,7 @@ const NFTBrowse = (props: Props) => {
 
   return (
     <Page className={classes.join(' ')} isFullscreen={isFullscreen}>
-      <Row>
+      <Row className="browse-nft-list">
         {isFullscreen ? null : (
           <Column align="left" className="sidebar">
             <Responsive minWidth={Responsive.onlyTablet.minWidth}>
@@ -94,11 +94,11 @@ const NFTBrowse = (props: Props) => {
           {isMap && isFullscreen ? (
             <div className="blur-background">
               <Container>
-                <NFTFilters isNavBar={false}/>
+                <NFTFilters isNavBar={false} />
               </Container>
             </div>
           ) : (
-            <NFTFilters isNavBar={false}/>
+            <NFTFilters isNavBar={false} />
           )}
           {isMap ? (
             <div className="Atlas">

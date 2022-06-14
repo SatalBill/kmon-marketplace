@@ -3,6 +3,7 @@ import { FooterProps } from '@kmon/ui'
 import { Footer as BaseFooter } from '@kmon/dapps/dist/containers'
 import * as tranlsations from '../../modules/translation/locales'
 import { t, T } from '@kmon/dapps/dist/modules/translation/utils'
+import "./Footer.css"
 
 // const locales = Object.keys(tranlsations)
 // English only at the moment
