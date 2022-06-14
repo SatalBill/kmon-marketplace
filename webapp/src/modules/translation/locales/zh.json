@@ -226,7 +226,8 @@
     "kryptomons": "最新列表",
     "become_trainer": "成为培训师",
     "play": "玩",
-    "starting_date": "“UTC时间{date}开始”"
+    "starting_date": "“UTC时间{date}开始”",
+    "enterYourEmail": "输入你的电子邮件 . . ."
   },
   "partners_page": {
     "partners": "伙伴",

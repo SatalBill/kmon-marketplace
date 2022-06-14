@@ -233,7 +233,8 @@
     "latest_sold": "Latest sold",
     "become_trainer": "Become a trainer",
     "play": "Play",
-    "starting_date": "Starting {date} UTC"
+    "starting_date": "Starting {date} UTC",
+    "enterYourEmail": "Enter your email . . ."
   },
   "details_page": {},
   "partners_page": {
