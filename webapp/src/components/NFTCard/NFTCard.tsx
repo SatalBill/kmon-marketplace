@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from '@kmon/ui'
 import { Address } from 'web3x-es/address'
@@ -22,7 +22,8 @@ import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
 
 const NFTCard = (props: Props) => {
-  const { nft, order, status, breedingOrder, isPreventClick, onClickCard, isRelated } = props
+  const { nft, order, status, breedingOrder, isPreventClick, onClickCard, isRelated, isbreeding } = props
+
 
   const genes = nft.data.kryptomon?.genes
   // const priceInWei = breedingOrder?.price;
@@ -116,12 +117,16 @@ const NFTCard = (props: Props) => {
         <div className="card-image-text">
           {status && status.showPrice ? (
             <div className="product-type-price-container">
-              {order?.price ? (
-                <div className="nft-price">
+              {
+                isbreeding ? (
+                  <div className="nft-price">
+                    {breedingOrder?.price && formatCoin(breedingOrder.price)}{coin}
+                  </div>
+                ) : order?.price ? (<div className="nft-price">
                   {order.price && formatCoin(order.price)} {coin}
                   {order.priceUSD && ` ($${order.priceUSD})`}
-                </div>
-              ) : null}
+                </div>) : null
+              }
               <div className="product-type-breedable">
                 <img
                   className="product-type-icon"
@@ -150,9 +155,6 @@ const NFTCard = (props: Props) => {
             />
           )}
 
-          {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
-            : <i className="product-description-mid-heart-empty"></i>}
-
         </div>
       </div>
       <div className="product-description-container">
@@ -179,8 +181,8 @@ const NFTCard = (props: Props) => {
         </div>
         <div className="product-description">
           <div className="product-description-left">
-            <div className="product-description-left-item"><p>Gender: </p><p>{whatTheSex(nft.data.kryptomon?.genes.sex)}</p></div>
-            <div className="product-description-left-item"><p>Speciality:</p> <p>{nft.data.kryptomon?.speciality}</p></div>
+            <div className="product-description-left-item"><p>Gender: </p></div>
+            <div className="product-description-left-item"><p>Speciality:</p></div>
             {/* {
               priceInWei ? (
                 <p className="product-description-left-item">
