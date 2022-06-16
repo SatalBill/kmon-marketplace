@@ -149,6 +149,7 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
+
         </div>
       </div>
       <div className="product-description-container">
