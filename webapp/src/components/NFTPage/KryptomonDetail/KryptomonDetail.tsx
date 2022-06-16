@@ -411,11 +411,6 @@ const KryptomonDetail = (props: Props) => {
         console.log('no wallet=>', error)
       }
 
-      let web3 = new Web3(window?.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      console.log('account=>', accounts)
-      setAccount(accounts[0])
-
       // get KMON price in USD
       fetch(KMON_PRICE_CGC_URL)
         .then(responseJson => responseJson.json())
