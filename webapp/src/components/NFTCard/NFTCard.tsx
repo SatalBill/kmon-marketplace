@@ -149,10 +149,6 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
-
-          {getIfCanBreed() ? <i className="product-description-mid-heart"></i>
-            : <i className="product-description-mid-heart-empty"></i>}
-
         </div>
       </div>
       <div className="product-description-container">
