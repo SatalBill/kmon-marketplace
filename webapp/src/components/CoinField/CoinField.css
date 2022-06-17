@@ -9,3 +9,28 @@
   bottom: 15px;
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 450px) {
+  .CoinField {
+    max-width: 400px;
+    width: 90% !important;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .CoinField {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .CoinField {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .CoinField {
+    max-width: 280px;
+  }
+}
