@@ -8,7 +8,7 @@ export const SEARCH_ARRAY_PARAM_SEPARATOR = '_'
 
 export function getDefaultOptionsByView(view?: View): SearchOptions {
   return {
-    onlyOnSale: false,
+    onlyOnSale: true,
     sortBy: view === View.ACCOUNT ? SortBy.NEWEST : SortBy.NEWEST
   }
 }
