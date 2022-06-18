@@ -152,6 +152,36 @@ export const getElemTypes = createSelector<RootState, string, string[]>(
   search => getURLParamArray<string>(search, 'elemTypes', ELEM_TYPE)
 )
 
+export const getElemPower = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'elemPower')
+)
+
+export const getSecondElemTypes = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'secondElemTypes', ELEM_TYPE)
+)
+
+export const getSecondElemPower = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'secondElemPower')
+)
+
+export const getTrainingTime = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'trainingTime')
+)
+
+export const getCooldownTime = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'cooldownTime')
+)
+
+export const getBreedAmount = createSelector<RootState, string, string[]>(
+  getRouterSearch,
+  search => getURLParamArray<string>(search, 'breedAmount')
+)
+
 export const getSpecialties = createSelector<RootState, string, string[]>(
   getRouterSearch,
   search => getURLParamArray<string>(search, 'specialties')

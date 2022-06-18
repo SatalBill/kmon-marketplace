@@ -2,6 +2,11 @@
   overflow: hidden;
 }
 
+.pdp-related-card {
+  margin: 0 10px !important;
+  min-width: 192px;
+}
+
 .NFTCard .header,
 .NFTCard .dcl.mana.inline {
   font-size: 17px;
@@ -17,12 +22,12 @@
   margin-right: 20px;
 }
 
-.ui.card.NFTCard > .content {
+.ui.card.NFTCard>.content {
   flex: none;
 }
 
-.ui.card.NFTCard > .content > .header:not(.ui),
-.ui.cards > .card.NFTCard > .content > .header:not(.ui) {
+.ui.card.NFTCard>.content>.header:not(.ui),
+.ui.cards>.card.NFTCard>.content>.header:not(.ui) {
   display: flex;
   margin-bottom: 6px;
 }
@@ -32,27 +37,31 @@
   flex: none;
 }
 
-.ui.cards > .ui.card.NFTCard.link .meta,
+.ui.cards>.ui.card.NFTCard.link .meta,
 .ui.card.link .meta {
   margin-bottom: 4px;
 }
 
-.ui.cards > .ui.card.link,
+.ui.cards>.ui.card.link,
 .ui.card.link {
   height: 280px;
 }
-.ui.cards > .ui.card.NFTCard.link:hover .meta,
+
+.ui.cards>.ui.card.NFTCard.link:hover .meta,
 a.ui.card.link:hover .meta {
   color: var(--secondary-text);
 }
-.ui.cards > .ui.card,
+
+.ui.cards>.ui.card,
 .ui.card {
   background-color: #323132 !important;
   border: none !important;
 }
+
 .ui.card:hover {
   border: none !important;
 }
+
 .NFTCard .tags {
   margin-top: 12px;
 }
@@ -89,11 +98,13 @@ a.ui.card.link:hover .meta {
 }
 
 @media (max-width: 768px) {
-  .NFTCard.ui.card > .content,
-  .ui.cards > .NFTCard.card > .content {
+
+  .NFTCard.ui.card>.content,
+  .ui.cards>.NFTCard.card>.content {
     display: block;
   }
-  .ui.cards > .ui.card {
+
+  .ui.cards>.ui.card {
     width: 46% !important;
     margin-right: 5px !important;
   }
@@ -143,6 +154,7 @@ a.ui.card.link:hover .meta {
   display: flex;
   justify-content: space-between;
 }
+
 .product-type-price {
   height: fit-content;
   background-color: #39c876;
@@ -205,6 +217,7 @@ a.ui.card.link:hover .meta {
   font-size: 10px;
   margin: 0;
 }
+
 .product-info-number-card {
   margin: 0;
   font-size: 17px;
@@ -264,17 +277,20 @@ a.ui.card.link:hover .meta {
   flex-direction: column;
   margin-top: 10px;
 }
-.product-description-left-item{
+
+.product-description-left-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 120px;
+  font-family: var(--font-monospace);
 }
-.product-description-left-item p{
+
+.product-description-left-item p {
   color: #000000;
   font-size: 10px;
   margin: 0;
-  
+  font-family: var(--font-monospace);
 }
 
 .product-description-left-item-white {

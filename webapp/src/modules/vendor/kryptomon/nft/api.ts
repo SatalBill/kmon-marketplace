@@ -16,6 +16,7 @@ import { getSortBy } from '../../../nft/utils'
 
 export const NFT_SERVER_URL = process.env.REACT_APP_NFT_SERVER_URL!
 export const API_SERVER_URL = process.env.REACT_APP_API_SERVER_URL!
+export const KMON_PRICE_CGC_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=kryptomon&vs_currencies=usd'
 
 class NFTAPI {
   fetch = async (params: NFTsFetchParams, filters?: NFTsFetchFilters) => {
@@ -113,6 +114,24 @@ class NFTAPI {
     }
     if (params.elemTypes) {
       queryParams.set('elemTypes', params.elemTypes)
+    }
+    if (params.elemPower) {
+      queryParams.set('elemPower', params.elemPower)
+    }
+    if (params.secondElemTypes) {
+      queryParams.set('secondElemTypes', params.secondElemTypes)
+    }
+    if (params.secondElemPower) {
+      queryParams.set('secondElemPower', params.secondElemPower)
+    }
+    if (params.trainingTime) {
+      queryParams.set('trainingTime', params.trainingTime)
+    }
+    if (params.cooldownTime) {
+      queryParams.set('cooldownTime', params.cooldownTime)
+    }
+    if (params.breedAmount) {
+      queryParams.set('breedAmount', params.breedAmount)
     }
     if (params.specialties) {
       queryParams.set('specialties', params.specialties)

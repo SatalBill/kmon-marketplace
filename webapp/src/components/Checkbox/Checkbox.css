@@ -42,6 +42,7 @@
   background: #f231af;
   position: relative;
 }
+
 .checkbox-active::after {
   position: absolute;
   top: 0;
@@ -56,9 +57,26 @@
   content: '';
 }
 
+.labelContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 .label {
   color: var(--secondary-text);
+  font-size: 12px;
   font-weight: 600;
+}
+
+.labelContainer .product-type-icon-details {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  margin-top: 2.5px;
+  margin-left: 5px;
+  background-image: url(../../images/egg/elem-fire.svg);
+  display: flex;
+  /* align-self: flex-start; */
 }
 
 @keyframes antCheckboxEffect {

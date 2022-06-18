@@ -460,11 +460,11 @@
   }
 
   .dcl.user-menu-wrapper .activity-bell.item {
-    display: none;
+    /* display: none; */
   }
 
   .dcl.account-wrapper {
-    display: none !important;
+    /* display: none !important; */
   }
 
   .dcl.navbar-mobile-search {

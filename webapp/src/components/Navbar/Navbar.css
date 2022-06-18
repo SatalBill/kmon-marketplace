@@ -23,6 +23,22 @@
   margin-top: 4px;
 }
 
+.navbar-account .nft-start-game-button{
+  font-family: 'PT Mono', sans-serif;
+  color: black;
+  font-size: 16.8px;
+  line-height: 18px;
+  font-weight: 700px;
+}
+
+.dcl .navbar-account .item .sign-in-button a{
+  font-family: 'PT Mono', sans-serif;
+  color: #fff;
+  font-size: 16.8px;
+  line-height: 18px;
+  font-weight: 700px;
+}
+
 .dcl.navbar .ui.menu .item .bell {
   color: var(--text);
 }
@@ -48,7 +64,6 @@
 
 .dcl.navbar .ui.menu .item.sign-in-button {
   transform: translateY(-8px);
-  font-family: var(--font-poppins);
 }
 
 .dcl.navbar .ui.menu .item.sign-in-button,
@@ -73,7 +88,6 @@
 .dcl.navbar .ui.menu .item.start-game-button {
   transform: translateY(-8px);
   margin-left: 10px;
-  font-family: var(--font-poppins);
 }
 
 .dcl.navbar .ui.menu .item.start-game-button,

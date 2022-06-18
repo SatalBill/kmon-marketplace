@@ -1,6 +1,5 @@
 .elem-power-container {
   width: 100%;
-  max-width: 272px;
   border-radius: 10px;  
   overflow: hidden;
 }
@@ -9,6 +8,12 @@
   background-color: #0E0E0E;
   padding: 4px 15px 4px 4px;
   border-bottom: 2px solid black;
+}
+
+@media (min-width: 768px) {
+  .elem-power-container {
+    max-width: 272px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -76,6 +81,10 @@
   align-items: center;
 }
 
+.elem-power-display-flex {
+  display: flex;
+}
+
 .stats-item {
   border-bottom: 1px solid #222;
   width: 100%;
@@ -95,8 +104,8 @@
   color: #888;
 }
 
-.value-text {
+.elemental-power-value-text {
   font-size: 16px;
   color: rgb(243, 186, 47);
-  margin: 0 15px 0 0;
+  margin: 0 8px 0 0;
 }

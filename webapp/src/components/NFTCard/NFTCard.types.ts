@@ -13,6 +13,7 @@ export type Props = {
     showPriceBottom?: boolean
     showPriceTopLeft?: boolean
   }
+  isRelated?: boolean
 }
 
 export type MapStateProps = Pick<Props, 'order' | 'breedingOrder'>

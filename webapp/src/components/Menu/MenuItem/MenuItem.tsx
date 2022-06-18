@@ -14,6 +14,7 @@ const MenuItem = <T extends unknown>(props: Props<T>) => {
     image,
     nestedLevel,
     withCaret,
+    main,
     onClick
   } = props
 
@@ -34,7 +35,7 @@ const MenuItem = <T extends unknown>(props: Props<T>) => {
     <li className={classNames.join(' ')} onClick={handleOnClick}>
       {image && <Image alt={image} src={image} width="25" circular />}
 
-      <div className="content">
+      <div className={`content${main ? '-main' : ''}`}>
         {t(`menu.${value}`)}
         {subtitle ? <div className="subtitle">{subtitle}</div> : null}
       </div>

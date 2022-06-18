@@ -11,12 +11,46 @@
   flex-wrap: wrap;
 }
 
-.elem-row {
+.gamedata-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  position: relative;
+  width: 100%;
+  max-width: 738px;
+  flex-wrap: wrap;
+}
+
+.gamedata-subcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #323132;
+  border-radius: 30px;
+  position: relative;
+  width: 45%;
+  max-width: 738px;
+  flex-wrap: wrap;
+}
+
+.gamedata-title {
+  margin-left: 10px;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.gamedata-subcontainer .elem-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 25%;
+  width: 100%;
   padding: 5px 20px 5px 10px;
 }
 
@@ -31,6 +65,10 @@
   }
   .elem-row {
     width: 33%;
+  }
+  .gamedata-subcontainer {
+    width: 100%;
+    margin-bottom: 30px;
   }
 }
 @media (max-width: 500px) {

@@ -53,6 +53,11 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    cursor: pointer;
+}
+
+.community-card p {
+    font-family: 'PT Mono', sans-serif;
 }
 
 .community-followers {

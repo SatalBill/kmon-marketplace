@@ -20,9 +20,10 @@ import breedableHeart from '../../images/heart.png'
 import { Row } from '../Layout/Row'
 import { Coin } from '@kmon/schemas'
 import { fromWei } from 'web3x-es/utils'
+import { t } from '@kmon/dapps/dist/modules/translation/utils'
 
 const NFTCard = (props: Props) => {
-  const { nft, order, status, breedingOrder, isPreventClick, onClickCard } = props
+  const { nft, order, status, breedingOrder, isPreventClick, onClickCard, isRelated } = props
 
   const genes = nft.data.kryptomon?.genes
   // const priceInWei = breedingOrder?.price;
@@ -103,7 +104,7 @@ const NFTCard = (props: Props) => {
 
   return (
     <Card
-      className="NFTCard"
+      className={`NFTCard ${isRelated ? 'pdp-related-card' : ''}`}
       link
       as={Link}
       to={locations.nft(nft.contractAddress, nft.tokenId)}
@@ -149,6 +150,7 @@ const NFTCard = (props: Props) => {
               alt="icon"
             />
           )}
+
         </div>
       </div>
       <div className="product-description-container">
@@ -175,6 +177,8 @@ const NFTCard = (props: Props) => {
         </div>
         <div className="product-description">
           <div className="product-description-left">
+            <div className="product-description-left-item"><p>{t('nft_page.meta_data.appearance.Gender')}: </p></div>
+            <div className="product-description-left-item"><p>{t('nft_page.meta_data.general.speciality')}:</p></div>
             {/* {
               priceInWei ? (
                 <p className="product-description-left-item">
@@ -186,12 +190,6 @@ const NFTCard = (props: Props) => {
                 </p>
               )
             } */}
-            <p className="product-description-left-item">
-              GENDER:
-            </p>
-            <p className="product-description-left-item">
-              SPECIALITY
-            </p>
           </div>
           <div className="product-description-left">
             <p className="product-description-left-item">
