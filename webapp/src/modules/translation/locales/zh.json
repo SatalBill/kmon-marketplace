@@ -408,7 +408,7 @@
       },
       "caretraining": {
         "title": "护理与培训",
-        "description": "会影响你的氪兽外观的属性.",
+        "description": "将影响你应该如何照顾你的氪兽的属性，以及它的训练速度。",
         "Gender": "性别",
         "Color": "颜色",
         "body_size": "身体尺寸"
