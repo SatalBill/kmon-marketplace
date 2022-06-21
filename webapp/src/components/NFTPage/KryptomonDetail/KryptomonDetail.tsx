@@ -258,26 +258,22 @@ const KryptomonDetail = (props: Props) => {
 
   const maxElementType = elementTypes.reduce((prev, current) => {
     return ((prev &&
-      typeof prev.value === 'string' &&
-      Number.parseInt(prev.value)) ||
-      0) >
+      typeof prev.value[1] === 'string' && typeof prev.value[2] === 'string' &&
+      Number.parseInt(prev.value[1]) * Number.parseInt(prev.value[2]))) >
       ((current &&
-        typeof current.value === 'string' &&
-        Number.parseInt(current.value)) ||
-        0)
+        typeof current.value[1] === 'string' && typeof current.value[2] === 'string' &&
+        Number.parseInt(current.value[1]) * Number.parseInt(current.value[2])))
       ? prev
       : current
   })
   const removedMax = elementTypes.filter(item => item.title != maxElementType.title);
   const secondElementType = removedMax.reduce((prev, current) => {
     return ((prev &&
-      typeof prev.value === 'string' &&
-      Number.parseInt(prev.value)) ||
-      0) >
+      typeof prev.value[1] === 'string' && typeof prev.value[2] === 'string' &&
+      Number.parseInt(prev.value[1]) * Number.parseInt(prev.value[2]))) >
       ((current &&
-        typeof current.value === 'string' &&
-        Number.parseInt(current.value)) ||
-        0)
+        typeof current.value[1] === 'string' && typeof current.value[2] === 'string' &&
+        Number.parseInt(current.value[1]) * Number.parseInt(current.value[2])))
       ? prev
       : current
   })
@@ -494,7 +490,7 @@ const KryptomonDetail = (props: Props) => {
               </TitleBlock>
             </Row>
           }
-          <Row className="Row-space-between">
+          {/* <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.elements.title')}>
               <Elements
                 elementTypes={elementTypes}
@@ -502,7 +498,7 @@ const KryptomonDetail = (props: Props) => {
                 nft={nft}
               />
             </TitleBlock>
-          </Row>
+          </Row> */}
         </Column>
         <Column>
           <Row className="Row-space-between">
@@ -539,9 +535,9 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
-            <TitleBlock title={t('nft_page.description')}>
+            {/* <TitleBlock title={t('nft_page.description')}>
               <DescriptionBlock nft={nft} />
-            </TitleBlock>
+            </TitleBlock> */}
             {/* <TitleBlock title={t('nft_page.trade_history.title')}>
               <TradeHistory nft={nft} />
             </TitleBlock> */}
@@ -562,7 +558,7 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
-            <TitleBlock title="">
+            <TitleBlock title={t('nft_page.meta_data.affinity.title')}>
               <MetaDataBottom nft={nft} isV2={isV2} elements={MetaDataelemtns} elementTypes={elementTypes} />
             </TitleBlock>
           </Row>

@@ -162,7 +162,7 @@
     "training": "Training",
     "caring": "Caring",
     "love": "Love",
-    "freeze": "Freeze",
+    "freeze": "Frozen",
     "elemental_affinitiy": "Elemental Affinitiy",
     "main_element": "Main Element",
     "secondary_element": "Secondary Element",
@@ -172,6 +172,7 @@
       "number": "Number",
       "Egg": "Egg",
       "Hatched": "Hatched",
+      "hatched": "Hatched",
       "Junior": "Junior",
       "Yes": "Yes",
       "No": "No",
@@ -422,7 +423,7 @@
       },
       "caretraining": {
         "title": "Care & Training",
-        "description": "Attributes that will affect the appearance of your kryptomon.",
+        "description": "Attributes that will affect how you should care for your kryptomon, and how fast it can be trained.",
         "Gender": "Gender",
         "Color": "Color",
         "body_size": "Body Size"
