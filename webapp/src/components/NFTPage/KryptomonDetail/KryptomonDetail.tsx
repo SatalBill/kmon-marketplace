@@ -499,7 +499,7 @@ const KryptomonDetail = (props: Props) => {
               </TitleBlock>
             </Row>
           }
-          <Row className="Row-space-between">
+          {/* <Row className="Row-space-between">
             <TitleBlock title={t('nft_page.elements.title')}>
               <Elements
                 elementTypes={elementTypes}
@@ -507,7 +507,7 @@ const KryptomonDetail = (props: Props) => {
                 nft={nft}
               />
             </TitleBlock>
-          </Row>
+          </Row> */}
         </Column>
         <Column>
           <Row className="Row-space-between">
@@ -544,9 +544,9 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
-            <TitleBlock title={t('nft_page.description')}>
+            {/* <TitleBlock title={t('nft_page.description')}>
               <DescriptionBlock nft={nft} />
-            </TitleBlock>
+            </TitleBlock> */}
             {/* <TitleBlock title={t('nft_page.trade_history.title')}>
               <TradeHistory nft={nft} />
             </TitleBlock> */}
@@ -567,7 +567,7 @@ const KryptomonDetail = (props: Props) => {
             </TitleBlock>
           </Row>
           <Row className="Row-space-between">
-            <TitleBlock title="">
+            <TitleBlock title={t('nft_page.meta_data.affinity.title')}>
               <MetaDataBottom nft={nft} isV2={isV2} elements={MetaDataelemtns} elementTypes={elementTypes} />
             </TitleBlock>
           </Row>

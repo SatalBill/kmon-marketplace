@@ -235,6 +235,10 @@ const DNAChart = (props: Props) => {
         } else if (index === 4) {
           roundRectX = data.x - 15;
           roundRectY = data.y - 30;
+        } else if (index === 2) {
+          roundRectX = data.x - 15;
+          roundRectY = data.y + 20;
+          dataX = data.x - 5;
         } else {
           roundRectX = data.x - 15;
           roundRectY = data.y + 20;
