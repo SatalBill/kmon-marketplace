@@ -17,6 +17,7 @@ export type Props = {
   pathname: string
   onClickCard?: (nft: NFT) => void
   onBrowse: typeof browseNFTs
+  isbreeding?: boolean
 }
 
 export type MapStateProps = Pick<

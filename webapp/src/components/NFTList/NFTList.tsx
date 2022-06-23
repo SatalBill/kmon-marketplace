@@ -10,12 +10,8 @@ import { IndexingDelay } from '../IndexingDelayCard'
 import { useIndexingDelay } from '../../hooks'
 
 const NFTList = (props: Props) => {
-  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, isPreventClick, myNFT, pathname, onBrowse, onClickCard } = props
+  const { vendor, nfts, page, count, subgraphBlockNumber, isLoading, isSignedIn, isPreventClick, myNFT, pathname, isbreeding, onBrowse, onClickCard } = props
   const { showIndexingDelay } = useIndexingDelay(subgraphBlockNumber, isSignedIn)
-
-  useEffect(() => {
-    console.log("--", nfts)
-  }, [])
 
   const handleLoadMore = useCallback(() => {
     const newPage = page + 1
@@ -59,6 +55,7 @@ const NFTList = (props: Props) => {
               status={{ showPrice: true }}
               isPreventClick={isPreventClick}
               onClickCard={onClickCard}
+              isbreeding={isbreeding}
             />
           ))
           : null}
